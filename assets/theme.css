@@ -200,3 +200,9 @@ button.shopify-payment-button__button--unbranded {
 .icon{
   width: 24px;
 }
+
+@media and screen (max-width: 467px){
+.small-hide {
+    display: none;
+}
+}
