@@ -1,1 +1,37 @@
-{"type":"header","name":"t:general.header","sections":{"header":{"type":"header","blocks":{"mega_menu_1_MhxVaF":{"type":"mega-menu-1","settings":{"menu_handle":"Shop","menu_list_1":"main-menu","menu_list_2":"main-menu","menu_list_3":"","menu_list_4":"","menu_list_5":"","menu_list_6":"","promo_image_1":"shopify:\/\/shop_images\/c107de50b6a51a00504f93bc772a908bb6b54b5e-1080x1080.webp","promo_title_1":"Promo Title","promo_text_1":"<p>Promo Content<\/p>","promo_link_1":"","promo_image_2":"shopify:\/\/shop_images\/ad04758cc352b4e1c887e27fde10e98745474122-3456x5184.webp","promo_title_2":"Promo Title","promo_text_2":"<p>Promo Content<\/p>","promo_link_2":""}}},"block_order":["mega_menu_1_MhxVaF"],"settings":{"menu":"main-menu","logo_center":true,"seconday_menu":"main-menu","booking_link_text":"Book an Appointment","booking_link":"#","button_style":"secondary","sticky_header_type":"always","header_transparent":false,"show_line_separator":true,"color_scheme":"","menu_color_scheme":"","enable_country_selector":true,"padding_top":20,"padding_bottom":20}}},"order":["header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:general.header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "logo_center": false,
+        "seconday_menu": "main-menu",
+        "booking_link_text": "Book an Appointment",
+        "booking_link": "",
+        "button_style": "link",
+        "sticky_header_type": "always",
+        "header_transparent": false,
+        "show_line_separator": true,
+        "color_scheme": "",
+        "menu_color_scheme": "",
+        "enable_country_selector": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}
