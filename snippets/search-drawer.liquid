@@ -1,0 +1,18 @@
+<searchDrawer class="searchDrawer">
+    <div class="search-drawer-overlay" data-cursor-overlay id="SearchDrawerOverlay">&nbsp;</div>
+
+<div class="search-drawer" id="SearchDrawer">
+  <div class="search-drawer-header">
+    <h3>Search</h3>
+    <button class="search-close drawer__close" title="close search" id="SearchDrawerClose"><span class="svg-wrapper">{{ 'icon-close.svg' | inline_asset_content }}</span></button>
+  </div>
+
+  <div class="search-drawer-body">
+    <form action="/search">
+      <input type="text" name="q" placeholder="Search products..." autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+</searchDrawer>

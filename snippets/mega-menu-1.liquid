@@ -1,0 +1,68 @@
+<div class="Mega_Menu_Layout" type="mega_menu_2">
+    <div class="left_menu_items">
+        {% for i in (1..6) -%}
+        {%- capture key %}menu_list_{{ i }}{%- endcapture -%}
+        {% assign menu_list = block.settings[key] %}
+        {% if menu_list != blank %}
+        <div class="menu_items">
+            {% if menu_list.title %}
+                <div class="menutitle lable">{{ menu_list.title }}</div>
+            {% endif %}
+            <ul class="list_items">
+            {% for link in menu_list.links %}
+                <li><a class="link_effect" href="{{ link.url }}">{{ link.title }}</a></li>
+            {%  endfor %}
+            </ul>
+        </div>    
+        {% endif %}
+        {% endfor %}
+        {% if main_link.url != blank %}
+        <div class="all_link"><a href="{{ routes.all_products_collection_url }} "><span class="a_title">All Products</span> <span>{{- 'icon-arrow.svg' | inline_asset_content -}}</span></a></div>
+        {% endif %}
+   </div>
+   <div class="right_menu_promos">
+    {%  for i in (1..2) %}
+        {%- capture key_image %}promo_image_{{ i }}{%- endcapture -%}
+        {%- capture key_title %}promo_title_{{ i }}{%- endcapture -%}
+        {%- capture key_text %}promo_text_{{ i }}{%- endcapture -%}
+        {%- capture key_link %}promo_link_{{ i }}{%- endcapture -%}
+         {% assign promo_image = block.settings[key_image] %}
+         {% assign promo_title = block.settings[key_title] %}
+         {% assign promo_text = block.settings[key_text] %}
+         {% assign promo_link = block.settings[key_link] %}
+         {% if promo_image != blank and promo_title != blank  %}
+         <div class="Promo_item">
+             {% if promo_link != blank %}
+                <a href="{{ promo_link }}">
+                {% endif %}
+            {% capture sizes %}(max-width: {{ promo_image.width | times: 2 }}px) 50vw, {{ promo_image.width }}px{% endcapture %}
+            {{ promo_image
+                      | image_url: width: 428
+                      | image_tag:
+                        widths: '50, 75, 100, 150, 200, 300, 400, 500',
+                        sizes: sizes,
+                        class: 'promo_image_menu'
+                    }}
+        <div class="promo_text_container">
+        <div class="promo_info">
+        {% if promo_title != blank %}
+            <h3>{{ promo_title }}</h3>
+        {% endif %}
+        {% if promo_text != blank %}
+            <div class="rte">
+                {{ promo_text }}
+                </div>
+        {% endif %}
+        </div>
+        {% if promo_link != blank %}
+            {{- 'icon-arrow.svg' | inline_asset_content -}}
+        {%  endif %}
+        </div>
+    {% if promo_link != blank %}
+    </a>
+    {% endif %}
+         </div>
+        {% endif %}
+    {% endfor %}
+   </div>
+</div>

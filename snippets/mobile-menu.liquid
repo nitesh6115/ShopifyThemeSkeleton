@@ -1,0 +1,38 @@
+<!-- Mobile Menu Drawer -->
+<div class="mobile_menu_warpper">
+<div class="mobile-menu-overlay" data-cursor-overlay>&nbsp;</div>
+
+<nav class="mobile-menu">
+  <mobileHeader><a href="{{ routes.root_url }}" class="header__link--text focus-inset">
+    {%- if settings.logo != blank -%}
+      <div class="header__heading-logo-wrapper">
+        {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+        {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+        {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+        {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+        {{ settings.logo | image_url: width: 600 | image_tag:
+          class: 'header__logo motion-reduce',
+          widths: widths,
+          height: logo_height,
+          width: settings.logo_width,
+          alt: logo_alt,
+          sizes: sizes,
+          preload: true,
+          fetchpriority:high
+        }}
+      </div>
+    {%- else -%}
+      <span class="h2">{{ shop.name }}</span>
+    {%- endif -%}
+  </a><button class="drawer__close close-mobile-menu" title="close menu"><span class="svg-wrapper">{{ 'icon-close.svg' | inline_asset_content }}</span></button></mobileHeader>
+  <mobileMenuWrapper></mobileMenuWrapper>
+  <mobileFooter>
+    <a href="{{ routes.account_login_url }}" class="button button--primary">
+      <svg class="icon" viewBox="0 0 16 17" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="6.5" height="6.5" x="4.75" y="1.917" rx="3.25"></rect>
+      <path stroke-linecap="round" d="M8 10.834c1 0 2.667.222 3 .333.333.11 2.467.533 3 1.333.667 1 .667 1.334.667 2.667M8 10.834c-1 0-2.667.222-3 .333-.333.11-2.467.533-3 1.333-.667 1-.667 1.334-.667 2.667"></path>
+    </svg><span>Login</span>
+            </a>
+  </mobileFooter>
+</nav>
+</div>

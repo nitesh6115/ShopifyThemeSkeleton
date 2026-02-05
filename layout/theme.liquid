@@ -3,7 +3,6 @@
   <head>
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
-
     {% comment %}
       Font preloading:
       1. Preconnect to font CDN for faster connection
@@ -18,7 +17,7 @@
     {% endunless %}
 
     {% # Load and preload the critical CSS %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}

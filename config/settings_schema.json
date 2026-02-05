@@ -8,6 +8,117 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo Image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 5,
+        "default": 100,
+        "unit": "px",
+        "label": "Logo Width"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+{
+    "name": "Color Scheme",
+    "settings": [
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "Background Gradient",
+            "info": "If you want Background in Gradient then  you can use this other you can make it empty"
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "Text Color",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button",
+            "label": "Primary Button Background",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Primary Button Border Color",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button_label",
+            "label": "Primary Button Text",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button",
+            "label": "Secondary Button Background",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_border_color",
+            "label": "Secondary Button Border Color",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label",
+            "label": "Secondary Button Text",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "shadow",
+            "label": "shadow",
+            "default": "#121212"
+          }
+        ],
+        "role": {
+          "text": "text",
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
+          "links": "secondary_button_label",
+          "icons": "text",
+          "primary_button": "button",
+          "on_primary_button": "button_label",
+          "primary_button_border": "button_border_color",
+          "secondary_button": "secondary_button",
+          "on_secondary_button": "secondary_button_label",
+          "secondary_button_border": "secondary_button_border_color"
+        }
+      }
+    ]
+  },
+  {
     "name": "t:general.typography",
     "settings": [
       {

@@ -1,0 +1,163 @@
+<nav>
+          <ul class="list-menu list-menu--inline" role="list">
+            {%- for link in menu.links -%}
+              {% assign mega_menu = false %}
+              <li style="--delay:0.{{forloop.index}}s;">
+                {% assign link_title = link.title | handle %}
+                {% for block in section.blocks %}
+                  {% if block.settings.menu_handle != blank %}
+                    {% assign mega_menu_title = block.settings.menu_handle | handle %}
+                    {% if link_title == mega_menu_title %}
+                      {% assign mega_menu = true %}
+                      {% break %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+                {% if mega_menu == true %}
+                  <header-menu class="dropDownMenu main_link">
+                    <a
+                      href="{{ link.url }}"
+                      class="header__menu_item "
+                    >
+                      <span class="menu_handle">
+                        {{- link.title | escape -}}
+                      </span>
+                      <span class="duplicate_main_hover">
+                        {{- link.title | escape -}}
+                      </span>
+                    </a>
+                    <i class="icon-dropdown" style="display:none">{{- 'icon-caret.svg' | inline_asset_content -}}</i>
+                    <div class="DropDown Mega_Menu">
+                      <div class="moblle_back_header" style="display:none">
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                        {{ link.title }}
+                      </div>
+                      {% for block in section.blocks %}
+                        {% if block.settings.menu_handle != blank %}
+                          {% assign mega_menu_title = block.settings.menu_handle | handle %}
+                          {% if link_title == mega_menu_title %}
+                            <div class="megamue_wrapper dropdown__container relative">
+                              {% if block.type == 'mega-menu-1' %}
+                                {% render 'mega-menu-1', block: block, main_link: link %}
+                              {% else %}
+                                {% render 'mega-menu-2', block: block, main_link: link %}
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </header-menu>
+                {% else %}
+                  {%- if link.links != blank -%}
+                    <header-menu class="dropDownMenu main_link">
+                      <a
+                        href="{{ link.url }}"
+                        class="header__menu_item"
+                      >
+                        <span class="menu_text">
+                          {{- link.title | escape -}}
+                        </span>
+                        <span class="duplicate_main_hover">
+                          {{- link.title | escape -}}
+                        </span>
+                      </a>
+                      <i class="icon-dropdown" style="display:none">{{- 'icon-caret.svg' | inline_asset_content -}}</i>
+                      <div class="DropDown">
+                        <div class="moblle_back_header" style="display:none">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                          {{ link.title }}
+                        </div>
+                        <div class="dropdown__container relative">
+                          <span class="dropdown__corner corner left top flex absolute pointer-events-none">
+                            <svg
+                              class="w-full h-auto"
+                              viewBox="0 0 101 101"
+                              stroke="none"
+                              fill="currentColor"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M101 0H0V101H1C1 45.7715 45.7715 1 101 1V0Z"></path>
+                              <path d="M1 101C1 45.7715 45.7715 1 101 1" fill="none"></path>
+                            </svg>
+                          </span>
+
+                          <span class="dropdown__corner corner right top flex absolute pointer-events-none">
+                            <svg
+                              class="w-full h-auto"
+                              viewBox="0 0 101 101"
+                              stroke="none"
+                              fill="currentColor"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M101 0H0V101H1C1 45.7715 45.7715 1 101 1V0Z"></path>
+                              <path d="M1 101C1 45.7715 45.7715 1 101 1" fill="none"></path>
+                            </svg>
+                          </span>
+
+                          <ul
+                            class="header_menu_list-menu"
+                            role="list"
+                            tabindex="-1"
+                          >
+                            {%- for childlink in link.links -%}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    href="{{ childlink.url }}"
+                                    class="header_menu_item link_effect"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ childlink.title | escape }}
+                                  </a>
+                                {%- else -%}
+                                  <childMenuList id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                                    <childMenuListItem class="submenu_item">
+                                      <a
+                                        href="{{ childlink.url }}"
+                                        class="submenu_item link_effect"
+                                      >
+                                        <span>{{ childlink.title | escape }}</span>
+                                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                                      </a>
+                                    </childMenuListItem>
+                                    <ul class="childMenuListItemDropDown" class="header_submenu">
+                                      {%- for grandchildlink in childlink.links -%}
+                                        <li>
+                                          <a
+                                            href="{{ grandchildlink.url }}"
+                                            class="submenu_items link_effect"
+                                          >
+                                            {{ grandchildlink.title | escape }}
+                                          </a>
+                                        </li>
+                                      {%- endfor -%}
+                                    </ul>
+                                  </childMenuList>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </header-menu>
+                  {%- else -%}
+                    <header-menu class="singleMenu main_link">
+                      <a href="{{ link.url }}" class="header__menu_item ">
+                        <span class="menu_text">
+                          {{- link.title | escape -}}
+                        </span>
+                        <span class="duplicate_main_hover">
+                          {{- link.title | escape -}}
+                        </span>
+                      </a>
+                    </header-menu>
+                  {%- endif -%}
+                {% endif %}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      
