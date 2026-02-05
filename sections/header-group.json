@@ -13,31 +13,6 @@
   "sections": {
     "header": {
       "type": "header",
-      "blocks": {
-        "mega_menu_1_d8GjEj": {
-          "type": "mega-menu-1",
-          "settings": {
-            "menu_handle": "Shop",
-            "menu_list_1": "main-menu",
-            "menu_list_2": "main-menu",
-            "menu_list_3": "",
-            "menu_list_4": "",
-            "menu_list_5": "",
-            "menu_list_6": "",
-            "promo_image_1": "shopify://shop_images/bdcefa82-d41e-4632-97ea-eb45fdef3141.webp",
-            "promo_title_1": "Latest Collection",
-            "promo_text_1": "<p>Shop Now</p>",
-            "promo_link_1": "",
-            "promo_image_2": "shopify://shop_images/Rectangle_3_2.webp",
-            "promo_title_2": "New Launch",
-            "promo_text_2": "<p>Shop Now</p>",
-            "promo_link_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "mega_menu_1_d8GjEj"
-      ],
       "settings": {
         "menu": "main-menu",
         "logo_center": false,
