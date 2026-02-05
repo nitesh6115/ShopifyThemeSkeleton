@@ -201,7 +201,7 @@ button.shopify-payment-button__button--unbranded {
   width: 24px;
 }
 
-@media and screen (max-width: 467px){
+@media screen and (max-width: 1023px) {
 .small-hide {
     display: none;
 }
