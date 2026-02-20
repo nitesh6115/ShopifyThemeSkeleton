@@ -1,3 +1,35 @@
+<style>
+.bundle-builder {
+  --section-bg: {{ section.settings.section_bg }};
+  --text-color: {{ section.settings.text_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --heading-size: {{ section.settings.heading_size }}px;
+  --text-size: {{ section.settings.text_size }}px;
+
+  --btn-bg: {{ section.settings.button_bg }};
+  --btn-hover-bg: {{ section.settings.button_hover_bg }};
+  --btn-text: {{ section.settings.button_text_color }};
+  --btn-radius: {{ section.settings.button_radius }}px;
+
+  --card-bg: {{ section.settings.card_bg }};
+  --card-title: {{ section.settings.card_title_color }};
+  --card-border: {{ section.settings.card_border_color }};
+  --card-selected-border: {{ section.settings.card_selected_border }};
+
+  --checkbox-bg: {{ section.settings.checkbox_bg }};
+  --checkbox-border: {{ section.settings.checkbox_border }};
+  --checkbox-active-bg: {{ section.settings.checkbox_active_bg }};
+  --checkbox-active-icon: {{ section.settings.checkbox_active_icon }};
+
+  --progress-bg: {{ section.settings.progress_bg }};
+  --progress-fill: {{ section.settings.progress_fill }};
+
+  --tier-active-bg: {{ section.settings.tier_active_bg }};
+  --tier-active-text: {{ section.settings.tier_active_text }};
+  --tier-inactive-bg: {{ section.settings.tier_inactive_bg }};
+  --tier-inactive-text: {{ section.settings.tier_inactive_text }};
+}
+</style>
 {{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
 
 <section 
