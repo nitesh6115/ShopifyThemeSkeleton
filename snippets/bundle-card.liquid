@@ -1,7 +1,10 @@
 <div class="bundle-card"
      data-price="{{ product.price | money_without_currency }}"
      data-variant-id="{{ product.first_available_variant.id }}">
-
+<span class="bundle-check">✓</span>
+{% if product.tags contains 'popular' %}
+  <span class="bundle-badge">Popular</span>
+{% endif %}
   <div class="bundle-image">
     {{ product.featured_image | image_url: width: 600 | image_tag }}
   </div>
