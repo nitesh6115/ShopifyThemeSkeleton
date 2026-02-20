@@ -187,7 +187,7 @@
       // -------- FIXED BENEFIT BAR LOGIC --------
 
       tierPills.forEach((pill) => pill.classList.remove('active'));
-
+      console.log(tier1Qty)
       if (qty >= t3Qty) {
         tierPills[2].classList.add('active');
       } else if (qty >= t2Qty) {
@@ -200,7 +200,7 @@
 
       if (nextTierQty !== null) {
         let needed = nextTierQty - qty;
-
+        console.log(needed)
         if (needed > 0) {
           messageEl.textContent = `Add ${needed} more item${needed > 1 ? 's' : ''} to save ${nextTierDiscount}%!`;
         } else {
@@ -225,7 +225,6 @@
           card.classList.add('selected');
           selected.push({ id, price });
         }
-        console.log("yes")
         calculate();
       });
     });
