@@ -222,3 +222,12 @@
   color: #16a34a;
   font-weight: 500;
 }
+.bundle-card.is-sold-out {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.bundle-card.is-sold-out .bundle-select-btn {
+  background: #ccc;
+  cursor: not-allowed;
+}
