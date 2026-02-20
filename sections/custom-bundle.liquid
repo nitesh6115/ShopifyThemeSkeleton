@@ -132,7 +132,7 @@
     let selected = [];
 
     function calculate() {
-        console.log("QTY:", qty);
+       
       let subtotal = 0;
 
       selected.forEach((item) => {
@@ -140,7 +140,7 @@
       });
 
       let qty = selected.length;
-
+      console.log("QTY:", qty);
       const t1Qty = parseInt(section.dataset.tier1Qty);
       const t2Qty = parseInt(section.dataset.tier2Qty);
       const t3Qty = parseInt(section.dataset.tier3Qty);
