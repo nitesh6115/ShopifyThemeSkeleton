@@ -336,12 +336,12 @@
 
   customElements.define('sticky-header', StickyHeader);
   const menu = document.querySelector('.mobile-menu');
-const mobile_overlay = document.querySelector('.mobile-menu-overlay');
-const mobileOpenBtn = document.querySelector('.open-mobile-menu');
-const mobileCloseBtn = document.querySelector('.close-mobile-menu');
-const mobile_data = document.querySelector('desktopMenu');
-const mobile_second = document.querySelector('desktopmenusecondary');
-const DesktopMenuClone = mobile_data.querySelector('nav').cloneNode(true);
+  const mobile_overlay = document.querySelector('.mobile-menu-overlay');
+  const mobileOpenBtn = document.querySelector('.open-mobile-menu');
+  const mobileCloseBtn = document.querySelector('.close-mobile-menu');
+  const mobile_data = document.querySelector('desktopMenu');
+  const mobile_second = document.querySelector('desktopmenusecondary');
+  const DesktopMenuClone = mobile_data.querySelector('nav').cloneNode(true);
 
 // Open menu
 mobileOpenBtn.addEventListener('click', () => {
