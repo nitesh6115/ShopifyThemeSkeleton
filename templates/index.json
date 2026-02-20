@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
-    },
     "custom_bundle_dzRKPA": {
       "type": "custom-bundle",
       "name": "Bundle Builder",
@@ -46,17 +42,21 @@
         "checkbox_border": "#d1d5db",
         "checkbox_active_bg": "#16a34a",
         "checkbox_active_icon": "#ffffff",
-        "progress_bg": "#FFFFFF",
+        "progress_bg": "#ffffff",
         "progress_fill": "#16a34a",
         "tier_active_bg": "#88ee61",
         "tier_active_text": "#ffffff",
         "tier_inactive_bg": "#fbf4ee",
         "tier_inactive_text": "#6b7280"
       }
+    },
+    "main": {
+      "type": "hello-world",
+      "settings": {}
     }
   },
   "order": [
-    "main",
-    "custom_bundle_dzRKPA"
+    "custom_bundle_dzRKPA",
+    "main"
   ]
 }
