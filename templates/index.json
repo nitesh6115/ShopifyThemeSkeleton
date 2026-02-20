@@ -12,9 +12,27 @@
     "main": {
       "type": "hello-world",
       "settings": {}
+    },
+    "custom_bundle_dzRKPA": {
+      "type": "custom-bundle",
+      "name": "Bundle Builder",
+      "settings": {
+        "heading": "Build Your Bundle",
+        "subheading": "Mix and match to save more",
+        "use_collection": true,
+        "collection": "drinks",
+        "tier_1_qty": 2,
+        "tier_1_discount": 10,
+        "tier_2_qty": 3,
+        "tier_2_discount": 15,
+        "tier_3_qty": 4,
+        "tier_3_discount": 20,
+        "button_text": "Add Bundle to Cart"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_bundle_dzRKPA"
   ]
 }
