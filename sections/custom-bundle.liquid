@@ -460,4 +460,50 @@
       });
     });
   });
+  document.querySelectorAll(".bundle-card").forEach(card => {
+
+  const variantData = JSON.parse(
+    card.querySelector(".bundle-variants-json")?.textContent || "[]"
+  );
+
+  const selects = card.querySelectorAll(".bundle-variant-select");
+  const priceEl = card.querySelector(".bundle-price");
+  const button = card.querySelector(".bundle-select-btn");
+
+  if (!variantData.length) return;
+
+  function updateVariant() {
+
+    const selectedOptions = [];
+    selects.forEach(select => {
+      selectedOptions.push(select.value);
+    });
+
+    const matchedVariant = variantData.find(variant => {
+      return variant.options.every((opt, index) => 
+        opt === selectedOptions[index]
+      );
+    });
+
+    if (!matchedVariant) return;
+
+    card.dataset.variantId = matchedVariant.id;
+    card.dataset.price = (matchedVariant.price / 100).toFixed(2);
+
+    priceEl.textContent = Shopify.formatMoney(matchedVariant.price);
+
+    if (!matchedVariant.available) {
+      button.disabled = true;
+      button.textContent = "Sold Out";
+    } else {
+      button.disabled = false;
+      button.textContent = "Add";
+    }
+  }
+
+  selects.forEach(select => {
+    select.addEventListener("change", updateVariant);
+  });
+
+});
 </script>
