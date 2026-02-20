@@ -13,7 +13,32 @@
     <h2>{{ section.settings.heading }}</h2>
     <p>{{ section.settings.subheading }}</p>
   </div>
+  <div class="bundle-benefits">
+  <div class="bundle-benefits-header">
+    <span class="bundle-icon">↗</span>
+    <span>Bundle & Save</span>
+  </div>
 
+  <div class="bundle-tier-tabs">
+    <button class="tier-pill" data-tier="1">
+      Buy {{ section.settings.tier_1_qty }} → Save {{ section.settings.tier_1_discount }}%
+    </button>
+
+    <button class="tier-pill" data-tier="2">
+      Buy {{ section.settings.tier_2_qty }} → Save {{ section.settings.tier_2_discount }}%
+    </button>
+
+    <button class="tier-pill" data-tier="3">
+      Buy {{ section.settings.tier_3_qty }} → Save {{ section.settings.tier_3_discount }}%
+    </button>
+  </div>
+
+  <div class="bundle-tier-message">
+    <span data-bundle-message>
+      Add {{ section.settings.tier_1_qty }} items to start saving!
+    </span>
+  </div>
+</div>
   <div class="bundle-products">
     
     {% if section.settings.use_collection %}
