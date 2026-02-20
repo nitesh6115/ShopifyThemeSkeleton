@@ -116,37 +116,68 @@ document.addEventListener("DOMContentLoaded", function(){
   const savingsEl = section.querySelector("[data-bundle-savings]");
   const totalEl = section.querySelector("[data-bundle-total]");
   const addBtn = section.querySelector(".bundle-add-to-cart");
-
+  const tierPills = section.querySelectorAll(".tier-pill");
+  const messageEl = section.querySelector("[data-bundle-message]");
   let selected = [];
 
   function calculate() {
-    let subtotal = 0;
-    selected.forEach(item => subtotal += parseFloat(item.price));
+  let subtotal = 0;
+  selected.forEach(item => subtotal += parseFloat(item.price));
 
-    let qty = selected.length;
-    let discount = 0;
+  let qty = selected.length;
+  let discount = 0;
 
-    const t1Qty = parseInt(section.dataset.tier1Qty);
-    const t2Qty = parseInt(section.dataset.tier2Qty);
-    const t3Qty = parseInt(section.dataset.tier3Qty);
+  const t1Qty = parseInt(section.dataset.tier1Qty);
+  const t2Qty = parseInt(section.dataset.tier2Qty);
+  const t3Qty = parseInt(section.dataset.tier3Qty);
 
-    const t1Disc = parseFloat(section.dataset.tier1Discount);
-    const t2Disc = parseFloat(section.dataset.tier2Discount);
-    const t3Disc = parseFloat(section.dataset.tier3Discount);
+  const t1Disc = parseFloat(section.dataset.tier1Discount);
+  const t2Disc = parseFloat(section.dataset.tier2Discount);
+  const t3Disc = parseFloat(section.dataset.tier3Discount);
 
-    if (qty >= t3Qty) discount = t3Disc;
-    else if (qty >= t2Qty) discount = t2Disc;
-    else if (qty >= t1Qty) discount = t1Disc;
+  let nextQty = t1Qty;
+  let nextDiscount = t1Disc;
 
-    let savings = subtotal * (discount / 100);
-    let total = subtotal - savings;
-
-    subtotalEl.textContent = "$" + subtotal.toFixed(2);
-    savingsEl.textContent = "$" + savings.toFixed(2);
-    totalEl.textContent = "$" + total.toFixed(2);
-
-    addBtn.disabled = qty === 0;
+  if (qty >= t3Qty) {
+    discount = t3Disc;
+    nextQty = null;
+  } else if (qty >= t2Qty) {
+    discount = t2Disc;
+    nextQty = t3Qty;
+    nextDiscount = t3Disc;
+  } else if (qty >= t1Qty) {
+    discount = t1Disc;
+    nextQty = t2Qty;
+    nextDiscount = t2Disc;
   }
+
+  let savings = subtotal * (discount / 100);
+  let total = subtotal - savings;
+
+  subtotalEl.textContent = "$" + subtotal.toFixed(2);
+  savingsEl.textContent = "$" + savings.toFixed(2);
+  totalEl.textContent = "$" + total.toFixed(2);
+
+  addBtn.disabled = qty === 0;
+
+  // ✅ Highlight Active Tier
+  tierPills.forEach((pill, index) => {
+    pill.classList.remove("active");
+  });
+
+  if (qty >= t3Qty) tierPills[2].classList.add("active");
+  else if (qty >= t2Qty) tierPills[1].classList.add("active");
+  else if (qty >= t1Qty) tierPills[0].classList.add("active");
+
+  // ✅ Update Message
+  if (nextQty) {
+    const needed = nextQty - qty;
+    messageEl.textContent =
+      `Add ${needed} more item${needed > 1 ? "s" : ""} to save ${nextDiscount}%!`;
+  } else {
+    messageEl.textContent = "🎉 Maximum savings unlocked!";
+  }
+}
 
   cards.forEach(card => {
     const btn = card.querySelector(".bundle-select-btn");
