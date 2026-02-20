@@ -1,19 +1,51 @@
-<div class="bundle-card"
-     data-price="{{ product.price | money_without_currency }}"
-     data-variant-id="{{ product.first_available_variant.id }}">
-<span class="bundle-check">✓</span>
-{% if product.tags contains 'popular' %}
-  <span class="bundle-badge">Popular</span>
-{% endif %}
+<div class="bundle-card {% unless product.available %}is-sold-out{% endunless %}"
+     data-product-id="{{ product.id }}"
+     data-price="{{ product.selected_or_first_available_variant.price | money_without_currency }}"
+     data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+     data-available="{{ product.available }}">
+
+  <span class="bundle-check">✓</span>
+
+  {% if product.tags contains 'popular' %}
+    <span class="bundle-badge">Popular</span>
+  {% endif %}
+
   <div class="bundle-image">
     {{ product.featured_image | image_url: width: 600 | image_tag }}
   </div>
 
   <h3>{{ product.title }}</h3>
-  <p>{{ product.price | money }}</p>
 
-  <button class="bundle-select-btn">
-    Add
+  <p class="bundle-price">
+    {{ product.selected_or_first_available_variant.price | money }}
+  </p>
+
+  {%- if product.variants.size > 1 -%}
+    <div class="bundle-variants">
+      {% for option in product.options_with_values %}
+        <div class="bundle-option">
+          <label>{{ option.name }}</label>
+          <select class="bundle-variant-select" data-option-index="{{ forloop.index0 }}">
+            {% for value in option.values %}
+              <option value="{{ value }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endfor %}
+    </div>
+  {%- endif -%}
+
+  <button class="bundle-select-btn"
+          {% unless product.available %}disabled{% endunless %}>
+    {% if product.available %}
+      Add
+    {% else %}
+      Sold Out
+    {% endif %}
   </button>
 
 </div>
+
+<script type="application/json" class="bundle-variants-json">
+  {{ product.variants | json }}
+</script>
