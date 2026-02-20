@@ -40,7 +40,7 @@
   </div>
   <div class="bundle-products">
     {% if section.settings.use_collection %}
-      {% for product in collections[section.settings.collection].products %}
+      {% for product in collections[section.settings.collection].products limit: section.settings.products_limit  %}
         {% render 'bundle-card', product: product %}
       {% endfor %}
 
