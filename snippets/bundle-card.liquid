@@ -1,0 +1,16 @@
+<div class="bundle-card"
+     data-price="{{ product.price | money_without_currency }}"
+     data-variant-id="{{ product.first_available_variant.id }}">
+
+  <div class="bundle-image">
+    {{ product.featured_image | image_url: width: 600 | image_tag }}
+  </div>
+
+  <h3>{{ product.title }}</h3>
+  <p>{{ product.price | money }}</p>
+
+  <button class="bundle-select-btn">
+    Add
+  </button>
+
+</div>
