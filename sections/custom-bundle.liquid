@@ -71,7 +71,16 @@
 
     { "type": "checkbox", "id": "use_collection", "label": "Use Collection", "default": true },
     { "type": "collection", "id": "collection", "label": "Select Collection" },
-
+    {
+    "type": "range",
+    "id": "products_limit",
+    "label": "Number of products to show",
+    "min": 4,
+    "max": 50,
+    "step": 1,
+    "default": 4,
+    "visible_if": "{{ section.settings.collection != blank }}"
+    },
     { "type": "range", "id": "tier_1_qty", "min": 1, "max": 10, "step": 1, "default": 2, "label": "Tier 1 Quantity" },
     {
       "type": "range",
