@@ -21,7 +21,7 @@
         "subheading": "Mix and match to save more",
         "use_collection": true,
         "collection": "drinks",
-        "products_limit": 4,
+        "products_limit": 8,
         "tier_1_qty": 2,
         "tier_1_discount": 10,
         "tier_2_qty": 3,
