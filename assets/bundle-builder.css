@@ -1,9 +1,10 @@
 .bundle-builder {
-  background: #f5f6f7;
+  background: var(--section-bg);
   padding: 60px 20px;
   border-radius: 20px;
   max-width: 1300px;
   margin: 0 auto;
+  color: var(--text-color);
 }
 
 .bundle-header {
@@ -12,14 +13,14 @@
 }
 
 .bundle-header h2 {
-  font-size: 32px;
+  font-size: var(--heading-size);
   font-weight: 700;
   margin-bottom: 10px;
+  color: var(--heading-color);
 }
 
 .bundle-header p {
-  color: #6b7280;
-  font-size: 16px;
+  font-size: var(--text-size);
 }
 
 .bundle-products {
@@ -30,21 +31,17 @@
 }
 
 @media (max-width: 1024px) {
-  .bundle-products {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .bundle-products { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
-  .bundle-products {
-    grid-template-columns: 1fr;
-  }
+  .bundle-products { grid-template-columns: 1fr; }
 }
 
 .bundle-card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 16px;
-  border: 2px solid transparent;
+  border: 2px solid var(--card-border);
   padding: 18px;
   transition: all 0.25s ease;
   position: relative;
@@ -57,9 +54,10 @@
 }
 
 .bundle-card.selected {
-  border-color: #000;
+  border-color: var(--card-selected-border);
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
+
 .bundle-card img {
   width: 100%;
   border-radius: 12px;
@@ -70,16 +68,17 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--card-title-color);
 }
 
 .bundle-card p {
   font-size: 14px;
-  color: #6b7280;
   margin-bottom: 10px;
+  opacity: 0.7;
 }
 
 .bundle-select-btn {
-  background: #f3f4f6;
+  background: var(--checkbox-bg);
   border: none;
   padding: 8px 14px;
   border-radius: 30px;
@@ -89,7 +88,7 @@
 }
 
 .bundle-card.selected .bundle-select-btn {
-  background: #000;
+  background: var(--checkbox-active-bg);
   color: #fff;
 }
 
@@ -97,7 +96,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: #000;
+  background: var(--card-selected-border);
   color: #fff;
   width: 26px;
   height: 26px;
@@ -124,7 +123,7 @@
 }
 
 .bundle-summary {
-  background: #fff;
+  background: var(--summary-bg);
   padding: 25px;
   border-radius: 16px;
   margin-bottom: 25px;
@@ -144,10 +143,10 @@
 
 .bundle-add-to-cart {
   width: 100%;
-  background: #000;
-  color: #fff;
+  background: var(--button-bg);
+  color: var(--button-text);
   padding: 18px;
-  border-radius: 16px;
+  border-radius: var(--button-radius);
   font-size: 18px;
   font-weight: 600;
   border: none;
@@ -156,7 +155,7 @@
 }
 
 .bundle-add-to-cart:hover {
-  background: #111;
+  background: var(--button-hover-bg);
   transform: translateY(-2px);
 }
 
@@ -166,31 +165,20 @@
 }
 
 [data-bundle-savings] {
-  color: #16a34a;
+  color: var(--savings-color);
   font-weight: 600;
 }
 
+/* Benefits Section */
+
 .bundle-benefits {
-  background: linear-gradient(90deg, #dff3e8, #e9eef3);
+  background: var(--benefits-bg);
   padding: 25px;
   border-radius: 16px;
   margin-bottom: 40px;
   display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bundle-benefits-header {
-  font-weight: 600;
-  margin-bottom: 15px;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-}
-
-.bundle-icon {
-  color: #16a34a;
-  font-size: 16px;
 }
 
 .bundle-tier-tabs {
@@ -198,12 +186,11 @@
   gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 12px;
-  
 }
 
 .tier-pill {
-  border: 1px solid #d1d5db;
-  background: #f3f4f6;
+  border: 1px solid var(--tier-inactive-border);
+  background: var(--tier-inactive-bg);
   padding: 8px 16px;
   border-radius: 30px;
   font-size: 14px;
@@ -212,13 +199,13 @@
 }
 
 .tier-pill.active {
-  background: #16a34a;
-  color: #fff;
-  border-color: #16a34a;
+  background: var(--tier-active-bg);
+  color: var(--tier-active-text);
+  border-color: var(--tier-active-bg);
 }
 
 .bundle-tier-message {
   font-size: 14px;
-  color: #16a34a;
+  color: var(--tier-message-color);
   font-weight: 500;
 }
