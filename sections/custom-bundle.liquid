@@ -1,6 +1,6 @@
 {{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
 
-<div 
+<section 
   id="bundle-section-{{ section.id }}"
   class="bundle-section page-width"
   data-tier1-qty="{{ section.settings.tier_1_qty }}"
@@ -61,7 +61,7 @@
   <button class="bundle-add-to-cart" disabled>
     {{ section.settings.button_text }}
   </button>
-</div>
+</section>
 {% schema %}
 {
   "name": "Bundle Builder",
