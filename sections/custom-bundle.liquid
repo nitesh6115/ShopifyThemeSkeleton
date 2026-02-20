@@ -1,13 +1,14 @@
 {{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
 
-<section
-  class="bundle-builder"
-  data-tier-1-qty="{{ section.settings.tier_1_qty }}"
-  data-tier-1-discount="{{ section.settings.tier_1_discount }}"
-  data-tier-2-qty="{{ section.settings.tier_2_qty }}"
-  data-tier-2-discount="{{ section.settings.tier_2_discount }}"
-  data-tier-3-qty="{{ section.settings.tier_3_qty }}"
-  data-tier-3-discount="{{ section.settings.tier_3_discount }}"
+<div 
+  id="bundle-section-{{ section.id }}"
+  class="bundle-section"
+  data-tier1-qty="{{ section.settings.tier_1_qty }}"
+  data-tier1-discount="{{ section.settings.tier_1_discount }}"
+  data-tier2-qty="{{ section.settings.tier_2_qty }}"
+  data-tier2-discount="{{ section.settings.tier_2_discount }}"
+  data-tier3-qty="{{ section.settings.tier_3_qty }}"
+  data-tier3-discount="{{ section.settings.tier_3_discount }}"
 >
   <div class="bundle-header">
     <h2>{{ section.settings.heading }}</h2>
@@ -60,7 +61,7 @@
   <button class="bundle-add-to-cart" disabled>
     {{ section.settings.button_text }}
   </button>
-</section>
+</div>
 {% schema %}
 {
   "name": "Bundle Builder",
