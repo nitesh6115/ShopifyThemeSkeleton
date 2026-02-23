@@ -42,7 +42,7 @@
         "tier_inactive_text": "#6b7280",
         "bar_message_color": "#16a34a",
         "use_collection": true,
-        "collection": "drinks",
+        "collection": "style-1",
         "products_limit": 8,
         "tier_1_qty": 2,
         "tier_1_discount": 10,
