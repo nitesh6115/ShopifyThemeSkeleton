@@ -58,10 +58,11 @@
   <button class="bundle-select-btn"
           {% unless product.available %}disabled{% endunless %}>
     {% if product.available %}
-      Click to Add
+      <span>Click to Add</span>
     {% else %}
-      Sold Out
+      <span>Sold Out</span>
     {% endif %}
+      <span class="selected_text">Selected</span>
   </button>
   </div>
  </div>
