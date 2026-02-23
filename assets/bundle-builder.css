@@ -211,7 +211,7 @@ font-size:var(--progress-bar-desktop-heading-font-size);
 
 .tier-pill {
   border: 1px solid #d1d5db;
-  background: #f3f4f6;
+  background: var(--progress-fill);
   padding: 8px 16px;
   border-radius: var(--tier-radius);
   font-size: 14px;
