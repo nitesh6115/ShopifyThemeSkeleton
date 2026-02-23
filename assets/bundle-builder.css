@@ -13,8 +13,8 @@
 }
 
 .bundle-header h2 {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: var(--desktop-header-heading-size);
+  color: var(--heading-color);
   margin-bottom: 10px;
 }
 
