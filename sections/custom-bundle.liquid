@@ -90,11 +90,12 @@
     <div>Subtotal: <span data-bundle-subtotal>$0.00</span></div>
     <div>You Save: <span data-bundle-savings>$0.00</span></div>
     <div>Total: <strong data-bundle-total>$0.00</strong></div>
+    <button class="bundle-add-to-cart" disabled>
+    {{ section.settings.button_text }}
+    </button>
   </div>
 
-  <button class="bundle-add-to-cart" disabled>
-    {{ section.settings.button_text }}
-  </button>
+  
   </div>
 </section>
 {% schema %}
