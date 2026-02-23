@@ -197,7 +197,7 @@ color: var(--progress-bar-heading-color);
 font-size:var(--progress-bar-desktop-heading-font-size);
 }
 .bundle-icon {
-  color: #16a34a;
+  color: var(--progress-bar-message-color);
   font-size: 16px;
 }
 
@@ -211,7 +211,7 @@ font-size:var(--progress-bar-desktop-heading-font-size);
 
 .tier-pill {
   border: 1px solid #d1d5db;
-  background: #f3f4f6;
+  background: var(--progress-fill);
   padding: 8px 16px;
   border-radius: 30px;
   font-size: 14px;
