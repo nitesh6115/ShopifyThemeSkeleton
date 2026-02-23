@@ -61,7 +61,7 @@
         "card_border_width": 1,
         "card_selected_border": "#121212",
         "button_bg": "#ffffff",
-        "button_hover_bg": "#15803d",
+        "button_hover_bg": "#ffffff",
         "button_text_color": "#6a7282",
         "button_hover_text_color": "#16a34a",
         "button_radius": 0,
