@@ -33,10 +33,12 @@
   --card-border-width: {{ section.settings.card_border_width }}px;
   --card-selected-boder-width: {% if section.settings.card_border_width == 0 %}1{% else %}{{ section.settings.card_border_width }}{%endif%}px;
 
-  --checkbox-bg: {{ section.settings.checkbox_bg }};
-  --checkbox-border: {{ section.settings.checkbox_border }};
-  --checkbox-active-bg: {{ section.settings.checkbox_active_bg }};
-  --checkbox-active-icon: {{ section.settings.checkbox_active_icon }};
+  --bundle-button-bg: {{ section.settings.bundle-button-bg }};
+  --bundle-button-text: {{ section.settings.bundle-button-text }};
+  --bundle-button-border: {{ section.settings.bundle-button-border }};
+  --bundle-button-hover-bg: {{ section.settings.bundle-button-hover-bg }};
+  --bundle-button-hover-text: {{ section.settings.bundle-button-hover-text }};
+  --bundle-button-hover-border:{{ section.settings.bundle-button-hover-boder }};
 
   --progress-bg: {{ section.settings.progress_bg }};
   --progress-bar-heading-color: {{ section.settings.progress_heading_color }};
@@ -535,20 +537,38 @@
 },
 {
   "type": "color",
-  "id": "checkbox_bg",
+  "id": "bundle-button-bg",
   "label": "Button Background",
   "default": "#000"
 },
 {
   "type": "color",
-  "id": "checkbox_border",
+  "id": "bundle-button-text",
+  "label": "Button Text",
+  "default": "#fff"
+},
+{
+  "type": "color",
+  "id": "bundle-button-border",
   "label": "Button Border",
   "default": "#000"
 },
 {
   "type": "color",
-  "id": "checkbox_active_bg",
+  "id": "bundle-button-hover-bg",
   "label": "Button Hover Background",
+  "default": "#16a34a"
+},
+{
+  "type": "color",
+  "id": "bundle-button-hover-text",
+  "label": "Button Hover text",
+  "default": "#fff"
+},
+{
+  "type": "color",
+  "id": "bundle-button-hover-border",
+  "label": "Button Hover Border",
   "default": "#16a34a"
 }
   ],
