@@ -13,6 +13,8 @@
       "type": "custom-bundle",
       "name": "Bundle Builder",
       "settings": {
+        "section_width": false,
+        "wraper_width": 1400,
         "heading": "Build Your Bundle",
         "subheading": "Mix and match to save more",
         "use_collection": true,
