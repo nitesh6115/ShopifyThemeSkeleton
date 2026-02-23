@@ -18,9 +18,9 @@
   margin-bottom: 10px;
 }
 
-.bundle-header p {
+.bundle-header .bundle_header_sub_heading {
   color: var(--text-color);
-  font-size: var(--text-font-size);
+  font-size: var(--desktop-header-sub-heading-size);
 }
 
 .bundle-products {
