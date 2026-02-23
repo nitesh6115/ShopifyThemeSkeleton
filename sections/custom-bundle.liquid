@@ -2,10 +2,17 @@
 .bundle-builder {
   --section-bg: {{ section.settings.section_bg }};
   --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
+
   --text-color: {{ section.settings.text_color }};
   --heading-color: {{ section.settings.heading_color }};
-  --heading-size: {{ section.settings.heading_size }}px;
-  --text-size: {{ section.settings.text_size }}px;
+
+  --desktop-header-heading-size: {{ section.settings.desktop_heading_size }}px;
+  --desktop-header-sub-heading-size: {{ section.settings.desktop_sub_heading_size }}px;
+  --desktop-header-text-size: {{ section.settings.desktop_text_size }}px;
+  
+  --mobile-header-heading-size: {{ section.settings.mobile_heading_size }}px;
+  --mobile-header-sub-heading-size: {{ section.settings.mobile_sub_heading_size }}px;
+  --mobile-header-text-size: {{ section.settings.mobile_text_size }}px;
 
 
   --btn-bg: {{ section.settings.button_bg }};
@@ -27,7 +34,6 @@
 
   --progress-bg: {{ section.settings.progress_bg }};
   --progress-fill: {{ section.settings.progress_fill }};
-
   --tier-active-bg: {{ section.settings.tier_active_bg }};
   --tier-active-text: {{ section.settings.tier_active_text }};
   --tier-inactive-bg: {{ section.settings.tier_inactive_bg }};
