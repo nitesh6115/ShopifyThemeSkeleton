@@ -39,7 +39,7 @@
 }
 @media (max-width: 640px) {
   .bundle-products .bundle-card   {
-    width: calc(50% - 15px);
+    width: calc(50% - 10px);
   }
 }
 
