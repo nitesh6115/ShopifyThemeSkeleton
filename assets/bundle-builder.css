@@ -1,7 +1,5 @@
 .bundle-builder {
-  background: var(--section-bg);
   padding: 60px 20px;
-  border-radius: 20px;
   max-width: 1300px;
   margin: 0 auto;
 }
