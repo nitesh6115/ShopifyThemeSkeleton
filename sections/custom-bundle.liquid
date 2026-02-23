@@ -100,6 +100,22 @@
 {
   "name": "Bundle Builder",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "section_width",
+      "label": "Full Width",
+      "default": true,
+    },
+    {
+      "type": "range",
+      "id": "wraper_width",
+      "label": "Container Width",
+      "max": 1900,
+      "min": 900,
+      "default": 1400,
+      "step": 100,
+      "unit": "px"
+    },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Build Your Bundle" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Mix and match to save more" },
 
