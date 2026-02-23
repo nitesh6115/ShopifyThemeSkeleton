@@ -68,7 +68,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border: var(----card-selected-boder-width) solid var(--card-selected-border);
+    border: var(--card-selected-boder-width) solid var(--card-selected-border);
     border-radius: var(--card-radius);
 }
 .bundle-card img {
