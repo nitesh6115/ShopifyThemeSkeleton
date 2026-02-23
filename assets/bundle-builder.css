@@ -55,7 +55,9 @@
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
-
+.bundle_card_info {
+    padding: 1rem;
+}
 .bundle-card.selected {
   border-color: #000;
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
