@@ -2,7 +2,7 @@
 .bundle-builder {
   --section-bg: {{ section.settings.section_bg }};
   --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
-  
+
   --section-padding-top: {{ section.settings.padding_top }}px;
   --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   --section-padding-left: {{ section.settings.padding_left }}px;
@@ -257,6 +257,7 @@
       "type": "header",
       "content": "Progress Bar"
     },
+    
     {
       "type": "text",
       "id":"bundle_save_text",
@@ -298,6 +299,15 @@
   "label": "Progress Bar Background",
   "default": "linear-gradient(90deg,#dff3e8,#e9eef3)"
 },
+{
+    "type": "range",
+    "id": "progress_radius",
+    "label": "Section Radius",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "default": 0
+    },
 {
   "type": "color",
   "id": "progress_heading_color",
