@@ -46,7 +46,7 @@
   background: #fff;
   border-radius: 16px;
   border: 2px solid transparent;
-  padding: 18px;
+  padding: 0;
   transition: all 0.25s ease;
   position: relative;
   cursor: pointer;
