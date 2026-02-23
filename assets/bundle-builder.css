@@ -43,7 +43,7 @@
 }
 
 .bundle-card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: var(--card-radius);
   padding: 0;
   transition: all 0.25s ease;
