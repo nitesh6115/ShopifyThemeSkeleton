@@ -1,6 +1,7 @@
 <style>
 .bundle-builder {
   --section-bg: {{ section.settings.section_bg }};
+  --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
   --text-color: {{ section.settings.text_color }};
   --heading-color: {{ section.settings.heading_color }};
   --heading-size: {{ section.settings.heading_size }}px;
