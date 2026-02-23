@@ -220,14 +220,14 @@ font-size:var(--progress-bar-desktop-heading-font-size);
 }
 
 .tier-pill.active {
-  background: #16a34a;
-  color: #fff;
-  border-color: #16a34a;
+  background: var(--tier-active-bg);
+  color: var(--tier-active-text);
+  border-color: var(--tier-active-bg);
 }
 
 .bundle-tier-message {
   font-size: 14px;
-  color: #16a34a;
+  color: var(--progress-bar-message-color);
   font-weight: 500;
 }
 .bundle-card.is-sold-out {
