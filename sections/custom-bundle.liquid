@@ -190,8 +190,12 @@
   "default": "#111111"
 },
 {
+  "type": "header",
+  "content": "Desktop Font Size"
+},
+{
   "type": "range",
-  "id": "heading_size",
+  "id": "desktop_heading_size",
   "min": 18,
   "max": 48,
   "step": 1,
@@ -201,7 +205,7 @@
 },
 {
   "type": "range",
-  "id": "text_size",
+  "id": "desktop_text_size",
   "min": 12,
   "max": 22,
   "step": 1,
@@ -209,7 +213,30 @@
   "default": 16,
   "label": "Body Font Size"
 },
-
+{
+  "type": "header",
+  "content": "Mobile Font Size"
+},
+{
+  "type": "range",
+  "id": "mobile_heading_size",
+  "min": 18,
+  "max": 48,
+  "step": 1,
+  "unit": "px",
+  "default": 28,
+  "label": "Heading Font Size"
+},
+{
+  "type": "range",
+  "id": "mobile_text_size",
+  "min": 12,
+  "max": 22,
+  "step": 1,
+  "unit": "px",
+  "default": 16,
+  "label": "Body Font Size"
+},
 {
   "type": "header",
   "content": "Add to Cart Button"
@@ -230,6 +257,12 @@
   "type": "color",
   "id": "button_text_color",
   "label": "Button Text Color",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "button_hover_text_color",
+  "label": "Button Hover Text Color",
   "default": "#ffffff"
 },
 {
@@ -254,6 +287,16 @@
   "default": "#ffffff"
 },
 {
+  "type": "range",
+  "id": "card_radius",
+  "min": 0,
+  "max": 40,
+  "step": 1,
+  "unit": "px",
+  "default": 0,
+  "label": "Button Border Radius"
+},
+{
   "type": "color",
   "id": "card_title_color",
   "label": "Product Title Color",
@@ -264,6 +307,16 @@
   "id": "card_border_color",
   "label": "Default Card Border",
   "default": "#e5e7eb"
+},
+{
+  "type": "range",
+  "id": "card_border_width",
+  "min": 0,
+  "max": 10,
+  "step": 1,
+  "unit": "px",
+  "default": 0,
+  "label": "Button Border Width"
 },
 {
   "type": "color",
@@ -306,10 +359,10 @@
   "content": "Tier & Progress Bar"
 },
 {
-  "type": "color",
+  "type": "color_background",
   "id": "progress_bg",
   "label": "Progress Bar Background",
-  "default": "#e5e7eb"
+  "default": "linear-gradient(90deg,#dff3e8,#e9eef3)"
 },
 {
   "type": "color",
