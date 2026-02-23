@@ -33,12 +33,12 @@
 }
 @media (max-width: 1024px) {
   .bundle-products .bundle-card  {
-    width: 33.333% 3333.333% 33.333%;
+    width: calc(33.333% - 20px);
   }
 }
 @media (max-width: 767px) {
 .bundle-products {
-    width: calc(33.33% - 20px);
+    width: calc(50% - 20px);
   }
 }
 @media (max-width: 640px) {
