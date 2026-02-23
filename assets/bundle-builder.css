@@ -19,8 +19,8 @@
 }
 
 .bundle-header p {
-  color: #6b7280;
-  font-size: 16px;
+  color: var(--text-color);
+  font-size: var(--text-font-size);
 }
 
 .bundle-products {
