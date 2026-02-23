@@ -34,7 +34,7 @@
 
 <section 
   id="bundle-section-{{ section.id }}"
-  class="bundle-builder page-width"
+  class="bundle-builder"
   data-tier1-qty="{{ section.settings.tier_1_qty }}"
   data-tier1-discount="{{ section.settings.tier_1_discount }}"
   data-tier2-qty="{{ section.settings.tier_2_qty }}"
@@ -42,6 +42,7 @@
   data-tier3-qty="{{ section.settings.tier_3_qty }}"
   data-tier3-discount="{{ section.settings.tier_3_discount }}"
 >
+  <div class="section_container">
   <div class="bundle-header">
     <h2>{{ section.settings.heading }}</h2>
     <p>{{ section.settings.subheading }}</p>
@@ -93,6 +94,7 @@
   <button class="bundle-add-to-cart" disabled>
     {{ section.settings.button_text }}
   </button>
+  </div>
 </section>
 {% schema %}
 {
