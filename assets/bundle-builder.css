@@ -103,20 +103,30 @@
 }
 
 .bundle-select-btn {
-  background: #f3f4f6;
+  background: var(--btn-bg);
   border: none;
   padding: 8px 14px;
-  border-radius: 30px;
+  border-radius: var(--btn-radius);
+  color: var(--btn-text);
   font-size: 13px;
   cursor: pointer;
   transition: 0.2s;
   position: relative;
   z-index: 2;
 }
+.bundle-select-btn .selected_text{
+  display: none;
+}
+.bundle-card.selected .bundle-select-btn .selected_text{
+  display: block;
+}
 
+.bundle-card.selected .bundle-select-btn .clickToAdd{
+  display: none;
+}
 .bundle-card.selected .bundle-select-btn {
-  background: #000;
-  color: #fff;
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
 }
 
 .bundle-check {
