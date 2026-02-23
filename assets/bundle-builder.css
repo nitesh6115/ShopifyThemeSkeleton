@@ -177,7 +177,7 @@
 }
 
 .bundle-benefits {
-  background: linear-gradient(90deg, #dff3e8, #e9eef3);
+  background: var(--progress-bg);
   padding: 25px;
   border-radius: 16px;
   margin-bottom: 40px;
