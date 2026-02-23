@@ -187,13 +187,15 @@
 }
 
 .bundle-benefits-header {
-  font-weight: 600;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
   gap: 6px;
 }
-
+.bundle-benefits-header .bar_title{
+color: var(--progress-bar-heading-color);
+font-size:var(--progress-bar-desktop-heading-font-size);
+}
 .bundle-icon {
   color: #16a34a;
   font-size: 16px;
