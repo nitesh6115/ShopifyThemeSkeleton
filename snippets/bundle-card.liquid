@@ -35,7 +35,9 @@
   <div class="bundle_card_info">
   <h3>{{ product.title }}</h3>
 
-
+  <p class="bundle-price">
+    {{ product.selected_or_first_available_variant.price | money }}
+  </p>
 
   {%- if product.variants.size > 1 -%}
     <div class="bundle-variants">
@@ -51,10 +53,7 @@
       {% endfor %}
     </div>
   {%- endif -%}
-  <div class="price_button_box">
-    <p class="bundle-price">
-    {{ product.selected_or_first_available_variant.price | money }}
-  </p>
+
   <button class="bundle-select-btn"
           {% unless product.available %}disabled{% endunless %}>
     {% if product.available %}
@@ -63,7 +62,6 @@
       Sold Out
     {% endif %}
   </button>
-  </div>
  </div>
  <script type="application/json" class="bundle-variants-json">
   {{ product.variants | json }}
