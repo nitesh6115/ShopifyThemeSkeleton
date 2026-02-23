@@ -2,6 +2,11 @@
 .bundle-builder {
   --section-bg: {{ section.settings.section_bg }};
   --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
+  
+  --section-padding-top: {{ section.settings.padding_top }}px;
+  --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  --section-padding-left: {{ section.settings.padding_left }}px;
+  --section-padding-right: {{ section.settings.padding_right }}px;
 
   --text-color: {{ section.settings.text_color }};
   --heading-color: {{ section.settings.heading_color }};
