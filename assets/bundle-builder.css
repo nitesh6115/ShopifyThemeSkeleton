@@ -213,7 +213,9 @@ font-size:var(--progress-bar-desktop-heading-font-size);
   color: var(--progress-bar-message-color);
   font-size: 16px;
 }
-
+.bundle-variants {
+    display: none;
+}
 .bundle-tier-tabs {
   display: flex;
   gap: 10px;
