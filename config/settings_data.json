@@ -10,6 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/NOBLE.png",
+    "type_primary_font": "arial_n4",
     "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
@@ -22,7 +23,7 @@
           "button_label": "#ffffff",
           "secondary_button": "#88ee61",
           "secondary_button_border_color": "#88ee61",
-          "secondary_button_label": "#FFFFFF",
+          "secondary_button_label": "#ffffff",
           "shadow": "#fff4f4"
         }
       }
