@@ -110,6 +110,8 @@
   font-size: 13px;
   cursor: pointer;
   transition: 0.2s;
+  position: relative;
+  z-index: 2;
 }
 
 .bundle-card.selected .bundle-select-btn {
