@@ -57,7 +57,7 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 .bundle_card_info {
-    padding: 1rem;
+    padding: 0 1rem 1rem;
 }
 .bundle-card.selected {
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
