@@ -64,7 +64,7 @@
 }
 .bundle-card img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: var(--card-radius);
   margin-bottom: 15px;
 }
 
