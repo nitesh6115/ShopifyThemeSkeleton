@@ -119,6 +119,74 @@
       "visible_if": "{{ section.settings.section_width == false }}"
     },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Build Your Bundle" },
+    {
+      "type": "header",
+      "content": "Desktop Font Size"
+    },
+    {
+      "type": "range",
+      "id": "desktop_heading_size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28,
+      "label": "Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "desktop_sub_heading_size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "label": "Sub-Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "desktop_text_size",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "Body Font Size"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Font Size"
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 28,
+      "label": "Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "mobile_sub_heading_size",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "label": "Sub-Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "Body Font Size"
+    },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Mix and match to save more" },
 
     { "type": "checkbox", "id": "use_collection", "label": "Use Collection", "default": true },
@@ -189,54 +257,7 @@
   "label": "Heading Color",
   "default": "#111111"
 },
-{
-  "type": "header",
-  "content": "Desktop Font Size"
-},
-{
-  "type": "range",
-  "id": "desktop_heading_size",
-  "min": 18,
-  "max": 48,
-  "step": 1,
-  "unit": "px",
-  "default": 28,
-  "label": "Heading Font Size"
-},
-{
-  "type": "range",
-  "id": "desktop_text_size",
-  "min": 12,
-  "max": 22,
-  "step": 1,
-  "unit": "px",
-  "default": 16,
-  "label": "Body Font Size"
-},
-{
-  "type": "header",
-  "content": "Mobile Font Size"
-},
-{
-  "type": "range",
-  "id": "mobile_heading_size",
-  "min": 18,
-  "max": 48,
-  "step": 1,
-  "unit": "px",
-  "default": 28,
-  "label": "Heading Font Size"
-},
-{
-  "type": "range",
-  "id": "mobile_text_size",
-  "min": 12,
-  "max": 22,
-  "step": 1,
-  "unit": "px",
-  "default": 16,
-  "label": "Body Font Size"
-},
+
 {
   "type": "header",
   "content": "Add to Cart Button"
