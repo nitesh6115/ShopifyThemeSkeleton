@@ -32,6 +32,17 @@
 .bundle-products .bundle-card  {
   width: calc(25% - 15px);
 }
+
+.price_button_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.price_button_box p.bundle-price {
+    margin: 0;
+}
 @media (max-width: 1024px) {
   .bundle-products .bundle-card  {
     width: calc(33.333% - 14px);
