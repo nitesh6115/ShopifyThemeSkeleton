@@ -31,6 +31,7 @@
   --card-selected-border: {{ section.settings.card_selected_border }};
   --card-radius: {{ section.settings.card_radius }}px;
   --card-border-width: {{ section.settings.card_border_width }}px;
+  --card-selected-boder-width: {% if section.settings.card_border_width == 0 %}1{% else %}{{ section.settings.card_border_width }}{%endif%}px;
 
   --checkbox-bg: {{ section.settings.checkbox_bg }};
   --checkbox-border: {{ section.settings.checkbox_border }};
