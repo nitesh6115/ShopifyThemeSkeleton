@@ -218,6 +218,7 @@ font-size:var(--progress-bar-desktop-heading-font-size);
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 12px;
   
 }
