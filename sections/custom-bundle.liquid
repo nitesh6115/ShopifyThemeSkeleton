@@ -33,6 +33,9 @@
   --checkbox-active-icon: {{ section.settings.checkbox_active_icon }};
 
   --progress-bg: {{ section.settings.progress_bg }};
+  --progress-bar-desktop-heading-font-size: {{ section.settings.bundle_save_text_font_size }}px;
+  --progress-bar-mobile-heading-font-size: {{ section.settings.mobile_bundle_save_text_font_size }}px;
+
   --progress-fill: {{ section.settings.progress_fill }};
   --tier-active-bg: {{ section.settings.tier_active_bg }};
   --tier-active-text: {{ section.settings.tier_active_text }};
@@ -208,6 +211,10 @@
       "label": "Progress Bar Heading"
     },
     {
+      "type": "header",
+      "content": "Desktop Heading Font Size"
+    },
+    {
     "type": "range",
     "id": "bundle_save_text_font_size",
     "label": "Text Font Size",
@@ -216,6 +223,60 @@
     "step": 1,
     "default": 25
     },
+    {
+      "type": "header",
+      "content": "Mobile Heading Font Size"
+    },
+    {
+    "type": "range",
+    "id": "mobile_bundle_save_text_font_size",
+    "label": "Text Font Size",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "default": 20
+    },
+    {
+  "type": "header",
+  "content": "Progress Bar Colors & Style"
+},
+{
+  "type": "color_background",
+  "id": "progress_bg",
+  "label": "Progress Bar Background",
+  "default": "linear-gradient(90deg,#dff3e8,#e9eef3)"
+},
+{
+  "type": "color",
+  "id": "progress_fill",
+  "label": "Progress Fill Color",
+  "default": "#16a34a"
+},
+{
+  "type": "color",
+  "id": "tier_active_bg",
+  "label": "Active Tier Background",
+  "default": "#16a34a"
+},
+{
+  "type": "color",
+  "id": "tier_active_text",
+  "label": "Active Tier Text",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "tier_inactive_bg",
+  "label": "Inactive Tier Background",
+  "default": "#f3f4f6"
+},
+{
+  "type": "color",
+  "id": "tier_inactive_text",
+  "label": "Inactive Tier Text",
+  "default": "#6b7280"
+},
+
     { "type": "checkbox", "id": "use_collection", "label": "Use Collection", "default": true },
     { "type": "collection", "id": "collection", "label": "Select Collection" },
     {
@@ -260,47 +321,7 @@
       "default": 20,
       "label": "Tier 3 Discount %"
     },
-    {
-  "type": "header",
-  "content": "Progress Bar Colors & Style"
-},
-{
-  "type": "color_background",
-  "id": "progress_bg",
-  "label": "Progress Bar Background",
-  "default": "linear-gradient(90deg,#dff3e8,#e9eef3)"
-},
-{
-  "type": "color",
-  "id": "progress_fill",
-  "label": "Progress Fill Color",
-  "default": "#16a34a"
-},
-{
-  "type": "color",
-  "id": "tier_active_bg",
-  "label": "Active Tier Background",
-  "default": "#16a34a"
-},
-{
-  "type": "color",
-  "id": "tier_active_text",
-  "label": "Active Tier Text",
-  "default": "#ffffff"
-},
-{
-  "type": "color",
-  "id": "tier_inactive_bg",
-  "label": "Inactive Tier Background",
-  "default": "#f3f4f6"
-},
-{
-  "type": "color",
-  "id": "tier_inactive_text",
-  "label": "Inactive Tier Text",
-  "default": "#6b7280"
-},
-
+    
     { "type": "text", "id": "button_text", "label": "Button Text", "default": "Add Bundle to Cart" },
     {
   "type": "header",
