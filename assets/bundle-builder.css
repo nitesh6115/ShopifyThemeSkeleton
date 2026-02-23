@@ -3,7 +3,7 @@
   background: var(--section-bg);
 }
 .section_container {
-  padding: var(--section-padding-top) var(--section-padding-left) var(--section-padding-bottom) var(--section-padding-right);
+  padding: var(--section-padding-top) var(--section-padding-right) var(--section-padding-bottom) var(--section-padding-left);
   max-width: var(--section-wraper-width);
   margin: 0 auto;
 }
