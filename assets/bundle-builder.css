@@ -46,7 +46,7 @@
 .bundle-card {
   background: var(--card-bg);
   border-radius: var(--card-radius);
-  border: var(--card-boder-width) var(--card-boder);
+  border: var(--card-border-width) solid var(--card-border);
   padding: 0;
   transition: all 0.25s ease;
   position: relative;
