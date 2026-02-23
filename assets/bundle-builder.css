@@ -164,8 +164,9 @@
 
 .bundle-add-to-cart {
   width: 100%;
-  background: #000;
-  color: #fff;
+  background: var(--bundle-button-bg);
+  color: var(--bundle-button-text);
+  border: 1px solid var(--bundle-button-border);
   padding: 18px;
   border-radius: 16px;
   font-size: 18px;
@@ -176,7 +177,9 @@
 }
 
 .bundle-add-to-cart:hover {
-  background: #111;
+  background: var(--bundle-button-hover-bg);
+  color: var(--bundle-button-hover-text);
+  border-color: var(--bundle-button-hover-border);
   transform: translateY(-2px);
 }
 
