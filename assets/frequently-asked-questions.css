@@ -48,6 +48,7 @@
     gap: 10px;
     cursor: pointer;
     font-size: 15px;
+    text-decoration: none;
 }
 .btn_style:hover {
     background: var(--btn-hover-bg);
