@@ -110,7 +110,7 @@
     object-fit: contain;
 }
 .content_text_block {
-    font-size: var(--block-text-font-size);
+    font-size: var(--content-font-size);
 }
 .featured_logo_images img {
     width: auto;
