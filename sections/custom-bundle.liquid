@@ -1,5 +1,12 @@
-<style>
-.bundle-builder {
+
+{{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+{% capture style_schema %}
   --section-bg: {{ section.settings.section_bg }};
   --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
 
@@ -8,8 +15,15 @@
   --section-padding-left: {{ section.settings.padding_left }}px;
   --section-padding-right: {{ section.settings.padding_right }}px;
 
+  --section-mobile-padding-top: {{ section.settings.padding_top | times: 0.55 | round: 0 }}px;
+  --section-mobile-padding-bottom: {{ section.settings.padding_bottom | times: 0.55 | round: 0 }}px;
+  --section-mobile-padding-left: {{ section.settings.padding_left | times: 0.55 | round: 0 }}px;
+  --section-mobile-padding-right: {{ section.settings.padding_right | times: 0.55 | round: 0 }}px;
+
+
   --text-color: {{ section.settings.text_color }};
   --heading-color: {{ section.settings.heading_color }};
+  --sub-heading-color: {{  section.settings.sub_heading_color }};
 
   --desktop-header-heading-size: {{ section.settings.desktop_heading_size }}px;
   --desktop-header-sub-heading-size: {{ section.settings.desktop_sub_heading_size }}px;
@@ -29,11 +43,16 @@
 
   --card-bg: {{ section.settings.card_bg }};
   --card-title: {{ section.settings.card_title_color }};
+  --card-price-color: {{ section.settings.card_price_color }};
+  --card-content-color: {{ section.settings.card_content_color }};
   --card-border: {{ section.settings.card_border_color }};
   --card-selected-border: {{ section.settings.card_selected_border }};
   --card-radius: {{ section.settings.card_radius }}px;
   --card-border-width: {{ section.settings.card_border_width }}px;
   --card-selected-boder-width: {% if section.settings.card_border_width == 0 %}1{% else %}{{ section.settings.card_border_width }}{%endif%}px;
+
+  --card-title-desktop-font-size: {{ section.settings.desktop_product_title_size }}px;
+  --card-title-mobile-font-size: {{ section.settings.mobile_product_title_size }}px;
 
   --bundle-button-bg: {{ section.settings.bundle-button-bg }};
   --bundle-button-text: {{ section.settings.bundle-button-text }};
@@ -48,6 +67,8 @@
   
   --progress-bar-desktop-heading-font-size: {{ section.settings.bundle_save_text_font_size }}px;
   --progress-bar-mobile-heading-font-size: {{ section.settings.mobile_bundle_save_text_font_size }}px;
+  --progress-bar-desktop-text-font-size: {{ section.settings.bundle_text_font_size }}px;
+  --progress-bar-mobile-text-Font-size: {{ section.settings.mobile_bundle_text_font_size }}px;
 
   --progress-fill: {{ section.settings.progress_fill }};
   --tier-active-bg: {{ section.settings.tier_active_bg }};
@@ -56,13 +77,37 @@
   --tier-active-text: {{ section.settings.tier_active_text }};
   --tier-inactive-bg: {{ section.settings.tier_inactive_bg }};
   --tier-inactive-text: {{ section.settings.tier_inactive_text }};
-  --progress-bar-message-color:{{ section.settings.bar_message_color }}
-}
-</style>
-{{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
+  --progress-bar-message-color:{{ section.settings.bar_message_color }};
+  --bundle-footer-bg: {{ section.settings.footer_bg }};
+  --bundle-footer-radius: {{ section.settings.footer_radius }}px;
+{% endcapture %}
+
+{% assign t1 = section.settings.tier_1_qty | default: 0 | plus: 0 %}
+{% assign t2 = section.settings.tier_2_qty | default: 0 | plus: 0 %}
+{% assign t3 = section.settings.tier_3_qty | default: 0 | plus: 0 %}
+
+{% assign d1 = section.settings.tier_1_discount | default: 0 %}
+{% assign d2 = section.settings.tier_2_discount | default: 0 %}
+{% assign d3 = section.settings.tier_3_discount | default: 0 %}
+{% assign tier_count = 0 %}
+
+{%- comment -%} Tier 1 {%- endcomment -%}
+{% if t1 > 0 %}
+  {% assign tier_count = tier_count | plus: 1 %}
+{% endif %}
+
+{%- comment -%} Tier 2 (must be > tier 1) {%- endcomment -%}
+{% if t2 > 0 and t2 > t1 %}
+  {% assign tier_count = tier_count | plus: 1 %}
+{% endif %}
+
+{%- comment -%} Tier 3 (must be > tier 2 AND tier 2 valid) {%- endcomment -%}
+{% if t3 > 0 and t3 > t2 and t2 > t1 %}
+  {% assign tier_count = tier_count | plus: 1 %}
+{% endif %}
 
 <section 
-  id="bundle-section-{{ section.id }}"
+  id="bundle-section-{{ section.id }}" style="{{ style_schema }}"
   class="bundle-builder"
   data-tier1-qty="{{ section.settings.tier_1_qty }}"
   data-tier1-discount="{{ section.settings.tier_1_discount }}"
@@ -71,10 +116,17 @@
   data-tier3-qty="{{ section.settings.tier_3_qty }}"
   data-tier3-discount="{{ section.settings.tier_3_discount }}"
 >
-  <div class="section_container">
+  <div class="section_container tier_count_{{ tier_count }}">
   <div class="bundle-header">
+    {% if section.settings.heading != blank %}
     <h2 class="bundle_header_heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
     <p class="bundle_header_sub_heading">{{ section.settings.subheading }}</p>
+    {% endif %}
+    {% if section.settings.content != blank %}
+    <div class="rte header_content">{{ section.settings.content }}</div>
+    {% endif %}
   </div>
   <div class="bundle-benefits">
     <div class="bundle-benefits-header">
@@ -85,20 +137,37 @@
       <span class="bar_title">{% if section.settings.bundle_save_text != blank %} {{ section.settings.bundle_save_text }} {% else %} Bundle & Save {% endif %}</span>
     </div>
 
-    <div class="bundle-tier-tabs">
-      <button class="tier-pill" data-tier="1">
-        Buy {{ section.settings.tier_1_qty }} → Save {{ section.settings.tier_1_discount }}%
-      </button>
 
-      <button class="tier-pill" data-tier="2">
-        Buy {{ section.settings.tier_2_qty }} → Save {{ section.settings.tier_2_discount }}%
-      </button>
+<div class="bundle-tier-tabs">
 
-      <button class="tier-pill" data-tier="3">
-        Buy {{ section.settings.tier_3_qty }} → Save {{ section.settings.tier_3_discount }}%
-      </button>
-    </div>
+  {%- comment -%} Tier 1 always valid if qty > 0 {%- endcomment -%}
+  {% if t1 > 0 %}
+    <button class="tier-pill"
+      data-tier="1"
+      discount-name="Save {{ d1 }}%">
+      Buy {{ t1 }} → Save {{ d1 }}%
+    </button>
+  {% endif %}
 
+  {%- comment -%} Tier 2 must be greater than Tier 1 {%- endcomment -%}
+  {% if t2 > 0 and t2 > t1 %}
+    <button class="tier-pill"
+      data-tier="2"
+      discount-name="Save {{ d2 }}%">
+      Buy {{ t2 }} → Save {{ d2 }}%
+    </button>
+  {% endif %}
+
+  {%- comment -%} Tier 3 must be greater than Tier 2 {%- endcomment -%}
+  {% if t3 > 0 and t3 > t2 and t2 > t1 %}
+    <button class="tier-pill"
+      data-tier="3"
+      discount-name="Save {{ d3 }}%">
+      Buy {{ t3 }} → Save {{ d3 }}%
+    </button>
+  {% endif %}
+
+</div>
     <div class="bundle-tier-message">
       <span data-bundle-message> Add {{ section.settings.tier_1_qty }} items to start saving! </span>
     </div>
@@ -118,26 +187,46 @@
   </div>
   <div class="bundle_footer">
   <div class="bundle-summary">
-    <div>Subtotal: <span data-bundle-subtotal>$0.00</span></div>
-    <div>You Save: <span data-bundle-savings>$0.00</span></div>
-    <div>Total: <strong data-bundle-total>$0.00</strong></div>
+    <div class="subtotalBundle {% if tier_count == 1 %}hidden_element{% endif %}"><span>Subtotal: (<em data-total-item>Items 0</em>)</span><span data-bundle-subtotal>{{ 0 | money }}</span></div>
+    <div class="bundleDiscount  {% if tier_count == 1 %}hidden_element{% endif %}"><span>Bundle Discount <em data-discount-name></em></span><span data-bundle-savings>{{ 0 | money }}</span></div>
+    <div class="bundleTotal">{% if tier_count == 1 %}<span selected-total-items >0 item selected:</span>{% else %}<span>Total:</span>{% endif %}<strong data-bundle-total>{{ 0 | money }}</strong></div>
   </div>
 
   <button class="bundle-add-to-cart" disabled>
-    {{ section.settings.button_text }}
+<span class="icon_cart"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M6.66634 18.3332C7.12658 18.3332 7.49967 17.9601 7.49967 17.4998C7.49967 17.0396 7.12658 16.6665 6.66634 16.6665C6.2061 16.6665 5.83301 17.0396 5.83301 17.4998C5.83301 17.9601 6.2061 18.3332 6.66634 18.3332Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.8333 18.3332C16.2936 18.3332 16.6667 17.9601 16.6667 17.4998C16.6667 17.0396 16.2936 16.6665 15.8333 16.6665C15.3731 16.6665 15 17.0396 15 17.4998C15 17.9601 15.3731 18.3332 15.8333 18.3332Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1.70801 1.7085H3.37467L5.59134 12.0585C5.67266 12.4375 5.88357 12.7764 6.18777 13.0167C6.49197 13.257 6.87043 13.3838 7.25801 13.3752H15.408C15.7873 13.3745 16.1551 13.2446 16.4505 13.0067C16.746 12.7688 16.9515 12.4373 17.033 12.0668L18.408 5.87516H4.26634" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span><span>{{ section.settings.button_text }}</span>
   </button>
   </div>
+  {% if tier_count == 1 %}
+    <div class="tire_one_footer">
+      <div class="tire_left_msg">
+      <div class="save_message">SAVE 15% WHEN BOUGHT TOGETHER</div>
+      <div class="title_footer">Build Your Own Bundle</div>
+      <div class="selectsavemsg">Select any {{ t1 }} products and save {{ d1 }}% automatically</div>
+      </div>
+      <div class="tire_right_msg"><p tire-right-msg>Select  more products to unlock discount</p>
+      <div class="totle_dots_proudct">{% for i in (1..t1) %}<div class="dots-tire">{{ i }}</div>{% endfor %}</div>
+      </div>
+    </div>
+  {% endif %}
   </div>
 </section>
 {% schema %}
 {
   "name": "Bundle Builder",
+  "limit": 1,
   "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
     {
       "type": "checkbox",
       "id": "section_width",
-      "label": "Full Width",
-      "default": true,
+      "label": "Full Width"
     },
     {
       "type": "range",
@@ -157,17 +246,17 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Section Padding Top",
+      "label": "Padding Top",
       "max": 100,
       "min": 0,
       "default": 30,
       "step": 1,
       "unit": "px"
     },
-        {
+    {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Section Padding Bottom",
+      "label": "Padding Bottom",
       "max": 100,
       "min": 0,
       "default": 30,
@@ -177,7 +266,7 @@
     {
       "type": "range",
       "id": "padding_left",
-      "label": "Section Padding Left",
+      "label": "Padding Left",
       "max": 100,
       "min": 0,
       "default": 30,
@@ -187,15 +276,30 @@
     {
       "type": "range",
       "id": "padding_right",
-      "label": "Section Padding Right",
+      "label": "Padding Right",
       "max": 100,
       "min": 0,
       "default": 30,
       "step": 1,
       "unit": "px"
     },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Build Your Bundle" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Mix and match to save more" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Build Your Bundle"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-Heading",
+      "default": "Mix and match to save more"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
     {
       "type": "header",
       "content": "Desktop Font Size"
@@ -217,7 +321,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 20,
+      "default": 36,
       "label": "Sub-Heading Font Size"
     },
     {
@@ -266,130 +370,121 @@
     },
     {
       "type": "header",
+      "content": "Section Colors & Style"
+    },
+    {
+      "type": "color_background",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "sub_heading_color",
+      "label": "Sub-Heading Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
       "content": "Progress Bar"
+    },
+    {
+      "type": "text",
+      "id": "bundle_save_text",
+      "label": "Progress Bar Heading",
+      "default": "Bundle & Save"
     },
     
     {
-      "type": "text",
-      "id":"bundle_save_text",
-      "label": "Progress Bar Heading"
+      "type": "header",
+      "content": "Desktop Font Size"
+    },
+    {
+      "type": "range",
+      "id": "bundle_save_text_font_size",
+      "label": "Heading Font Size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "bundle_text_font_size",
+      "label": "Text Font Size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 13
     },
     {
       "type": "header",
-      "content": "Desktop Heading Font Size"
+      "content": "Mobile Font Size"
     },
     {
-    "type": "range",
-    "id": "bundle_save_text_font_size",
-    "label": "Text Font Size",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "default": 25
+      "type": "range",
+      "id": "mobile_bundle_save_text_font_size",
+      "label": "Heading Font Size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_bundle_text_font_size",
+      "label": "Text Font Size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
     },
     {
       "type": "header",
-      "content": "Mobile Heading Font Size"
+      "content": "Bundle Products & Discount Tires"
     },
     {
-    "type": "range",
-    "id": "mobile_bundle_save_text_font_size",
-    "label": "Text Font Size",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "default": 20
+      "type": "checkbox",
+      "id": "use_collection",
+      "label": "Use Collection",
+      "default": true
     },
     {
-  "type": "header",
-  "content": "Progress Bar Colors & Style"
-},
-{
-  "type": "color_background",
-  "id": "progress_bg",
-  "label": "Progress Bar Background",
-  "default": "linear-gradient(90deg,#dff3e8,#e9eef3)"
-},
-{
-    "type": "range",
-    "id": "progress_radius",
-    "label": "Section Radius",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "default": 16
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
     },
-{
-  "type": "color",
-  "id": "progress_heading_color",
-  "label": "Progress bar Heading Color",
-  "default": "#121212"
-},
-{
-  "type": "color",
-  "id": "progress_fill",
-  "label": "Progress Fill Color",
-  "default": "#16a34a"
-},
-{
-    "type": "range",
-    "id": "progress_fill_radius",
-    "label": "Tier Radius",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "default": 16
-    },
-{
-  "type": "color",
-  "id": "tier_active_bg",
-  "label": "Active Tier Background",
-  "default": "#16a34a"
-},
-{
-  "type": "color",
-  "id": "tier_border_color",
-  "label": "Tier Border Color",
-  "default": "#16a34a"
-},
-{
-  "type": "color",
-  "id": "tier_active_text",
-  "label": "Active Tier Text",
-  "default": "#ffffff"
-},
-{
-  "type": "color",
-  "id": "tier_inactive_bg",
-  "label": "Inactive Tier Background",
-  "default": "#f3f4f6"
-},
-{
-  "type": "color",
-  "id": "tier_inactive_text",
-  "label": "Inactive Tier Text",
-  "default": "#6b7280"
-},
-{
-  "type": "color",
-  "id": "bar_message_color",
-  "label": "Message Color Text",
-  "default": "#16a34a"
-},
-
-    { "type": "checkbox", "id": "use_collection", "label": "Use Collection", "default": true },
-    { "type": "collection", "id": "collection", "label": "Select Collection" },
     {
-    "type": "range",
-    "id": "products_limit",
-    "label": "Number of products to show",
-    "min": 4,
-    "max": 50,
-    "step": 1,
-    "default": 4,
-    "visible_if": "{{ section.settings.collection != blank }}"
+      "type": "range",
+      "id": "products_limit",
+      "label": "Number of products to show",
+      "min": 4,
+      "max": 50,
+      "step": 1,
+      "default": 4,
+      "visible_if": "{{ section.settings.collection != blank }}"
     },
-    { "type": "range", "id": "tier_1_qty", "min": 1, "max": 10, "step": 1, "default": 2, "label": "Tier 1 Quantity" },
+    {
+      "type": "range",
+      "id": "tier_1_qty",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2,
+      "label": "Tier 1 Quantity"
+    },
     {
       "type": "range",
       "id": "tier_1_discount",
@@ -399,8 +494,15 @@
       "default": 10,
       "label": "Tier 1 Discount %"
     },
-
-    { "type": "range", "id": "tier_2_qty", "min": 1, "max": 10, "step": 1, "default": 3, "label": "Tier 2 Quantity" },
+    {
+      "type": "range",
+      "id": "tier_2_qty",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "label": "Tier 2 Quantity"
+    },
     {
       "type": "range",
       "id": "tier_2_discount",
@@ -410,8 +512,15 @@
       "default": 15,
       "label": "Tier 2 Discount %"
     },
-
-    { "type": "range", "id": "tier_3_qty", "min": 1, "max": 10, "step": 1, "default": 4, "label": "Tier 3 Quantity" },
+    {
+      "type": "range",
+      "id": "tier_3_qty",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4,
+      "label": "Tier 3 Quantity"
+    },
     {
       "type": "range",
       "id": "tier_3_discount",
@@ -421,341 +530,641 @@
       "default": 20,
       "label": "Tier 3 Discount %"
     },
-    
-    { "type": "text", "id": "button_text", "label": "Button Text", "default": "Add Bundle to Cart" },
     {
-  "type": "header",
-  "content": "Section Styles"
-},
-{
-  "type": "color",
-  "id": "section_bg",
-  "label": "Section Background",
-  "default": "#f8f9fa"
-},
-{
-  "type": "color",
-  "id": "text_color",
-  "label": "Body Text Color",
-  "default": "#333333"
-},
-{
-  "type": "color",
-  "id": "heading_color",
-  "label": "Heading Color",
-  "default": "#111111"
-},
-
-{
-  "type": "header",
-  "content": "Product Card Styles"
-},
-{
-  "type": "color",
-  "id": "card_bg",
-  "label": "Card Background",
-  "default": "#ffffff"
-},
-{
-  "type": "range",
-  "id": "card_radius",
-  "min": 0,
-  "max": 40,
-  "step": 1,
-  "unit": "px",
-  "default": 0,
-  "label": "Product Card Border Radius"
-},
-{
-  "type": "color",
-  "id": "card_title_color",
-  "label": "Product Title Color",
-  "default": "#111111"
-},
-{
-  "type": "color",
-  "id": "card_border_color",
-  "label": "Default Card Border",
-  "default": "#e5e7eb"
-},
-{
-  "type": "range",
-  "id": "card_border_width",
-  "min": 0,
-  "max": 10,
-  "step": 1,
-  "unit": "px",
-  "default": 0,
-  "label": "Button Border Width"
-},
-{
-  "type": "color",
-  "id": "card_selected_border",
-  "label": "Selected Card Border",
-  "default": "#16a34a"
-},
-{
-  "type": "header",
-  "content": "Add to Cart Button"
-},
-{
-  "type": "color",
-  "id": "button_bg",
-  "label": "Button Background",
-  "default": "#16a34a"
-},
-{
-  "type": "color",
-  "id": "button_hover_bg",
-  "label": "Button Hover Background",
-  "default": "#15803d"
-},
-{
-  "type": "color",
-  "id": "button_text_color",
-  "label": "Button Text Color",
-  "default": "#ffffff"
-},
-{
-  "type": "color",
-  "id": "button_hover_text_color",
-  "label": "Button Hover Text Color",
-  "default": "#ffffff"
-},
-{
-  "type": "range",
-  "id": "button_radius",
-  "min": 0,
-  "max": 40,
-  "step": 1,
-  "unit": "px",
-  "default": 8,
-  "label": "Button Border Radius"
-},
-
-{
-  "type": "header",
-  "content": "Bundle Button Text & Style"
-},
-{
-  "type": "color",
-  "id": "bundle-button-bg",
-  "label": "Button Background",
-  "default": "#000"
-},
-{
-  "type": "color",
-  "id": "bundle-button-text",
-  "label": "Button Text",
-  "default": "#fff"
-},
-{
-  "type": "color",
-  "id": "bundle-button-border",
-  "label": "Button Border",
-  "default": "#000"
-},
-{
-  "type": "color",
-  "id": "bundle-button-hover-bg",
-  "label": "Button Hover Background",
-  "default": "#16a34a"
-},
-{
-  "type": "color",
-  "id": "bundle-button-hover-text",
-  "label": "Button Hover text",
-  "default": "#fff"
-},
-{
-  "type": "color",
-  "id": "bundle-button-hover-border",
-  "label": "Button Hover Border",
-  "default": "#16a34a"
-}
+      "type": "header",
+      "content": "Progress Bar Colors & Style"
+    },
+    {
+      "type": "color_background",
+      "id": "progress_bg",
+      "label": "Progress Bar Background",
+      "default": "linear-gradient(90deg,#dff3e8,#e9eef3)"
+    },
+    {
+      "type": "range",
+      "id": "progress_radius",
+      "label": "Section Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "progress_heading_color",
+      "label": "Progress bar Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "progress_fill",
+      "label": "Progress Fill Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "progress_fill_radius",
+      "label": "Tier Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "tier_active_bg",
+      "label": "Active Tier Background",
+      "default": "#00A63E"
+    },
+    {
+      "type": "color",
+      "id": "tier_border_color",
+      "label": "Tier Border Color",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "tier_active_text",
+      "label": "Active Tier Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tier_inactive_bg",
+      "label": "Inactive Tier Background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "tier_inactive_text",
+      "label": "Inactive Tier Text",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "bar_message_color",
+      "label": "Message Color Text",
+      "default": "#16a34a"
+    },
+    {
+      "type": "header",
+      "content": "Product Card Styles"
+    },
+    {
+      "type": "range",
+      "id": "desktop_product_title_size",
+      "label": "Product Title Desktop Font Size",
+      "default": 16,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_product_title_size",
+      "label": "Product Title Mobile Font Size",
+      "default": 14,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "label": "Product Card Border Radius"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Product Title Color",
+      "default": "#0A0A0A"
+    },
+    {
+      "type": "color",
+      "id": "card_price_color",
+      "label": "Product Price Color",
+      "default": "#0A0A0A"
+    },
+    {
+      "type": "color",
+      "id": "card_content_color",
+      "label": "Product Content Color",
+      "default": "#0A0A0A"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Default Card Border",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2,
+      "label": "Button Border Width"
+    },
+    {
+      "type": "color",
+      "id": "card_selected_border",
+      "label": "Selected Card Border",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Add to Cart Button"
+    },
+    {
+      "type": "checkbox",
+      "label": "add Icon Only",
+      "id": "icon_only"
+    },
+    {
+      "type": "text",
+      "id": "btn_lable",
+      "label": "Button Lable",
+      "default": "Click to add",
+      "visible_if": "{{ section.settings.icon_only == 'flase' }}",
+    },
+    {
+      "type": "text",
+      "id": "selected_btn_lable",
+      "label": "Selected Button Lable",
+      "default": "Selected",
+      "visible_if": "{{ section.settings.icon_only == 'flase' }}",
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#6A7282"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#00A63E"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 8,
+      "label": "Button Border Radius"
+    },
+    {
+      "type": "header",
+      "content": "Bundle Button Text & Style"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Add Bundle to Cart"
+    },
+    {
+      "type": "color",
+      "id": "bundle-button-bg",
+      "label": "Button Background",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "bundle-button-text",
+      "label": "Button Text",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bundle-button-border",
+      "label": "Button Border",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "bundle-button-hover-bg",
+      "label": "Button Hover Background",
+      "default": "#16a34a"
+    },
+    {
+      "type": "color",
+      "id": "bundle-button-hover-text",
+      "label": "Button Hover text",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bundle-button-hover-border",
+      "label": "Button Hover Border",
+      "default": "#16a34a"
+    },
+    {
+      "type": "header",
+      "content": "Bundle Footer"
+    },
+    {
+      "type": "color_background",
+      "id": "footer_bg",
+      "label": "Footer Background",
+      "default": "#F9FAFB"
+    },
+    {
+      "type": "range",
+      "id": "footer_radius",
+      "label": "Border Radius",
+      "default": 14,
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "unit": "px"
+    }
   ],
-
   "blocks": [
     {
       "type": "product",
       "name": "Manual Product",
-      "settings": [{ "type": "product", "id": "product", "label": "Select Product" }]
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
     }
   ],
-
   "max_blocks": 12,
-  "presets": [{ "name": "Bundle Builder" }]
+  "presets": [
+    {
+      "name": "Bundle Builder"
+    }
+  ]
 }
 {% endschema %}
 <script>
+  
+  window.theme = window.theme || {};
+  window.theme.moneyFormat = {{ shop.money_format | json }};
+</script>
+{% javascript %}
+  
+
+/* ---- SAFE MONEY FORMATTER ---- */
+if (typeof window.Shopify === "undefined") {
+  window.Shopify = {};
+}
+
+if (typeof window.Shopify === "undefined") {
+  window.Shopify = {};
+}
+
+Shopify.formatMoney = function (cents, format) {
+
+  if (typeof cents === "string") {
+    cents = cents.replace(".", "");
+  }
+
+  if (isNaN(cents) || cents === null) return "0";
+
+  const formatString =
+    format ||
+    window.theme?.moneyFormat ||
+    window.Shopify.money_format    // hard fallback
+
+  const placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+
+  function formatWithDelimiters(number, precision = 2, thousands = ",", decimal = ".") {
+    number = (number / 100.0).toFixed(precision);
+    const parts = number.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands);
+    return parts.join(decimal);
+  }
+
+  return formatString.replace(placeholderRegex, function (_, token) {
+
+    switch (token) {
+      case "amount":
+        return formatWithDelimiters(cents, 2);
+      case "amount_no_decimals":
+        return formatWithDelimiters(cents, 0);
+      case "amount_with_comma_separator":
+        return formatWithDelimiters(cents, 2, ".", ",");
+      case "amount_no_decimals_with_comma_separator":
+        return formatWithDelimiters(cents, 0, ".", ",");
+      default:
+        return formatWithDelimiters(cents, 2);
+    }
+
+  });
+
+};
+
   document.addEventListener('DOMContentLoaded', function () {
-    const section = document.querySelector('.bundle-builder');
-    const cards = section.querySelectorAll('.bundle-card');
-    const subtotalEl = section.querySelector('[data-bundle-subtotal]');
-    const savingsEl = section.querySelector('[data-bundle-savings]');
-    const totalEl = section.querySelector('[data-bundle-total]');
-    const addBtn = section.querySelector('.bundle-add-to-cart');
-    const tierPills = section.querySelectorAll('.tier-pill');
-    const messageEl = section.querySelector('[data-bundle-message]');
-    let selected = [];
 
-    function calculate() {
-       
-      let subtotal = 0;
+  const section = document.querySelector('.bundle-builder');
+  if (!section) return;
 
-      selected.forEach((item) => {
-        subtotal += parseFloat(item.price);
-      });
+  const cards = section.querySelectorAll('.bundle-card');
+  const subtotalEl = section.querySelector('[data-bundle-subtotal]');
+  const savingsEl = section.querySelector('[data-bundle-savings]');
+  const totalEl = section.querySelector('[data-bundle-total]');
+  const addBtn = section.querySelector('.bundle-add-to-cart');
+  const tierPills = section.querySelectorAll('.tier-pill');
+  const dotsTire = section.querySelectorAll('.dots-tire');
+  const messageEl = section.querySelector('[data-bundle-message]');
+  const totalItems = section.querySelector('[data-total-item]')
+  const totalSelected = section.querySelector('[selected-total-items]');
+  const oneTireMsg = section.querySelector('[tire-right-msg]');
+  
+  const DiscoutName = section.querySelector('[data-discount-name]');
+  // ---- GET TIERS SAFELY ----
+  const t1Qty = Number(section.dataset.tier1Qty) || 0;
+  const t2Qty = Number(section.dataset.tier2Qty) || 0;
+  const t3Qty = Number(section.dataset.tier3Qty) || 0;
 
-      let qty = selected.length;
-      console.log("QTY:", qty);
-      const t1Qty = parseInt(section.dataset.tier1Qty);
-      const t2Qty = parseInt(section.dataset.tier2Qty);
-      const t3Qty = parseInt(section.dataset.tier3Qty);
-      console.log(t2Qty)
-      const t1Disc = parseFloat(section.dataset.tier1Discount);
-      const t2Disc = parseFloat(section.dataset.tier2Discount);
-      const t3Disc = parseFloat(section.dataset.tier3Discount);
+  const t1Disc = Number(section.dataset.tier1Discount) || 0;
+  const t2Disc = Number(section.dataset.tier2Discount) || 0;
+  const t3Disc = Number(section.dataset.tier3Discount) || 0;
 
-      let discountPercent = 0;
-      let nextTierQty = t1Qty;
-      let nextTierDiscount = t1Disc;
+  let selected = [];
 
-      // -------- TIER LOGIC --------
+  // -----------------------------
+  // MONEY SAFE CALCULATION
+  // -----------------------------
+  function calculate() {
 
-      if (qty >= t3Qty) {
-        discountPercent = t3Disc;
-        nextTierQty = null;
-      } else if (qty >= t2Qty) {
-        discountPercent = t2Disc;
-        nextTierQty = t3Qty;
-        nextTierDiscount = t3Disc;
-      } else if (qty >= t1Qty) {
-        discountPercent = t1Disc;
-        nextTierQty = t2Qty;
-        nextTierDiscount = t2Disc;
+  let subtotal = 0;
+  let qty = selected.length;
+
+  selected.forEach(item => {
+    subtotal += Number(item.price); // cents
+  });
+
+  /* ---------------------------------
+     BUILD VALID INCREASING TIERS
+     Stops when order breaks
+  ---------------------------------- */
+
+  const allTiers = [
+    { qty: t1Qty, discount: t1Disc, index: 0 },
+    { qty: t2Qty, discount: t2Disc, index: 1 },
+    { qty: t3Qty, discount: t3Disc, index: 2 }
+  ].filter(t => t.qty > 0);
+
+  const tiers = [];
+
+  for (let i = 0; i < allTiers.length; i++) {
+
+    if (i === 0) {
+      tiers.push(allTiers[i]);
+    } else {
+      if (allTiers[i].qty > allTiers[i - 1].qty) {
+        tiers.push(allTiers[i]);
       } else {
-        // qty < tier 1
-        discountPercent = 0;
-        nextTierQty = t1Qty;
-        nextTierDiscount = t1Disc;
-      }
-
-      // -------- CALCULATE TOTALS --------
-
-      let savings = subtotal * (discountPercent / 100);
-      let total = subtotal - savings;
-
-      subtotalEl.textContent = '$' + subtotal.toFixed(2);
-      savingsEl.textContent = '$' + savings.toFixed(2);
-      totalEl.textContent = '$' + total.toFixed(2);
-
-      addBtn.disabled = qty === 0;
-
-      // -------- FIXED BENEFIT BAR LOGIC --------
-
-      tierPills.forEach((pill) => pill.classList.remove('active'));
-      console.log(t1Qty)
-      if (qty >= t3Qty) {
-        tierPills[2].classList.add('active');
-      } else if (qty >= t2Qty) {
-        tierPills[1].classList.add('active');
-      } else if (qty >= t1Qty) {
-        tierPills[0].classList.add('active');
-      }
-
-      // -------- FIXED MESSAGE --------
-
-      if (nextTierQty !== null) {
-        let needed = nextTierQty - qty;
-        console.log(needed)
-        if (needed > 0) {
-          messageEl.textContent = `Add ${needed} more item${needed > 1 ? 's' : ''} to save ${nextTierDiscount}%!`;
-        } else {
-          messageEl.textContent = `You’re saving ${discountPercent}% 🎉`;
-        }
-      } else {
-        messageEl.textContent = '🎉 Maximum savings unlocked!';
+        break; // stop if not increasing
       }
     }
 
-    cards.forEach((card) => {
-      const btn = card.querySelector('.bundle-select-btn');
+  }
 
-      btn.addEventListener('click', function () {
-        const id = card.dataset.variantId;
-        const price = card.dataset.price;
+  /* ---------------------------------
+     DETERMINE ACTIVE TIER
+  ---------------------------------- */
 
-        if (card.classList.contains('selected')) {
-          card.classList.remove('selected');
-          selected = selected.filter((item) => item.id !== id);
-        } else {
-          card.classList.add('selected');
-          selected.push({ id, price });
-        }
-        calculate();
-      });
-    });
+  let discountPercent = 0;
+  let appliedTierIndex = null;
+  let nextTier = null;
 
-    addBtn.addEventListener('click', function () {
-      const items = selected.map((item) => ({
-        id: item.id,
-        quantity: 1,
-      }));
-
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items }),
-      }).then(() => {
-        window.location.href = '/cart';
-      });
-    });
-  });
-  document.querySelectorAll(".bundle-card").forEach(card => {
-
-  const variantData = JSON.parse(
-    card.querySelector(".bundle-variants-json")?.textContent || "[]"
-  );
-
-  const selects = card.querySelectorAll(".bundle-variant-select");
-  const priceEl = card.querySelector(".bundle-price");
-  const button = card.querySelector(".bundle-select-btn");
-
-  if (!variantData.length) return;
-
-  function updateVariant() {
-
-    const selectedOptions = [];
-    selects.forEach(select => {
-      selectedOptions.push(select.value);
-    });
-
-    const matchedVariant = variantData.find(variant => {
-      return variant.options.every((opt, index) => 
-        opt === selectedOptions[index]
-      );
-    });
-
-    if (!matchedVariant) return;
-
-    card.dataset.variantId = matchedVariant.id;
-    card.dataset.price = (matchedVariant.price / 100).toFixed(2);
-
-    priceEl.textContent = Shopify.formatMoney(matchedVariant.price);
-
-    if (!matchedVariant.available) {
-      button.disabled = true;
-      button.textContent = "Sold Out";
-    } else {
-      button.disabled = false;
-      button.textContent = "Add";
+  for (let i = 0; i < tiers.length; i++) {
+    if (qty >= tiers[i].qty) {
+      discountPercent = tiers[i].discount;
+      appliedTierIndex = tiers[i].index;
+      nextTier = tiers[i + 1] || null;
     }
   }
 
-  selects.forEach(select => {
-    select.addEventListener("change", updateVariant);
+  /* ---------------------------------
+     CALCULATE SAVINGS
+     (No round up issue)
+  ---------------------------------- */
+
+  const savings = Math.floor(subtotal * (discountPercent / 100));
+  const total = subtotal - savings;
+
+  subtotalEl.innerHTML = Shopify.formatMoney(subtotal);
+  savingsEl.innerHTML = Shopify.formatMoney(savings);
+  totalEl.innerHTML = Shopify.formatMoney(total);
+  totalItems.innerHTML = 'Items ' + qty;
+  if(totalSelected){
+    totalSelected.innerHTML = qty +' items selected';
+  }
+  addBtn.disabled = qty === 0;
+
+  /* ---------------------------------
+     TIER UI
+  ---------------------------------- */
+
+  tierPills.forEach(pill => pill.classList.remove('active'));
+  if(dotsTire){
+  dotsTire.forEach(tire => tire.classList.remove('active'))
+  dotsTire[qty-1]?.classList.add('active');
+  if(qty > t1Qty)
+  dotsTire[dotsTire.length - 1]?.classList.add('active')
+  }
+  DiscoutName.innerHTML = '';
+
+  if (appliedTierIndex !== null) {
+    tierPills[appliedTierIndex]?.classList.add('active');
+    DiscoutName.innerHTML =
+      tierPills[appliedTierIndex]?.getAttribute('discount-name') || '';
+  }
+
+  /* ---------------------------------
+     MESSAGE LOGIC
+  ---------------------------------- */
+
+  if (nextTier) {
+
+    const needed = nextTier.qty - qty;
+
+    if (needed > 0) {
+      messageEl.textContent = `Add ${needed} more item${needed > 1 ? 's' : ''} to save ${nextTier.discount}%!`;
+      if(oneTireMsg){
+       oneTireMsg.textContent = `Add ${needed} more item${needed > 1 ? 's' : ''} to save ${nextTier.discount}%!`; 
+      }
+    } else {
+      messageEl.textContent = `You're saving ${discountPercent}% 🎉`;
+      if(oneTireMsg){
+       oneTireMsg.textContent = `You're saving ${discountPercent}% 🎉`; 
+      }
+    }
+
+  } else {
+
+    if (discountPercent > 0) {
+      messageEl.textContent = '🎉 Maximum savings unlocked!';
+      if(oneTireMsg){
+       oneTireMsg.textContent = '🎉 Maximum savings unlocked!'; 
+      }
+    } else if (tiers.length > 0) {
+      const firstTier = tiers[0];
+      const needed = firstTier.qty - qty;
+
+      if (needed > 0) {
+        messageEl.textContent =
+          `Add ${needed} more item${needed > 1 ? 's' : ''} to save ${firstTier.discount}%!`;
+          if(oneTireMsg){
+       oneTireMsg.textContent = `Add ${needed} more item${needed > 1 ? 's' : ''} to save ${firstTier.discount}%!`;
+      }
+      }
+    }
+
+  }
+
+}
+
+  // -----------------------------
+  // CARD SELECT LOGIC
+  // -----------------------------
+  cards.forEach(card => {
+
+    const button = card.querySelector('.bundle-select-btn');
+
+    button?.addEventListener('click', function () {
+
+      if (button.disabled) return;
+
+      const id = card.dataset.variantId;
+      const price = Number(card.dataset.price); // cents
+
+      if (card.classList.contains('selected')) {
+
+        card.classList.remove('selected');
+        selected = selected.filter(item => item.id !== id);
+
+      } else {
+
+        card.classList.add('selected');
+        selected.push({ id, price });
+      }
+
+      calculate();
+    });
+
+    // -----------------------------
+    // VARIANT HANDLING
+    // -----------------------------
+    const variantData = JSON.parse(
+      card.querySelector('.bundle-variants-json')?.textContent || '[]'
+    );
+
+    const selects = card.querySelectorAll('.bundle-variant-select');
+    const priceEl = card.querySelector('.bundle-price');
+
+    if (!variantData.length) return;
+
+    function updateVariant() {
+
+      const selectedOptions = [];
+      selects.forEach(select => {
+        selectedOptions.push(select.value);
+      });
+
+      const matchedVariant = variantData.find(variant =>
+        variant.options.every((opt, index) => opt === selectedOptions[index])
+      );
+
+      if (!matchedVariant) return;
+
+      card.dataset.variantId = matchedVariant.id;
+      card.dataset.price = matchedVariant.price; // 
+
+      priceEl.textContent = Shopify.formatMoney(matchedVariant.price);
+
+      if (!matchedVariant.available) {
+        button.disabled = true;
+        button.textContent = 'Sold Out';
+      } else {
+        button.disabled = false;
+        button.textContent = 'Add';
+      }
+
+      // ---- IMPORTANT ----
+      // If already selected, update price inside selected array
+      if (card.classList.contains('selected')) {
+
+        selected = selected.map(item => {
+          if (item.id === matchedVariant.id) {
+            return { id: matchedVariant.id, price: matchedVariant.price };
+          }
+          return item;
+        });
+
+        calculate();
+      }
+    }
+
+    selects.forEach(select => {
+      select.addEventListener('change', updateVariant);
+    });
+
+  });
+
+  // -----------------------------
+  // ADD TO CART
+  // -----------------------------
+  addBtn.addEventListener('click', function () {
+
+    if (!selected.length) return;
+
+    const items = selected.map(item => ({
+      id: item.id,
+      quantity: 1
+    }));
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items }),
+    })
+    .then(res => res.json())
+    .then(() => {
+      window.location.href = '/cart';
+    });
+
   });
 
 });
-</script>
+
+{% endjavascript %}
+
