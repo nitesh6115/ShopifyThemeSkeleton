@@ -1,15 +1,16 @@
 <div class="bundle-card {% unless product.available %}is-sold-out{% endunless %}"
      data-product-id="{{ product.id }}"
-     data-price="{{ product.selected_or_first_available_variant.price | money_without_currency }}"
+     data-price="{{ product.selected_or_first_available_variant.price }}"
      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
      data-available="{{ product.available }}">
 
   <span class="bundle-check">✓</span>
-
   {% if product.tags contains 'popular' %}
     <span class="bundle-badge">Popular</span>
   {% endif %}
-
+  {% if product.tags contains 'Bestseller' %}
+    <span class="bundle-badge">Bestseller</span>
+  {% endif %}
   <div class="bundle-image">
     <img
     srcset="
@@ -33,7 +34,8 @@
     >
   </div>
   <div class="bundle_card_info">
-  <h3>{{ product.title }}</h3>
+  <h3 class="bundleProductTitle">{{ product.title }}</h3>
+  <div class="customTagLine">{{ product.description | strip_html | truncate: 60 }}</div>
 
 
 
@@ -58,11 +60,19 @@
   <button class="bundle-select-btn"
           {% unless product.available %}disabled{% endunless %}>
     {% if product.available %}
-      <span class="clickToAdd">Click to Add</span>
+      {% if section.settings.icon_only %}
+        <span class="clickToAdd">+</span>
+      {% else %}
+      <span class="clickToAdd">{{ section.settings.btn_lable }}</span>
+      {% endif %}
     {% else %}
       <span>Sold Out</span>
     {% endif %}
-      <span class="selected_text">Selected</span>
+{% if section.settings.icon_only %}
+        <span class="selected_text">✓</span>
+      {% else %}
+    <span class="selected_text">{{ section.settings.selected_btn_lable }}</span>
+      {% endif %}
   </button>
   </div>
  </div>
