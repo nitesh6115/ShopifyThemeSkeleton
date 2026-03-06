@@ -1,0 +1,941 @@
+{{ 'frequently-asked-questions.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+{% capture style_schema %}
+     --section-bg: {{ section.settings.section_bg }};
+    --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-padding-left: {{ section.settings.padding_left }}px;
+    --section-padding-right: {{ section.settings.padding_right }}px;
+
+    --section-mobile-padding-top: {{ section.settings.padding_top | times: 0.55 | round: 0 }}px;
+    --section-mobile-padding-bottom: {{ section.settings.padding_bottom | times: 0.55 | round: 0 }}px;
+    --section-mobile-padding-left: {{ section.settings.padding_left | times: 0.55 | round: 0 }}px;
+    --section-mobile-padding-right: {{ section.settings.padding_right | times: 0.55 | round: 0 }}px;
+    --header-desktop-text-alignment: {{ section.settings.desktop_text_align }};
+    --header-mobile-text-alignment: {{ section.settings.mobile_text_align }};
+    
+    --header-text-color:{{ section.settings.text_color }};
+    --header-heading-color: {{ section.settings.heading_color }};
+    --header-subheading-color: {{ section.settings.subheading_color }};
+
+    --desktop-header-heading-size: {{ section.settings.desktop_heading_size }}px;
+    --desktop-header-sub-heading-size: {{ section.settings.desktop_sub_heading_size }}px;
+    --desktop-header-text-size: {{ section.settings.desktop_text_size }}px;
+
+    --mobile-header-heading-size: {{ section.settings.mobile_heading_size }}px;
+    --mobile-header-sub-heading-size: {{ section.settings.mobile_sub_heading_size }}px;
+    --mobile-header-text-size: {{ section.settings.mobile_text_size }}px;
+    --mobile-image-radius: {{ section.settings.mobile-table-outer-radius }}px;
+    --desktop-image-radius: {{ section.settings.desktop-table-outer-radius }}px;
+
+    {% endcapture %}
+<div class="frequently-asked-questions-section" style="{{ style_schema }}">
+  <div class="frequently-asked-questions-container">
+    <div class="section-header">
+      {% if section.settings.heading != blank %}
+        <h2 style="color: {{ section.settings.heading_color }};">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <div class="header-sub-heading" style="color: {{ section.settings.subheading_color }};">
+          {{ section.settings.subheading }}
+        </div>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="rte content_header" style="color: {{ section.settings.text_color }};">
+          {{ section.settings.content }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="frequently-asked-questions-box">
+      <div class="frequently-asked-questions_content">
+        {% assign reivew_index = 0 %}
+        {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'question' -%}
+            {% if block.settings.title != blank and block.settings.answer != blank %}
+            <div
+              {{ block.shopify_attributes }}
+              class="question-block"
+              data-index="{{ reivew_index }}"
+              style="
+                --block-bg: {{ block.settings.bg_color }};
+                --block-radius: {{ block.settings.block_radius }}px;
+                --block-text-color: {{ block.settings.text_color }};
+                --block-desktop-padding-top: {{ block.settings.padding_top }}px;
+                --block-desktop-padding-bottom: {{ block.settings.padding_bottom }}px;
+                --block-desktop-padding-left: {{ block.settings.padding_left }}px;
+                --block-desktop-padding-right: {{ block.settings.padding_right }}px;
+                --block-mobile-padding-top: {{ block.settings.padding_top  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-bottom: {{ block.settings.padding_bottom  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-left: {{ block.settings.padding_left  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-right: {{ block.settings.padding_right  | times: 0.55 | round: 0 }}px;
+                --divider-border-width: {{ block.settings.border_width }}px;
+                --divider-border-color: {{ block.settings.border_color }};
+                --avatar-size: {{ block.settings.avatar_size }}px;
+              "
+            >
+                <div class="question-hedding-title" style="color: {{ block.settings.text_color }}; --text-font-size: {{ block.settings.text_font }}px">
+                  {{ block.settings.title }}
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M0.666992 0.666992L4.66699 4.66699L8.66699 0.666992" stroke="#717182" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </div>
+                <div class="answer_text_block" style="color: {{ block.settings.content_color }};--purchase-font-size: {{ block.settings.content_font }}px;">
+                    <div class="ans-content">{{ block.settings.answer }}</div>
+                </div>
+            </div>
+        {% endif %}
+        {% when 'text_block' %}
+            <div
+              {{ block.shopify_attributes }}
+              class="text-content-block"
+              data-index="{{ reivew_index }}"
+              style="
+                --block-bg: {{ block.settings.bg_color }};
+                --block-radius: {{ block.settings.block_radius }}px;
+                --block-text-color: {{ block.settings.text_color }};
+                --block-desktop-padding-top: {{ block.settings.padding_top }}px;
+                --block-desktop-text-alignment: {{ block.settings.desktop_text_align }};
+                --block-mobile-text-alignment: {{ block.settings.mobile_text_align }};
+                --block-desktop-padding-bottom: {{ block.settings.padding_bottom }}px;
+                --block-desktop-padding-left: {{ block.settings.padding_left }}px;
+                --block-desktop-padding-right: {{ block.settings.padding_right }}px;
+                --block-mobile-padding-top: {{ block.settings.padding_top  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-bottom: {{ block.settings.padding_bottom  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-left: {{ block.settings.padding_left  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-right: {{ block.settings.padding_right  | times: 0.55 | round: 0 }}px;
+                --divider-border-width: {{ block.settings.border_width }}px;
+                --divider-border-color: {{ block.settings.border_color }};
+                --avatar-size: {{ block.settings.avatar_size }}px;
+              "
+            >
+              {% if block.settings.review_text != blank %}
+                <div
+                  class="block_text_title"
+                  style="color: {{ block.settings.text_color }}; --text-font-size: {{ block.settings.text_font }}px"
+                >
+                  {{ block.settings.review_text }}
+                </div>
+              {% endif %}
+              {% if block.settings.review_content != blank %}
+                <div
+                  class="content_text_block"
+                  style="color: {{ block.settings.content_color }};--purchase-font-size: {{ block.settings.content_font }}px;"
+                >
+                  {{ block.settings.review_content }}
+                </div>
+              {% endif %}
+              <div class="btn_box">
+              {% if block.settings.btn_1 != blank and block.settings.btn_link_1 != blank %}
+                {% capture style_btn_1 %}
+                --btn-bg: {{ block.settings.btn_bg_1 }};
+                --btn-text: {{ block.settings.btn_text_1 }};
+                --btn-hover-bg: {{ block.settings.btn_hover_bg_1 }};
+                --btn-hover-text: {{ block.settings.btn_hover_text_1 }};
+                --btn-radius: {{ block.settings.btn_radius_1 }}px;
+                --btn-border: {{ block.settings.btn_border_1 }};
+                --btn-font-size: {{ block.settings.btn_size_1 }}px;
+                --btn-uppercase: {% if block.settings.btn_uppercase_1 %} uppercase {% else %} normal {%endif %};
+                --btn-border-width: {{ block.settings.btn_border_width_1 }}px;
+                --btn-hover-border: {{ block.settings.btn_hover_border_1 }};
+                {% endcapture %}
+                <a href="{{ block.settings.btn_link_1 }}" class="btn_style" style="{{ style_btn_1 }}">{{ block.settings.btn_1 }}</a>
+              {% endif %}
+              
+              {% if block.settings.btn_2 != blank and block.settings.btn_link_2 != blank %}
+                {% capture style_btn_2 %}
+                --btn-bg: {{ block.settings.btn_bg_2 }};
+                --btn-text: {{ block.settings.btn_text_2 }};
+                --btn-hover-bg: {{ block.settings.btn_hover_bg_2 }};
+                --btn-hover-text: {{ block.settings.btn_hover_text_2 }};
+                --btn-radius: {{ block.settings.btn_radius_2 }}px;
+                --btn-border: {{ block.settings.btn_border_2 }};
+                --btn-uppercase: {% if block.settings.btn_uppercase_2 %} uppercase {% else %} normal {%endif %};
+                --btn-font-size: {{ block.settings.btn_size_2 }}px;
+                --btn-border-width: {{ block.settings.btn_border_width_2 }}px;
+                --btn-hover-border: {{ block.settings.btn_hover_border_2 }};
+                {% endcapture %}
+                <a href="{{ block.settings.btn_link_2 }}" class="btn_style" style="{{ style_btn_2 }}">{{ block.settings.btn_2 }}</a>
+              {% endif %}
+              </div>
+            </div>
+            
+        {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+  const questions = document.querySelectorAll('.question-block');
+
+  questions.forEach(block => {
+
+    const header = block.querySelector('.question-hedding-title');
+    const content = block.querySelector('.answer_text_block');
+
+    if (!header || !content) return;
+
+    header.addEventListener('click', function () {
+
+      const isActive = block.classList.contains('active');
+
+      // Close all (optional – remove if you want multi-open)
+      questions.forEach(item => {
+        item.classList.remove('active');
+        const inner = item.querySelector('.answer_text_block');
+        if (inner) inner.style.maxHeight = null;
+      });
+
+      // Toggle current
+      if (!isActive) {
+        block.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+
+    });
+
+  });
+
+});
+    </script>
+{% schema %}
+{
+  "name": "Trusted Quality",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "section_width",
+      "label": "Full Width"
+    },
+    {
+      "type": "range",
+      "id": "wraper_width",
+      "label": "Container Width",
+      "max": 1900,
+      "min": 900,
+      "default": 1400,
+      "step": 100,
+      "unit": "px",
+      "visible_if": "{{ section.settings.section_width == false }}"
+    },
+    {
+      "type": "color_background",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "max": 100,
+      "min": 0,
+      "default": 30,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "max": 100,
+      "min": 0,
+      "default": 30,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "max": 100,
+      "min": 0,
+      "default": 30,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "max": 100,
+      "min": 0,
+      "default": 30,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Font Size"
+    },
+    {
+      "type": "range",
+      "id": "desktop_heading_size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 30,
+      "label": "Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "desktop_sub_heading_size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "label": "Sub-Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "desktop_text_size",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "Body Font Size"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Font Size"
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 28,
+      "label": "Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "mobile_sub_heading_size",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "label": "Sub-Heading Font Size"
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "label": "Body Font Size"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1F1F1F"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#6B6B6B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#6B6B6B"
+    },
+
+    {
+      "type": "select",
+      "id": "desktop_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Desktop Text Alignment"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Mobile Text Alignment"
+    },
+
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" },
+
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Everything you need to know about our product</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section Image"
+    },
+    {
+      "type": "range",
+      "id": "desktop-table-outer-radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "Image Desktop Radius"
+    },
+    {
+      "type": "range",
+      "id": "mobile-table-outer-radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "label": "Image Mobile Radius"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section Left Image"
+    },
+    {
+      "type": "select",
+      "label": "image Position",
+      "default": "left",
+      "id": "image_position",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Bottom Columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question Blocks",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Block Spacing"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "max": 100,
+          "min": 0,
+          "default": 26,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "max": 100,
+          "min": 0,
+          "default": 26,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_left",
+          "label": "Padding Left",
+          "max": 100,
+          "min": 0,
+          "default": 26,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_right",
+          "label": "Padding Right",
+          "max": 100,
+          "min": 0,
+          "default": 26,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Block Radius",
+          "max": 100,
+          "min": 0,
+          "default": 14,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color",
+          "label": "Block Background",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border Color",
+          "default": "rgba(247, 231, 219, 1)"
+        },
+        {
+          "type": "range",
+          "id": "border_width",
+          "label": "Border Size",
+          "max": 100,
+          "min": 0,
+          "default": 2,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Block Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Quesetion Title",
+          "default": "How long does it take to see results?"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "rgba(64, 64, 64, 1)"
+        },
+        {
+          "type": "range",
+          "id": "text_font",
+          "label": "Block Text Font Size",
+          "max": 100,
+          "min": 0,
+          "default": 16,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer Content",
+          "default": "<p>We offer a 30-day money-back guarantee. If you're not completely satisfied with your purchase, contact our customer service team within 30 days of delivery for a full refund—no questions asked. We stand behind the quality of our products.</p>"
+        },
+        {
+          "type": "color",
+          "id": "content_color",
+          "label": "Content Color",
+          "default": "rgba(115, 115, 115, 1)"
+        },
+        {
+          "type": "range",
+          "id": "content-font-size",
+          "min": 1,
+          "max": 80,
+          "step": 1,
+          "default": 12,
+          "label": "Content Font Size"
+        }
+      ]
+    },
+    {
+      "type": "text_block",
+      "name": "Bottom Blocks",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Block Spacing"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "max": 100,
+          "min": 0,
+          "default": 24,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "max": 100,
+          "min": 0,
+          "default": 24,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_left",
+          "label": "Padding Left",
+          "max": 100,
+          "min": 0,
+          "default": 24,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_right",
+          "label": "Padding Right",
+          "max": 100,
+          "min": 0,
+          "default": 24,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Block Radius",
+          "max": 100,
+          "min": 0,
+          "default": 14,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color",
+          "label": "Block Background",
+          "default": "rgba(252, 247, 244, 1)"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border Color"
+        },
+        {
+          "type": "range",
+          "id": "border_width",
+          "label": "Border Size",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Block Content"
+        },
+        {
+          "type": "text",
+          "id": "review_text",
+          "label": "Block Title",
+          "default": "100%"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000"
+        },
+        {
+          "type": "range",
+          "id": "text_font",
+          "label": "Block Text Font Size",
+          "max": 100,
+          "min": 0,
+          "default": 30,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "richtext",
+          "id": "review_content",
+          "label": "Block Content",
+          "default": "<p>Natural & Pure Ingredients</p>"
+        },
+        {
+          "type": "color",
+          "id": "content_color",
+          "label": "Content Color",
+          "default": "#525252"
+        },
+        {
+          "type": "range",
+          "id": "content-font-size",
+          "min": 1,
+          "max": 80,
+          "step": 1,
+          "default": 14,
+          "label": "Content Font Size"
+        },
+
+        {
+          "type": "select",
+          "id": "desktop_text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "label": "Desktop Text Alignment"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "label": "Mobile Text Alignment"
+        },
+        {
+          "type": "header",
+          "content": "Button 1"
+        },
+        {
+          "type": "text",
+          "default": "Button Lable",
+          "id": "btn_1",
+          "label": "Button Lable"
+        },
+        {
+          "type": "url",
+          "label": "Button Link",
+          "id": "btn_link_1"
+        },
+        {
+          "type": "checkbox",
+          "id": "btn_uppercase_1",
+          "label": "Button Text Uppercase"
+        },
+        {
+          "type": "range",
+          "id": "btn_radius_1",
+          "label": "Button Radius",
+          "max": 100,
+          "min": 0,
+          "default": 10,
+          "step": 1,
+          "unit": "px"
+        },
+        
+        {
+          "type": "color_background",
+          "id": "btn_bg_1",
+          "label": "Button Background Color",
+          "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
+        },
+        {
+          "type": "color_background",
+          "id": "btn_hover_bg_1",
+          "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+          "label": "Button Hover Background Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_1",
+          "default": "#fff",
+          "label": "Button Text Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_text_1",
+          "default": "#fff",
+          "label": "Button Hover Text Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_border_1",
+          "label": "Button Border Color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_border_1",
+          "label": "Button Hover Border Color"
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "text",
+          "default": "Button Lable",
+          "id": "btn_2",
+          "label": "Button Lable"
+        },
+        {
+          "type": "url",
+          "label": "Button Link",
+          "id": "btn_link_2"
+        },
+        {
+          "type": "checkbox",
+          "id": "btn_uppercase_2",
+          "label": "Button Text Uppercase"
+        },
+        {
+          "type": "range",
+          "id": "btn_radius_2",
+          "label": "Button Radius",
+          "max": 100,
+          "min": 0,
+          "default": 10,
+          "step": 1,
+          "unit": "px"
+        },
+        
+        {
+          "type": "color_background",
+          "id": "btn_bg_2",
+          "label": "Button Background Color",
+          "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
+        },
+        {
+          "type": "color_background",
+          "id": "btn_hover_bg_2",
+          "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+          "label": "Button Hover Background Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_2",
+          "default": "#fff",
+          "label": "Button Text Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_text_2",
+          "default": "#fff",
+          "label": "Button HoverText Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_border_2",
+          "label": "Button Border Color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_border_2",
+          "label": "Button Hover Border Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Frequently Asked Questions",
+      "blocks": [
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        },
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        },
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
