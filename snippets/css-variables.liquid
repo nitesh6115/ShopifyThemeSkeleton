@@ -1,9 +1,9 @@
 {% style %}
   {% # Loads all font variantions with display: swap %}
-  {{ settings.type_primary_font | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {{ settings.heading_font | font_face }}
+  {{ settings.body_font | font_face }}
+  {{ settings.nav_font | font_face }}
+  {{ settings.button_font | font_face }}
   {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}
