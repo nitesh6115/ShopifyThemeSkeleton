@@ -263,7 +263,7 @@ font-size:var(--progress-bar-desktop-heading-font-size);
 }
 
 .bundle-card.is-sold-out .bundle-select-btn {
-  background: #ccc;
+  background: var(--btn-bg);
   cursor: not-allowed;
 }
 .bundle-add-to-cart {
