@@ -128,7 +128,7 @@
             <path d="M7.38158 18.75C11.0441 18.75 14.0132 17.0534 14.0132 14.9605C14.0132 12.8677 11.0441 11.1711 7.38158 11.1711C3.71906 11.1711 0.75 12.8677 0.75 14.9605C0.75 17.0534 3.71906 18.75 7.38158 18.75Z" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </a>
-        <a href="{{ routes.cart_url }}" class="cart-button" id="cart-icon-bubble">
+        <a href="{{ routes.cart_url }}"  aria-hidden="true" class="cart-button" id="cart-icon-bubble">
           <span class="visually-hidden">{{ 'cart.title' | t }}</span>
           <svg
             class="icon icon-cart"
