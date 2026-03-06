@@ -90,7 +90,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M0.666992 0.666992L4.66699 4.66699L8.66699 0.666992" stroke="#717182" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </span>
                 </div>
-                <div class="answer_text_block" style="color: {{ block.settings.content_color }};--purchase-font-size: {{ block.settings.content_font }}px;">
+                <div class="answer_text_block" style="color: {{ block.settings.content_color }};--content-font-size: {{ block.settings.content-font-size }}px;">
                     <div class="ans-content">{{ block.settings.answer }}</div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
               {% if block.settings.review_content != blank %}
                 <div
                   class="content_text_block"
-                  style="color: {{ block.settings.content_color }};--purchase-font-size: {{ block.settings.content_font }}px;"
+                  style="color: {{ block.settings.content_color }};--content-font-size: {{ block.settings.content-font-size }}px;"
                 >
                   {{ block.settings.review_content }}
                 </div>
