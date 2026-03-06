@@ -11,13 +11,14 @@
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="reduce-logo-size"
   {% endif %}
+  role="header"
   style="--padding-top-mobile:{{- section.settings.padding_top | times : 0.5 -}}px;
   --padding-bottom-mobile:{{- section.settings.padding_bottom | times: 0.5 -}}px;
   --padding-top-desktop:{{- section.settings.padding_top -}}px;
   --padding-bottom-desktop:{{- section.settings.padding_bottom -}}px;"
   class="{% if section.settings.show_line_separator %} border-bottom {% endif %}{% if section.settings.header_transparent and template contains 'index' or section.settings.header_transparent and template contains 'collection' or section.settings.header_transparent and product.metafields.custom.feature_slide_images.value.size >= 1 or template contains 'product.zoom-service' %} header_transparent {% endif %} headerSection color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
 >
-  <header role="header" class="headerWrapper page-width {% if section.menu_type_desktop == 'drawar' %}drawr-menu {% elsif section.settings.menu_type_desktop == 'dropdwon' %} dropdown_menu {% else %} desktop_mega_menu {% endif %}">
+  <header  class="headerWrapper page-width {% if section.menu_type_desktop == 'drawar' %}drawr-menu {% elsif section.settings.menu_type_desktop == 'dropdwon' %} dropdown_menu {% else %} desktop_mega_menu {% endif %}">
     <div class="mobile_drawer">
       <div class="header__buttons open-mobile-menu">
         <div class="mb_button" style="cursor: pointer;display: flex;">
