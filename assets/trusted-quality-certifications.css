@@ -109,6 +109,9 @@
     height: 100%;
     object-fit: contain;
 }
+.content_text_block {
+    font-size: var(--block-text-font-size);
+}
 .featured_logo_images img {
     width: auto;
 }
