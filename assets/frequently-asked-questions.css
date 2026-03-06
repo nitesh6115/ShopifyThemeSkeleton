@@ -47,6 +47,7 @@
     justify-content: center;
     gap: 10px;
     cursor: pointer;
+    font-size: 15px;
 }
 .btn_style:hover {
     background: var(--btn-hover-bg);
