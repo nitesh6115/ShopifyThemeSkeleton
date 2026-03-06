@@ -49,17 +49,30 @@
       }
       
       :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
-        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+        --font-heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+        --font-body: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+        --font-nav: {{ settings.nav_font.family }}, {{ settings.nav_font.fallback_families }};
+        --font-button: {{ settings.button_font.family }}, {{ settings.button_font.fallback_families }};
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+        --base-size: {{ settings.base_font_size }}px;
+        --scale: {{ settings.heading_scale }};
+        --mobile-scale: {{ settings.mobile_scale }};
 
-        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
-        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+        /* Heading scale */
+
+        --h6: calc(var(--base-size) * var(--scale));
+        --h5: calc(var(--h6) * var(--scale));
+        --h4: calc(var(--h5) * var(--scale));
+        --h3: calc(var(--h4) * var(--scale));
+        --h2: calc(var(--h3) * var(--scale));
+        --h1: calc(var(--h2) * var(--scale));
+
+        /* Fluid headings */
+
+        --fluid-h1: clamp(calc(var(--h1) * var(--mobile-scale)), 4vw, var(--h1));
+        --fluid-h2: clamp(calc(var(--h2) * var(--mobile-scale)), 3vw, var(--h2));
+        --fluid-h3: clamp(calc(var(--h3) * var(--mobile-scale)), 2.5vw, var(--h3));
+        --fluid-h4: clamp(calc(var(--h4) * var(--mobile-scale)), 2vw, var(--h4));
 
         --media-padding: {{ settings.media_padding }}px;
         --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
