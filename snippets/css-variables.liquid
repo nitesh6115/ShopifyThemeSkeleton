@@ -1,5 +1,8 @@
 {% style %}
- 
+  {{ settings.heading_font | font_face: font_display: 'swap' }}
+  {{ settings.body_font | font_face: font_display: 'swap' }}
+  {{ settings.nav_font | font_face: font_display: 'swap' }}
+  {{ settings.button_font | font_face: font_display: 'swap' }}
   
   {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
