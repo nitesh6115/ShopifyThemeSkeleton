@@ -1,6 +1,11 @@
 <div class="page-width">
 <h1>{{ collection.title }}</h1>
-<div class="collection-products grid">
+<div class="collection-products grid " style="
+    --desktop-columns: {{ section.settings.products_per_row_desktop }};
+    --mobile-columns: {{ section.settings.products_per_row_mobile }};
+    --grid-horizontal: {{ section.settings.grid_horizontal_spacing }}px;
+    --grid-vertical: {{ section.settings.grid_vertical_spacing }}px;
+  ">
   {% paginate collection.products by 20 %}
     {% for product in collection.products %}
       <div class="collection-product">
