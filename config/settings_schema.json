@@ -119,114 +119,109 @@
     ]
   },
   {
-  "name": "Typography",
-  "settings": [
-
-    {
-      "type": "header",
-      "content": "Font Families"
-    },
-
-    {
-      "type": "font_picker",
-      "id": "heading_font",
-      "label": "Heading Font",
-      "default": "inter_n6"
-    },
-
-    {
-      "type": "font_picker",
-      "id": "body_font",
-      "label": "Body Font",
-      "default": "inter_n4"
-    },
-
-    {
-      "type": "font_picker",
-      "id": "nav_font",
-      "label": "Navigation Font",
-      "default": "inter_n5"
-    },
-
-    {
-      "type": "font_picker",
-      "id": "button_font",
-      "label": "Button Font",
-      "default": "inter_n6"
-    },
-
-    {
-      "type": "header",
-      "content": "Typography Scale"
-    },
-
-    {
-      "type": "range",
-      "id": "base_font_size",
-      "label": "Base Font Size",
-      "min": 14,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-
-    {
-      "type": "range",
-      "id": "heading_scale",
-      "label": "Heading Scale Ratio",
-      "min": 1.1,
-      "max": 1.5,
-      "step": 0.1,
-      "default": 1.2
-    },
-
-    {
-      "type": "header",
-      "content": "Mobile Typography"
-    },
-
-    {
-      "type": "range",
-      "id": "mobile_scale",
-      "label": "Mobile Font Scale",
-      "min": 1.1,
-      "max": 1.5,
-      "step": 0.1,
-      "default": 1.2
-    },
-
-    {
-      "type": "header",
-      "content": "Button Typography"
-    },
-
-    {
-      "type": "range",
-      "id": "button_size",
-      "label": "Button Font Size",
-      "min": 12,
-      "max": 22,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-
-    {
-      "type": "select",
-      "id": "button_transform",
-      "label": "Button Text Transform",
-      "options": [
-        { "value": "none", "label": "Normal" },
-        { "value": "uppercase", "label": "Uppercase" },
-        { "value": "capitalize", "label": "Capitalize" }
-      ],
-      "default": "uppercase"
-    }
-
-  ]
-},
-{
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Families"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "default": "inter_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body Font",
+        "default": "inter_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "nav_font",
+        "label": "Navigation Font",
+        "default": "inter_n5"
+      },
+      {
+        "type": "font_picker",
+        "id": "button_font",
+        "label": "Button Font",
+        "default": "inter_n6"
+      },
+      {
+        "type": "header",
+        "content": "Typography Scale"
+      },
+      {
+        "type": "range",
+        "id": "base_font_size",
+        "label": "Base Font Size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "label": "Heading Scale Ratio",
+        "min": 1.1,
+        "max": 1.5,
+        "step": 0.1,
+        "default": 1.2
+      },
+      {
+        "type": "header",
+        "content": "Mobile Typography"
+      },
+      {
+        "type": "range",
+        "id": "mobile_scale",
+        "label": "Mobile Font Scale",
+        "min": 1.1,
+        "max": 1.5,
+        "step": 0.1,
+        "default": 1.2
+      },
+      {
+        "type": "header",
+        "content": "Button Typography"
+      },
+      {
+        "type": "range",
+        "id": "button_size",
+        "label": "Button Font Size",
+        "min": 12,
+        "max": 22,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "button_transform",
+        "label": "Button Text Transform",
+        "options": [
+          {
+            "value": "none",
+            "label": "Normal"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ],
+        "default": "uppercase"
+      }
+    ]
+  },
+  {
     "name": "t:general.layout",
     "settings": [
       {
@@ -254,6 +249,298 @@
         "unit": "px",
         "label": "t:labels.page_margin",
         "default": 20
+      }
+    ]
+  },
+  {
+    "name": "Media",
+    "settings": [
+      {
+        "type": "range",
+        "id": "media_padding",
+        "label": "Media padding",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 0,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "media_border_thickness",
+        "label": "Media border thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "default": 0,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "media_border_opacity",
+        "label": "Media border opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 0,
+        "unit": "%"
+      },
+      {
+        "type": "range",
+        "id": "media_radius",
+        "label": "Media corner radius",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 0,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_opacity",
+        "label": "Media shadow opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 0,
+        "unit": "%"
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_horizontal_offset",
+        "label": "Shadow horizontal offset",
+        "min": -20,
+        "max": 20,
+        "step": 1,
+        "default": 0,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_vertical_offset",
+        "label": "Shadow vertical offset",
+        "min": -20,
+        "max": 20,
+        "step": 1,
+        "default": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_blur",
+        "label": "Shadow blur",
+        "min": 0,
+        "max": 60,
+        "step": 2,
+        "default": 10,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Product Cards",
+    "settings": [
+      {
+        "type": "range",
+        "id": "card_image_padding",
+        "label": "Image padding",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_corner_radius",
+        "label": "Corner radius",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 8
+      },
+      {
+        "type": "select",
+        "id": "card_text_alignment",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "card_border_thickness",
+        "label": "Border thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_border_opacity",
+        "label": "Border opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 10
+      }
+    ]
+  },
+  {
+    "name": "Spacing",
+    "settings": [
+      {
+        "type": "range",
+        "id": "spacing_sections",
+        "label": "Section spacing",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 48,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_vertical",
+        "label": "Grid vertical spacing",
+        "min": 0,
+        "max": 80,
+        "step": 4,
+        "default": 24,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_horizontal",
+        "label": "Grid horizontal spacing",
+        "min": 0,
+        "max": 80,
+        "step": 4,
+        "default": 24,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Buttons",
+    "settings": [
+      {
+        "type": "range",
+        "id": "buttons_radius",
+        "label": "Button radius",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 6,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "buttons_border_thickness",
+        "label": "Border thickness",
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "default": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "buttons_border_opacity",
+        "label": "Border opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 100,
+        "unit": "%"
+      },
+      {
+        "type": "range",
+        "id": "buttons_shadow_opacity",
+        "label": "Shadow opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 0,
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "name": "Inputs",
+    "settings": [
+      {
+        "type": "range",
+        "id": "inputs_radius",
+        "label": "Input radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "default": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "inputs_border_thickness",
+        "label": "Input border thickness",
+        "min": 0,
+        "max": 6,
+        "step": 1,
+        "default": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "inputs_border_opacity",
+        "label": "Input border opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 50,
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "name": "Variant Pills",
+    "settings": [
+      {
+        "type": "range",
+        "id": "variant_pills_radius",
+        "label": "Variant pill radius",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 50,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "variant_pills_border_thickness",
+        "label": "Border thickness",
+        "min": 0,
+        "max": 6,
+        "step": 1,
+        "default": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "variant_pills_border_opacity",
+        "label": "Border opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 40,
+        "unit": "%"
       }
     ]
   }
