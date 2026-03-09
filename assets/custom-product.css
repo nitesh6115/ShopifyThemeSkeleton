@@ -237,7 +237,9 @@ label#seal-purchase-options-label {
   text-decoration: line-through;
   cursor: not-allowed !important;
 }
-
+.product-option label {
+    font-size: 14px;
+}
 .product-option .option-value {
     min-height: 44px;
     padding: 0 15px;
@@ -246,6 +248,7 @@ label#seal-purchase-options-label {
     border-radius: var(--pill-radius);
     color: var(--pill-text);
     cursor: pointer;
+    font-size: 14px;
 }
 
 .product-option .option-values {
