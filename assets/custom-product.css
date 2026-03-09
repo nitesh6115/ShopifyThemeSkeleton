@@ -244,7 +244,7 @@ label#seal-purchase-options-label {
     background: var(--pill-bg);
     border: var(--pill-border-width) solid var(--pill-border);
     border-radius: var(--pill-radius);
-    color: var(--pill-text-color);
+    color: var(--pill-text);
     cursor: pointer;
 }
 
