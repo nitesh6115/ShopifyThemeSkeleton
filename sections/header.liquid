@@ -763,6 +763,11 @@ product-info>.page-width {
     bookinglink {
       display: none;
     }
+    .headerWrapper.nav_text_left .desktopMenu {
+        display: flex;
+        flex: 1;
+        justify-content: flex-start;
+      }
       /*======================= Desktop Menu =====================*/
     @media screen and (min-width: 990px) {
       .header.headerWrapper {
@@ -776,11 +781,7 @@ product-info>.page-width {
         flex-direction: row;
         gap: var(--grid-desktop-horizontal-spacing);
       }
-      .headerWrapper.nav_text_left .desktopMenu {
-        display: flex;
-        flex: 1;
-        justify-content: flex-start;
-      }
+      
       .leftheader {
         display: flex;
         align-items: center;
