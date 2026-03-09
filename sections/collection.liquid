@@ -1,6 +1,6 @@
 <div class="page-width">
 <h1>{{ collection.title }}</h1>
-<div class="collection-products">
+<div class="collection-products grid">
   {% paginate collection.products by 20 %}
     {% for product in collection.products %}
       <div class="collection-product">
