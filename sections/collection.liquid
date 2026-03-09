@@ -1,6 +1,6 @@
 <div class="page-width">
 <h1>{{ collection.title }}</h1>
-<div class="product-grid grid " style="
+<div class="collection-product product-grid grid " style="
     --desktop-columns: {{ section.settings.products_per_row_desktop }};
     --mobile-columns: {{ section.settings.products_per_row_mobile }};
     --grid-horizontal: {{ section.settings.grid_horizontal_spacing }}px;
@@ -8,7 +8,7 @@
   ">
   {% paginate collection.products by 20 %}
     {% for product in collection.products %}
-      <div class="collection-product">
+      <div class="collection-product grid-item">
         {% if product.featured_image %}
           {% render 'image',
             class: 'collection-product__image',
