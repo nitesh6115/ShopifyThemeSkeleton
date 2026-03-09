@@ -360,6 +360,47 @@ textarea {
   margin-top: 10px;
 
 }
+.product-card__media {
+
+  position: relative;
+  overflow: hidden;
+
+}
+
+.product-card__image {
+
+  width: 100%;
+  height: auto;
+  display: block;
+
+}
+
+.product-card__image.hover-image {
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  transition: opacity .3s ease;
+
+}
+
+.product-card:hover .hover-image {
+
+  opacity: 1;
+
+}
+.ratio-square {
+  aspect-ratio: 1 / 1;
+}
+
+.ratio-portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.ratio-landscape {
+  aspect-ratio: 4 / 3;
+}
 @media screen and (max-width: 749px) {
 
 .product-grid {
