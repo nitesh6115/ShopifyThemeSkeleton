@@ -76,9 +76,14 @@ body {
 }
 .page-width{
   max-width: var(--page-width);
-  padding: 0 var(--page-margin);
+  padding: 0 var(--spacing-sections-mobile);
   margin: 0 auto;
   width: 100%;
+}
+@media (min-width: 990px){
+	.page-width{
+  padding: 0 var(--spacing-sections-desktop);
+}
 }
 .shopify-section {
   --content-width: min(
