@@ -200,6 +200,71 @@ button.shopify-payment-button__button--unbranded {
 .icon{
   width: 24px;
 }
+.product-card {
+
+  border-radius: var(--product-card-corner-radius);
+  text-align: var(--product-card-text-alignment);
+
+  border: calc(var(--product-card-border-width))
+    solid rgba(0,0,0,var(--product-card-border-opacity));
+
+  box-shadow:
+    calc(var(--product-card-shadow-horizontal-offset))
+    calc(var(--product-card-shadow-vertical-offset))
+    calc(var(--product-card-shadow-blur-radius))
+    rgba(0,0,0,var(--product-card-shadow-opacity));
+
+}
+input,
+select,
+textarea {
+
+  border-radius: var(--inputs-radius);
+
+  border:
+    var(--inputs-border-width)
+    solid rgba(0,0,0,var(--inputs-border-opacity));
+
+  box-shadow:
+    var(--inputs-shadow-horizontal-offset)
+    var(--inputs-shadow-vertical-offset)
+    var(--inputs-shadow-blur-radius)
+    rgba(0,0,0,var(--inputs-shadow-opacity));
+
+}
+.shopify-section {
+
+  margin-top: var(--spacing-sections-desktop);
+  margin-bottom: var(--spacing-sections-desktop);
+
+}
+
+@media screen and (max-width: 749px) {
+
+  .shopify-section {
+
+    margin-top: var(--spacing-sections-mobile);
+    margin-bottom: var(--spacing-sections-mobile);
+
+  }
+
+}
+.grid {
+
+  display: grid;
+  gap: var(--grid-desktop-vertical-spacing) var(--grid-desktop-horizontal-spacing);
+
+}
+
+@media screen and (max-width: 749px) {
+
+  .grid {
+
+    gap: var(--grid-mobile-vertical-spacing) var(--grid-mobile-horizontal-spacing);
+
+  }
+
+}
 
 @media screen and (max-width: 1023px) {
 .small-hide {
