@@ -295,6 +295,9 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
     opacity: 0.5;
     pointer-events: none;
 }
+.content ul li{
+  font-size: 14px;
+}
 
 .buy_now_enabled  .shopify-payment-button {
     margin-top: 1rem;
