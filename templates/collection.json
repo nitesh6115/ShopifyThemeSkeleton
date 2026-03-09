@@ -11,7 +11,18 @@
   "sections": {
     "main": {
       "type": "collection",
-      "settings": {}
+      "settings": {
+        "products_per_row_desktop": 4,
+        "products_per_row_mobile": 2,
+        "grid_horizontal_spacing": 20,
+        "grid_vertical_spacing": 20,
+        "product_image_ratio": "square",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true
+      }
     }
   },
   "order": [
