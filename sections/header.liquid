@@ -70,9 +70,9 @@
         {%- if settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_height | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_height | times: 2 }}px) 50vw, {{ settings.logo_height }}px{% endcapture %}
-            {% capture widths %}{{ settings.logo_height }}, {{ settings.logo_height | times: 1.5 | round }}, {{ settings.logo_height | times: 2 }}{% endcapture %}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
             {{
               settings.logo
               | image_url: width: 600
@@ -80,7 +80,7 @@
                 class: 'header__logo motion-reduce',
                 widths: widths,
                 height: logo_height,
-                width: settings.logo_height,
+                width: settings.logo_width,
                 alt: logo_alt,
                 sizes: sizes,
                 fetchpriority:"high",
