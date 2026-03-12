@@ -107,7 +107,7 @@
   }
 
   /* Overlay */
-  .section-{{ section.id }} .overlay {
+  .section-{{ section.id }} .section-overlay {
     position:absolute;
     inset:0;
     background: {{ section.settings.overlay_color }};
@@ -147,7 +147,7 @@
   {% endif %}
 
   {% if section.settings.overlay_color != blank %}
-    <div class="overlay"></div>
+    <div class="section-overlay"></div>
   {% endif %}
 
   <div class="container">
