@@ -1,41 +1,181 @@
 {% doc %}
-  Renders a text block.
-
-  @example
-  {% content_for 'block', type: 'text', id: 'text' %}
+Advanced Text Block
 {% enddoc %}
 
 <div
   class="text_block"
-  style="--text-align: {{ block.settings.alignment }}"
+  style="
+    --text-align: {{ block.settings.alignment }};
+
+    --font-size-desktop: {{ block.settings.font_size }}px;
+    --font-size-mobile: {{ block.settings.font_size_mobile }}px;
+
+    --text-color: {{ block.settings.color }};
+
+    --bg: {{ block.settings.background }};
+
+    --radius: {{ block.settings.radius }}px;
+
+    --border-size: {{ block.settings.border_size }}px;
+    --border-color: {{ block.settings.border_color }};
+
+    --padding: {{ block.settings.padding }}px;
+  "
   {{ block.shopify_attributes }}
 >
   {{ block.settings.text }}
 </div>
 
+
 {% stylesheet %}
+
+.text_block {
+
+  text-align: var(--text-align);
+
+  font-size: var(--font-size-desktop);
+
+  color: var(--text-color);
+
+  background: var(--bg);
+
+  border-radius: var(--radius);
+
+  border-style: solid;
+  border-width: var(--border-size);
+  border-color: var(--border-color);
+
+  padding: var(--padding);
+
+}
+
+
+/* mobile */
+
+@media screen and (max-width: 749px) {
+
   .text_block {
-    text-align: var(--text-align);
+    font-size: var(--font-size-mobile);
   }
+
+}
+
 {% endstylesheet %}
+
+
 
 {% schema %}
 {
   "name": "Text",
+
   "settings": [
+
     {
-      "type": "text",
+      "type": "textarea",
       "id": "text",
       "label": "Text",
       "default": "Text"
     },
+
     {
       "type": "text_alignment",
       "id": "alignment",
       "label": "Alignment",
       "default": "left"
+    },
+
+
+
+    {
+      "type": "header",
+      "content": "Font"
+    },
+
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size desktop",
+      "min": 8,
+      "max": 80,
+      "step": 1,
+      "default": 16
+    },
+
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size mobile",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "default": 14
+    },
+
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Font color",
+      "default": "#000000"
+    },
+
+
+
+    {
+      "type": "header",
+      "content": "Background"
+    },
+
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background color"
+    },
+
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0
+    },
+
+    {
+      "type": "range",
+      "id": "border_size",
+      "label": "Border size",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#000000"
+    },
+
+
+
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
     }
+
   ],
-  "presets": [{ "name": "Text" }]
+
+  "presets": [
+    {
+      "name": "Text"
+    }
+  ]
 }
 {% endschema %}
