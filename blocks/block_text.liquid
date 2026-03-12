@@ -6,26 +6,18 @@ Advanced Text Block
   class="text_block"
   style="
     --text-align: {{ block.settings.alignment }};
-
     --font-size-desktop: {{ block.settings.font_size }}px;
     --font-size-mobile: {{ block.settings.font_size_mobile }}px;
-
     --font-weight: {{ block.settings.font_weight }};
-
     --text-color: {{ block.settings.color }};
-
     --bg: {{ block.settings.background }};
-
     --radius: {{ block.settings.radius }}px;
-
     --border-size: {{ block.settings.border_size }}px;
     --border-color: {{ block.settings.border_color }};
-
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
     --pl: {{ block.settings.pl }}px;
     --pr: {{ block.settings.pr }}px;
-
     --pt-m: {{ block.settings.pt_m }}px;
     --pb-m: {{ block.settings.pb_m }}px;
     --pl-m: {{ block.settings.pl_m }}px;
@@ -38,37 +30,23 @@ Advanced Text Block
 
 
 {% stylesheet %}
-
 .text_block {
-
   text-align: var(--text-align);
-
   font-size: var(--font-size-desktop);
-
   font-weight: var(--font-weight);
-
   color: var(--text-color);
-
   background: var(--bg);
-
   border-radius: var(--radius);
-
   border-style: solid;
   border-width: var(--border-size);
   border-color: var(--border-color);
-
   padding-top: var(--pt);
   padding-bottom: var(--pb);
   padding-left: var(--pl);
   padding-right: var(--pr);
-
 }
-
-
 /* mobile */
-
 @media screen and (max-width: 749px) {
-
   .text_block {
     font-size: var(--font-size-mobile);
     padding-top: var(--pt-m);
@@ -76,13 +54,9 @@ Advanced Text Block
     padding-left: var(--pl-m);
     padding-right: var(--pr-m);
   }
-
 }
 
-
 {% endstylesheet %}
-
-
 
 {% schema %}
 {
