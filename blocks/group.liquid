@@ -36,6 +36,15 @@
     --pbm: {{ block.settings.pbm }}px;
     --plm: {{ block.settings.plm }}px;
     --prm: {{ block.settings.prm }}px;
+    {% if block.settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+    {% endif %} 
   "
   {{ block.shopify_attributes }}
 >
