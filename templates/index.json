@@ -88,140 +88,14 @@
     },
     "custom_section_hAq4DK": {
       "type": "custom-section",
-      "blocks": {
-        "group_AMtJrk": {
-          "type": "group",
-          "name": "Top Header",
-          "settings": {
-            "layout_direction": "group--vertical",
-            "background": "",
-            "radius": 0,
-            "border_color": "",
-            "border_size": 0,
-            "width_mode": "full",
-            "width_custom": 100,
-            "height_mode": "fit",
-            "height_custom": 300,
-            "overlay_gradient": "",
-            "gap_x": 0,
-            "gap_y": 0,
-            "gap_x_mobile": 0,
-            "gap_y_mobile": 0,
-            "padding": 0
-          },
-          "blocks": {
-            "group_ng7cyd": {
-              "type": "group",
-              "name": "Column",
-              "settings": {
-                "layout_direction": "group--horizontal",
-                "background": "",
-                "radius": 0,
-                "border_color": "",
-                "border_size": 0,
-                "width_mode": "full",
-                "width_custom": 100,
-                "height_mode": "fit",
-                "height_custom": 300,
-                "overlay_gradient": "",
-                "gap_x": 0,
-                "gap_y": 0,
-                "gap_x_mobile": 0,
-                "gap_y_mobile": 0,
-                "padding": 0
-              },
-              "blocks": {
-                "text_diTNfX": {
-                  "type": "text",
-                  "name": "t:general.text",
-                  "settings": {
-                    "text": "Text",
-                    "text_style": "text--title",
-                    "alignment": "left"
-                  },
-                  "blocks": {}
-                },
-                "text_THXVn7": {
-                  "type": "text",
-                  "name": "t:general.text",
-                  "settings": {
-                    "text": "Text",
-                    "text_style": "text--title",
-                    "alignment": "left"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_diTNfX",
-                "text_THXVn7"
-              ]
-            },
-            "text_RA6HF4": {
-              "type": "text",
-              "name": "t:general.text",
-              "settings": {
-                "text": "Text",
-                "text_style": "text--subtitle",
-                "alignment": "left"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "group_ng7cyd",
-            "text_RA6HF4"
-          ]
-        },
-        "group_3N9dYg": {
-          "type": "group",
-          "name": "t:general.column",
-          "settings": {
-            "layout_direction": "group--horizontal",
-            "background": "",
-            "radius": 0,
-            "border_color": "",
-            "border_size": 0,
-            "width_mode": "full",
-            "width_custom": 100,
-            "height_mode": "fit",
-            "height_custom": 300,
-            "overlay_gradient": "",
-            "gap_x": 0,
-            "gap_y": 0,
-            "gap_x_mobile": 0,
-            "gap_y_mobile": 0,
-            "padding": 0
-          },
-          "blocks": {
-            "text_D88tyc": {
-              "type": "text",
-              "name": "t:general.text",
-              "settings": {
-                "text": "Text",
-                "text_style": "text--title",
-                "alignment": "left"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_D88tyc"
-          ]
-        }
-      },
-      "block_order": [
-        "group_AMtJrk",
-        "group_3N9dYg"
-      ],
       "name": "Premium Global Section",
       "settings": {
         "section_width": "full",
         "custom_width": 1200,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
+        "padding_top_desktop": 112,
+        "padding_bottom_desktop": 100,
         "padding_left_desktop": 0,
         "padding_right_desktop": 0,
         "padding_left_mobile": 0,
