@@ -94,10 +94,43 @@
           "name": "Top Header",
           "settings": {
             "layout_direction": "group--vertical",
-            "alignment": "flex-start",
             "padding": 0
           },
           "blocks": {
+            "group_ng7cyd": {
+              "type": "group",
+              "name": "Column",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "padding": 0
+              },
+              "blocks": {
+                "text_diTNfX": {
+                  "type": "text",
+                  "name": "t:general.text",
+                  "settings": {
+                    "text": "Text",
+                    "text_style": "text--title",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "text_THXVn7": {
+                  "type": "text",
+                  "name": "t:general.text",
+                  "settings": {
+                    "text": "Text",
+                    "text_style": "text--title",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_diTNfX",
+                "text_THXVn7"
+              ]
+            },
             "text_RA6HF4": {
               "type": "text",
               "name": "t:general.text",
@@ -110,6 +143,7 @@
             }
           },
           "block_order": [
+            "group_ng7cyd",
             "text_RA6HF4"
           ]
         },
@@ -118,7 +152,6 @@
           "name": "t:general.column",
           "settings": {
             "layout_direction": "group--horizontal",
-            "alignment": "flex-start",
             "padding": 0
           },
           "blocks": {
