@@ -1,40 +1,30 @@
 {% doc %}
-Advanced Group Block
+  Advanced Group Block
 {% enddoc %}
-
 <div
-  class="group
+  class="
+    group
     {{ block.settings.layout_direction }}
     width--{{ block.settings.width_mode }}
     height--{{ block.settings.height_mode }}
   "
-
   style="
     --padding: {{ block.settings.padding }}px;
-
     --alignment: {{ block.settings.alignment }};
-
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
-
     --border-size: {{ block.settings.border_size }}px;
     --border-color: {{ block.settings.border_color }};
-
     --width-custom: {{ block.settings.width_custom }}%;
-    --height-custom: {{ block.settings.height_custom }}px;
-
+    --height-custom: {{ block.settings.height_custom }}{{ block.settings.height_unit }};
     --overlay: {{ block.settings.overlay_gradient }};
-
     --gap-x: {{ block.settings.gap_x }}px;
     --gap-y: {{ block.settings.gap_y }}px;
-
     --gap-x-mobile: {{ block.settings.gap_x_mobile }}px;
     --gap-y-mobile: {{ block.settings.gap_y_mobile }}px;
   "
-
   {{ block.shopify_attributes }}
 >
-
   <div class="group__inner">
     {% content_for 'blocks' %}
   </div>
@@ -42,134 +32,125 @@ Advanced Group Block
   {% if block.settings.overlay_gradient != blank %}
     <div class="group__overlay"></div>
   {% endif %}
-
 </div>
 
-
 {% stylesheet %}
-
-.group {
-
-  display: flex;
-  overflow: hidden;
-
-  background: var(--bg);
-
-  border-radius: var(--radius);
-
-  border-style: solid;
-  border-width: var(--border-size);
-  border-color: var(--border-color);
-
-  gap: var(--gap-y) var(--gap-x);
-
-  position: relative;
-
-}
-
-
-/* inner */
-
-.group__inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 2;
-}
-
-
-/* overlay */
-
-.group__overlay {
-
-  position: absolute;
-  inset: 0;
-
-  background: var(--overlay);
-
-  z-index: 1;
-
-}
-
-
-/* direction */
-
-.group--horizontal {
-
-  flex-direction: row;
-  align-items: center;
-
-  padding: 0 var(--padding);
-
-}
-
-.group--vertical {
-
-  flex-direction: column;
-
-  align-items: var(--alignment);
-
-  padding: var(--padding) 0;
-
-}
-
-
-/* width */
-
-.width--fit {
-  width: auto;
-}
-
-.width--full {
-  width: 100%;
-}
-
-.width--custom {
-  width: var(--width-custom);
-}
-
-
-/* height */
-
-.height--fit {
-  height: auto;
-}
-
-.height--full {
-  height: 100%;
-}
-
-.height--custom {
-  height: var(--height-custom);
-}
-
-
-/* mobile gap */
-
-@media screen and (max-width: 749px) {
-
   .group {
 
-    gap: var(--gap-y-mobile) var(--gap-x-mobile);
+    display: flex;
+    overflow: hidden;
+
+    background: var(--bg);
+
+    border-radius: var(--radius);
+
+    border-style: solid;
+    border-width: var(--border-size);
+    border-color: var(--border-color);
+
+    gap: var(--gap-y) var(--gap-x);
+
+    position: relative;
 
   }
 
-}
 
+  /* inner */
+
+  .group__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+
+  /* overlay */
+
+  .group__overlay {
+
+    position: absolute;
+    inset: 0;
+
+    background: var(--overlay);
+
+    z-index: 1;
+
+  }
+
+
+  /* direction */
+
+  .group--horizontal {
+
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0 var(--padding);
+
+  }
+
+  .group--vertical {
+
+    flex-direction: column;
+
+    align-items: var(--alignment);
+
+    padding: var(--padding) 0;
+
+  }
+
+
+  /* width */
+
+  .width--fit {
+    width: auto;
+  }
+
+  .width--full {
+    width: 100%;
+  }
+
+  .width--custom {
+    width: var(--width-custom);
+  }
+
+
+  /* height */
+
+  .height--fit {
+    height: auto;
+  }
+
+  .height--full {
+    height: 100%;
+  }
+
+  .height--custom {
+    height: var(--height-custom);
+  }
+
+
+  /* mobile gap */
+
+  @media screen and (max-width: 749px) {
+
+    .group {
+
+      gap: var(--gap-y-mobile) var(--gap-x-mobile);
+
+    }
+
+  }
 {% endstylesheet %}
-
-
 
 {% schema %}
 {
   "name": "Group",
 
-  "blocks": [
-    { "type": "@theme" }
-  ],
+  "blocks": [{ "type": "@theme" }],
 
   "settings": [
-
     {
       "type": "select",
       "id": "layout_direction",
@@ -180,8 +161,6 @@ Advanced Group Block
         { "value": "group--vertical", "label": "Column" }
       ]
     },
-
-
 
     {
       "type": "color",
@@ -215,8 +194,6 @@ Advanced Group Block
       "default": 0
     },
 
-
-
     {
       "type": "select",
       "id": "width_mode",
@@ -239,8 +216,6 @@ Advanced Group Block
       "default": 100
     },
 
-
-
     {
       "type": "select",
       "id": "height_mode",
@@ -257,21 +232,31 @@ Advanced Group Block
       "type": "range",
       "id": "height_custom",
       "label": "Custom height",
-      "min": 50,
-      "max": 1000,
-      "step": 10,
-      "default": 300
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 100,
+      "visible_if": "{{ block.settings.height_mode == 'custom' }}"
     },
 
-
+    {
+      "type": "select",
+      "id": "height_unit",
+      "label": "Height unit",
+      "default": "%",
+      "options": [
+        { "value": "px", "label": "px" },
+        { "value": "%", "label": "%" },
+        { "value": "vh", "label": "vh" }
+      ],
+      "visible_if": "{{ block.settings.height_mode == 'custom' }}"
+    },
 
     {
       "type": "text",
       "id": "overlay_gradient",
       "label": "Overlay gradient"
     },
-
-
 
     {
       "type": "header",
@@ -298,8 +283,6 @@ Advanced Group Block
       "default": 0
     },
 
-
-
     {
       "type": "header",
       "content": "Gap Mobile"
@@ -325,8 +308,6 @@ Advanced Group Block
       "default": 0
     },
 
-
-
     {
       "type": "range",
       "id": "padding",
@@ -336,9 +317,7 @@ Advanced Group Block
       "step": 2,
       "default": 0
     }
-
   ],
-
 
   "presets": [
     {
@@ -348,6 +327,5 @@ Advanced Group Block
       "name": "Column"
     }
   ]
-
 }
 {% endschema %}
