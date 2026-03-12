@@ -3,7 +3,7 @@
 {% enddoc %}
 
 <div
-  class="text_block"
+ 
   style="
     --text-align: {{ block.settings.alignment }};
     --font-size-desktop: {{ block.settings.font_size }}px;
@@ -30,7 +30,7 @@
   "
   {{ block.shopify_attributes }}
 >
-  {{ block.settings.text }}
+ <div class="text_block"> {{ block.settings.text }}</div>
 </div>
 
 {% stylesheet %}
