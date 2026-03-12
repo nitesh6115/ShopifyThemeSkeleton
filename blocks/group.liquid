@@ -1,105 +1,353 @@
 {% doc %}
-  Renders a group of blocks with configurable layout direction, gap and
-  alignment.
-
-  All settings apply to only one dimension to reduce configuration complexity.
-
-  This component is a wrapper concerned only with rendering its children in
-  the specified layout direction with appropriate padding and alignment.
-
-  @example
-  {% content_for 'block', type: 'group', id: 'group' %}
+Advanced Group Block
 {% enddoc %}
 
 <div
-  class="group {{ block.settings.layout_direction }}"
+  class="group
+    {{ block.settings.layout_direction }}
+    width--{{ block.settings.width_mode }}
+    height--{{ block.settings.height_mode }}
+  "
+
   style="
     --padding: {{ block.settings.padding }}px;
+
     --alignment: {{ block.settings.alignment }};
+
+    --bg: {{ block.settings.background }};
+    --radius: {{ block.settings.radius }}px;
+
+    --border-size: {{ block.settings.border_size }}px;
+    --border-color: {{ block.settings.border_color }};
+
+    --width-custom: {{ block.settings.width_custom }}%;
+    --height-custom: {{ block.settings.height_custom }}px;
+
+    --overlay: {{ block.settings.overlay_gradient }};
+
+    --gap-x: {{ block.settings.gap_x }}px;
+    --gap-y: {{ block.settings.gap_y }}px;
+
+    --gap-x-mobile: {{ block.settings.gap_x_mobile }}px;
+    --gap-y-mobile: {{ block.settings.gap_y_mobile }}px;
   "
+
   {{ block.shopify_attributes }}
 >
-  {% content_for 'blocks' %}
+
+  <div class="group__inner">
+    {% content_for 'blocks' %}
+  </div>
+
+  {% if block.settings.overlay_gradient != blank %}
+    <div class="group__overlay"></div>
+  {% endif %}
+
 </div>
 
+
 {% stylesheet %}
+
+.group {
+
+  display: flex;
+  overflow: hidden;
+
+  background: var(--bg);
+
+  border-radius: var(--radius);
+
+  border-style: solid;
+  border-width: var(--border-size);
+  border-color: var(--border-color);
+
+  gap: var(--gap-y) var(--gap-x);
+
+  position: relative;
+
+}
+
+
+/* inner */
+
+.group__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* overlay */
+
+.group__overlay {
+
+  position: absolute;
+  inset: 0;
+
+  background: var(--overlay);
+
+  z-index: 1;
+
+}
+
+
+/* direction */
+
+.group--horizontal {
+
+  flex-direction: row;
+  align-items: center;
+
+  padding: 0 var(--padding);
+
+}
+
+.group--vertical {
+
+  flex-direction: column;
+
+  align-items: var(--alignment);
+
+  padding: var(--padding) 0;
+
+}
+
+
+/* width */
+
+.width--fit {
+  width: auto;
+}
+
+.width--full {
+  width: 100%;
+}
+
+.width--custom {
+  width: var(--width-custom);
+}
+
+
+/* height */
+
+.height--fit {
+  height: auto;
+}
+
+.height--full {
+  height: 100%;
+}
+
+.height--custom {
+  height: var(--height-custom);
+}
+
+
+/* mobile gap */
+
+@media screen and (max-width: 749px) {
+
   .group {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    width: 100%;
+
+    gap: var(--gap-y-mobile) var(--gap-x-mobile);
+
   }
 
-  .group--horizontal {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--padding);
-  }
+}
 
-  .group--vertical {
-    flex-direction: column;
-    align-items: var(--alignment);
-    padding: var(--padding) 0;
-  }
 {% endstylesheet %}
+
+
 
 {% schema %}
 {
   "name": "Group",
-  "blocks": [{ "type": "@theme" }],
+
+  "blocks": [
+    { "type": "@theme" }
+  ],
+
   "settings": [
+
     {
       "type": "select",
       "id": "layout_direction",
-      "label": "Layout direction",
+      "label": "Layout",
       "default": "group--vertical",
       "options": [
-        { "value": "group--horizontal", "label": "Horizontal" },
-        { "value": "group--vertical", "label": "Vertical" }
+        { "value": "group--horizontal", "label": "Row" },
+        { "value": "group--vertical", "label": "Column" }
       ]
     },
+
+
+
     {
-      "visible_if": "{{ block.settings.layout_direction == 'group--vertical' }}",
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0
+    },
+
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color"
+    },
+
+    {
+      "type": "range",
+      "id": "border_size",
+      "label": "Border size",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+
+
+
+    {
       "type": "select",
-      "id": "alignment",
-      "label": "t:labels.alignment",
-      "default": "flex-start",
+      "id": "width_mode",
+      "label": "Width",
+      "default": "full",
       "options": [
-        { "value": "flex-start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Right" }
+        { "value": "fit", "label": "Fit" },
+        { "value": "full", "label": "Full" },
+        { "value": "custom", "label": "Custom" }
       ]
     },
+
+    {
+      "type": "range",
+      "id": "width_custom",
+      "label": "Custom width %",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 100
+    },
+
+
+
+    {
+      "type": "select",
+      "id": "height_mode",
+      "label": "Height",
+      "default": "fit",
+      "options": [
+        { "value": "fit", "label": "Fit" },
+        { "value": "full", "label": "Full" },
+        { "value": "custom", "label": "Custom" }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "height_custom",
+      "label": "Custom height",
+      "min": 50,
+      "max": 1000,
+      "step": 10,
+      "default": 300
+    },
+
+
+
+    {
+      "type": "text",
+      "id": "overlay_gradient",
+      "label": "Overlay gradient"
+    },
+
+
+
+    {
+      "type": "header",
+      "content": "Gap Desktop"
+    },
+
+    {
+      "type": "range",
+      "id": "gap_x",
+      "label": "Horizontal gap",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 0
+    },
+
+    {
+      "type": "range",
+      "id": "gap_y",
+      "label": "Vertical gap",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 0
+    },
+
+
+
+    {
+      "type": "header",
+      "content": "Gap Mobile"
+    },
+
+    {
+      "type": "range",
+      "id": "gap_x_mobile",
+      "label": "Horizontal gap mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 0
+    },
+
+    {
+      "type": "range",
+      "id": "gap_y_mobile",
+      "label": "Vertical gap mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 0
+    },
+
+
+
     {
       "type": "range",
       "id": "padding",
       "label": "Padding",
-      "default": 0,
       "min": 0,
       "max": 200,
       "step": 2,
-      "unit": "px"
+      "default": 0
     }
+
   ],
+
+
   "presets": [
     {
-      "name": "Column",
-      "category": "Layout",
-      "settings": {
-        "layout_direction": "group--vertical",
-        "alignment": "flex-start",
-        "padding": 0
-      }
+      "name": "Row"
     },
     {
-      "name": "Row",
-      "category": "Layout",
-      "settings": {
-        "layout_direction": "group--horizontal",
-        "padding": 0
-      }
+      "name": "Column"
     }
   ]
+
 }
 {% endschema %}
