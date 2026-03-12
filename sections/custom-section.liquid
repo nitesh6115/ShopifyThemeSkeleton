@@ -48,7 +48,7 @@
     overflow: hidden;
   }
 
-  .section-{{ section.id }} .container {
+  .section-{{ section.id }} .section-container {
     max-width: var(--max-width);
     margin: 0 auto;
     text-align: var(--content-align-desktop);
@@ -94,7 +94,7 @@
     .section-{{ section.id }} .section-content {
       grid-template-columns: repeat(var(--columns-mobile), 1fr);
     }
-    .section-{{ section.id }} .container {
+    .section-{{ section.id }} .section-container {
       text-align: var(--content-align-mobile);
     }
     .section-{{ section.id }} {
@@ -157,7 +157,7 @@
     <div class="section-overlay"></div>
   {% endif %}
 
-  <div class="container">
+  <div class="section-container">
     {% if section.settings.heading != blank or section.settings.text != blank %}
     <div class="section-header">
       <h2 class="section_title">{{ section.settings.heading }}</h2>
