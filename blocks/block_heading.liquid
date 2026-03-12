@@ -1,126 +1,87 @@
 {% doc %}
 Advanced Heading Block
 {% enddoc %}
-
 {% assign tag = block.settings.tag %}
-
 <{{ tag }}
   class="heading-block
   size--{{ block.settings.size_mode }}
   {% if block.settings.hide_mobile %}hide-mobile{% endif %}
   {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   "
-
   style="
-
+  --color: {{ block.settings.color }};  
   --bg: {{ block.settings.bg }};
   --radius: {{ block.settings.radius }}px;
-
   --border: {{ block.settings.border }}px;
   --border-color: {{ block.settings.border_color }};
-
   --fs: {{ block.settings.font_size }}px;
   --fsm: {{ block.settings.font_size_m }}px;
-
   --fw: {{ block.settings.font_weight }};
-
   --pt: {{ block.settings.pt }}px;
   --pb: {{ block.settings.pb }}px;
   --pl: {{ block.settings.pl }}px;
   --pr: {{ block.settings.pr }}px;
-
   --ptm: {{ block.settings.ptm }}px;
   --pbm: {{ block.settings.pbm }}px;
   --plm: {{ block.settings.plm }}px;
   --prm: {{ block.settings.prm }}px;
-
   "
-
   {{ block.shopify_attributes }}
 >
-
   {{ block.settings.text }}
-
 </{{ tag }}>
-
-
-
 {% stylesheet %}
-
 .heading-block {
-
-  background: var(--bg);
-
+  color: var(--color);  
+  background: var(--bg); 
   border-radius: var(--radius);
-
   border: var(--border) solid var(--border-color);
-
   padding-top: var(--pt);
   padding-bottom: var(--pb);
   padding-left: var(--pl);
   padding-right: var(--pr);
-
 }
-
-
 /* custom font */
-
 .size--custom {
-
   font-size: var(--fs);
   font-weight: var(--fw);
-
 }
-
-
 @media (max-width:749px){
-
   .heading-block{
-
     padding-top: var(--ptm);
     padding-bottom: var(--pbm);
     padding-left: var(--plm);
     padding-right: var(--prm);
-
   }
-
   .size--custom{
-
     font-size: var(--fsm);
-
   }
-
 }
-
-
 /* hide */
-
 @media (min-width:750px){
   .hide-desktop{ display:none !important; }
 }
-
 @media (max-width:749px){
   .hide-mobile{ display:none !important; }
 }
-
 {% endstylesheet %}
-
-
 
 {% schema %}
 {
   "name": "Heading",
-
   "settings": [
-
     {
       "type": "text",
       "id": "text",
       "label": "Text",
       "default": "Heading"
     },
-
-
+    {
+    "type": "color",
+    "id": "color",
+    "label": "Text color",
+    "default": "#000000"
+    },
     {
       "type": "select",
       "id": "tag",
@@ -135,8 +96,6 @@ Advanced Heading Block
         { "value": "h6", "label": "H6" }
       ]
     },
-
-
     {
       "type": "select",
       "id": "size_mode",
@@ -147,8 +106,6 @@ Advanced Heading Block
         { "value": "custom", "label": "Custom" }
       ]
     },
-
-
     {
       "visible_if": "{{ block.settings.size_mode == 'custom' }}",
       "type": "range",
@@ -159,7 +116,6 @@ Advanced Heading Block
       "step": 1,
       "default": 32
     },
-
     {
       "visible_if": "{{ block.settings.size_mode == 'custom' }}",
       "type": "range",
@@ -170,8 +126,6 @@ Advanced Heading Block
       "step": 1,
       "default": 24
     },
-
-
     {
       "visible_if": "{{ block.settings.size_mode == 'custom' }}",
       "type": "range",
@@ -182,14 +136,11 @@ Advanced Heading Block
       "step": 100,
       "default": 600
     },
-
-
     {
       "type": "color",
       "id": "bg",
       "label": "Background"
     },
-
     {
       "type": "range",
       "id": "radius",
@@ -199,7 +150,6 @@ Advanced Heading Block
       "step": 1,
       "default": 0
     },
-
     {
       "type": "range",
       "id": "border",
@@ -209,55 +159,42 @@ Advanced Heading Block
       "step": 1,
       "default": 0
     },
-
     {
       "type": "color",
       "id": "border_color",
       "label": "Border color"
     },
-
-
     {
       "type": "header",
       "content": "Padding Desktop"
     },
-
     { "type": "range","id": "pt","label": "Top","min": 0,"max": 200,"step": 2,"default": 0 },
     { "type": "range","id": "pb","label": "Bottom","min": 0,"max": 200,"step": 2,"default": 0 },
     { "type": "range","id": "pl","label": "Left","min": 0,"max": 200,"step": 2,"default": 0 },
     { "type": "range","id": "pr","label": "Right","min": 0,"max": 200,"step": 2,"default": 0 },
-
-
     {
       "type": "header",
       "content": "Padding Mobile"
     },
-
     { "type": "range","id": "ptm","label": "Top","min": 0,"max": 150,"step": 2,"default": 0 },
     { "type": "range","id": "pbm","label": "Bottom","min": 0,"max": 150,"step": 2,"default": 0 },
     { "type": "range","id": "plm","label": "Left","min": 0,"max": 150,"step": 2,"default": 0 },
     { "type": "range","id": "prm","label": "Right","min": 0,"max": 150,"step": 2,"default": 0 },
-
-
     {
       "type": "header",
       "content": "Visibility"
     },
-
     {
       "type": "checkbox",
       "id": "hide_desktop",
       "label": "Hide desktop"
     },
-
     {
       "type": "checkbox",
       "id": "hide_mobile",
       "label": "Hide mobile"
     }
-
   ],
-
   "presets": [
     { "name": "Heading" }
   ]
