@@ -28,14 +28,14 @@
     --block-height-desktop: {{ block.settings.height }};
     {% endif %}
     {% if block.settings.width == 'custom' %}
-    --block-custom-width-desktop: {{ settings.width }};
+    --block-custom-width-desktop: {{ block.settings.width }};
     {% else %}
-     --block-width-desktop: {{ settings.width }};
+     --block-width-desktop: {{ block.settings.width }};
     {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
-    --block-custom-width-mobile: {{ settings.width_mobile }};
+    --block-custom-width-mobile: {{ block.settings.width_mobile }};
     {% else %}
-     --block-width-mobile: {{ settings.width_mobile }};
+     --block-width-mobile: {{ block.settings.width_mobile }};
     {% endif %}
   "
   {{ block.shopify_attributes }}
