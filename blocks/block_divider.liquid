@@ -1,117 +1,74 @@
 {% doc %}
-Divider Block
+  Divider Block
 {% enddoc %}
 
 <div
-  class="divider-block
-  align--{{ block.settings.align }}
-  {% if block.settings.hide_mobile %}hide-mobile{% endif %}
-  {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+  class="
+    divider-block
+    align--{{ block.settings.align }}
+    {% if block.settings.hide_mobile %}hide-mobile{% endif %}
+    {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   "
 
   style="
+    --bw: {{ block.settings.border }}px;
+    --bc: {{ block.settings.color }};
+    --w: {{ block.settings.width }}%;
 
-  --bw: {{ block.settings.border }}px;
-  --bc: {{ block.settings.color }};
-  --w: {{ block.settings.width }}%;
+    --pt: {{ block.settings.pt }}px;
+    --pb: {{ block.settings.pb }}px;
 
-  --pt: {{ block.settings.pt }}px;
-  --pb: {{ block.settings.pb }}px;
-
-  --ptm: {{ block.settings.ptm }}px;
-  --pbm: {{ block.settings.pbm }}px;
-
+    --ptm: {{ block.settings.ptm }}px;
+    --pbm: {{ block.settings.pbm }}px;
   "
 
   {{ block.shopify_attributes }}
 >
-
   <div class="divider-line">&nbsp;</div>
-
 </div>
 
-
-
 {% stylesheet %}
-
-.divider-block {
-
-  width: 100%;
-
-  padding-top: var(--pt);
-  padding-bottom: var(--pb);
-
-}
-
-
-/* line */
-
-.divider-line {
-
-  width: var(--w);
-
-  border-top: var(--bw) solid var(--bc);
-
-}
-
-
-/* align */
-
-.align--left .divider-line {
-
-  margin-right: auto;
-
-}
-
-.align--center .divider-line {
-
-  margin-left: auto;
-  margin-right: auto;
-
-}
-
-.align--right .divider-line {
-
-  margin-left: auto;
-
-}
-
-
-
-/* mobile */
-
-@media (max-width:749px){
-
   .divider-block {
-
-    padding-top: var(--ptm);
-    padding-bottom: var(--pbm);
-
+    width: 100%;
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
   }
-
-}
-
-
-/* hide */
-
-@media (min-width:750px){
-  .hide-desktop{ display:none !important; }
-}
-
-@media (max-width:749px){
-  .hide-mobile{ display:none !important; }
-}
-
+  /* line */
+  .divider-line {
+    width: var(--w);
+    border-top: var(--bw) solid var(--bc);
+  }
+  /* align */
+  .align--left .divider-line {
+    margin-right: auto;
+  }
+  .align--center .divider-line {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .align--right .divider-line {
+    margin-left: auto;
+  }
+  /* mobile */
+  @media (max-width:749px){
+    .divider-block {
+      padding-top: var(--ptm);
+      padding-bottom: var(--pbm);
+    }
+  }
+  /* hide */
+  @media (min-width:750px){
+    .hide-desktop{ display:none !important; }
+  }
+  @media (max-width:749px){
+    .hide-mobile{ display:none !important; }
+  }
 {% endstylesheet %}
-
-
 
 {% schema %}
 {
   "name": "Divider",
-
   "settings": [
-
     {
       "type": "range",
       "id": "border",
@@ -121,15 +78,12 @@ Divider Block
       "step": 1,
       "default": 1
     },
-
     {
       "type": "color",
       "id": "color",
       "label": "Border color",
       "default": "#000000"
     },
-
-
     {
       "type": "range",
       "id": "width",
@@ -139,8 +93,6 @@ Divider Block
       "step": 5,
       "default": 100
     },
-
-
     {
       "type": "select",
       "id": "align",
@@ -152,7 +104,6 @@ Divider Block
         { "value": "right", "label": "Right" }
       ]
     },
-
 
     {
       "type": "header",
@@ -179,7 +130,6 @@ Divider Block
       "default": 10
     },
 
-
     {
       "type": "header",
       "content": "Padding Mobile"
@@ -205,7 +155,6 @@ Divider Block
       "default": 8
     },
 
-
     {
       "type": "header",
       "content": "Visibility"
@@ -222,10 +171,7 @@ Divider Block
       "id": "hide_mobile",
       "label": "Hide mobile"
     }
-
   ],
-  "presets": [
-    { "name": "Divider" }
-  ]
+  "presets": [{ "name": "Divider" }]
 }
 {% endschema %}
