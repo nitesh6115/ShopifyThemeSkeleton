@@ -1,15 +1,9 @@
 {% doc %}
-Advanced Group Block
+Advanced Group Block (Safe Builder Version)
 {% enddoc %}
 
 <div
-  class="group
-    {{ block.settings.layout_direction }}
-    width--{{ block.settings.width_mode }}
-    height--{{ block.settings.height_mode }}
-    {% if block.settings.equal_height %}is-equal{% endif %}
-  "
-
+  class="group {{ block.settings.layout_direction }} {% if block.settings.equal_height %}is-equal{% endif %}"
   style="
 
     --align-x: {{ block.settings.align_x }};
@@ -35,10 +29,8 @@ Advanced Group Block
     --border: {{ block.settings.border }}px;
     --border-color: {{ block.settings.border_color }};
 
-    --width-custom: {{ block.settings.width_custom }}%;
-    --height-custom: {{ block.settings.height_custom }}{{ block.settings.height_unit }};
-
-    --overlay: {{ block.settings.overlay }};
+    --width: {{ block.settings.width_custom }}%;
+    --height: {{ block.settings.height_custom }}px;
 
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
@@ -51,17 +43,10 @@ Advanced Group Block
     --prm: {{ block.settings.prm }}px;
 
   "
-
   {{ block.shopify_attributes }}
 >
 
-  <div class="group__inner">
-    {% content_for 'blocks' %}
-  </div>
-
-  {% if block.settings.overlay != blank %}
-    <div class="group__overlay"></div>
-  {% endif %}
+  {% content_for 'blocks' %}
 
 </div>
 
@@ -73,9 +58,12 @@ Advanced Group Block
 
   display: flex;
 
+  flex-direction: row;
+
   flex-wrap: var(--wrap);
 
   justify-content: var(--align-x);
+
   align-items: var(--align-y);
 
   gap: var(--gap-y) var(--gap-x);
@@ -91,7 +79,7 @@ Advanced Group Block
   padding-left: var(--pl);
   padding-right: var(--pr);
 
-  position: relative;
+  width: 100%;
 
 }
 
@@ -107,9 +95,6 @@ Advanced Group Block
 .group--vertical {
 
   flex-direction: column;
-
-  justify-content: var(--align-y);
-  align-items: var(--align-x);
 
 }
 
@@ -128,12 +113,13 @@ Advanced Group Block
 .group > * {
 
   flex-grow: var(--grow);
+
   flex-shrink: var(--shrink);
 
 }
 
 
-/* columns */
+/* columns fix (3 column bug fixed) */
 
 .group--horizontal > * {
 
@@ -144,33 +130,6 @@ Advanced Group Block
 
 }
 
-
-/* width */
-
-.width--fit { width: auto; }
-.width--full { width: 100%; }
-.width--custom { width: var(--width-custom); }
-
-
-/* height */
-
-.height--fit { height: auto; }
-.height--full { height: 100%; }
-.height--custom { height: var(--height-custom); }
-
-
-/* overlay */
-
-.group__overlay {
-
-  position: absolute;
-  inset: 0;
-
-  background: var(--overlay);
-
-  pointer-events: none;
-
-}
 
 
 /* mobile */
@@ -224,26 +183,23 @@ Advanced Group Block
       ]
     },
 
-
     {
       "type": "select",
       "id": "align_x",
-      "label": "Horizontal",
+      "label": "Horizontal align",
       "default": "flex-start",
       "options": [
         { "value": "flex-start", "label": "Left" },
         { "value": "center", "label": "Center" },
         { "value": "flex-end", "label": "Right" },
-        { "value": "space-between", "label": "Space between" },
-        { "value": "space-around", "label": "Space around" },
-        { "value": "space-evenly", "label": "Space evenly" }
+        { "value": "space-between", "label": "Space between" }
       ]
     },
 
     {
       "type": "select",
       "id": "align_y",
-      "label": "Vertical",
+      "label": "Vertical align",
       "default": "flex-start",
       "options": [
         { "value": "flex-start", "label": "Top" },
@@ -252,7 +208,6 @@ Advanced Group Block
         { "value": "stretch", "label": "Stretch" }
       ]
     },
-
 
     {
       "type": "select",
@@ -281,7 +236,7 @@ Advanced Group Block
       "id": "cols_m",
       "label": "Columns mobile",
       "min": 1,
-      "max": 3,
+      "max": 4,
       "step": 1,
       "default": 1
     },
@@ -296,22 +251,22 @@ Advanced Group Block
 
     {
       "type": "range",
-      "id": "shrink",
-      "label": "Shrink",
+      "id": "grow",
+      "label": "Grow",
       "min": 0,
-      "max": 2,
+      "max": 5,
       "step": 1,
-      "default": 1
+      "default": 0
     },
 
     {
       "type": "range",
-      "id": "grow",
-      "label": "Grow",
+      "id": "shrink",
+      "label": "Shrink",
       "min": 0,
-      "max": 2,
+      "max": 5,
       "step": 1,
-      "default": 0
+      "default": 1
     },
 
 
