@@ -158,8 +158,9 @@ Advanced Group Block (Safe Builder Version)
     {
       "type": "select",
       "id": "align_x",
-      "label": "Horizontal align",
+      "label": "Align",
       "default": "flex-start",
+      "visible_if": "{{ block.settings.layout_direction == 'group--horizontal' }}",
       "options": [
         { "value": "flex-start", "label": "Left" },
         { "value": "center", "label": "Center" },
@@ -171,7 +172,7 @@ Advanced Group Block (Safe Builder Version)
     {
       "type": "select",
       "id": "align_y",
-      "label": "Vertical align",
+      "label": "Align",
       "default": "flex-start",
       "options": [
         { "value": "flex-start", "label": "Top" },
