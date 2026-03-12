@@ -9,15 +9,19 @@
     {% if block.settings.hide_mobile %}hide-mobile{% endif %}
     {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   "
+
   style="
     --bw: {{ block.settings.border }}px;
     --bc: {{ block.settings.color }};
     --w: {{ block.settings.width }}%;
+
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
+
     --ptm: {{ block.settings.ptm }}px;
     --pbm: {{ block.settings.pbm }}px;
   "
+
   {{ block.shopify_attributes }}
 >
   <div class="divider-line">&nbsp;</div>
