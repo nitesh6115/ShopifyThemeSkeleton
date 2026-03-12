@@ -97,7 +97,7 @@
             "align_x": "flex-start",
             "align_y": "flex-start",
             "wrap": "nowrap",
-            "cols": 6,
+            "cols": 4,
             "cols_m": 1,
             "equal_height": false,
             "width": "fill",
