@@ -89,7 +89,7 @@
     "custom_section_8FVEUi": {
       "type": "custom-section",
       "blocks": {
-        "group_wcGYEe": {
+        "group_xUdckN": {
           "type": "group",
           "name": "Column",
           "settings": {
@@ -111,23 +111,39 @@
             "padding": 0
           },
           "blocks": {
-            "block_text_t3AHT8": {
+            "block_text_CzweeQ": {
               "type": "block_text",
-              "name": "t:general.text",
+              "name": "Text",
               "settings": {
                 "text": "Text",
-                "alignment": "left"
+                "alignment": "left",
+                "font_size": 16,
+                "font_size_mobile": 14,
+                "font_weight": "400",
+                "color": "#000000",
+                "background": "",
+                "radius": 0,
+                "border_size": 0,
+                "border_color": "#000000",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "pt_m": 0,
+                "pb_m": 0,
+                "pl_m": 0,
+                "pr_m": 0
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "block_text_t3AHT8"
+            "block_text_CzweeQ"
           ]
         }
       },
       "block_order": [
-        "group_wcGYEe"
+        "group_xUdckN"
       ],
       "name": "Premium Global Section",
       "settings": {
@@ -150,7 +166,7 @@
         "overlay_opacity": 0,
         "bg_position": "center center",
         "bg_size": "cover",
-        "columns_desktop": 3,
+        "columns_desktop": 1,
         "columns_mobile": 1,
         "column_gap": 24,
         "row_gap": 24,
