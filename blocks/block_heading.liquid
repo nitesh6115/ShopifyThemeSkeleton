@@ -2,7 +2,7 @@
 Advanced Heading Block
 {% enddoc %}
 {% assign tag = block.settings.tag %}
-<{{ tag }}
+<div
   class="heading-block
   {% if block.settings.height == 'custom' %}
      block-custom-height-desktop 
@@ -52,8 +52,10 @@ Advanced Heading Block
   "
   {{ block.shopify_attributes }}
 >
+  <{{ tag }} class="{% if block.settings.size_mode == 'custom' %}size--custom{% endif %}">
   {{ block.settings.text }}
-</{{ tag }}>
+  </{{ tag }}>
+</div>
 {% stylesheet %}
 .heading-block {
   color: var(--color);  
