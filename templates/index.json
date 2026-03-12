@@ -94,8 +94,8 @@
           "name": "Block Group",
           "settings": {
             "layout_direction": "group--horizontal",
-            "align_x": "space-between",
-            "align_y": "stretch",
+            "align_x": "center",
+            "align_y": "flex-start",
             "wrap": "wrap",
             "cols": 3,
             "cols_m": 1,
