@@ -119,10 +119,11 @@
   text-align: unset;
 }
 
-/* ✅ APPLY COLUMNS ONLY WHEN WRAP */
 .group--horizontal > * {
-  flex-grow: var(--item-grow, var(--grow));
-  flex-shrink: var(--item-shrink, var(--shrink));
+
+  flex-grow: var(--grow);
+  flex-shrink: var(--shrink);
+
   flex-basis: var(
     --item-width,
     calc(
@@ -130,18 +131,39 @@
       / var(--cols)
     )
   );
+
 }
-/* mobile */
+
+/* fit-content */
+
+.group--horizontal > *[style*="auto"] {
+  flex: 0 0 auto;
+}
+
+/* fill */
+
+.group--horizontal > *[style*="fill"] {
+  flex: 1 1 auto;
+}
 .group > * {
 
-  flex-basis: var(--item-width);
+  height: var(--item-height, auto);
+
+}
+.is-equal > * {
+
+  align-self: stretch;
 
 }
 
-.group > * > * {
+.group > *[style*="fill"] {
 
- flex-basis: var(--item-width);
+  align-self: stretch;
 
+}
+
+.group > [id^="shopify-block"] {
+  display: contents;
 }
 @media (max-width: 749px) {
 
@@ -152,8 +174,7 @@
     padding-left: var(--plm);
     padding-right: var(--prm);
   }
-
-  .group--horizontal > * {
+.group--horizontal > * {
 
   flex-basis: var(
     --item-width-m,
