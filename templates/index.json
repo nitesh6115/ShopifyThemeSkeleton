@@ -85,98 +85,9 @@
         "footer_bg": "#F9FAFB",
         "footer_radius": 14
       }
-    },
-    "custom_section_hAq4DK": {
-      "type": "custom-section",
-      "blocks": {
-        "group_wqE7i8": {
-          "type": "group",
-          "name": "Column",
-          "settings": {
-            "layout_direction": "group--vertical",
-            "background": "",
-            "radius": 0,
-            "border_color": "",
-            "border_size": 0,
-            "width_mode": "full",
-            "width_custom": 100,
-            "height_mode": "fit",
-            "height_custom": 100,
-            "height_unit": "%",
-            "overlay_gradient": "",
-            "gap_x": 0,
-            "gap_y": 0,
-            "gap_x_mobile": 0,
-            "gap_y_mobile": 0,
-            "padding": 0
-          },
-          "blocks": {
-            "text_ajY8Lp": {
-              "type": "block_text",
-              "name": "t:general.text",
-              "settings": {
-                "text": "Text",
-                "text_style": "text--title",
-                "alignment": "left"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_ajY8Lp"
-          ]
-        }
-      },
-      "block_order": [
-        "group_wqE7i8"
-      ],
-      "name": "Premium Global Section",
-      "settings": {
-        "section_width": "custom",
-        "custom_width": 1200,
-        "content_alignment_desktop": "center",
-        "content_alignment_mobile": "center",
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 100,
-        "padding_left_desktop": 32,
-        "padding_right_desktop": 32,
-        "padding_left_mobile": 16,
-        "padding_right_mobile": 16,
-        "padding_top_mobile": 52,
-        "padding_bottom_mobile": 52,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "background_color": "linear-gradient(180deg, rgba(255, 211, 226, 1), rgba(168, 255, 251, 1) 100%)",
-        "overlay_color": "",
-        "overlay_opacity": 0,
-        "bg_position": "center center",
-        "bg_size": "cover",
-        "columns_desktop": 2,
-        "columns_mobile": 1,
-        "column_gap": 24,
-        "row_gap": 24,
-        "border_radius": 0,
-        "border_width": 0,
-        "border_color": "#000000",
-        "heading": "How It Works",
-        "heading_size_desktop": 42,
-        "heading_size_mobile": 26,
-        "heading_weight": 600,
-        "heading_color": "#111111",
-        "text": "<p>Getting started with better posture and pain-free work is easier than you think.</p>",
-        "text_size_desktop": 16,
-        "text_size_mobile": 14,
-        "text_color": "#111111",
-        "line_height": 1.4,
-        "letter_spacing": 0,
-        "hide_mobile": false,
-        "hide_desktop": false,
-        "stack_columns_mobile": false
-      }
     }
   },
   "order": [
-    "custom_bundle_dzRKPA",
-    "custom_section_hAq4DK"
+    "custom_bundle_dzRKPA"
   ]
 }
