@@ -89,15 +89,6 @@ Advanced Group Block (Safe Builder Version)
 }
 
 /* ✅ APPLY COLUMNS ONLY WHEN WRAP */
-
-.group--horizontal[style*="wrap"] > * {
-  flex-basis: calc(
-    (100% - (var(--cols) - 1) * var(--gap-x))
-    / var(--cols)
-  );
-}
-
-/* mobile */
 .group--horizontal > * {
 
   flex-grow: var(--item-grow, var(--grow));
@@ -113,6 +104,8 @@ Advanced Group Block (Safe Builder Version)
   );
 
 }
+/* mobile */
+
 @media (max-width: 749px) {
 
   .group {
