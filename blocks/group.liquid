@@ -7,14 +7,8 @@
     --align-x: {{ block.settings.align_x }};
     --align-y: {{ block.settings.align_y }};
     --wrap: {{ block.settings.wrap }};
-    --cols: {{ block.settings.cols }};
-    --cols-m: {{ block.settings.cols_m }};
-    --grow: {{ block.settings.grow }};
-    --shrink: {{ block.settings.shrink }};
-    --gap-x: {{ block.settings.gap_x }}px;
-    --gap-y: {{ block.settings.gap_y }}px;
-    --gap-x-m: {{ block.settings.gap_x_m }}px;
-    --gap-y-m: {{ block.settings.gap_y_m }}px;
+    --gap: {{ block.settings.gap }}px;
+    --gap-m: {{ block.settings.gap }}px;
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
     --border: {{ block.settings.border }}px;
@@ -42,7 +36,7 @@
   flex-wrap: var(--wrap);
   justify-content: var(--align-x);
   align-items: var(--align-y);
-  gap: var(--gap-y) var(--gap-x);
+  gap: var(--gap);
   background: var(--bg);
   border-radius: var(--radius);
   border: var(--border) solid var(--border-color);
@@ -58,81 +52,38 @@
 .group--horizontal {
   flex-direction: row;
 }
-
 .group--vertical {
   flex-direction: column;
   justify-content: var(--align-y);
   align-items: var(--align-x);
 }
-
 /* equal height */
 
 .is-equal > * {
   align-self: stretch;
 }
 
-/* grow / shrink */
 
-.group > * {
-  flex-grow: var(--grow);
-  flex-shrink: var(--shrink);
-}
-
-/* columns OR custom width */
-
-.group--horizontal > * {
-
-  flex-basis: var(
-    --item-width,
-    calc(
-      (100% - (var(--cols) - 1) * var(--gap-x))
-      / var(--cols)
-    )
-  );
-
-}
 /* height */
 
 .group > * {
   height: var(--item-height, auto);
 }
 
-/* VERY IMPORTANT — Shopify wrapper fix */
-
-.group > [id^="shopify-block"] {
-  display: contents;
-}
-
 
 /* mobile */
 
 @media (max-width: 749px) {
-
   .group {
-    gap: var(--gap-y-m) var(--gap-x-m);
+    gap: var(--gap-m);
     padding-top: var(--ptm);
     padding-bottom: var(--pbm);
     padding-left: var(--plm);
     padding-right: var(--prm);
   }
-
-  .group--horizontal > * {
-
-    flex-basis: var(
-      --item-width-m,
-      calc(
-        (100% - (var(--cols-m) - 1) * var(--gap-x-m))
-        / var(--cols-m)
-      )
-    );
-
-  }
-
 }
 
-
 /* visibility */
-
 .hide-desktop {
   display: none !important;
 }
@@ -210,38 +161,11 @@
         { "value": "nowrap", "label": "Off" }
       ]
     },
-
-
-    {
-      "type": "range",
-      "id": "cols",
-      "visible_if": "{{ block.settings.layout_direction == 'group--horizontal' }}",
-      "label": "Columns desktop",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 3
-    },
-
-    {
-      "type": "range",
-      "id": "cols_m",
-      "label": "Columns mobile",
-      "visible_if": "{{ block.settings.layout_direction == 'group--horizontal' }}",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 1
-    },
-
-
     {
       "type": "checkbox",
       "id": "equal_height",
       "label": "Equal height"
     },
-
-
     {
       "type": "select",
       "id": "width",
@@ -338,46 +262,22 @@
 
     {
       "type": "range",
-      "id": "gap_x",
-      "label": "Gap X",
+      "id": "gap",
+      "label": "Gap Desktop",
       "min": 0,
       "max": 60,
       "step": 2,
       "default": 0
     },
-
     {
       "type": "range",
-      "id": "gap_y",
-      "label": "Gap Y",
-      "min": 0,
-      "max": 60,
-      "step": 2,
-      "default": 0
-    },
-
-
-    {
-      "type": "range",
-      "id": "gap_x_m",
-      "label": "Gap X mobile",
+      "id": "gap_m",
+      "label": "Gap Mobile",
       "min": 0,
       "max": 40,
       "step": 2,
       "default": 0
     },
-
-    {
-      "type": "range",
-      "id": "gap_y_m",
-      "label": "Gap Y mobile",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "default": 0
-    },
-
-
     {
       "type": "color",
       "id": "background",
