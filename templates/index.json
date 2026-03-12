@@ -88,6 +88,88 @@
     },
     "custom_section_8FVEUi": {
       "type": "custom-section",
+      "blocks": {
+        "group_pYiVwK": {
+          "type": "group",
+          "name": "Group",
+          "settings": {
+            "layout_direction": "group--horizontal",
+            "align_x": "flex-start",
+            "align_y": "center",
+            "wrap": "wrap",
+            "cols": 1,
+            "cols_m": 1,
+            "equal_height": false,
+            "grow": 5,
+            "shrink": 0,
+            "gap_x": 16,
+            "gap_y": 14,
+            "gap_x_m": 10,
+            "gap_y_m": 10,
+            "background": "#121212",
+            "radius": 10,
+            "border": 3,
+            "border_color": "#DC2626"
+          },
+          "blocks": {
+            "block_image_ff6fXB": {
+              "type": "block_image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/ImageWithFallback_3.avif",
+                "ratio": "auto",
+                "hover_zoom": true,
+                "shadow": true,
+                "background": "",
+                "radius": 10,
+                "border_size": 2,
+                "border_color": "#DC2626",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "pt_m": 0,
+                "pb_m": 0,
+                "pl_m": 0,
+                "pr_m": 0
+              },
+              "blocks": {}
+            },
+            "block_text_6PCTWX": {
+              "type": "block_text",
+              "name": "Text",
+              "settings": {
+                "text": "Text",
+                "alignment": "left",
+                "font_size": 16,
+                "font_size_mobile": 14,
+                "font_weight": "400",
+                "color": "#DC2626",
+                "background": "#fbf4ee",
+                "radius": 0,
+                "border_size": 0,
+                "border_color": "#ffffff",
+                "pt": 38,
+                "pb": 28,
+                "pl": 38,
+                "pr": 0,
+                "pt_m": 20,
+                "pb_m": 26,
+                "pl_m": 22,
+                "pr_m": 24
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_image_ff6fXB",
+            "block_text_6PCTWX"
+          ]
+        }
+      },
+      "block_order": [
+        "group_pYiVwK"
+      ],
       "name": "Premium Global Section",
       "settings": {
         "section_width": "custom",
