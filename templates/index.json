@@ -94,6 +94,19 @@
           "name": "Top Header",
           "settings": {
             "layout_direction": "group--vertical",
+            "background": "",
+            "radius": 0,
+            "border_color": "",
+            "border_size": 0,
+            "width_mode": "full",
+            "width_custom": 100,
+            "height_mode": "fit",
+            "height_custom": 300,
+            "overlay_gradient": "",
+            "gap_x": 0,
+            "gap_y": 0,
+            "gap_x_mobile": 0,
+            "gap_y_mobile": 0,
             "padding": 0
           },
           "blocks": {
@@ -102,6 +115,19 @@
               "name": "Column",
               "settings": {
                 "layout_direction": "group--horizontal",
+                "background": "",
+                "radius": 0,
+                "border_color": "",
+                "border_size": 0,
+                "width_mode": "full",
+                "width_custom": 100,
+                "height_mode": "fit",
+                "height_custom": 300,
+                "overlay_gradient": "",
+                "gap_x": 0,
+                "gap_y": 0,
+                "gap_x_mobile": 0,
+                "gap_y_mobile": 0,
                 "padding": 0
               },
               "blocks": {
@@ -152,6 +178,19 @@
           "name": "t:general.column",
           "settings": {
             "layout_direction": "group--horizontal",
+            "background": "",
+            "radius": 0,
+            "border_color": "",
+            "border_size": 0,
+            "width_mode": "full",
+            "width_custom": 100,
+            "height_mode": "fit",
+            "height_custom": 300,
+            "overlay_gradient": "",
+            "gap_x": 0,
+            "gap_y": 0,
+            "gap_x_mobile": 0,
+            "gap_y_mobile": 0,
             "padding": 0
           },
           "blocks": {
@@ -203,7 +242,7 @@
         "border_radius": 0,
         "border_width": 0,
         "border_color": "#000000",
-        "heading": "",
+        "heading": "Powerful Ingredients That Actually Work",
         "heading_size_desktop": 42,
         "heading_size_mobile": 26,
         "heading_weight": 600,
