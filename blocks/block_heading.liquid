@@ -42,8 +42,10 @@
       --pbm: {{ block.settings.pbm }}px;
       --plm: {{ block.settings.plm }}px;
       --prm: {{ block.settings.prm }}px;
+      {% if block.settings.size_mode == 'custom' %}
        --line-height: {{ block.settings.line_height }};
       --letter-spacing: {{ block.settings.letter_spacing }}px;
+      {% endif %}
 
     {% if block.settings.height == 'custom' %}
          --block-custom-height-desktop: {{ block.settings.custom_height }}%;
