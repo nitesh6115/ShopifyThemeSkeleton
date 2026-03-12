@@ -1,5 +1,5 @@
 {% doc %}
-Advanced Text Block
+  Advanced Text Block
 {% enddoc %}
 
 <div
@@ -28,34 +28,32 @@ Advanced Text Block
   {{ block.settings.text }}
 </div>
 
-
 {% stylesheet %}
-.text_block {
-  text-align: var(--text-align);
-  font-size: var(--font-size-desktop);
-  font-weight: var(--font-weight);
-  color: var(--text-color);
-  background: var(--bg);
-  border-radius: var(--radius);
-  border-style: solid;
-  border-width: var(--border-size);
-  border-color: var(--border-color);
-  padding-top: var(--pt);
-  padding-bottom: var(--pb);
-  padding-left: var(--pl);
-  padding-right: var(--pr);
-}
-/* mobile */
-@media screen and (max-width: 749px) {
   .text_block {
-    font-size: var(--font-size-mobile);
-    padding-top: var(--pt-m);
-    padding-bottom: var(--pb-m);
-    padding-left: var(--pl-m);
-    padding-right: var(--pr-m);
+    text-align: var(--text-align);
+    font-size: var(--font-size-desktop);
+    font-weight: var(--font-weight);
+    color: var(--text-color);
+    background: var(--bg);
+    border-radius: var(--radius);
+    border-style: solid;
+    border-width: var(--border-size);
+    border-color: var(--border-color);
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    padding-left: var(--pl);
+    padding-right: var(--pr);
   }
-}
-
+  /* mobile */
+  @media screen and (max-width: 749px) {
+    .text_block {
+      font-size: var(--font-size-mobile);
+      padding-top: var(--pt-m);
+      padding-bottom: var(--pb-m);
+      padding-left: var(--pl-m);
+      padding-right: var(--pr-m);
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -63,28 +61,22 @@ Advanced Text Block
   "name": "Text",
 
   "settings": [
-
     {
       "type": "text",
       "id": "text",
       "label": "Text",
       "default": "Text"
     },
-
     {
       "type": "text_alignment",
       "id": "alignment",
       "label": "Alignment",
       "default": "left"
     },
-
-
-
     {
       "type": "header",
       "content": "Font"
     },
-
     {
       "type": "range",
       "id": "font_size",
@@ -94,7 +86,6 @@ Advanced Text Block
       "step": 1,
       "default": 16
     },
-
     {
       "type": "range",
       "id": "font_size_mobile",
@@ -104,7 +95,6 @@ Advanced Text Block
       "step": 1,
       "default": 14
     },
-
     {
       "type": "select",
       "id": "font_weight",
@@ -122,27 +112,21 @@ Advanced Text Block
         { "value": "900", "label": "900 Black" }
       ]
     },
-
     {
       "type": "color",
       "id": "color",
       "label": "Font color",
       "default": "#000000"
     },
-
-
-
     {
       "type": "header",
       "content": "Background"
     },
-
     {
       "type": "color",
       "id": "background",
       "label": "Background color"
     },
-
     {
       "type": "range",
       "id": "radius",
@@ -152,7 +136,6 @@ Advanced Text Block
       "step": 1,
       "default": 0
     },
-
     {
       "type": "range",
       "id": "border_size",
@@ -162,102 +145,101 @@ Advanced Text Block
       "step": 1,
       "default": 0
     },
-
     {
       "type": "color",
       "id": "border_color",
       "label": "Border color",
       "default": "#000000"
     },
-{
-  "type": "header",
-  "content": "Padding Desktop"
-},
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
 
-{
-  "type": "range",
-  "id": "pt",
-  "label": "Padding top",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "range",
-  "id": "pb",
-  "label": "Padding bottom",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "range",
-  "id": "pl",
-  "label": "Padding left",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pl",
+      "label": "Padding left",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "range",
-  "id": "pr",
-  "label": "Padding right",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pr",
+      "label": "Padding right",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "header",
-  "content": "Padding Mobile"
-},
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
 
-{
-  "type": "range",
-  "id": "pt_m",
-  "label": "Padding top mobile",
-  "min": 0,
-  "max": 100,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pt_m",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "range",
-  "id": "pb_m",
-  "label": "Padding bottom mobile",
-  "min": 0,
-  "max": 100,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pb_m",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "range",
-  "id": "pl_m",
-  "label": "Padding left mobile",
-  "min": 0,
-  "max": 100,
-  "step": 2,
-  "default": 0
-},
+    {
+      "type": "range",
+      "id": "pl_m",
+      "label": "Padding left mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
 
-{
-  "type": "range",
-  "id": "pr_m",
-  "label": "Padding right mobile",
-  "min": 0,
-  "max": 100,
-  "step": 2,
-  "default": 0
-}
+    {
+      "type": "range",
+      "id": "pr_m",
+      "label": "Padding right mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    }
   ],
 
   "presets": [
