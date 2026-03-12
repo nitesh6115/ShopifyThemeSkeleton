@@ -1,40 +1,52 @@
-<div
-  class="group {{ block.settings.layout_direction }} {% if block.settings.hide_desktop %}hide-desktop{% endif %}
-  {% if block.settings.hide_mobile %}hide-mobile{% endif %}
- {% if block.settings.equal_height %}is-equal{% endif %}"
-  style="
-    --align-x: {{ block.settings.align_x }};
-    --align-y: {{ block.settings.align_y }};
-    --wrap: {{ block.settings.wrap }};
-    --cols: {{ block.settings.cols }};
-    --cols-m: {{ block.settings.cols_m }};
-    --grow: {{ block.settings.grow }};
-    --shrink: {{ block.settings.shrink }};
-    --gap-x: {{ block.settings.gap_x }}px;
-    --gap-y: {{ block.settings.gap_y }}px;
-    --gap-x-m: {{ block.settings.gap_x_m }}px;
-    --gap-y-m: {{ block.settings.gap_y_m }}px;
-    --bg: {{ block.settings.background }};
-    --radius: {{ block.settings.radius }}px;
-    --border: {{ block.settings.border }}px;
-    --border-color: {{ block.settings.border_color }};
-    --width: {{ block.settings.width_custom }}%;
-    --height: {{ block.settings.height_custom }}px;
-    --pt: {{ block.settings.pt }}px;
-    --pb: {{ block.settings.pb }}px;
-    --pl: {{ block.settings.pl }}px;
-    --pr: {{ block.settings.pr }}px;
-    --ptm: {{ block.settings.ptm }}px;
-    --pbm: {{ block.settings.pbm }}px;
-    --plm: {{ block.settings.plm }}px;
-    --prm: {{ block.settings.prm }}px;
+{%- doc -%}
+  Renders block content for all blocks that extend the group block.
 
-    --item-width: {{ block.settings.width }}%;
-    --item-width-m: {{ block.settings.width_m }}%;
-    --item-grow: {{ block.settings.grow }};
-    --item-shrink: {{ block.settings.shrink }};
+  @param {string} children - The DOM content of the group block.
+  @param {object} settings - The settings of the group block.
+  @param {string} shopify_attributes - String with Shopify attributes for the editor.
+  @param {string} [class] - Custom classes for the group block.
+  @param {string} [style] - Custom inline styles for the group block.
+
+  @example
+  {% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{%- enddoc -%}
+<div
+  class="group {{ settings.layout_direction }} {% if settings.hide_desktop %}hide-desktop{% endif %}
+  {% if settings.hide_mobile %}hide-mobile{% endif %}
+ {% if settings.equal_height %}is-equal{% endif %}"
+  style="
+    --align-x: {{ settings.align_x }};
+    --align-y: {{ settings.align_y }};
+    --wrap: {{ settings.wrap }};
+    --cols: {{ settings.cols }};
+    --cols-m: {{ settings.cols_m }};
+    --grow: {{ settings.grow }};
+    --shrink: {{ settings.shrink }};
+    --gap-x: {{ settings.gap_x }}px;
+    --gap-y: {{ settings.gap_y }}px;
+    --gap-x-m: {{ settings.gap_x_m }}px;
+    --gap-y-m: {{ settings.gap_y_m }}px;
+    --bg: {{ settings.background }};
+    --radius: {{ settings.radius }}px;
+    --border: {{ settings.border }}px;
+    --border-color: {{ settings.border_color }};
+    --width: {{ settings.width_custom }}%;
+    --height: {{ settings.height_custom }}px;
+    --pt: {{ settings.pt }}px;
+    --pb: {{ settings.pb }}px;
+    --pl: {{ settings.pl }}px;
+    --pr: {{ settings.pr }}px;
+    --ptm: {{ settings.ptm }}px;
+    --pbm: {{ settings.pbm }}px;
+    --plm: {{ settings.plm }}px;
+    --prm: {{ settings.prm }}px;
+
+    --item-width: {{ settings.width }}%;
+    --item-width-m: {{ settings.width_m }}%;
+    --item-grow: {{ settings.grow }};
+    --item-shrink: {{ settings.shrink }};
   "
-  {{ block.shopify_attributes }}
+  {{ shopify_attributes }}
 >
   {{- children -}}
 </div>
