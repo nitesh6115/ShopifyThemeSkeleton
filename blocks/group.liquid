@@ -1,8 +1,8 @@
-
 <div
-  class="group {{ block.settings.layout_direction }} {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+  class="group {{ block.settings.layout_direction }}
+  {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   {% if block.settings.hide_mobile %}hide-mobile{% endif %}
- {% if block.settings.equal_height %}is-equal{% endif %}"
+  {% if block.settings.equal_height %}is-equal{% endif %}"
   style="
     --align-x: {{ block.settings.align_x }};
     --align-y: {{ block.settings.align_y }};
@@ -19,8 +19,6 @@
     --radius: {{ block.settings.radius }}px;
     --border: {{ block.settings.border }}px;
     --border-color: {{ block.settings.border_color }};
-    --width: {{ block.settings.width_custom }}%;
-    --height: {{ block.settings.height_custom }}px;
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
     --pl: {{ block.settings.pl }}px;
@@ -29,33 +27,6 @@
     --pbm: {{ block.settings.pbm }}px;
     --plm: {{ block.settings.plm }}px;
     --prm: {{ block.settings.prm }}px;
-
-    {% case block.settings.width %}
-      {% when 'fit-content' %}
-      --item-width:auto;
-      {% when 'fill' %}
-      --item-width:fill;
-      {% when 'custom' %}
-      --item-width:{{ block.settings.custom_width }}%;
-      {% endcase %}
-
-      {% case block.settings.width_mobile %}
-      {% when 'fit-content' %}
-      --item-width-m:auto;
-      {% when 'fill' %}
-      --item-width-m:fill;
-      {% when 'custom' %}
-      --item-width-m:{{ block.settings.custom_width_mobile }}%;
-      {% endcase %}
-
-      {% case block.settings.height %}
-      {% when 'fit' %}
-      --item-height:auto;
-      {% when 'fill' %}
-      --item-height:fill;
-      {% when 'custom' %}
-      --item-height:{{ block.settings.custom_height }}%;
-      {% endcase %}
   "
   {{ block.shopify_attributes }}
 >
@@ -63,8 +34,8 @@
 </div>
 
 
-
 {% stylesheet %}
+
 .group {
   display: flex;
   flex-direction: row;
@@ -86,11 +57,11 @@
 
 .group--horizontal {
   flex-direction: row;
-  
 }
 
 .group--vertical {
   flex-direction: column;
+  justify-content: var(--align-y);
   align-items: var(--align-x);
 }
 
@@ -100,18 +71,16 @@
   align-self: stretch;
 }
 
-/* grow shrink */
+/* grow / shrink */
 
 .group > * {
   flex-grow: var(--grow);
   flex-shrink: var(--shrink);
-  text-align: unset;
 }
 
-.group--horizontal > * {
+/* columns OR custom width */
 
-  flex-grow: var(--grow);
-  flex-shrink: var(--shrink);
+.group--horizontal > * {
 
   flex-basis: var(
     --item-width,
@@ -123,37 +92,21 @@
 
 }
 
-/* fit-content */
+/* height */
 
-.group--horizontal > *[style*="auto"] {
-  flex: 0 0 auto;
-}
-
-/* fill */
-
-.group--horizontal > *[style*="fill"] {
-  flex: 1 1 auto;
-}
 .group > * {
-
   height: var(--item-height, auto);
-
-}
-.is-equal > * {
-
-  align-self: stretch;
-
 }
 
-.group > *[style*="fill"] {
-
-  align-self: stretch;
-
-}
+/* VERY IMPORTANT — Shopify wrapper fix */
 
 .group > [id^="shopify-block"] {
   display: contents;
 }
+
+
+/* mobile */
+
 @media (max-width: 749px) {
 
   .group {
@@ -163,19 +116,21 @@
     padding-left: var(--plm);
     padding-right: var(--prm);
   }
-.group--horizontal > * {
 
-  flex-basis: var(
-    --item-width-m,
-    calc(
-      (100% - (var(--cols-m) - 1) * var(--gap-x-m))
-      / var(--cols-m)
-    )
-  );
+  .group--horizontal > * {
+
+    flex-basis: var(
+      --item-width-m,
+      calc(
+        (100% - (var(--cols-m) - 1) * var(--gap-x-m))
+        / var(--cols-m)
+      )
+    );
+
+  }
 
 }
 
-}
 
 /* visibility */
 
@@ -194,6 +149,7 @@
   }
 
 }
+
 {% endstylesheet %}
 
 
