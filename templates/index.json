@@ -129,7 +129,7 @@
                 "ratio": "auto",
                 "hover_zoom": false,
                 "shadow": false,
-                "width": "fit-content",
+                "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100,
