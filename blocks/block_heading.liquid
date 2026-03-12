@@ -25,6 +25,10 @@ Advanced Heading Block
   --pbm: {{ block.settings.pbm }}px;
   --plm: {{ block.settings.plm }}px;
   --prm: {{ block.settings.prm }}px;
+--item-width: {{ block.settings.width }}%;
+--item-width-m: {{ block.settings.width_m }}%;
+--item-grow: {{ block.settings.grow }};
+--item-shrink: {{ block.settings.shrink }};
   "
   {{ block.shopify_attributes }}
 >
@@ -136,6 +140,45 @@ Advanced Heading Block
       "step": 100,
       "default": 600
     },
+        {
+  "type":"range",
+  "id":"width",
+  "label":"Width %",
+  "min":5,
+  "max":100,
+  "step":5,
+  "default":100
+},
+
+{
+  "type":"range",
+  "id":"width_m",
+  "label":"Width mobile %",
+  "min":10,
+  "max":100,
+  "step":5,
+  "default":100
+},
+
+{
+  "type":"range",
+  "id":"grow",
+  "label":"Grow",
+  "min":0,
+  "max":5,
+  "step":1,
+  "default":0
+},
+
+{
+  "type":"range",
+  "id":"shrink",
+  "label":"Shrink",
+  "min":0,
+  "max":5,
+  "step":1,
+  "default":1
+},
     {
       "type": "color",
       "id": "bg",
