@@ -1,0 +1,193 @@
+{% doc %}
+Advanced Image Block
+{% enddoc %}
+
+<div
+  class="image_block
+    {% if block.settings.hover_zoom %}hover-zoom{% endif %}
+    {% if block.settings.shadow %}has-shadow{% endif %}
+  "
+
+  style="
+    --img-width: {{ block.settings.width }}%;
+    --img-radius: {{ block.settings.radius }}px;
+
+    --bg: {{ block.settings.background }};
+
+    --border-size: {{ block.settings.border_size }}px;
+    --border-color: {{ block.settings.border_color }};
+
+    --padding: {{ block.settings.padding }}px;
+  "
+
+  {{ block.shopify_attributes }}
+>
+
+  {% if block.settings.image != blank %}
+
+    <img
+      src="{{ block.settings.image | image_url: width: 1200 }}"
+      alt=""
+      loading="lazy"
+    >
+
+  {% endif %}
+
+</div>
+
+
+
+{% stylesheet %}
+
+.image_block {
+
+  width: var(--img-width);
+
+  background: var(--bg);
+
+  border-radius: var(--img-radius);
+
+  border-style: solid;
+  border-width: var(--border-size);
+  border-color: var(--border-color);
+
+  padding: var(--padding);
+
+  overflow: hidden;
+
+  position: relative;
+
+}
+
+
+/* image */
+
+.image_block img {
+
+  width: 100%;
+  height: auto;
+  display: block;
+
+  border-radius: var(--img-radius);
+
+  transition: transform .4s ease;
+
+}
+
+
+/* hover zoom */
+
+.hover-zoom:hover img {
+
+  transform: scale(1.08);
+
+}
+
+
+/* shadow */
+
+.has-shadow {
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+
+}
+
+{% endstylesheet %}
+
+
+
+{% schema %}
+{
+  "name": "Image",
+
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+
+
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width %",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 100
+    },
+
+
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+
+
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0
+    },
+
+
+    {
+      "type": "range",
+      "id": "border_size",
+      "label": "Border size",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+
+
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color"
+    },
+
+
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
+
+
+    {
+      "type": "checkbox",
+      "id": "hover_zoom",
+      "label": "Hover zoom",
+      "default": false
+    },
+
+
+    {
+      "type": "checkbox",
+      "id": "shadow",
+      "label": "Box shadow",
+      "default": false
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Image"
+    }
+  ]
+}
+{% endschema %}
