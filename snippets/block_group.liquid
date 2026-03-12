@@ -1,0 +1,155 @@
+<div
+  class="group {{ block.settings.layout_direction }} {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+  {% if block.settings.hide_mobile %}hide-mobile{% endif %}
+ {% if block.settings.equal_height %}is-equal{% endif %}"
+  style="
+    --align-x: {{ block.settings.align_x }};
+    --align-y: {{ block.settings.align_y }};
+    --wrap: {{ block.settings.wrap }};
+    --cols: {{ block.settings.cols }};
+    --cols-m: {{ block.settings.cols_m }};
+    --grow: {{ block.settings.grow }};
+    --shrink: {{ block.settings.shrink }};
+    --gap-x: {{ block.settings.gap_x }}px;
+    --gap-y: {{ block.settings.gap_y }}px;
+    --gap-x-m: {{ block.settings.gap_x_m }}px;
+    --gap-y-m: {{ block.settings.gap_y_m }}px;
+    --bg: {{ block.settings.background }};
+    --radius: {{ block.settings.radius }}px;
+    --border: {{ block.settings.border }}px;
+    --border-color: {{ block.settings.border_color }};
+    --width: {{ block.settings.width_custom }}%;
+    --height: {{ block.settings.height_custom }}px;
+    --pt: {{ block.settings.pt }}px;
+    --pb: {{ block.settings.pb }}px;
+    --pl: {{ block.settings.pl }}px;
+    --pr: {{ block.settings.pr }}px;
+    --ptm: {{ block.settings.ptm }}px;
+    --pbm: {{ block.settings.pbm }}px;
+    --plm: {{ block.settings.plm }}px;
+    --prm: {{ block.settings.prm }}px;
+
+    --item-width: {{ block.settings.width }}%;
+    --item-width-m: {{ block.settings.width_m }}%;
+    --item-grow: {{ block.settings.grow }};
+    --item-shrink: {{ block.settings.shrink }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {{- children -}}
+</div>
+
+
+
+{% stylesheet %}
+.group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: var(--wrap);
+  justify-content: var(--align-x);
+  align-items: var(--align-y);
+  gap: var(--gap-y) var(--gap-x);
+  background: var(--bg);
+  border-radius: var(--radius);
+  border: var(--border) solid var(--border-color);
+  padding-top: var(--pt);
+  padding-bottom: var(--pb);
+  padding-left: var(--pl);
+  padding-right: var(--pr);
+  width: 100%;
+}
+
+/* direction */
+
+.group--horizontal {
+  flex-direction: row;
+  
+}
+
+.group--vertical {
+  flex-direction: column;
+  align-items: var(--align-x);
+}
+
+/* equal height */
+
+.is-equal > * {
+  align-self: stretch;
+}
+
+/* grow shrink */
+
+.group > * {
+  flex-grow: var(--grow);
+  flex-shrink: var(--shrink);
+  text-align: unset;
+}
+
+/* ✅ APPLY COLUMNS ONLY WHEN WRAP */
+.group--horizontal > * {
+  flex-grow: var(--item-grow, var(--grow));
+  flex-shrink: var(--item-shrink, var(--shrink));
+  flex-basis: var(
+    --item-width,
+    calc(
+      (100% - (var(--cols) - 1) * var(--gap-x))
+      / var(--cols)
+    )
+  );
+}
+/* mobile */
+.group > * {
+
+  flex-basis: var(--item-width);
+
+}
+
+.group > * > * {
+
+ flex-basis: var(--item-width);
+
+}
+@media (max-width: 749px) {
+
+  .group {
+    gap: var(--gap-y-m) var(--gap-x-m);
+    padding-top: var(--ptm);
+    padding-bottom: var(--pbm);
+    padding-left: var(--plm);
+    padding-right: var(--prm);
+  }
+
+  .group--horizontal > * {
+
+  flex-basis: var(
+    --item-width-m,
+    calc(
+      (100% - (var(--cols-m) - 1) * var(--gap-x-m))
+      / var(--cols-m)
+    )
+  );
+
+}
+
+}
+
+/* visibility */
+
+.hide-desktop {
+  display: none !important;
+}
+
+@media (max-width: 749px) {
+
+  .hide-desktop {
+    display: flex !important;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+}
+{% endstylesheet %}
+
+
