@@ -88,6 +88,176 @@
     },
     "custom_section_8FVEUi": {
       "type": "custom-section",
+      "blocks": {
+        "group_yhTKGz": {
+          "type": "group",
+          "name": "Block Group",
+          "settings": {
+            "layout_direction": "group--horizontal",
+            "align_x": "flex-start",
+            "align_y": "flex-start",
+            "wrap": "wrap",
+            "equal_height": false,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false
+          },
+          "blocks": {
+            "group_jRPwJL": {
+              "type": "group",
+              "name": "Block Group",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "align_x": "flex-start",
+                "align_y": "flex-start",
+                "wrap": "wrap",
+                "equal_height": false,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {
+                "block_image_xVGyV6": {
+                  "type": "block_image",
+                  "name": "Image",
+                  "settings": {
+                    "ratio": "auto",
+                    "hover_zoom": false,
+                    "shadow": false,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "background": "",
+                    "radius": 0,
+                    "border_size": 0,
+                    "border_color": "#000000",
+                    "pt": 0,
+                    "pb": 0,
+                    "pl": 0,
+                    "pr": 0,
+                    "pt_m": 0,
+                    "pb_m": 0,
+                    "pl_m": 0,
+                    "pr_m": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "block_image_xVGyV6"
+              ]
+            },
+            "group_HQfn7L": {
+              "type": "group",
+              "name": "Block Group",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "align_x": "flex-start",
+                "align_y": "flex-start",
+                "wrap": "wrap",
+                "equal_height": false,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {
+                "block_image_XtqiTW": {
+                  "type": "block_image",
+                  "name": "Image",
+                  "settings": {
+                    "ratio": "auto",
+                    "hover_zoom": false,
+                    "shadow": false,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "background": "",
+                    "radius": 0,
+                    "border_size": 0,
+                    "border_color": "#000000",
+                    "pt": 0,
+                    "pb": 0,
+                    "pl": 0,
+                    "pr": 0,
+                    "pt_m": 0,
+                    "pb_m": 0,
+                    "pl_m": 0,
+                    "pr_m": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "block_image_XtqiTW"
+              ]
+            }
+          },
+          "block_order": [
+            "group_jRPwJL",
+            "group_HQfn7L"
+          ]
+        }
+      },
+      "block_order": [
+        "group_yhTKGz"
+      ],
       "name": "Premium Global Section",
       "settings": {
         "section_width": "custom",
