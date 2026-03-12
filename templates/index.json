@@ -91,7 +91,7 @@
       "blocks": {
         "group_AMtJrk": {
           "type": "group",
-          "name": "t:general.column",
+          "name": "Top Header",
           "settings": {
             "layout_direction": "group--vertical",
             "alignment": "flex-start",
@@ -103,7 +103,7 @@
               "name": "t:general.text",
               "settings": {
                 "text": "Text",
-                "text_style": "text--title",
+                "text_style": "text--subtitle",
                 "alignment": "left"
               },
               "blocks": {}
@@ -181,8 +181,8 @@
         "text_color": "#111111",
         "line_height": 1.4,
         "letter_spacing": 0,
-        "hide_mobile": false,
-        "hide_desktop": true,
+        "hide_mobile": true,
+        "hide_desktop": false,
         "custom_mobile_layout": false,
         "stack_columns_mobile": false
       }
