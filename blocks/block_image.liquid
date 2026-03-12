@@ -1,143 +1,132 @@
 {% doc %}
-Advanced Image Block
+  Advanced Text Block
 {% enddoc %}
 
 <div
   class="image_block
-    {% if block.settings.hover_zoom %}hover-zoom{% endif %}
-    {% if block.settings.shadow %}has-shadow{% endif %}
-  "
-
+  ratio--{{ block.settings.ratio }}
+  {% if block.settings.hover_zoom %}is-zoom{% endif %}
+  {% if block.settings.shadow %}is-shadow{% endif %}
+"
   style="
-    --img-width: {{ block.settings.width }}%;
-    --img-radius: {{ block.settings.radius }}px;
-
     --bg: {{ block.settings.background }};
-
+    --radius: {{ block.settings.radius }}px;
     --border-size: {{ block.settings.border_size }}px;
     --border-color: {{ block.settings.border_color }};
-
-    --padding: {{ block.settings.padding }}px;
+    --pt: {{ block.settings.pt }}px;
+    --pb: {{ block.settings.pb }}px;
+    --pl: {{ block.settings.pl }}px;
+    --pr: {{ block.settings.pr }}px;
+    --pt-m: {{ block.settings.pt_m }}px;
+    --pb-m: {{ block.settings.pb_m }}px;
+    --pl-m: {{ block.settings.pl_m }}px;
+    --pr-m: {{ block.settings.pr_m }}px;
   "
-
   {{ block.shopify_attributes }}
 >
 
+
   {% if block.settings.image != blank %}
-
-    <img
-      src="{{ block.settings.image | image_url: width: 1200 }}"
-      alt=""
-      loading="lazy"
-    >
-
+    {{ block.settings.image | image_url: width: width, height: height, crop: crop | image_tag }}
+  {% else %}
+    
   {% endif %}
 
 </div>
 
-
-
 {% stylesheet %}
-
-.image_block {
-
-  width: var(--img-width);
-
+ .image_block {
   background: var(--bg);
-
-  border-radius: var(--img-radius);
-
-  border-style: solid;
-  border-width: var(--border-size);
-  border-color: var(--border-color);
-
-  padding: var(--padding);
-
+  border-radius: var(--radius);
+  border: var(--border-size) solid var(--border-color);
+  padding-top: var(--pt);
+  padding-bottom: var(--pb);
+  padding-left: var(--pl);
+  padding-right: var(--pr);
   overflow: hidden;
-
   position: relative;
-
 }
-
-
-/* image */
-
+  /* image */
 .image_block img {
-
   width: 100%;
   height: auto;
   display: block;
-
-  border-radius: var(--img-radius);
-
-  transition: transform .4s ease;
-
+  border-radius: var(--radius);
+  transition: transform .35s ease;
 }
-
-
-/* hover zoom */
-
-.hover-zoom:hover img {
-
+/* zoom */
+.is-zoom:hover img {
   transform: scale(1.08);
-
 }
-
-
 /* shadow */
-
-.has-shadow {
-
-  box-shadow: 0 10px 30px rgba(0,0,0,.15);
-
+.is-shadow {
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
+.ratio--square {aspect-ratio: 1 / 1;}
+.ratio--landscape {aspect-ratio: 4 / 3;}
+.ratio--portrait {aspect-ratio: 3 / 4;}
+.ratio--auto {aspect-ratio: auto;}
+  /* mobile */
+  @media screen and (max-width: 749px) {
+    .image_block{
+      padding-top: var(--pt-m);
+      padding-bottom: var(--pb-m);
+      padding-left: var(--pl-m);
+      padding-right: var(--pr-m);
+    }
+  }
 
 {% endstylesheet %}
-
-
-
 {% schema %}
 {
-  "name": "Image",
-
+  "name": "Text",
   "settings": [
-
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
-
-
     {
-      "type": "range",
-      "id": "width",
-      "label": "Width %",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "default": 100
+    "type": "select",
+    "id": "ratio",
+    "label": "Image ratio",
+    "default": "auto",
+    "options": [
+        { "value": "auto", "label": "Auto" },
+        { "value": "square", "label": "Square" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" }
+    ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_zoom",
+      "label": "Hover zoom"
     },
 
-
+    {
+      "type": "checkbox",
+      "id": "shadow",
+      "label": "Box shadow"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
     {
       "type": "color",
       "id": "background",
-      "label": "Background"
+      "label": "Background color"
     },
-
-
     {
       "type": "range",
       "id": "radius",
-      "label": "Radius",
+      "label": "Border radius",
       "min": 0,
       "max": 50,
       "step": 1,
       "default": 0
     },
-
-
     {
       "type": "range",
       "id": "border_size",
@@ -147,41 +136,92 @@ Advanced Image Block
       "step": 1,
       "default": 0
     },
-
-
     {
       "type": "color",
       "id": "border_color",
-      "label": "Border color"
+      "label": "Border color",
+      "default": "#000000"
     },
-
-
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
     {
       "type": "range",
-      "id": "padding",
-      "label": "Padding",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pl",
+      "label": "Padding left",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr",
+      "label": "Padding right",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "pt_m",
+      "label": "Padding top mobile",
       "min": 0,
       "max": 100,
       "step": 2,
       "default": 0
     },
-
-
     {
-      "type": "checkbox",
-      "id": "hover_zoom",
-      "label": "Hover zoom",
-      "default": false
+      "type": "range",
+      "id": "pb_m",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
     },
-
-
     {
-      "type": "checkbox",
-      "id": "shadow",
-      "label": "Box shadow",
-      "default": false
+      "type": "range",
+      "id": "pl_m",
+      "label": "Padding left mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr_m",
+      "label": "Padding right mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
     }
-
   ],
 
   "presets": [
