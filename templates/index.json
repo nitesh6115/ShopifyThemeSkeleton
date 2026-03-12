@@ -93,7 +93,7 @@
           "type": "group",
           "name": "Block Group",
           "settings": {
-            "layout_direction": "group--horizontal",
+            "layout_direction": "group--vertical",
             "align_x": "space-between",
             "align_y": "flex-start",
             "wrap": "wrap",
@@ -154,7 +154,7 @@
               "type": "block_text",
               "name": "Text",
               "settings": {
-                "text": "Text",
+                "text": "<p>Text</p>",
                 "alignment": "left",
                 "font_size": 16,
                 "font_size_mobile": 14,
@@ -174,11 +174,29 @@
                 "pr_m": 0
               },
               "blocks": {}
+            },
+            "block_divider_mKWMJY": {
+              "type": "block_divider",
+              "name": "Divider",
+              "settings": {
+                "border": 2,
+                "color": "#000000",
+                "width": 100,
+                "align": "center",
+                "pt": 10,
+                "pb": 10,
+                "ptm": 8,
+                "pbm": 8,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "block_heading_Agjqi4",
-            "block_text_4MGgGH"
+            "block_text_4MGgGH",
+            "block_divider_mKWMJY"
           ]
         }
       },
