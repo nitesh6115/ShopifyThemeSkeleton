@@ -248,11 +248,11 @@
           "settings": {
             "layout_direction": "group--vertical",
             "align_x": "flex-start",
-            "align_y": "flex-start",
+            "align_y": "stretch",
             "wrap": "wrap",
             "cols": 3,
             "cols_m": 1,
-            "equal_height": false,
+            "equal_height": true,
             "grow": 0,
             "shrink": 1,
             "gap_x": 0,
