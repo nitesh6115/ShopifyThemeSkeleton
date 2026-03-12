@@ -93,8 +93,8 @@
           "type": "group",
           "name": "Block Group",
           "settings": {
-            "layout_direction": "group--horizontal",
-            "align_x": "flex-start",
+            "layout_direction": "group--vertical",
+            "align_x": "flex-end",
             "align_y": "center",
             "wrap": "wrap",
             "cols": 3,
