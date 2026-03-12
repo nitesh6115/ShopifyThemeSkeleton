@@ -95,7 +95,7 @@
           "settings": {
             "layout_direction": "group--horizontal",
             "align_x": "flex-start",
-            "align_y": "flex-start",
+            "align_y": "center",
             "wrap": "wrap",
             "cols": 3,
             "cols_m": 1,
