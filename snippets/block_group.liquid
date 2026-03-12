@@ -41,10 +41,32 @@
     --plm: {{ settings.plm }}px;
     --prm: {{ settings.prm }}px;
 
-    --item-width: {{ settings.width }}%;
-    --item-width-m: {{ settings.width_m }}%;
-    --item-grow: {{ settings.grow }};
-    --item-shrink: {{ settings.shrink }};
+    {% case block.settings.width %}
+      {% when 'fit-content' %}
+      --item-width:auto;
+      {% when 'fill' %}
+      --item-width:fill;
+      {% when 'custom' %}
+      --item-width:{{ block.settings.custom_width }}%;
+      {% endcase %}
+
+      {% case block.settings.width_mobile %}
+      {% when 'fit-content' %}
+      --item-width-m:auto;
+      {% when 'fill' %}
+      --item-width-m:fill;
+      {% when 'custom' %}
+      --item-width-m:{{ block.settings.custom_width_mobile }}%;
+      {% endcase %}
+
+      {% case block.settings.height %}
+      {% when 'fit' %}
+      --item-height:auto;
+      {% when 'fill' %}
+      --item-height:fill;
+      {% when 'custom' %}
+      --item-height:{{ block.settings.custom_height }}%;
+      {% endcase %}
   "
   {{ shopify_attributes }}
 >
