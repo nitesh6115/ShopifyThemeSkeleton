@@ -97,7 +97,7 @@
             "align_x": "flex-start",
             "align_y": "flex-start",
             "wrap": "nowrap",
-            "cols": 3,
+            "cols": 6,
             "cols_m": 1,
             "equal_height": false,
             "width": "fill",
@@ -133,9 +133,9 @@
                 "ratio": "auto",
                 "hover_zoom": false,
                 "shadow": false,
-                "width": "custom",
-                "custom_width": 19,
-                "width_mobile": "custom",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
                 "custom_width_mobile": 21,
                 "height": "fit",
                 "custom_height": 100,
@@ -232,10 +232,45 @@
             "block_image_LYCjQc",
             "group_MbW6fY"
           ]
+        },
+        "block_heading_VcGBw6": {
+          "type": "block_heading",
+          "name": "Heading",
+          "settings": {
+            "text": "Heading",
+            "color": "#000000",
+            "tag": "h2",
+            "size_mode": "auto",
+            "font_size": 32,
+            "font_size_m": 24,
+            "font_weight": 600,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "bg": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "group_KC76JT"
+        "group_KC76JT",
+        "block_heading_VcGBw6"
       ],
       "name": "Premium Global Section",
       "settings": {
