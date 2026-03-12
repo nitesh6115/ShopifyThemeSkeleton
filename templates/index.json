@@ -95,8 +95,8 @@
           "settings": {
             "layout_direction": "group--horizontal",
             "align_x": "flex-start",
-            "align_y": "flex-start",
-            "wrap": "nowrap",
+            "align_y": "center",
+            "wrap": "wrap",
             "equal_height": false,
             "width": "fill",
             "custom_width": 100,
@@ -126,7 +126,7 @@
               "type": "block_text",
               "name": "Text",
               "settings": {
-                "text": "<p>Text</p>",
+                "text": "<p>.block-width-desktop-fill&lcub;flex: 1;&rcub; .block-width-desktop-fill&lcub;flex: 1;&rcub;</p>",
                 "alignment": "left",
                 "width": "fit-content",
                 "custom_width": 100,
@@ -163,7 +163,7 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100,
-                "height": "fit",
+                "height": "fill",
                 "custom_height": 100,
                 "font_size": 16,
                 "font_size_mobile": 14,
