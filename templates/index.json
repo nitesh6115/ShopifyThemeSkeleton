@@ -88,6 +88,129 @@
     },
     "custom_section_8FVEUi": {
       "type": "custom-section",
+      "blocks": {
+        "group_eTFhii": {
+          "type": "group",
+          "name": "Block Group",
+          "settings": {
+            "layout_direction": "group--horizontal",
+            "align_x": "flex-start",
+            "align_y": "center",
+            "wrap": "wrap",
+            "cols": 3,
+            "cols_m": 1,
+            "equal_height": false,
+            "grow": 0,
+            "shrink": 1,
+            "gap_x": 0,
+            "gap_y": 0,
+            "gap_x_m": 0,
+            "gap_y_m": 0,
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false
+          },
+          "blocks": {
+            "block_heading_dPciqG": {
+              "type": "block_heading",
+              "name": "Heading",
+              "settings": {
+                "text": "Heading",
+                "color": "#000000",
+                "tag": "h2",
+                "size_mode": "auto",
+                "font_size": 32,
+                "font_size_m": 24,
+                "font_weight": 600,
+                "bg": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
+            },
+            "block_heading_khnMAJ": {
+              "type": "block_heading",
+              "name": "Heading",
+              "settings": {
+                "text": "Heading",
+                "color": "#000000",
+                "tag": "h2",
+                "size_mode": "auto",
+                "font_size": 32,
+                "font_size_m": 24,
+                "font_weight": 600,
+                "bg": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
+            },
+            "block_image_Lx7iEL": {
+              "type": "block_image",
+              "name": "Image",
+              "settings": {
+                "ratio": "auto",
+                "hover_zoom": false,
+                "shadow": false,
+                "background": "",
+                "radius": 0,
+                "border_size": 0,
+                "border_color": "#000000",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "pt_m": 0,
+                "pb_m": 0,
+                "pl_m": 0,
+                "pr_m": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_dPciqG",
+            "block_heading_khnMAJ",
+            "block_image_Lx7iEL"
+          ]
+        }
+      },
+      "block_order": [
+        "group_eTFhii"
+      ],
       "name": "Premium Global Section",
       "settings": {
         "section_width": "custom",
