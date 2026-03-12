@@ -91,7 +91,7 @@
       "blocks": {
         "group_yhTKGz": {
           "type": "group",
-          "name": "Block Group",
+          "name": "Top Block",
           "settings": {
             "layout_direction": "group--horizontal",
             "align_x": "flex-start",
@@ -633,10 +633,117 @@
             "group_jRPwJL",
             "group_HQfn7L"
           ]
+        },
+        "group_Jd3MeU": {
+          "type": "group",
+          "name": "Bottom Block",
+          "settings": {
+            "layout_direction": "group--horizontal",
+            "align_x": "flex-start",
+            "align_y": "flex-start",
+            "wrap": "wrap",
+            "equal_height": false,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false
+          },
+          "blocks": {
+            "group_t9h3jE": {
+              "type": "group",
+              "name": "Top Header",
+              "settings": {
+                "layout_direction": "group--vertical",
+                "align_x": "center",
+                "align_y": "flex-start",
+                "wrap": "wrap",
+                "equal_height": false,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {
+                "block_heading_cYQ7tA": {
+                  "type": "block_heading",
+                  "name": "Heading",
+                  "settings": {
+                    "text": "Heading",
+                    "color": "#000000",
+                    "tag": "h2",
+                    "size_mode": "auto",
+                    "font_size": 32,
+                    "font_size_m": 24,
+                    "font_weight": 600,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "bg": "",
+                    "radius": 0,
+                    "border": 0,
+                    "border_color": "",
+                    "pt": 0,
+                    "pb": 0,
+                    "pl": 0,
+                    "pr": 0,
+                    "ptm": 0,
+                    "pbm": 0,
+                    "plm": 0,
+                    "prm": 0,
+                    "hide_desktop": false,
+                    "hide_mobile": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "block_heading_cYQ7tA"
+              ]
+            }
+          },
+          "block_order": [
+            "group_t9h3jE"
+          ]
         }
       },
       "block_order": [
-        "group_yhTKGz"
+        "group_yhTKGz",
+        "group_Jd3MeU"
       ],
       "name": "Premium Global Section",
       "settings": {
@@ -661,8 +768,8 @@
         "bg_size": "cover",
         "columns_desktop": 1,
         "columns_mobile": 1,
-        "column_gap": 24,
-        "row_gap": 24,
+        "column_gap": 52,
+        "row_gap": 52,
         "border_radius": 0,
         "border_width": 0,
         "border_color": "#000000",
