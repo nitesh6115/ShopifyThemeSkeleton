@@ -126,7 +126,7 @@
               "type": "group",
               "name": "Block Group",
               "settings": {
-                "layout_direction": "group--horizontal",
+                "layout_direction": "group--vertical",
                 "align_x": "flex-start",
                 "align_y": "flex-start",
                 "wrap": "nowrap",
@@ -155,19 +155,50 @@
                 "hide_mobile": false
               },
               "blocks": {
+                "block_text_9tyBwD": {
+                  "type": "block_text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p>Science-Backed Formula</p>",
+                    "alignment": "left",
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "font_size": 14,
+                    "font_size_mobile": 12,
+                    "font_weight": "400",
+                    "color": "#c70036",
+                    "background": "#ffe4e6",
+                    "radius": 30,
+                    "border_size": 0,
+                    "border_color": "#000000",
+                    "pt": 10,
+                    "pb": 10,
+                    "pl": 20,
+                    "pr": 20,
+                    "pt_m": 10,
+                    "pb_m": 10,
+                    "pl_m": 20,
+                    "pr_m": 20
+                  },
+                  "blocks": {}
+                },
                 "block_heading_wHPUFN": {
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Heading",
+                    "text": "Powerful Ingredients That Actually Work",
                     "color": "#000000",
                     "tag": "h2",
-                    "size_mode": "auto",
-                    "font_size": 32,
-                    "font_size_m": 24,
-                    "font_weight": 600,
+                    "size_mode": "custom",
+                    "font_size": 35,
+                    "font_size_m": 25,
+                    "font_weight": 500,
                     "width": "fit-content",
-                    "custom_width": 100,
+                    "custom_width": 73,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
                     "height": "fit",
@@ -191,6 +222,7 @@
                 }
               },
               "block_order": [
+                "block_text_9tyBwD",
                 "block_heading_wHPUFN"
               ]
             },
