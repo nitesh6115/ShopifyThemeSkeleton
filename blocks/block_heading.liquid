@@ -1,98 +1,103 @@
 {% doc %}
-Advanced Heading Block
+  Advanced Heading Block
 {% enddoc %}
 {% assign tag = block.settings.tag %}
 <div
-  class="heading-block
-  {% if block.settings.height == 'custom' %}
-     block-custom-height-desktop 
-     {% else %}
-    block-height-desktop-{{ block.settings.height }}
-    {% endif %}
-    {% if block.settings.width == 'custom' %}
-    block-custom-width-desktop
-    {% else %}
-    block-width-desktop-{{ block.settings.width }}
-    {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
-    block-custom-width-mobile
-    {% else %}
-     block-width-mobile-{{ block.settings.width_mobile }}
-    {% endif %}
-  size--{{ block.settings.size_mode }}
-  {% if block.settings.hide_mobile %}hide-mobile{% endif %}
-  {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+  class="
+    heading-block
+    {% if block.settings.height == 'custom' %}
+       block-custom-height-desktop
+       {% else %}
+      block-height-desktop-{{ block.settings.height }}
+      {% endif %}
+      {% if block.settings.width == 'custom' %}
+      block-custom-width-desktop
+      {% else %}
+      block-width-desktop-{{ block.settings.width }}
+      {% endif %}
+      {% if block.settings.width_mobile == 'custom' %}
+      block-custom-width-mobile
+      {% else %}
+       block-width-mobile-{{ block.settings.width_mobile }}
+      {% endif %}
+    size--{{ block.settings.size_mode }}
+    {% if block.settings.hide_mobile %}hide-mobile{% endif %}
+    {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   "
   style="
-  --text-align: {{ block.settings.alignment }};
-  --color: {{ block.settings.color }};  
-  --bg: {{ block.settings.bg }};
-  --radius: {{ block.settings.radius }}px;
-  --border: {{ block.settings.border }}px;
-  --border-color: {{ block.settings.border_color }};
-  --fs: {{ block.settings.font_size }}px;
-  --fsm: {{ block.settings.font_size_m }}px;
-  --fw: {{ block.settings.font_weight }};
-  --pt: {{ block.settings.pt }}px;
-  --pb: {{ block.settings.pb }}px;
-  --pl: {{ block.settings.pl }}px;
-  --pr: {{ block.settings.pr }}px;
-  --ptm: {{ block.settings.ptm }}px;
-  --pbm: {{ block.settings.pbm }}px;
-  --plm: {{ block.settings.plm }}px;
-  --prm: {{ block.settings.prm }}px;
-{% if block.settings.height == 'custom' %}
-     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
-    {% endif %}
-    {% if block.settings.width == 'custom' %}
-    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
-    {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
-    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
-    {% endif %} 
+      --text-align: {{ block.settings.alignment }};
+      --color: {{ block.settings.color }};
+      --bg: {{ block.settings.bg }};
+      --radius: {{ block.settings.radius }}px;
+      --border: {{ block.settings.border }}px;
+      --border-color: {{ block.settings.border_color }};
+      --fs: {{ block.settings.font_size }}px;
+      --fsm: {{ block.settings.font_size_m }}px;
+      --fw: {{ block.settings.font_weight }};
+      --pt: {{ block.settings.pt }}px;
+      --pb: {{ block.settings.pb }}px;
+      --pl: {{ block.settings.pl }}px;
+      --pr: {{ block.settings.pr }}px;
+      --ptm: {{ block.settings.ptm }}px;
+      --pbm: {{ block.settings.pbm }}px;
+      --plm: {{ block.settings.plm }}px;
+      --prm: {{ block.settings.prm }}px;
+       --line-height: {{ block.settings.line_height }};
+      --letter-spacing: {{ block.settings.letter_spacing }}px;
+
+    {% if block.settings.height == 'custom' %}
+         --block-custom-height-desktop: {{ block.settings.custom_height }}%;
+        {% endif %}
+        {% if block.settings.width == 'custom' %}
+        --block-custom-width-desktop: {{ block.settings.custom_width }}%;
+        {% endif %}
+        {% if block.settings.width_mobile == 'custom' %}
+        --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+        {% endif %}
   "
   {{ block.shopify_attributes }}
 >
   <{{ tag }} class="{% if block.settings.size_mode == 'custom' %}size--custom{% endif %}">
-  {{ block.settings.text }}
+    {{ block.settings.text }}
   </{{ tag }}>
 </div>
 {% stylesheet %}
-.heading-block {
-  color: var(--color);  
-  background: var(--bg); 
-  border-radius: var(--radius);
-  border: var(--border) solid var(--border-color);
-  padding-top: var(--pt);
-  padding-bottom: var(--pb);
-  padding-left: var(--pl);
-  padding-right: var(--pr);
-  text-align: var(--text-align);
-}
-/* custom font */
-.size--custom {
-  font-size: var(--fs);
-  font-weight: var(--fw);
-  line-height: normal;
-}
-@media (max-width:749px){
-  .heading-block{
-    padding-top: var(--ptm);
-    padding-bottom: var(--pbm);
-    padding-left: var(--plm);
-    padding-right: var(--prm);
+  .heading-block {
+    color: var(--color);
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: var(--border) solid var(--border-color);
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    padding-left: var(--pl);
+    padding-right: var(--pr);
+    text-align: var(--text-align);
   }
-  .size--custom{
-    font-size: var(--fsm);
+  /* custom font */
+  .size--custom {
+    font-size: var(--fs);
+    font-weight: var(--fw);
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
   }
-}
-/* hide */
-@media (min-width:750px){
-  .hide-desktop{ display:none !important; }
-}
-@media (max-width:749px){
-  .hide-mobile{ display:none !important; }
-}
+  @media (max-width:749px){
+    .heading-block{
+      padding-top: var(--ptm);
+      padding-bottom: var(--pbm);
+      padding-left: var(--plm);
+      padding-right: var(--prm);
+    }
+    .size--custom{
+      font-size: var(--fsm);
+    }
+  }
+  /* hide */
+  @media (min-width:750px){
+    .hide-desktop{ display:none !important; }
+  }
+  @media (max-width:749px){
+    .hide-mobile{ display:none !important; }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -111,6 +116,30 @@ Advanced Heading Block
       "id": "alignment",
       "label": "Alignment",
       "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "line_height",
+      "label": "Line height",
+      "visible_if": "{{ block.settings.size_mode == 'custom' }}",
+      "options": [
+        { "value": "0.9", "label": "Tight" },
+        { "value": "1.2", "label": "Normal" },
+        { "value": "1.6", "label": "Loose" }
+      ],
+      "default": "1.2"
+    },
+
+    {
+      "type": "range",
+      "visible_if": "{{ block.settings.size_mode == 'custom' }}",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
     "type": "color",
