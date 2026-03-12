@@ -144,6 +144,7 @@ Advanced Group Block (Safe Builder Version)
       "id": "align_x",
       "label": "Horizontal align",
       "default": "flex-start",
+      "visible_if": "{{ block.settings.layout_direction == 'group--horizontal' }}",
       "options": [
         { "value": "flex-start", "label": "Left" },
         { "value": "center", "label": "Center" },
