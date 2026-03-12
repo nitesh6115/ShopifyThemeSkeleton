@@ -3,7 +3,9 @@ Advanced Group Block (Safe Builder Version)
 {% enddoc %}
 
 <div
-  class="group {{ block.settings.layout_direction }} {% if block.settings.equal_height %}is-equal{% endif %}"
+  class="group {{ block.settings.layout_direction }} {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+  {% if block.settings.hide_mobile %}hide-mobile{% endif %}
+ {% if block.settings.equal_height %}is-equal{% endif %}"
   style="
 
     --align-x: {{ block.settings.align_x }};
@@ -157,7 +159,21 @@ Advanced Group Block (Safe Builder Version)
   }
 
 }
+.hide-desktop {
+  display: none !important;
+}
 
+@media (max-width: 749px) {
+
+  .hide-desktop {
+    display: flex !important;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+}
 {% endstylesheet %}
 
 
