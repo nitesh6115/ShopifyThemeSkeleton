@@ -112,7 +112,7 @@
           },
           "blocks": {
             "text_ajY8Lp": {
-              "type": "text",
+              "type": "block_text",
               "name": "t:general.text",
               "settings": {
                 "text": "Text",
