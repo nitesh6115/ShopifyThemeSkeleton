@@ -69,14 +69,18 @@
 .group > * {
   height: var(--item-height, auto);
 }
-
+ .group-block--height-fill {
+    height: var(--size-style-height);
+}
 
 /* mobile */
 @media (min-width: 750px){
   .block-width-desktop-fill{
   flex: 1;
 }
-
+.block-height-desktop-fit{
+  height: fit;
+}
 }
 @media (max-width: 749px) {
   .group {
