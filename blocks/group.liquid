@@ -160,6 +160,7 @@ Advanced Group Block (Safe Builder Version)
       "id": "align_x",
       "label": "Align",
       "default": "flex-start",
+      "visible_if": "{{ block.settings.layout_direction == 'group--horizontal' and block.settings.equal_height != true }}",
       "options": [
         { "value": "flex-start", "label": "Left" },
         { "value": "center", "label": "Center" },
