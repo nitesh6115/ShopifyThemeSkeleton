@@ -3,7 +3,23 @@
 {% enddoc %}
 
 <div
-  class="text_block"
+  class="text_block
+    {% if block.settings.height == 'custom' %}
+     block-custom-height-desktop 
+     {% else %}
+    block-height-desktop-{{ block.settings.height }}
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    block-custom-width-desktop
+    {% else %}
+    block-width-desktop-{{ block.settings.width }}
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    block-custom-width-mobile
+    {% else %}
+     block-width-mobile-{{ block.settings.width_mobile }}
+    {% endif %}
+  "
   style="
     --text-align: {{ block.settings.alignment }};
     --font-size-desktop: {{ block.settings.font_size }}px;
@@ -22,21 +38,15 @@
     --pb-m: {{ block.settings.pb_m }}px;
     --pl-m: {{ block.settings.pl_m }}px;
     --pr-m: {{ block.settings.pr_m }}px;
-     {% if block.settings.height == 'custom' %}
-    --block-custom-height-desktop: {{ block.settings.custom_height }}; 
-     {% else %}
-    --block-height-desktop: {{ block.settings.height }};
+    {% if block.settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
     {% endif %}
     {% if block.settings.width == 'custom' %}
-    --block-custom-width-desktop: {{ block.settings.width }};
-    {% else %}
-     --block-width-desktop: {{ block.settings.width }};
+    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
     {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
-    --block-custom-width-mobile: {{ block.settings.width_mobile }};
-    {% else %}
-     --block-width-mobile: {{ block.settings.width_mobile }};
-    {% endif %}
+    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+    {% endif %} 
   "
   {{ block.shopify_attributes }}
 >
