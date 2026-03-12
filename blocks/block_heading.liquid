@@ -4,6 +4,21 @@ Advanced Heading Block
 {% assign tag = block.settings.tag %}
 <{{ tag }}
   class="heading-block
+  {% if block.settings.height == 'custom' %}
+     block-custom-height-desktop 
+     {% else %}
+    block-height-desktop-{{ block.settings.height }}
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    block-custom-width-desktop
+    {% else %}
+    block-width-desktop-{{ block.settings.width }}
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    block-custom-width-mobile
+    {% else %}
+     block-width-mobile-{{ block.settings.width_mobile }}
+    {% endif %}
   size--{{ block.settings.size_mode }}
   {% if block.settings.hide_mobile %}hide-mobile{% endif %}
   {% if block.settings.hide_desktop %}hide-desktop{% endif %}
@@ -25,32 +40,15 @@ Advanced Heading Block
   --pbm: {{ block.settings.pbm }}px;
   --plm: {{ block.settings.plm }}px;
   --prm: {{ block.settings.prm }}px;
-{% case block.settings.width %}
-      {% when 'fit-content' %}
-      --item-width:auto;
-      {% when 'fill' %}
-      --item-width:fill;
-      {% when 'custom' %}
-      --item-width:{{ block.settings.custom_width }}%;
-      {% endcase %}
-
-      {% case block.settings.width_mobile %}
-      {% when 'fit-content' %}
-      --item-width-m:auto;
-      {% when 'fill' %}
-      --item-width-m:fill;
-      {% when 'custom' %}
-      --item-width-m:{{ block.settings.custom_width_mobile }}%;
-      {% endcase %}
-
-      {% case block.settings.height %}
-      {% when 'fit' %}
-      --item-height:auto;
-      {% when 'fill' %}
-      --item-height:fill;
-      {% when 'custom' %}
-      --item-height:{{ block.settings.custom_height }}%;
-      {% endcase %}
+{% if block.settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+    {% endif %} 
   "
   {{ block.shopify_attributes }}
 >
