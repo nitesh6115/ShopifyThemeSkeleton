@@ -151,16 +151,13 @@
   {% endif %}
 
   <div class="container">
+    {% if section.settings.heading != blank or section.settings.text != blank %}
     <div class="section-header">
       <h2>{{ section.settings.heading }}</h2>
       <p>{{ section.settings.text }}</p>
     </div>
-    <div
-      class="
-        section-content
-        {% if section.settings.stack_columns_mobile %}stack-mobile{% endif %}
-      "
-    >
+  {% endif %}
+    <div class="section-content {% if section.settings.stack_columns_mobile %}stack-mobile{% endif %}">
       {% content_for 'blocks' %}
     </div>
   </div>
