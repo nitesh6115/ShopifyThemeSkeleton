@@ -45,9 +45,17 @@
     padding-right: var(--pr);
     display: inline-block;
   }
+  .text_block p{
+    font-size: var(--font-size-desktop);
+    font-weight: var(--font-weight);
+    color: var(--text-color);
+  }
   /* mobile */
   @media screen and (max-width: 749px) {
-    .text_block {
+    .text_block p{
+      font-size: var(--font-size-mobile);
+    }
+     .text_block {
       font-size: var(--font-size-mobile);
       padding-top: var(--pt-m);
       padding-bottom: var(--pb-m);
