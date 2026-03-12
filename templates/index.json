@@ -88,12 +88,66 @@
     },
     "custom_section_hAq4DK": {
       "type": "custom-section",
+      "blocks": {
+        "group_AMtJrk": {
+          "type": "group",
+          "name": "t:general.column",
+          "settings": {
+            "layout_direction": "group--vertical",
+            "alignment": "flex-start",
+            "padding": 0
+          },
+          "blocks": {
+            "text_RA6HF4": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "Text",
+                "text_style": "text--title",
+                "alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_RA6HF4"
+          ]
+        },
+        "group_3N9dYg": {
+          "type": "group",
+          "name": "t:general.column",
+          "settings": {
+            "layout_direction": "group--horizontal",
+            "alignment": "flex-start",
+            "padding": 0
+          },
+          "blocks": {
+            "text_D88tyc": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "Text",
+                "text_style": "text--title",
+                "alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_D88tyc"
+          ]
+        }
+      },
+      "block_order": [
+        "group_AMtJrk",
+        "group_3N9dYg"
+      ],
       "name": "Premium Global Section",
       "settings": {
         "section_width": "full",
         "custom_width": 1200,
-        "container_alignment": "center",
-        "content_alignment": "center",
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "center",
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_left_desktop": 0,
@@ -109,7 +163,7 @@
         "overlay_opacity": 0,
         "bg_position": "center center",
         "bg_size": "cover",
-        "columns_desktop": 3,
+        "columns_desktop": 2,
         "columns_mobile": 1,
         "column_gap": 24,
         "row_gap": 24,
@@ -128,7 +182,7 @@
         "line_height": 1.4,
         "letter_spacing": 0,
         "hide_mobile": false,
-        "hide_desktop": false,
+        "hide_desktop": true,
         "custom_mobile_layout": false,
         "stack_columns_mobile": false
       }
