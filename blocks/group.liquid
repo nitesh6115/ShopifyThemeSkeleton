@@ -98,7 +98,21 @@ Advanced Group Block (Safe Builder Version)
 }
 
 /* mobile */
+.group--horizontal > * {
 
+  flex-grow: var(--item-grow, var(--grow));
+
+  flex-shrink: var(--item-shrink, var(--shrink));
+
+  flex-basis: var(
+    --item-width,
+    calc(
+      (100% - (var(--cols) - 1) * var(--gap-x))
+      / var(--cols)
+    )
+  );
+
+}
 @media (max-width: 749px) {
 
   .group {
@@ -109,12 +123,17 @@ Advanced Group Block (Safe Builder Version)
     padding-right: var(--prm);
   }
 
-  .group--horizontal[style*="wrap"] > * {
-    flex-basis: calc(
+  .group--horizontal > * {
+
+  flex-basis: var(
+    --item-width-m,
+    calc(
       (100% - (var(--cols-m) - 1) * var(--gap-x-m))
       / var(--cols-m)
-    );
-  }
+    )
+  );
+
+}
 
 }
 
