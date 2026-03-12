@@ -60,8 +60,15 @@ Advanced Group Block (Safe Builder Version)
 .group--horizontal {
   flex-direction: row;
 }
+
 .group--vertical {
   flex-direction: column;
+}
+.group--vertical  > * {
+  flex: 0 0 100%;
+  align-self: stretch;
+  max-width: 100%;
+  width: 100%;
 }
 /* equal height */
 .is-equal > * {
