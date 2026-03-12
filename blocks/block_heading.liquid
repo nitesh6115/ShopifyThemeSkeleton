@@ -24,6 +24,7 @@ Advanced Heading Block
   {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   "
   style="
+  --text-align: {{ block.settings.alignment }};
   --color: {{ block.settings.color }};  
   --bg: {{ block.settings.bg }};
   --radius: {{ block.settings.radius }}px;
@@ -103,6 +104,12 @@ Advanced Heading Block
       "id": "text",
       "label": "Text",
       "default": "Heading"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left"
     },
     {
     "type": "color",
