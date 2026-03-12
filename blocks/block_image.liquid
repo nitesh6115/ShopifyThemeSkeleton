@@ -5,6 +5,21 @@
 <div
   class="
     image_block
+    {% if block.settings.height == 'custom' %}
+     block-custom-height-desktop 
+     {% else %}
+    block-height-desktop-{{ block.settings.height }}
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    block-custom-width-desktop
+    {% else %}
+    block-width-desktop-{{ block.settings.width }}
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    block-custom-width-mobile
+    {% else %}
+     block-width-mobile-{{ block.settings.width_mobile }}
+    {% endif %}
     ratio--{{ block.settings.ratio }}
     {% if block.settings.hover_zoom %}is-zoom{% endif %}
     {% if block.settings.shadow %}is-shadow{% endif %}
@@ -23,32 +38,15 @@
     --pl-m: {{ block.settings.pl_m }}px;
     --pr-m: {{ block.settings.pr_m }}px;
     
-    {% case block.settings.width %}
-      {% when 'fit-content' %}
-      --item-width:auto;
-      {% when 'fill' %}
-      --item-width:fill;
-      {% when 'custom' %}
-      --item-width:{{ block.settings.custom_width }}%;
-      {% endcase %}
-
-      {% case block.settings.width_mobile %}
-      {% when 'fit-content' %}
-      --item-width-m:auto;
-      {% when 'fill' %}
-      --item-width-m:fill;
-      {% when 'custom' %}
-      --item-width-m:{{ block.settings.custom_width_mobile }}%;
-      {% endcase %}
-
-      {% case block.settings.height %}
-      {% when 'fit' %}
-      --item-height:auto;
-      {% when 'fill' %}
-      --item-height:fill;
-      {% when 'custom' %}
-      --item-height:{{ block.settings.custom_height }}%;
-      {% endcase %}
+    {% if block.settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+    {% endif %} 
   "
   {{ block.shopify_attributes }}
 >
