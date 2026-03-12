@@ -72,15 +72,14 @@
   .section-{{ section.id }} {
     --columns-desktop: {{ section.settings.columns_desktop }};
     --columns-mobile: {{ section.settings.columns_mobile }};
-    --column-gap: {{ section.settings.column_gap }}px;
-    --row-gap: {{ section.settings.row_gap }}px;
+    --gap: {{ section.settings.gap }}px;
+    --gap-m: {{ section.settings.gap_m }}px;
   }
 
   .section-{{ section.id }} .section-content {
     display: grid;
     grid-template-columns: repeat(var(--columns-desktop), 1fr);
-    column-gap: var(--column-gap);
-    row-gap: var(--row-gap);
+    gap: var(--gap);
   }
   @media(min-width: 769px){
     .section-{{ section.id }}.hide-desktop{
@@ -92,6 +91,7 @@
         display: none;
     }
     .section-{{ section.id }} .section-content {
+      gap: var(--gap-m);
       grid-template-columns: repeat(var(--columns-mobile), 1fr);
     }
     .section-{{ section.id }} .section-container {
@@ -381,8 +381,8 @@
     },
     {
       "type": "range",
-      "id": "column_gap",
-      "label": "Column Gap",
+      "id": "gap",
+      "label": "Gap Desktop",
       "min": 0,
       "max": 80,
       "step": 4,
@@ -391,8 +391,8 @@
     },
     {
       "type": "range",
-      "id": "row_gap",
-      "label": "Row Gap",
+      "id": "gap_m",
+      "label": "Gap Mobile",
       "min": 0,
       "max": 80,
       "step": 4,
