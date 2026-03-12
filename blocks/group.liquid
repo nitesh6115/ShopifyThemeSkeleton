@@ -240,6 +240,7 @@ Advanced Group Block (Safe Builder Version)
     {
       "type": "range",
       "id": "cols",
+      "visible_if": "{{ block.settings.layout_direction == 'group--vertical' }}",
       "label": "Columns desktop",
       "min": 1,
       "max": 6,
@@ -251,6 +252,7 @@ Advanced Group Block (Safe Builder Version)
       "type": "range",
       "id": "cols_m",
       "label": "Columns mobile",
+      "visible_if": "{{ block.settings.layout_direction == 'group--vertical' }}",
       "min": 1,
       "max": 4,
       "step": 1,
