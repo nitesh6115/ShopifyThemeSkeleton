@@ -46,9 +46,6 @@
   padding-right: var(--pr);
   width: 100%;
 }
-.block-width-desktop-fill{
-  flex: 1;
-}
 
 /* direction */
 
@@ -75,7 +72,12 @@
 
 
 /* mobile */
+@media (min-width: 750px){
+  .block-width-desktop-fill{
+  flex: 1;
+}
 
+}
 @media (max-width: 749px) {
   .group {
     gap: var(--gap-m);
