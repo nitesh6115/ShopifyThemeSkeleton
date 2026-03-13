@@ -10,6 +10,11 @@
     {% else %}
     block-width-desktop-{{ block.settings.width }}
     {% endif %}
+     {% if block.settings.width_tablet == 'custom' %}
+    block-custom-width-tablet
+    {% else %}
+     block-width-tablet-{{ block.settings.width_tablet }}
+    {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
     block-custom-width-mobile
     {% else %}
