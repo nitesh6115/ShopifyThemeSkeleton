@@ -106,13 +106,15 @@
   .group > * {
     height: var(--item-height, auto);
   }
-  .block-height-desktop-fill{
-    min-height: 100%;
-  }
-  .group.block-height-desktop-fill > * {
+  .group.block-height-desktop-fill {
+  align-items: stretch;
+}
+
+.group.block-height-desktop-fill > * {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  height: 100%;
 }
   /* mobile */
   @media (min-width: 1366px){
