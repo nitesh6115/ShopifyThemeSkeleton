@@ -1293,7 +1293,7 @@
                 "align_y": "flex-start",
                 "wrap": "wrap",
                 "equal_height": false,
-                "hover_zoom": false,
+                "hover_zoom": true,
                 "shadow": false,
                 "width": "fill",
                 "custom_width": 100,
