@@ -49,6 +49,9 @@
     {% if block.settings.width == 'custom' %}
     --block-custom-width-desktop: {{ block.settings.custom_width }}%;
     {% endif %}
+     {% if block.settings.width_tablet == 'custom' %}
+    --block-custom-width-tablet: {{ block.settings.width_tablet }}%;
+    {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
     --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
     {% endif %} 
