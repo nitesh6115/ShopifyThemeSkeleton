@@ -109,6 +109,11 @@
   .block-height-desktop-fill{
     min-height: 100%;
   }
+  .group.block-height-desktop-fill > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
   /* mobile */
   @media (min-width: 1366px){
     .block-width-desktop-fill{
