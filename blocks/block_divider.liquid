@@ -144,6 +144,37 @@
     },
     {
       "type": "select",
+      "id": "width_tablet",
+      "label": "Width Mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_tablet",
+      "label": "Custom Width Tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
       "id": "width_mobile",
       "label": "Width Mobile",
       "options": [
