@@ -98,6 +98,8 @@
             "align_y": "flex-start",
             "wrap": "wrap",
             "equal_height": false,
+            "hover_zoom": false,
+            "shadow": false,
             "width": "fill",
             "custom_width": 100,
             "width_tablet": "fill",
@@ -121,7 +123,8 @@
             "plm": 0,
             "prm": 0,
             "hide_desktop": false,
-            "hide_mobile": false
+            "hide_mobile": false,
+            "image_link": "shopify://collections"
           },
           "blocks": {
             "group_jRPwJL": {
@@ -133,6 +136,8 @@
                 "align_y": "flex-start",
                 "wrap": "wrap",
                 "equal_height": false,
+                "hover_zoom": false,
+                "shadow": false,
                 "width": "fill",
                 "custom_width": 100,
                 "width_tablet": "fill",
@@ -156,7 +161,8 @@
                 "plm": 0,
                 "prm": 0,
                 "hide_desktop": false,
-                "hide_mobile": false
+                "hide_mobile": false,
+                "image_link": ""
               },
               "blocks": {
                 "block_text_9tyBwD": {
@@ -164,6 +170,7 @@
                   "name": "Text",
                   "settings": {
                     "text": "<p>Science-Backed Formula</p>",
+                    "block_link": "",
                     "alignment": "left",
                     "width": "fill",
                     "custom_width": 100,
@@ -236,6 +243,7 @@
                   "name": "Text",
                   "settings": {
                     "text": "<p>We've combined the most effective, clinically-proven ingredients at optimal concentrations. No fillers, no compromises - just results you can see and feel.</p>",
+                    "block_link": "",
                     "alignment": "left",
                     "width": "custom",
                     "custom_width": 100,
@@ -273,6 +281,8 @@
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "equal_height": false,
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
@@ -296,7 +306,8 @@
                     "plm": 0,
                     "prm": 0,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "image_link": ""
                   },
                   "blocks": {
                     "block_image_aniRjz": {
@@ -336,6 +347,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p><strong>Vitamin C 15%</strong><br/>Brightens and evens skin tone<br/>Stabilized L-ascorbic acid for maximum potency and visible results</p>",
+                        "block_link": "",
                         "alignment": "left",
                         "width": "fill",
                         "custom_width": 100,
@@ -379,6 +391,8 @@
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "equal_height": false,
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
@@ -402,7 +416,8 @@
                     "plm": 0,
                     "prm": 0,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "image_link": ""
                   },
                   "blocks": {
                     "block_image_6W6cDj": {
@@ -442,6 +457,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p><strong>Vitamin C 15%</strong><br/>Brightens and evens skin tone<br/>Stabilized L-ascorbic acid for maximum potency and visible results</p>",
+                        "block_link": "",
                         "alignment": "left",
                         "width": "fill",
                         "custom_width": 100,
@@ -485,6 +501,8 @@
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "equal_height": false,
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
@@ -508,7 +526,8 @@
                     "plm": 0,
                     "prm": 0,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "image_link": ""
                   },
                   "blocks": {
                     "block_image_AePBDD": {
@@ -548,6 +567,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p><strong>Vitamin C 15%</strong><br/>Brightens and evens skin tone<br/>Stabilized L-ascorbic acid for maximum potency and visible results</p>",
+                        "block_link": "",
                         "alignment": "left",
                         "width": "fill",
                         "custom_width": 100,
@@ -601,6 +621,8 @@
                 "align_y": "flex-start",
                 "wrap": "wrap",
                 "equal_height": false,
+                "hover_zoom": false,
+                "shadow": false,
                 "width": "fill",
                 "custom_width": 100,
                 "width_tablet": "fill",
@@ -624,7 +646,8 @@
                 "plm": 0,
                 "prm": 0,
                 "hide_desktop": false,
-                "hide_mobile": false
+                "hide_mobile": false,
+                "image_link": ""
               },
               "blocks": {
                 "block_image_XtqiTW": {
@@ -679,6 +702,8 @@
             "align_y": "flex-start",
             "wrap": "wrap",
             "equal_height": false,
+            "hover_zoom": false,
+            "shadow": false,
             "width": "fill",
             "custom_width": 100,
             "width_tablet": "fill",
@@ -702,7 +727,8 @@
             "plm": 16,
             "prm": 16,
             "hide_desktop": false,
-            "hide_mobile": false
+            "hide_mobile": false,
+            "image_link": ""
           },
           "blocks": {
             "block_heading_9KJVzz": {
@@ -749,6 +775,7 @@
               "name": "Text",
               "settings": {
                 "text": "<p>Effortless application for maximum results - just a few minutes morning and night</p>",
+                "block_link": "",
                 "alignment": "left",
                 "width": "fill",
                 "custom_width": 100,
@@ -786,6 +813,8 @@
                 "align_y": "flex-start",
                 "wrap": "wrap",
                 "equal_height": false,
+                "hover_zoom": false,
+                "shadow": false,
                 "width": "fill",
                 "custom_width": 100,
                 "width_tablet": "fill",
@@ -809,7 +838,8 @@
                 "plm": 0,
                 "prm": 0,
                 "hide_desktop": false,
-                "hide_mobile": false
+                "hide_mobile": false,
+                "image_link": ""
               },
               "blocks": {
                 "group_KBAzid": {
@@ -821,6 +851,8 @@
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "equal_height": false,
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
@@ -844,7 +876,8 @@
                     "plm": 10,
                     "prm": 10,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "image_link": ""
                   },
                   "blocks": {
                     "block_image_wmLL7A": {
@@ -884,6 +917,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p><strong>Cleanse</strong></p>",
+                        "block_link": "",
                         "alignment": "center",
                         "width": "fill",
                         "custom_width": 100,
@@ -917,6 +951,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p>Start with clean, dry skin for optimal absorption</p>",
+                        "block_link": "",
                         "alignment": "center",
                         "width": "fill",
                         "custom_width": 100,
@@ -961,6 +996,8 @@
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "equal_height": false,
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
@@ -984,7 +1021,8 @@
                     "plm": 10,
                     "prm": 10,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "image_link": ""
                   },
                   "blocks": {
                     "block_image_zaXFe6": {
@@ -1024,6 +1062,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p><strong>Cleanse</strong></p>",
+                        "block_link": "",
                         "alignment": "left",
                         "width": "fill",
                         "custom_width": 100,
@@ -1057,6 +1096,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p>Start with clean, dry skin for optimal absorption</p>",
+                        "block_link": "",
                         "alignment": "center",
                         "width": "fill",
                         "custom_width": 100,
@@ -1101,6 +1141,8 @@
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "equal_height": false,
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
@@ -1124,7 +1166,8 @@
                     "plm": 0,
                     "prm": 0,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "image_link": ""
                   },
                   "blocks": {
                     "block_image_cRYiRN": {
@@ -1164,6 +1207,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p><strong>Cleanse</strong></p>",
+                        "block_link": "",
                         "alignment": "left",
                         "width": "fill",
                         "custom_width": 100,
@@ -1197,6 +1241,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p>Start with clean, dry skin for optimal absorption</p>",
+                        "block_link": "",
                         "alignment": "left",
                         "width": "fill",
                         "custom_width": 100,
@@ -1248,6 +1293,8 @@
                 "align_y": "flex-start",
                 "wrap": "wrap",
                 "equal_height": false,
+                "hover_zoom": false,
+                "shadow": false,
                 "width": "fill",
                 "custom_width": 100,
                 "width_tablet": "fill",
@@ -1271,7 +1318,8 @@
                 "plm": 0,
                 "prm": 0,
                 "hide_desktop": false,
-                "hide_mobile": false
+                "hide_mobile": false,
+                "image_link": ""
               },
               "blocks": {
                 "block_text_epaagC": {
@@ -1279,6 +1327,7 @@
                   "name": "Text",
                   "settings": {
                     "text": "<p><strong>Pro Tip:</strong> Use morning and night for best results. Most customers see visible improvement within 2 weeks of consistent use.</p>",
+                    "block_link": "",
                     "alignment": "left",
                     "width": "fill",
                     "custom_width": 100,
