@@ -304,6 +304,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "shopify://shop_images/Container_50.avif",
+                        "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
                         "shadow": false,
@@ -409,6 +410,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "shopify://shop_images/Container_50.avif",
+                        "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
                         "shadow": false,
@@ -514,6 +516,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "shopify://shop_images/Container_50.avif",
+                        "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
                         "shadow": false,
@@ -629,6 +632,7 @@
                   "name": "Image",
                   "settings": {
                     "image": "shopify://shop_images/ImageWithFallback_2.avif",
+                    "image_link": "shopify://collections/all",
                     "ratio": "auto",
                     "hover_zoom": true,
                     "shadow": true,
@@ -848,6 +852,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "shopify://shop_images/Container_50.avif",
+                        "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
                         "shadow": false,
@@ -987,6 +992,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "shopify://shop_images/Container_50.avif",
+                        "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
                         "shadow": false,
@@ -1126,6 +1132,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "shopify://shop_images/Container_50.avif",
+                        "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
                         "shadow": false,
