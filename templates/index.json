@@ -630,7 +630,7 @@
                   "settings": {
                     "image": "shopify://shop_images/ImageWithFallback_2.avif",
                     "ratio": "auto",
-                    "hover_zoom": false,
+                    "hover_zoom": true,
                     "shadow": true,
                     "width": "fill",
                     "custom_width": 100,
