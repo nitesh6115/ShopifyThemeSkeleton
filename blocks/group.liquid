@@ -1,30 +1,32 @@
 <div
-  class="group {{ block.settings.layout_direction }}
-  {% if block.settings.height == 'custom' %}
-     block-custom-height-desktop 
-     {% else %}
-    block-height-desktop-{{ block.settings.height }}
-    {% endif %}
-    {% if block.settings.width == 'custom' %}
-    block-custom-width-desktop
-    {% else %}
-    block-width-desktop-{{ block.settings.width }}
-    {% endif %}
-     {% if block.settings.width_tablet == 'custom' %}
-    block-custom-width-tablet
-    {% else %}
-     block-width-tablet-{{ block.settings.width_tablet }}
-    {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
-    block-custom-width-mobile
-    {% else %}
-     block-width-mobile-{{ block.settings.width_mobile }}
-    {% endif %}
-  {% if block.settings.hover_zoom %}is-zoom{% endif %}
-  {% if block.settings.shadow %}is-shadow{% endif %}
-  {% if block.settings.hide_desktop %}hide-desktop{% endif %}
-  {% if block.settings.hide_mobile %}hide-mobile{% endif %}
-  {% if block.settings.equal_height %}is-equal{% endif %}"
+  class="
+    group {{ block.settings.layout_direction }}
+    {% if block.settings.height == 'custom' %}
+       block-custom-height-desktop
+       {% else %}
+      block-height-desktop-{{ block.settings.height }}
+      {% endif %}
+      {% if block.settings.width == 'custom' %}
+      block-custom-width-desktop
+      {% else %}
+      block-width-desktop-{{ block.settings.width }}
+      {% endif %}
+       {% if block.settings.width_tablet == 'custom' %}
+      block-custom-width-tablet
+      {% else %}
+       block-width-tablet-{{ block.settings.width_tablet }}
+      {% endif %}
+      {% if block.settings.width_mobile == 'custom' %}
+      block-custom-width-mobile
+      {% else %}
+       block-width-mobile-{{ block.settings.width_mobile }}
+      {% endif %}
+    {% if block.settings.hover_zoom %}is-zoom{% endif %}
+    {% if block.settings.shadow %}is-shadow{% endif %}
+    {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+    {% if block.settings.hide_mobile %}hide-mobile{% endif %}
+    {% if block.settings.equal_height %}is-equal{% endif %}
+  "
   style="
     --align-x: {{ block.settings.align_x }};
     --align-y: {{ block.settings.align_y }};
@@ -44,7 +46,7 @@
     --plm: {{ block.settings.plm }}px;
     --prm: {{ block.settings.prm }}px;
     {% if block.settings.height == 'custom' %}
-     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
     {% endif %}
     {% if block.settings.width == 'custom' %}
     --block-custom-width-desktop: {{ block.settings.custom_width }}%;
@@ -54,7 +56,7 @@
     {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
     --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
-    {% endif %} 
+    {% endif %}
   "
   {{ block.shopify_attributes }}
 >
@@ -64,115 +66,107 @@
   {% content_for 'blocks' %}
 </div>
 
-
 {% stylesheet %}
-
-.group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: var(--wrap);
-  justify-content: var(--align-x);
-  align-items: var(--align-y);
-  gap: var(--gap);
-  background: var(--bg);
-  border-radius: var(--radius);
-  border: var(--border) solid var(--border-color);
-  padding-top: var(--pt);
-  padding-bottom: var(--pb);
-  padding-left: var(--pl);
-  padding-right: var(--pr);
-  width: 100%;
-}
-
-/* direction */
-
-.group--horizontal {
-  flex-direction: row;
-}
-.group--vertical {
-  flex-direction: column;
-  justify-content: var(--align-y);
-  align-items: var(--align-x);
-}
-/* equal height */
-
-.is-equal > * {
-  align-self: stretch;
-}
-
-
-/* height */
-
-.group > * {
-  height: var(--item-height, auto);
-}
-.block-height-desktop-fill{
-  height: 100%;
-}
-/* mobile */
-@media (min-width: 1366px){
-  .block-width-desktop-fill{
-  flex: 1;
-}
-.block-custom-width-desktop {
-    width: var(--block-custom-width-desktop);
-}
-}
-@media only screen and (min-width: 768px) and (max-width: 1365px) {
-  .block-width-tablet-fill{
-  flex: 1;
-}
-.block-custom-width-tablet {
-    width: var(--block-custom-width-tablet);
-}
-}
-@media (max-width: 767px) {
   .group {
-    gap: var(--gap-m);
-    padding-top: var(--ptm);
-    padding-bottom: var(--pbm);
-    padding-left: var(--plm);
-    padding-right: var(--prm);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: var(--wrap);
+    justify-content: var(--align-x);
+    align-items: var(--align-y);
+    gap: var(--gap);
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: var(--border) solid var(--border-color);
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    padding-left: var(--pl);
+    padding-right: var(--pr);
+    width: 100%;
   }
-  .block-width-mobile-fill{
-  flex: 1;
+
+  /* direction */
+
+  .group--horizontal {
+    flex-direction: row;
   }
-  .block-custom-width-mobile {
-    width: var(--block-custom-width-mobile);
-}
-}
+  .group--vertical {
+    flex-direction: column;
+    justify-content: var(--align-y);
+    align-items: var(--align-x);
+  }
+  /* equal height */
 
-/* visibility */
-.hide-desktop {
-  display: none !important;
-}
+  .is-equal > * {
+    align-self: stretch;
+  }
 
-@media (max-width: 768px) {
 
+  /* height */
+
+  .group > * {
+    height: var(--item-height, auto);
+  }
+  .block-height-desktop-fill{
+    height: 100%;
+  }
+  /* mobile */
+  @media (min-width: 1366px){
+    .block-width-desktop-fill{
+    flex: 1;
+  }
+  .block-custom-width-desktop {
+      width: var(--block-custom-width-desktop);
+  }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1365px) {
+    .block-width-tablet-fill{
+    flex: 1;
+  }
+  .block-custom-width-tablet {
+      width: var(--block-custom-width-tablet);
+  }
+  }
+  @media (max-width: 767px) {
+    .group {
+      gap: var(--gap-m);
+      padding-top: var(--ptm);
+      padding-bottom: var(--pbm);
+      padding-left: var(--plm);
+      padding-right: var(--prm);
+    }
+    .block-width-mobile-fill{
+    flex: 1;
+    }
+    .block-custom-width-mobile {
+      width: var(--block-custom-width-mobile);
+  }
+  }
+
+  /* visibility */
   .hide-desktop {
-    display: flex !important;
-  }
-
-  .hide-mobile {
     display: none !important;
   }
 
-}
+  @media (max-width: 768px) {
 
+    .hide-desktop {
+      display: flex !important;
+    }
+
+    .hide-mobile {
+      display: none !important;
+    }
+
+  }
 {% endstylesheet %}
-
-
 
 {% schema %}
 {
   "name": "Group",
   "tag": null,
-  "blocks": [
-    { "type": "@theme" }
-  ],
+  "blocks": [{ "type": "@theme" }],
 
   "settings": [
-
     {
       "type": "select",
       "id": "layout_direction",
@@ -409,110 +403,112 @@
       "label": "Border color"
     },
     {
-  "type": "header",
-  "content": "Padding Desktop"
-},
+      "type": "header",
+      "content": "Padding Desktop"
+    },
 
-{
-  "type": "range",
-  "id": "pt",
-  "label": "Top",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "pb",
-  "label": "Bottom",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "pl",
-  "label": "Left",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "pr",
-  "label": "Right",
-  "min": 0,
-  "max": 200,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "header",
-  "content": "Padding Mobile"
-},
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pl",
+      "label": "Left",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr",
+      "label": "Right",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
 
-{
-  "type": "range",
-  "id": "ptm",
-  "label": "Top",
-  "min": 0,
-  "max": 150,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "pbm",
-  "label": "Bottom",
-  "min": 0,
-  "max": 150,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "plm",
-  "label": "Left",
-  "min": 0,
-  "max": 150,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "prm",
-  "label": "Right",
-  "min": 0,
-  "max": 150,
-  "step": 2,
-  "default": 0
-},
-{
-  "type": "header",
-  "content": "Visibility"
-},
+    {
+      "type": "range",
+      "id": "ptm",
+      "label": "Top",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pbm",
+      "label": "Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "plm",
+      "label": "Left",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "prm",
+      "label": "Right",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
 
-{
-  "type": "checkbox",
-  "id": "hide_desktop",
-  "label": "Hide on desktop",
-  "default": false
-},
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
 
-{
-  "type": "checkbox",
-  "id": "hide_mobile",
-  "label": "Hide on mobile",
-  "default": false
-}
-
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    },
+    {
+      "type": "url",
+      "label": "Image Link",
+      "id": "image_link"
+    }
   ],
 
-  "presets": [
-    { "name": "Block Group" }
-  ]
+  "presets": [{ "name": "Block Group" }]
 }
 {% endschema %}
