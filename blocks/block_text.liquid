@@ -58,7 +58,13 @@
   "
   {{ block.shopify_attributes }}
 >
+  {% if block.settings.block_link != blank %}
+    <a class="block_link" href="{{ block.settings.block_link }}">
+  {% endif %}
   {{ block.settings.text }}
+  {% if block.settings.block_link != blank %}
+  </a>
+  {% endif %}
 </div>
 
 {% stylesheet %}
