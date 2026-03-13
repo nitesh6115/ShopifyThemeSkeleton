@@ -20,6 +20,8 @@
     {% else %}
      block-width-mobile-{{ block.settings.width_mobile }}
     {% endif %}
+  {% if block.settings.hover_zoom %}is-zoom{% endif %}
+  {% if block.settings.shadow %}is-shadow{% endif %}
   {% if block.settings.hide_desktop %}hide-desktop{% endif %}
   {% if block.settings.hide_mobile %}hide-mobile{% endif %}
   {% if block.settings.equal_height %}is-equal{% endif %}"
