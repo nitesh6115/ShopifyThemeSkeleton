@@ -58,6 +58,9 @@
   "
   {{ block.shopify_attributes }}
 >
+  {% if block.settings.image != blank and block.settings.image_link != blank %}
+    <a class="block_link" href="{{ block.settings.image_link }}">
+  {% endif %}
   {% if block.settings.image != blank %}
     {{ block.settings.image | image_url: width: 1600
             | image_tag:
@@ -68,6 +71,9 @@
         }}
   {% else %}
     {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+  {% endif %}
+  {% if block.settings.image != blank and block.settings.image_link != blank %}
+  </a>
   {% endif %}
 </div>
 
