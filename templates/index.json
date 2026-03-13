@@ -99,7 +99,7 @@
             "wrap": "wrap",
             "equal_height": false,
             "hover_zoom": false,
-            "shadow": false,
+            "shadow": true,
             "width": "fill",
             "custom_width": 100,
             "width_tablet": "fill",
