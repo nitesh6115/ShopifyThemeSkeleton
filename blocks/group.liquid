@@ -105,7 +105,7 @@
   height: 100%;
 }
 /* mobile */
-@media (min-width: 750px){
+@media (min-width: 1366px){
   .block-width-desktop-fill{
   flex: 1;
 }
@@ -113,7 +113,15 @@
     width: var(--block-custom-width-desktop);
 }
 }
-@media (max-width: 749px) {
+@media only screen and (min-width: 768px) and (max-width: 1365px) {
+  .block-width-tablet-fill{
+  flex: 1;
+}
+.block-custom-width-tablet {
+    width: var(--block-custom-width-tablet);
+}
+}
+@media (max-width: 767px) {
   .group {
     gap: var(--gap-m);
     padding-top: var(--ptm);
@@ -134,7 +142,7 @@
   display: none !important;
 }
 
-@media (max-width: 749px) {
+@media (max-width: 768px) {
 
   .hide-desktop {
     display: flex !important;
