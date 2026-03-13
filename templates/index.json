@@ -424,7 +424,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/Container_50.avif",
+                        "image": "shopify://shop_images/Container_52.avif",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -534,7 +534,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/Container_50.avif",
+                        "image": "shopify://shop_images/Container_53.avif",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -1029,7 +1029,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/Container_50.avif",
+                        "image": "shopify://shop_images/Container_52.avif",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -1174,7 +1174,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/Container_50.avif",
+                        "image": "shopify://shop_images/Container_53.avif",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -1242,7 +1242,7 @@
                       "settings": {
                         "text": "<p>Start with clean, dry skin for optimal absorption</p>",
                         "block_link": "",
-                        "alignment": "left",
+                        "alignment": "center",
                         "width": "fill",
                         "custom_width": 100,
                         "width_tablet": "fill",
