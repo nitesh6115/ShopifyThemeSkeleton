@@ -58,6 +58,9 @@
   "
   {{ block.shopify_attributes }}
 >
+  {% if block.settings.block_link != blank %}
+    <a class="block_link link_overlay" href="{{ block.settings.block_link }}"></a>
+  {% endif %}
   {% content_for 'blocks' %}
 </div>
 
