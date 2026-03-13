@@ -117,10 +117,16 @@
   .block-custom-width-desktop {
       width: var(--block-custom-width-desktop);
   }
+  .block-width-desktop-fit-content {
+    width: fit-content;
+  }
   }
   @media only screen and (min-width: 768px) and (max-width: 1365px) {
     .block-width-tablet-fill{
     flex: 1;
+  }
+  .block-width-tablet-fit-content {
+    width: fit-content;
   }
   .block-custom-width-tablet {
       width: var(--block-custom-width-tablet);
@@ -136,6 +142,9 @@
     }
     .block-width-mobile-fill{
     flex: 1;
+    }
+    .block-width-mobile-fit-content {
+      width: fit-content;
     }
     .block-custom-width-mobile {
       width: var(--block-custom-width-mobile);
