@@ -96,7 +96,7 @@
             "layout_direction": "group--horizontal",
             "align_x": "flex-start",
             "align_y": "flex-start",
-            "wrap": "wrap",
+            "wrap": "nowrap",
             "equal_height": false,
             "hover_zoom": false,
             "shadow": false,
