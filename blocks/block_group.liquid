@@ -25,7 +25,6 @@
     {% if block.settings.shadow %}is-shadow{% endif %}
     {% if block.settings.hide_desktop %}hide-desktop{% endif %}
     {% if block.settings.hide_mobile %}hide-mobile{% endif %}
-    {% if block.settings.equal_height %}is-equal{% endif %}
   "
   style="
     --align-x: {{ block.settings.align_x }};
@@ -258,11 +257,6 @@ FIX vertical + 100% height
         { "value": "wrap", "label": "On" },
         { "value": "nowrap", "label": "Off" }
       ]
-    },
-    {
-      "type": "checkbox",
-      "id": "equal_height",
-      "label": "Equal height"
     },
     {
       "type": "checkbox",
