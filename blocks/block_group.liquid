@@ -71,14 +71,22 @@
 GROUP BASE
 ====================== */
 
-.group{
-  display:flex;
-  flex-direction:row;
-  justify-content:var(--align-x,flex-start);
-  align-items:var(--align-y,stretch);
-  flex-wrap:var(--wrap,wrap);
-  gap:var(--gap,0);
-}
+ .group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: var(--wrap);
+    justify-content: var(--align-x);
+    align-items: var(--align-y);
+    gap: var(--gap);
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: var(--border) solid var(--border-color);
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    padding-left: var(--pl);
+    padding-right: var(--pr);
+    width: 100%;
+  }
 
 .group--vertical{
   flex-direction:column;
