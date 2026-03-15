@@ -101,12 +101,11 @@ DO NOT FORCE CHILD HEIGHT
   height:auto;
 }
 
-
 /* ======================
 HEIGHT SYSTEM
 ====================== */
 
-.block-height-desktop-fill,.is-equal{
+.block-height-desktop-fill{
   height:100%;
 }
 
@@ -132,6 +131,9 @@ FIX vertical + 100% height
 
 .block-custom-height-desktop{
   height:var(--block-custom-height-desktop);
+}
+.group.is-equal > *{
+  height: 100%;
 }
 
   /* mobile */
