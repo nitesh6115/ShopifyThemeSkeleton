@@ -1,6 +1,6 @@
 <div
   class="
-    group {{ block.settings.layout_direction }}
+    group 
     {% if block.settings.height == 'custom' %}
        block-custom-height-desktop
        {% else %}
@@ -63,6 +63,7 @@
     class="
       group_block_content
       layout_panel_flex
+      {{ block.settings.layout_direction }}
       layout_panel_flex--{{ settings.content_direction | default: 'column' }}
     "
     style="
@@ -78,7 +79,7 @@
 </div>
 
 {% stylesheet %}
-  .group {
+  .group_block_content {
     display: flex;
     flex-direction: row;
     flex-wrap: var(--wrap);
