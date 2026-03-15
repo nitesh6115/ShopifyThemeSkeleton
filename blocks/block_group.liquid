@@ -93,13 +93,20 @@ GROUP BASE
   justify-content:var(--align-y,flex-start);
   align-items:var(--align-x,stretch);
 }
+/* ======================
+DO NOT FORCE CHILD HEIGHT
+====================== */
+
+.group > *{
+  height:auto;
+}
 
 
 /* ======================
 HEIGHT SYSTEM
 ====================== */
 
-.block-height-desktop-fill{
+.block-height-desktop-fill,.is-equal{
   height:100%;
 }
 
@@ -122,13 +129,6 @@ FIX vertical + 100% height
 }
 
 
-/* ======================
-DO NOT FORCE CHILD HEIGHT
-====================== */
-
-.group > *{
-  height:auto;
-}
 
 .block-custom-height-desktop{
   height:var(--block-custom-height-desktop);
