@@ -99,46 +99,12 @@
   .is-equal > * {
     align-self: stretch;
   }
-
-
-  /* =========================
-   HEIGHT SYSTEM FIX
-========================= */
-
-.block-height-desktop-fill {
-  min-height: 100%;
+.group.block-custom-height-desktop{
+  height:var(--block-custom-height-desktop);
 }
 
-.block-height-desktop-fit {
-  height: auto;
-}
-
-.block-custom-height-desktop {
-  height: var(--block-custom-height-desktop);
-}
-
-
-/* keep align working */
-
-.group.block-height-desktop-fill {
-  justify-content: var(--align-x);
-  align-items: var(--align-y);
-}
-
-.group--vertical.block-height-desktop-fill {
-  justify-content: var(--align-y);
-  align-items: var(--align-x);
-}
-
-
-/* only equal height stretches */
-
-.is-equal > * {
-  align-self: stretch;
-}
-
-.block-height-desktop-fill:not(.is-equal) > * {
-  align-self: auto;
+.group--vertical.block-custom-height-desktop > *{
+  flex:0 0 auto;
 }
   /* mobile */
   @media (min-width: 1366px){
