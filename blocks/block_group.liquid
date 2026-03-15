@@ -1,6 +1,6 @@
 <div
   class="
-    group 
+    group {{ block.settings.layout_direction }}
     {% if block.settings.height == 'custom' %}
        block-custom-height-desktop
        {% else %}
@@ -28,6 +28,11 @@
     {% if block.settings.equal_height %}is-equal{% endif %}
   "
   style="
+    --align-x: {{ block.settings.align_x }};
+    --align-y: {{ block.settings.align_y }};
+    --wrap: {{ block.settings.wrap }};
+    --gap: {{ block.settings.gap }}px;
+    --gap-m: {{ block.settings.gap_m }}px;
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
     --border: {{ block.settings.border }}px;
@@ -58,27 +63,11 @@
   {% if block.settings.block_link != blank %}
     <a class="block_link link_overlay" href="{{ block.settings.block_link }}"></a>
   {% endif %}
-   <div
-    class="
-      group_block_content
-      layout_panel_flex
-      {{ block.settings.layout_direction }}
-      layout_panel_flex--{{ settings.content_direction | default: 'column' }}
-    "
-    style="
-    --align-x: {{ block.settings.align_x }};
-    --align-y: {{ block.settings.align_y }};
-    --wrap: {{ block.settings.wrap }};
-    --gap: {{ block.settings.gap }}px;
-    --gap-m: {{ block.settings.gap_m }}px;
-    "
-  >
   {% content_for 'blocks' %}
-  </div>
 </div>
 
 {% stylesheet %}
-  .group_block_content {
+  .group {
     display: flex;
     flex-direction: row;
     flex-wrap: var(--wrap);
@@ -93,7 +82,6 @@
     padding-left: var(--pl);
     padding-right: var(--pr);
     width: 100%;
-    height: 100%;
   }
 
   /* direction */
@@ -112,16 +100,16 @@
     align-self: stretch;
   }
 
-  .layout-panel-flex.group--horizontal > .block-height-desktop-fit {
-  flex: 0 1 auto;
-}
+
   /* height */
+
+  .group > * {
+    height: var(--block-custom-height-desktop, auto);
+  }
   .block-height-desktop-fill{
     min-height: 100%;
   }
-  .block-custom-height-desktop {
-    height: var(--block-custom-height-desktop);
-}
+  
   /* mobile */
   @media (min-width: 1366px){
     .block-width-desktop-fill{
