@@ -101,15 +101,45 @@
   }
 
 
-  /* height */
+  /* =========================
+   HEIGHT SYSTEM FIX
+========================= */
 
-  .group > * {
-    height: var(--block-custom-height-desktop, auto);
-  }
-  .block-height-desktop-fill{
-    min-height: 100%;
-  }
-  
+.block-height-desktop-fill {
+  min-height: 100%;
+}
+
+.block-height-desktop-fit {
+  height: auto;
+}
+
+.block-custom-height-desktop {
+  height: var(--block-custom-height-desktop);
+}
+
+
+/* keep align working */
+
+.group.block-height-desktop-fill {
+  justify-content: var(--align-x);
+  align-items: var(--align-y);
+}
+
+.group--vertical.block-height-desktop-fill {
+  justify-content: var(--align-y);
+  align-items: var(--align-x);
+}
+
+
+/* only equal height stretches */
+
+.is-equal > * {
+  align-self: stretch;
+}
+
+.block-height-desktop-fill:not(.is-equal) > * {
+  align-self: auto;
+}
   /* mobile */
   @media (min-width: 1366px){
     .block-width-desktop-fill{
