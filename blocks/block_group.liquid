@@ -28,11 +28,7 @@
     {% if block.settings.equal_height %}is-equal{% endif %}
   "
   style="
-    --align-x: {{ block.settings.align_x }};
-    --align-y: {{ block.settings.align_y }};
-    --wrap: {{ block.settings.wrap }};
-    --gap: {{ block.settings.gap }}px;
-    --gap-m: {{ block.settings.gap_m }}px;
+    
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
     --border: {{ block.settings.border }}px;
@@ -63,7 +59,22 @@
   {% if block.settings.block_link != blank %}
     <a class="block_link link_overlay" href="{{ block.settings.block_link }}"></a>
   {% endif %}
+   <div
+    class="
+      group_block_content
+      layout_panel_flex
+      layout_panel_flex--{{ settings.content_direction | default: 'column' }}
+    "
+    style="
+    --align-x: {{ block.settings.align_x }};
+    --align-y: {{ block.settings.align_y }};
+    --wrap: {{ block.settings.wrap }};
+    --gap: {{ block.settings.gap }}px;
+    --gap-m: {{ block.settings.gap_m }}px;
+    "
+  >
   {% content_for 'blocks' %}
+  </div>
 </div>
 
 {% stylesheet %}
