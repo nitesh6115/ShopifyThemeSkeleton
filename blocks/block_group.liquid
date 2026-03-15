@@ -401,7 +401,10 @@ FIX vertical + 100% height
       "default": 100,
       "visible_if": "{{ block.settings.height == 'custom' }}"
     },
-
+    {
+      "type": "header",
+      "content": "Block Gap"
+    },
     {
       "type": "range",
       "id": "gap",
@@ -421,11 +424,18 @@ FIX vertical + 100% height
       "default": 12
     },
     {
+      "type": "header",
+      "content": "Block Background"
+    },
+    {
       "type": "color_background",
       "id": "background",
       "label": "Background"
     },
-
+    {
+      "type": "header",
+      "content": "Block Radius"
+    },
     {
       "type": "range",
       "id": "radius",
