@@ -70,13 +70,69 @@
   <div class="button_box">
     {% if block.settings.primary_label != blank %}
       <a href="{{ block.settings.primary_link }}" class="btn btn-primary">
-        {{ block.settings.primary_label }}
+        <span class="btn-inner">
+
+  {% if block.settings.btn1_icon_enable
+    and block.settings.btn1_icon != blank
+    and block.settings.btn1_icon_position == 'left'
+  %}
+    <img
+      src="{{ block.settings.btn1_icon | image_url: width: 40 }}"
+      class="btn-icon"
+      loading="lazy"
+    >
+  {% endif %}
+
+  <span class="btn-text">
+    {{ block.settings.primary_label }}
+  </span>
+
+  {% if block.settings.btn1_icon_enable
+    and block.settings.btn1_icon != blank
+    and block.settings.btn1_icon_position == 'right'
+  %}
+    <img
+      src="{{ block.settings.btn1_icon | image_url: width: 40 }}"
+      class="btn-icon"
+      loading="lazy"
+    >
+  {% endif %}
+
+</span>
       </a>
     {% endif %}
 
     {% if block.settings.secondary_label != blank %}
       <a href="{{ block.settings.secondary_link }}" class="btn btn-secondary">
-        {{ block.settings.secondary_label }}
+        <span class="btn-inner">
+
+  {% if block.settings.btn2_icon_enable
+    and block.settings.btn2_icon != blank
+    and block.settings.btn2_icon_position == 'left'
+  %}
+    <img
+      src="{{ block.settings.btn2_icon | image_url: width: 40 }}"
+      class="btn-icon"
+      loading="lazy"
+    >
+  {% endif %}
+
+  <span class="btn-text">
+    {{ block.settings.secondary_label }}
+  </span>
+
+  {% if block.settings.btn2_icon_enable
+    and block.settings.btn2_icon != blank
+    and block.settings.btn2_icon_position == 'right'
+  %}
+    <img
+      src="{{ block.settings.btn2_icon | image_url: width: 40 }}"
+      class="btn-icon"
+      loading="lazy"
+    >
+  {% endif %}
+
+</span>
       </a>
     {% endif %}
   </div>
