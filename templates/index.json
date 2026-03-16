@@ -93,6 +93,8 @@
           "type": "block_befor_after",
           "name": "Befor After Image",
           "settings": {
+            "before": "shopify://shop_images/ImageWithFallback_3.avif",
+            "after": "shopify://shop_images/ImageWithFallback_3.avif",
             "position": 50,
             "ratio": "auto",
             "hover_zoom": false,
