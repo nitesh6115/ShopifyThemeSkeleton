@@ -3143,7 +3143,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_50.avif",
+                            "image": "shopify://shop_images/Container_52.avif",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -3256,7 +3256,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_50.avif",
+                            "image": "shopify://shop_images/Container_53.avif",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
