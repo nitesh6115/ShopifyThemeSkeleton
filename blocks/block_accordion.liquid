@@ -1,0 +1,234 @@
+<div
+  class="
+    accordion_block
+
+    {% if block.settings.width == 'fill' %} block-width-desktop-fill{% endif %}
+    {% if block.settings.width == 'fit-content' %} block-width-desktop-fit{% endif %}
+    {% if block.settings.width == 'custom' %} block-custom-width-desktop{% endif %}
+
+    {% if block.settings.height == 'fill' %} block-height-desktop-fill{% endif %}
+    {% if block.settings.height == 'custom' %} block-custom-height-desktop{% endif %}
+
+    {% if block.settings.hide_mobile %} hide-mobile{% endif %}
+    {% if block.settings.hide_desktop %} hide-desktop{% endif %}
+  "
+  style="
+    --box-bg: {{ block.settings.box_bg }};
+    --radius: {{ block.settings.radius }}px;
+
+    --q-color: {{ block.settings.q_color }};
+    --q-bg: {{ block.settings.q_bg }};
+    --q-border: {{ block.settings.q_border }};
+
+    --a-color: {{ block.settings.a_color }};
+    --a-bg: {{ block.settings.a_bg }};
+
+    --fs: {{ block.settings.font_size }}px;
+    --fsm: {{ block.settings.font_size_mobile }}px;
+
+    --pt: {{ block.settings.pt }}px;
+    --pb: {{ block.settings.pb }}px;
+    --pl: {{ block.settings.pl }}px;
+    --pr: {{ block.settings.pr }}px;
+
+    --ptm: {{ block.settings.pt_m }}px;
+    --pbm: {{ block.settings.pb_m }}px;
+    --plm: {{ block.settings.pl_m }}px;
+    --prm: {{ block.settings.pr_m }}px;
+  "
+>
+
+  <details class="accordion_item">
+
+    <summary class="accordion_question">
+      {{ block.settings.question }}
+    </summary>
+
+    <div class="accordion_answer rte">
+      {{ block.settings.answer }}
+    </div>
+
+  </details>
+
+</div>
+{% stylesheet %}
+  .accordion_block{
+
+  background:var(--box-bg);
+  border-radius:var(--radius);
+
+  padding:var(--pt) var(--pr) var(--pb) var(--pl);
+
+}
+
+@media(max-width:768px){
+
+.accordion_block{
+  padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
+}
+
+}
+
+.accordion_item{
+
+  border-radius:var(--radius);
+  overflow:hidden;
+
+}
+
+.accordion_question{
+
+  background:var(--q-bg);
+  color:var(--q-color);
+
+  padding:12px;
+
+  cursor:pointer;
+
+  border:1px solid var(--q-border);
+
+  font-size:var(--fs);
+
+}
+
+.accordion_answer{
+
+  background:var(--a-bg);
+  color:var(--a-color);
+
+  padding:12px;
+
+  font-size:var(--fs);
+
+}
+
+@media(max-width:768px){
+
+.accordion_question,
+.accordion_answer{
+  font-size:var(--fsm);
+}
+
+}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Accordion",
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "default": "Accordion question"
+    },
+
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "<p>Accordion answer</p>"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Font"
+    },
+
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size desktop",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16
+    },
+
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size mobile",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 14
+    },
+
+
+    {
+      "type": "header",
+      "content": "Question style"
+    },
+
+    { "type": "color", "id": "q_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "q_bg", "label": "BG", "default": "#f3f4f6" },
+    { "type": "color", "id": "q_border", "label": "Border", "default": "#e5e7eb" },
+
+
+    {
+      "type": "header",
+      "content": "Answer style"
+    },
+
+    { "type": "color", "id": "a_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "a_bg", "label": "BG", "default": "#ffffff" },
+
+
+    {
+      "type": "header",
+      "content": "Box"
+    },
+
+    { "type": "color_background", "id": "box_bg", "label": "Background" },
+
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "default": 8
+    },
+
+
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+
+    { "type": "range", "id": "pt", "label": "Top", "min": 0, "max": 100, "step": 2, "default": 0 },
+    { "type": "range", "id": "pb", "label": "Bottom", "min": 0, "max": 100, "step": 2, "default": 0 },
+    { "type": "range", "id": "pl", "label": "Left", "min": 0, "max": 100, "step": 2, "default": 0 },
+    { "type": "range", "id": "pr", "label": "Right", "min": 0, "max": 100, "step": 2, "default": 0 },
+
+
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+
+    { "type": "range", "id": "pt_m", "label": "Top", "min": 0, "max": 60, "step": 2, "default": 0 },
+    { "type": "range", "id": "pb_m", "label": "Bottom", "min": 0, "max": 60, "step": 2, "default": 0 },
+    { "type": "range", "id": "pl_m", "label": "Left", "min": 0, "max": 60, "step": 2, "default": 0 },
+    { "type": "range", "id": "pr_m", "label": "Right", "min": 0, "max": 60, "step": 2, "default": 0 },
+
+
+
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide mobile" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide desktop" }
+
+  ],
+
+  "presets": [
+    { "name": "Accordion" }
+  ]
+}
+{% endschema %}
