@@ -123,47 +123,33 @@
   align-items:center;
   justify-content:space-between;
   cursor:pointer;
+  gap: 15px;
   color:var(--q-color);
   cursor:pointer;
   font-size:var(--fs);
 }
-
 .acc_icon{
-
   font-size:var(--icon-size);
   color:var(--icon-color);
-
   transition:0.3s;
-
 }
-
-
 /* left / right */
-
 .icon-left{
   flex-direction:row-reverse;
 }
-
 .icon-right{
   flex-direction:row;
 }
-
-
 /* rotate when open */
-
 details[open] .acc_icon{
-
   transform: rotate(180deg);
-
 }
 .minus{
   display:none;
 }
-
 details[open] .plus{
   display:none;
 }
-
 details[open] .minus{
   display:inline;
 }
@@ -172,14 +158,11 @@ details[open] .minus{
   padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
 }
 }
-
 .accordion_answer{
   background:var(--a-bg);
   color:var(--a-color);
-  padding:12px;
   font-size:var(--fs);
 }
-
 @media(max-width:768px){
 .accordion_question,
 .accordion_answer{
