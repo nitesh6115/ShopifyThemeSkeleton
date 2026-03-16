@@ -1380,7 +1380,7 @@
               "name": "Accordion",
               "settings": {
                 "question": "Accordion question",
-                "answer": "<p>Accordion answer</p>",
+                "answer": "<h2>Accordion answer</h2><p>Accordion answer</p><p>Accordion answer</p><p>Accordion answer</p>",
                 "icon_type": "plus",
                 "icon_char": "+",
                 "icon_position": "right",
