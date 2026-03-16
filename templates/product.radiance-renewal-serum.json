@@ -212,8 +212,8 @@
         "media-thumb-width": 140,
         "media-thumb-mobile-width": 80,
         "media-thumb-border-width": 2,
-        "media_border": "#eeeeee",
-        "media_border_active": "#eecdb6",
+        "media_border": "#ffffff",
+        "media_border_active": "#ec003f",
         "media-radius": 10,
         "media-thumb-radius": 10
       }
