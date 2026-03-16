@@ -11,8 +11,6 @@
 <div class="custom-product-gallery" data-section-id="{{ section.id }}">
 
   <ul class="gallery-main">
-
-    {% comment %} 1️⃣ Show Variant Featured Media First {% endcomment %}
     {% if featured_media %}
       {% assign media_position = media_position | plus: 1 %}
       <li class="gallery-media-item is-active"
@@ -41,8 +39,6 @@
       </li>
     {% endif %}
 
-
-    {% comment %} 2️⃣ Show Remaining Media {% endcomment %}
     {% for media in product.media %}
 
       {% unless featured_media and media.id == featured_media.id %}
