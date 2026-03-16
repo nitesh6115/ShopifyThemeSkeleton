@@ -345,7 +345,7 @@ FIX vertical + 100% height
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.custom_width_unit_desktop == '%' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == '%' and  block.settings.width == 'custom' }}"
     },
     {
       "type": "select",
