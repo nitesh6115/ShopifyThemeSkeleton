@@ -92,7 +92,7 @@
 
   </div>
 
-
+<div class="ba-separator"></div>
   <input
     type="range"
     min="0"
@@ -124,7 +124,29 @@
   width:100%;
 }
 
+.ba-separator{
+  position:absolute;
+  top:0;
+  bottom:0;
 
+  left:var(--pos,50%);
+
+  width:2px;
+  background:#fff;
+
+  transform:translateX(-50%);
+  z-index:6;
+}
+
+
+/* optional shadow */
+
+.ba-separator::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  box-shadow:0 0 6px rgba(0,0,0,.5);
+}
 /* ratio modes */
 
 .ratio--square .ba-wrapper{
