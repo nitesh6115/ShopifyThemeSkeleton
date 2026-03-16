@@ -156,9 +156,55 @@
         "media-radius": 10,
         "media-thumb-radius": 10
       }
+    },
+    "premium_global_section_W3FNGw": {
+      "type": "premium_global_section",
+      "name": "Premium Global Section",
+      "settings": {
+        "section_width": "custom",
+        "custom_width": 1200,
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "center",
+        "background_color": "linear-gradient(180deg, rgba(255, 241, 242, 1), rgba(255, 255, 255, 1) 100%)",
+        "overlay_color": "",
+        "overlay_opacity": 0,
+        "bg_position": "center center",
+        "bg_size": "cover",
+        "columns_desktop": 1,
+        "columns_mobile": 1,
+        "gap": 24,
+        "gap_m": 24,
+        "border_radius": 0,
+        "border_width": 0,
+        "border_color": "#000000",
+        "heading": "Why Choose Radiance Renewal",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 26,
+        "heading_weight": 500,
+        "heading_color": "#0a0a0a",
+        "text": "<p>Premium ingredients backed by science for skin that looks and feels incredible</p>",
+        "text_size_desktop": 20,
+        "text_size_mobile": 14,
+        "text_color": "#4a5565",
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_left_mobile": 16,
+        "padding_right_mobile": 16,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "hide_mobile": false,
+        "hide_desktop": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "premium_global_section_W3FNGw"
   ]
 }
