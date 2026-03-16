@@ -241,7 +241,7 @@
                 "layout_direction": "group--vertical",
                 "align_x": "flex-start",
                 "align_y": "flex-start",
-                "wrap": "wrap",
+                "wrap": "nowrap",
                 "hover_zoom": true,
                 "shadow": false,
                 "width": "custom",
