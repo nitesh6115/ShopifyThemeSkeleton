@@ -1,0 +1,219 @@
+<div
+  class="
+    button_block
+
+    {% if block.settings.width == 'fill' %} block-width-desktop-fill{% endif %}
+    {% if block.settings.width == 'fit-content' %} block-width-desktop-fit{% endif %}
+    {% if block.settings.width == 'custom' %} block-custom-width-desktop{% endif %}
+
+    {% if block.settings.height == 'fill' %} block-height-desktop-fill{% endif %}
+    {% if block.settings.height == 'custom' %} block-custom-height-desktop{% endif %}
+
+    {% if block.settings.hide_mobile %} hide-mobile{% endif %}
+    {% if block.settings.hide_desktop %} hide-desktop{% endif %}
+  "
+  style="
+    --box-bg: {{ block.settings.box_bg }};
+    --radius: {{ block.settings.radius }}px;
+
+    --fs: {{ block.settings.font_size }}px;
+    --fsm: {{ block.settings.font_size_mobile }}px;
+
+    --primary-bg: {{ block.settings.primary_bg }};
+    --primary-text: {{ block.settings.primary_text }};
+    --primary-border: {{ block.settings.primary_border }};
+
+    --primary-bg-hover: {{ block.settings.primary_bg_hover }};
+    --primary-text-hover: {{ block.settings.primary_text_hover }};
+    --primary-border-hover: {{ block.settings.primary_border_hover }};
+
+    --secondary-bg: {{ block.settings.secondary_bg }};
+    --secondary-text: {{ block.settings.secondary_text }};
+    --secondary-border: {{ block.settings.secondary_border }};
+
+    --secondary-bg-hover: {{ block.settings.secondary_bg_hover }};
+    --secondary-text-hover: {{ block.settings.secondary_text_hover }};
+    --secondary-border-hover: {{ block.settings.secondary_border_hover }};
+  "
+>
+
+  <div class="button_box">
+
+    {% if block.settings.primary_label != blank %}
+      <a href="{{ block.settings.primary_link }}" class="btn btn-primary">
+        {{ block.settings.primary_label }}
+      </a>
+    {% endif %}
+
+    {% if block.settings.secondary_label != blank %}
+      <a href="{{ block.settings.secondary_link }}" class="btn btn-secondary">
+        {{ block.settings.secondary_label }}
+      </a>
+    {% endif %}
+
+  </div>
+
+</div>
+{% stylesheet %}
+  .button_block{
+
+  background:var(--box-bg);
+  border-radius:var(--radius);
+
+}
+
+.button_box{
+
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+
+}
+
+.btn{
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:10px 20px;
+
+  border-radius:var(--radius);
+
+  font-size:var(--fs);
+
+  border:1px solid transparent;
+
+  transition:0.2s;
+
+}
+
+@media(max-width:768px){
+
+.btn{
+  font-size:var(--fsm);
+}
+
+}
+
+
+/* PRIMARY */
+
+.btn-primary{
+
+  background:var(--primary-bg);
+  color:var(--primary-text);
+  border-color:var(--primary-border);
+
+}
+
+.btn-primary:hover{
+
+  background:var(--primary-bg-hover);
+  color:var(--primary-text-hover);
+  border-color:var(--primary-border-hover);
+
+}
+
+
+/* SECONDARY */
+
+.btn-secondary{
+
+  background:var(--secondary-bg);
+  color:var(--secondary-text);
+  border-color:var(--secondary-border);
+
+}
+
+.btn-secondary:hover{
+
+  background:var(--secondary-bg-hover);
+  color:var(--secondary-text-hover);
+  border-color:var(--secondary-border-hover);
+
+}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Buttons",
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+
+    { "type": "text", "id": "primary_label", "label": "Label", "default": "Shop now" },
+    { "type": "url", "id": "primary_link", "label": "Link" },
+
+    { "type": "color", "id": "primary_bg", "label": "BG", "default": "#000000" },
+    { "type": "color", "id": "primary_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "primary_border", "label": "Border", "default": "#000000" },
+
+    { "type": "color", "id": "primary_bg_hover", "label": "BG Hover", "default": "#333333" },
+    { "type": "color", "id": "primary_text_hover", "label": "Text Hover", "default": "#ffffff" },
+    { "type": "color", "id": "primary_border_hover", "label": "Border Hover", "default": "#333333" },
+
+
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+
+    { "type": "text", "id": "secondary_label", "label": "Label", "default": "Learn more" },
+    { "type": "url", "id": "secondary_link", "label": "Link" },
+
+    { "type": "color", "id": "secondary_bg", "label": "BG", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_text", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "secondary_border", "label": "Border", "default": "#000000" },
+
+    { "type": "color", "id": "secondary_bg_hover", "label": "BG Hover", "default": "#000000" },
+    { "type": "color", "id": "secondary_text_hover", "label": "Text Hover", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_border_hover", "label": "Border Hover", "default": "#000000" },
+
+
+    {
+      "type": "header",
+      "content": "Style"
+    },
+
+    { "type": "color_background", "id": "box_bg", "label": "Box Background" },
+
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 8
+    },
+
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size desktop",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16
+    },
+
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size mobile",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 14
+    }
+
+  ],
+
+  "presets": [
+    { "name": "Buttons" }
+  ]
+}
+{% endschema %}
