@@ -141,6 +141,7 @@
             "btn_hover_border": "",
             "show_qty": true,
             "show_dynamic_button": true,
+            "enabled_sticky_add": true,
             "show_price": true,
             "btn_font": 14,
             "btn_uppercase": false,
