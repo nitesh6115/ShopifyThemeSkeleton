@@ -57,7 +57,9 @@
 
   {{ block.shopify_attributes }}
 >
- <div class="ba-wrapper">
+<div class="ba-wrapper">
+
+  <!-- AFTER IMAGE (background) -->
   {% if block.settings.after != blank %}
     {{ block.settings.after
       | image_url: width: 1600
@@ -68,7 +70,11 @@
   {% else %}
     {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-after placeholder-svg' }}
   {% endif %}
-  <div class="ba-before-wrapper" style="width: var(--pos);">
+
+
+  <!-- BEFORE OVERLAY -->
+  <div class="ba-before-wrapper">
+
     {% if block.settings.before != blank %}
 
       {{ block.settings.before
@@ -77,19 +83,26 @@
           class: 'ba-before',
           loading: 'lazy'
       }}
-    {% else %}
-      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-before placeholder-svg' }}
-    {% endif %}
-  </div>
-   <input
-      type="range"
-      min="0"
-      max="100"
-      value="{{ block.settings.position }}"
-      class="ba-range"
-    >
-</div>
 
+    {% else %}
+
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-before placeholder-svg' }}
+
+    {% endif %}
+
+  </div>
+
+
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value="{{ block.settings.position }}"
+    class="ba-range"
+  >
+
+</div>
+</div>
 {% stylesheet %}
   .before_after_block {
     background: var(--bg);
