@@ -56,26 +56,29 @@
 
   {{ block.shopify_attributes }}
 >
-  <div class="ba-wrapper">
-    <img
-      class="ba-after"
-      src="{{ block.settings.after | image_url: width: 1600 }}"
-    >
+ <div class="ba-wrapper">
+  {% if block.settings.after != blank %}
+    {{ block.settings.after
+      | image_url: width: 1600
+      | image_tag:
+        class: 'ba-after',
+        loading: 'lazy'
+    }}
+  {% else %}
+    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-after placeholder-svg' }}
+  {% endif %}
+  <div class="ba-before-wrapper" style="width: var(--pos);">
+    {% if block.settings.before != blank %}
 
-    <div class="ba-before-wrapper" style="width: var(--pos);">
-      <img
-        class="ba-before"
-        src="{{ block.settings.before | image_url: width: 1600 }}"
-      >
-    </div>
-
-    <input
-      type="range"
-      min="0"
-      max="100"
-      value="{{ block.settings.position }}"
-      class="ba-range"
-    >
+      {{ block.settings.before
+        | image_url: width: 1600
+        | image_tag:
+          class: 'ba-before',
+          loading: 'lazy'
+      }}
+    {% else %}
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-before placeholder-svg' }}
+    {% endif %}
   </div>
 </div>
 
@@ -102,7 +105,11 @@
     overflow: hidden;
   }
 
-
+  .placeholder-svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
   .ba-wrapper img {
     width: 100%;
     height: 100%;
