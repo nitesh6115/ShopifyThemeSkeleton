@@ -17,7 +17,6 @@
 
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
-
     --ptm: {{ block.settings.ptm }}px;
     --pbm: {{ block.settings.pbm }}px;
     {% case block.settings.width %}
@@ -28,7 +27,6 @@
       {% when 'custom' %}
       --item-width:{{ block.settings.custom_width }}%;
       {% endcase %}
-
       {% case block.settings.width_mobile %}
       {% when 'fit-content' %}
       --item-width-m:auto;
@@ -37,7 +35,6 @@
       {% when 'custom' %}
       --item-width-m:{{ block.settings.custom_width_mobile }}%;
       {% endcase %}
-
       {% case block.settings.height %}
       {% when 'fit' %}
       --item-height:auto;
@@ -47,7 +44,6 @@
       --item-height:{{ block.settings.custom_height }}%;
       {% endcase %}
   "
-
   {{ block.shopify_attributes }}
 >
   <div class="divider-line">&nbsp;</div>
