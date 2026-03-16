@@ -10763,9 +10763,52 @@
                     "block_text_BfUdNz"
                   ]
                 },
+                "block_buttons_UahwYF": {
+                  "type": "block_buttons",
+                  "name": "Buttons",
+                  "settings": {
+                    "alignment": "flex-start",
+                    "primary_label": "Add to Cart - $89.00",
+                    "primary_link": "",
+                    "primary_bg": "#FFFFFF",
+                    "primary_text": "#DC2626",
+                    "primary_border": "#FFFFFF",
+                    "primary_bg_hover": "#DC2626",
+                    "primary_text_hover": "#ffffff",
+                    "primary_border_hover": "#DC2626",
+                    "secondary_label": "Buy Now - Express Checkout",
+                    "secondary_link": "",
+                    "secondary_bg": "#DC2626",
+                    "secondary_text": "#FFFFFF",
+                    "secondary_border": "#DC2626",
+                    "secondary_bg_hover": "#000000",
+                    "secondary_text_hover": "#ffffff",
+                    "secondary_border_hover": "#000000",
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "box_bg": "",
+                    "radius": 8,
+                    "border_size": 0,
+                    "border_color": "#000000",
+                    "font_size": 16,
+                    "font_size_mobile": 14
+                  },
+                  "blocks": {}
+                },
                 "block_group_TH4GPk": {
                   "type": "block_group",
                   "name": "Product Button Link",
+                  "disabled": true,
                   "settings": {
                     "layout_direction": "group--horizontal",
                     "align_x": "center",
@@ -10902,6 +10945,7 @@
                 "block_group_zVa3y4",
                 "block_group_yJtUMf",
                 "block_group_DRKtm9",
+                "block_buttons_UahwYF",
                 "block_group_TH4GPk"
               ]
             },
