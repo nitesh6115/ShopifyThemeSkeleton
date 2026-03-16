@@ -2,7 +2,28 @@
   Divider Block
 {% enddoc %}
 
-<div class=" divider-block align--{{ block.settings.align }} {% if block.settings.hide_mobile %}hide-mobile{% endif %} {% if block.settings.hide_desktop %}hide-desktop{% endif %}" style="
+<div class=" divider-block align--{{ block.settings.align }} {% if block.settings.hide_mobile %}hide-mobile{% endif %} {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+    {% if block.settings.height == 'custom' %}
+    block-custom-height-desktop
+    {% else %}
+    block-height-desktop-{{ block.settings.height }}
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    block-custom-width-desktop
+    {% else %}
+    block-width-desktop-{{ block.settings.width }}
+    {% endif %}
+    {% if block.settings.width_tablet == 'custom' %}
+    block-custom-width-tablet
+    {% else %}
+    block-width-tablet-{{ block.settings.width_tablet }}
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    block-custom-width-mobile
+    {% else %}
+    block-width-mobile-{{ block.settings.width_mobile }}
+    {% endif %}
+  " style="
     --bw: {{ block.settings.border }}px;
     --bc: {{ block.settings.color }};
     --w: {{ block.settings.width }}%;
@@ -11,30 +32,18 @@
     --pb: {{ block.settings.pb }}px;
     --ptm: {{ block.settings.ptm }}px;
     --pbm: {{ block.settings.pbm }}px;
-    {% case block.settings.width %}
-      {% when 'fit-content' %}
-      --item-width:auto;
-      {% when 'fill' %}
-      --item-width:fill;
-      {% when 'custom' %}
-      --item-width:{{ block.settings.custom_width }}%;
-      {% endcase %}
-      {% case block.settings.width_mobile %}
-      {% when 'fit-content' %}
-      --item-width-m:auto;
-      {% when 'fill' %}
-      --item-width-m:fill;
-      {% when 'custom' %}
-      --item-width-m:{{ block.settings.custom_width_mobile }}%;
-      {% endcase %}
-      {% case block.settings.height %}
-      {% when 'fit' %}
-      --item-height:auto;
-      {% when 'fill' %}
-      --item-height:fill;
-      {% when 'custom' %}
-      --item-height:{{ block.settings.custom_height }}%;
-      {% endcase %}
+    {% if block.settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
+    {% endif %}
+     {% if block.settings.width_tablet == 'custom' %}
+    --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
+    {% endif %}
   "
   {{ block.shopify_attributes }}
 >
