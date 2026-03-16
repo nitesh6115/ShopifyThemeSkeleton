@@ -368,6 +368,29 @@ FIX vertical + 100% height
       "default": "fill"
     },
     {
+      "type": "select",
+      "id": "custom_width_unit_tablet",
+      "label": "Choose Unit Width Tablet",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_tablet_pixel",
+      "default": 48,
+      "label": "Custom Width Tablet In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == 'px' }}"
+    },
+    {
       "type": "range",
       "id": "custom_width_tablet",
       "label": "Custom Width Tablet",
@@ -376,7 +399,7 @@ FIX vertical + 100% height
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == '%' }}"
     },
     {
       "type": "select",
