@@ -94,7 +94,7 @@
           "name": "Befor After Image",
           "settings": {
             "before": "shopify://shop_images/ImageWithFallback_3.avif",
-            "after": "shopify://shop_images/ImageWithFallback_3.avif",
+            "after": "shopify://shop_images/ImageWithFallback_3.png",
             "position": 50,
             "ratio": "auto",
             "hover_zoom": false,
