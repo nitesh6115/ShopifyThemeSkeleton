@@ -60,6 +60,7 @@
   "
   {{ block.shopify_attributes }}
 >
+  {{ block.settings.width_unit }}
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
   {% endif %}
