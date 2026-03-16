@@ -115,22 +115,106 @@
 {
   "name": "Accordion",
   "settings": [
-
     {
       "type": "text",
       "id": "question",
       "label": "Question",
       "default": "Accordion question"
     },
-
     {
       "type": "richtext",
       "id": "answer",
       "label": "Answer",
       "default": "<p>Accordion answer</p>"
     },
-
-
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width Desktop",
+      "options": [
+        { "value": "fit-content", "label": "Fit" },
+        { "value": "fill", "label": "Fill" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Custom Width Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_tablet",
+      "label": "Width Tablet",
+      "options": [
+        { "value": "fit-content", "label": "Fit" },
+        { "value": "fill", "label": "Fill" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_tablet",
+      "label": "Custom Width Tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Width Mobile",
+      "options": [
+        { "value": "fit-content", "label": "Fit" },
+        { "value": "fill", "label": "Fill" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Custom Width Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        { "value": "fit", "label": "Fit" },
+        { "value": "fill", "label": "Fill" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fit"
+    },
+    {
+      "type": "range",
+      "id": "custom_height",
+      "label": "Custom Height",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.height == 'custom' }}"
+    },
     {
       "type": "header",
       "content": "Font"
@@ -145,7 +229,6 @@
       "step": 1,
       "default": 16
     },
-
     {
       "type": "range",
       "id": "font_size_mobile",
@@ -156,17 +239,12 @@
       "default": 14
     },
 
-
     {
       "type": "header",
       "content": "Question style"
     },
-
     { "type": "color", "id": "q_color", "label": "Text", "default": "#000000" },
     { "type": "color", "id": "q_bg", "label": "BG", "default": "#f3f4f6" },
-    { "type": "color", "id": "q_border", "label": "Border", "default": "#e5e7eb" },
-
-
     {
       "type": "header",
       "content": "Answer style"
@@ -174,6 +252,7 @@
 
     { "type": "color", "id": "a_color", "label": "Text", "default": "#000000" },
     { "type": "color", "id": "a_bg", "label": "BG", "default": "#ffffff" },
+
 
 
     {
@@ -194,6 +273,7 @@
     },
 
 
+
     {
       "type": "header",
       "content": "Padding Desktop"
@@ -203,6 +283,7 @@
     { "type": "range", "id": "pb", "label": "Bottom", "min": 0, "max": 100, "step": 2, "default": 0 },
     { "type": "range", "id": "pl", "label": "Left", "min": 0, "max": 100, "step": 2, "default": 0 },
     { "type": "range", "id": "pr", "label": "Right", "min": 0, "max": 100, "step": 2, "default": 0 },
+
 
 
     {
