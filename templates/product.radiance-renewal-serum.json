@@ -198,7 +198,7 @@
             "layout_direction": "group--horizontal",
             "align_x": "flex-start",
             "align_y": "flex-start",
-            "wrap": "nowrap",
+            "wrap": "wrap",
             "hover_zoom": false,
             "shadow": false,
             "width": "fill",
