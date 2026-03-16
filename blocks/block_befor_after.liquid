@@ -342,6 +342,10 @@
       "label": "Box shadow"
     },
     {
+      "type": "header",
+      "content": "Block Width"
+    },
+    {
       "type": "select",
       "id": "width",
       "label": "Width Desktop",
@@ -362,6 +366,29 @@
       "default": "fill"
     },
     {
+      "type": "select",
+      "id": "custom_width_unit_desktop",
+      "label": "Choose Unit Width Dektop",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_pixel",
+      "default": 48,
+      "label": "Custom Width Desktop In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == 'px' and  block.settings.width == 'custom' }}"
+    },
+    {
       "type": "range",
       "id": "custom_width",
       "label": "Custom Width Desktop",
@@ -370,7 +397,7 @@
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.width == 'custom' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == '%' and  block.settings.width == 'custom' }}"
     },
     {
       "type": "select",
@@ -393,6 +420,29 @@
       "default": "fill"
     },
     {
+      "type": "select",
+      "id": "custom_width_unit_tablet",
+      "label": "Choose Unit Width Tablet",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_tablet_pixel",
+      "default": 48,
+      "label": "Custom Width Tablet In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == 'px' and block.settings.width_tablet == 'custom'}}"
+    },
+    {
       "type": "range",
       "id": "custom_width_tablet",
       "label": "Custom Width Tablet",
@@ -401,7 +451,7 @@
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == '%' and block.settings.width_tablet == 'custom' }}"
     },
     {
       "type": "select",
@@ -424,6 +474,29 @@
       "default": "fill"
     },
     {
+      "type": "select",
+      "id": "custom_width_unit_mobile",
+      "label": "Choose Unit Width Mobile",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_pixel_mobile",
+      "default": 48,
+      "label": "Custom Width Mobile In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == 'px' and block.settings.width_mobile == 'custom' }}"
+    },
+    {
       "type": "range",
       "id": "custom_width_mobile",
       "label": "Custom Width Mobile",
@@ -432,7 +505,7 @@
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == '%' and block.settings.width_mobile == 'custom' }}"
     },
     {
       "type": "select",
