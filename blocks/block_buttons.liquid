@@ -23,8 +23,8 @@
      block-width-mobile-{{ block.settings.width_mobile }}
     {% endif %}
 
-    {% if block.settings.hide_mobile %} hide-mobile{% endif %}
-    {% if block.settings.hide_desktop %} hide-desktop{% endif %}
+    {% if block.settings.hide_desktop %}hide-desktop{% endif %}
+    {% if block.settings.hide_mobile %}hide-mobile{% endif %}
   "
   style="
     --gap: {{ block.settings.gap }}px;
