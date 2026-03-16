@@ -245,7 +245,7 @@
                 "hover_zoom": true,
                 "shadow": false,
                 "width": "custom",
-                "custom_width_unit_desktop": "px",
+                "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
                 "width_tablet": "fill",
