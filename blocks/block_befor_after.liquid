@@ -193,7 +193,6 @@
     display: block;
     width: 100%;
   }
-
   .before-after-after {
     position: absolute;
     top: 0;
@@ -201,7 +200,6 @@
     width: 50%;
     overflow: hidden;
   }
-
   .before-after-slider {
     position: absolute;
     top: 0;
@@ -313,7 +311,23 @@
   .ratio--landscape {aspect-ratio: 4/3;}
   .ratio--portrait {aspect-ratio: 3/4;}
   .ratio--auto {aspect-ratio: auto;}
+  /* ratio support */
 
+.ratio--square .before-after-wrapper img{
+  aspect-ratio:1/1;
+}
+
+.ratio--landscape .before-after-wrapper img{
+  aspect-ratio:4/3;
+}
+
+.ratio--portrait .before-after-wrapper img{
+  aspect-ratio:3/4;
+}
+
+.ratio--auto .before-after-wrapper img{
+  aspect-ratio:auto;
+}
 
   @media screen and (max-width: 767px) {
 
