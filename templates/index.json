@@ -96,7 +96,7 @@
             "before": "shopify://shop_images/ImageWithFallback_3.avif",
             "after": "shopify://shop_images/ImageWithFallback_3.png",
             "position": 50,
-            "ratio": "auto",
+            "ratio": "square",
             "hover_zoom": false,
             "shadow": false,
             "width": "fill",
