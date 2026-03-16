@@ -68,8 +68,8 @@
   "
   {{ block.shopify_attributes }}
 >
-{% if block.settings.after != blank and block.settings.before != blank %}
-<div class="before-after-wrapper">
+  {% if block.settings.after != blank and block.settings.before != blank %}
+  <div class="before-after-wrapper">
     <div class="before-after-image-container" id="ba-container-{{ block.id }}">
       <div class="image-container">
         {{
@@ -165,8 +165,8 @@
       <div class="before-after-label label-after">After</div>
     </div>
   </div>
+  {% endif %}
 </div>
-{% endif %}
 {% stylesheet %}
   .before_after_block {
     background: var(--bg);
