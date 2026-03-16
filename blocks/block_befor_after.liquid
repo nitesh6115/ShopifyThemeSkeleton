@@ -81,6 +81,13 @@
       {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-before placeholder-svg' }}
     {% endif %}
   </div>
+   <input
+      type="range"
+      min="0"
+      max="100"
+      value="{{ block.settings.position }}"
+      class="ba-range"
+    >
 </div>
 
 {% stylesheet %}
