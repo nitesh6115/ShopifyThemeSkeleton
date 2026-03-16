@@ -9943,7 +9943,7 @@
             "align_y": "flex-start",
             "wrap": "wrap",
             "hover_zoom": false,
-            "shadow": false,
+            "shadow": true,
             "width": "fill",
             "custom_width_unit_desktop": "%",
             "custom_width_pixel": 48,
