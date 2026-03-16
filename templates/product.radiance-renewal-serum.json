@@ -9687,6 +9687,30 @@
     "premium_global_section_tV3CTQ": {
       "type": "premium_global_section",
       "blocks": {
+        "block_divider_hpRYgY": {
+          "type": "block_divider",
+          "name": "Divider",
+          "settings": {
+            "border": 1,
+            "color": "#000000",
+            "width": "fill",
+            "custom_width": 100,
+            "width_tablet": "fill",
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "align": "center",
+            "pt": 10,
+            "pb": 10,
+            "ptm": 8,
+            "pbm": 8,
+            "hide_desktop": false,
+            "hide_mobile": false
+          },
+          "blocks": {}
+        },
         "block_group_UzFYq4": {
           "type": "block_group",
           "name": "Accordian Container",
@@ -10112,6 +10136,7 @@
         }
       },
       "block_order": [
+        "block_divider_hpRYgY",
         "block_group_UzFYq4",
         "block_group_PWRqcM"
       ],
