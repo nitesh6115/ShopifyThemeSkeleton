@@ -334,7 +334,7 @@ FIX vertical + 100% height
       "id": "custom_width_pixel",
       "default": 48,
       "label": "Custom Width Desktop In Pixel",
-      "visible_if": "{{ block.settings.custom_width_unit_desktop == 'px' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == 'px' and  block.settings.width == 'custom' }}"
     },
     {
       "type": "range",
