@@ -107,7 +107,7 @@
 }
 .button_box{
   display:flex;
-  gap:12px;
+  gap: var(--gap);
   flex-wrap:wrap;
   justify-content:var(--btn-align);
 }
@@ -133,6 +133,9 @@ width: 100%;
 .button_block .btn{
   font-size:var(--fsm);
   min-height: var(--btn-height-mobile);
+}
+.button_box{
+  gap: var(--gap-m);
 }
 }
 .button_block .btn-primary{
