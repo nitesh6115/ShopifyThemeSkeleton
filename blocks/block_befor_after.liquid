@@ -79,6 +79,7 @@
             widths: widths,
             sizes: '(min-width: 1200px) 700px, 100vw',
             loading: 'lazy',
+            fetch_priority: fetch_priority,
             class: 'image-before slider-image'
         }}
         {{
@@ -86,6 +87,7 @@
           | image_url: width: 1500
           | image_tag:
             widths: widths,
+             fetch_priority: fetch_priority,
             sizes: '(min-width: 1200px) 700px, 100vw',
             loading: 'lazy',
             class: 'image-after slider-image'
