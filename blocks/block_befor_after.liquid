@@ -170,40 +170,21 @@
 
   }
 {% endstylesheet %}
-
 <script>
-  document.addEventListener('input', function (e) {
-    if (!e.target.classList.contains('ba-range')) return;
-    let wrapper = e.target.closest('.before_after_block');
-    wrapper.style.setProperty('--pos', e.target.value + '%');
-    wrapper.querySelector('.ba-before-wrapper').style.width = e.target.value + '%';
-  });
-</script><script>
-
 document.addEventListener("DOMContentLoaded", function(){
-
   const block = document.querySelector("#ba-{{ block.id }}");
-
   if(!block) return;
-
   const range = block.querySelector(".ba-range");
   const before = block.querySelector(".ba-before-wrapper");
-
   if(!range || !before) return;
-
   range.addEventListener("input", function(){
-
     before.style.width = this.value + "%";
-
     block.style.setProperty(
       "--pos",
       this.value + "%"
     );
-
   });
-
 });
-
 </script>
 {% schema %}
 {
