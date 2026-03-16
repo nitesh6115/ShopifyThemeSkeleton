@@ -3,7 +3,7 @@
     button_block
 
     {% if block.settings.height == 'custom' %}
-     block-custom-height-desktop 
+     block-custom-height-desktop
      {% else %}
     block-height-desktop-{{ block.settings.height }}
     {% endif %}
@@ -53,7 +53,7 @@
     --secondary-text-hover: {{ block.settings.secondary_text_hover }};
     --secondary-border-hover: {{ block.settings.secondary_border_hover }};
     {% if block.settings.height == 'custom' %}
-     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
     {% endif %}
     {% if block.settings.width == 'custom' %}
     --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
@@ -67,9 +67,7 @@
   "
   {{ block.shopify_attributes }}
 >
-
   <div class="button_box">
-
     {% if block.settings.primary_label != blank %}
       <a href="{{ block.settings.primary_link }}" class="btn btn-primary">
         {{ block.settings.primary_label }}
@@ -81,86 +79,84 @@
         {{ block.settings.secondary_label }}
       </a>
     {% endif %}
-
   </div>
-
 </div>
 {% stylesheet %}
-  .button_block{
+    .button_block{
 
-  background:var(--box-bg);
-  border-radius:var(--radius);
+    background:var(--box-bg);
+    border-radius:var(--radius);
 
-}
+  }
 
-.button_box{
+  .button_box{
 
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 
-  justify-content:var(--btn-align);
+    justify-content:var(--btn-align);
 
-}
-
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:10px 20px;
-  border-radius:var(--radius);
-  font-size:var(--fs);
-  border:1px solid transparent;
-  transition:0.2s;
-  text-decoration: none;
-}
-
-@media(max-width:768px){
-
-.btn{
-  font-size:var(--fsm);
-}
-
-}
+  }
 
 
-/* PRIMARY */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 20px;
+    border-radius:var(--radius);
+    font-size:var(--fs);
+    border:1px solid transparent;
+    transition:0.2s;
+    text-decoration: none;
+  }
 
-.btn-primary{
+  @media(max-width:768px){
 
-  background:var(--primary-bg);
-  color:var(--primary-text);
-  border-color:var(--primary-border);
+  .btn{
+    font-size:var(--fsm);
+  }
 
-}
-
-.btn-primary:hover{
-
-  background:var(--primary-bg-hover);
-  color:var(--primary-text-hover);
-  border-color:var(--primary-border-hover);
-
-}
+  }
 
 
-/* SECONDARY */
+  /* PRIMARY */
 
-.btn-secondary{
+  .btn-primary{
 
-  background:var(--secondary-bg);
-  color:var(--secondary-text);
-  border-color:var(--secondary-border);
+    background:var(--primary-bg);
+    color:var(--primary-text);
+    border-color:var(--primary-border);
 
-}
+  }
 
-.btn-secondary:hover{
+  .btn-primary:hover{
 
-  background:var(--secondary-bg-hover);
-  color:var(--secondary-text-hover);
-  border-color:var(--secondary-border-hover);
+    background:var(--primary-bg-hover);
+    color:var(--primary-text-hover);
+    border-color:var(--primary-border-hover);
 
-}
+  }
+
+
+  /* SECONDARY */
+
+  .btn-secondary{
+
+    background:var(--secondary-bg);
+    color:var(--secondary-text);
+    border-color:var(--secondary-border);
+
+  }
+
+  .btn-secondary:hover{
+
+    background:var(--secondary-bg-hover);
+    color:var(--secondary-text-hover);
+    border-color:var(--secondary-border-hover);
+
+  }
 {% endstylesheet %}
 {% schema %}
 {
@@ -193,7 +189,31 @@
     { "type": "color", "id": "primary_bg_hover", "label": "BG Hover", "default": "#333333" },
     { "type": "color", "id": "primary_text_hover", "label": "Text Hover", "default": "#ffffff" },
     { "type": "color", "id": "primary_border_hover", "label": "Border Hover", "default": "#333333" },
-
+    {
+      "type": "header",
+      "content": "Button 1 Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn1_icon_enable",
+      "label": "Show Icon",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "btn1_icon",
+      "label": "Icon Image"
+    },
+    {
+      "type": "select",
+      "id": "btn1_icon_position",
+      "label": "Icon Position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
 
     {
       "type": "header",
@@ -210,7 +230,31 @@
     { "type": "color", "id": "secondary_bg_hover", "label": "BG Hover", "default": "#000000" },
     { "type": "color", "id": "secondary_text_hover", "label": "Text Hover", "default": "#ffffff" },
     { "type": "color", "id": "secondary_border_hover", "label": "Border Hover", "default": "#000000" },
-
+    {
+      "type": "header",
+      "content": "Button 2 Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn2_icon_enable",
+      "label": "Show Icon",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "btn2_icon",
+      "label": "Icon Image"
+    },
+    {
+      "type": "select",
+      "id": "btn2_icon_position",
+      "label": "Icon Position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
     {
       "type": "header",
       "content": "Block Width"
@@ -427,11 +471,8 @@
       "step": 1,
       "default": 14
     }
-
   ],
 
-  "presets": [
-    { "name": "Buttons" }
-  ]
+  "presets": [{ "name": "Buttons" }]
 }
 {% endschema %}
