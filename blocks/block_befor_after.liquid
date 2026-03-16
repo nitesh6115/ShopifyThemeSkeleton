@@ -12,7 +12,6 @@
     id="ba-{{ block.id }}"
   class="
     before_after_block before-after-container
-
     {% if block.settings.height == 'custom' %}
       block-custom-height-desktop
     {% else %}
@@ -36,12 +35,8 @@
     {% else %}
       block-width-mobile-{{ block.settings.width_mobile }}
     {% endif %}
-
-    ratio--{{ block.settings.ratio }}
-
     {% if block.settings.shadow %}is-shadow{% endif %}
   "
-
   style="
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
@@ -60,7 +55,6 @@
 
     --pos: {{ block.settings.position }}%;
   "
-
   {{ block.shopify_attributes }}
 >
 {% if block.settings.after != blank and block.settings.before != blank %}
@@ -167,28 +161,18 @@
     background: var(--bg);
     border-radius: var(--radius);
     border: var(--border-size) solid var(--border-color);
-
     padding-top: var(--pt);
     padding-bottom: var(--pb);
     padding-left: var(--pl);
     padding-right: var(--pr);
-
     overflow: hidden;
     position: relative;
   }
 /* wrapper */
-
-.before-after-wrapper {
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-  }
-
   .before-after-container {
     position: relative;
     width: 100%;
   }
-
   .before-after-container img {
     display: block;
     width: 100%;
@@ -209,7 +193,6 @@
     background:var(--star-line-color);
     cursor: ew-resize;
   }
-
   .before-after-label {
     position: absolute;
     top: 20px;
@@ -218,18 +201,14 @@
     border-radius: 20px;
     font-size: 14px;
   }
-
   .label-before { left: 20px; }
   .label-after { right: 20px; }
-
-
   .before-after-container img,
   .ba-placeholder svg {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   .before-after-after {
     position: absolute;
     top: 0;
@@ -238,7 +217,6 @@
     height: 100%;
     overflow: hidden;
   }
-
   .ba-placeholder {
     width: 100%;
     height: 100%;
@@ -251,20 +229,17 @@
     border-radius: 1rem;
     --position: 50%;
   }
-
   .before-after-container .slider-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left;
   }
-
   .before-after-container .image-before {
     position: absolute;
     inset: 0;
     width: var(--position);
   }
-
   .before-after-container .slider {
     position: absolute;
     inset: 0;
@@ -274,12 +249,10 @@
     width: 100%;
     height: 100%;
   }
-
   .before-after-container .slider:focus-visible ~ .slider-button {
     outline: 5px solid black;
     outline-offset: 3px;
   }
-
   .before-after-container .slider-line {
     position: absolute;
     inset: 0;
@@ -291,7 +264,6 @@
     transform: translateX(-50%);
     pointer-events: none;
   }
-
   .before-after-container .slider-button {
     position: absolute;
     background-color: #fff;
@@ -308,7 +280,6 @@
     box-shadow: 1px 1px 1px hsl(0, 50%, 2%, .5);
   }
   
-
   @media screen and (max-width: 767px) {
 
   .before_after_block{
