@@ -142,6 +142,59 @@
       "default": "<p>Accordion answer</p>"
     },
     {
+  "type": "header",
+  "content": "Icon"
+},
+
+{
+  "type": "select",
+  "id": "icon_type",
+  "label": "Icon type",
+  "options": [
+    { "value": "plus", "label": "Plus / Minus" },
+    { "value": "chevron", "label": "Chevron" },
+    { "value": "arrow", "label": "Arrow" },
+    { "value": "char", "label": "Custom Character" }
+  ],
+  "default": "plus"
+},
+
+{
+  "type": "text",
+  "id": "icon_char",
+  "label": "Custom icon",
+  "default": "+",
+  "visible_if": "{{ block.settings.icon_type == 'char' }}"
+},
+
+{
+  "type": "select",
+  "id": "icon_position",
+  "label": "Icon position",
+  "options": [
+    { "value": "left", "label": "Left" },
+    { "value": "right", "label": "Right" }
+  ],
+  "default": "right"
+},
+
+{
+  "type": "range",
+  "id": "icon_size",
+  "label": "Icon size",
+  "min": 10,
+  "max": 40,
+  "step": 1,
+  "default": 16
+},
+
+{
+  "type": "color",
+  "id": "icon_color",
+  "label": "Icon color",
+  "default": "#000000"
+},
+    {
   "type": "select",
   "id": "q_align",
   "label": "Question alignment",
