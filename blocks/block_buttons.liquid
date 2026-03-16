@@ -15,6 +15,10 @@
   style="
     --box-bg: {{ block.settings.box_bg }};
     --radius: {{ block.settings.radius }}px;
+    --border: {{ block.settings.border_size }}px;
+    --border-color: {{ block.settings.border_color }};
+
+    --btn-align: {{ block.settings.alignment }};
 
     --fs: {{ block.settings.font_size }}px;
     --fsm: {{ block.settings.font_size_mobile }}px;
@@ -68,7 +72,10 @@
   gap:12px;
   flex-wrap:wrap;
 
+  justify-content:var(--btn-align);
+
 }
+
 
 .btn{
 
@@ -138,7 +145,18 @@
 {
   "name": "Buttons",
   "settings": [
-
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" },
+        { "value": "space-between", "label": "Space" }
+      ],
+      "default": "flex-start"
+    },
     {
       "type": "header",
       "content": "Primary Button"
@@ -189,7 +207,21 @@
       "step": 1,
       "default": 8
     },
-
+    {
+      "type": "range",
+      "id": "border_size",
+      "label": "Border",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#000000"
+    },
     {
       "type": "range",
       "id": "font_size",
