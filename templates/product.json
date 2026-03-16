@@ -233,6 +233,51 @@
         "media-thumb-radius": 10
       }
     },
+    "premium_global_section_mmUTCj": {
+      "type": "premium_global_section",
+      "name": "Premium Global Section",
+      "settings": {
+        "section_width": "custom",
+        "custom_width": 1200,
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "center",
+        "background_color": "",
+        "overlay_color": "",
+        "overlay_opacity": 0,
+        "bg_position": "center center",
+        "bg_size": "cover",
+        "columns_desktop": 1,
+        "columns_mobile": 1,
+        "gap": 24,
+        "gap_m": 24,
+        "border_radius": 0,
+        "border_width": 0,
+        "border_color": "#000000",
+        "heading": "Section Heading",
+        "heading_size_desktop": 42,
+        "heading_size_mobile": 26,
+        "heading_weight": 700,
+        "heading_color": "#111111",
+        "text": "<p>Section Content Inforation Here</p>",
+        "text_size_desktop": 16,
+        "text_size_mobile": 14,
+        "text_color": "#111111",
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_left_mobile": 16,
+        "padding_right_mobile": 16,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "hide_mobile": false,
+        "hide_desktop": false
+      }
+    },
     "why_choose_FBccbN": {
       "type": "why-choose",
       "blocks": {
@@ -315,7 +360,6 @@
         "feature_pHMTKJ",
         "feature_3BbaDU"
       ],
-      "disabled": true,
       "name": "Why Choose Section",
       "settings": {
         "section_width": false,
@@ -344,7 +388,6 @@
     },
     "before_after_results_GXdpeE": {
       "type": "before-after-results",
-      "disabled": true,
       "name": "Before / After Results",
       "settings": {
         "section_width": false,
@@ -561,7 +604,6 @@
         "content_row_EFNEYe",
         "content_row_QEURkt"
       ],
-      "disabled": true,
       "name": "How We Stack Up",
       "settings": {
         "section_width": false,
@@ -766,7 +808,6 @@
         "happy_customer_zHQitc",
         "happy_customer_krMRAa"
       ],
-      "disabled": true,
       "name": "Loved By Thousends",
       "settings": {
         "section_width": false,
@@ -1069,7 +1110,6 @@
         "featured_logo_6AfhHd",
         "featured_logo_38kmAK"
       ],
-      "disabled": true,
       "name": "Trusted Quality",
       "settings": {
         "section_width": false,
@@ -1268,7 +1308,6 @@
         "bottom_blocks_nGWyA6",
         "bottom_blocks_PpNtR7"
       ],
-      "disabled": true,
       "name": "Premium Ingredients",
       "settings": {
         "section_width": false,
@@ -1549,7 +1588,6 @@
         "question_CCR3W3",
         "text_block_xMKHAG"
       ],
-      "disabled": true,
       "name": "Frequently Asked Questions",
       "settings": {
         "section_width": false,
@@ -1665,7 +1703,6 @@
         "feature_LijHAP",
         "feature_YcfFkA"
       ],
-      "disabled": true,
       "name": "Why Choose Section",
       "settings": {
         "section_width": false,
@@ -1772,6 +1809,7 @@
   },
   "order": [
     "main",
+    "premium_global_section_mmUTCj",
     "why_choose_FBccbN",
     "before_after_results_GXdpeE",
     "how_we_stack_up_kpFUBG",
