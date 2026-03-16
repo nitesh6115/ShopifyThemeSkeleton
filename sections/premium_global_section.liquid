@@ -164,7 +164,7 @@
       <p>{{ section.settings.text }}</p>
     </div>
   {% endif %}
-    <div class="section-content {% if section.settings.stack_columns_mobile %}stack-mobile{% endif %}">
+    <div class="section-content">
       {% content_for 'blocks' %}
     </div>
   </div>
@@ -499,11 +499,10 @@
       "label": "Margin Bottom",
       "default": 0
     },
-    { "type": "header", "content": "Responsive Controls" },
+    { "type": "header", "content": "Visibility" },
 
     { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile" },
-    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" },
-    { "type": "checkbox", "id": "stack_columns_mobile", "label": "Stack Columns on Mobile" }
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" }
   ],
   "blocks": [
     {
