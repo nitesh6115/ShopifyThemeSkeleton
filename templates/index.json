@@ -238,7 +238,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>94% of users report smoother, more radiant skin within just 14 days</p><p>94% of users report smoother, more radiant skin within just 14 days</p><p>94% of users report smoother, more radiant skin within just 14 days</p>",
+                    "text": "<p>94% of users report smoother, more radiant skin within just 14 days</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
