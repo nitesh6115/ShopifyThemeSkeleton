@@ -134,6 +134,7 @@
         },
         "liquid_8DQ3wh": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "padding_top": 5,
             "padding_bottom": 5,
@@ -146,6 +147,7 @@
         },
         "divider_V74iXh": {
           "type": "divider",
+          "disabled": true,
           "settings": {
             "padding_top": 10,
             "padding_bottom": 20,
@@ -159,6 +161,7 @@
         },
         "trust_badges_z4TjMa": {
           "type": "trust_badges",
+          "disabled": true,
           "settings": {
             "padding_top": 5,
             "padding_bottom": 5,
