@@ -112,6 +112,9 @@
   .accordion_block{
    background: var(--bg);
    border-radius: var(--radius);
+   border-style: solid;
+   border-width: var(--border-size);
+   border-color: var(--border-color);
    padding:var(--pt) var(--pr) var(--pb) var(--pl);
 }
 .accordion_question{
@@ -458,20 +461,31 @@ details[open] .minus{
       "type": "header",
       "content": "Box"
     },
-
     { "type": "color_background", "id": "box_bg", "label": "Background" },
-
     {
       "type": "range",
       "id": "radius",
-      "label": "Radius",
+      "label": "Border radius",
       "min": 0,
-      "max": 40,
+      "max": 50,
       "step": 1,
-      "default": 8
+      "default": 0
     },
-
-
+    {
+      "type": "range",
+      "id": "border_size",
+      "label": "Border size",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#000000"
+    },
 
     {
       "type": "header",
