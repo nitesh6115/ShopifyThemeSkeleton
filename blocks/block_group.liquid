@@ -1,6 +1,7 @@
 <div
   class="
     group {{ block.settings.layout_direction }}
+    box-{{ block.settings.wrap }}
     {% if block.settings.height == 'custom' %}
        block-custom-height-desktop
        {% else %}
@@ -59,8 +60,8 @@
   "
   {{ block.shopify_attributes }}
 >
-  {% if block.settings.block_link != blank %}
-    <a class="block_link link_overlay" href="{{ block.settings.block_link }}"></a>
+  {% if block.settings.image_link != blank %}
+    <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
   {% endif %}
   {% content_for 'blocks' %}
 </div>
@@ -85,8 +86,16 @@ GROUP BASE
     padding-left: var(--pl);
     padding-right: var(--pr);
     width: 100%;
+    position: relative;
   }
-
+a.image_link.link_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: var(--radius);
+}
 .group--vertical{
   flex-direction:column;
   justify-content:var(--align-y,flex-start);
@@ -132,7 +141,9 @@ FIX vertical + 100% height
   height:var(--block-custom-height-desktop);
 }
 
-
+.box-nowrap.block-height-desktop-fit > * {
+    height: 100%;
+}
   /* mobile */
   @media (min-width: 1366px){
     .block-width-desktop-fill{
