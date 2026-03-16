@@ -36,7 +36,8 @@
 
     --fs: {{ block.settings.font_size }}px;
     --fsm: {{ block.settings.font_size_mobile }}px;
-
+    --btn-height: {{ block.settings.btn_height }}px;
+    --btn-height-mobile: {{ block.settings.btn_height_mobile }}px;
     --primary-bg: {{ block.settings.primary_bg }};
     --primary-text: {{ block.settings.primary_text }};
     --primary-border: {{ block.settings.primary_border }};
@@ -67,7 +68,7 @@
   "
   {{ block.shopify_attributes }}
 >
-  <div class="button_box">
+  <div class="button_box {% if block.settings.btn_full_width %} full-width-btn {% endif %}">
     {% if block.settings.primary_label != blank %}
       <a href="{{ block.settings.primary_link }}" class="btn btn-primary">
         {{ block.settings.primary_label }}
@@ -101,10 +102,12 @@
   border:1px solid transparent;
   transition:0.2s;
   text-decoration: none;
+  min-height: var(--btn-height);
 }
 @media(max-width:768px){
 .button_block .btn{
   font-size:var(--fsm);
+  min-height: var(--btn-height-mobile);
 }
 }
 .button_block .btn-primary{
