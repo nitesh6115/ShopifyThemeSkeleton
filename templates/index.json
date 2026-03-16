@@ -175,7 +175,7 @@
                     "width": "fill",
                     "custom_width": 100,
                     "width_tablet": "fill",
-                    "custom_width_tablet": 100,
+                    "custom_width_tablet": 16,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
                     "height": "fit",
