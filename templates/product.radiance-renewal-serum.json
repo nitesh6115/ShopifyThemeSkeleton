@@ -10803,7 +10803,7 @@
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
                     "box_bg": "",
-                    "radius": 8,
+                    "radius": 0,
                     "border_size": 0,
                     "border_color": "#000000",
                     "btn_full_width": true,
