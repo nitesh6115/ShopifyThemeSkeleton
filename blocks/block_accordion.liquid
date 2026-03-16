@@ -1,9 +1,9 @@
 <div
   class="
     accordion_block
-
+    {% if block.settings.shadow %}is-shadow{% endif %}
     {% if block.settings.height == 'custom' %}
-     block-custom-height-desktop 
+     block-custom-height-desktop
      {% else %}
     block-height-desktop-{{ block.settings.height }}
     {% endif %}
@@ -50,7 +50,7 @@
     --plm: {{ block.settings.pl_m }}px;
     --prm: {{ block.settings.pr_m }}px;
      {% if block.settings.height == 'custom' %}
-     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
     {% endif %}
     {% if block.settings.width == 'custom' %}
     --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
@@ -64,111 +64,107 @@
   "
   {{ block.shopify_attributes }}
 >
-
   <details class="accordion_item">
+    <summary
+      class="accordion_question icon-{{ block.settings.icon_position }}"
+      style="
+        --icon-size: {{ block.settings.icon_size }}px;
+        --icon-color: {{ block.settings.icon_color }};
+      "
+    >
+      <span class="acc_text">
+        {{ block.settings.question }}
+      </span>
+      <span class="acc_icon">
+        {% case block.settings.icon_type %}
+          {% when 'plus' %}
+            <span class="plus">+</span>
+            <span class="minus">−</span>
+          {% when 'chevron' %}
+            ›
+          {% when 'arrow' %}
+            →
+          {% when 'char' %}
+            {{ block.settings.icon_char }}
+        {% endcase %}
+      </span>
+    </summary>
 
-  <summary
-    class="accordion_question icon-{{ block.settings.icon_position }}"
-    style="
-      --icon-size: {{ block.settings.icon_size }}px;
-      --icon-color: {{ block.settings.icon_color }};
-    "
-  >
-    <span class="acc_text">
-      {{ block.settings.question }}
-    </span>
-    <span class="acc_icon">
-      {% case block.settings.icon_type %}
-        {% when 'plus' %}
-        <span class="plus">+</span>
-        <span class="minus">−</span>
-        {% when 'chevron' %}
-          ›
-        {% when 'arrow' %}
-          →
-        {% when 'char' %}
-          {{ block.settings.icon_char }}
-      {% endcase %}
-    </span>
-  </summary>
-
-  <div class="accordion_answer rte">
-    {{ block.settings.answer }}
-  </div>
-
-</details>
-
+    <div class="accordion_answer rte">
+      {{ block.settings.answer }}
+    </div>
+  </details>
 </div>
 {% stylesheet %}
+    .accordion_block{
+     background: var(--bg);
+     border-radius: var(--radius);
+     overflow: hidden;
+     border-style: solid;
+     border-width: var(--border-size);
+     border-color: var(--border-color);
+     padding:var(--pt) var(--pr) var(--pb) var(--pl);
+  }
+  .accordion_question{
+    text-align: var(--q-align);
+  }
+  .accordion_answer{
+    text-align: var(--a-align);
+  }
+  .acc_text{
+      flex: 1;
+  }
+  .accordion_question{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    gap: 15px;
+    color:var(--q-color);
+    cursor:pointer;
+    font-size:var(--fs);
+  }
+  .acc_icon{
+    font-size:var(--icon-size);
+    color:var(--icon-color);
+    transition:0.3s;
+  }
+  /* left / right */
+  .icon-left{
+    flex-direction:row-reverse;
+  }
+  .icon-right{
+    flex-direction:row;
+  }
+  /* rotate when open */
+  details[open] .acc_icon{
+    transform: rotate(180deg);
+  }
+  .minus{
+    display:none;
+  }
+  details[open] .plus{
+    display:none;
+  }
+  details[open] .minus{
+    display:inline;
+  }
+  @media(max-width:768px){
   .accordion_block{
-   background: var(--bg);
-   border-radius: var(--radius);
-   overflow: hidden;
-   border-style: solid;
-   border-width: var(--border-size);
-   border-color: var(--border-color);
-   padding:var(--pt) var(--pr) var(--pb) var(--pl);
-}
-.accordion_question{
-  text-align: var(--q-align);
-}
-.accordion_answer{
-  text-align: var(--a-align);
-}
-.acc_text{
-    flex: 1;
-}
-.accordion_question{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-  gap: 15px;
-  color:var(--q-color);
-  cursor:pointer;
-  font-size:var(--fs);
-}
-.acc_icon{
-  font-size:var(--icon-size);
-  color:var(--icon-color);
-  transition:0.3s;
-}
-/* left / right */
-.icon-left{
-  flex-direction:row-reverse;
-}
-.icon-right{
-  flex-direction:row;
-}
-/* rotate when open */
-details[open] .acc_icon{
-  transform: rotate(180deg);
-}
-.minus{
-  display:none;
-}
-details[open] .plus{
-  display:none;
-}
-details[open] .minus{
-  display:inline;
-}
-@media(max-width:768px){
-.accordion_block{
-  padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
-}
-}
-.accordion_answer{
-  background:var(--a-bg);
-  color:var(--a-color);
-  font-size:var(--fs);
-}
-@media(max-width:768px){
-.accordion_question,
-.accordion_answer{
-  font-size:var(--fsm);
-}
-}
+    padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
+  }
+  }
+  .accordion_answer{
+    background:var(--a-bg);
+    color:var(--a-color);
+    font-size:var(--fs);
+  }
+  @media(max-width:768px){
+  .accordion_question,
+  .accordion_answer{
+    font-size:var(--fsm);
+  }
+  }
 {% endstylesheet %}
 {% schema %}
 {
@@ -188,82 +184,82 @@ details[open] .minus{
       "default": "<p>Accordion answer</p>"
     },
     {
-  "type": "header",
-  "content": "Icon"
-},
+      "type": "header",
+      "content": "Icon"
+    },
 
-{
-  "type": "select",
-  "id": "icon_type",
-  "label": "Icon type",
-  "options": [
-    { "value": "plus", "label": "Plus / Minus" },
-    { "value": "chevron", "label": "Chevron" },
-    { "value": "arrow", "label": "Arrow" },
-    { "value": "char", "label": "Custom Character" }
-  ],
-  "default": "plus"
-},
-
-{
-  "type": "text",
-  "id": "icon_char",
-  "label": "Custom icon",
-  "default": "+",
-  "visible_if": "{{ block.settings.icon_type == 'char' }}"
-},
-
-{
-  "type": "select",
-  "id": "icon_position",
-  "label": "Icon position",
-  "options": [
-    { "value": "left", "label": "Left" },
-    { "value": "right", "label": "Right" }
-  ],
-  "default": "right"
-},
-
-{
-  "type": "range",
-  "id": "icon_size",
-  "label": "Icon size",
-  "min": 10,
-  "max": 40,
-  "step": 1,
-  "default": 16
-},
-
-{
-  "type": "color",
-  "id": "icon_color",
-  "label": "Icon color",
-  "default": "#000000"
-},
     {
-  "type": "select",
-  "id": "q_align",
-  "label": "Question alignment",
-  "options": [
-    { "value": "left", "label": "Left" },
-    { "value": "center", "label": "Center" },
-    { "value": "right", "label": "Right" }
-  ],
-  "default": "left"
-},
+      "type": "select",
+      "id": "icon_type",
+      "label": "Icon type",
+      "options": [
+        { "value": "plus", "label": "Plus / Minus" },
+        { "value": "chevron", "label": "Chevron" },
+        { "value": "arrow", "label": "Arrow" },
+        { "value": "char", "label": "Custom Character" }
+      ],
+      "default": "plus"
+    },
 
-{
-  "type": "select",
-  "id": "a_align",
-  "label": "Answer alignment",
-  "options": [
-    { "value": "left", "label": "Left" },
-    { "value": "center", "label": "Center" },
-    { "value": "right", "label": "Right" }
-  ],
-  "default": "left"
-},
-{
+    {
+      "type": "text",
+      "id": "icon_char",
+      "label": "Custom icon",
+      "default": "+",
+      "visible_if": "{{ block.settings.icon_type == 'char' }}"
+    },
+
+    {
+      "type": "select",
+      "id": "icon_position",
+      "label": "Icon position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16
+    },
+
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "q_align",
+      "label": "Question alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+
+    {
+      "type": "select",
+      "id": "a_align",
+      "label": "Answer alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
       "type": "checkbox",
       "id": "shadow",
       "label": "Box shadow"
@@ -539,8 +535,6 @@ details[open] .minus{
     { "type": "range", "id": "pl", "label": "Left", "min": 0, "max": 100, "step": 2, "default": 0 },
     { "type": "range", "id": "pr", "label": "Right", "min": 0, "max": 100, "step": 2, "default": 0 },
 
-
-
     {
       "type": "header",
       "content": "Padding Mobile"
@@ -551,8 +545,6 @@ details[open] .minus{
     { "type": "range", "id": "pl_m", "label": "Left", "min": 0, "max": 60, "step": 2, "default": 0 },
     { "type": "range", "id": "pr_m", "label": "Right", "min": 0, "max": 60, "step": 2, "default": 0 },
 
-
-
     {
       "type": "header",
       "content": "Visibility"
@@ -560,11 +552,8 @@ details[open] .minus{
 
     { "type": "checkbox", "id": "hide_mobile", "label": "Hide mobile" },
     { "type": "checkbox", "id": "hide_desktop", "label": "Hide desktop" }
-
   ],
 
-  "presets": [
-    { "name": "Accordion" }
-  ]
+  "presets": [{ "name": "Accordion" }]
 }
 {% endschema %}
