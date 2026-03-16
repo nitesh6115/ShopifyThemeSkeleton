@@ -13,8 +13,11 @@
     {% if block.settings.hide_desktop %} hide-desktop{% endif %}
   "
   style="
-    --box-bg: {{ block.settings.box_bg }};
+    --text-color: {{ block.settings.color }};
+    --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
+    --border-size: {{ block.settings.border_size }}px;
+    --border-color: {{ block.settings.border_color }};
 
     --q-color: {{ block.settings.q_color }};
     --q-bg: {{ block.settings.q_bg }};
@@ -54,61 +57,42 @@
 {% stylesheet %}
   .accordion_block{
 
-  background:var(--box-bg);
-  border-radius:var(--radius);
+   background: var(--bg);
+   border-radius: var(--radius);
+   border-style: solid;
+   border-width: var(--border-size);
+   border-color: var(--border-color);
 
   padding:var(--pt) var(--pr) var(--pb) var(--pl);
 
 }
 
 @media(max-width:768px){
-
 .accordion_block{
   padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
 }
-
-}
-
-.accordion_item{
-
-  border-radius:var(--radius);
-  overflow:hidden;
-
 }
 
 .accordion_question{
-
   background:var(--q-bg);
   color:var(--q-color);
-
   padding:12px;
-
   cursor:pointer;
-
-  border:1px solid var(--q-border);
-
   font-size:var(--fs);
-
 }
 
 .accordion_answer{
-
   background:var(--a-bg);
   color:var(--a-color);
-
   padding:12px;
-
   font-size:var(--fs);
-
 }
 
 @media(max-width:768px){
-
 .accordion_question,
 .accordion_answer{
   font-size:var(--fsm);
 }
-
 }
 {% endstylesheet %}
 {% schema %}
