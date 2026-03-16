@@ -49,13 +49,13 @@
      --block-custom-height-desktop: {{ block.settings.custom_height }}%;
     {% endif %}
     {% if block.settings.width == 'custom' %}
-    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
+    --block-custom-width-desktop: {% if block.settings.width_unit == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
     {% endif %}
      {% if block.settings.width_tablet == 'custom' %}
-    --block-custom-width-tablet: {{ block.settings.custom_width_tablet }}%;
+    --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
     {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
-    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+    --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_mobile_pixel }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
     {% endif %}
   "
   {{ block.shopify_attributes }}
