@@ -388,7 +388,7 @@ FIX vertical + 100% height
       "id": "custom_width_tablet_pixel",
       "default": 48,
       "label": "Custom Width Tablet In Pixel",
-      "visible_if": "{{ block.settings.custom_width_unit_tablet == 'px' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == 'px' and block.settings.width_tablet == 'custom'}}"
     },
     {
       "type": "range",
@@ -399,7 +399,7 @@ FIX vertical + 100% height
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.custom_width_unit_tablet == '%' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == '%' and block.settings.width_tablet == 'custom' }}"
     },
     {
       "type": "select",
@@ -442,7 +442,7 @@ FIX vertical + 100% height
       "id": "custom_width_pixel_mobile",
       "default": 48,
       "label": "Custom Width Mobile In Pixel",
-      "visible_if": "{{ block.settings.custom_width_unit_mobile == 'px' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == 'px' and block.settings.width_mobile == 'custom' }}"
     },
     {
       "type": "range",
@@ -453,7 +453,7 @@ FIX vertical + 100% height
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.custom_width_unit_mobile == '%' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == '%' and block.settings.width_mobile == 'custom' }}"
     },
     {
       "type": "header",
