@@ -70,15 +70,45 @@
 
   <details class="accordion_item">
 
-    <summary class="accordion_question">
+  <summary
+    class="accordion_question icon-{{ block.settings.icon_position }}"
+    style="
+      --icon-size: {{ block.settings.icon_size }}px;
+      --icon-color: {{ block.settings.icon_color }};
+    "
+  >
+
+    <span class="acc_text">
       {{ block.settings.question }}
-    </summary>
+    </span>
 
-    <div class="accordion_answer rte">
-      {{ block.settings.answer }}
-    </div>
+    <span class="acc_icon">
 
-  </details>
+      {% case block.settings.icon_type %}
+
+        {% when 'plus' %}
+          +
+
+        {% when 'chevron' %}
+          ›
+
+        {% when 'arrow' %}
+          →
+
+        {% when 'char' %}
+          {{ block.settings.icon_char }}
+
+      {% endcase %}
+
+    </span>
+
+  </summary>
+
+  <div class="accordion_answer rte">
+    {{ block.settings.answer }}
+  </div>
+
+</details>
 
 </div>
 {% stylesheet %}
@@ -95,6 +125,44 @@
 }
 .accordion_answer{
   text-align: var(--a-align);
+}
+.accordion_question{
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  cursor:pointer;
+
+}
+
+.acc_icon{
+
+  font-size:var(--icon-size);
+  color:var(--icon-color);
+
+  transition:0.3s;
+
+}
+
+
+/* left / right */
+
+.icon-left{
+  flex-direction:row-reverse;
+}
+
+.icon-right{
+  flex-direction:row;
+}
+
+
+/* rotate when open */
+
+details[open] .acc_icon{
+
+  transform: rotate(180deg);
+
 }
 @media(max-width:768px){
 .accordion_block{
