@@ -99,8 +99,8 @@
             "pill-text": "#0a0a0a",
             "pill-border": "#d4d4d4",
             "hover-pill-bg": "#ffffff",
-            "hover-pill-text": "#eecdb6",
-            "hover-pill-border": "#eecdb6",
+            "hover-pill-text": "#ec003f",
+            "hover-pill-border": "#ec003f",
             "pill-border-width": 2,
             "pill-radius": 10
           }
