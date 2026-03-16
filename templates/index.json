@@ -1374,86 +1374,12 @@
                 "block_group_qRyQqJ",
                 "block_group_pjMmVq"
               ]
-            },
-            "block_accordion_nwyVK7": {
-              "type": "block_accordion",
-              "name": "Accordion",
-              "settings": {
-                "question": "Accordion question",
-                "answer": "<h2>Accordion answer</h2><p>Accordion answer</p><p>Accordion answer</p><p>Accordion answer</p>",
-                "icon_type": "plus",
-                "icon_char": "+",
-                "icon_position": "right",
-                "icon_size": 16,
-                "icon_color": "#000000",
-                "q_align": "left",
-                "a_align": "left",
-                "width": "custom",
-                "custom_width": 100,
-                "width_tablet": "custom",
-                "custom_width_tablet": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fill",
-                "custom_height": 100,
-                "font_size": 16,
-                "font_size_mobile": 14,
-                "q_color": "#000000",
-                "a_color": "#000000",
-                "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
-                "radius": 10,
-                "border_size": 2,
-                "border_color": "#fbf4ee",
-                "pt": 10,
-                "pb": 10,
-                "pl": 10,
-                "pr": 10,
-                "pt_m": 10,
-                "pb_m": 10,
-                "pl_m": 10,
-                "pr_m": 10,
-                "hide_mobile": false,
-                "hide_desktop": false
-              },
-              "blocks": {}
-            },
-            "block_buttons_mAGJVF": {
-              "type": "block_buttons",
-              "name": "Buttons",
-              "settings": {
-                "alignment": "flex-start",
-                "primary_label": "Shop now",
-                "primary_link": "",
-                "primary_bg": "#000000",
-                "primary_text": "#ffffff",
-                "primary_border": "#000000",
-                "primary_bg_hover": "#333333",
-                "primary_text_hover": "#ffffff",
-                "primary_border_hover": "#333333",
-                "secondary_label": "Learn more",
-                "secondary_link": "",
-                "secondary_bg": "#ffffff",
-                "secondary_text": "#000000",
-                "secondary_border": "#000000",
-                "secondary_bg_hover": "#000000",
-                "secondary_text_hover": "#ffffff",
-                "secondary_border_hover": "#000000",
-                "box_bg": "",
-                "radius": 0,
-                "border_size": 2,
-                "border_color": "#000000",
-                "font_size": 16,
-                "font_size_mobile": 14
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "block_heading_zneVcQ",
             "block_text_PjGwbR",
-            "block_group_UkCVif",
-            "block_accordion_nwyVK7",
-            "block_buttons_mAGJVF"
+            "block_group_UkCVif"
           ]
         }
       },
