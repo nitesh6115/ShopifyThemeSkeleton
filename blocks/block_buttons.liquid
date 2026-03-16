@@ -27,10 +27,22 @@
     {% if block.settings.hide_desktop %} hide-desktop{% endif %}
   "
   style="
-    --box-bg: {{ block.settings.box_bg }};
+    --gap: {{ block.settings.gap }}px;
+    --gap-m: {{ block.settings.gap_m }}px;
+
+    --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
-    --border: {{ block.settings.border_size }}px;
+    --border: {{ block.settings.border }}px;
     --border-color: {{ block.settings.border_color }};
+
+    --pt: {{ block.settings.pt }}px;
+    --pb: {{ block.settings.pb }}px;
+    --pl: {{ block.settings.pl }}px;
+    --pr: {{ block.settings.pr }}px;
+    --ptm: {{ block.settings.ptm }}px;
+    --pbm: {{ block.settings.pbm }}px;
+    --plm: {{ block.settings.plm }}px;
+    --prm: {{ block.settings.prm }}px;
 
     --btn-align: {{ block.settings.alignment }};
 
@@ -83,8 +95,15 @@
 </div>
 {% stylesheet %}
   .button_block{
-  background:var(--box-bg);
-  border-radius:var(--radius);
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: var(--border) solid var(--border-color);
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    padding-left: var(--pl);
+    padding-right: var(--pr);
+    width: 100%;
+    position: relative;
 }
 .button_box{
   display:flex;
@@ -349,37 +368,6 @@ width: 100%;
     },
     {
       "type": "header",
-      "content": "Style"
-    },
-
-    { "type": "color_background", "id": "box_bg", "label": "Box Background" },
-
-    {
-      "type": "range",
-      "id": "radius",
-      "label": "Radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "border_size",
-      "label": "Border",
-      "min": 0,
-      "max": 10,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "color",
-      "id": "border_color",
-      "label": "Border color",
-      "default": "#000000"
-    },
-    {
-      "type": "header",
       "content": "Button Full Width"
     },
     {
@@ -427,6 +415,164 @@ width: 100%;
       "max": 30,
       "step": 1,
       "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Block Gap"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap Desktop",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "gap_m",
+      "label": "Gap Mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Block Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "header",
+      "content": "Block Radius"
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border",
+      "label": "Border",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pl",
+      "label": "Left",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr",
+      "label": "Right",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+
+    {
+      "type": "range",
+      "id": "ptm",
+      "label": "Top",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pbm",
+      "label": "Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "plm",
+      "label": "Left",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "prm",
+      "label": "Right",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
     }
   ],
 
