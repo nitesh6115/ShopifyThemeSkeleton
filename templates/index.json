@@ -89,6 +89,33 @@
     "premium_global_section_PppB77": {
       "type": "premium_global_section",
       "blocks": {
+        "block_buttons_UHKcFp": {
+          "type": "block_buttons",
+          "name": "Buttons",
+          "settings": {
+            "primary_label": "Shop now",
+            "primary_link": "",
+            "primary_bg": "#000000",
+            "primary_text": "#ffffff",
+            "primary_border": "#000000",
+            "primary_bg_hover": "#333333",
+            "primary_text_hover": "#ffffff",
+            "primary_border_hover": "#333333",
+            "secondary_label": "Learn more",
+            "secondary_link": "",
+            "secondary_bg": "#ffffff",
+            "secondary_text": "#000000",
+            "secondary_border": "#000000",
+            "secondary_bg_hover": "#000000",
+            "secondary_text_hover": "#ffffff",
+            "secondary_border_hover": "#000000",
+            "box_bg": "",
+            "radius": 8,
+            "font_size": 16,
+            "font_size_mobile": 14
+          },
+          "blocks": {}
+        },
         "block_group_4AGJE8": {
           "type": "block_group",
           "name": "Top Blocks",
@@ -191,7 +218,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -229,8 +258,8 @@
                     "pbm": 0,
                     "plm": 0,
                     "prm": 0,
-                    "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -264,7 +293,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 }
@@ -340,7 +371,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -378,8 +411,8 @@
                     "pbm": 0,
                     "plm": 0,
                     "prm": 0,
-                    "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -413,7 +446,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 }
@@ -489,7 +524,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -527,8 +564,8 @@
                     "pbm": 0,
                     "plm": 0,
                     "prm": 0,
-                    "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -562,7 +599,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 }
@@ -638,7 +677,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -676,8 +717,8 @@
                     "pbm": 0,
                     "plm": 0,
                     "prm": 0,
-                    "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 },
@@ -711,7 +752,9 @@
                     "pt_m": 0,
                     "pb_m": 0,
                     "pl_m": 0,
-                    "pr_m": 0
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
                   },
                   "blocks": {}
                 }
@@ -801,8 +844,8 @@
                 "pbm": 0,
                 "plm": 0,
                 "prm": 0,
-                "hide_desktop": false,
-                "hide_mobile": false
+                "hide_mobile": false,
+                "hide_desktop": false
               },
               "blocks": {}
             },
@@ -836,7 +879,9 @@
                 "pt_m": 0,
                 "pb_m": 0,
                 "pl_m": 0,
-                "pr_m": 0
+                "pr_m": 0,
+                "hide_mobile": false,
+                "hide_desktop": false
               },
               "blocks": {}
             },
@@ -948,8 +993,8 @@
                         "pbm": 0,
                         "plm": 0,
                         "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     },
@@ -983,7 +1028,9 @@
                         "pt_m": 0,
                         "pb_m": 0,
                         "pl_m": 0,
-                        "pr_m": 0
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     }
@@ -1064,8 +1111,8 @@
                         "pbm": 0,
                         "plm": 0,
                         "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     },
@@ -1099,7 +1146,9 @@
                         "pt_m": 0,
                         "pb_m": 0,
                         "pl_m": 0,
-                        "pr_m": 0
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     }
@@ -1180,8 +1229,8 @@
                         "pbm": 0,
                         "plm": 0,
                         "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     },
@@ -1215,7 +1264,9 @@
                         "pt_m": 0,
                         "pb_m": 0,
                         "pl_m": 0,
-                        "pr_m": 0
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     }
@@ -1296,8 +1347,8 @@
                         "pbm": 0,
                         "plm": 0,
                         "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     },
@@ -1331,7 +1382,9 @@
                         "pt_m": 0,
                         "pb_m": 0,
                         "pl_m": 0,
-                        "pr_m": 0
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
                       },
                       "blocks": {}
                     }
@@ -1358,6 +1411,7 @@
         }
       },
       "block_order": [
+        "block_buttons_UHKcFp",
         "block_group_4AGJE8",
         "block_group_kaUzJ7"
       ],
@@ -1367,16 +1421,6 @@
         "custom_width": 1280,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
-        "padding_top_desktop": 96,
-        "padding_bottom_desktop": 96,
-        "padding_left_desktop": 32,
-        "padding_right_desktop": 32,
-        "padding_left_mobile": 16,
-        "padding_right_mobile": 16,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40,
-        "margin_top": 0,
-        "margin_bottom": 0,
         "background_color": "linear-gradient(180deg, rgba(255, 241, 242, 1), rgba(255, 255, 255, 1) 100%)",
         "overlay_color": "",
         "overlay_opacity": 0,
@@ -1400,9 +1444,18 @@
         "text_color": "#4a5565",
         "line_height": 1.4,
         "letter_spacing": 0,
+        "padding_top_desktop": 96,
+        "padding_bottom_desktop": 96,
+        "padding_left_desktop": 32,
+        "padding_right_desktop": 32,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_left_mobile": 16,
+        "padding_right_mobile": 16,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "hide_mobile": false,
-        "hide_desktop": false,
-        "stack_columns_mobile": false
+        "hide_desktop": false
       }
     }
   },
