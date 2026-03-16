@@ -12,20 +12,20 @@
     "main": {
       "type": "product",
       "blocks": {
-        "text_J6mBzb": {
+        "text_8XLUe4": {
           "type": "text",
           "settings": {
-            "padding_top": 10,
-            "padding_bottom": 10,
-            "padding_left": 10,
-            "padding_right": 10,
-            "block_radius": 10,
-            "desktop_text_align": "center",
-            "mobile_text_align": "center",
-            "bg_color": "#FCF7F4",
-            "text": "Clinically Formulated for Daily Energy & Focus",
-            "text_color": "#8b6a53",
-            "desktop_font_size": 14,
+            "padding_top": 5,
+            "padding_bottom": 5,
+            "padding_left": 0,
+            "padding_right": 0,
+            "block_radius": 0,
+            "desktop_text_align": "left",
+            "mobile_text_align": "left",
+            "bg_color": "#fff",
+            "text": "<strong>⭐⭐⭐⭐⭐ </strong>4.9 (12,847 reviews)",
+            "text_color": "#000000",
+            "desktop_font_size": 12,
             "mobile_font_size": 14
           }
         },
@@ -45,23 +45,6 @@
             "mobile_font_size": 25
           }
         },
-        "text_8XLUe4": {
-          "type": "text",
-          "settings": {
-            "padding_top": 5,
-            "padding_bottom": 5,
-            "padding_left": 0,
-            "padding_right": 0,
-            "block_radius": 0,
-            "desktop_text_align": "left",
-            "mobile_text_align": "left",
-            "bg_color": "#fff",
-            "text": "<strong>⭐⭐⭐⭐⭐ </strong>4.9 (12,847 reviews)",
-            "text_color": "#000000",
-            "desktop_font_size": 12,
-            "mobile_font_size": 14
-          }
-        },
         "text_FtyAaE": {
           "type": "text",
           "settings": {
@@ -75,6 +58,23 @@
             "bg_color": "#fff",
             "text": "Backed by science. Trusted by 12,000+ customers. Designed for real results.",
             "text_color": "#525252",
+            "desktop_font_size": 14,
+            "mobile_font_size": 14
+          }
+        },
+        "text_gP4YDX": {
+          "type": "text",
+          "settings": {
+            "padding_top": 5,
+            "padding_bottom": 5,
+            "padding_left": 0,
+            "padding_right": 0,
+            "block_radius": 0,
+            "desktop_text_align": "left",
+            "mobile_text_align": "left",
+            "bg_color": "#fff",
+            "text": "Boost hair density by 34% in 90 days with our award-winning vegan serum. Science-backed results, zero toxins.",
+            "text_color": "#000000",
             "desktop_font_size": 14,
             "mobile_font_size": 14
           }
@@ -205,10 +205,10 @@
         }
       },
       "block_order": [
-        "text_J6mBzb",
-        "title_XhCGXV",
         "text_8XLUe4",
+        "title_XhCGXV",
         "text_FtyAaE",
+        "text_gP4YDX",
         "price_zVeAVm",
         "variant_hfnxjc",
         "buy_button_dHYaaJ",
