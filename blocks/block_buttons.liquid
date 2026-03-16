@@ -2,12 +2,26 @@
   class="
     button_block
 
-    {% if block.settings.width == 'fill' %} block-width-desktop-fill{% endif %}
-    {% if block.settings.width == 'fit-content' %} block-width-desktop-fit{% endif %}
-    {% if block.settings.width == 'custom' %} block-custom-width-desktop{% endif %}
-
-    {% if block.settings.height == 'fill' %} block-height-desktop-fill{% endif %}
-    {% if block.settings.height == 'custom' %} block-custom-height-desktop{% endif %}
+    {% if block.settings.height == 'custom' %}
+     block-custom-height-desktop 
+     {% else %}
+    block-height-desktop-{{ block.settings.height }}
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    block-custom-width-desktop
+    {% else %}
+    block-width-desktop-{{ block.settings.width }}
+    {% endif %}
+     {% if block.settings.width_tablet == 'custom' %}
+    block-custom-width-tablet
+    {% else %}
+     block-width-tablet-{{ block.settings.width_tablet }}
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    block-custom-width-mobile
+    {% else %}
+     block-width-mobile-{{ block.settings.width_mobile }}
+    {% endif %}
 
     {% if block.settings.hide_mobile %} hide-mobile{% endif %}
     {% if block.settings.hide_desktop %} hide-desktop{% endif %}
@@ -38,6 +52,18 @@
     --secondary-bg-hover: {{ block.settings.secondary_bg_hover }};
     --secondary-text-hover: {{ block.settings.secondary_text_hover }};
     --secondary-border-hover: {{ block.settings.secondary_border_hover }};
+    {% if block.settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block.settings.custom_height }}%; 
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    --block-custom-width-desktop: {{ block.settings.custom_width }}%;
+    {% endif %}
+    {% if block.settings.width_tablet == 'custom' %}
+    --block-custom-width-tablet: {{ block.settings.custom_width_tablet }}%;
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    --block-custom-width-mobile: {{ block.settings.custom_width_mobile }}%;
+    {% endif %} 
   "
   {{ block.shopify_attributes }}
 >
