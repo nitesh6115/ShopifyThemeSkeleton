@@ -1,7 +1,6 @@
 {% doc %}
   Before After Block
 {% enddoc %}
-
 <div
     id="ba-{{ block.id }}"
   class="
@@ -57,51 +56,103 @@
 
   {{ block.shopify_attributes }}
 >
-<div class="ba-wrapper">
 
-  <!-- AFTER IMAGE (background) -->
-  {% if block.settings.after != blank %}
-    {{ block.settings.after
-      | image_url: width: 1600
-      | image_tag:
-        class: 'ba-after',
-        loading: 'lazy'
-    }}
-  {% else %}
-    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-after placeholder-svg' }}
-  {% endif %}
-
-
-  <!-- BEFORE OVERLAY -->
-  <div class="ba-before-wrapper">
-
-    {% if block.settings.before != blank %}
-
-      {{ block.settings.before
-        | image_url: width: 1600
-        | image_tag:
-          class: 'ba-before',
-          loading: 'lazy'
-      }}
-
-    {% else %}
-
-      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'ba-before placeholder-svg' }}
-
-    {% endif %}
-
+<div class="before-after-wrapper">
+    <div class="before-after-image-container" id="ba-container-{{ section.id }}">
+      <div class="image-container">
+        {{
+          block.settings.before
+          | image_url: width: 1500
+          | image_tag:
+            widths: widths,
+            sizes: '(min-width: 1200px) 700px, 100vw',
+            loading: 'lazy',
+            class: 'image-before slider-image'
+        }}
+        {{
+          section.settings.after
+          | image_url: width: 1500
+          | image_tag:
+            widths: widths,
+            sizes: '(min-width: 1200px) 700px, 100vw',
+            loading: 'lazy',
+            class: 'image-after slider-image'
+        }}
+      </div>
+      <!-- step="10" -->
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+        aria-label="Percentage of before photo shown"
+        class="slider slider_button_befor"
+      >
+      <div class="slider-line" aria-hidden="true"></div>
+      <div class="slider-button" aria-hidden="true">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          viewBox="0 0 256 256"
+        >
+          <rect width="256" height="256" fill="none"></rect>
+          <line
+            x1="128"
+            y1="40"
+            x2="128"
+            y2="216"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></line>
+          <line
+            x1="96"
+            y1="128"
+            x2="16"
+            y2="128"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></line>
+          <polyline
+            points="48 160 16 128 48 96"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></polyline>
+          <line
+            x1="160"
+            y1="128"
+            x2="240"
+            y2="128"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></line>
+          <polyline
+            points="208 96 240 128 208 160"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></polyline>
+        </svg>
+      </div>
+      <div class="before-after-label label-before">Before</div>
+      <div class="before-after-label label-after">After</div>
+    </div>
   </div>
-
-<div class="ba-separator"></div>
-  <input
-    type="range"
-    min="0"
-    max="100"
-    value="{{ block.settings.position }}"
-    class="ba-range"
-  >
-
-</div>
 </div>
 {% stylesheet %}
   .before_after_block {
@@ -119,119 +170,137 @@
   }
 /* wrapper */
 
-.ba-wrapper{
-  position:relative;
-  width:100%;
-}
+.before-after-wrapper {
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+  }
 
-.ba-separator{
-  position:absolute;
-  top:0;
-  bottom:0;
+  .before-after-container {
+    position: relative;
+    width: 100%;
+  }
 
-  left:var(--pos,50%);
+  .before-after-container img {
+    display: block;
+    width: 100%;
+  }
 
-  width:2px;
-  background:#fff;
+  .before-after-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
 
-  transform:translateX(-50%);
-  z-index:6;
-}
+  .before-after-slider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background:var(--star-line-color);
+    cursor: ew-resize;
+  }
 
+  .before-after-label {
+    position: absolute;
+    top: 20px;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
 
-/* optional shadow */
-
-.ba-separator::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  box-shadow:0 0 6px rgba(0,0,0,.5);
-}
-/* ratio modes */
-
-.ratio--square .ba-wrapper{
-  aspect-ratio:1/1;
-}
-
-.ratio--landscape .ba-wrapper{
-  aspect-ratio:4/3;
-}
-
-.ratio--portrait .ba-wrapper{
-  aspect-ratio:3/4;
-}
-
-
-/* AUTO RATIO FIX */
-
-.ratio--auto .ba-wrapper{
-  aspect-ratio:auto;
-}
+  .label-before { left: 20px; }
+  .label-after { right: 20px; }
 
 
-/* normal ratio images */
+  .before-after-container img,
+  .ba-placeholder svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.ratio--square .ba-after,
-.ratio--square .ba-before,
-.ratio--landscape .ba-after,
-.ratio--landscape .ba-before,
-.ratio--portrait .ba-after,
-.ratio--portrait .ba-before{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+  .before-after-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+  }
 
+  .ba-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f4f4f4;
+  }
+  .before-after-container .before-after-image-container{
+    display: grid;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    --position: 50%;
+  }
 
-/* AUTO MODE IMAGES (IMPORTANT) */
+  .before-after-container .slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+  }
 
-.ratio--auto .ba-after,
-.ratio--auto .ba-before{
-  position:relative;
-  width:100%;
-  height:auto;
-  object-fit:contain;
-}
+  .before-after-container .image-before {
+    position: absolute;
+    inset: 0;
+    width: var(--position);
+  }
 
+  .before-after-container .slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    opacity: 0;
+    /* for Firefox */
+    width: 100%;
+    height: 100%;
+  }
 
-/* overlay */
+  .before-after-container .slider:focus-visible ~ .slider-button {
+    outline: 5px solid black;
+    outline-offset: 3px;
+  }
 
-.ba-before-wrapper{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
+  .before-after-container .slider-line {
+    position: absolute;
+    inset: 0;
+    width: .2rem;
+    height: 100%;
+    background-color: #fff;
+    /* z-index: 10; */
+    left: var(--position);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
 
-  clip-path: inset(
-    0 calc(100% - var(--pos,50%)) 0 0
-  );
-}
-
-
-/* AUTO overlay fix */
-
-.ratio--auto .ba-before-wrapper{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-}
-
-
-/* range */
-
-.ba-range{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  opacity:0;
-  cursor:ew-resize;
-  z-index:5;
-}
-
+  .before-after-container .slider-button {
+    position: absolute;
+    background-color: #fff;
+    color: black;
+    padding: .5rem;
+    border-radius: 100vw;
+    display: grid;
+    place-items: center;
+    top: 50%;
+    left: var(--position);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* z-index: 100; */
+    box-shadow: 1px 1px 1px hsl(0, 50%, 2%, .5);
+  }
   .ratio--square {aspect-ratio: 1/1;}
   .ratio--landscape {aspect-ratio: 4/3;}
   .ratio--portrait {aspect-ratio: 3/4;}
@@ -250,21 +319,10 @@
   }
 {% endstylesheet %}
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-  const block = document.querySelector("#ba-{{ block.id }}");
-  console.log(block)
-  if(!block) return;
-  const range = block.querySelector(".ba-range");
-  const before = block.querySelector(".ba-before-wrapper");
-  if(!range || !before) return;
-  range.addEventListener("input", function(){
-    before.style.width = this.value + "%";
-    block.style.setProperty(
-      "--pos",
-      this.value + "%"
-    );
+ const container = document.querySelector('#ba-container-{{ section.id }}');
+  container.querySelector('.slider_button_befor').addEventListener('input', (e) => {
+    container.style.setProperty('--position', `${e.target.value}%`);
   });
-});
 </script>
 {% schema %}
 {
