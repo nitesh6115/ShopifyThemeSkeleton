@@ -376,6 +376,29 @@ FIX vertical + 100% height
       "default": "fill"
     },
     {
+      "type": "select",
+      "id": "custom_width_unit_mobile",
+      "label": "Choose Unit Width Mobile",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_pixel_mobile",
+      "default": 48,
+      "label": "Custom Width Mobile In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == 'px' }}"
+    },
+    {
       "type": "range",
       "id": "custom_width_mobile",
       "label": "Custom Width Mobile",
@@ -384,7 +407,7 @@ FIX vertical + 100% height
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == '%' }}"
     },
     {
       "type": "header",
