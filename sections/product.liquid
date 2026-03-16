@@ -274,6 +274,7 @@
                   {{ form | payment_button }}
                 {% endif %}
               {% endform %}
+              {% if block.settings.enabled_sticky_add %}
               <div class="sticky-atc" id="StickyATC-{{ section.id }}">
                 <div class="sticky-inner">
                   <div class="sticky-left">
@@ -298,6 +299,7 @@
                   <button type="button" class="sticky-btn">Add to Cart</button>
                 </div>
               </div>
+            {% endif %}
             </div>
           {% when 'liquid' %}
             <div
