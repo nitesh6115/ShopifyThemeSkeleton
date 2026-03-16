@@ -2,15 +2,7 @@
   Divider Block
 {% enddoc %}
 
-<div
-  class="
-    divider-block
-    align--{{ block.settings.align }}
-    {% if block.settings.hide_mobile %}hide-mobile{% endif %}
-    {% if block.settings.hide_desktop %}hide-desktop{% endif %}
-  "
-
-  style="
+<div class=" divider-block align--{{ block.settings.align }} {% if block.settings.hide_mobile %}hide-mobile{% endif %} {% if block.settings.hide_desktop %}hide-desktop{% endif %}" style="
     --bw: {{ block.settings.border }}px;
     --bc: {{ block.settings.color }};
     --w: {{ block.settings.width }}%;
