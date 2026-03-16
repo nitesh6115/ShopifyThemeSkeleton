@@ -87,17 +87,14 @@
       {% case block.settings.icon_type %}
 
         {% when 'plus' %}
-          +
-
+        <span class="plus">+</span>
+        <span class="minus">−</span>
         {% when 'chevron' %}
           ›
-
         {% when 'arrow' %}
           →
-
         {% when 'char' %}
           {{ block.settings.icon_char }}
-
       {% endcase %}
 
     </span>
