@@ -83,17 +83,19 @@
 </div>
 {% stylesheet %}
   .accordion_block{
-
    background: var(--bg);
    border-radius: var(--radius);
    border-style: solid;
    border-width: var(--border-size);
    border-color: var(--border-color);
-
-  padding:var(--pt) var(--pr) var(--pb) var(--pl);
-
+   padding:var(--pt) var(--pr) var(--pb) var(--pl);
 }
-
+.accordion_question{
+  text-align: var(--q-align);
+}
+.accordion_answer{
+  text-align: var(--a-align);
+}
 @media(max-width:768px){
 .accordion_block{
   padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
