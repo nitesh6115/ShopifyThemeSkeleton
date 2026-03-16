@@ -7745,7 +7745,7 @@
                   "settings": {
                     "text": "<p>Don't settle for less. Experience the difference premium ingredients and formulation make.</p>",
                     "block_link": "",
-                    "alignment": "left",
+                    "alignment": "center",
                     "width": "fill",
                     "custom_width_unit_desktop": "%",
                     "custom_width_pixel": 48,
@@ -7795,7 +7795,7 @@
                     "primary_text_hover": "#ffffff",
                     "primary_border_hover": "#0a0a0a",
                     "primary_border_size": 0,
-                    "primary_border_radius": 0,
+                    "primary_border_radius": 10,
                     "secondary_label": "",
                     "secondary_link": "",
                     "secondary_bg": "#ffffff",
