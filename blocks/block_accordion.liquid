@@ -33,13 +33,10 @@
     --border-color: {{ block.settings.border_color }};
 
     --q-color: {{ block.settings.q_color }};
-    --q-bg: {{ block.settings.q_bg }};
-    --q-border: {{ block.settings.q_border }};
-    
     --a-color: {{ block.settings.a_color }};
-    --a-bg: {{ block.settings.a_bg }};
     --q-align: {{ block.settings.q_align }};
     --a-align: {{ block.settings.a_align }};
+
     --fs: {{ block.settings.font_size }}px;
     --fsm: {{ block.settings.font_size_mobile }}px;
 
@@ -77,15 +74,11 @@
       --icon-color: {{ block.settings.icon_color }};
     "
   >
-
     <span class="acc_text">
       {{ block.settings.question }}
     </span>
-
     <span class="acc_icon">
-
       {% case block.settings.icon_type %}
-
         {% when 'plus' %}
         <span class="plus">+</span>
         <span class="minus">−</span>
@@ -96,9 +89,7 @@
         {% when 'char' %}
           {{ block.settings.icon_char }}
       {% endcase %}
-
     </span>
-
   </summary>
 
   <div class="accordion_answer rte">
@@ -124,14 +115,17 @@
 .accordion_answer{
   text-align: var(--a-align);
 }
+.acc_text{
+    flex: 1;
+}
 .accordion_question{
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   cursor:pointer;
-
+  color:var(--q-color);
+  cursor:pointer;
+  font-size:var(--fs);
 }
 
 .acc_icon{
@@ -177,13 +171,6 @@ details[open] .minus{
 .accordion_block{
   padding:var(--ptm) var(--prm) var(--pbm) var(--plm);
 }
-}
-
-.accordion_question{
-  background:var(--q-bg);
-  color:var(--q-color);
-  cursor:pointer;
-  font-size:var(--fs);
 }
 
 .accordion_answer{
@@ -446,17 +433,11 @@ details[open] .minus{
       "content": "Question style"
     },
     { "type": "color", "id": "q_color", "label": "Text", "default": "#000000" },
-    { "type": "color", "id": "q_bg", "label": "BG", "default": "#f3f4f6" },
     {
       "type": "header",
       "content": "Answer style"
     },
-
     { "type": "color", "id": "a_color", "label": "Text", "default": "#000000" },
-    { "type": "color", "id": "a_bg", "label": "BG", "default": "#ffffff" },
-
-
-
     {
       "type": "header",
       "content": "Box"
