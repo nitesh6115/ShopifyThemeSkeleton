@@ -1433,7 +1433,7 @@
                 "secondary_border_hover": "#000000",
                 "box_bg": "",
                 "radius": 0,
-                "border_size": 0,
+                "border_size": 2,
                 "border_color": "#000000",
                 "font_size": 16,
                 "font_size_mobile": 14
