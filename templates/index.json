@@ -93,8 +93,8 @@
           "type": "block_group",
           "name": "Block Group",
           "settings": {
-            "layout_direction": "group--horizontal",
-            "align_x": "flex-start",
+            "layout_direction": "group--vertical",
+            "align_x": "flex-end",
             "align_y": "flex-start",
             "wrap": "wrap",
             "hover_zoom": false,
@@ -133,18 +133,18 @@
                 "before": "shopify://shop_images/P-IMAGE-2.jpg",
                 "after": "shopify://shop_images/P-IMAGE-2.png",
                 "position": 50,
-                "hover_zoom": false,
+                "hover_zoom": true,
                 "shadow": false,
-                "width": "fill",
+                "width": "custom",
                 "custom_width": 100,
-                "width_tablet": "fill",
-                "custom_width_tablet": 100,
+                "width_tablet": "custom",
+                "custom_width_tablet": 45,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
                 "custom_height": 100,
                 "background": "",
-                "radius": 0,
+                "radius": 18,
                 "border_size": 0,
                 "border_color": "#000000",
                 "pt": 0,
@@ -156,7 +156,7 @@
                 "pl_m": 0,
                 "pr_m": 0,
                 "hide_mobile": false,
-                "hide_desktop": false
+                "hide_desktop": true
               },
               "blocks": {}
             }
