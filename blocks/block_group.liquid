@@ -314,6 +314,29 @@ FIX vertical + 100% height
       "default": "fill"
     },
     {
+      "type": "select",
+      "id": "custom_width_unit_desktop",
+      "label": "Choose Unit Width Dektop",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_pixel",
+      "default": 48,
+      "label": "Custom Width Desktop In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == 'px' }}"
+    },
+    {
       "type": "range",
       "id": "custom_width",
       "label": "Custom Width Desktop",
@@ -322,7 +345,7 @@ FIX vertical + 100% height
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.width == 'custom' }}"
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == '%' }}"
     },
     {
       "type": "select",
