@@ -1,0 +1,475 @@
+{% doc %}
+  Before After Block
+{% enddoc %}
+
+<div
+  class="
+    before_after_block
+
+    {% if block.settings.height == 'custom' %}
+      block-custom-height-desktop
+    {% else %}
+      block-height-desktop-{{ block.settings.height }}
+    {% endif %}
+
+    {% if block.settings.width == 'custom' %}
+      block-custom-width-desktop
+    {% else %}
+      block-width-desktop-{{ block.settings.width }}
+    {% endif %}
+
+    {% if block.settings.width_tablet == 'custom' %}
+      block-custom-width-tablet
+    {% else %}
+      block-width-tablet-{{ block.settings.width_tablet }}
+    {% endif %}
+
+    {% if block.settings.width_mobile == 'custom' %}
+      block-custom-width-mobile
+    {% else %}
+      block-width-mobile-{{ block.settings.width_mobile }}
+    {% endif %}
+
+    ratio--{{ block.settings.ratio }}
+
+    {% if block.settings.shadow %}is-shadow{% endif %}
+  "
+
+  style="
+    --bg: {{ block.settings.background }};
+    --radius: {{ block.settings.radius }}px;
+    --border-size: {{ block.settings.border_size }}px;
+    --border-color: {{ block.settings.border_color }};
+
+    --pt: {{ block.settings.pt }}px;
+    --pb: {{ block.settings.pb }}px;
+    --pl: {{ block.settings.pl }}px;
+    --pr: {{ block.settings.pr }}px;
+
+    --pt-m: {{ block.settings.pt_m }}px;
+    --pb-m: {{ block.settings.pb_m }}px;
+    --pl-m: {{ block.settings.pl_m }}px;
+    --pr-m: {{ block.settings.pr_m }}px;
+
+    --pos: {{ block.settings.position }}%;
+  "
+
+  {{ block.shopify_attributes }}
+>
+  <div class="ba-wrapper">
+    <img
+      class="ba-after"
+      src="{{ block.settings.after | image_url: width: 1600 }}"
+    >
+
+    <div class="ba-before-wrapper" style="width: var(--pos);">
+      <img
+        class="ba-before"
+        src="{{ block.settings.before | image_url: width: 1600 }}"
+      >
+    </div>
+
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="{{ block.settings.position }}"
+      class="ba-range"
+    >
+  </div>
+</div>
+
+{% stylesheet %}
+  .before_after_block {
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: var(--border-size) solid var(--border-color);
+
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    padding-left: var(--pl);
+    padding-right: var(--pr);
+
+    overflow: hidden;
+    position: relative;
+  }
+
+
+  .ba-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+
+  .ba-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  .ba-after {
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .ba-before-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+
+  .ba-before {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+  .ba-range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 5;
+  }
+
+
+  .ratio--square {aspect-ratio: 1/1;}
+  .ratio--landscape {aspect-ratio: 4/3;}
+  .ratio--portrait {aspect-ratio: 3/4;}
+  .ratio--auto {aspect-ratio: auto;}
+
+
+  @media screen and (max-width: 767px) {
+
+  .before_after_block{
+    padding-top: var(--pt-m);
+    padding-bottom: var(--pb-m);
+    padding-left: var(--pl-m);
+    padding-right: var(--pr-m);
+  }
+
+  }
+{% endstylesheet %}
+
+<script>
+  document.addEventListener('input', function (e) {
+    if (!e.target.classList.contains('ba-range')) return;
+
+    let wrapper = e.target.closest('.before_after_block');
+
+    wrapper.style.setProperty('--pos', e.target.value + '%');
+
+    wrapper.querySelector('.ba-before-wrapper').style.width = e.target.value + '%';
+  });
+</script>
+{% schema %}
+{
+  "name": "Text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "before",
+      "label": "Before Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after",
+      "label": "After Image"
+    },
+    {
+      "type": "range",
+      "id": "position",
+      "label": "Slider start position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "Image ratio",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Auto" },
+        { "value": "square", "label": "Square" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_zoom",
+      "label": "Hover zoom"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "shadow",
+      "label": "Box shadow"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width Desktop",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Custom Width Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_tablet",
+      "label": "Width Tablet",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_tablet",
+      "label": "Custom Width Tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Width Mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Custom Width Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "fit",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fit"
+    },
+    {
+      "type": "range",
+      "id": "custom_height",
+      "label": "Custom Height",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.height == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background color"
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_size",
+      "label": "Border size",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pl",
+      "label": "Padding left",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr",
+      "label": "Padding right",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "pt_m",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pb_m",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pl_m",
+      "label": "Padding left mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr_m",
+      "label": "Padding right mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" }
+  ],
+
+  "presets": [
+    {
+      "name": "Befor After Image"
+    }
+  ]
+}
+{% endschema %}
