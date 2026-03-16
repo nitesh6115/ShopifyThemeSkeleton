@@ -326,7 +326,7 @@
   }
 {% endstylesheet %}
 <script>
- const container = document.querySelector('#ba-container-{{ section.id }}');
+ const container = document.querySelector('#ba-container-{{ block.id }}');
   container.querySelector('.slider_button_befor').addEventListener('input', (e) => {
     container.style.setProperty('--position', `${e.target.value}%`);
   });
