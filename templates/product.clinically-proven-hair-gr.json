@@ -201,7 +201,7 @@
         "trust_badges_z4TjMa"
       ],
       "settings": {
-        "section_width": false,
+        "section_width": true,
         "wraper_width": 1300,
         "section_bg": "#fff",
         "padding_top": 30,
