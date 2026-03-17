@@ -97,7 +97,95 @@
     {% endif %}
   </div>
 </div>
+{% javascript %}
 
+document.querySelectorAll('.slider_block').forEach(slider => {
+
+const track = slider.querySelector('.slider-track')
+const prev = slider.querySelector('.slider-prev')
+const next = slider.querySelector('.slider-next')
+const dotsWrap = slider.querySelector('.slider-dots')
+
+let autoplay = slider.dataset.autoplay === "true"
+let speed = parseInt(slider.dataset.speed) || 3000
+
+let index = 0
+
+const slides = track.children
+
+
+function go(i){
+
+if(i < 0) i = 0
+if(i >= slides.length) i = slides.length - 1
+
+index = i
+
+slides[index].scrollIntoView({
+behavior:"smooth",
+inline:"start"
+})
+
+updateDots()
+
+}
+
+
+if(prev) prev.onclick = () => go(index-1)
+if(next) next.onclick = () => go(index+1)
+
+
+
+/* dots */
+
+if(dotsWrap){
+
+for(let i=0;i<slides.length;i++){
+
+let b = document.createElement("button")
+
+b.onclick = ()=> go(i)
+
+dotsWrap.appendChild(b)
+
+}
+
+}
+
+function updateDots(){
+
+if(!dotsWrap) return
+
+dotsWrap.querySelectorAll("button")
+.forEach((d,i)=>{
+
+d.classList.toggle("active",i===index)
+
+})
+
+}
+
+
+
+/* autoplay */
+
+if(autoplay){
+
+setInterval(()=>{
+
+index++
+
+if(index >= slides.length) index = 0
+
+go(index)
+
+},speed)
+
+}
+
+})
+
+{% endjavascript %}
 {% stylesheet %}
      .slider_block {
       background: var(--bg);
