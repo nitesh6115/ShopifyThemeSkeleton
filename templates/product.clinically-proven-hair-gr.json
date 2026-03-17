@@ -3506,7 +3506,7 @@
                 "align_x": "flex-start",
                 "align_y": "center",
                 "wrap": "wrap",
-                "hover_zoom": false,
+                "hover_zoom": true,
                 "shadow": false,
                 "width": "fill",
                 "custom_width_unit_desktop": "%",
@@ -3545,7 +3545,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/Container_81.png",
+                    "image": "shopify://shop_images/Container_85.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": false,
@@ -3585,7 +3585,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Accelerated Growth",
+                    "text": "Fast Absorption",
                     "alignment": "left",
                     "line_height": "1.2",
                     "letter_spacing": 0,
@@ -3624,7 +3624,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Stimulates dormant follicles and extends the growth phase for longer, fuller hair.</p>",
+                    "text": "<p>Lightweight serum absorbs instantly—no greasy residue or buildup.</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -3716,7 +3716,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/Container_81.png",
+                    "image": "shopify://shop_images/Container_86.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": false,
@@ -3756,7 +3756,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Accelerated Growth",
+                    "text": "100% Vegan Formula",
                     "alignment": "left",
                     "line_height": "1.2",
                     "letter_spacing": 0,
@@ -3795,7 +3795,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Stimulates dormant follicles and extends the growth phase for longer, fuller hair.</p>",
+                    "text": "<p>Plant-based actives proven as effective as synthetic alternatives.</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
