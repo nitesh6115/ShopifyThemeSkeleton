@@ -2982,7 +2982,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/Container_81.png",
+                    "image": "shopify://shop_images/Container_82.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": false,
@@ -3022,7 +3022,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Accelerated Growth",
+                    "text": "Enhanced Thickness",
                     "alignment": "left",
                     "line_height": "1.2",
                     "letter_spacing": 0,
@@ -3061,7 +3061,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Stimulates dormant follicles and extends the growth phase for longer, fuller hair.</p>",
+                    "text": "<p>Increases hair shaft diameter by up to 52% for visibly thicker strands.</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -3153,7 +3153,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/Container_81.png",
+                    "image": "shopify://shop_images/Container_83.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": false,
@@ -3193,7 +3193,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Accelerated Growth",
+                    "text": "Follicle Protection",
                     "alignment": "left",
                     "line_height": "1.2",
                     "letter_spacing": 0,
@@ -3232,7 +3232,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Stimulates dormant follicles and extends the growth phase for longer, fuller hair.</p>",
+                    "text": "<p>Shields hair roots from DHT damage and oxidative stress.</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
