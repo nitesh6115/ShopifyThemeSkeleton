@@ -9,6 +9,7 @@
     --ls-d: {{ block.settings.letter_spacing }}px;
     --ls-m: {{ block.settings.letter_spacing_mobile }}px;
     --text-color: {{ block.settings.color }};
+    --text-uppercase: {% if block.settings.text_uppercase %}uppercase {% else %}normal {% endif %};
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
     --border-size: {{ block.settings.border_size }}px;
@@ -96,6 +97,7 @@ text_block;
     line-height: var(--lh-d);
     display: inline-block;
     letter-spacing: var(--ls-d);
+    text-transform: var(--text-uppercase);
   }
   .text_block p{
     font-size: var(--font-size-desktop);
@@ -103,6 +105,7 @@ text_block;
     color: var(--text-color);
     line-height: var(--lh-d);
     letter-spacing: var(--ls-d);
+    text-transform: var(--text-uppercase);
   }
 
 
