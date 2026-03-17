@@ -292,12 +292,22 @@ display:none;
   overflow:visible;
   flex-wrap:wrap;
   }
+  .slider_block:not(.slider-tablet) .slider-prev,
+  .slider_block:not(.slider-tablet) .slider-next,
+  .slider_block:not(.slider-tablet) .slider-dots{
+    display: none;
+  }
   }
 
   @media(max-width:767px){
   .slider_block:not(.slider-mobile) .slider-track{
   overflow:visible;
   flex-wrap:wrap;
+  }
+  .slider_block:not(.slider-mobile) .slider-prev,
+  .slider_block:not(.slider-mobile) .slider-next,
+  .slider_block:not(.slider-mobile) .slider-dots{
+    display: none;
   }
     .slider_block_container{
           padding-top: var(--pt-m);
