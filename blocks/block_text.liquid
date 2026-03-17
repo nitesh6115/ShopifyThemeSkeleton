@@ -4,6 +4,10 @@
     --font-size-desktop: {{ block.settings.font_size }}px;
     --font-size-mobile: {{ block.settings.font_size_mobile }}px;
     --font-weight: {{ block.settings.font_weight }};
+    --lh-d: {{ block.settings.line_height }};
+    --lh-m: {{ block.settings.line_height_mobile }};
+    --ls-d: {{ block.settings.letter_spacing }}px;
+    --ls-m: {{ block.settings.letter_spacing_mobile }}px;
     --text-color: {{ block.settings.color }};
     --bg: {{ block.settings.background }};
     --radius: {{ block.settings.radius }}px;
@@ -89,24 +93,35 @@ text_block;
     padding-bottom: var(--pb);
     padding-left: var(--pl);
     padding-right: var(--pr);
+    line-height: var(--lh-d);
     display: inline-block;
+    letter-spacing: var(--ls-d);
   }
   .text_block p{
     font-size: var(--font-size-desktop);
     font-weight: var(--font-weight);
     color: var(--text-color);
+    line-height: var(--lh-d);
+    letter-spacing: var(--ls-d);
   }
+
+
   /* mobile */
   @media screen and (max-width: 767px) {
+
     .text_block p{
       font-size: var(--font-size-mobile);
+      line-height: var(--lh-m);
+      letter-spacing: var(--ls-m);
     }
      .text_block {
       font-size: var(--font-size-mobile);
+      line-height: var(--lh-m);
       padding-top: var(--pt-m);
       padding-bottom: var(--pb-m);
       padding-left: var(--pl-m);
       padding-right: var(--pr-m);
+      letter-spacing: var(--ls-m);
     }
   }
 {% endstylesheet %}
@@ -356,6 +371,11 @@ text_block;
       "default": 14
     },
     {
+      "type": "checkbox",
+      "label": "Uppercase Text",
+      "id": "text_uppercase"
+    },
+    {
       "type": "select",
       "id": "font_weight",
       "label": "Font weight",
@@ -378,6 +398,53 @@ text_block;
       "label": "Font color",
       "default": "#000000"
     },
+    {
+  "type": "range",
+  "id": "letter_spacing",
+  "label": "Letter spacing desktop",
+  "min": -5,
+  "max": 20,
+  "step": 1,
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "letter_spacing_mobile",
+  "label": "Letter spacing mobile",
+  "min": -5,
+  "max": 20,
+  "step": 1,
+  "default": 0
+},
+
+{
+  "type": "select",
+  "id": "line_height",
+  "label": "Line height desktop",
+  "options": [
+    { "value": "1", "label": "1" },
+    { "value": "1.2", "label": "1.2" },
+    { "value": "1.4", "label": "1.4 (normal)" },
+    { "value": "1.6", "label": "1.6" },
+    { "value": "1.8", "label": "1.8 (loose)" },
+    { "value": "2", "label": "2" }
+  ],
+  "default": "1.4"
+},
+{
+  "type": "select",
+  "id": "line_height_mobile",
+  "label": "Line height mobile",
+  "options": [
+    { "value": "1", "label": "1" },
+    { "value": "1.2", "label": "1.2" },
+    { "value": "1.4", "label": "1.4" },
+    { "value": "1.6", "label": "1.6" },
+    { "value": "1.8", "label": "1.8" },
+    { "value": "2", "label": "2" }
+  ],
+  "default": "1.4"
+},
     {
       "type": "header",
       "content": "Background"
