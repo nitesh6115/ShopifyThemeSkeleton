@@ -9,6 +9,9 @@
   gap: 48px;
   flex-wrap: wrap;
 }
+.hide_thumbs .prdouctThubs {
+    display: none;
+}
 @media (max-width: 767px){
   .button_from {
     position: sticky;
@@ -309,10 +312,13 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
 .buy_now_enabled button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
     width: 100%;
     border-radius: var(--btn-radius);
-    background: transparent;
     color: #000;
+    height: 56px;
+    background: var(--btn-text);
+    font-weight: 800;
+    color: var(--btn-bg);
     font-weight: bold;
-    border: 2px solid #F7E7DB;
+    border: var(--btn-border-width) solid var(--btn-border);
     cursor: pointer;
     font-size: 15px;
 }
