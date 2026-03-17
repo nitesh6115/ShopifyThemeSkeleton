@@ -65,6 +65,7 @@
       {% if block.settings.enable_tablet %} slider-tablet{% endif %}
       {% if block.settings.enable_mobile %} slider-mobile{% endif %}
     "
+    data-id="{{ block.id }}"
     id="slider-{{ block.id }}"
     style="
       --arrow-color: {{ block.settings.arrow_color }};
