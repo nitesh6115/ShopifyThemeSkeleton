@@ -7279,7 +7279,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p>Thinning hair</p>",
-                        "block_link": "",
+                        "block_link": "shopify://collections/all",
                         "alignment": "left",
                         "width": "fit-content",
                         "custom_width_unit_desktop": "%",
@@ -7321,7 +7321,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p>Hair loss</p>",
-                        "block_link": "",
+                        "block_link": "shopify://collections/default-title",
                         "alignment": "left",
                         "width": "fit-content",
                         "custom_width_unit_desktop": "%",
@@ -7363,7 +7363,7 @@
                       "name": "Text",
                       "settings": {
                         "text": "<p>Weak strands</p>",
-                        "block_link": "",
+                        "block_link": "shopify://collections/frontpage",
                         "alignment": "left",
                         "width": "fit-content",
                         "custom_width_unit_desktop": "%",
