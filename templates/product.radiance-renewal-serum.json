@@ -179,6 +179,7 @@
         "padding_bottom": 30,
         "padding_left": 30,
         "padding_right": 30,
+        "show_thumbs": true,
         "media-thumb-width": 110,
         "media-thumb-mobile-width": 80,
         "media-thumb-border-width": 2,
