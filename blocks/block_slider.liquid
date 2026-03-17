@@ -75,12 +75,10 @@
       --dot-color: {{ block.settings.dot_color }};
       --dot-active: {{ block.settings.dot_active }};
     "
-
     data-autoplay="{{ block.settings.autoplay }}"
     data-speed="{{ block.settings.autoplay_speed }}"
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
-
     {{ block.shopify_attributes }}
   >
     <div class="slider-inner">
@@ -300,7 +298,7 @@ go(index)
 {% endstylesheet %}
 {% schema %}
 {
-  "name": "Text",
+  "name": "Slider Block",
   "tag": null,
   "settings": [
     {
