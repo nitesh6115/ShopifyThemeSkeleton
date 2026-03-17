@@ -1,0 +1,62 @@
+<div class="
+    slider_block
+    block-height-desktop-fit
+    block-width-desktop-fill
+    block-width-tablet-fill
+    block-width-mobile-fill
+  " style="
+    --bg: ;
+    --radius: 0px;
+    --border-size: 0px;
+    --border-color: #000000;
+    --pt: 0px;
+    --pb: 0px;
+    --pl: 0px;
+    --pr: 0px;
+    --pt-m: 0px;
+    --pb-m: 0px;
+    --pl-m: 0px;
+    --pr-m: 0px;
+  ">
+  <div class="
+      slider_block slider-AWUN2TXI3WkkyaU5HV__block_slider_XQGXXd
+
+       slider-desktop
+       slider-tablet
+       slider-mobile
+    " style="
+      --arrow-color: #000;
+      --arrow-bg: #fff;
+      --dot-color: #999;
+      --dot-active: #000;
+    " data-autoplay="false" data-speed="3000" data-arrows="true" data-dots="true">
+    <div class="slider-inner">
+      <div class="slider-track">
+        
+        
+{% for child in block.blocks %}
+
+<div
+class="slider-item"
+{{ child.shopify_attributes }}
+>
+
+{% render child %}
+
+</div>
+
+{% endfor %}
+
+      </div>
+    </div>
+
+    
+      <button class="slider-prev">‹</button>
+      <button class="slider-next">›</button>
+    
+
+    
+      <div class="slider-dots"></div>
+    
+  </div>
+</div>
