@@ -59,8 +59,7 @@
   {{ block.shopify_attributes }}
 >
   <div
-    class="
-      slider_block slider-{{ block.id }}
+    class=" slider-{{ block.id }}
 
       {% if block.settings.enable_desktop %} slider-desktop{% endif %}
       {% if block.settings.enable_tablet %} slider-tablet{% endif %}
@@ -97,15 +96,20 @@
 </div>
 {% javascript %}
 
-document.querySelectorAll('.slider_block').forEach(slider => {
+function initSlider(id){
 
-const track = slider.querySelector('.slider-track')
-const prev = slider.querySelector('.slider-prev')
-const next = slider.querySelector('.slider-next')
-const dotsWrap = slider.querySelector('.slider-dots')
+const slider = document.getElementById("slider-"+id)
+if(!slider) return
 
-let autoplay = slider.dataset.autoplay === "true"
-let speed = parseInt(slider.dataset.speed) || 3000
+const track = document.getElementById("track-"+id)
+
+const prev = slider.querySelector(".prev")
+const next = slider.querySelector(".next")
+
+const dotsWrap = document.getElementById("dots-"+id)
+
+const autoplay = slider.dataset.autoplay === "true"
+const speed = parseInt(slider.dataset.speed) || 3000
 
 let index = 0
 
@@ -115,7 +119,7 @@ const slides = track.children
 function go(i){
 
 if(i < 0) i = 0
-if(i >= slides.length) i = slides.length - 1
+if(i >= slides.length) i = slides.length-1
 
 index = i
 
@@ -138,6 +142,8 @@ if(next) next.onclick = () => go(index+1)
 
 if(dotsWrap){
 
+dotsWrap.innerHTML = ""
+
 for(let i=0;i<slides.length;i++){
 
 let b = document.createElement("button")
@@ -149,6 +155,7 @@ dotsWrap.appendChild(b)
 }
 
 }
+
 
 function updateDots(){
 
@@ -180,6 +187,31 @@ go(index)
 },speed)
 
 }
+
+}
+
+
+
+/* init all sliders */
+
+document.querySelectorAll(".slider_block").forEach(el=>{
+
+initSlider(el.dataset.id)
+
+})
+
+
+
+/* editor reload fix */
+
+document.addEventListener("shopify:section:load", function(e){
+
+e.target.querySelectorAll(".slider_block")
+.forEach(el=>{
+
+initSlider(el.dataset.id)
+
+})
 
 })
 
