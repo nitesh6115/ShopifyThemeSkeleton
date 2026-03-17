@@ -70,13 +70,14 @@ image_block;
     <a class="block_link" href="{{ block.settings.image_link }}">
   {% endif %}
   {% if block.settings.image != blank %}
+    {%- capture img_alt -%}{%- if block.settings.image.alt != blank -%}{{ block.settings.image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
     {{ block.settings.image | image_url: width: 1600
             | image_tag:
             loading: 'lazy',
             fetch_priority: fetch_priority,
             widths: '360, 540, 720, 900, 1080, 1320, 1600',
             sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-            alt: "text"
+            alt: img_alt
         }}
   {% else %}
     {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
