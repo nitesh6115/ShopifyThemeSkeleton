@@ -80,17 +80,19 @@
             sizes: '(min-width: 1200px) 700px, 100vw',
             loading: 'lazy',
             fetch_priority: fetch_priority,
-            class: 'image-before slider-image'
+            class: 'image-before slider-image',
+            alt: block.settings.before.alt | escape | default : 'block_image'
         }}
         {{
           block.settings.after
           | image_url: width: 1500
           | image_tag:
             widths: widths,
-             fetch_priority: fetch_priority,
+            fetch_priority: fetch_priority,
             sizes: '(min-width: 1200px) 700px, 100vw',
             loading: 'lazy',
-            class: 'image-after slider-image'
+            class: 'image-after slider-image',
+            alt: block.settings.after.alt | escape | default : 'block_image'
         }}
       </div>
       <!-- step="10" -->
