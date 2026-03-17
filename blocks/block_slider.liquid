@@ -80,7 +80,7 @@
     data-dots="{{ block.settings.show_dots }}"
   >
     <div class="slider-inner">
-      <div class="slider-track">
+      <div class="slider-track" id="track-{{ block.id }}">
         {% content_for 'blocks' %}
       </div>
     </div>
