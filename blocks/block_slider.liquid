@@ -1,7 +1,9 @@
 {% doc %}
   Advanced Text Block
 {% enddoc %}
-
+{% capture children %}
+  {% content_for 'blocks' %}
+{% endcapture %}
 <div
   class="
     slider_block
@@ -83,7 +85,7 @@
   >
     <div class="slider-inner">
       <div class="slider-track">
-        {% content_for 'blocks' %}
+        {{children}}
       </div>
     </div>
 
