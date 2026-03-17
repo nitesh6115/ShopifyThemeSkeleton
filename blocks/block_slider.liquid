@@ -195,9 +195,7 @@ go(index)
 /* init all sliders */
 
 document.querySelectorAll(".slider_block").forEach(el=>{
-
 initSlider(el.dataset.id)
-
 })
 
 
@@ -205,14 +203,10 @@ initSlider(el.dataset.id)
 /* editor reload fix */
 
 document.addEventListener("shopify:section:load", function(e){
-
 e.target.querySelectorAll(".slider_block")
 .forEach(el=>{
-
 initSlider(el.dataset.id)
-
 })
-
 })
 
 {% endjavascript %}
@@ -318,7 +312,7 @@ initSlider(el.dataset.id)
   overflow:visible;
   flex-wrap:wrap;
   }
-    .slider_block{
+    .slider_block_container{
           padding-top: var(--pt-m);
           padding-bottom: var(--pb-m);
           padding-left: var(--pl-m);
