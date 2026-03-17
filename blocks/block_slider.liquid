@@ -58,14 +58,11 @@
   {{ block.shopify_attributes }}
 >
   <div
-    class="
-      slider_block slider-{{ block.id }}
-
+    class=" slider-{{ block.id }}
       {% if block.settings.enable_desktop %} slider-desktop{% endif %}
       {% if block.settings.enable_tablet %} slider-tablet{% endif %}
       {% if block.settings.enable_mobile %} slider-mobile{% endif %}
     "
-
     style="
       --arrow-color: {{ block.settings.arrow_color }};
       --arrow-bg: {{ block.settings.arrow_bg }};
@@ -76,23 +73,10 @@
     data-speed="{{ block.settings.autoplay_speed }}"
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
-    {{ block.shopify_attributes }}
   >
     <div class="slider-inner">
       <div class="slider-track">
         
-{% for child in block.blocks %}
-
-<div
-class="slider-item"
-{{ child.shopify_attributes }}
->
-
-{% render child %}
-
-</div>
-
-{% endfor %}
       </div>
     </div>
 
