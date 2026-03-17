@@ -24,7 +24,7 @@
 {% endcapture %}
 
 <div
-  class="product_section"
+  class="product_section {% if section.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{ style_schema }}"
   id="MainProduct_{{ section.id }}"
   data-section="{{ section.id }}"
