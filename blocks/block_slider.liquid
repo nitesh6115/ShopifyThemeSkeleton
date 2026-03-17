@@ -207,7 +207,21 @@ initSlider(el.dataset.id)
   scroll-behavior:smooth;
   scroll-snap-type:x mandatory;
   }
+.slider-track{
+overflow-x:auto;
+overflow-y:hidden;
 
+/* hide scrollbar firefox */
+scrollbar-width:none;
+
+/* smooth */
+-webkit-overflow-scrolling:touch;
+}
+
+/* hide scrollbar chrome safari edge */
+.slider-track::-webkit-scrollbar{
+display:none;
+}
   .slider-track > *{
   scroll-snap-align:start;
   flex:0 0 auto;
