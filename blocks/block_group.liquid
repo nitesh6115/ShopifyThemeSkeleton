@@ -58,7 +58,11 @@ block-width-mobile-{{ block.settings.width_mobile }}
 {% if block.settings.hide_desktop %}hide-desktop{% endif %}
 {% if block.settings.hide_mobile %}hide-mobile{% endif %}
 {% endcapture %}
-{% assign classList = classList | strip_newlines | strip %}
+{% assign classList = classList
+  | strip_newlines
+  | replace: "  ", " "
+  | strip
+%}
 
 <div class="{{- classList }}"style="{{- style_schema -}}" {{ block.shopify_attributes }}>
   {% if block.settings.image_link != blank %}
