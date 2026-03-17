@@ -83,7 +83,19 @@
   >
     <div class="slider-inner">
       <div class="slider-track">
-        {{children}}
+        
+{% for child in block.blocks %}
+
+<div
+class="slider-item"
+{{ child.shopify_attributes }}
+>
+
+{% render child %}
+
+</div>
+
+{% endfor %}
       </div>
     </div>
 
