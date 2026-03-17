@@ -4,7 +4,7 @@
 
 <div
   class="
-    slider_block
+    slider_block_container
     {% if block.settings.height == 'custom' %}
      block-custom-height-desktop
      {% else %}
@@ -217,7 +217,7 @@ initSlider(el.dataset.id)
 
 {% endjavascript %}
 {% stylesheet %}
-     .slider_block {
+     .slider_block_container {
       background: var(--bg);
       border-radius: var(--radius);
       border: var(--border-size) solid var(--border-color);
