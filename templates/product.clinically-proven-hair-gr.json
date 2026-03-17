@@ -120,7 +120,7 @@
             "btn_hover_bg": "linear-gradient(90deg, rgba(255, 0, 0, 1), rgba(255, 0, 0, 1) 100%)",
             "btn_text": "#ffffff",
             "btn_hover_text": "#ffffff",
-            "btn_border": "",
+            "btn_border": "#121212",
             "btn_hover_border": "",
             "show_qty": true,
             "show_dynamic_button": true,
@@ -146,6 +146,7 @@
         },
         "divider_V74iXh": {
           "type": "divider",
+          "disabled": true,
           "settings": {
             "padding_top": 10,
             "padding_bottom": 20,
@@ -159,6 +160,7 @@
         },
         "trust_badges_z4TjMa": {
           "type": "trust_badges",
+          "disabled": true,
           "settings": {
             "padding_top": 5,
             "padding_bottom": 5,
