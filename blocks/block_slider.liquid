@@ -1,7 +1,7 @@
 {% doc %}
   Advanced Text Block
 {% enddoc %}
-{% assign block_settings = block.settings %}
+{% assign block_settings = block_settings %}
 
 {% capture children %}
   {% content_for 'blocks' %}
@@ -10,75 +10,75 @@
 <div
   class="
     slider_block
-    {% if block.settings.height == 'custom' %}
+    {% if block_settings.height == 'custom' %}
      block-custom-height-desktop
      {% else %}
-    block-height-desktop-{{ block.settings.height }}
+    block-height-desktop-{{ block_settings.height }}
     {% endif %}
-    {% if block.settings.width == 'custom' %}
+    {% if block_settings.width == 'custom' %}
     block-custom-width-desktop
     {% else %}
-    block-width-desktop-{{ block.settings.width }}
+    block-width-desktop-{{ block_settings.width }}
     {% endif %}
-     {% if block.settings.width_tablet == 'custom' %}
+     {% if block_settings.width_tablet == 'custom' %}
     block-custom-width-tablet
     {% else %}
-     block-width-tablet-{{ block.settings.width_tablet }}
+     block-width-tablet-{{ block_settings.width_tablet }}
     {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
+    {% if block_settings.width_mobile == 'custom' %}
     block-custom-width-mobile
     {% else %}
-     block-width-mobile-{{ block.settings.width_mobile }}
+     block-width-mobile-{{ block_settings.width_mobile }}
     {% endif %}
-    ratio--{{ block.settings.ratio }}
-    {% if block.settings.hover_zoom %}is-zoom{% endif %}
-    {% if block.settings.shadow %}is-shadow{% endif %}
+    ratio--{{ block_settings.ratio }}
+    {% if block_settings.hover_zoom %}is-zoom{% endif %}
+    {% if block_settings.shadow %}is-shadow{% endif %}
   "
   style="
-    --bg: {{ block.settings.background }};
-    --radius: {{ block.settings.radius }}px;
-    --border-size: {{ block.settings.border_size }}px;
-    --border-color: {{ block.settings.border_color }};
-    --pt: {{ block.settings.pt }}px;
-    --pb: {{ block.settings.pb }}px;
-    --pl: {{ block.settings.pl }}px;
-    --pr: {{ block.settings.pr }}px;
-    --pt-m: {{ block.settings.pt_m }}px;
-    --pb-m: {{ block.settings.pb_m }}px;
-    --pl-m: {{ block.settings.pl_m }}px;
-    --pr-m: {{ block.settings.pr_m }}px;
+    --bg: {{ block_settings.background }};
+    --radius: {{ block_settings.radius }}px;
+    --border-size: {{ block_settings.border_size }}px;
+    --border-color: {{ block_settings.border_color }};
+    --pt: {{ block_settings.pt }}px;
+    --pb: {{ block_settings.pb }}px;
+    --pl: {{ block_settings.pl }}px;
+    --pr: {{ block_settings.pr }}px;
+    --pt-m: {{ block_settings.pt_m }}px;
+    --pb-m: {{ block_settings.pb_m }}px;
+    --pl-m: {{ block_settings.pl_m }}px;
+    --pr-m: {{ block_settings.pr_m }}px;
 
-    {% if block.settings.height == 'custom' %}
-     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
+    {% if block_settings.height == 'custom' %}
+     --block-custom-height-desktop: {{ block_settings.custom_height }}%;
     {% endif %}
-    {% if block.settings.width == 'custom' %}
-    --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
+    {% if block_settings.width == 'custom' %}
+    --block-custom-width-desktop: {% if block_settings.custom_width_unit_desktop == 'px' %}{{ block_settings.custom_width_pixel }}px{% else %}{{ block_settings.custom_width }}%{% endif %};
     {% endif %}
-     {% if block.settings.width_tablet == 'custom' %}
-    --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
+     {% if block_settings.width_tablet == 'custom' %}
+    --block-custom-width-tablet: {% if block_settings.custom_width_unit_tablet == 'px' %}{{ block_settings.custom_width_tablet_pixel }}px{% else %}{{ block_settings.custom_width_tablet }}%{% endif %};
     {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
-    --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
+    {% if block_settings.width_mobile == 'custom' %}
+    --block-custom-width-mobile: {% if block_settings.custom_width_unit_mobile == 'px' %}{{ block_settings.custom_width_pixel_mobile }}px{% else %}{{ block_settings.custom_width_mobile }}%{% endif %};
     {% endif %}
   "
-  {{ block.shopify_attributes }}
+  {{ block_settings.shopify_attributes }}
 >
   <div
     class=" slider-{{ block.id }}
-      {% if block.settings.enable_desktop %} slider-desktop{% endif %}
-      {% if block.settings.enable_tablet %} slider-tablet{% endif %}
-      {% if block.settings.enable_mobile %} slider-mobile{% endif %}
+      {% if block_settings.enable_desktop %} slider-desktop{% endif %}
+      {% if block_settings.enable_tablet %} slider-tablet{% endif %}
+      {% if block_settings.enable_mobile %} slider-mobile{% endif %}
     "
     style="
-      --arrow-color: {{ block.settings.arrow_color }};
-      --arrow-bg: {{ block.settings.arrow_bg }};
-      --dot-color: {{ block.settings.dot_color }};
-      --dot-active: {{ block.settings.dot_active }};
+      --arrow-color: {{ block_settings.arrow_color }};
+      --arrow-bg: {{ block_settings.arrow_bg }};
+      --dot-color: {{ block_settings.dot_color }};
+      --dot-active: {{ block_settings.dot_active }};
     "
-    data-autoplay="{{ block.settings.autoplay }}"
-    data-speed="{{ block.settings.autoplay_speed }}"
-    data-arrows="{{ block.settings.show_arrows }}"
-    data-dots="{{ block.settings.show_dots }}"
+    data-autoplay="{{ block_settings.autoplay }}"
+    data-speed="{{ block_settings.autoplay_speed }}"
+    data-arrows="{{ block_settings.show_arrows }}"
+    data-dots="{{ block_settings.show_dots }}"
   >
     <div class="slider-inner">
       <div class="slider-track">
@@ -86,12 +86,12 @@
       </div>
     </div>
 
-    {% if block.settings.show_arrows %}
+    {% if block_settings.show_arrows %}
       <button class="slider-prev">‹</button>
       <button class="slider-next">›</button>
     {% endif %}
 
-    {% if block.settings.show_dots %}
+    {% if block_settings.show_dots %}
       <div class="slider-dots"></div>
     {% endif %}
   </div>
