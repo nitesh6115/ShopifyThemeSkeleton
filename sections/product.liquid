@@ -1,22 +1,22 @@
 {{ 'custom-product.css' | asset_url | stylesheet_tag }}
 {%- capture style_schema -%}
-    --section-bg: {{ section.settings.section_bg }};
-    --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
-    --section-padding-top: {{ section.settings.padding_top_desktop }}px;
-    --section-padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
-    --section-padding-left: {{ section.settings.padding_left_desktop }}px;
-    --section-padding-right: {{ section.settings.padding_right_desktop }}px;
-    --section-mobile-padding-top: {{ section.settings.padding_top_mobile }}px;
-    --section-mobile-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-    --section-mobile-padding-left: {{ section.settings.padding_left_mobile }}px;
-    --section-mobile-padding-right: {{ section.settings.padding_right_mobile }}px;
-    --media-radius: {{ section.settings.media-radius }}px;
-    --media-thumb-radius: {{ section.settings.media-thumb-radius }}px;
-    --media-thumb-width: {{ section.settings.media-thumb-width }}px;
-    --media-thumb-mobile-width: {{ section.settings.media-thumb-mobile-width }}px;
-    --media-thumb-border-size: {{ section.settings.media-thumb-border-width }}px;
-    --media-thumb-border-color: {{ section.settings.media_border }};
-    --media-thumb-border-active-color: {{ section.settings.media_border_active }};
+    --section-bg:{{ section.settings.section_bg }};
+    --section-wraper-width:{% if section.settings.section_width %}100%{% else %}{{ section.settings.wraper_width }}px{% endif %};
+    --section-padding-top:{{ section.settings.padding_top_desktop }}px;
+    --section-padding-bottom:{{ section.settings.padding_bottom_desktop }}px;
+    --section-padding-left:{{ section.settings.padding_left_desktop }}px;
+    --section-padding-right:{{ section.settings.padding_right_desktop }}px;
+    --section-mobile-padding-top:{{ section.settings.padding_top_mobile }}px;
+    --section-mobile-padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+    --section-mobile-padding-left:{{ section.settings.padding_left_mobile }}px;
+    --section-mobile-padding-right:{{ section.settings.padding_right_mobile }}px;
+    --media-radius:{{ section.settings.media-radius }}px;
+    --media-thumb-radius:{{ section.settings.media-thumb-radius }}px;
+    --media-thumb-width:{{ section.settings.media-thumb-width }}px;
+    --media-thumb-mobile-width:{{ section.settings.media-thumb-mobile-width }}px;
+    --media-thumb-border-size:{{ section.settings.media-thumb-border-width }}px;
+    --media-thumb-border-color:{{ section.settings.media_border }};
+    --media-thumb-border-active-color:{{ section.settings.media_border_active }};
 {%- endcapture -%}
 <div
   class="product_section {% if section.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
