@@ -67,17 +67,18 @@
     "
     data-id="{{ block.id }}"
     id="slider-{{ block.id }}"
+    data-adaptive="{{ block.settings.adaptive_height }}"
+    data-autoplay="{{ block.settings.autoplay }}"
+    data-speed="{{ block.settings.autoplay_speed }}"
+    data-arrows="{{ block.settings.show_arrows }}"
+    data-dots="{{ block.settings.show_dots }}"
+
     style="
       --arrow-color: {{ block.settings.arrow_color }};
       --arrow-bg: {{ block.settings.arrow_bg }};
       --dot-color: {{ block.settings.dot_color }};
       --dot-active: {{ block.settings.dot_active }};
     "
-
-    data-autoplay="{{ block.settings.autoplay }}"
-    data-speed="{{ block.settings.autoplay_speed }}"
-    data-arrows="{{ block.settings.show_arrows }}"
-    data-dots="{{ block.settings.show_dots }}"
   >
     <div class="slider-inner">
       <div class="slider-track" id="track-{{ block.id }}">
@@ -357,7 +358,12 @@ display:none;
       "step": 500,
       "default": 3000
     },
-
+    {
+      "type": "checkbox",
+      "id": "adaptive_height",
+      "label": "Adaptive height",
+      "default": true
+    },
     {
       "type": "checkbox",
       "id": "show_arrows",
