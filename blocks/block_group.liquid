@@ -62,7 +62,7 @@
   {% if block.settings.hide_mobile %}hide-mobile;{% endif %}
 {% endcapture %}
 
-{% assign class_list = class_list | strip_newlines | replace: ';', ' ' %}
+{% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
   {% if block.settings.image_link != blank %}
