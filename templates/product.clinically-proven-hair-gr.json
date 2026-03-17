@@ -7098,6 +7098,96 @@
                     "block_image_Pn9qiz",
                     "block_group_mRnwiY"
                   ]
+                },
+                "block_group_qQH6BN": {
+                  "type": "block_group",
+                  "name": "Pro Tips",
+                  "settings": {
+                    "layout_direction": "group--horizontal",
+                    "align_x": "flex-start",
+                    "align_y": "flex-start",
+                    "wrap": "wrap",
+                    "hover_zoom": false,
+                    "shadow": false,
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "background": "",
+                    "radius": 16,
+                    "border": 2,
+                    "border_color": "#d6d6d6",
+                    "pt": 20,
+                    "pb": 20,
+                    "pl": 20,
+                    "pr": 20,
+                    "ptm": 20,
+                    "pbm": 20,
+                    "plm": 20,
+                    "prm": 20,
+                    "hide_desktop": false,
+                    "hide_mobile": false,
+                    "image_link": ""
+                  },
+                  "blocks": {
+                    "block_text_mkWmjK": {
+                      "type": "block_text",
+                      "name": "Text",
+                      "settings": {
+                        "text": "<p><strong>Pro Tip:</strong><br/>Use on damp hair after showering for maximum absorption. Works with all hair types and styling products.</p>",
+                        "block_link": "",
+                        "alignment": "left",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "font_size": 16,
+                        "font_size_mobile": 14,
+                        "font_weight": "400",
+                        "color": "#ffffff",
+                        "background": "",
+                        "radius": 0,
+                        "border_size": 0,
+                        "border_color": "#000000",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "pt_m": 0,
+                        "pb_m": 0,
+                        "pl_m": 0,
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "block_text_mkWmjK"
+                  ]
                 }
               },
               "block_order": [
@@ -7107,7 +7197,8 @@
                 "block_group_JAFDaW",
                 "block_group_efgmXP",
                 "block_group_mA4ngn",
-                "block_group_Pt9CDC"
+                "block_group_Pt9CDC",
+                "block_group_qQH6BN"
               ]
             }
           },
