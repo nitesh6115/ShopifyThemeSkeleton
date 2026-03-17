@@ -65,7 +65,7 @@
       {% if block.settings.enable_tablet %} slider-tablet{% endif %}
       {% if block.settings.enable_mobile %} slider-mobile{% endif %}
     "
-
+    id="slider-{{ block.id }}"
     style="
       --arrow-color: {{ block.settings.arrow_color }};
       --arrow-bg: {{ block.settings.arrow_bg }};
@@ -322,7 +322,7 @@ initSlider(el.dataset.id)
 {% endstylesheet %}
 {% schema %}
 {
-  "name": "Text",
+  "name": "Slider",
   "tag": null,
   "blocks": [{ "type": "@theme" }],
   "settings": [
