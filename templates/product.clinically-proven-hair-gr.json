@@ -1197,7 +1197,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Stress, hormones, aging, and environmental damage all attack your hair follicles. Generic shampoos and supplements can't address the root biological causes.</p><p>We spent 4 years researching the science of hair growth to create a serum that targets all major pathways: <strong>DHT blockers, </strong>circulation boosters, follicle energizers, and inflammation fighters.</p>",
+                    "text": "<p>Stress, hormones, aging, and environmental damage all attack your hair follicles. Generic shampoos and supplements can't address the root biological causes.<br/><br/>We spent 4 years researching the science of hair growth to create a serum that targets all major pathways: <strong>DHT blockers, </strong>circulation boosters, follicle energizers, and inflammation fighters.</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
