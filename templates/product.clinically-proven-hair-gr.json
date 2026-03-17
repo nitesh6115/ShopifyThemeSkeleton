@@ -1607,11 +1607,54 @@
           "block_order": [
             "block_befor_after_DCRUgk"
           ]
+        },
+        "block_text_6TzWYw": {
+          "type": "block_text",
+          "name": "Text",
+          "settings": {
+            "text": "<p>* Results may vary. Individual results depend on consistent use and lifestyle factors.</p>",
+            "block_link": "",
+            "alignment": "center",
+            "width": "fill",
+            "custom_width_unit_desktop": "%",
+            "custom_width_pixel": 48,
+            "custom_width": 100,
+            "width_tablet": "fill",
+            "custom_width_unit_tablet": "%",
+            "custom_width_tablet_pixel": 48,
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_unit_mobile": "%",
+            "custom_width_pixel_mobile": 48,
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "font_size": 16,
+            "font_size_mobile": 14,
+            "font_weight": "400",
+            "color": "#000000",
+            "background": "",
+            "radius": 0,
+            "border_size": 0,
+            "border_color": "#57534d",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "pt_m": 0,
+            "pb_m": 0,
+            "pl_m": 0,
+            "pr_m": 0,
+            "hide_mobile": false,
+            "hide_desktop": false
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "block_group_KFjqzb",
-        "block_group_9BFL8P"
+        "block_group_9BFL8P",
+        "block_text_6TzWYw"
       ],
       "name": "THE RESULT",
       "settings": {
