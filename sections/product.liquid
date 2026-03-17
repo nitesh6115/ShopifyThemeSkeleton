@@ -18,6 +18,7 @@
     --media-thumb-border-color:{{ section.settings.media_border }};
     --media-thumb-border-active-color:{{ section.settings.media_border_active }};
 {%- endcapture -%}
+{% assign style_schema = style_schema | strip_newlines %}
 <div
   class="product_section {% if section.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{- style_schema -}}"
