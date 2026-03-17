@@ -86,12 +86,12 @@
     </div>
 
     {% if block.settings.show_arrows %}
-      <button class="slider-prev">‹</button>
-      <button class="slider-next">›</button>
+      <button class="slider-prev" data-id="{{ block.id }}">‹</button>
+      <button class="slider-next" data-id="{{ block.id }}">›</button>
     {% endif %}
 
     {% if block.settings.show_dots %}
-      <div class="slider-dots"></div>
+      <div class="slider-dots" id="dots-{{ block.id }}"></div>
     {% endif %}
   </div>
 </div>
