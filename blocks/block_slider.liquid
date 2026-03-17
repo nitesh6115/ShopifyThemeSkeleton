@@ -97,7 +97,30 @@
   </div>
 </div>
 {% javascript %}
+function updateHeight(){
 
+if(!adaptive) return
+
+const slides = track.children
+
+let closest = 0
+let min = 999999
+
+for(let i=0;i<slides.length;i++){
+
+let diff =
+Math.abs(
+slides[i].offsetLeft - track.scrollLeft
+)
+
+if(diff < min){
+
+min = diff
+closest = i
+
+}
+
+}
 function initSlider(id){
 const slider = document.getElementById("slider-"+id)
 
@@ -133,30 +156,7 @@ b.onclick = ()=> go(i)
 dotsWrap.appendChild(b)
 }
 }
-function updateHeight(){
 
-if(!adaptive) return
-
-const slides = track.children
-
-let closest = 0
-let min = 999999
-
-for(let i=0;i<slides.length;i++){
-
-let diff =
-Math.abs(
-slides[i].offsetLeft - track.scrollLeft
-)
-
-if(diff < min){
-
-min = diff
-closest = i
-
-}
-
-}
 
 const activeSlide = slides[closest]
 
