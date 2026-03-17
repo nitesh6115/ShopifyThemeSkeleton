@@ -98,120 +98,85 @@
 {% javascript %}
 
 function initSlider(id){
-
 const slider = document.getElementById("slider-"+id)
-console.log(slider)
 if(!slider) return
-
 const track = document.getElementById("track-"+id)
-
 const prev = slider.querySelector(".slider-prev")
 const next = slider.querySelector(".slider-next")
-console.log(prev)
-
 const dotsWrap = document.getElementById("dots-"+id)
-
 const autoplay = slider.dataset.autoplay === "true"
 const speed = parseInt(slider.dataset.speed) || 3000
-
 let index = 0
-
 const slides = track.children
-console.log(slides)
-
 function go(i){
-console.log(i)
 if(i < 0) i = 0
 if(i >= slides.length) i = slides.length-1
-
 index = i
-
 slides[index].scrollIntoView({
 behavior:"smooth",
 inline:"start"
 })
-
 updateDots()
-
 }
-
-
 if(prev) prev.onclick = () => go(index-1)
 if(next) next.onclick = () => go(index+1)
-
-
-
-/* dots */
-
 if(dotsWrap){
-
 dotsWrap.innerHTML = ""
-
 for(let i=0;i<slides.length;i++){
-
 let b = document.createElement("button")
-
 b.onclick = ()=> go(i)
-
 dotsWrap.appendChild(b)
-
 }
-
 }
-
-
 function updateDots(){
-
 if(!dotsWrap) return
-
 dotsWrap.querySelectorAll("button")
 .forEach((d,i)=>{
-
 d.classList.toggle("active",i===index)
-
 })
-
 }
-
-
-
-/* autoplay */
-
 if(autoplay){
-
 setInterval(()=>{
-
 index++
-
 if(index >= slides.length) index = 0
-
 go(index)
-
 },speed)
-
 }
-
+let isDown = false
+let startX
+let scrollLeft
+track.addEventListener("pointerdown", e => {
+isDown = true
+track.classList.add("dragging")
+startX = e.pageX
+scrollLeft = track.scrollLeft
+})
+track.addEventListener("pointerleave", () => {
+isDown = false
+track.classList.remove("dragging")
+})
+track.addEventListener("pointerup", () => {
+isDown = false
+track.classList.remove("dragging")
+})
+track.addEventListener("pointermove", e => {
+if(!isDown) return
+e.preventDefault()
+const x = e.pageX
+const walk = (x - startX) * 1
+track.scrollLeft = scrollLeft - walk
+})
+track.style.scrollBehavior = "auto"
 }
-
-
-
-/* init all sliders */
-
 document.querySelectorAll(".slider_block").forEach(el=>{
 initSlider(el.dataset.id)
 })
-
-
-
-/* editor reload fix */
-
 document.addEventListener("shopify:section:load", function(e){
 e.target.querySelectorAll(".slider_block")
 .forEach(el=>{
 initSlider(el.dataset.id)
 })
 })
-
 {% endjavascript %}
 {% stylesheet %}
      .slider_block_container {
