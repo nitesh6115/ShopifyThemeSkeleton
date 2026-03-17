@@ -76,7 +76,7 @@ image_block;
             fetch_priority: fetch_priority,
             widths: '360, 540, 720, 900, 1080, 1320, 1600',
             sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-            alt: block.settings.image.alt | escape | default : 'block_image'
+            alt: block.settings.image.alt | default: shop.name | default: 'image' | escape
         }}
   {% else %}
     {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
