@@ -802,30 +802,6 @@
     "trusted_quality_certifications_yeKBrk": {
       "type": "trusted-quality-certifications",
       "blocks": {
-        "money_block_yw4LR4": {
-          "type": "money_block",
-          "settings": {
-            "padding_top": 70,
-            "padding_bottom": 70,
-            "padding_left": 50,
-            "padding_right": 50,
-            "block_radius": 14,
-            "bg_color": "#fff",
-            "border_color": "#a4f4cf",
-            "border_width": 2,
-            "icon_type": "svg",
-            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M33.3337 21.6671C33.3337 30.0004 27.5003 34.1671 20.567 36.5838C20.2039 36.7068 19.8096 36.7009 19.4503 36.5671C12.5003 34.1671 6.66699 30.0004 6.66699 21.6671V10.0004C6.66699 9.5584 6.84259 9.13447 7.15515 8.82191C7.46771 8.50935 7.89163 8.33376 8.33366 8.33376C11.667 8.33376 15.8337 6.33376 18.7337 3.80042C19.0867 3.49875 19.5359 3.33301 20.0003 3.33301C20.4647 3.33301 20.9139 3.49875 21.267 3.80042C24.1837 6.35042 28.3337 8.33376 31.667 8.33376C32.109 8.33376 32.5329 8.50935 32.8455 8.82191C33.1581 9.13447 33.3337 9.5584 33.3337 10.0004V21.6671Z\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
-            "icon_size": 80,
-            "icon_color": "#009966",
-            "icon_bg": "#ecfdf5",
-            "review_text": "30-Day Money-Back Guarantee",
-            "text_color": "#404040",
-            "text_font": 24,
-            "review_content": "Try our formula completely risk-free. If you're not satisfied with your results within 30 days, we'll refund your purchase—no questions asked. We stand behind the quality and efficacy of every bottle.",
-            "content_color": "#404040",
-            "content-font-size": 16
-          }
-        },
         "quality_block_EDgTPY": {
           "type": "quality_block",
           "settings": {
@@ -970,6 +946,30 @@
             "content-font-size": 12
           }
         },
+        "money_block_yw4LR4": {
+          "type": "money_block",
+          "settings": {
+            "padding_top": 70,
+            "padding_bottom": 70,
+            "padding_left": 50,
+            "padding_right": 50,
+            "block_radius": 14,
+            "bg_color": "#fff",
+            "border_color": "#a4f4cf",
+            "border_width": 2,
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M33.3337 21.6671C33.3337 30.0004 27.5003 34.1671 20.567 36.5838C20.2039 36.7068 19.8096 36.7009 19.4503 36.5671C12.5003 34.1671 6.66699 30.0004 6.66699 21.6671V10.0004C6.66699 9.5584 6.84259 9.13447 7.15515 8.82191C7.46771 8.50935 7.89163 8.33376 8.33366 8.33376C11.667 8.33376 15.8337 6.33376 18.7337 3.80042C19.0867 3.49875 19.5359 3.33301 20.0003 3.33301C20.4647 3.33301 20.9139 3.49875 21.267 3.80042C24.1837 6.35042 28.3337 8.33376 31.667 8.33376C32.109 8.33376 32.5329 8.50935 32.8455 8.82191C33.1581 9.13447 33.3337 9.5584 33.3337 10.0004V21.6671Z\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "icon_size": 80,
+            "icon_color": "#009966",
+            "icon_bg": "#ecfdf5",
+            "review_text": "30-Day Money-Back Guarantee",
+            "text_color": "#404040",
+            "text_font": 24,
+            "review_content": "Try our formula completely risk-free. If you're not satisfied with your results within 30 days, we'll refund your purchase—no questions asked. We stand behind the quality and efficacy of every bottle.",
+            "content_color": "#404040",
+            "content-font-size": 16
+          }
+        },
         "featured_logo_rbTREa": {
           "type": "featured_logo",
           "settings": {
@@ -1056,13 +1056,13 @@
         }
       },
       "block_order": [
-        "money_block_yw4LR4",
         "quality_block_EDgTPY",
         "quality_block_XmqeGb",
         "quality_block_cDWcni",
         "quality_block_PyBMxV",
         "quality_block_MBceba",
         "quality_block_FXKdeG",
+        "money_block_yw4LR4",
         "featured_logo_rbTREa",
         "featured_logo_qB7r6V",
         "featured_logo_FmxGRk",
