@@ -201,10 +201,10 @@
         "trust_badges_z4TjMa"
       ],
       "settings": {
-        "section_width": true,
+        "section_width": false,
         "wraper_width": 1300,
         "section_bg": "#fff",
-        "padding_top": 0,
+        "padding_top": 30,
         "padding_bottom": 30,
         "padding_left": 0,
         "padding_right": 30,
