@@ -120,6 +120,18 @@ slides[index].scrollIntoView({
 behavior:"smooth",
 inline:"start"
 })
+updateDots()
+}
+if(prev) prev.onclick = () => go(index-1)
+if(next) next.onclick = () => go(index+1)
+if(dotsWrap){
+dotsWrap.innerHTML = ""
+for(let i=0;i<slides.length;i++){
+let b = document.createElement("button")
+b.onclick = ()=> go(i)
+dotsWrap.appendChild(b)
+}
+}
 function updateHeight(){
 
 if(!adaptive) return
@@ -144,20 +156,6 @@ closest = i
 }
 
 }
-updateHeight()
-updateDots()
-}
-if(prev) prev.onclick = () => go(index-1)
-if(next) next.onclick = () => go(index+1)
-if(dotsWrap){
-dotsWrap.innerHTML = ""
-for(let i=0;i<slides.length;i++){
-let b = document.createElement("button")
-b.onclick = ()=> go(i)
-dotsWrap.appendChild(b)
-}
-}
-
 
 const activeSlide = slides[closest]
 
