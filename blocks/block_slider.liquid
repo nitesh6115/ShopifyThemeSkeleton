@@ -97,6 +97,29 @@
   </div>
 </div>
 {% javascript %}
+
+function initSlider(id){
+const slider = document.getElementById("slider-"+id)
+
+if(!slider) return
+const track = document.getElementById("track-"+id)
+const prev = slider.querySelector(".slider-prev")
+const next = slider.querySelector(".slider-next")
+const dotsWrap = document.getElementById("dots-"+id)
+const autoplay = slider.dataset.autoplay === "true"
+const speed = parseInt(slider.dataset.speed) || 3000
+const adaptive = slider.dataset.adaptive === "true"
+const inner = slider.querySelector(".slider-inner")
+let index = 0
+const slides = track.children
+function go(i){
+if(i < 0) i = 0
+if(i >= slides.length) i = slides.length-1
+index = i
+slides[index].scrollIntoView({
+behavior:"smooth",
+inline:"start"
+})
 function updateHeight(){
 
 if(!adaptive) return
@@ -121,28 +144,6 @@ closest = i
 }
 
 }
-function initSlider(id){
-const slider = document.getElementById("slider-"+id)
-
-if(!slider) return
-const track = document.getElementById("track-"+id)
-const prev = slider.querySelector(".slider-prev")
-const next = slider.querySelector(".slider-next")
-const dotsWrap = document.getElementById("dots-"+id)
-const autoplay = slider.dataset.autoplay === "true"
-const speed = parseInt(slider.dataset.speed) || 3000
-const adaptive = slider.dataset.adaptive === "true"
-const inner = slider.querySelector(".slider-inner")
-let index = 0
-const slides = track.children
-function go(i){
-if(i < 0) i = 0
-if(i >= slides.length) i = slides.length-1
-index = i
-slides[index].scrollIntoView({
-behavior:"smooth",
-inline:"start"
-})
 updateHeight()
 updateDots()
 }
