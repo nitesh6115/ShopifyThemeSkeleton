@@ -11254,7 +11254,7 @@
           "type": "block_slider",
           "name": "Slider Block",
           "settings": {
-            "enable_desktop": true,
+            "enable_desktop": false,
             "enable_tablet": true,
             "enable_mobile": true,
             "autoplay": false,
