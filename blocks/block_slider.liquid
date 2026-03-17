@@ -100,7 +100,6 @@
 
 function initSlider(id){
 const slider = document.getElementById("slider-"+id)
-
 if(!slider) return
 const track = document.getElementById("track-"+id)
 const prev = slider.querySelector(".slider-prev")
@@ -108,8 +107,6 @@ const next = slider.querySelector(".slider-next")
 const dotsWrap = document.getElementById("dots-"+id)
 const autoplay = slider.dataset.autoplay === "true"
 const speed = parseInt(slider.dataset.speed) || 3000
-const adaptive = slider.dataset.adaptive === "true"
-const inner = slider.querySelector(".slider-inner")
 let index = 0
 const slides = track.children
 function go(i){
@@ -131,72 +128,6 @@ let b = document.createElement("button")
 b.onclick = ()=> go(i)
 dotsWrap.appendChild(b)
 }
-}
-function updateHeight(){
-
-if(!adaptive) return
-
-const slides = track.children
-
-let closest = 0
-let min = 999999
-
-for(let i=0;i<slides.length;i++){
-
-let diff =
-Math.abs(
-slides[i].offsetLeft - track.scrollLeft
-)
-
-if(diff < min){
-
-min = diff
-closest = i
-
-}
-
-}
-
-const activeSlide = slides[closest]
-
-if(activeSlide){
-
-inner.style.height =
-activeSlide.offsetHeight + "px"
-
-}
-
-}
-function snap(){
-
-const slides = track.children
-
-let closest = 0
-let min = 999999
-
-for(let i=0;i<slides.length;i++){
-
-let diff =
-Math.abs(
-slides[i].offsetLeft - track.scrollLeft
-)
-
-if(diff < min){
-
-min = diff
-closest = i
-
-}
-
-}
-
-slides[closest].scrollIntoView({
-behavior:"smooth",
-inline:"start"
-})
-
-updateHeight()
-
 }
 function updateDots(){
 if(!dotsWrap) return
@@ -238,17 +169,6 @@ track.scrollLeft = scrollLeft - walk
 })
 track.style.scrollBehavior = "auto"
 }
-
-
-window.addEventListener("resize", updateHeight)
-
-track.addEventListener("scroll", () => {
-
-clearTimeout(track._t)
-
-track._t = setTimeout(updateHeight, 80)
-
-})
 document.querySelectorAll(".slider_block").forEach(el=>{
 initSlider(el.dataset.id)
 })
