@@ -4,15 +4,15 @@
     --section-bg: {{ section.settings.section_bg }};
     --section-wraper-width: {% if section.settings.section_width %}100% {% else %}{{ section.settings.wraper_width }}px{% endif %};
 
-    --section-padding-top: {{ section.settings.padding_top }}px;
-    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
-    --section-padding-left: {{ section.settings.padding_left }}px;
-    --section-padding-right: {{ section.settings.padding_right }}px;
+    --section-padding-top: {{ section.settings.padding_top_desktop }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --section-padding-left: {{ section.settings.padding_left_desktop }}px;
+    --section-padding-right: {{ section.settings.padding_right_desktop }}px;
 
-    --section-mobile-padding-top: {{ section.settings.padding_top | times: 0.55 | round: 0 }}px;
-    --section-mobile-padding-bottom: {{ section.settings.padding_bottom | times: 0.55 | round: 0 }}px;
-    --section-mobile-padding-left: {{ section.settings.padding_left | times: 0.55 | round: 0 }}px;
-    --section-mobile-padding-right: {{ section.settings.padding_right | times: 0.55 | round: 0 }}px;
+    --section-mobile-padding-top: {{ section.settings.padding_top_mobile }}px;
+    --section-mobile-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    --section-mobile-padding-left: {{ section.settings.padding_left_mobile }}px;
+    --section-mobile-padding-right: {{ section.settings.padding_right_mobile }}px;
 
     --media-radius: {{ section.settings.media-radius }}px;
     --media-thumb-radius: {{ section.settings.media-thumb-radius }}px;
@@ -884,49 +884,91 @@ document.addEventListener('sealsubs:price_update', function(e) {
       "label": "Section Background",
       "default": "#fff"
     },
+    { "type": "header", "content": "Desktop Padding Controls" },
+
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
     {
       "type": "header",
-      "content": "Section Spacing"
+      "content": "Mobile Padding Controls"
     },
     {
       "type": "range",
-      "id": "padding_top",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
       "label": "Padding Top",
-      "max": 100,
-      "min": 0,
-      "default": 30,
-      "step": 1,
-      "unit": "px"
+      "default": 40
     },
     {
       "type": "range",
-      "id": "padding_bottom",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
       "label": "Padding Bottom",
-      "max": 100,
-      "min": 0,
-      "default": 30,
-      "step": 1,
-      "unit": "px"
+      "default": 40
     },
     {
       "type": "range",
-      "id": "padding_left",
+      "id": "padding_left_mobile",
       "label": "Padding Left",
-      "max": 100,
       "min": 0,
-      "default": 30,
-      "step": 1,
-      "unit": "px"
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "range",
-      "id": "padding_right",
+      "id": "padding_right_mobile",
       "label": "Padding Right",
-      "max": 100,
       "min": 0,
-      "default": 30,
-      "step": 1,
-      "unit": "px"
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "header",
