@@ -136,21 +136,13 @@
 
 <section class="section-{{ section.id }} {% if section.settings.hide_mobile %}hide-mobile{% endif %} {% if section.settings.hide_desktop %}hide-desktop{% endif %}">
   {% if section.settings.background_image != blank %}
-    {% capture style_attribute  %}'position:absolute;
-        inset:0;
-        width:100%;
-        height:100%;
-        object-fit:{{ section.settings.bg_size }};
-        object-position:{{ section.settings.bg_position }};
-        z-index:1;'{% endcapture %}
+   
       {{section.settings.background_image | image_url: width: 2000
             | image_tag:
             loading: 'lazy',
             fetch_priority: fetch_priority,
             widths: '360, 540, 720, 900, 1080, 1320, 2000',
-            sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-            alt: section.settings.background_image.alt | escape | default : 'block_image',
-            style: style_attribute
+            sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
         }}
   {% endif %}
 
