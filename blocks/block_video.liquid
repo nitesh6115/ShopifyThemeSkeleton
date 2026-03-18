@@ -68,13 +68,8 @@
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
-<div
-  class="{{- class_list -}}"style="{{- style_schema }}"
-  {{ block.shopify_attributes }}
->
-
+<div class="{{- class_list -}}"style="{{- style_schema }}"{{ block.shopify_attributes }}>
   {% if block.settings.video != blank %}
-
     {{ block.settings.video
       | video_tag:
         autoplay: block.settings.autoplay,
@@ -83,31 +78,22 @@
         controls: block.settings.controls,
         playsinline: true
     }}
-
   {% elsif block.settings.video_url != blank %}
-
     <iframe
       src="{{ block.settings.video_url }}"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen
     ></iframe>
-
   {% else %}
-
     {{ 'image' | placeholder_svg_tag }}
-
   {% endif %}
-
 </div>
-
-
 {% stylesheet %}
-
 .video_block {
   background: var(--bg);
-  border-radius: var(--radius);
-  border: var(--border-size) solid var(--border-color);
+  border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
+	border: var(--border) solid var(--border-color);
   padding-top: var(--pt);
   padding-bottom: var(--pb);
   padding-left: var(--pl);
