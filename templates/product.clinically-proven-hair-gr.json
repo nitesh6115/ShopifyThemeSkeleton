@@ -5893,7 +5893,8 @@
                   "type": "block_video",
                   "name": "Video",
                   "settings": {
-                    "video_url": "https://vimeo.com/347119375",
+                    "video": "shopify://files/videos/04621f34d6b849f0a75df862fa0a6e08.HD-1080p-7.2Mbps-41715475.mp4",
+                    "video_url": "",
                     "autoplay": true,
                     "loop": true,
                     "controls": true,
