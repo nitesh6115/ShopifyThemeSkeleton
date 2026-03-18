@@ -80,10 +80,9 @@
         playsinline: true
     }}
   {% elsif block.settings.video_url != blank %}
-    {{ block.settings.video_url.type }}
     {% if block.settings.video_url.type == "youtube" %}
       <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?vq=720{% if block.settings.autoplay %}&autoplay=1{% endif %}{% if block.settings.loop %}&loop=1{% endif %}{% if block.settings.cotrols %}&controls=1{% endif %}" width="1060" height="600" frameborder="0" allowfullscreen></iframe>
-    {% elsif section.settings.video_url.type == "vimeo" %}
+    {% elsif block.settings.video_url.type == "vimeo" %}
       <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?byline=0{% if block.settings.autoplay %}&autoplay=1{% endif %}{% if block.settings.loop %}&loop=1{% endif %}{% if block.settings.cotrols %}&controls=1{% endif %}" width="1060" height="600" frameborder="0" allowfullscreen></iframe>
     {% endif %}
   {% else %}
