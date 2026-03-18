@@ -5,7 +5,17 @@
   --gap: {{ block.settings.gap }}px;
   --gap-m: {{ block.settings.gap_m }}px;
   --bg: {{ block.settings.background }};
-  --radius: {{ block.settings.radius }}px;
+  {% if block.settings.set_full_radius %}
+  --radius-top: {{ block.settings.radius_top }}px;
+  --radius-bottom: {{ block.settings.radius_bottom }}px;
+  --radius-left: {{ block.settings.radius_left }}px;
+  --radius-right: {{ block.settings.radius_bottom }}px;
+  {% else %}
+  --radius-top: {{ block.settings.radius }}px;
+  --radius-bottom: {{ block.settings.radius }}px;
+  --radius-left: {{ block.settings.radius }}px;
+  --radius-right: {{ block.settings.radius }}px;
+  {% endif %}
   --border: {{ block.settings.border }}px;
   --border-color: {{ block.settings.border_color }};
   --pt: {{ block.settings.pt }}px;
@@ -80,7 +90,7 @@
 	align-items: var(--align-y);
 	gap: var(--gap);
 	background: var(--bg);
-	border-radius: var(--radius);
+	border-radius: var(--radius-top) var(--radius-right) var(--radius-left) var(--radius-bottom);
 	border: var(--border) solid var(--border-color);
 	padding-top: var(--pt);
 	padding-bottom: var(--pb);
