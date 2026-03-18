@@ -193,7 +193,7 @@
   <div class="bundle_footer">
   <div class="bundle-summary">
     <div class="subtotalBundle {% if tier_count == 1 %}hidden_element{% endif %}"><span>Subtotal: (<em data-total-item>Items 0</em>)</span><span data-bundle-subtotal>{{ 0 | money }}</span></div>
-    <div class="bundleDiscount  {% if tier_count == 1 %}hidden_element{% endif %}"><span>Bundle Discount <em data-discount-name></em></span><span data-bundle-savings>{{ 0 | money }}</span></div>
+    <div class="bundleDiscount"><span>Bundle Discount <em data-discount-name></em></span><span data-bundle-savings>{{ 0 | money }}</span></div>
     <div class="bundleTotal">{% if tier_count == 1 %}<span selected-total-items >0 item selected:</span>{% else %}<span>Total:</span>{% endif %}<strong data-bundle-total>{{ 0 | money }}</strong></div>
   </div>
 
