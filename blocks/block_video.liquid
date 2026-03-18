@@ -64,6 +64,7 @@
     block-width-mobile-{{ block.settings.width_mobile }};
     {% endif %}
     ratio--{{ block.settings.ratio }};
+    {% if block.settings.hover_zoom %}is-zoom;{% endif %}
     {% if block.settings.shadow %}is-shadow;{% endif %}
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
