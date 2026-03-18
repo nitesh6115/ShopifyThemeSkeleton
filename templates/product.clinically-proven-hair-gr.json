@@ -5893,10 +5893,9 @@
                   "type": "block_video",
                   "name": "Video",
                   "settings": {
-                    "video": "shopify://files/videos/website video 1920x815.mp4",
-                    "video_url": "",
+                    "video_url": "https://www.youtube.com/watch?v=A58UHedQOAc&list=RDA58UHedQOAc&start_radio=1",
                     "autoplay": true,
-                    "loop": false,
+                    "loop": true,
                     "controls": true,
                     "ratio": "square",
                     "hover_zoom": true,
