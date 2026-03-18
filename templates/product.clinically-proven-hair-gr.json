@@ -16238,7 +16238,7 @@
         "mobile_bundle_text_font_size": 16,
         "use_collection": true,
         "collection": "style-1",
-        "products_limit": 2,
+        "products_limit": 3,
         "tier_1_qty": 3,
         "tier_1_discount": 15,
         "tier_2_qty": 1,
