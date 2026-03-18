@@ -434,7 +434,7 @@ font-size:var(--progress-bar-desktop-heading-font-size);
   .bundle-products .bundle-card  {
   width: calc(100% / var(--card-per-row-mobile) - 15px);
 }
-  .section_container {
+.bundle-builder .section_container {
   padding: var(--section-mobile-padding-top) var(--section-mobile-padding-right) var(--section-mobile-padding-bottom) var(--section-mobile-padding-left);
  
 }
