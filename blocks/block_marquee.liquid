@@ -126,6 +126,7 @@
   }
 {% endstylesheet %}
 {% javascript %}
+  window.marqueeInit = window.marqueeInit || {};
   function initMarquee(block) {
     const id = block.dataset.id;
     if (window.marqueeInit[id]) return;
