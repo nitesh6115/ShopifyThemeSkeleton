@@ -523,18 +523,9 @@ a.image_link.link_overlay {
       "type": "range",
       "id": "radius",
       "label": "Radius",
+      "visible_if": "{{ block.settings.set_full_radius == false }}",
       "min": 0,
       "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "border",
-      "label": "Border",
-      "visible_if": "{{ block.settings.set_full_radius != true }}",
-      "min": 0,
-      "max": 10,
       "step": 1,
       "default": 0
     },
@@ -580,6 +571,15 @@ a.image_link.link_overlay {
       "visible_if": "{{ block.settings.set_full_radius == true }}",
       "min": 0,
       "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border",
+      "label": "Border",
+      "min": 0,
+      "max": 10,
       "step": 1,
       "default": 0
     },
