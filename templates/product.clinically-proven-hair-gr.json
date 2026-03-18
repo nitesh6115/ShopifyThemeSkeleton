@@ -5893,7 +5893,7 @@
                   "type": "block_video",
                   "name": "Video",
                   "settings": {
-                    "video_url": "https://www.youtube.com/watch?v=JMKYPDem8o8",
+                    "video_url": "https://youtu.be/JMKYPDem8o8?si=MhQ9PmbsGgbB0NAW",
                     "autoplay": true,
                     "loop": true,
                     "controls": true,
