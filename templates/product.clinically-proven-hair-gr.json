@@ -17491,7 +17491,8 @@
           "type": "block_marquee",
           "name": "Marquee",
           "settings": {
-            "marquee_direction": "horizontal",
+            "marquee_direction": "vertical",
+            "align_y": "flex-start",
             "reverse": false,
             "pause_hover": true,
             "drag": true,
@@ -17537,6 +17538,50 @@
             "hide_mobile": false
           },
           "blocks": {
+            "block_image_N9rzVc": {
+              "type": "block_image",
+              "name": "Image",
+              "settings": {
+                "image_link": "",
+                "ratio": "auto",
+                "hover_zoom": false,
+                "shadow": false,
+                "width": "fill",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 100,
+                "width_tablet": "fill",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 100,
+                "width_mobile": "fill",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "radius": 0,
+                "set_full_radius": false,
+                "radius_top_left": 0,
+                "radius_top_right": 0,
+                "radius_bottom_left": 0,
+                "radius_bottom_right": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "pt_m": 0,
+                "pb_m": 0,
+                "pl_m": 0,
+                "pr_m": 0,
+                "hide_mobile": false,
+                "hide_desktop": false
+              },
+              "blocks": {}
+            },
             "block_text_dpQdRA": {
               "type": "block_text",
               "name": "Text",
@@ -17635,6 +17680,7 @@
             }
           },
           "block_order": [
+            "block_image_N9rzVc",
             "block_text_dpQdRA",
             "block_heading_k4xxVE"
           ]
