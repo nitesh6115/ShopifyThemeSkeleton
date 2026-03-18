@@ -17491,11 +17491,7 @@
           "type": "block_marquee",
           "name": "Marquee",
           "settings": {
-            "layout_direction": "group--horizontal",
-            "align_x": "flex-start",
-            "align_y": "center",
-            "wrap": "wrap",
-            "marquee_direction": "horizontal",
+            "marquee_direction": "vertical",
             "reverse": false,
             "pause_hover": true,
             "drag": true,
