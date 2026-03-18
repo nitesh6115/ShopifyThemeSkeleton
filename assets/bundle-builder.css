@@ -31,7 +31,7 @@
 }
 .bundle-products {
   display: flex;
-  gap: 20px;
+  gap: var(--card-gap);
   margin-bottom: 40px;
   flex-wrap: wrap;
 }
@@ -436,6 +436,9 @@ font-size:var(--progress-bar-desktop-heading-font-size);
 }
   .bundle-benefits-header .bar_title{
     font-size:var(--progress-bar-mobile-heading-font-size);
+  }
+  .bundle-products{
+    gap: var(--card-gap-mobile);
   }
   .bundle-products .bundle-card  {
   width: calc(
