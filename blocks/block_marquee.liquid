@@ -126,92 +126,259 @@
   }
 {% endstylesheet %}
 {% javascript %}
-  function initMarquee(block) {
-    const id = block.dataset.id;
-    const track = block.querySelector('.marquee-track');
-    let speedDesktop = parseFloat(block.dataset.speed) || 30;
-    let speedMobile = parseFloat(block.dataset.speedM) || 20;
-    let dir = block.dataset.dir || 'horizontal';
-    let reverse = block.dataset.reverse === 'true';
-    let pauseHover = block.dataset.hover === 'true';
-    let drag = block.dataset.drag === 'true';
-    let dup = block.dataset.dup === 'true';
-    let speed = window.innerWidth < 768 ? speedMobile : speedDesktop;
-    let pos = 0;
-    let isDown = false;
-    let startX = 0;
-    // auto duplicate
-    if (dup) {
-      while (track.scrollWidth < block.offsetWidth * 2) {
-        track.innerHTML += track.innerHTML;
-      }
-    }
-    function animate() {
-      if (!isDown) {
-        if (reverse) {
-          pos += speed * 0.02;
-        } else {
-          pos -= speed * 0.02;
-        }
-        if (dir === 'horizontal') {
-          if (Math.abs(pos) > track.scrollWidth / 2) pos = 0;
-          track.style.transform = `translateX(${pos}px)`;
-        } else {
-          if (Math.abs(pos) > track.scrollHeight / 2) pos = 0;
-          track.style.transform = `translateY(${pos}px)`;
-        }
-      }
-      requestAnimationFrame(animate);
-    }
-    animate();
-    // pause hover
-    if (pauseHover) {
-      block.addEventListener('mouseenter', () => {
-        isDown = true;
-      });
-      block.addEventListener('mouseleave', () => {
-        isDown = false;
-      });
-    }
-    // drag
-    if (drag) {
-      block.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.clientX;
-      });
-      window.addEventListener('mouseup', () => {
-        isDown = false;
-      });
-      window.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        let move = e.clientX - startX;
-        pos += move * 0.5;
-        startX = e.clientX;
-      });
-    }
-    // touch
-    block.addEventListener('touchstart', (e) => {
-      isDown = true;
-      startX = e.touches[0].clientX;
-    });
-    block.addEventListener('touchend', () => {
-      isDown = false;
-    });
-    block.addEventListener('touchmove', (e) => {
-      if (!isDown) return;
-      let move = e.touches[0].clientX - startX;
-      pos += move * 0.5;
-      startX = e.touches[0].clientX;
-    });
+window.marqueeInstances = window.marqueeInstances || {};
+
+function initMarqueeById(id) {
+
+  const block = document.querySelector("#marquee-" + id);
+
+  if (!block) return;
+
+  if (window.marqueeInstances[id]) return;
+
+  const track = block.querySelector(".marquee-track");
+
+  if (!track) return;
+
+  let speedDesktop = parseFloat(block.dataset.speed) || 30;
+  let speedMobile = parseFloat(block.dataset.speedM) || 20;
+
+  let dir = block.dataset.dir || "horizontal";
+  let reverse = block.dataset.reverse === "true";
+  let pauseHover = block.dataset.hover === "true";
+  let drag = block.dataset.drag === "true";
+  let dup = block.dataset.dup === "true";
+
+  let speed =
+    window.innerWidth < 768
+      ? speedMobile
+      : speedDesktop;
+
+  let pos = 0;
+  let isPaused = false;
+  let isDown = false;
+  let start = 0;
+
+  let size = 0;
+
+  // ---------- DUPLICATE SAFE ----------
+
+  if (dup && !track.dataset.ready) {
+
+    track.dataset.ready = "1";
+
+    const loop = track.innerHTML;
+
+    track.innerHTML = loop + loop;
+
   }
-  document.querySelectorAll('.marquee').forEach((el) => {
-    initMarquee(el);
+
+  function updateSize() {
+
+    if (dir === "horizontal") {
+
+      size = track.scrollWidth / 2;
+
+    } else {
+
+      size = track.scrollHeight / 2;
+
+    }
+
+  }
+
+  updateSize();
+
+  // ---------- ANIMATE ----------
+
+  function animate() {
+
+    if (!isPaused && !isDown) {
+
+      let move = speed * 0.02;
+
+      if (!reverse) move *= -1;
+
+      pos += move;
+
+      if (pos <= -size) pos = 0;
+      if (pos >= size) pos = 0;
+
+      if (dir === "horizontal") {
+
+        track.style.transform =
+          `translate3d(${pos}px,0,0)`;
+
+      } else {
+
+        track.style.transform =
+          `translate3d(0,${pos}px,0)`;
+
+      }
+
+    }
+
+    window.marqueeInstances[id].raf =
+      requestAnimationFrame(animate);
+
+  }
+
+  window.marqueeInstances[id] = {
+    raf: null
+  };
+
+  animate();
+
+
+  // ---------- HOVER ----------
+
+  if (pauseHover) {
+
+    block.addEventListener(
+      "mouseenter",
+      () => (isPaused = true)
+    );
+
+    block.addEventListener(
+      "mouseleave",
+      () => (isPaused = false)
+    );
+
+  }
+
+
+  // ---------- DRAG ----------
+
+  if (drag) {
+
+    block.addEventListener("mousedown", e => {
+
+      isDown = true;
+      start = dir === "horizontal"
+        ? e.clientX
+        : e.clientY;
+
+    });
+
+    window.addEventListener("mouseup", () => {
+
+      isDown = false;
+
+    });
+
+    window.addEventListener("mousemove", e => {
+
+      if (!isDown) return;
+
+      let now = dir === "horizontal"
+        ? e.clientX
+        : e.clientY;
+
+      let diff = now - start;
+
+      pos += diff;
+
+      start = now;
+
+    });
+
+  }
+
+
+  // ---------- TOUCH ----------
+
+  block.addEventListener("touchstart", e => {
+
+    isDown = true;
+
+    start =
+      dir === "horizontal"
+        ? e.touches[0].clientX
+        : e.touches[0].clientY;
+
   });
-  document.addEventListener('shopify:section:load', function (e) {
-    e.target.querySelectorAll('.marquee').forEach((el) => {
-    initMarquee(block);
-    })
+
+  block.addEventListener("touchend", () => {
+
+    isDown = false;
+
   });
+
+  block.addEventListener("touchmove", e => {
+
+    if (!isDown) return;
+
+    let now =
+      dir === "horizontal"
+        ? e.touches[0].clientX
+        : e.touches[0].clientY;
+
+    let diff = now - start;
+
+    pos += diff;
+
+    start = now;
+
+  });
+
+
+  // ---------- RESIZE FIX ----------
+
+  window.addEventListener("resize", () => {
+
+    updateSize();
+
+  });
+
+}
+
+
+// ---------- INIT EXISTING ----------
+
+document
+  .querySelectorAll(".marquee")
+  .forEach(block => {
+
+    initMarqueeById(
+      block.dataset.id
+    );
+
+  });
+
+
+// ---------- SHOPIFY BLOCK LOAD ----------
+
+document.addEventListener(
+  "shopify:block:load",
+  e => {
+
+    const id =
+      e.target.dataset.blockId;
+
+    initMarqueeById(id);
+
+  }
+);
+
+
+// ---------- SHOPIFY SECTION LOAD ----------
+
+document.addEventListener(
+  "shopify:section:load",
+  e => {
+
+    e.target
+      .querySelectorAll(".marquee")
+      .forEach(block => {
+
+        initMarqueeById(
+          block.dataset.id
+        );
+
+      });
+
+  }
+);
 {% endjavascript %}
 {% schema %}
 {
