@@ -524,7 +524,7 @@ a.image_link.link_overlay {
       "id": "radius",
       "label": "Radius",
       "min": 0,
-      "max": 50,
+      "max": 100,
       "step": 1,
       "default": 0
     },
@@ -545,8 +545,18 @@ a.image_link.link_overlay {
     },
     {
       "type": "range",
-      "id": "radius_top",
-      "label": "Radius Top",
+      "id": "radius_top_left",
+      "label": "Radius Top Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_top_right",
+      "label": "Radius Top Right",
       "visible_if": "{{ block.settings.set_full_radius == true }}",
       "min": 0,
       "max": 10,
@@ -555,8 +565,8 @@ a.image_link.link_overlay {
     },
     {
       "type": "range",
-      "id": "radius_bottom",
-      "label": "Radius Bottom",
+      "id": "radius_bottom_left",
+      "label": "Radius Bottom Left",
       "visible_if": "{{ block.settings.set_full_radius == true }}",
       "min": 0,
       "max": 10,
@@ -565,18 +575,8 @@ a.image_link.link_overlay {
     },
     {
       "type": "range",
-      "id": "radius_left",
-      "label": "Radius Left",
-      "visible_if": "{{ block.settings.set_full_radius == true }}",
-      "min": 0,
-      "max": 10,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "radius_right",
-      "label": "Radius Right",
+      "id": "radius_bottom_right",
+      "label": "Radius Bottom Right",
       "visible_if": "{{ block.settings.set_full_radius == true }}",
       "min": 0,
       "max": 10,
