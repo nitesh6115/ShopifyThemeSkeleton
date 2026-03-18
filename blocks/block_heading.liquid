@@ -3,7 +3,17 @@
 --text-align: {{ block.settings.alignment }};
       --color: {{ block.settings.color }};
       --bg: {{ block.settings.bg }};
-      --radius: {{ block.settings.radius }}px;
+      {% if block.settings.set_full_radius %}
+      --radius-top-left: {{ block.settings.radius_top_left }}px;
+      --radius-top-right: {{ block.settings.radius_top_right }}px;
+      --radius-bottom-left: {{ block.settings.radius_bottom_left }}px;
+      --radius-bottom-right: {{ block.settings.radius_bottom_right }}px;
+      {% else %}
+      --radius-top-left: {{ block.settings.radius }}px;
+      --radius-top-right: {{ block.settings.radius }}px;
+      --radius-bottom-left: {{ block.settings.radius }}px;
+      --radius-bottom-right: {{ block.settings.radius }}px;
+      {% endif %}
       --border: {{ block.settings.border }}px;
       --border-color: {{ block.settings.border_color }};
       --fs: {{ block.settings.font_size }}px;
@@ -69,8 +79,8 @@
   .heading-block {
     color: var(--color);
     background: var(--bg);
-    border-radius: var(--radius);
-    border: var(--border) solid var(--border-color);
+    border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
+	  border: var(--border) solid var(--border-color);
     padding-top: var(--pt);
     padding-bottom: var(--pb);
     padding-left: var(--pl);
@@ -335,18 +345,68 @@
       "label": "Background"
     },
     {
+      "type": "header",
+      "content": "Block Radius"
+    },
+    {
       "type": "range",
       "id": "radius",
       "label": "Radius",
+      "visible_if": "{{ block.settings.set_full_radius == false }}",
       "min": 0,
-      "max": 50,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Set Each Corner Radius",
+      "id": "set_full_radius"
+    },
+    {
+      "type": "range",
+      "id": "radius_top_left",
+      "label": "Radius Top Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_top_right",
+      "label": "Radius Top Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom_left",
+      "label": "Radius Bottom Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom_right",
+      "label": "Radius Bottom Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
       "step": 1,
       "default": 0
     },
     {
       "type": "range",
       "id": "border",
-      "label": "Border size",
+      "label": "Border",
       "min": 0,
       "max": 10,
       "step": 1,
