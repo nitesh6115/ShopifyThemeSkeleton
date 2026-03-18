@@ -206,8 +206,13 @@
       startX = e.touches[0].clientX;
     });
   }
-  document.querySelectorAll('.marquee').forEach((block) => {
+  document.querySelectorAll('.marquee').forEach((el) => {
+    initMarquee(el);
+  });
+  document.addEventListener('shopify:section:load', function (e) {
+    e.target.querySelectorAll('.marquee').forEach((el) => {
     initMarquee(block);
+    })
   });
 {% endjavascript %}
 {% schema %}
