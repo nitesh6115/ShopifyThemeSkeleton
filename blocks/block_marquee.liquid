@@ -1,5 +1,6 @@
 {%- capture style_schema -%}
   --gap: {{ block.settings.gap }}px;
+  --align-y: {{ block.settings.align_y }};
   --gap-m: {{ block.settings.gap_m }}px;
   --bg: {{ block.settings.background }};
   --speed: {{ block.settings.speed }};
@@ -96,7 +97,7 @@
     }
 
     .marquee-loop {
-
+      align-items: var(--align-y);
       display: flex;
       gap: var(--gap);
 
