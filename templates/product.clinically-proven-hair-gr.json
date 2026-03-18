@@ -17492,7 +17492,7 @@
           "name": "Marquee",
           "settings": {
             "marquee_direction": "horizontal",
-            "align_y": "flex-start",
+            "align_y": "center",
             "reverse": false,
             "pause_hover": true,
             "drag": true,
@@ -17515,7 +17515,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "custom_height": 100,
-            "gap": 12,
+            "gap": 50,
             "gap_m": 12,
             "background": "",
             "radius": 0,
@@ -17542,6 +17542,7 @@
               "type": "block_image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/Image_Dr._Martinez.png",
                 "image_link": "",
                 "ratio": "auto",
                 "hover_zoom": false,
