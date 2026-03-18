@@ -1,47 +1,55 @@
 {%- capture style_schema -%}
-  --align-x: {{ block.settings.align_x }};
-  --align-y: {{ block.settings.align_y }};
-  --child-size: {{ block.size }};
-  --wrap: nowrap;
   --gap: {{ block.settings.gap }}px;
   --gap-m: {{ block.settings.gap_m }}px;
   --bg: {{ block.settings.background }};
   --speed: {{ block.settings.speed }};
-    --speed-mobile: {{ block.settings.speed_mobile }};
-    --dir: {{ block.settings.marquee_direction }};
- 
+  --speed-mobile: {{ block.settings.speed_mobile }};
+  --dir: {{ block.settings.marquee_direction }};
+   {% if block.settings.set_full_radius %}
+  --radius-top-left: {{ block.settings.radius_top_left }}px;
+  --radius-top-right: {{ block.settings.radius_top_right }}px;
+  --radius-bottom-left: {{ block.settings.radius_bottom_left }}px;
+  --radius-bottom-right: {{ block.settings.radius_bottom_right }}px;
+  {% else %}
+  --radius-top-left: {{ block.settings.radius }}px;
+  --radius-top-right: {{ block.settings.radius }}px;
+  --radius-bottom-left: {{ block.settings.radius }}px;
+  --radius-bottom-right: {{ block.settings.radius }}px;
+  {% endif %}
+  --border: {{ block.settings.border }}px;
+  --border-color: {{ block.settings.border_color }};
+  --pt: {{ block.settings.pt }}px;
+  --pb: {{ block.settings.pb }}px;
+  --pl: {{ block.settings.pl }}px;
+  --pr: {{ block.settings.pr }}px;
+  --ptm: {{ block.settings.ptm }}px;
+  --pbm: {{ block.settings.pbm }}px;
+  --plm: {{ block.settings.plm }}px;
+  --prm: {{ block.settings.prm }}px;
 {%- endcapture -%}
 
 {% assign style_schema = style_schema | strip_newlines %}
 
 {%- capture class_list -%}
   marquee;
-  group;
   {{ block.settings.layout_direction }};
-  box-nowrap;
-
   {% if block.settings.width == 'custom' %}
   block-custom-width-desktop;
   {% else %}
   block-width-desktop-{{ block.settings.width }};
   {% endif %}
-
   {% if block.settings.width_tablet == 'custom' %}
   block-custom-width-tablet;
   {% else %}
   block-width-tablet-{{ block.settings.width_tablet }};
   {% endif %}
-
   {% if block.settings.width_mobile == 'custom' %}
   block-custom-width-mobile;
   {% else %}
   block-width-mobile-{{ block.settings.width_mobile }};
   {% endif %}
-
 {% endcapture %}
-
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
-
 <div id="marquee-{{ block.id }}"class="{{ class_list }}"style="{{ style_schema }}"data-speed="{{ block.settings.speed }}"data-dir="{{ block.settings.marquee_direction }}"data-reverse="{{ block.settings.reverse }}"data-hover="{{ block.settings.pause_hover }}"data-drag="{{ block.settings.drag }}"data-dup="{{ block.settings.auto_duplicate }}"data-speed="{{ block.settings.speed }}"data-speed-m="{{ block.settings.speed_mobile }}"{{ block.shopify_attributes }}>
   <div class="marquee-inner">
     <div class="marquee-track">
@@ -53,28 +61,25 @@
 </div>
 {% stylesheet %}
     .marquee {
-
     overflow: hidden;
     position: relative;
-
+    background: var(--bg);
+	border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
+	border: var(--border) solid var(--border-color);
+	padding-top: var(--pt);
+	padding-bottom: var(--pb);
+	padding-left: var(--pl);
+	padding-right: var(--pr);
   }
-
   .marquee-inner {
-
     overflow: hidden;
     width: 100%;
-
   }
-
   .marquee-track {
-
     display: flex;
     gap: var(--gap);
-
     width: max-content;
-
     will-change: transform;
-
   }
 
   .marquee-loop {
@@ -83,23 +88,27 @@
     gap: var(--gap);
 
   }
-
   .marquee-loop > * {
-
     flex: 0 0 auto;
-
   }
-  .marquee[data-dir="vertical"] .marquee-track {
+.marquee[data-dir="vertical"] .marquee-track {
   flex-direction: column;
 }
-
 .marquee.is-paused .marquee-track {
   animation-play-state: paused;
   pointer-events: auto;
 }
-
 .marquee-dragging {
   cursor: grabbing;
+}
+@media (max-width: 767px) {
+.marquee {
+		gap: var(--gap-m);
+		padding-top: var(--ptm);
+		padding-bottom: var(--pbm);
+		padding-left: var(--plm);
+		padding-right: var(--prm);
+	}
 }
 {% endstylesheet %}
 {% javascript %}
@@ -283,52 +292,6 @@ document.addEventListener(
   "blocks": [{ "type": "@theme" }],
 
   "settings": [
-    {
-      "type": "select",
-      "id": "layout_direction",
-      "label": "Layout",
-      "default": "group--horizontal",
-      "options": [
-        { "value": "group--horizontal", "label": "Row" },
-        { "value": "group--vertical", "label": "Column" }
-      ]
-    },
-
-    {
-      "type": "select",
-      "id": "align_x",
-      "label": "Position",
-      "default": "flex-start",
-      "options": [
-        { "value": "flex-start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Right" },
-        { "value": "space-between", "label": "Space between" }
-      ]
-    },
-
-    {
-      "type": "select",
-      "id": "align_y",
-      "label": "Alignment",
-      "default": "flex-start",
-      "options": [
-        { "value": "flex-start", "label": "Top" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Bottom" }
-      ]
-    },
-
-    {
-      "type": "select",
-      "id": "wrap",
-      "label": "Wrap",
-      "default": "wrap",
-      "options": [
-        { "value": "wrap", "label": "On" },
-        { "value": "nowrap", "label": "Off" }
-      ]
-    },
     {
       "type": "header",
       "content": "Marquee Settings"
