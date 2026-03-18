@@ -522,6 +522,52 @@ a.image_link.link_overlay {
       "type": "range",
       "id": "border",
       "label": "Border",
+      "visible_if": "{{ block.settings.set_full_radius != true }}",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Set Each Corner Radius",
+      "id": "set_full_radius"
+    },
+    {
+      "type": "range",
+      "id": "radius_top",
+      "label": "Radius Top",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom",
+      "label": "Radius Bottom",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_left",
+      "label": "Radius Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_right",
+      "label": "Radius Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
       "min": 0,
       "max": 10,
       "step": 1,
