@@ -36,7 +36,11 @@
   flex-wrap: wrap;
 }
 .bundle-products .bundle-card  {
-  width: calc(100% / var(--card-per-row-desktop) - 15px);
+  width: calc(
+    (100% - (var(--card-gap) * (var(--card-per-row-desktop) - 1)))
+    /
+    var(--card-per-row-desktop)
+  );
 }
 
 .price_button_box {
@@ -395,11 +399,13 @@ font-size:var(--progress-bar-desktop-heading-font-size);
 }
 
 @media (max-width: 1024px) {
+
   .bundle-products .bundle-card  {
-    width: calc(33.333% - 14px);
-  }
-  .bundle-products .bundle-card  {
-  width: calc(100% / var(--card-per-row-tablet) - 15px);
+  width: calc(
+    (100% - (var(--card-gap-mobile) * (var(--card-per-row-tablet) - 1)))
+    /
+    var(--card-per-row-tablet)
+  );
 }
 }
 @media (max-width: 640px) {
@@ -432,7 +438,11 @@ font-size:var(--progress-bar-desktop-heading-font-size);
     font-size:var(--progress-bar-mobile-heading-font-size);
   }
   .bundle-products .bundle-card  {
-  width: calc(100% / var(--card-per-row-mobile) - 15px);
+  width: calc(
+    (100% - (var(--card-gap-mobile) * (var(--card-per-row-mobile) - 1)))
+    /
+    var(--card-per-row-mobile)
+  );
 }
 .bundle-builder .section_container {
   padding: var(--section-mobile-padding-top) var(--section-mobile-padding-right) var(--section-mobile-padding-bottom) var(--section-mobile-padding-left);
