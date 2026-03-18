@@ -17491,7 +17491,7 @@
           "type": "block_marquee",
           "name": "Marquee",
           "settings": {
-            "marquee_direction": "vertical",
+            "marquee_direction": "horizontal",
             "align_y": "flex-start",
             "reverse": false,
             "pause_hover": true,
