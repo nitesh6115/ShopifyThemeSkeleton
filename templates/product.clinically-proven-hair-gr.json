@@ -8925,15 +8925,15 @@
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
-                "width": "fit-content",
+                "width": "fill",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fit-content",
+                "width_tablet": "fill",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
                 "custom_width_tablet": 100,
-                "width_mobile": "fit-content",
+                "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -9061,15 +9061,15 @@
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
-                "width": "fit-content",
+                "width": "fill",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fit-content",
+                "width_tablet": "fill",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
                 "custom_width_tablet": 100,
-                "width_mobile": "fit-content",
+                "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -9197,15 +9197,15 @@
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
-                "width": "fit-content",
+                "width": "fill",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fit-content",
+                "width_tablet": "fill",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
                 "custom_width_tablet": 100,
-                "width_mobile": "fit-content",
+                "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -9322,8 +9322,58 @@
                 "block_image_bNFT6x",
                 "block_text_qLMtWh"
               ]
-            },
-            "block_group_fE4yw6": {
+            }
+          },
+          "block_order": [
+            "block_group_NJNKXC",
+            "block_group_A63qQV",
+            "block_group_DxHedU"
+          ]
+        },
+        "block_group_xfHAMQ": {
+          "type": "block_group",
+          "name": "Keywords",
+          "settings": {
+            "layout_direction": "group--horizontal",
+            "align_x": "center",
+            "align_y": "flex-start",
+            "wrap": "wrap",
+            "hover_zoom": false,
+            "shadow": false,
+            "width": "fill",
+            "custom_width_unit_desktop": "%",
+            "custom_width_pixel": 48,
+            "custom_width": 100,
+            "width_tablet": "fill",
+            "custom_width_unit_tablet": "%",
+            "custom_width_tablet_pixel": 48,
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_unit_mobile": "%",
+            "custom_width_pixel_mobile": 48,
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "gap": 12,
+            "gap_m": 12,
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 80,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 40,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false,
+            "image_link": ""
+          },
+          "blocks": {
+            "block_group_7mB3F3": {
               "type": "block_group",
               "name": "Text Points",
               "settings": {
@@ -9366,7 +9416,7 @@
                 "image_link": "shopify://collections"
               },
               "blocks": {
-                "block_image_KgJd9V": {
+                "block_image_XchtcP": {
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
@@ -9406,7 +9456,7 @@
                   },
                   "blocks": {}
                 },
-                "block_text_CV6AYb": {
+                "block_text_zTDLQW": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
@@ -9455,11 +9505,11 @@
                 }
               },
               "block_order": [
-                "block_image_KgJd9V",
-                "block_text_CV6AYb"
+                "block_image_XchtcP",
+                "block_text_zTDLQW"
               ]
             },
-            "block_group_zVXYKy": {
+            "block_group_jcxJL6": {
               "type": "block_group",
               "name": "Text Points",
               "settings": {
@@ -9502,7 +9552,7 @@
                 "image_link": "shopify://collections"
               },
               "blocks": {
-                "block_image_eqK7DW": {
+                "block_image_Fe78hW": {
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
@@ -9542,7 +9592,7 @@
                   },
                   "blocks": {}
                 },
-                "block_text_3qwVLT": {
+                "block_text_rENDgn": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
@@ -9591,11 +9641,11 @@
                 }
               },
               "block_order": [
-                "block_image_eqK7DW",
-                "block_text_3qwVLT"
+                "block_image_Fe78hW",
+                "block_text_rENDgn"
               ]
             },
-            "block_group_cdizEr": {
+            "block_group_LEPJwP": {
               "type": "block_group",
               "name": "Text Points",
               "settings": {
@@ -9638,7 +9688,7 @@
                 "image_link": "shopify://collections"
               },
               "blocks": {
-                "block_image_CHreyh": {
+                "block_image_XKXVM3": {
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
@@ -9678,7 +9728,7 @@
                   },
                   "blocks": {}
                 },
-                "block_text_JhDFaX": {
+                "block_text_3YUDfA": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
@@ -9727,18 +9777,15 @@
                 }
               },
               "block_order": [
-                "block_image_CHreyh",
-                "block_text_JhDFaX"
+                "block_image_XKXVM3",
+                "block_text_3YUDfA"
               ]
             }
           },
           "block_order": [
-            "block_group_NJNKXC",
-            "block_group_A63qQV",
-            "block_group_DxHedU",
-            "block_group_fE4yw6",
-            "block_group_zVXYKy",
-            "block_group_cdizEr"
+            "block_group_7mB3F3",
+            "block_group_jcxJL6",
+            "block_group_LEPJwP"
           ]
         }
       },
@@ -9746,7 +9793,8 @@
         "block_group_gtiVP3",
         "block_group_pqpDgE",
         "block_group_bygzYm",
-        "block_group_PQyNnP"
+        "block_group_PQyNnP",
+        "block_group_xfHAMQ"
       ],
       "name": "Backed by Sciece",
       "settings": {
