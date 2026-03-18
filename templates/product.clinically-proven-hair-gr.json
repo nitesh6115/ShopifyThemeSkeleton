@@ -5895,7 +5895,7 @@
                   "settings": {
                     "video": "shopify://files/videos/website video 1920x815.mp4",
                     "video_url": "",
-                    "autoplay": false,
+                    "autoplay": true,
                     "loop": false,
                     "controls": true,
                     "ratio": "square",
