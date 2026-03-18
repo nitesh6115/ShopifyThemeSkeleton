@@ -5897,7 +5897,7 @@
                     "autoplay": true,
                     "loop": true,
                     "controls": true,
-                    "ratio": "square",
+                    "ratio": "auto",
                     "hover_zoom": true,
                     "shadow": true,
                     "width": "fill",
