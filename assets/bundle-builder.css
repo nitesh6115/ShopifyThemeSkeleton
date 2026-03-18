@@ -398,6 +398,9 @@ font-size:var(--progress-bar-desktop-heading-font-size);
   .bundle-products .bundle-card  {
     width: calc(33.333% - 14px);
   }
+  .bundle-products .bundle-card  {
+  width: calc(100% / var(--card-per-row-tablet) - 15px);
+}
 }
 @media (max-width: 640px) {
   
@@ -428,9 +431,9 @@ font-size:var(--progress-bar-desktop-heading-font-size);
   .bundle-benefits-header .bar_title{
     font-size:var(--progress-bar-mobile-heading-font-size);
   }
-  .bundle-products .bundle-card   {
-    width: calc(50% - 10px);
-  }
+  .bundle-products .bundle-card  {
+  width: calc(100% / var(--card-per-row-mobile) - 15px);
+}
   .section_container {
   padding: var(--section-mobile-padding-top) var(--section-mobile-padding-right) var(--section-mobile-padding-bottom) var(--section-mobile-padding-left);
  
