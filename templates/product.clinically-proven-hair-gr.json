@@ -9138,7 +9138,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Dermatologist Tested & Approved</p>",
+                    "text": "<p>Clinical Trial Validated</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fit-content",
@@ -9274,7 +9274,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Dermatologist Tested & Approved</p>",
+                    "text": "<p>Vegan & Cruelty-Free Certified</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fit-content",
@@ -9410,7 +9410,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Dermatologist Tested & Approved</p>",
+                    "text": "<p>Made in FDA-Registered Facility</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fit-content",
@@ -9546,7 +9546,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Dermatologist Tested & Approved</p>",
+                    "text": "<p>Third-Party Lab Tested</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fit-content",
@@ -9682,7 +9682,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Dermatologist Tested & Approved</p>",
+                    "text": "<p>Hypoallergenic Formula</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fit-content",
