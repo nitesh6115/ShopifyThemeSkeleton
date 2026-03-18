@@ -5894,9 +5894,9 @@
                   "name": "Video",
                   "settings": {
                     "video_url": "https://vimeo.com/347119375",
-                    "autoplay": true,
-                    "loop": true,
-                    "controls": true,
+                    "autoplay": false,
+                    "loop": false,
+                    "controls": false,
                     "ratio": "square",
                     "hover_zoom": true,
                     "shadow": true,
