@@ -318,18 +318,68 @@
       "label": "Background color"
     },
     {
+      "type": "header",
+      "content": "Block Radius"
+    },
+    {
       "type": "range",
       "id": "radius",
-      "label": "Border radius",
+      "label": "Radius",
+      "visible_if": "{{ block.settings.set_full_radius == false }}",
       "min": 0,
-      "max": 50,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Set Each Corner Radius",
+      "id": "set_full_radius"
+    },
+    {
+      "type": "range",
+      "id": "radius_top_left",
+      "label": "Radius Top Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
       "step": 1,
       "default": 0
     },
     {
       "type": "range",
-      "id": "border_size",
-      "label": "Border size",
+      "id": "radius_top_right",
+      "label": "Radius Top Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom_left",
+      "label": "Radius Bottom Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom_right",
+      "label": "Radius Bottom Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border",
+      "label": "Border",
       "min": 0,
       "max": 10,
       "step": 1,
@@ -338,8 +388,7 @@
     {
       "type": "color",
       "id": "border_color",
-      "label": "Border color",
-      "default": "#000000"
+      "label": "Border color"
     },
     {
       "type": "header",
