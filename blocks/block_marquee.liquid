@@ -50,7 +50,20 @@
   {% endif %}
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
-<div id="marquee-{{ block.id }}"class="{{ class_list }}"style="{{ style_schema }}"data-speed="{{ block.settings.speed }}"data-dir="{{ block.settings.marquee_direction }}"data-reverse="{{ block.settings.reverse }}"data-hover="{{ block.settings.pause_hover }}"data-drag="{{ block.settings.drag }}"data-dup="{{ block.settings.auto_duplicate }}"data-speed="{{ block.settings.speed }}"data-speed-m="{{ block.settings.speed_mobile }}"{{ block.shopify_attributes }}>
+<div
+  id="marquee-{{ block.id }}"
+  class="{{ class_list }}"
+  style="{{ style_schema }}"
+  data-speed="{{ block.settings.speed }}"
+  data-dir="{{ block.settings.marquee_direction }}"
+  data-reverse="{{ block.settings.reverse }}"
+  data-hover="{{ block.settings.pause_hover }}"
+  data-drag="{{ block.settings.drag }}"
+  data-dup="{{ block.settings.auto_duplicate }}"
+  data-speed="{{ block.settings.speed }}"
+  data-speed-m="{{ block.settings.speed_mobile }}"
+  {{ block.shopify_attributes }}
+>
   <div class="marquee-inner">
     <div class="marquee-track">
       <div class="marquee-loop">
@@ -60,152 +73,142 @@
   </div>
 </div>
 {% stylesheet %}
-    .marquee {
-    overflow: hidden;
-    position: relative;
-    background: var(--bg);
-	border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
-	border: var(--border) solid var(--border-color);
-	padding-top: var(--pt);
-	padding-bottom: var(--pb);
-	padding-left: var(--pl);
-	padding-right: var(--pr);
-  }
-  .marquee-inner {
-    overflow: hidden;
-    width: 100%;
-  }
-  .marquee-track {
-    display: flex;
-    gap: var(--gap);
-    width: max-content;
-    will-change: transform;
-  }
+      .marquee {
+      overflow: hidden;
+      position: relative;
+      background: var(--bg);
+  	border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
+  	border: var(--border) solid var(--border-color);
+  	padding-top: var(--pt);
+  	padding-bottom: var(--pb);
+  	padding-left: var(--pl);
+  	padding-right: var(--pr);
+    }
+    .marquee-inner {
+      overflow: hidden;
+      width: 100%;
+    }
+    .marquee-track {
+      display: flex;
+      gap: var(--gap);
+      width: max-content;
+      will-change: transform;
+    }
 
-  .marquee-loop {
+    .marquee-loop {
 
-    display: flex;
-    gap: var(--gap);
+      display: flex;
+      gap: var(--gap);
 
+    }
+    .marquee-loop > * {
+      flex: 0 0 auto;
+    }
+  .marquee[data-dir="vertical"] .marquee-track {
+    flex-direction: column;
   }
-  .marquee-loop > * {
-    flex: 0 0 auto;
+  .marquee.is-paused .marquee-track {
+    animation-play-state: paused;
+    pointer-events: auto;
   }
-.marquee[data-dir="vertical"] .marquee-track {
-  flex-direction: column;
-}
-.marquee.is-paused .marquee-track {
-  animation-play-state: paused;
-  pointer-events: auto;
-}
-.marquee-dragging {
-  cursor: grabbing;
-}
-@media (max-width: 767px) {
-.marquee {
-		gap: var(--gap-m);
-		padding-top: var(--ptm);
-		padding-bottom: var(--pbm);
-		padding-left: var(--plm);
-		padding-right: var(--prm);
-	}
-}
+  .marquee-dragging {
+    cursor: grabbing;
+  }
+  @media (max-width: 767px) {
+  .marquee {
+  		gap: var(--gap-m);
+  		padding-top: var(--ptm);
+  		padding-bottom: var(--pbm);
+  		padding-left: var(--plm);
+  		padding-right: var(--prm);
+  	}
+  }
 {% endstylesheet %}
 {% javascript %}
-window.marqueeInit = window.marqueeInit || {};
-function initMarquee(block) {
-  const id = block.dataset.id;
-  if (window.marqueeInit[id]) return;
-  window.marqueeInit[id] = true;
-  const track = block.querySelector(".marquee-track");
-  let speedDesktop = parseFloat(block.dataset.speed) || 30;
-  let speedMobile = parseFloat(block.dataset.speedM) || 20;
-  let dir = block.dataset.dir || "horizontal";
-  let reverse = block.dataset.reverse === "true";
-  let pauseHover = block.dataset.hover === "true";
-  let drag = block.dataset.drag === "true";
-  let dup = block.dataset.dup === "true";
-  let speed =
-    window.innerWidth < 768 ? speedMobile : speedDesktop;
-  let pos = 0;
-  let isDown = false;
-  let startX = 0;
-  // auto duplicate
-  if (dup) {
-    while (
-      track.scrollWidth < block.offsetWidth * 2
-    ) {
-      track.innerHTML += track.innerHTML;
-    }
-  }
-  function animate() {
-    if (!isDown) {
-      if (reverse) {
-        pos += speed * 0.02;
-      } else {
-        pos -= speed * 0.02;
-      }
-      if (dir === "horizontal") {
-        if (Math.abs(pos) > track.scrollWidth / 2)
-          pos = 0;
-        track.style.transform =
-          `translateX(${pos}px)`;
-      } else {
-        if (Math.abs(pos) > track.scrollHeight / 2)
-          pos = 0;
-        track.style.transform =
-          `translateY(${pos}px)`;
+  window.marqueeInit = window.marqueeInit || {};
+  function initMarquee(block) {
+    const id = block.dataset.id;
+    if (window.marqueeInit[id]) return;
+    window.marqueeInit[id] = true;
+    const track = block.querySelector('.marquee-track');
+    let speedDesktop = parseFloat(block.dataset.speed) || 30;
+    let speedMobile = parseFloat(block.dataset.speedM) || 20;
+    let dir = block.dataset.dir || 'horizontal';
+    let reverse = block.dataset.reverse === 'true';
+    let pauseHover = block.dataset.hover === 'true';
+    let drag = block.dataset.drag === 'true';
+    let dup = block.dataset.dup === 'true';
+    let speed = window.innerWidth < 768 ? speedMobile : speedDesktop;
+    let pos = 0;
+    let isDown = false;
+    let startX = 0;
+    // auto duplicate
+    if (dup) {
+      while (track.scrollWidth < block.offsetWidth * 2) {
+        track.innerHTML += track.innerHTML;
       }
     }
-    requestAnimationFrame(animate);
-  }
-  animate();
-  // pause hover
-  if (pauseHover) {
-    block.addEventListener("mouseenter", () => {
+    function animate() {
+      if (!isDown) {
+        if (reverse) {
+          pos += speed * 0.02;
+        } else {
+          pos -= speed * 0.02;
+        }
+        if (dir === 'horizontal') {
+          if (Math.abs(pos) > track.scrollWidth / 2) pos = 0;
+          track.style.transform = `translateX(${pos}px)`;
+        } else {
+          if (Math.abs(pos) > track.scrollHeight / 2) pos = 0;
+          track.style.transform = `translateY(${pos}px)`;
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+    // pause hover
+    if (pauseHover) {
+      block.addEventListener('mouseenter', () => {
+        isDown = true;
+      });
+      block.addEventListener('mouseleave', () => {
+        isDown = false;
+      });
+    }
+    // drag
+    if (drag) {
+      block.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.clientX;
+      });
+      window.addEventListener('mouseup', () => {
+        isDown = false;
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        let move = e.clientX - startX;
+        pos += move * 0.5;
+        startX = e.clientX;
+      });
+    }
+    // touch
+    block.addEventListener('touchstart', (e) => {
       isDown = true;
+      startX = e.touches[0].clientX;
     });
-    block.addEventListener("mouseleave", () => {
+    block.addEventListener('touchend', () => {
       isDown = false;
     });
-  }
-  // drag
-  if (drag) {
-    block.addEventListener("mousedown", (e) => {
-      isDown = true;
-      startX = e.clientX;
-    });
-    window.addEventListener("mouseup", () => {
-      isDown = false;
-    });
-    window.addEventListener("mousemove", (e) => {
+    block.addEventListener('touchmove', (e) => {
       if (!isDown) return;
-      let move = e.clientX - startX;
+      let move = e.touches[0].clientX - startX;
       pos += move * 0.5;
-      startX = e.clientX;
+      startX = e.touches[0].clientX;
     });
   }
-  // touch
-  block.addEventListener("touchstart", (e) => {
-    isDown = true;
-    startX = e.touches[0].clientX;
+  document.querySelectorAll('.marquee').forEach((block) => {
+    initMarquee(block);
   });
-  block.addEventListener("touchend", () => {
-    isDown = false;
-  });
-  block.addEventListener("touchmove", (e) => {
-    if (!isDown) return;
-    let move =
-      e.touches[0].clientX - startX;
-    pos += move * 0.5;
-    startX = e.touches[0].clientX;
-  });
-}
-// init all
-document.querySelectorAll(".marquee").forEach((block) => {
-  initMarquee(block);
-});
-
 {% endjavascript %}
 {% schema %}
 {
