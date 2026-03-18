@@ -5893,7 +5893,7 @@
                   "type": "block_video",
                   "name": "Video",
                   "settings": {
-                    "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+                    "video_url": "https://vimeo.com/347119375",
                     "autoplay": true,
                     "loop": true,
                     "controls": true,
