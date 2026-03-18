@@ -126,11 +126,8 @@
   }
 {% endstylesheet %}
 {% javascript %}
-  window.marqueeInit = window.marqueeInit || {};
   function initMarquee(block) {
     const id = block.dataset.id;
-    if (window.marqueeInit[id]) return;
-    window.marqueeInit[id] = true;
     const track = block.querySelector('.marquee-track');
     let speedDesktop = parseFloat(block.dataset.speed) || 30;
     let speedMobile = parseFloat(block.dataset.speedM) || 20;
