@@ -7926,7 +7926,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_98.png",
+                            "image": "shopify://shop_images/Container_100.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -7971,7 +7971,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_99.png",
+                            "image": "shopify://shop_images/Container_-_2026-03-19T123854.784.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -8022,7 +8022,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Morning or Evening</p>",
+                        "text": "<p>Takes 30 Seconds</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -8074,7 +8074,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Cleanse & Tone",
+                        "text": "Apply 2–3 Drops",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -8120,7 +8120,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Warm 2–3 drops between fingertips and gently press into skin. Start at the forehead, work downward.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
