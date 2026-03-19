@@ -1726,7 +1726,7 @@
             "width": "custom",
             "custom_width_unit_desktop": "%",
             "custom_width_pixel": 48,
-            "custom_width": 73,
+            "custom_width": 100,
             "width_tablet": "fill",
             "custom_width_unit_tablet": "%",
             "custom_width_tablet_pixel": 48,
