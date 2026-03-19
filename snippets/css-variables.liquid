@@ -1,3 +1,8 @@
+{% if template contains 'page' %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+{% endif %}
 {% style %}
   {{ settings.heading_font | font_face: font_display: 'swap' }}
   {{ settings.body_font | font_face: font_display: 'swap' }}
@@ -49,7 +54,11 @@
       }
       
       :root {
+        {% if template contains 'page' %}
+        --font-heading: 'Playfair Display', {{ settings.heading_font.fallback_families }};
+        {% else %}
         --font-heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+        {% endif %}
         --font-body: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
         --font-nav: {{ settings.nav_font.family }}, {{ settings.nav_font.fallback_families }};
         --font-button: {{ settings.button_font.family }}, {{ settings.button_font.fallback_families }};
