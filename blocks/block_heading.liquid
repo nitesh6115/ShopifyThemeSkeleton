@@ -1,6 +1,8 @@
 {% assign tag = block.settings.tag %}
 {%- capture style_schema -%}
 --text-align: {{ block.settings.alignment }};
+--text-transform: {% if block.settings.font_uppercase %} uppercase {% else %}normal{% endif %};
+--text-style: {% if block.settings.font_italic %}italic {% else %}normal{% endif %};
       --color: {{ block.settings.color }};
       --bg: {{ block.settings.bg }};
       {% if block.settings.set_full_radius %}
@@ -93,6 +95,8 @@
     font-weight: var(--fw);
     line-height: var(--line-height);
     letter-spacing: var(--letter-spacing);
+    font-style: var(--font-style);
+    text-transform: var(--text-transform);
   }
   @media (max-width:767px){
     .heading-block{
