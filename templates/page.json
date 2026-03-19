@@ -14077,67 +14077,22 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_98.png",
+                            "image": "shopify://shop_images/ShieldCheck.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
                             "shadow": false,
                             "width": "custom",
                             "custom_width_unit_desktop": "px",
-                            "custom_width_pixel": 48,
+                            "custom_width_pixel": 28,
                             "custom_width": 100,
                             "width_tablet": "custom",
                             "custom_width_unit_tablet": "px",
-                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet_pixel": 28,
                             "custom_width_tablet": 100,
                             "width_mobile": "custom",
                             "custom_width_unit_mobile": "px",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "background": "",
-                            "radius": 0,
-                            "set_full_radius": false,
-                            "radius_top_left": 0,
-                            "radius_top_right": 0,
-                            "radius_bottom_left": 0,
-                            "radius_bottom_right": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        },
-                        "block_image_7AyG9F": {
-                          "type": "block_image",
-                          "name": "Image",
-                          "settings": {
-                            "image": "shopify://shop_images/Container_99.png",
-                            "image_link": "",
-                            "ratio": "auto",
-                            "hover_zoom": false,
-                            "shadow": false,
-                            "width": "custom",
-                            "custom_width_unit_desktop": "px",
-                            "custom_width_pixel": 72,
-                            "custom_width": 100,
-                            "width_tablet": "custom",
-                            "custom_width_unit_tablet": "px",
-                            "custom_width_tablet_pixel": 70,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "custom",
-                            "custom_width_unit_mobile": "px",
-                            "custom_width_pixel_mobile": 72,
+                            "custom_width_pixel_mobile": 28,
                             "custom_width_mobile": 100,
                             "height": "fit",
                             "custom_height": 100,
@@ -14165,67 +14120,14 @@
                         }
                       },
                       "block_order": [
-                        "block_image_h68khJ",
-                        "block_image_7AyG9F"
+                        "block_image_h68khJ"
                       ]
-                    },
-                    "block_text_YAPhJi": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>Morning or Evening</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 12,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#c9a96e",
-                        "letter_spacing": 0,
-                        "letter_spacing_mobile": 0,
-                        "line_height": "1.4",
-                        "line_height_mobile": "1.4",
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
                     },
                     "block_heading_wN8qLm": {
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Cleanse & Tone",
+                        "text": "60-Day Money-Back",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -14234,8 +14136,8 @@
                         "color": "#1a1510",
                         "tag": "h2",
                         "size_mode": "custom",
-                        "font_size": 22,
-                        "font_size_m": 20,
+                        "font_size": 17,
+                        "font_size_m": 16,
                         "font_weight": 600,
                         "width": "fit-content",
                         "custom_width": 100,
@@ -14271,7 +14173,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Love it or full refund — no questions, no hassle.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -14322,7 +14224,6 @@
                   },
                   "block_order": [
                     "block_group_rxVptX",
-                    "block_text_YAPhJi",
                     "block_heading_wN8qLm",
                     "block_text_A33dmA"
                   ]
@@ -14357,7 +14258,7 @@
                   },
                   "blocks": {}
                 },
-                "block_group_WrgHVt": {
+                "block_group_wz7TWL": {
                   "type": "block_group",
                   "name": "Block 2",
                   "settings": {
@@ -14405,7 +14306,7 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_group_4xAJ3A": {
+                    "block_group_8agjLy": {
                       "type": "block_group",
                       "name": "Icons Group",
                       "settings": {
@@ -14453,71 +14354,26 @@
                         "image_link": ""
                       },
                       "blocks": {
-                        "block_image_YTYGqp": {
+                        "block_image_8KbMLc": {
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_100.png",
+                            "image": "shopify://shop_images/Truck.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
                             "shadow": false,
                             "width": "custom",
                             "custom_width_unit_desktop": "px",
-                            "custom_width_pixel": 48,
+                            "custom_width_pixel": 28,
                             "custom_width": 100,
                             "width_tablet": "custom",
                             "custom_width_unit_tablet": "px",
-                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet_pixel": 28,
                             "custom_width_tablet": 100,
                             "width_mobile": "custom",
                             "custom_width_unit_mobile": "px",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "background": "",
-                            "radius": 0,
-                            "set_full_radius": false,
-                            "radius_top_left": 0,
-                            "radius_top_right": 0,
-                            "radius_bottom_left": 0,
-                            "radius_bottom_right": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        },
-                        "block_image_6mfqcJ": {
-                          "type": "block_image",
-                          "name": "Image",
-                          "settings": {
-                            "image": "shopify://shop_images/Container_-_2026-03-19T123854.784.png",
-                            "image_link": "",
-                            "ratio": "auto",
-                            "hover_zoom": false,
-                            "shadow": false,
-                            "width": "custom",
-                            "custom_width_unit_desktop": "px",
-                            "custom_width_pixel": 72,
-                            "custom_width": 100,
-                            "width_tablet": "custom",
-                            "custom_width_unit_tablet": "px",
-                            "custom_width_tablet_pixel": 70,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "custom",
-                            "custom_width_unit_mobile": "px",
-                            "custom_width_pixel_mobile": 72,
+                            "custom_width_pixel_mobile": 28,
                             "custom_width_mobile": 100,
                             "height": "fit",
                             "custom_height": 100,
@@ -14545,67 +14401,14 @@
                         }
                       },
                       "block_order": [
-                        "block_image_YTYGqp",
-                        "block_image_6mfqcJ"
+                        "block_image_8KbMLc"
                       ]
                     },
-                    "block_text_efdEUn": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>Takes 30 Seconds</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 12,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#c9a96e",
-                        "letter_spacing": 0,
-                        "letter_spacing_mobile": 0,
-                        "line_height": "1.4",
-                        "line_height_mobile": "1.4",
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_heading_6dDKpd": {
+                    "block_heading_zHQ9m7": {
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Apply 2–3 Drops",
+                        "text": "Free Priority Shipping",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -14614,8 +14417,8 @@
                         "color": "#1a1510",
                         "tag": "h2",
                         "size_mode": "custom",
-                        "font_size": 22,
-                        "font_size_m": 20,
+                        "font_size": 17,
+                        "font_size_m": 16,
                         "font_weight": 600,
                         "width": "fit-content",
                         "custom_width": 100,
@@ -14647,11 +14450,11 @@
                       },
                       "blocks": {}
                     },
-                    "block_text_bwjLrT": {
+                    "block_text_xBYkFw": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Warm 2–3 drops between fingertips and gently press into skin. Start at the forehead, work downward.</p>",
+                        "text": "<p>Free on all orders over $75. Delivered in 3–5 business days.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -14701,10 +14504,9 @@
                     }
                   },
                   "block_order": [
-                    "block_group_4xAJ3A",
-                    "block_text_efdEUn",
-                    "block_heading_6dDKpd",
-                    "block_text_bwjLrT"
+                    "block_group_8agjLy",
+                    "block_heading_zHQ9m7",
+                    "block_text_xBYkFw"
                   ]
                 },
                 "block_divider_Qhzh4R": {
@@ -14737,7 +14539,7 @@
                   },
                   "blocks": {}
                 },
-                "block_group_xYXChT": {
+                "block_group_YitrNe": {
                   "type": "block_group",
                   "name": "Block 3",
                   "settings": {
@@ -14785,7 +14587,7 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_group_P3FWjA": {
+                    "block_group_YVnJq4": {
                       "type": "block_group",
                       "name": "Icons Group",
                       "settings": {
@@ -14833,71 +14635,26 @@
                         "image_link": ""
                       },
                       "blocks": {
-                        "block_image_Miytzx": {
+                        "block_image_kFk6hF": {
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_-_2026-03-19T123935.098.png",
+                            "image": "shopify://shop_images/Truck.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
                             "shadow": false,
                             "width": "custom",
                             "custom_width_unit_desktop": "px",
-                            "custom_width_pixel": 48,
+                            "custom_width_pixel": 28,
                             "custom_width": 100,
                             "width_tablet": "custom",
                             "custom_width_unit_tablet": "px",
-                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet_pixel": 28,
                             "custom_width_tablet": 100,
                             "width_mobile": "custom",
                             "custom_width_unit_mobile": "px",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "background": "",
-                            "radius": 0,
-                            "set_full_radius": false,
-                            "radius_top_left": 0,
-                            "radius_top_right": 0,
-                            "radius_bottom_left": 0,
-                            "radius_bottom_right": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        },
-                        "block_image_Lk8VCC": {
-                          "type": "block_image",
-                          "name": "Image",
-                          "settings": {
-                            "image": "shopify://shop_images/Container_-_2026-03-19T123942.398.png",
-                            "image_link": "",
-                            "ratio": "auto",
-                            "hover_zoom": false,
-                            "shadow": false,
-                            "width": "custom",
-                            "custom_width_unit_desktop": "px",
-                            "custom_width_pixel": 72,
-                            "custom_width": 100,
-                            "width_tablet": "custom",
-                            "custom_width_unit_tablet": "px",
-                            "custom_width_tablet_pixel": 70,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "custom",
-                            "custom_width_unit_mobile": "px",
-                            "custom_width_pixel_mobile": 72,
+                            "custom_width_pixel_mobile": 28,
                             "custom_width_mobile": 100,
                             "height": "fit",
                             "custom_height": 100,
@@ -14925,67 +14682,14 @@
                         }
                       },
                       "block_order": [
-                        "block_image_Miytzx",
-                        "block_image_Lk8VCC"
+                        "block_image_kFk6hF"
                       ]
                     },
-                    "block_text_3NY9qW": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>Results in 7 Days</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 12,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#c9a96e",
-                        "letter_spacing": 0,
-                        "letter_spacing_mobile": 0,
-                        "line_height": "1.4",
-                        "line_height_mobile": "1.4",
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_heading_H7CJpV": {
+                    "block_heading_KRPC9X": {
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Seal & Protect",
+                        "text": "Hassle-Free Returns",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -14994,8 +14698,8 @@
                         "color": "#1a1510",
                         "tag": "h2",
                         "size_mode": "custom",
-                        "font_size": 22,
-                        "font_size_m": 20,
+                        "font_size": 17,
+                        "font_size_m": 16,
                         "font_weight": 600,
                         "width": "fit-content",
                         "custom_width": 100,
@@ -15027,11 +14731,11 @@
                       },
                       "blocks": {}
                     },
-                    "block_text_knr9XB": {
+                    "block_text_h7pXwq": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Follow with your moisturizer to seal in the actives. Apply SPF 30+ in the morning. Watch your skin transform.</p>",
+                        "text": "<p>Free on all orders over $75. Delivered in 3–5 business days.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -15081,19 +14785,18 @@
                     }
                   },
                   "block_order": [
-                    "block_group_P3FWjA",
-                    "block_text_3NY9qW",
-                    "block_heading_H7CJpV",
-                    "block_text_knr9XB"
+                    "block_group_YVnJq4",
+                    "block_heading_KRPC9X",
+                    "block_text_h7pXwq"
                   ]
                 }
               },
               "block_order": [
                 "block_group_NPDBKJ",
                 "block_divider_hUNFKX",
-                "block_group_WrgHVt",
+                "block_group_wz7TWL",
                 "block_divider_Qhzh4R",
-                "block_group_xYXChT"
+                "block_group_YitrNe"
               ]
             },
             "block_buttons_aRhx49": {
