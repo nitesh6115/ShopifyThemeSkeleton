@@ -248,6 +248,10 @@ width: 100%;
       "default": 0
     },
     {
+      "type": "header",
+      "content": "Block Width"
+    },
+    {
       "type": "select",
       "id": "width",
       "label": "Width Desktop",
@@ -289,10 +293,6 @@ width: 100%;
       "default": 48,
       "label": "Custom Width Desktop In Pixel",
       "visible_if": "{{ block.settings.custom_width_unit_desktop == 'px' and  block.settings.width == 'custom' }}"
-    },
-    {
-      "type": "header",
-      "content": "Block Width"
     },
     {
       "type": "range",
