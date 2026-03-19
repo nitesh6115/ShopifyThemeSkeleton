@@ -5142,7 +5142,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/a2bacfa07def7775e3803c5d91d9ef25.png",
+                        "image": "shopify://shop_images/25f0e7b86d4c0b6954b9f39167b62373.png",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -5187,7 +5187,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Bioretinol Complex",
+                        "text": "24K Gold Infusion",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -5233,7 +5233,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Ultrafine gold nanoparticles penetrate the dermal layer, carrying active ingredients precisely where your skin needs them.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -5370,7 +5370,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/a2bacfa07def7775e3803c5d91d9ef25.png",
+                        "image": "shopify://shop_images/42ff3ce74e1df8d4ffe1ff56a104f5b3.png",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -5415,7 +5415,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Bioretinol Complex",
+                        "text": "Hyaluronic Triad",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -5461,7 +5461,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Three molecular weights of hyaluronic acid for surface-to-deep hydration that lasts 72 hours.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -5655,7 +5655,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/a2bacfa07def7775e3803c5d91d9ef25.png",
+                        "image": "shopify://shop_images/4f1e3d29afbabf5a285378990ff08d8d.png",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -5700,7 +5700,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Bioretinol Complex",
+                        "text": "Peptide Matrix",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -5746,7 +5746,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Six clinically validated peptides signal your skin to produce more collagen and elastin naturally.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -5883,7 +5883,7 @@
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "shopify://shop_images/a2bacfa07def7775e3803c5d91d9ef25.png",
+                        "image": "shopify://shop_images/aac06e7bdfd2a98a5ec68870e694240c.png",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -5928,7 +5928,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Bioretinol Complex",
+                        "text": "Ceramide Shield",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -5974,7 +5974,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Reinforces your skin barrier to lock in moisture and block environmental aggressors 24/7.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -6156,7 +6156,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Bioretinol Complex",
+                        "text": "Antioxidant Defense",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -6202,7 +6202,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Vitamins C & E + resveratrol neutralize free radicals and brighten skin tone over time.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
