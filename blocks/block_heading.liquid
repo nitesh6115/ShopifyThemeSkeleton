@@ -73,7 +73,7 @@
 
 
 <div class="{{- class_list -}}" style="{{- style_schema -}}"{{ block.shopify_attributes }}>
-  <{{ tag }} class="{% if block.settings.size_mode == 'custom' %}size--custom{% endif %}">
+  <{{ tag }} class="heading_text {% if block.settings.size_mode == 'custom' %}size--custom{% endif %}">
     {{ block.settings.text }}
   </{{ tag }}>
 </div>
@@ -89,14 +89,17 @@
     padding-right: var(--pr);
     text-align: var(--text-align);
   }
+  .heading_text{
+    font-style: var(--font-style);
+    text-transform: var(--text-transform);
+  }
   /* custom font */
   .size--custom {
     font-size: var(--fs);
     font-weight: var(--fw);
     line-height: var(--line-height);
     letter-spacing: var(--letter-spacing);
-    font-style: var(--font-style);
-    text-transform: var(--text-transform);
+    
   }
   @media (max-width:767px){
     .heading-block{
