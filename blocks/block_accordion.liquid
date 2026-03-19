@@ -85,9 +85,15 @@
 <div class="{{- class_list -}}"style="{{- style_schema -}}"{{ block.shopify_attributes }}>
   <details class="accordion_item">
     <summary class="accordion_question icon-{{ block.settings.icon_position }}" style="--icon-size: {{ block.settings.icon_size }}px;--icon-color: {{ block.settings.icon_color }};">
+    {% if block.settings.enable_heading %}
+      <h4 class="acc_text">
+        {{ block.settings.question }}
+      </h4>
+    {% else %}
       <span class="acc_text">
         {{ block.settings.question }}
       </span>
+    {% endif %}
       <span class="acc_icon">
         {% case block.settings.icon_type %}
           {% when 'plus' %}
