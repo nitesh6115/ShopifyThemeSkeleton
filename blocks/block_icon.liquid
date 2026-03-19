@@ -14,7 +14,7 @@
 <div id="icon-{{ block.id }}" class="icon-block block-width-desktop-fit-content" style="{{ style_schema }}" {{ block.shopify_attributes }}>
   <div class="icon-inner">
     {% if block.settings.svg_code != blank %}
-      {{ block.settings.svg_code }}
+      <div class="svg_code">{{ block.settings.svg_code }}</div>
     {% elsif block.settings.icon_image != blank %}
       {%- capture img_alt -%}{%- if block.settings.icon_image.alt != blank -%}{{ block.settings.icon_image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
     {{ block.settings.icon_image | image_url: width: 1600
@@ -52,8 +52,12 @@
   </div>
 </div>
 {% stylesheet %}
+.svg_code{
+    width: 100%;
+}
   .icon-inner {
     color: var(--icon-color);
+    width: var(-icon-size);
 }
 {% endstylesheet %}
 {% schema %}
