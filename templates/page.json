@@ -6300,7 +6300,7 @@
                 "radius_bottom_left": 0,
                 "radius_bottom_right": 0,
                 "border": 1,
-                "border_color": "#c9a96e",
+                "border_color": "#30281d",
                 "pt": 20,
                 "pb": 20,
                 "pl": 20,
@@ -6823,7 +6823,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Days to Visible Results</p>",
+                            "text": "<p>Improved hydration</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -6975,7 +6975,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Verified 5-Star Reviews</p>",
+                            "text": "<p>Brighter complexion</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
