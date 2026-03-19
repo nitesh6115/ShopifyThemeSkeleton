@@ -1,0 +1,113 @@
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+{%- capture style_schema -%}
+  --icon-size: {{ block.settings.size }}px;
+  --icon-color: {{ block.settings.color }};
+{%- endcapture -%}
+
+{% assign style_schema = style_schema | strip_newlines %}
+
+<div
+  id="icon-{{ block.id }}"
+  class="icon-block group block-width-desktop-fit-content"
+  style="{{ style_schema }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="icon-inner">
+    {% if block.settings.svg_code != blank %}
+      {{ block.settings.svg_code }}
+    {% elsif block.settings.icon_image != blank %}
+      {%- capture img_alt -%}{%- if block.settings.icon_image.alt != blank -%}{{ block.settings.icon_image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
+    {{ block.settings.icon_image | image_url: width: 1600
+            | image_tag:
+            loading: 'lazy',
+            fetch_priority: fetch_priority,
+            widths: '360, 540, 720, 900, 1080, 1320, 1600',
+            sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+            alt: img_alt
+        }}
+    {% else %}
+      {% case block.settings.icon %}
+        {% when 'star' %}
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"/>
+          </svg>
+        {% when 'heart' %}
+          <svg viewBox="0 0 24 24">
+            <path d="M12 21s-6-4.35-9-8a5.5 5.5 0 0110-3 5.5 5.5 0 0110 3c-3 3.65-9 8-9 8z"/>
+          </svg>
+        {% when 'check' %}
+          <svg viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        {% when 'arrow' %}
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+      {% endcase %}
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Icon",
+  "tag": null,
+
+  "settings": [
+
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "default": "star",
+      "options": [
+        { "value": "star", "label": "Star" },
+        { "value": "heart", "label": "Heart" },
+        { "value": "check", "label": "Check" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Icon image"
+    },
+
+    {
+      "type": "textarea",
+      "id": "svg_code",
+      "label": "SVG code"
+    },
+
+    {
+      "type": "range",
+      "id": "size",
+      "label": "Size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 48
+    },
+
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#000000"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Icon"
+    }
+  ]
+
+}
+{% endschema %}
