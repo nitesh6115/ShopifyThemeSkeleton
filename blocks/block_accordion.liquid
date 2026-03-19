@@ -466,9 +466,17 @@
     },
     {
       "type": "header",
+      "content": "Question style"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_heading",
+      "label": "Enable Heading Style"
+    },
+     {
+      "type": "header",
       "content": "Font"
     },
-
     {
       "type": "range",
       "id": "font_size",
@@ -487,10 +495,27 @@
       "step": 1,
       "default": 14
     },
-
     {
-      "type": "header",
-      "content": "Question style"
+      "type": "checkbox",
+      "label": "Uppercase Text",
+      "id": "text_uppercase"
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "default": "400",
+      "options": [
+        { "value": "100", "label": "100 Thin" },
+        { "value": "200", "label": "200 Extra Light" },
+        { "value": "300", "label": "300 Light" },
+        { "value": "400", "label": "400 Regular" },
+        { "value": "500", "label": "500 Medium" },
+        { "value": "600", "label": "600 Semi Bold" },
+        { "value": "700", "label": "700 Bold" },
+        { "value": "800", "label": "800 Extra Bold" },
+        { "value": "900", "label": "900 Black" }
+      ]
     },
     { "type": "color", "id": "q_color", "label": "Text", "default": "#000000" },
     {
