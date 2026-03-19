@@ -5016,7 +5016,7 @@
               "type": "block_divider",
               "name": "Divider",
               "settings": {
-                "border": 1,
+                "border": 0,
                 "color": "rgba(0,0,0,0)",
                 "width": "custom",
                 "custom_width_unit_desktop": "px",
