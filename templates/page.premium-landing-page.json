@@ -18256,7 +18256,7 @@
                     "icon": "diamonds",
                     "svg_code": "",
                     "size": 20,
-                    "color": "#000000"
+                    "color": "#c9a96e"
                   },
                   "blocks": {}
                 },
@@ -19158,8 +19158,8 @@
         "content_alignment_mobile": "center",
         "background_color": "",
         "background_image": "shopify://shop_images/57b13f4fbcc5258fe01ff4463b45b79004661b5b.jpg",
-        "overlay_color": "#121212",
-        "overlay_opacity": 100,
+        "overlay_color": "#000",
+        "overlay_opacity": 70,
         "bg_position": "center center",
         "bg_size": "cover",
         "columns_desktop": 1,
