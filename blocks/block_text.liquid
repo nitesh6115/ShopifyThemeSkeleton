@@ -79,13 +79,13 @@ text_block;
 
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
-<div class="{{- class_list -}} "style="{{- style_schema -}}"{{ block.shopify_attributes }}>
+<div class="{{- class_list -}} " style="{{- style_schema -}}" {{ block.shopify_attributes }}>
   {% if block.settings.block_link != blank %}
     <a class="block_link" href="{{ block.settings.block_link }}">
   {% endif %}
   {{ block.settings.text }}
   {% if block.settings.block_link != blank %}
-  </a>
+    </a>
   {% endif %}
 </div>
 
@@ -97,8 +97,8 @@ text_block;
     color: var(--text-color);
     background: var(--bg);
     border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
-	  border: var(--border) solid var(--border-color);
-	  padding-top: var(--pt);
+   border: var(--border) solid var(--border-color);
+   padding-top: var(--pt);
     padding-bottom: var(--pb);
     padding-left: var(--pl);
     padding-right: var(--pr);
@@ -404,59 +404,59 @@ text_block;
       ]
     },
     {
-  "type": "range",
-  "id": "letter_spacing",
-  "label": "Letter spacing desktop",
-  "min": -5,
-  "max": 20,
-  "step": 1,
-  "default": 0
-},
-{
-  "type": "range",
-  "id": "letter_spacing_mobile",
-  "label": "Letter spacing mobile",
-  "min": -5,
-  "max": 20,
-  "step": 1,
-  "default": 0
-},
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing desktop",
+      "min": -5,
+      "max": 20,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing_mobile",
+      "label": "Letter spacing mobile",
+      "min": -5,
+      "max": 20,
+      "step": 1,
+      "default": 0
+    },
 
-{
-  "type": "select",
-  "id": "line_height",
-  "label": "Line height desktop",
-  "options": [
-    { "value": "1", "label": "1" },
-    { "value": "1.2", "label": "1.2" },
-    { "value": "1.4", "label": "1.4 (normal)" },
-    { "value": "1.6", "label": "1.6" },
-    { "value": "1.8", "label": "1.8 (loose)" },
-    { "value": "2", "label": "2" }
-  ],
-  "default": "1.4"
-},
-{
-  "type": "select",
-  "id": "line_height_mobile",
-  "label": "Line height mobile",
-  "options": [
-    { "value": "1", "label": "1" },
-    { "value": "1.2", "label": "1.2" },
-    { "value": "1.4", "label": "1.4" },
-    { "value": "1.6", "label": "1.6" },
-    { "value": "1.8", "label": "1.8" },
-    { "value": "2", "label": "2" }
-  ],
-  "default": "1.4"
-},
+    {
+      "type": "select",
+      "id": "line_height",
+      "label": "Line height desktop",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "1.2", "label": "1.2" },
+        { "value": "1.4", "label": "1.4 (normal)" },
+        { "value": "1.6", "label": "1.6" },
+        { "value": "1.8", "label": "1.8 (loose)" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1.4"
+    },
+    {
+      "type": "select",
+      "id": "line_height_mobile",
+      "label": "Line height mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "1.2", "label": "1.2" },
+        { "value": "1.4", "label": "1.4" },
+        { "value": "1.6", "label": "1.6" },
+        { "value": "1.8", "label": "1.8" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1.4"
+    },
     {
       "type": "color",
       "id": "color",
       "label": "Font color",
       "default": "#000000"
     },
-    
+
     {
       "type": "header",
       "content": "Background"
