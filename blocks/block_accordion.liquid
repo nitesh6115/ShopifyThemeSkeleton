@@ -75,12 +75,10 @@
     {% else %}
      block-width-mobile-{{ block.settings.width_mobile }};
     {% endif %}
-
     {% if block.settings.hide_mobile %} hide-mobile;{% endif %}
     {% if block.settings.hide_desktop %} hide-desktop;{% endif %}
 {% endcapture -%}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
-
 <div class="{{- class_list -}}"style="{{- style_schema -}}"{{ block.shopify_attributes }}>
   <details class="accordion_item">
     <summary class="accordion_question icon-{{ block.settings.icon_position }}" style="--icon-size: {{ block.settings.icon_size }}px;--icon-color: {{ block.settings.icon_color }};">
