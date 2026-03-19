@@ -6299,7 +6299,7 @@
                 "radius_top_right": 0,
                 "radius_bottom_left": 0,
                 "radius_bottom_right": 0,
-                "border": 1,
+                "border": 2,
                 "border_color": "#30281d",
                 "pt": 20,
                 "pb": 20,
