@@ -8,12 +8,12 @@
     --ptm: {{ block.settings.ptm }}px;
     --pbm: {{ block.settings.pbm }}px;
     {% if block.settings.height == 'custom' %}
-     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
+    --block-custom-height-desktop: {{ block.settings.custom_height }}%;
     {% endif %}
     {% if block.settings.width == 'custom' %}
     --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
     {% endif %}
-     {% if block.settings.width_tablet == 'custom' %}
+    {% if block.settings.width_tablet == 'custom' %}
     --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
     {% endif %}
     {% if block.settings.width_mobile == 'custom' %}
@@ -27,26 +27,26 @@ divider-block;
 align--{{ block.settings.align }}; 
 {% if block.settings.hide_mobile %}hide-mobile;{% endif %} 
 {% if block.settings.hide_desktop %}hide-desktop;{% endif %}
-    {% if block.settings.height == 'custom' %}
-    block-custom-height-desktop;
-    {% else %}
-    block-height-desktop-{{ block.settings.height }};
-    {% endif %}
-    {% if block.settings.width == 'custom' %}
-    block-custom-width-desktop;
-    {% else %}
-    block-width-desktop-{{ block.settings.width }}
-    {% endif %}
-    {% if block.settings.width_tablet == 'custom' %}
-    block-custom-width-tablet;
-    {% else %}
-    block-width-tablet-{{ block.settings.width_tablet }};
-    {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
-    block-custom-width-mobile;
-    {% else %}
-    block-width-mobile-{{ block.settings.width_mobile }};
-    {% endif %}
+{% if block.settings.height == 'custom' %}
+  block-custom-height-desktop;
+  {% else %}
+  block-height-desktop-{{ block.settings.height }}; 
+  {% endif %}
+  {% if block.settings.width == 'custom' %}
+  block-custom-width-desktop;
+  {% else %}
+  block-width-desktop-{{ block.settings.width }};
+  {% endif %}
+  {% if block.settings.width_tablet == 'custom' %}
+  block-custom-width-tablet; 
+  {% else %}
+  block-width-tablet-{{ block.settings.width_tablet }}; 
+  {% endif %}
+  {% if block.settings.width_mobile == 'custom' %}
+  block-custom-width-mobile; 
+  {% else %}
+  block-width-mobile-{{ block.settings.width_mobile }}; 
+  {% endif %}
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
