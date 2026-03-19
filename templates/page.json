@@ -557,6 +557,8 @@
               "settings": {
                 "text": "Your Skin's",
                 "alignment": "left",
+                "font_italic": false,
+                "font_uppercase": false,
                 "line_height": "1.2",
                 "letter_spacing": 0,
                 "color": "#ffffff",
@@ -601,6 +603,8 @@
               "settings": {
                 "text": "Luminous",
                 "alignment": "left",
+                "font_italic": true,
+                "font_uppercase": false,
                 "line_height": "1.2",
                 "letter_spacing": 0,
                 "color": "#c9a96e",
