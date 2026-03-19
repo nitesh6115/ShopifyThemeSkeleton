@@ -65,6 +65,17 @@
             "image_link": ""
           },
           "blocks": {
+            "block_icon_pd6Uij": {
+              "type": "block_icon",
+              "name": "Icon",
+              "settings": {
+                "icon": "heart",
+                "svg_code": "",
+                "size": 48,
+                "color": "#c9a96e"
+              },
+              "blocks": {}
+            },
             "block_image_kYz46b": {
               "type": "block_image",
               "name": "Image",
@@ -155,6 +166,7 @@
             }
           },
           "block_order": [
+            "block_icon_pd6Uij",
             "block_image_kYz46b",
             "block_text_7n7LcP"
           ]
