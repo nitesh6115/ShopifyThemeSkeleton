@@ -5476,11 +5476,42 @@
             "block_divider_T3Aq4r",
             "block_group_tiR3Tq"
           ]
+        },
+        "block_divider_keGzrW": {
+          "type": "block_divider",
+          "name": "Divider",
+          "settings": {
+            "border": 1,
+            "color": "#1c1811",
+            "width": "fill",
+            "custom_width_unit_desktop": "%",
+            "custom_width_pixel": 48,
+            "custom_width": 100,
+            "width_tablet": "fill",
+            "custom_width_unit_tablet": "%",
+            "custom_width_tablet_pixel": 48,
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_unit_mobile": "%",
+            "custom_width_pixel_mobile": 48,
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background": "",
+            "pt": 0,
+            "pb": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "block_group_bqmTJ9",
-        "block_group_Anj6eK"
+        "block_group_Anj6eK",
+        "block_divider_keGzrW"
       ],
       "name": "You've Tried",
       "settings": {
