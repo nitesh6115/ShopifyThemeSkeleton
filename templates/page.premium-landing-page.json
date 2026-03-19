@@ -69,7 +69,7 @@
               "type": "block_icon",
               "name": "Icon",
               "settings": {
-                "icon": "heart",
+                "icon": "star",
                 "svg_code": "",
                 "size": 48,
                 "color": "#c9a96e"
