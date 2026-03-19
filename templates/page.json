@@ -5011,10 +5011,35 @@
                 "block_heading_pMbrBg",
                 "block_text_cyw3zU"
               ]
+            },
+            "block_divider_mhWBRb": {
+              "type": "block_divider",
+              "name": "Divider",
+              "settings": {
+                "border": 1,
+                "color": "#000000",
+                "width": "custom",
+                "custom_width": 1,
+                "width_tablet": "custom",
+                "custom_width_tablet": 1,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "align": "center",
+                "pt": 10,
+                "pb": 10,
+                "ptm": 8,
+                "pbm": 8,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "block_group_CTnbCA"
+            "block_group_CTnbCA",
+            "block_divider_mhWBRb"
           ]
         }
       },
