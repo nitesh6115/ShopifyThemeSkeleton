@@ -15698,12 +15698,43 @@
                 "block_divider_PQX8nk",
                 "block_group_bndTA7"
               ]
+            },
+            "block_divider_k8phPk": {
+              "type": "block_divider",
+              "name": "Divider",
+              "settings": {
+                "border": 1,
+                "color": "#e8e0d4",
+                "width": "fill",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 100,
+                "width_tablet": "fill",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 100,
+                "width_mobile": "fill",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "pt": 80,
+                "pb": 80,
+                "ptm": 40,
+                "pbm": 40,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "block_group_r8z3An",
             "block_divider_kQQhiH",
-            "block_group_fCAAB4"
+            "block_group_fCAAB4",
+            "block_divider_k8phPk"
           ]
         }
       },
