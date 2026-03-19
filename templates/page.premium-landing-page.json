@@ -19158,7 +19158,7 @@
         "content_alignment_mobile": "center",
         "background_color": "",
         "background_image": "shopify://shop_images/57b13f4fbcc5258fe01ff4463b45b79004661b5b.jpg",
-        "overlay_color": "",
+        "overlay_color": "#121212",
         "overlay_opacity": 50,
         "bg_position": "center center",
         "bg_size": "cover",
