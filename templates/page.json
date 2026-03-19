@@ -8306,7 +8306,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_98.png",
+                            "image": "shopify://shop_images/Container_-_2026-03-19T123935.098.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -8351,7 +8351,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Container_99.png",
+                            "image": "shopify://shop_images/Container_-_2026-03-19T123942.398.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -8402,7 +8402,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Morning or Evening</p>",
+                        "text": "<p>Results in 7 Days</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -8454,7 +8454,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Cleanse & Tone",
+                        "text": "Seal & Protect",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -8500,7 +8500,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Plant-derived retinol alternative delivers the same anti-aging power with zero redness, peeling, or sensitivity.</p>",
+                        "text": "<p>Follow with your moisturizer to seal in the actives. Apply SPF 30+ in the morning. Watch your skin transform.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
