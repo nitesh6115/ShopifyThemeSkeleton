@@ -14977,7 +14977,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/ShieldCheck.png",
+                            "image": "shopify://shop_images/Lock.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -15027,7 +15027,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "60-Day Money-Back",
+                        "text": "Secure Checkout",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -15073,7 +15073,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Love it or full refund — no questions, no hassle.</p>",
+                        "text": "<p>256-bit SSL encryption. Your data is always protected.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -15258,7 +15258,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/Truck.png",
+                            "image": "shopify://shop_images/Award.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -15308,7 +15308,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Free Priority Shipping",
+                        "text": "Dermatologist Tested",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -15354,7 +15354,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Free on all orders over $75. Delivered in 3–5 business days.</p>",
+                        "text": "<p>Clinically tested by board-certified dermatologists.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
