@@ -8176,7 +8176,7 @@
                     "block_text_PdcNdp"
                   ]
                 },
-                "block_divider_U8DBKE": {
+                "block_divider_U9rheq": {
                   "type": "block_divider",
                   "name": "Divider",
                   "settings": {
@@ -8192,11 +8192,11 @@
                     "custom_width_tablet": 1,
                     "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 2,
+                    "custom_width_pixel_mobile": 1,
                     "custom_width_mobile": 100,
                     "height": "fill",
                     "custom_height": 100,
-                    "background": "#1c1811",
+                    "background": "#e8e0d4",
                     "pt": 0,
                     "pb": 0,
                     "ptm": 0,
@@ -8561,7 +8561,7 @@
                 "block_group_7VX7kp",
                 "block_divider_neMRYE",
                 "block_group_3Hc7ic",
-                "block_divider_U8DBKE",
+                "block_divider_U9rheq",
                 "block_group_PAejG7"
               ]
             }
