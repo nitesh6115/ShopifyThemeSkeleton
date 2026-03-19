@@ -2,7 +2,7 @@
   --bw: {{ block.settings.border }}px;
     --bc: {{ block.settings.color }};
     --w: {{ block.settings.width }}%;
-
+    --bg: {{ block.settings.bg }};
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
     --ptm: {{ block.settings.ptm }}px;
@@ -56,6 +56,7 @@ align--{{ block.settings.align }};
 {% stylesheet %}
   .divider-block {
     width: 100%;
+    background: var(--bg);
     padding-top: var(--pt);
     padding-bottom: var(--pb);
   }
@@ -314,15 +315,13 @@ align--{{ block.settings.align }};
       "visible_if": "{{ block.settings.height == 'custom' }}"
     },
     {
-      "type": "select",
-      "id": "align",
-      "label": "Alignment",
-      "default": "center",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
-      ]
+      "type": "header",
+      "content": "Block Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background"
     },
 
     {
