@@ -11,12 +11,7 @@
 
 {% assign style_schema = style_schema | strip_newlines %}
 
-<div
-  id="icon-{{ block.id }}"
-  class="icon-block group block-width-desktop-fit-content"
-  style="{{ style_schema }}"
-  {{ block.shopify_attributes }}
->
+<div id="icon-{{ block.id }}" class="icon-block block-width-desktop-fit-content" style="{{ style_schema }}" {{ block.shopify_attributes }}>
   <div class="icon-inner">
     {% if block.settings.svg_code != blank %}
       {{ block.settings.svg_code }}
