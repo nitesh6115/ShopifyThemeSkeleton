@@ -15539,7 +15539,7 @@
                           "type": "block_image",
                           "name": "Image",
                           "settings": {
-                            "image": "shopify://shop_images/RefreshCw.png",
+                            "image": "shopify://shop_images/Leaf.png",
                             "image_link": "",
                             "ratio": "auto",
                             "hover_zoom": false,
@@ -15589,7 +15589,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Hassle-Free Returns",
+                        "text": "Clean Beauty Certified",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -15635,7 +15635,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Changed your mind? Return within 60 days for a full refund.</p>",
+                        "text": "<p>100% free from parabens, sulfates, and synthetic fragrances.</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
