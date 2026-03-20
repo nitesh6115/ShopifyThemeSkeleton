@@ -158,28 +158,7 @@ function initProductScript(sectionId) {
 
   function activateMedia(mediaId) {
 
-    mediaItems.forEach(item => {
-
-      item.classList.remove("is-active");
-
-      if (item.dataset.mediaId == mediaId) {
-        item.classList.add("is-active");
-      }
-
-      const video = item.querySelector("video");
-      if (video) video.pause();
-
-    });
-
-    thumbs.forEach(thumb => {
-
-      thumb.classList.remove("is-active");
-
-      if (thumb.dataset.mediaId == mediaId) {
-        thumb.classList.add("is-active");
-      }
-
-    });
+    
 
   }
 
