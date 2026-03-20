@@ -34,7 +34,7 @@
     <div class="product_media-wrapper">
       {% render 'product_media_gallery', variant_images: variant_images, product : product %}
     </div>
-    <div class="product_information_wrapper group group--vertical">
+    <div class="product_information_wrapper group group--vertical ">
       {%- assign product_form_id = 'product-form-' | append: block.id -%}
       {% content_for 'blocks' %}
     </div>
@@ -521,6 +521,405 @@ document.addEventListener('sealsubs:price_update', function(e) {
       "step": 100,
       "unit": "px",
       "visible_if": "{{ block.settings.section_width == false }}"
+    },
+    {
+      "type": "select",
+      "id": "align_x",
+      "label": "Position",
+      "default": "flex-start",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" },
+        { "value": "space-between", "label": "Space between" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Product Information Block Width"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width Desktop",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "select",
+      "id": "custom_width_unit_desktop",
+      "label": "Choose Unit Width Dektop",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_pixel",
+      "default": 48,
+      "label": "Custom Width Desktop In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == 'px' and  block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Custom Width Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.custom_width_unit_desktop == '%' and  block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_tablet",
+      "label": "Width Tablet",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "select",
+      "id": "custom_width_unit_tablet",
+      "label": "Choose Unit Width Tablet",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width_tablet == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_tablet_pixel",
+      "default": 48,
+      "label": "Custom Width Tablet In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == 'px' and block.settings.width_tablet == 'custom'}}"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_tablet",
+      "label": "Custom Width Tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.custom_width_unit_tablet == '%' and block.settings.width_tablet == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Width Mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "select",
+      "id": "custom_width_unit_mobile",
+      "label": "Choose Unit Width Mobile",
+      "options": [
+        {
+          "label": "Precent",
+          "value": "%"
+        },
+        {
+          "label": "Pixcel",
+          "value": "px"
+        }
+      ],
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "custom_width_pixel_mobile",
+      "default": 48,
+      "label": "Custom Width Mobile In Pixel",
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == 'px' and block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Custom Width Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.custom_width_unit_mobile == '%' and block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Block Height"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "fit",
+          "label": "Fit"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fit"
+    },
+    {
+      "type": "range",
+      "id": "custom_height",
+      "label": "Custom Height",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.height == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Block Gap"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap Desktop",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "gap_m",
+      "label": "Gap Mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Block Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "header",
+      "content": "Block Radius"
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radius",
+      "visible_if": "{{ block.settings.set_full_radius == false }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Set Each Corner Radius",
+      "id": "set_full_radius"
+    },
+    {
+      "type": "range",
+      "id": "radius_top_left",
+      "label": "Radius Top Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_top_right",
+      "label": "Radius Top Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom_left",
+      "label": "Radius Bottom Left",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "radius_bottom_right",
+      "label": "Radius Bottom Right",
+      "visible_if": "{{ block.settings.set_full_radius == true }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border",
+      "label": "Border",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pl",
+      "label": "Left",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pr",
+      "label": "Right",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+
+    {
+      "type": "range",
+      "id": "ptm",
+      "label": "Top",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pbm",
+      "label": "Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "plm",
+      "label": "Left",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "prm",
+      "label": "Right",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 0
     },
     {
       "type": "color_background",
