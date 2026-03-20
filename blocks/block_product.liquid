@@ -218,7 +218,7 @@ function initProductScript(sectionId) {
   const variants = section.dataset.variants
     ? JSON.parse(section.dataset.variants)
     : [];
-
+  console.log(section)
   const form = section.querySelector("[add-to-cart-form]");
   console.log(form)
   if (!form) return;
