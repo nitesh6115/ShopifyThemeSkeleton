@@ -1,328 +1,517 @@
-{% liquid
-  assign product = closest.product
-  if request.visual_preview_mode and product == blank
-    assign product = collections.all.products.first
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
   endif
 -%}
-{%- capture style_schema -%}
---block-bg: {{ block.settings.bg_color }};
-    --block-radius: {{ block.settings.block_radius }}px;
-    --block-desktop-text-alignment: {{ block.settings.desktop_text_align }};
-    --block-mobile-text-alignment: {{ block.settings.mobile_text_align }};
-    --block-text-color: {{ block.settings.text_color }};
-    --block-desktop-padding-top: {{ block.settings.padding_top }}px;
-    --block-desktop-padding-bottom: {{ block.settings.padding_bottom }}px;
-    --block-desktop-padding-left: {{ block.settings.padding_left }}px;
-    --block-desktop-padding-right: {{ block.settings.padding_right }}px;
-    --block-mobile-padding-top: {{ block.settings.padding_top  | times: 0.55 | round: 0  }}px;
-    --block-mobile-padding-bottom: {{ block.settings.padding_bottom  | times: 0.55 | round: 0  }}px;
-    --block-mobile-padding-left: {{ block.settings.padding_left  | times: 0.55 | round: 0  }}px;
-    --block-mobile-padding-right: {{ block.settings.padding_right  | times: 0.55 | round: 0 }}px;
+{% style %}
+  .section-{{ section.id }} {
+    /* Layout */
+    --max-width: {% if section.settings.section_width == 'custom' %}{{ section.settings.custom_width }}px{% elsif section.settings.section_width == 'full' %}100%{% else %}var(--page-width){% endif %};
+    --content-align-desktop: {{ section.settings.content_alignment_desktop }};
+    --content-align-mobile: {{ section.settings.content_alignment_mobile }};
 
-    --btn-bg: {{ block.settings.btn_bg }};
-    --btn-text: {{ block.settings.btn_text }};
-    --btn-hover-bg: {{ block.settings.btn_hover_bg }};
-    --btn-hover-text: {{ block.settings.btn_hover_text }};
-    --btn-radius: {{ block.settings.btn_radius }}px;
-    --btn-border: {{ block.settings.btn_border }};
-    --btn-font-size: {{ block.settings.btn_size }}px;
-    --btn-uppercase: {% if block.settings.btn_uppercase %} uppercase {% else %} normal {%endif %};
-    --btn-border-width: {{ block.settings.btn_border_width }}px;
-    --btn-hover-border: {{ block.settings.btn_hover_border }};
-{% endcapture %}
-{% assign style_schema = style_schema | strip_newlines %}
-<div
-  class="product_block buy_buttons {% if block.settings.show_dynamic_button %} buy_now_enabled {% endif %}"
-  {{ block.shopify_attributes }}
-  style="{{- style_schema -}}"
->
-  {%- assign product_form_id = 'product-form-' | append: block.id -%}
-  {%- form 'product',
-    product,
-    id: product_form_id,
-    class: 'form',
-    novalidate: 'novalidate',
-    data-type: 'add-to-cart-form'
-  -%}
-    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  /* Desktop Padding */
+  --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+  --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+  --pl-desktop: {{ section.settings.padding_left_desktop }}px;
+  --pr-desktop: {{ section.settings.padding_right_desktop }}px;
 
-    {% if block.settings.show_qty %}
-      <div class="product-quantity" data-quantity-wrapper>
-        <button type="button" class="qty-btn qty-minus">−</button>
+  /* Mobile Padding */
+  --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+  --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+  --pl-mobile: {{ section.settings.padding_left_mobile }}px;
+  --pr-mobile: {{ section.settings.padding_right_mobile }}px;
 
-        <input
-          type="text"
-          name="quantity"
-          value="1"
-          min="1"
-          step="1"
-          readonly
-          class="qty-input"
-        >
+    /* Background */
+    --bg-color: {{ section.settings.background_color }};
+    --border-radius: {{ section.settings.border_radius }}px;
+    --border-width: {{ section.settings.border_width }}px;
+    --border-color: {{ section.settings.border_color }};
 
-        <button type="button" class="qty-btn qty-plus">+</button>
+    /* Typography */
+    --heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+    --heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --heading-weight: {{ section.settings.heading_weight }};
+    --text-size-desktop: {{ section.settings.text_size_desktop }}px;
+    --text-size-mobile: {{ section.settings.text_size_mobile }}px;
+    --heading-color: {{ section.settings.heading_color }};
+    --text-color: {{ section.settings.text_color }};
+    --line-height: {{ section.settings.line_height }};
+    --letter-spacing: {{ section.settings.letter_spacing }}px;
+  }
+  .section-{{ section.id }} {
+    margin-top: var(--mt);
+    margin-bottom: var(--mb);
+    padding-top: var(--pt-desktop);
+    padding-bottom: var(--pb-desktop);
+    padding-left: var(--pl-desktop);
+    padding-right: var(--pr-desktop);
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+  }
 
-        <p class="qty-error" style="display:none;"></p>
-      </div>
-    {% else %}
-      <input
-        type="hidden"
-        name="quantity"
-        value="1"
-        min="1"
-        step="1"
-      >
-    {% endif %}
-    <div class="button_from">
-      <button
-        type="submit"
-        class="add-to-cart"
-        {% if block.settings.show_price %}
-          data-btn-price
-        {% endif %}
-      >
-        <span class="btn_text">Add to Cart</span>
-        {% if block.settings.show_price %}
-          <span class="icon">—</span>
-          <span class="btn_price">{{ current_variant.price | money }}</span>
-        {% endif %}
-      </button>
-    </div>
-    {% if block.settings.show_dynamic_button %}
-      {{ form | payment_button }}
-    {% endif %}
-  {% endform %}
-  {% if block.settings.enabled_sticky_add %}
-    <div class="sticky-atc" id="StickyATC-{{ section.id }}">
-      <div class="sticky-inner">
-        <div class="sticky-left">
-          <img
-            class="sticky-image"
-            alt="{{product.title }}"
-            src="{{  product.featured_image | img_url: '120x' }}"
-            width="120"
-            height="120"
-          >
-          <div class="sticky-meta">
-            <div class="sticky-title">{{ product.title }}</div>
-            <div class="sticky-variant"></div>
-            <div class="sticky-price-wrapper">
-              <span class="sticky-price"></span>
-              <span class="sticky-compare"></span>
-              <span class="sticky-save"></span>
-            </div>
-          </div>
-        </div>
+  .section-{{ section.id }} .section-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: var(--content-align-desktop);
+    position: relative;
+    z-index: 1;
+  }
 
-        <button type="button" class="sticky-btn">Add to Cart</button>
-      </div>
+  .section-{{ section.id }} .section-header h2 {
+    font-size: var(--heading-size-desktop);
+    font-weight: var(--heading-weight);
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
+    color: var(--heading-color);
+  }
+
+  .section-{{ section.id }} .section-header p {
+    font-size: var(--text-size-desktop);
+    color: var(--text-color);
+    line-height: var(--line-height);
+  }
+  .section-{{ section.id }} {
+    --columns-desktop: {{ section.settings.columns_desktop }};
+    --columns-mobile: {{ section.settings.columns_mobile }};
+    --gap: {{ section.settings.gap }}px;
+    --gap-m: {{ section.settings.gap_m }}px;
+  }
+
+  .section-{{ section.id }} .section-content {
+    display: grid;
+    grid-template-columns: repeat(var(--columns-desktop), 1fr);
+    gap: var(--gap);
+  }
+  .section-{{ section.id }} .overlay_img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:{{ section.settings.bg_size }};
+    object-position:{{ section.settings.bg_position }};
+    z-index:1;
+  }
+  @media(min-width: 769px){
+    .section-{{ section.id }}.hide-desktop{
+        display: none;
+    }
+  }
+  @media(max-width: 768px){
+    .section-{{ section.id }}.hide-mobile{
+        display: none;
+    }
+    .section-{{ section.id }} .section-content {
+      gap: var(--gap-m);
+      grid-template-columns: repeat(var(--columns-mobile), 1fr);
+    }
+    .section-{{ section.id }} .section-container {
+      text-align: var(--content-align-mobile);
+    }
+    .section-{{ section.id }} {
+        padding-top: var(--pt-mobile);
+        padding-bottom: var(--pb-mobile);
+        padding-left: var(--pl-mobile);
+        padding-right: var(--pr-mobile);
+    }
+    
+    .section-{{ section.id }} .section-header h2 {
+      font-size: var(--heading-size-mobile);
+    }
+
+    .section-{{ section.id }} .section-header p {
+      font-size: var(--text-size-mobile);
+    }
+  }
+
+  /* Overlay */
+  .section-{{ section.id }} .section-overlay {
+    position:absolute;
+    inset:0;
+    background: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    pointer-events:none;
+    z-index: 1;
+  }
+   .section-{{ section.id }} .section-header {
+    margin-bottom: 2rem;
+  }
+  {{ section.settings.custom_css }}
+{% endstyle %}
+
+<section class="section-{{ section.id }} {% if section.settings.hide_mobile %}hide-mobile{% endif %} {% if section.settings.hide_desktop %}hide-desktop{% endif %}">
+  {% if section.settings.background_image != blank %}
+   
+      {{section.settings.background_image | image_url: width: 2000
+            | image_tag:
+            loading: 'lazy',
+            class: 'overlay_img',
+            fetch_priority: fetch_priority,
+            widths: '360, 540, 720, 900, 1080, 1320, 2000',
+            sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+        }}
+  {% endif %}
+
+  {% if section.settings.overlay_color != blank %}
+    <div class="section-overlay"></div>
+  {% endif %}
+
+  <div class="section-container">
+    {% if section.settings.heading != blank or section.settings.text != blank %}
+    <div class="section-header">
+      <h2 class="section_title">{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
     </div>
   {% endif %}
-</div>
+    <div class="section-content">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</section>
 {% schema %}
 {
-  "tag": null,
-  "name": "Buy Button",
+  "name": "Premium Global Section",
   "settings": [
-    {
-      "type": "header",
-      "content": "Block Spacing"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top",
-      "max": 100,
-      "min": 0,
-      "default": 5,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom",
-      "max": 100,
-      "min": 0,
-      "default": 5,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_left",
-      "label": "Padding Left",
-      "max": 100,
-      "min": 0,
-      "default": 0,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_right",
-      "label": "Padding Right",
-      "max": 100,
-      "min": 0,
-      "default": 0,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "block_radius",
-      "label": "Block Radius",
-      "max": 100,
-      "min": 0,
-      "default": 0,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "select",
-      "id": "desktop_text_align",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "label": "Desktop Text Alignment"
-    },
-    {
-      "type": "select",
-      "id": "mobile_text_align",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "label": "Mobile Text Alignment"
-    },
-    {
-      "type": "color_background",
-      "id": "bg_color",
-      "label": "Block Background"
-    },
-    {
-      "type": "header",
-      "content": "Add to cart Button Style"
-    },
-    {
-      "type": "color_background",
-      "id": "btn_bg",
-      "label": "Button Background Color",
-      "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
-    },
-    {
-      "type": "color_background",
-      "id": "btn_hover_bg",
-      "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
-      "label": "Button Hover Background Color"
-    },
-    {
-      "type": "color",
-      "id": "btn_text",
-      "default": "#fff",
-      "label": "Button Text Color"
-    },
-    {
-      "type": "color",
-      "id": "btn_hover_text",
-      "default": "#fff",
-      "label": "Button Hover Text Color"
-    },
-    {
-      "type": "color",
-      "id": "btn_border",
-      "label": "Button Border Color",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "btn_hover_border",
-      "label": "Button Hover Border Color"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_qty",
-      "label": "Show Quantity"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_dynamic_button",
-      "label": "Show Buy Now or Dynamic Button"
-    },
-    {
-      "type": "checkbox",
-      "id": "enabled_sticky_add",
-      "label": "Show Sticky Add Bar"
-    },
+    { "type": "header", "content": "Layout Settings" },
 
     {
-      "type": "checkbox",
-      "id": "show_price",
-      "label": "Show Price"
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        { "value": "full", "label": "Full Width" },
+        { "value": "custom", "label": "Custom Width" }
+      ],
+      "default": "custom"
     },
     {
       "type": "range",
-      "id": "btn_font",
-      "label": "Button Font Size",
-      "max": 100,
-      "min": 0,
-      "default": 14,
-      "step": 1,
-      "unit": "px"
+      "id": "custom_width",
+      "label": "Custom Max Width",
+      "visible_if": "{{ section.settings.section_width == 'custom' }}",
+      "min": 800,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
     },
     {
-      "type": "checkbox",
-      "id": "btn_uppercase",
-      "label": "Button Text Uppercase"
+      "type": "select",
+      "id": "content_alignment_desktop",
+      "label": "Section Header Alignment (Desktop)",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment_mobile",
+      "label": "Section Header Alignment (Mobile)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "header", "content": "Background Controls" },
+    { "type": "color_background", "id": "background_color", "label": "Background Color"},
+    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "color_background", "id": "overlay_color", "label": "Overlay Color" },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Overlay Opacity",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Background Position",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "select",
+      "id": "bg_size",
+      "label": "Background Size",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Block Layout Settings"
     },
     {
       "type": "range",
-      "id": "btn_radius",
-      "label": "Button Radius",
-      "max": 100,
-      "min": 0,
-      "default": 10,
+      "id": "columns_desktop",
+      "label": "Columns per Row (Desktop)",
+      "min": 1,
+      "max": 6,
       "step": 1,
-      "unit": "px"
+      "default": 1
     },
     {
       "type": "range",
-      "id": "btn_border_width",
-      "label": "Border Size",
-      "max": 100,
-      "min": 0,
-      "default": 0,
+      "id": "columns_mobile",
+      "label": "Columns per Row (Mobile)",
+      "min": 1,
+      "max": 3,
       "step": 1,
-      "unit": "px"
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap Desktop",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_m",
+      "label": "Gap Mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    { "type": "header", "content": "Border Controls" },
+
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Width",
+      "default": 0
+    },
+    { "type": "color", "id": "border_color", "label": "Border Color", "default": "#000000" },
+
+    { "type": "header", "content": "Typography Controls" },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Section Heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "label": "Heading Weight",
+      "default": 700
+    },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#111111" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Section Content Inforation Here</p>",
+      "label": "Text Content"
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Mobile)",
+      "default": 14
+    },
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#111111" },
+    { "type": "range", "id": "line_height", "min": 1, "max": 2, "step": 0.1, "label": "Line Height", "default": 1.4 },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter Spacing",
+      "default": 0
+    },
+    
+    { "type": "header", "content": "Desktop Padding Controls" },
+
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding Controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    { "type": "header", "content": "Visibility" },
+
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
     }
   ],
-  "presets": [
-    {
-      "name": "Add To Cart Button"
-    }
-  ]
+  "presets": [{ "name": "Premium Global Section" }]
 }
 {% endschema %}
