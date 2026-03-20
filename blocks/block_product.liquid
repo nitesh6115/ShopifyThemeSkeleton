@@ -2,16 +2,6 @@
 
 {{ 'custom-product.css' | asset_url | stylesheet_tag }}
 {%- capture style_schema -%}
-    --section-bg:{{ block.settings.section_bg }};
-    --section-wraper-width:{% if block.settings.section_width %}100%{% else %}{{ block.settings.wraper_width }}px{% endif %};
-    --section-padding-top:{{ block.settings.padding_top_desktop }}px;
-    --section-padding-bottom:{{ block.settings.padding_bottom_desktop }}px;
-    --section-padding-left:{{ block.settings.padding_left_desktop }}px;
-    --section-padding-right:{{ block.settings.padding_right_desktop }}px;
-    --section-mobile-padding-top:{{ block.settings.padding_top_mobile }}px;
-    --section-mobile-padding-bottom:{{ block.settings.padding_bottom_mobile }}px;
-    --section-mobile-padding-left:{{ block.settings.padding_left_mobile }}px;
-    --section-mobile-padding-right:{{ block.settings.padding_right_mobile }}px;
     --media-radius:{{ block.settings.media-radius }}px;
     --media-thumb-radius:{{ block.settings.media-thumb-radius }}px;
     --media-thumb-width:{{ block.settings.media-thumb-width }}px;
@@ -42,14 +32,14 @@
   {% endif %}
   --border: {{ block.settings.border }}px;
   --border-color: {{ block.settings.border_color }};
-  --pt: {{ block.settings.pt }}px;
-  --pb: {{ block.settings.pb }}px;
-  --pl: {{ block.settings.pl }}px;
-  --pr: {{ block.settings.pr }}px;
-  --ptm: {{ block.settings.ptm }}px;
-  --pbm: {{ block.settings.pbm }}px;
-  --plm: {{ block.settings.plm }}px;
-  --prm: {{ block.settings.prm }}px;
+  --pt: {{ block.settings.padding_top_desktop }}px;
+  --pb: {{ block.settings.padding_bottom_desktop }}px;
+  --pl: {{ block.settings.padding_left_desktop }}px;
+  --pr: {{ block.settings.padding_right_desktop }}px;
+  --ptm: {{ block.settings.padding_top_mobile }}px;
+  --pbm: {{ block.settings.padding_bottom_mobile }}px;
+  --plm: {{ block.settings.padding_left_mobile }}px;
+  --prm: {{ block.settings.padding_right_mobile }}px;
   {% if block.settings.height == 'custom' %}
   --block-custom-height-desktop: {{ block.settings.custom_height }}%;
   {% endif %}
@@ -629,45 +619,6 @@ document.addEventListener(
       "label": "product"
     },
     {
-      "type": "checkbox",
-      "id": "section_width",
-      "label": "Full Width"
-    },
-    {
-      "type": "range",
-      "id": "wraper_width",
-      "label": "Container Width",
-      "max": 1900,
-      "min": 900,
-      "default": 1400,
-      "step": 100,
-      "unit": "px",
-      "visible_if": "{{ block.settings.section_width == false }}"
-    },
-    {
-      "type": "select",
-      "id": "align_x",
-      "label": "Position",
-      "default": "flex-start",
-      "options": [
-        { "value": "flex-start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Right" },
-        { "value": "space-between", "label": "Space between" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "align_y",
-      "label": "Alignment",
-      "default": "flex-start",
-      "options": [
-        { "value": "flex-start", "label": "Top" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Bottom" }
-      ]
-    },
-    {
       "type": "header",
       "content": "Inforation Block Height"
     },
@@ -732,167 +683,6 @@ document.addEventListener(
       "type": "color_background",
       "id": "background",
       "label": "Background"
-    },
-    {
-      "type": "header",
-      "content": "Block Radius"
-    },
-    {
-      "type": "range",
-      "id": "radius",
-      "label": "Radius",
-      "visible_if": "{{ block.settings.set_full_radius == false }}",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "checkbox",
-      "label": "Set Each Corner Radius",
-      "id": "set_full_radius"
-    },
-    {
-      "type": "range",
-      "id": "radius_top_left",
-      "label": "Radius Top Left",
-      "visible_if": "{{ block.settings.set_full_radius == true }}",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "radius_top_right",
-      "label": "Radius Top Right",
-      "visible_if": "{{ block.settings.set_full_radius == true }}",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "radius_bottom_left",
-      "label": "Radius Bottom Left",
-      "visible_if": "{{ block.settings.set_full_radius == true }}",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "radius_bottom_right",
-      "label": "Radius Bottom Right",
-      "visible_if": "{{ block.settings.set_full_radius == true }}",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "border",
-      "label": "Border",
-      "min": 0,
-      "max": 10,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "color",
-      "id": "border_color",
-      "label": "Border color"
-    },
-    {
-      "type": "header",
-      "content": "Padding Desktop"
-    },
-
-    {
-      "type": "range",
-      "id": "pt",
-      "label": "Top",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "pb",
-      "label": "Bottom",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "pl",
-      "label": "Left",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "pr",
-      "label": "Right",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "Padding Mobile"
-    },
-
-    {
-      "type": "range",
-      "id": "ptm",
-      "label": "Top",
-      "min": 0,
-      "max": 150,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "pbm",
-      "label": "Bottom",
-      "min": 0,
-      "max": 150,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "plm",
-      "label": "Left",
-      "min": 0,
-      "max": 150,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "prm",
-      "label": "Right",
-      "min": 0,
-      "max": 150,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "color_background",
-      "id": "section_bg",
-      "label": "Section Background",
-      "default": "#fff"
     },
     { "type": "header", "content": "Desktop Padding Controls" },
 
