@@ -210,6 +210,87 @@ function initProductScript(sectionId) {
   checkOverflow();
   window.addEventListener("resize", checkOverflow);
 
+
+  /* -------------------------
+     VARIANTS
+  -------------------------- */
+
+  const variants = section.dataset.variants
+    ? JSON.parse(section.dataset.variants)
+    : [];
+
+  const form = section.querySelector("form[id^='product-form-']");
+  if (!form) return;
+
+  const hiddenInput = form.querySelector("input[name='id']");
+  const priceWrapper = section.querySelector(".product-price");
+  const optionGroups = section.querySelectorAll(".product-option");
+  const addToCartBtn = form.querySelector(".add-to-cart");
+
+  let selectedOptions = [];
+  let currentVariant = null;
+
+
+  function formatMoney(cents) {
+
+    return new Intl.NumberFormat(
+      Shopify.locale,
+      {
+        style: "currency",
+        currency: Shopify.currency.active,
+      }
+    ).format(cents / 100);
+
+  }
+
+
+  /* -------------------------
+     INITIAL
+  -------------------------- */
+
+  const initialVariant =
+    variants.find(v => v.id == hiddenInput.value) ||
+    variants.find(v => v.available) ||
+    variants[0];
+
+  if (!initialVariant) return;
+
+  selectedOptions = [
+    initialVariant.option1,
+    initialVariant.option2,
+    initialVariant.option3,
+  ];
+
+  updateUI();
+  updateVariant();
+
+
+  /* -------------------------
+     OPTION CLICK
+  -------------------------- */
+
+  optionGroups.forEach((group, index) => {
+
+    group.querySelectorAll(".option-value")
+      .forEach(button => {
+
+        button.addEventListener("click", function () {
+
+          selectedOptions[index] =
+            this.dataset.value;
+
+          updateUI();
+          updateVariant();
+
+        });
+
+      });
+
+  });
+
+
+ 
+
 }
 
 
