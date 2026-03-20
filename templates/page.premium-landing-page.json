@@ -13785,11 +13785,11 @@
             "custom_width_unit_mobile": "%",
             "custom_width_pixel_mobile": 48,
             "custom_width_mobile": 100,
-            "height": "fit",
+            "height": "fill",
             "custom_height": 100,
             "gap": 12,
             "gap_m": 12,
-            "background": "",
+            "background": "linear-gradient(180deg, rgba(196, 102, 238, 1), rgba(82, 218, 236, 1) 100%)",
             "radius": 0,
             "set_full_radius": false,
             "radius_top_left": 0,
@@ -13866,6 +13866,30 @@
               },
               "blocks": {}
             },
+            "block_product_price_VmwDwt": {
+              "type": "block_product_price",
+              "name": "Product Price",
+              "settings": {
+                "padding_top": 5,
+                "padding_bottom": 5,
+                "padding_left": 0,
+                "padding_right": 0,
+                "block_radius": 0,
+                "desktop_text_align": "left",
+                "mobile_text_align": "left",
+                "bg_color": "#fff",
+                "price_color": "#000000",
+                "compare_price_color": "#a1a1a1",
+                "save_color": "#016630",
+                "save_color_bg": "#dcfce7",
+                "save_radius": 4,
+                "price_font_size": 30,
+                "mobile_price_font_size": 30,
+                "compare_at_price_font_size": 20,
+                "mobile_compare_at_price_font_size": 15
+              },
+              "blocks": {}
+            },
             "block_variant_picker_BkYMjf": {
               "type": "block_variant_picker",
               "name": "variant_picker",
@@ -13921,6 +13945,7 @@
           },
           "block_order": [
             "block_heading_xdVhcj",
+            "block_product_price_VmwDwt",
             "block_variant_picker_BkYMjf",
             "block_add_to_cart_button_bjxqFJ"
           ]
