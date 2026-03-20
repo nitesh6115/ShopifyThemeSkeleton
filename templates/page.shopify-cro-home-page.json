@@ -99,7 +99,7 @@
                 "custom_height": 100,
                 "font_size": 16,
                 "font_size_mobile": 12,
-                "text_uppercase": true,
+                "text_uppercase": false,
                 "font_weight": "400",
                 "color": "#364153",
                 "background": "",
