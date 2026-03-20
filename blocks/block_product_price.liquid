@@ -4,11 +4,8 @@
     assign product = collections.all.products.first
   endif
 -%}
-<div
-              class="product_block product__title"
-              {{ block.shopify_attributes }}
-              style="
-                --desktop-font-size: {{ block.settings.desktop_font_size }}px;
+{%- capture style_schema -%}
+--desktop-font-size: {{ block.settings.desktop_font_size }}px;
                 --mobile-font-size: {{ block.settings.mobile_font_size }}px;
                 --block-bg: {{ block.settings.bg_color }};
                 --block-radius: {{ block.settings.block_radius }}px;
@@ -36,212 +33,210 @@
                 --save-color: {{ block.settings.save_color }};
                 --save-bg: {{ block.settings.save_color_bg }};
                 --save-radius: {{ block.settings.save_radius }}px;
-              "
-            >
-              <div class="product-price">
-                {% assign current_variant = product.selected_or_first_available_variant %}
-
-                <span class="price regular_price">
-                  {{ current_variant.price | money }}
-                </span>
-                <span class="sale_price">
-                  {{ current_variant.compare_at_price | money }}
-                </span>
-                {% assign discount = current_variant.compare_at_price | minus: current_variant.price %}
-                {% assign discount_percentage = discount | times: 100 | divided_by: current_variant.compare_at_price %}
-                <span class="save"> {{ discount_percentage }}% OFF </span>
-              </div>
-            </div>
-
-            {% schema %}
-            {
-                "tag":null,
-      "name": "Price",
-      "settings": [
+{% endcapture %}
+{% assign style_schema = style_schema | strip_newlines %}
+<div class="product_block product__title" {{ block.shopify_attributes }} style="{{- style_schema -}}">
+  <div class="product-price">
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    <span class="price regular_price">
+      {{ current_variant.price | money }}
+    </span>
+    <span class="sale_price">
+      {{ current_variant.compare_at_price | money }}
+    </span>
+    {% assign discount = current_variant.compare_at_price | minus: current_variant.price %}
+    {% assign discount_percentage = discount | times: 100 | divided_by: current_variant.compare_at_price %}
+    <span class="save"> {{ discount_percentage }}% OFF </span>
+  </div>
+</div>
+{% schema %}
+{
+  "tag": null,
+  "name": "Price",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Block Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "max": 100,
+      "min": 0,
+      "default": 5,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "max": 100,
+      "min": 0,
+      "default": 5,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "block_radius",
+      "label": "Block Radius",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_align",
+      "options": [
         {
-          "type": "header",
-          "content": "Block Spacing"
+          "value": "left",
+          "label": "Left"
         },
         {
-          "type": "range",
-          "id": "padding_top",
-          "label": "Padding Top",
-          "max": 100,
-          "min": 0,
-          "default": 5,
-          "step": 1,
-          "unit": "px"
+          "value": "center",
+          "label": "Center"
         },
         {
-          "type": "range",
-          "id": "padding_bottom",
-          "label": "Padding Bottom",
-          "max": 100,
-          "min": 0,
-          "default": 5,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "padding_left",
-          "label": "Padding Left",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "padding_right",
-          "label": "Padding Right",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "block_radius",
-          "label": "Block Radius",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "select",
-          "id": "desktop_text_align",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left",
-          "label": "Desktop Text Alignment"
-        },
-        {
-          "type": "select",
-          "id": "mobile_text_align",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left",
-          "label": "Mobile Text Alignment"
-        },
-        {
-          "type": "color_background",
-          "id": "bg_color",
-          "label": "Block Background",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "price_color",
-          "label": "Price Color",
-          "default": "#000"
-        },
-        {
-          "type": "color",
-          "id": "compare_price_color",
-          "label": "Compare at price Color",
-          "default": "#A1A1A1"
-        },
-        {
-          "type": "color",
-          "id": "save_color",
-          "label": "Save Color",
-          "default": "#016630"
-        },
-        {
-          "type": "color",
-          "id": "save_color_bg",
-          "label": "Save Background Color",
-          "default": "#DCFCE7"
-        },
-        {
-          "type": "range",
-          "id": "save_radius",
-          "label": "Save Radius",
-          "default": 4,
-          "min": 0,
-          "max": 50,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "header",
-          "content": "Price"
-        },
-        {
-          "type": "range",
-          "id": "price_font_size",
-          "label": "Price Font Size Desktop",
-          "default": 30,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "mobile_price_font_size",
-          "label": "Price Font Size Mobile",
-          "default": 30,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "header",
-          "content": "Compare-at price"
-        },
-        {
-          "type": "range",
-          "id": "compare_at_price_font_size",
-          "label": "Compare-at Price Font Size Desktop",
-          "default": 20,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "mobile_compare_at_price_font_size",
-          "label": "Compare-at Price Font Size Mobile",
-          "default": 15,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "px"
+          "value": "right",
+          "label": "Right"
         }
       ],
-      "presets": [{ "name": "Product Price"
-    }]
+      "default": "left",
+      "label": "Desktop Text Alignment"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Mobile Text Alignment"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Block Background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "compare_price_color",
+      "label": "Compare at price Color",
+      "default": "#A1A1A1"
+    },
+    {
+      "type": "color",
+      "id": "save_color",
+      "label": "Save Color",
+      "default": "#016630"
+    },
+    {
+      "type": "color",
+      "id": "save_color_bg",
+      "label": "Save Background Color",
+      "default": "#DCFCE7"
+    },
+    {
+      "type": "range",
+      "id": "save_radius",
+      "label": "Save Radius",
+      "default": 4,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Price"
+    },
+    {
+      "type": "range",
+      "id": "price_font_size",
+      "label": "Price Font Size Desktop",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_price_font_size",
+      "label": "Price Font Size Mobile",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Compare-at price"
+    },
+    {
+      "type": "range",
+      "id": "compare_at_price_font_size",
+      "label": "Compare-at Price Font Size Desktop",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_compare_at_price_font_size",
+      "label": "Compare-at Price Font Size Mobile",
+      "default": 15,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
     }
-            {% endschema %}
+  ],
+  "presets": [{ "name": "Product Price" }]
+}
+{% endschema %}

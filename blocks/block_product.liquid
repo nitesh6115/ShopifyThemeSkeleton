@@ -1,4 +1,4 @@
-{%  assign product = block.settings.product %}
+{% assign product = block.settings.product %}
 
 {{ 'custom-product.css' | asset_url | stylesheet_tag }}
 {%- capture style_schema -%}
@@ -107,7 +107,7 @@
 
   <div class="product-wrapper">
     <div class="product_media-wrapper">
-      {% render 'product_media_gallery', variant_images: variant_images, product : product %}
+      {% render 'product_media_gallery', variant_images: variant_images, product: product %}
     </div>
     <div class="product_information_wrapper {{  info_class_list }}" style="{{- Inforation_block -}}">
       {%- assign product_form_id = 'product-form-' | append: block.id -%}
@@ -1094,9 +1094,9 @@ document.addEventListener('sealsubs:price_update', function(e) {
     },
     {
       "id": "show_thumbs",
-      "label":"Show Media Thumbs",
+      "label": "Show Media Thumbs",
       "type": "checkbox",
-      "default":true
+      "default": true
     },
     {
       "type": "range",
@@ -1166,13 +1166,13 @@ document.addEventListener('sealsubs:price_update', function(e) {
       "type": "@app"
     },
     {
-       "type": "@theme"
+      "type": "@theme"
     },
     {
-       "type": "block_variant_picker"
+      "type": "block_variant_picker"
     },
     {
-        "type": "block_add_to_cart_button"
+      "type": "block_add_to_cart_button"
     }
   ],
   "presets": [{ "name": "Product" }]
