@@ -369,7 +369,7 @@
                 "buy_btn_text": "#121212",
                 "buy_btn_hover_text": "#ffffff",
                 "buy_btn_border": "#121212",
-                "buy_btn_hover_border": "",
+                "buy_btn_hover_border": "#121212",
                 "enabled_sticky_add": true,
                 "show_price": false,
                 "btn_font": 14,
