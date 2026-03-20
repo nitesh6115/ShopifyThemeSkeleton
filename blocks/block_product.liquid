@@ -204,7 +204,7 @@
     });
 
     checkOverflow();
-    window.addEventListener('resize', checkOverflow);
+    
 
     const variants = section.dataset.variants ? JSON.parse(section.dataset.variants) : [];
     const form = section.querySelector("form[id^='product-form-']");
@@ -509,6 +509,7 @@
 
     initProductScript(id);
   });
+  window.addEventListener('resize', checkOverflow);
 </script>
 {% schema %}
 {
