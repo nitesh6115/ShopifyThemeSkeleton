@@ -1,5 +1,4 @@
 {% assign product = block.settings.product %}
-
 {{ 'custom-product.css' | asset_url | stylesheet_tag }}
 {%- capture style_schema -%}
     --media-radius:{{ block.settings.media-radius }}px;
