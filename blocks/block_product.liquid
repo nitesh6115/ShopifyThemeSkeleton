@@ -211,7 +211,9 @@ function initProductScript(sectionId) {
   checkOverflow();
   window.addEventListener("resize", checkOverflow);
 
-  const variants = {{ product.variants | json }};
+  const variants = section.dataset.variants
+    ? JSON.parse(section.dataset.variants)
+    : [];
   const form = section.querySelector("form[id^='product-form-']");
   if (!form) return;
 
