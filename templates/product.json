@@ -11373,7 +11373,7 @@
                 "a_color": "#0a0a0a",
                 "background": "",
                 "radius": 10,
-                "border": 0,
+                "border": 2,
                 "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
@@ -11388,7 +11388,7 @@
               },
               "blocks": {}
             },
-            "block_accordion_fGgz3q": {
+            "block_accordion_g7dJe3": {
               "type": "block_accordion",
               "name": "Accordion",
               "settings": {
@@ -11429,7 +11429,7 @@
                 "a_color": "#0a0a0a",
                 "background": "",
                 "radius": 10,
-                "border": 0,
+                "border": 2,
                 "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
@@ -11444,11 +11444,11 @@
               },
               "blocks": {}
             },
-            "block_accordion_Uaz38T": {
+            "block_accordion_6Qrrbw": {
               "type": "block_accordion",
               "name": "Accordion",
               "settings": {
-                "question": "How long does it take to see results?",
+                "question": "What's your return policy?",
                 "answer": "<p>Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal</p>",
                 "icon_type": "plus",
                 "icon_char": "+",
@@ -11485,63 +11485,7 @@
                 "a_color": "#0a0a0a",
                 "background": "",
                 "radius": 10,
-                "border": 0,
-                "border_color": "#f7e7db",
-                "pt": 16,
-                "pb": 16,
-                "pl": 16,
-                "pr": 16,
-                "pt_m": 12,
-                "pb_m": 12,
-                "pl_m": 12,
-                "pr_m": 12,
-                "hide_mobile": false,
-                "hide_desktop": false
-              },
-              "blocks": {}
-            },
-            "block_accordion_7DCPVC": {
-              "type": "block_accordion",
-              "name": "Accordion",
-              "settings": {
-                "question": "How long does it take to see results?",
-                "answer": "<p>Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal</p>",
-                "icon_type": "plus",
-                "icon_char": "+",
-                "icon_position": "right",
-                "icon_size": 16,
-                "icon_color": "#000000",
-                "q_align": "left",
-                "a_align": "left",
-                "shadow": false,
-                "width": "custom",
-                "custom_width_unit_desktop": "%",
-                "custom_width_pixel": 48,
-                "custom_width": 100,
-                "width_tablet": "custom",
-                "custom_width_unit_tablet": "%",
-                "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 100,
-                "width_mobile": "fit-content",
-                "custom_width_unit_mobile": "%",
-                "custom_width_pixel_mobile": 48,
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "enable_heading": false,
-                "font_size": 16,
-                "font_size_mobile": 14,
-                "text_uppercase": false,
-                "font_weight": "400",
-                "letter_spacing": 0,
-                "letter_spacing_mobile": 0,
-                "line_height": "1.4",
-                "line_height_mobile": "1.4",
-                "q_color": "#000000",
-                "a_color": "#0a0a0a",
-                "background": "",
-                "radius": 10,
-                "border": 0,
+                "border": 2,
                 "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
@@ -11559,9 +11503,8 @@
           },
           "block_order": [
             "block_accordion_6HmwAe",
-            "block_accordion_fGgz3q",
-            "block_accordion_Uaz38T",
-            "block_accordion_7DCPVC"
+            "block_accordion_g7dJe3",
+            "block_accordion_6Qrrbw"
           ]
         },
         "block_group_AAWNrh": {
