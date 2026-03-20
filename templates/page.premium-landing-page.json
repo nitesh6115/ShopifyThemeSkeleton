@@ -4846,11 +4846,11 @@
               "settings": {
                 "border": 1,
                 "color": "#1c1811",
-                "width": "fill",
+                "width": "custom",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
                 "custom_width_tablet": 100,
