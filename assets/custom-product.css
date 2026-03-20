@@ -338,20 +338,25 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
 
 .buy_now_enabled button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
     width: 100%;
-    border-radius: var(--btn-radius);
     height: 56px;
-    background: var(--btn-text);
+    background: var(--buy-btn-bg);
     font-weight: 800;
-    color: var(--btn-border);
-    font-weight: bold;
-    border: var(--btn-border-width) solid var(--btn-border);
+    color: var(--buy-btn-text);
+    border: var(--btn-border-width) solid var(--buy-btn-border);
+    border-radius: var(--btn-radius);
+    transition: .2s ease;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: var(--btn-uppercase);
+    gap: 10px;
     cursor: pointer;
-    font-size: 15px;
 }
 
 .buy_now_enabled button.shopify-payment-button__button.shopify-payment-button__button--unbranded:hover {
-    background: var(--btn-hover-bg);
-    color: var(--btn-hover-text);
+    background: var(--buy-btn-hover-bg);
+    color: var(--buy-btn-hover-text);
 }
 
 .buy_now_enabled .shopify-payment-button__button[disabled] {
