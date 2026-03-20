@@ -11959,7 +11959,7 @@
             "custom_height": 100,
             "gap": 12,
             "gap_m": 12,
-            "background": "linear-gradient(90deg, rgba(0, 166, 62, 1), rgba(0, 153, 102, 1) 100%)",
+            "background": "#016630",
             "radius": 16,
             "set_full_radius": false,
             "radius_top_left": 0,
