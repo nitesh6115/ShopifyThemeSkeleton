@@ -4872,6 +4872,17 @@
                     "image_link": ""
                   },
                   "blocks": {
+                    "block_icon_bFCpqa": {
+                      "type": "block_icon",
+                      "name": "Icon",
+                      "settings": {
+                        "icon": "star",
+                        "svg_code": "",
+                        "size": 48,
+                        "color": "#000000"
+                      },
+                      "blocks": {}
+                    },
                     "block_image_mQGCAx": {
                       "type": "block_image",
                       "name": "Image",
@@ -4962,6 +4973,7 @@
                     }
                   },
                   "block_order": [
+                    "block_icon_bFCpqa",
                     "block_image_mQGCAx",
                     "block_text_KGKRJg"
                   ]
