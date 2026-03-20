@@ -1,3 +1,122 @@
+{% liquid
+  assign product = closest.product
+  if request.visual_preview_mode and product == blank
+    assign product = collections.all.products.first
+  endif
+-%}
+<div
+    class="product_block buy_buttons {% if block.settings.show_dynamic_button %} buy_now_enabled {% endif %}"
+    {{ block.shopify_attributes }}
+    style="
+    --block-bg: {{ block.settings.bg_color }};
+    --block-radius: {{ block.settings.block_radius }}px;
+    --block-desktop-text-alignment: {{ block.settings.desktop_text_align }};
+    --block-mobile-text-alignment: {{ block.settings.mobile_text_align }};
+    --block-text-color: {{ block.settings.text_color }};
+    --block-desktop-padding-top: {{ block.settings.padding_top }}px;
+    --block-desktop-padding-bottom: {{ block.settings.padding_bottom }}px;
+    --block-desktop-padding-left: {{ block.settings.padding_left }}px;
+    --block-desktop-padding-right: {{ block.settings.padding_right }}px;
+    --block-mobile-padding-top: {{ block.settings.padding_top  | times: 0.55 | round: 0  }}px;
+    --block-mobile-padding-bottom: {{ block.settings.padding_bottom  | times: 0.55 | round: 0  }}px;
+    --block-mobile-padding-left: {{ block.settings.padding_left  | times: 0.55 | round: 0  }}px;
+    --block-mobile-padding-right: {{ block.settings.padding_right  | times: 0.55 | round: 0 }}px;
+
+    --btn-bg: {{ block.settings.btn_bg }};
+    --btn-text: {{ block.settings.btn_text }};
+    --btn-hover-bg: {{ block.settings.btn_hover_bg }};
+    --btn-hover-text: {{ block.settings.btn_hover_text }};
+    --btn-radius: {{ block.settings.btn_radius }}px;
+    --btn-border: {{ block.settings.btn_border }};
+    --btn-font-size: {{ block.settings.btn_size }}px;
+    --btn-uppercase: {% if block.settings.btn_uppercase %} uppercase {% else %} normal {%endif %};
+    --btn-border-width: {{ block.settings.btn_border_width }}px;
+    --btn-hover-border: {{ block.settings.btn_hover_border }};
+    "
+>
+    {%- form 'product',
+    product,
+    id: product_form_id,
+    class: 'form',
+    novalidate: 'novalidate',
+    data-type: 'add-to-cart-form'
+    -%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+    {% if block.settings.show_qty %}
+        <div class="product-quantity" data-quantity-wrapper>
+        <button type="button" class="qty-btn qty-minus">−</button>
+
+        <input
+            type="text"
+            name="quantity"
+            value="1"
+            min="1"
+            step="1"
+            readonly
+            class="qty-input"
+        >
+
+        <button type="button" class="qty-btn qty-plus">+</button>
+
+        <p class="qty-error" style="display:none;"></p>
+        
+        </div>
+    {% else %}
+        <input
+        type="hidden"
+        name="quantity"
+        value="1"
+        min="1"
+        step="1"
+        >
+    {% endif %}
+    <div class="button_from">
+        <button
+        type="submit"
+        class="add-to-cart"
+        {% if block.settings.show_price %}
+            data-btn-price
+        {% endif %}
+        >
+        <span class="btn_text">Add to Cart</span>
+        {% if block.settings.show_price %}
+            <span class="icon">—</span>
+            <span class="btn_price">{{ current_variant.price | money }}</span>
+        {% endif %}
+        </button>
+    </div>
+    {% if block.settings.show_dynamic_button %}
+        {{ form | payment_button }}
+    {% endif %}
+    {% endform %}
+    {% if block.settings.enabled_sticky_add %}
+    <div class="sticky-atc" id="StickyATC-{{ section.id }}">
+    <div class="sticky-inner">
+        <div class="sticky-left">
+        <img
+            class="sticky-image"
+            alt="{{product.title }}"
+            src="{{  product.featured_image | img_url: '120x' }}"
+            width="120"
+            height="120"
+        >
+        <div class="sticky-meta">
+            <div class="sticky-title">{{ product.title }}</div>
+            <div class="sticky-variant"></div>
+            <div class="sticky-price-wrapper">
+            <span class="sticky-price"></span>
+            <span class="sticky-compare"></span>
+            <span class="sticky-save"></span>
+            </div>
+        </div>
+        </div>
+
+        <button type="button" class="sticky-btn">Add to Cart</button>
+    </div>
+    </div>
+{% endif %}
+</div>
 {% schema %}
 {
     "tag":null,
