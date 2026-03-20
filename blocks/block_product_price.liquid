@@ -1,0 +1,241 @@
+<div
+              class="product_block product__title"
+              {{ block.shopify_attributes }}
+              style="
+                --desktop-font-size: {{ block.settings.desktop_font_size }}px;
+                --mobile-font-size: {{ block.settings.mobile_font_size }}px;
+                --block-bg: {{ block.settings.bg_color }};
+                --block-radius: {{ block.settings.block_radius }}px;
+                --block-desktop-text-alignment: {{ block.settings.desktop_text_align }};
+                --block-mobile-text-alignment: {{ block.settings.mobile_text_align }};
+                --block-text-color: {{ block.settings.text_color }};
+                --block-desktop-padding-top: {{ block.settings.padding_top }}px;
+                --block-desktop-padding-bottom: {{ block.settings.padding_bottom }}px;
+                --block-desktop-padding-left: {{ block.settings.padding_left }}px;
+                --block-desktop-padding-right: {{ block.settings.padding_right }}px;
+                --block-mobile-padding-top: {{ block.settings.padding_top  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-bottom: {{ block.settings.padding_bottom  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-left: {{ block.settings.padding_left  | times: 0.55 | round: 0  }}px;
+                --block-mobile-padding-right: {{ block.settings.padding_right  | times: 0.55 | round: 0 }}px;
+
+                --price-color: {{ block.settings.price_color }};
+                --price-compare_at: {{ block.settings.compare_price_color }};
+
+                --price-desktop-font-size: {{ block.settings.price_font_size }}px;
+                --price-mobile-font-size: {{ block.settings.mobile_price_font_size }}px;
+
+                --price-compare-at-desktop-font-size: {{ block.settings.compare_at_price_font_size }}px;
+                --price-compare-at-mobile-font-size: {{ block.settings.mobile_compare_at_price_font_size }}px;
+
+                --save-color: {{ block.settings.save_color }};
+                --save-bg: {{ block.settings.save_color_bg }};
+                --save-radius: {{ block.settings.save_radius }}px;
+              "
+            >
+              <div class="product-price">
+                {% assign current_variant = product.selected_or_first_available_variant %}
+
+                <span class="price regular_price">
+                  {{ current_variant.price | money }}
+                </span>
+                <span class="sale_price">
+                  {{ current_variant.compare_at_price | money }}
+                </span>
+                {% assign discount = current_variant.compare_at_price | minus: current_variant.price %}
+                {% assign discount_percentage = discount | times: 100 | divided_by: current_variant.compare_at_price %}
+                <span class="save"> {{ discount_percentage }}% OFF </span>
+              </div>
+            </div>
+
+            {% schema %}
+            {
+                "tag":null,
+      "name": "Price",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Block Spacing"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "max": 100,
+          "min": 0,
+          "default": 5,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "max": 100,
+          "min": 0,
+          "default": 5,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_left",
+          "label": "Padding Left",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_right",
+          "label": "Padding Right",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Block Radius",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "desktop_text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Desktop Text Alignment"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Mobile Text Alignment"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color",
+          "label": "Block Background",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Price Color",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "compare_price_color",
+          "label": "Compare at price Color",
+          "default": "#A1A1A1"
+        },
+        {
+          "type": "color",
+          "id": "save_color",
+          "label": "Save Color",
+          "default": "#016630"
+        },
+        {
+          "type": "color",
+          "id": "save_color_bg",
+          "label": "Save Background Color",
+          "default": "#DCFCE7"
+        },
+        {
+          "type": "range",
+          "id": "save_radius",
+          "label": "Save Radius",
+          "default": 4,
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Price"
+        },
+        {
+          "type": "range",
+          "id": "price_font_size",
+          "label": "Price Font Size Desktop",
+          "default": 30,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_price_font_size",
+          "label": "Price Font Size Mobile",
+          "default": 30,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Compare-at price"
+        },
+        {
+          "type": "range",
+          "id": "compare_at_price_font_size",
+          "label": "Compare-at Price Font Size Desktop",
+          "default": 20,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_compare_at_price_font_size",
+          "label": "Compare-at Price Font Size Mobile",
+          "default": 15,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        }
+      ],
+      "presets": [{ "name": "Product Price"
+    }]
+    }
+            {% endschema %}
