@@ -334,21 +334,15 @@
                 "mobile_text_align": "left",
                 "bg_color": "",
                 "pill-bg": "#fff",
-                "pill-text": "#000",
-                "pill-border": "#000",
-                "hover-pill-bg": "#000",
-                "hover-pill-text": "#fff",
-                "hover-pill-border": "#000",
-                "pill-border-width": 1,
+                "pill-text": "#8b6a53",
+                "pill-border": "#d4d4d4",
+                "hover-pill-bg": "#e8d8c3",
+                "hover-pill-text": "#8b6a53",
+                "hover-pill-border": "#8b6a53",
+                "pill-border-width": 2,
                 "pill-radius": 10
               },
               "blocks": {}
-            },
-            "seal_subscriptions_subscription_widget_yTaHA4": {
-              "type": "shopify://apps/seal-subscriptions/blocks/subscription-widget/13b25004-a140-4ab7-b5fe-29918f759699",
-              "settings": {
-                "product": "{{closest.product}}"
-              }
             },
             "block_add_to_cart_button_jjTRmx": {
               "type": "block_add_to_cart_button",
@@ -387,7 +381,6 @@
             "block_text_ti3E3M",
             "block_product_price_RdaFd8",
             "block_variant_picker_g69dWw",
-            "seal_subscriptions_subscription_widget_yTaHA4",
             "block_add_to_cart_button_jjTRmx"
           ]
         }
