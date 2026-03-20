@@ -19,8 +19,51 @@
     --media-thumb-border-size:{{ block.settings.media-thumb-border-width }}px;
     --media-thumb-border-color:{{ block.settings.media_border }};
     --media-thumb-border-active-color:{{ block.settings.media_border_active }};
+
+  --align-x: {{ block.settings.align_x }};
+  --align-y: {{ block.settings.align_y }};
+  --child-size: {{ block.size }};
+  --wrap: {{ block.settings.wrap }};
+  --gap: {{ block.settings.gap }}px;
+  --gap-m: {{ block.settings.gap_m }}px;
+  --bg: {{ block.settings.background }};
+  {% if block.settings.set_full_radius %}
+  --radius-top-left: {{ block.settings.radius_top_left }}px;
+  --radius-top-right: {{ block.settings.radius_top_right }}px;
+  --radius-bottom-left: {{ block.settings.radius_bottom_left }}px;
+  --radius-bottom-right: {{ block.settings.radius_bottom_right }}px;
+  {% else %}
+  --radius-top-left: {{ block.settings.radius }}px;
+  --radius-top-right: {{ block.settings.radius }}px;
+  --radius-bottom-left: {{ block.settings.radius }}px;
+  --radius-bottom-right: {{ block.settings.radius }}px;
+  {% endif %}
+  --border: {{ block.settings.border }}px;
+  --border-color: {{ block.settings.border_color }};
+  --pt: {{ block.settings.pt }}px;
+  --pb: {{ block.settings.pb }}px;
+  --pl: {{ block.settings.pl }}px;
+  --pr: {{ block.settings.pr }}px;
+  --ptm: {{ block.settings.ptm }}px;
+  --pbm: {{ block.settings.pbm }}px;
+  --plm: {{ block.settings.plm }}px;
+  --prm: {{ block.settings.prm }}px;
+  {% if block.settings.height == 'custom' %}
+  --block-custom-height-desktop: {{ block.settings.custom_height }}%;
+  {% endif %}
+  {% if block.settings.width == 'custom' %}
+  --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
+  {% endif %}
+  {% if block.settings.width_tablet == 'custom' %}
+  --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
+  {% endif %}
+  {% if block.settings.width_mobile == 'custom' %}
+  --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
+  {% endif %}
 {%- endcapture -%}
+
 {% assign style_schema = style_schema | strip_newlines %}
+
 <div
   class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{- style_schema -}}"
