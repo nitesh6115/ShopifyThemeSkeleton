@@ -197,6 +197,25 @@ button.thumb-nav.thumb-next {
   }
 
 }
+.selling-plan-group-options-name-select {
+    margin: 0;
+}
+
+.sealsubs-container label.sls-selling-plan-group-name, .sealsubs-container .sls-option-container label, .sealsubs-container label.sls-purchase-options-label {font-size: 16px;}
+
+.sls-price {
+    font-size: 16px;
+}
+
+.sls-label-container.seal-col {
+    display: block;
+    line-height: normal;
+}
+
+.seal-row {
+    display: flex;
+    align-items: center;
+}
 .product-price {
     display: flex;
     gap: 15px;
