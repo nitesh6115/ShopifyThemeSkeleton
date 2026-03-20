@@ -121,7 +121,7 @@ function initProductScript(sectionId) {
 
   const section = document.querySelector('#MainProduct_' + sectionId);
   if (!section) return;
-  const gallery = document.querySelector(".custom-product-gallery");
+  const gallery = section.querySelector(".custom-product-gallery");
   if (!gallery) return;
   const thumbs = gallery.querySelectorAll(".gallery-thumb");
   const track = gallery.querySelector(".gallery-thumbs-track");
