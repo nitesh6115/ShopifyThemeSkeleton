@@ -129,15 +129,14 @@ function initProductScript(sectionId) {
   const track = gallery.querySelector(".gallery-thumbs-track");
   const mediaItems = gallery.querySelectorAll(".gallery-media-item");
   const wrapper = gallery.querySelector(".gallery-thumbs-wrapper");
-  console.log(wrapper)
   const prevBtn = gallery.querySelector(".thumb-prev");
   const nextBtn = gallery.querySelector(".thumb-next");
 
 
   /*----------------------------
       MEDIA ELEMENTS 
-  ---------------------------*/
-  let currentTranslate = 0;
+    ---------------------------*/
+    let currentTranslate = 0;
 
   function checkOverflow() {
 
@@ -212,7 +211,7 @@ function initProductScript(sectionId) {
   });
   
   checkOverflow();
-  
+  window.addEventListener("resize", checkOverflow);
 
   const variants = section.dataset.variants
     ? JSON.parse(section.dataset.variants)
@@ -547,8 +546,8 @@ document.addEventListener(
 
   }
 );
-checkOverflow()
-window.addEventListener("resize", checkOverflow);
+
+
 document.addEventListener(
   "shopify:section:load",
   function (e) {
