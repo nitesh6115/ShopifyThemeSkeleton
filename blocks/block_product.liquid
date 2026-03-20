@@ -354,8 +354,27 @@ function initProductScript(sectionId) {
 
     /* PRICE */
 
-    
+    const regular =
+      priceWrapper?.querySelector(
+        ".regular_price"
+      );
 
+    const compare =
+      priceWrapper?.querySelector(
+        ".sale_price"
+      );
+
+    const save =
+      priceWrapper?.querySelector(
+        ".save"
+      );
+
+    if (regular) {
+      regular.textContent =
+        formatMoney(currentVariant.price);
+    }
+
+    
 
 
     /* BUTTON */
