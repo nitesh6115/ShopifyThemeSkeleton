@@ -97,7 +97,7 @@
 {% assign info_class_list = info_class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div
-  class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
+  class="{% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{- style_schema -}}"
   id="MainProduct_{{ block.id }}"
   data-variants='{{ product.variants | json }}'
