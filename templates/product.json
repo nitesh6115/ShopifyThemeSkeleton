@@ -11345,7 +11345,7 @@
                 "icon_color": "#000000",
                 "q_align": "left",
                 "a_align": "left",
-                "shadow": true,
+                "shadow": false,
                 "width": "custom",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
@@ -11371,10 +11371,10 @@
                 "line_height_mobile": "1.4",
                 "q_color": "#000000",
                 "a_color": "#0a0a0a",
-                "background": "#FFF",
+                "background": "",
                 "radius": 10,
                 "border": 0,
-                "border_color": "#000000",
+                "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
                 "pl": 16,
@@ -11388,11 +11388,11 @@
               },
               "blocks": {}
             },
-            "block_accordion_VppVbh": {
+            "block_accordion_fGgz3q": {
               "type": "block_accordion",
               "name": "Accordion",
               "settings": {
-                "question": "Is this suitable for sensitive skin?",
+                "question": "Is this product safe to take daily?",
                 "answer": "<p>Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal</p>",
                 "icon_type": "plus",
                 "icon_char": "+",
@@ -11401,7 +11401,7 @@
                 "icon_color": "#000000",
                 "q_align": "left",
                 "a_align": "left",
-                "shadow": true,
+                "shadow": false,
                 "width": "custom",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
@@ -11427,10 +11427,10 @@
                 "line_height_mobile": "1.4",
                 "q_color": "#000000",
                 "a_color": "#0a0a0a",
-                "background": "#FFF",
+                "background": "",
                 "radius": 10,
                 "border": 0,
-                "border_color": "#000000",
+                "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
                 "pl": 16,
@@ -11444,11 +11444,11 @@
               },
               "blocks": {}
             },
-            "block_accordion_YVRUpp": {
+            "block_accordion_Uaz38T": {
               "type": "block_accordion",
               "name": "Accordion",
               "settings": {
-                "question": "Can I use this with other skincare products?",
+                "question": "How long does it take to see results?",
                 "answer": "<p>Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal</p>",
                 "icon_type": "plus",
                 "icon_char": "+",
@@ -11457,7 +11457,7 @@
                 "icon_color": "#000000",
                 "q_align": "left",
                 "a_align": "left",
-                "shadow": true,
+                "shadow": false,
                 "width": "custom",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
@@ -11483,10 +11483,10 @@
                 "line_height_mobile": "1.4",
                 "q_color": "#000000",
                 "a_color": "#0a0a0a",
-                "background": "#FFF",
+                "background": "",
                 "radius": 10,
                 "border": 0,
-                "border_color": "#000000",
+                "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
                 "pl": 16,
@@ -11500,11 +11500,11 @@
               },
               "blocks": {}
             },
-            "block_accordion_UGaahN": {
+            "block_accordion_7DCPVC": {
               "type": "block_accordion",
               "name": "Accordion",
               "settings": {
-                "question": "How much should I use per application?",
+                "question": "How long does it take to see results?",
                 "answer": "<p>Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal Everything you need to know about Radiance Renewal</p>",
                 "icon_type": "plus",
                 "icon_char": "+",
@@ -11513,7 +11513,7 @@
                 "icon_color": "#000000",
                 "q_align": "left",
                 "a_align": "left",
-                "shadow": true,
+                "shadow": false,
                 "width": "custom",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
@@ -11539,10 +11539,10 @@
                 "line_height_mobile": "1.4",
                 "q_color": "#000000",
                 "a_color": "#0a0a0a",
-                "background": "#FFF",
+                "background": "",
                 "radius": 10,
                 "border": 0,
-                "border_color": "#000000",
+                "border_color": "#f7e7db",
                 "pt": 16,
                 "pb": 16,
                 "pl": 16,
@@ -11559,9 +11559,9 @@
           },
           "block_order": [
             "block_accordion_6HmwAe",
-            "block_accordion_VppVbh",
-            "block_accordion_YVRUpp",
-            "block_accordion_UGaahN"
+            "block_accordion_fGgz3q",
+            "block_accordion_Uaz38T",
+            "block_accordion_7DCPVC"
           ]
         },
         "block_group_AAWNrh": {
