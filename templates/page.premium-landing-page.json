@@ -6372,7 +6372,7 @@
             "section_width": false,
             "wraper_width": 1400,
             "align_x": "flex-start",
-            "height": "custom",
+            "height": "fit",
             "custom_height": 100,
             "gap": 12,
             "gap_m": 12,
