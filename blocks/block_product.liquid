@@ -119,16 +119,6 @@
   </div>
 </div>
 <script>
-  function checkOverflow(track,wrapper,currentTranslate) {
-    const container = track.parentElement;
-    const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
-    console.log(container)
-    wrapper.classList.toggle('is-overflowing', isOverflowing);
-    if (!isOverflowing) {
-      currentTranslate = 0;
-      track.style.transform = 'translateX(0px)';
-    }
-  }
   function initProductScript(sectionId) {
     const section = document.querySelector('#MainProduct_' + sectionId);
     if (!section) return;
@@ -146,7 +136,18 @@
     ---------------------------*/
     let currentTranslate = 0;
 
-    
+    function checkOverflow() {
+      const container = track.parentElement;
+
+      const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
+
+      wrapper.classList.toggle('is-overflowing', isOverflowing);
+
+      if (!isOverflowing) {
+        currentTranslate = 0;
+        track.style.transform = 'translateX(0px)';
+      }
+    }
 
     function activateMedia(mediaId) {
       mediaItems.forEach((item) => {
@@ -202,7 +203,8 @@
       });
     });
 
-    checkOverflow(track,wrapper,currentTranslate);
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
 
     const variants = section.dataset.variants ? JSON.parse(section.dataset.variants) : [];
     const form = section.querySelector("form[id^='product-form-']");
@@ -216,7 +218,7 @@
 
     /* -------------------------
      QUANTITY ELEMENTS
-    -------------------------- */
+  -------------------------- */
     const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
     const qtyInput = qtyWrapper?.querySelector('.qty-input');
     const plusBtn = qtyWrapper?.querySelector('.qty-plus');
@@ -225,7 +227,7 @@
 
     /* -------------------------
      STICKY ELEMENTS
-    -------------------------- */
+  -------------------------- */
     const sticky = section.querySelector('.sticky-atc');
     const stickyBtn = sticky?.querySelector('.sticky-btn');
     const stickyPrice = sticky?.querySelector('.sticky-price');
@@ -247,7 +249,7 @@
 
     /* -------------------------
      FETCH CART (once)
-    -------------------------- */
+  -------------------------- */
     fetch('/cart.js')
       .then((res) => res.json())
       .then((data) => {
@@ -256,7 +258,7 @@
 
     /* -------------------------
      INITIAL VARIANT
-    -------------------------- */
+  -------------------------- */
     const initialVariant =
       variants.find((v) => v.id == hiddenInput.value) || variants.find((v) => v.available) || variants[0];
 
@@ -267,7 +269,7 @@
 
     /* -------------------------
      OPTION CLICK
-    -------------------------- */
+  -------------------------- */
     optionGroups.forEach((group, index) => {
       group.querySelectorAll('.option-value').forEach((button) => {
         button.addEventListener('click', function () {
@@ -281,7 +283,7 @@
 
     /* -------------------------
      UPDATE VARIANT
-    -------------------------- */
+  -------------------------- */
     function updateUI() {
       optionGroups.forEach((group, index) => {
         group.querySelectorAll('.option-value').forEach((button) => {
@@ -396,16 +398,20 @@
 
     /* -------------------------
      QUANTITY VALIDATION
-    -------------------------- */
+  -------------------------- */
     function validateQuantity() {
       if (!currentVariant || !qtyInput) return;
+
       const maxInventory = currentVariant.inventory_quantity;
       const inventoryPolicy = currentVariant.inventory_policy;
+
       let cartQty = 0;
+
       if (cartData?.items?.length) {
         const existingItem = cartData.items.find((item) => item.id == currentVariant.id);
         cartQty = existingItem ? existingItem.quantity : 0;
       }
+
       const requestedQty = parseInt(qtyInput.value) || 1;
 
       if (inventoryPolicy === 'deny') {
@@ -448,11 +454,11 @@
       });
     }
     /* -------------------------
-    STICKY SHOW / HIDE
-    -------------------------- */
+   STICKY SHOW / HIDE
+-------------------------- */
     /* -------------------------
-    STICKY CLICK = REAL SUBMIT
-    -------------------------- */
+   STICKY CLICK = REAL SUBMIT
+-------------------------- */
 
     if (stickyBtn && form) {
       stickyBtn.addEventListener('click', function () {
@@ -486,8 +492,8 @@
       observer.observe(addToCartBtn);
     }
     /* -------------------------
-    SEAL SUBSCRIPTION PRICE SYNC
-    -------------------------- */
+   SEAL SUBSCRIPTION PRICE SYNC
+-------------------------- */
   }
 
   /* -------------------------
