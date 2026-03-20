@@ -29,297 +29,300 @@
     --btn-uppercase: {% if block.settings.btn_uppercase %} uppercase {% else %} normal {%endif %};
     --btn-border-width: {{ block.settings.btn_border_width }}px;
     --btn-hover-border: {{ block.settings.btn_hover_border }};
-{%endcapture %}
+{% endcapture %}
 {% assign style_schema = style_schema | strip_newlines %}
-<div  class="product_block buy_buttons {% if block.settings.show_dynamic_button %} buy_now_enabled {% endif %}" {{ block.shopify_attributes }} style="{{- style_schema -}}">
-    {%- form 'product',
+<div
+  class="product_block buy_buttons {% if block.settings.show_dynamic_button %} buy_now_enabled {% endif %}"
+  {{ block.shopify_attributes }}
+  style="{{- style_schema -}}"
+>
+  {%- form 'product',
     product,
     id: product_form_id,
     class: 'form',
     novalidate: 'novalidate',
     data-type: 'add-to-cart-form'
-    -%}
+  -%}
     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
     {% if block.settings.show_qty %}
-        <div class="product-quantity" data-quantity-wrapper>
+      <div class="product-quantity" data-quantity-wrapper>
         <button type="button" class="qty-btn qty-minus">−</button>
 
         <input
-            type="text"
-            name="quantity"
-            value="1"
-            min="1"
-            step="1"
-            readonly
-            class="qty-input"
+          type="text"
+          name="quantity"
+          value="1"
+          min="1"
+          step="1"
+          readonly
+          class="qty-input"
         >
 
         <button type="button" class="qty-btn qty-plus">+</button>
 
         <p class="qty-error" style="display:none;"></p>
-        
-        </div>
+      </div>
     {% else %}
-        <input
+      <input
         type="hidden"
         name="quantity"
         value="1"
         min="1"
         step="1"
-        >
+      >
     {% endif %}
     <div class="button_from">
-        <button
+      <button
         type="submit"
         class="add-to-cart"
         {% if block.settings.show_price %}
-            data-btn-price
+          data-btn-price
         {% endif %}
-        >
+      >
         <span class="btn_text">Add to Cart</span>
         {% if block.settings.show_price %}
-            <span class="icon">—</span>
-            <span class="btn_price">{{ current_variant.price | money }}</span>
+          <span class="icon">—</span>
+          <span class="btn_price">{{ current_variant.price | money }}</span>
         {% endif %}
-        </button>
+      </button>
     </div>
     {% if block.settings.show_dynamic_button %}
-        {{ form | payment_button }}
+      {{ form | payment_button }}
     {% endif %}
-    {% endform %}
-    {% if block.settings.enabled_sticky_add %}
+  {% endform %}
+  {% if block.settings.enabled_sticky_add %}
     <div class="sticky-atc" id="StickyATC-{{ section.id }}">
-    <div class="sticky-inner">
+      <div class="sticky-inner">
         <div class="sticky-left">
-        <img
+          <img
             class="sticky-image"
             alt="{{product.title }}"
             src="{{  product.featured_image | img_url: '120x' }}"
             width="120"
             height="120"
-        >
-        <div class="sticky-meta">
+          >
+          <div class="sticky-meta">
             <div class="sticky-title">{{ product.title }}</div>
             <div class="sticky-variant"></div>
             <div class="sticky-price-wrapper">
-            <span class="sticky-price"></span>
-            <span class="sticky-compare"></span>
-            <span class="sticky-save"></span>
+              <span class="sticky-price"></span>
+              <span class="sticky-compare"></span>
+              <span class="sticky-save"></span>
             </div>
-        </div>
+          </div>
         </div>
 
         <button type="button" class="sticky-btn">Add to Cart</button>
+      </div>
     </div>
-    </div>
-{% endif %}
+  {% endif %}
 </div>
 {% schema %}
 {
-    "tag":null,
-      "name": "Buy Button",
-      "settings": [
+  "tag": null,
+  "name": "Buy Button",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Block Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "max": 100,
+      "min": 0,
+      "default": 5,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "max": 100,
+      "min": 0,
+      "default": 5,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "block_radius",
+      "label": "Block Radius",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_align",
+      "options": [
         {
-          "type": "header",
-          "content": "Block Spacing"
+          "value": "left",
+          "label": "Left"
         },
         {
-          "type": "range",
-          "id": "padding_top",
-          "label": "Padding Top",
-          "max": 100,
-          "min": 0,
-          "default": 5,
-          "step": 1,
-          "unit": "px"
+          "value": "center",
+          "label": "Center"
         },
         {
-          "type": "range",
-          "id": "padding_bottom",
-          "label": "Padding Bottom",
-          "max": 100,
-          "min": 0,
-          "default": 5,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "padding_left",
-          "label": "Padding Left",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "padding_right",
-          "label": "Padding Right",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "block_radius",
-          "label": "Block Radius",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "select",
-          "id": "desktop_text_align",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left",
-          "label": "Desktop Text Alignment"
-        },
-        {
-          "type": "select",
-          "id": "mobile_text_align",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left",
-          "label": "Mobile Text Alignment"
-        },
-        {
-          "type": "color_background",
-          "id": "bg_color",
-          "label": "Block Background",
-          "default": "#fff"
-        },
-        {
-          "type": "header",
-          "content": "Add to cart Button Style"
-        },
-        {
-          "type": "color_background",
-          "id": "btn_bg",
-          "label": "Button Background Color",
-          "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
-        },
-        {
-          "type": "color_background",
-          "id": "btn_hover_bg",
-          "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
-          "label": "Button Hover Background Color"
-        },
-        {
-          "type": "color",
-          "id": "btn_text",
-          "default": "#fff",
-          "label": "Button Text Color"
-        },
-        {
-          "type": "color",
-          "id": "btn_hover_text",
-          "default": "#fff",
-          "label": "Button Hover Text Color"
-        },
-        {
-          "type": "color",
-          "id": "btn_border",
-          "label": "Button Border Color",
-          "default": "transparent"
-        },
-        {
-          "type": "color",
-          "id": "btn_hover_border",
-          "label": "Button Hover Border Color"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_qty",
-          "label": "Show Quantity"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_dynamic_button",
-          "label": "Show Buy Now or Dynamic Button"
-        },
-        {
-          "type": "checkbox",
-          "id": "enabled_sticky_add",
-          "label": "Show Sticky Add Bar"
-        },
-        
-        {
-          "type": "checkbox",
-          "id": "show_price",
-          "label": "Show Price"
-        },
-        {
-          "type": "range",
-          "id": "btn_font",
-          "label": "Button Font Size",
-          "max": 100,
-          "min": 0,
-          "default": 14,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "checkbox",
-          "id": "btn_uppercase",
-          "label": "Button Text Uppercase"
-        },
-        {
-          "type": "range",
-          "id": "btn_radius",
-          "label": "Button Radius",
-          "max": 100,
-          "min": 0,
-          "default": 10,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "btn_border_width",
-          "label": "Border Size",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
+          "value": "right",
+          "label": "Right"
         }
       ],
-      "presets": [
+      "default": "left",
+      "label": "Desktop Text Alignment"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "options": [
         {
-            "name": "Add To Cart Button"
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
         }
-      ]
+      ],
+      "default": "left",
+      "label": "Mobile Text Alignment"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Block Background",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Add to cart Button Style"
+    },
+    {
+      "type": "color_background",
+      "id": "btn_bg",
+      "label": "Button Background Color",
+      "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
+    },
+    {
+      "type": "color_background",
+      "id": "btn_hover_bg",
+      "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+      "label": "Button Hover Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "default": "#fff",
+      "label": "Button Text Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "default": "#fff",
+      "label": "Button Hover Text Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Button Border Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Button Hover Border Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_qty",
+      "label": "Show Quantity"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_button",
+      "label": "Show Buy Now or Dynamic Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled_sticky_add",
+      "label": "Show Sticky Add Bar"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Price"
+    },
+    {
+      "type": "range",
+      "id": "btn_font",
+      "label": "Button Font Size",
+      "max": 100,
+      "min": 0,
+      "default": 14,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_uppercase",
+      "label": "Button Text Uppercase"
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "label": "Button Radius",
+      "max": 100,
+      "min": 0,
+      "default": 10,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "btn_border_width",
+      "label": "Border Size",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
     }
+  ],
+  "presets": [
+    {
+      "name": "Add To Cart Button"
+    }
+  ]
+}
 {% endschema %}

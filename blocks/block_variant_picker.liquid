@@ -1,4 +1,4 @@
- {% liquid
+{% liquid
   assign product = closest.product
   if request.visual_preview_mode and product == blank
     assign product = collections.all.products.first
@@ -26,196 +26,194 @@
                 --pill-border: {{ block.settings.pill-border }};
                 --pill-border-width: {{ block.settings.pill-border-width }}px;
                 --pill-hover-border: {{ block.settings.hover-pill-border }};
-{%endcapture %}
+{% endcapture %}
 {% assign style_schema = style_schema | strip_newlines %}
- <div class="product_block variant_picker" {{ block.shopify_attributes }} style="{{- style_schema -}}">
-              {% for option in product.options_with_values %}
-                <div class="product-option" data-option-position="{{ option.position }}">
-                  <label>{{ option.name }}</label>
+<div class="product_block variant_picker" {{ block.shopify_attributes }} style="{{- style_schema -}}">
+  {% for option in product.options_with_values %}
+    <div class="product-option" data-option-position="{{ option.position }}">
+      <label>{{ option.name }}</label>
 
-                  <div class="option-values">
-                    {% for value in option.values %}
-                      <button
-                        type="button"
-                        class="option-value"
-                        data-value="{{ value | escape }}"
-                      >
-                        {{ value }}
-                      </button>
-                    {% endfor %}
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
+      <div class="option-values">
+        {% for value in option.values %}
+          <button
+            type="button"
+            class="option-value"
+            data-value="{{ value | escape }}"
+          >
+            {{ value }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
-            {% schema %}
-            {
-      "tag": null,
-      "name": "Variant Selector",
-      "settings": [
+{% schema %}
+{
+  "tag": null,
+  "name": "Variant Selector",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Block Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "max": 100,
+      "min": 0,
+      "default": 5,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "max": 100,
+      "min": 0,
+      "default": 5,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "block_radius",
+      "label": "Block Radius",
+      "max": 100,
+      "min": 0,
+      "default": 0,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_align",
+      "options": [
         {
-          "type": "header",
-          "content": "Block Spacing"
+          "value": "left",
+          "label": "Left"
         },
         {
-          "type": "range",
-          "id": "padding_top",
-          "label": "Padding Top",
-          "max": 100,
-          "min": 0,
-          "default": 5,
-          "step": 1,
-          "unit": "px"
+          "value": "center",
+          "label": "Center"
         },
         {
-          "type": "range",
-          "id": "padding_bottom",
-          "label": "Padding Bottom",
-          "max": 100,
-          "min": 0,
-          "default": 5,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "padding_left",
-          "label": "Padding Left",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "padding_right",
-          "label": "Padding Right",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "block_radius",
-          "label": "Block Radius",
-          "max": 100,
-          "min": 0,
-          "default": 0,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "select",
-          "id": "desktop_text_align",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left",
-          "label": "Desktop Text Alignment"
-        },
-        {
-          "type": "select",
-          "id": "mobile_text_align",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left",
-          "label": "Mobile Text Alignment"
-        },
-        {
-          "type": "color_background",
-          "id": "bg_color",
-          "label": "Block Background",
-          "default": "#fff"
-        },
-        {
-          "type": "header",
-          "content": "Variant Picker Style"
-        },
-        {
-          "type": "color",
-          "id": "pill-bg",
-          "label": "Pill Background Color",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "pill-text",
-          "label": "Pill text Color",
-          "default": "#000"
-        },
-        {
-          "type": "color",
-          "id": "pill-border",
-          "label": "Pill Border Color",
-          "default": "#000"
-        },
-        {
-          "type": "color",
-          "id": "hover-pill-bg",
-          "label": "Pill Background Hover Color",
-          "default": "#000"
-        },
-        {
-          "type": "color",
-          "id": "hover-pill-text",
-          "label": "Pill Text Hover Color",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "hover-pill-border",
-          "label": "Pill Border Hover Color",
-          "default": "#000"
-        },
-        {
-          "type": "range",
-          "id": "pill-border-width",
-          "label": "Pill Border Size",
-          "default": 1,
-          "min": 0,
-          "max": 10,
-          "unit": "px",
-          "step": 1
-        },
-        {
-          "type": "range",
-          "id": "pill-radius",
-          "label": "Pill Border Radius",
-          "default": 10,
-          "min": 0,
-          "max": 10,
-          "unit": "px",
-          "step": 1
+          "value": "right",
+          "label": "Right"
         }
       ],
-      "presets": [
-        {"name": "variant_picker"}
-      ]
+      "default": "left",
+      "label": "Desktop Text Alignment"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Mobile Text Alignment"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Block Background",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Variant Picker Style"
+    },
+    {
+      "type": "color",
+      "id": "pill-bg",
+      "label": "Pill Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "pill-text",
+      "label": "Pill text Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "pill-border",
+      "label": "Pill Border Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "hover-pill-bg",
+      "label": "Pill Background Hover Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "hover-pill-text",
+      "label": "Pill Text Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "hover-pill-border",
+      "label": "Pill Border Hover Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "pill-border-width",
+      "label": "Pill Border Size",
+      "default": 1,
+      "min": 0,
+      "max": 10,
+      "unit": "px",
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "pill-radius",
+      "label": "Pill Border Radius",
+      "default": 10,
+      "min": 0,
+      "max": 10,
+      "unit": "px",
+      "step": 1
     }
-            {% endschema %}
+  ],
+  "presets": [{ "name": "variant_picker" }]
+}
+{% endschema %}
