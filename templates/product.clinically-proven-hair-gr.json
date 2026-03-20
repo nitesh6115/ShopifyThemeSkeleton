@@ -6264,48 +6264,14 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_ccHewR": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_mCYzjw": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/Container_91.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 64,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 64,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 64,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "certificate",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"56\" height=\"56\" viewbox=\"0 0 56 56\" fill=\"none\">\n<path d=\"M0 14C0 6.26801 6.26801 0 14 0H42C49.732 0 56 6.26801 56 14V42C56 49.732 49.732 56 42 56H14C6.26801 56 0 49.732 0 42V14Z\" fill=\"white\" fill-opacity=\"0.1\"></path>\n<path d=\"M28 39.6667C30.166 39.6667 32.2432 38.8063 33.7747 37.2747C35.3063 35.7432 36.1667 33.6659 36.1667 31.5C36.1667 29.1667 35 26.95 32.6667 25.0833C30.3334 23.2167 28.5834 20.4167 28 17.5C27.4167 20.4167 25.6667 23.2167 23.3334 25.0833C21 26.95 19.8334 29.1667 19.8334 31.5C19.8334 33.6659 20.6938 35.7432 22.2253 37.2747C23.7569 38.8063 25.8341 39.6667 28 39.6667Z\" stroke=\"white\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                        "size": 64,
+                        "color": "#ffffff"
                       },
                       "blocks": {}
                     },
@@ -6449,7 +6415,7 @@
                     }
                   },
                   "block_order": [
-                    "block_image_ccHewR",
+                    "block_icon_mCYzjw",
                     "block_group_byraa8"
                   ]
                 },
