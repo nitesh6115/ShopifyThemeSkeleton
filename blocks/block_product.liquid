@@ -211,19 +211,19 @@
   window.addEventListener("resize", checkOverflow);
 
   const variants = {{ product.variants | json }};
-  const form = block.querySelector("form[id^='product-form-']");
+  const form = section.querySelector("form[id^='product-form-']");
   if (!form) return;
 
   const hiddenInput = form.querySelector("input[name='id']");
-  const priceWrapper = block.querySelector('.product-price');
-  const optionGroups = block.querySelectorAll('.product-option');
+  const priceWrapper = section.querySelector('.product-price');
+  const optionGroups = section.querySelectorAll('.product-option');
   const addToCartBtn = form.querySelector('.add-to-cart');
   const showBtnPrice = addToCartBtn?.hasAttribute('data-btn-price');
 
   /* -------------------------
      QUANTITY ELEMENTS
   -------------------------- */
-  const qtyWrapper = block.querySelector('[data-quantity-wrapper]');
+  const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
   const qtyInput = qtyWrapper?.querySelector('.qty-input');
   const plusBtn = qtyWrapper?.querySelector('.qty-plus');
   const minusBtn = qtyWrapper?.querySelector('.qty-minus');
@@ -232,7 +232,7 @@
   /* -------------------------
      STICKY ELEMENTS
   -------------------------- */
-  const sticky = block.querySelector('.sticky-atc');
+  const sticky = section.querySelector('.sticky-atc');
   const stickyBtn = sticky?.querySelector('.sticky-btn');
   const stickyPrice = sticky?.querySelector('.sticky-price');
   const stickyCompare = sticky?.querySelector('.sticky-compare');
