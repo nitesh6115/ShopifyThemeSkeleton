@@ -1,0 +1,698 @@
+{{ 'custom-product.css' | asset_url | stylesheet_tag }}
+{%- capture style_schema -%}
+    --section-bg:{{ section.settings.section_bg }};
+    --section-wraper-width:{% if section.settings.section_width %}100%{% else %}{{ section.settings.wraper_width }}px{% endif %};
+    --section-padding-top:{{ section.settings.padding_top_desktop }}px;
+    --section-padding-bottom:{{ section.settings.padding_bottom_desktop }}px;
+    --section-padding-left:{{ section.settings.padding_left_desktop }}px;
+    --section-padding-right:{{ section.settings.padding_right_desktop }}px;
+    --section-mobile-padding-top:{{ section.settings.padding_top_mobile }}px;
+    --section-mobile-padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+    --section-mobile-padding-left:{{ section.settings.padding_left_mobile }}px;
+    --section-mobile-padding-right:{{ section.settings.padding_right_mobile }}px;
+    --media-radius:{{ section.settings.media-radius }}px;
+    --media-thumb-radius:{{ section.settings.media-thumb-radius }}px;
+    --media-thumb-width:{{ section.settings.media-thumb-width }}px;
+    --media-thumb-mobile-width:{{ section.settings.media-thumb-mobile-width }}px;
+    --media-thumb-border-size:{{ section.settings.media-thumb-border-width }}px;
+    --media-thumb-border-color:{{ section.settings.media_border }};
+    --media-thumb-border-active-color:{{ section.settings.media_border_active }};
+{%- endcapture -%}
+{% assign style_schema = style_schema | strip_newlines %}
+{%  assign product = block.settings.product %}
+<div
+  class="product_section {% if section.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
+  style="{{- style_schema -}}"
+  id="MainProduct_{{ block.id }}"
+  data-section="{{ block.id }}"
+  data-product-id="{{ product.id }}"
+>
+  {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+
+  <div class="product-wrapper">
+    <div class="product_media-wrapper">
+      {% render 'product_media_gallery', variant_images: variant_images %}
+    </div>
+    <div class="product_information_wrapper">
+      {%- assign product_form_id = 'product-form-' | append: block.id -%}
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+
+  const section = document.querySelector('#MainProduct_{{ block.id }}');
+  if (!section) return;
+  const gallery = document.querySelector(".custom-product-gallery");
+  if (!gallery) return;
+  const thumbs = gallery.querySelectorAll(".gallery-thumb");
+  const track = gallery.querySelector(".gallery-thumbs-track");
+  const mediaItems = gallery.querySelectorAll(".gallery-media-item");
+  const wrapper = gallery.querySelector(".gallery-thumbs-wrapper");
+  const prevBtn = gallery.querySelector(".thumb-prev");
+  const nextBtn = gallery.querySelector(".thumb-next");
+
+
+  /*----------------------------
+      MEDIA ELEMENTS 
+    ---------------------------*/
+    let currentTranslate = 0;
+
+  function checkOverflow() {
+
+  const container = track.parentElement;
+
+  const isOverflowing =
+    Math.ceil(track.scrollWidth) >
+    Math.ceil(container.clientWidth);
+
+  wrapper.classList.toggle("is-overflowing", isOverflowing);
+
+  if (!isOverflowing) {
+    currentTranslate = 0;
+    track.style.transform = "translateX(0px)";
+  }
+}
+
+  function activateMedia(mediaId) {
+  
+    mediaItems.forEach(item => {
+      item.classList.remove("is-active");
+      if (item.dataset.mediaId === mediaId) {
+        item.classList.add("is-active");
+      }
+
+      const video = item.querySelector("video");
+      if (video) video.pause();
+    });
+
+    thumbs.forEach(thumb => {
+      thumb.classList.remove("is-active");
+      if (thumb.dataset.mediaId === mediaId) {
+        thumb.classList.add("is-active");
+        scrollThumbIntoView(thumb);
+      }
+    });
+  }
+  
+  
+  function scrollThumbIntoView(thumb) {
+    const thumbLeft = thumb.offsetLeft;
+    const thumbRight = thumbLeft + thumb.offsetWidth;
+    const visibleLeft = Math.abs(currentTranslate);
+    const visibleRight = visibleLeft + track.parentElement.offsetWidth;
+
+    if (thumbLeft < visibleLeft) {
+      currentTranslate = -thumbLeft;
+    } else if (thumbRight > visibleRight) {
+      currentTranslate = -(thumbRight - track.parentElement.offsetWidth);
+    }
+
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  }
+
+  prevBtn?.addEventListener("click", function() {
+    currentTranslate += 100;
+    if (currentTranslate > 0) currentTranslate = 0;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  });
+
+  nextBtn?.addEventListener("click", function() {
+    const maxTranslate = track.parentElement.offsetWidth - track.scrollWidth;
+    currentTranslate -= 100;
+    if (currentTranslate < maxTranslate) currentTranslate = maxTranslate;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  });
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener("click", function() {
+      activateMedia(this.dataset.mediaId);
+    });
+  });
+  
+  checkOverflow();
+  window.addEventListener("resize", checkOverflow);
+
+  const variants = {{ product.variants | json }};
+  const form = section.querySelector("form[id^='product-form-']");
+  if (!form) return;
+
+  const hiddenInput = form.querySelector("input[name='id']");
+  const priceWrapper = section.querySelector('.product-price');
+  const optionGroups = section.querySelectorAll('.product-option');
+  const addToCartBtn = form.querySelector('.add-to-cart');
+  const showBtnPrice = addToCartBtn?.hasAttribute('data-btn-price');
+
+  /* -------------------------
+     QUANTITY ELEMENTS
+  -------------------------- */
+  const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
+  const qtyInput = qtyWrapper?.querySelector('.qty-input');
+  const plusBtn = qtyWrapper?.querySelector('.qty-plus');
+  const minusBtn = qtyWrapper?.querySelector('.qty-minus');
+  const qtyError = qtyWrapper?.querySelector('.qty-error');
+
+  /* -------------------------
+     STICKY ELEMENTS
+  -------------------------- */
+  const sticky = section.querySelector('.sticky-atc');
+  const stickyBtn = sticky?.querySelector('.sticky-btn');
+  const stickyPrice = sticky?.querySelector('.sticky-price');
+  const stickyCompare = sticky?.querySelector('.sticky-compare');
+  const stickySave = sticky?.querySelector('.sticky-save');
+  const stickyVariant = sticky?.querySelector('.sticky-variant');
+  const stickyImage = sticky?.querySelector('.sticky-image');
+
+  let selectedOptions = [];
+  let currentVariant = null;
+  let cartData = null;
+
+  function formatMoney(cents) {
+    return new Intl.NumberFormat('{{ shop.locale }}', {
+      style: 'currency',
+      currency: '{{ shop.currency }}',
+    }).format(cents / 100);
+  }
+
+  /* -------------------------
+     FETCH CART (once)
+  -------------------------- */
+  fetch('/cart.js')
+    .then(res => res.json())
+    .then(data => {
+      cartData = data;
+    });
+
+  /* -------------------------
+     INITIAL VARIANT
+  -------------------------- */
+  const initialVariant =
+    variants.find(v => v.id == hiddenInput.value) ||
+    variants.find(v => v.available) ||
+    variants[0];
+
+  selectedOptions = [
+    initialVariant.option1 || null,
+    initialVariant.option2 || null,
+    initialVariant.option3 || null,
+  ];
+
+  updateUI();
+  updateVariant();
+
+  /* -------------------------
+     OPTION CLICK
+  -------------------------- */
+  optionGroups.forEach((group, index) => {
+    group.querySelectorAll('.option-value').forEach((button) => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('is-unavailable')) return;
+        selectedOptions[index] = this.dataset.value;
+        updateUI();
+        updateVariant();
+      });
+    });
+  });
+
+  /* -------------------------
+     UPDATE VARIANT
+  -------------------------- */
+    function updateUI() {
+  optionGroups.forEach((group, index) => {
+    group.querySelectorAll('.option-value').forEach((button) => {
+
+      const testOptions = [...selectedOptions];
+      testOptions[index] = button.dataset.value;
+
+      const existingVariant = variants.find((variant) => {
+        return (
+          (variant.option1 === testOptions[0] || !variant.option1) &&
+          (variant.option2 === testOptions[1] || !variant.option2) &&
+          (variant.option3 === testOptions[2] || !variant.option3)
+        );
+      });
+
+      const isAvailable = existingVariant?.available;
+      const exists = !!existingVariant;
+
+      button.classList.remove('is-active', 'is-soldout', 'is-unavailable');
+
+      if (button.dataset.value === selectedOptions[index]) {
+        button.classList.add('is-active');
+      }
+
+      if (!exists) {
+        button.classList.add('is-unavailable');
+      } else if (!isAvailable) {
+        button.classList.add('is-soldout');
+      }
+
+    });
+  });
+  }
+  function updateVariant() {
+
+    currentVariant = variants.find((variant) => {
+      return (
+        (variant.option1 === selectedOptions[0] || !variant.option1) &&
+        (variant.option2 === selectedOptions[1] || !variant.option2) &&
+        (variant.option3 === selectedOptions[2] || !variant.option3)
+      );
+    });
+
+    if (!currentVariant) return;
+
+    hiddenInput.value = currentVariant.id;
+     /*-------IMAGE UPDATE --------*/
+     if (currentVariant?.featured_media) {
+  activateMedia(currentVariant.featured_media.id.toString());
+  
+}
+    /* ---- PRICE ---- */
+    const regularPriceEl = priceWrapper.querySelector('.regular_price');
+    const comparePriceEl = priceWrapper.querySelector('.sale_price');
+    const saveEl = priceWrapper.querySelector('.save');
+
+    regularPriceEl.textContent = formatMoney(currentVariant.price);
+
+    if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
+      comparePriceEl.textContent = formatMoney(currentVariant.compare_at_price);
+      comparePriceEl.style.display = 'inline';
+
+      const percent = Math.round(
+        ((currentVariant.compare_at_price - currentVariant.price) * 100) /
+        currentVariant.compare_at_price
+      );
+
+      saveEl.textContent = percent + '% OFF';
+      saveEl.style.display = 'inline';
+    } else {
+      comparePriceEl.style.display = 'none';
+      saveEl.style.display = 'none';
+    }
+
+    /* ---- BUTTON ---- */
+    if (!currentVariant.available) {
+      addToCartBtn.disabled = true;
+      addToCartBtn.textContent = 'Sold Out';
+    } else {
+      addToCartBtn.disabled = false;
+      addToCartBtn.innerHTML = showBtnPrice
+        ? `<span class='btn_text'>Add to Cart</span><span class='icon'>—</span><span class='btn_price'>${formatMoney(currentVariant.price)}</span>`
+        : `<span class='btn_text'>Add to Cart</span>`;
+    }
+
+    /* ---- STICKY ---- */
+    if (sticky) {
+      stickyPrice.textContent = formatMoney(currentVariant.price);
+      stickyVariant.textContent = currentVariant.title;
+
+      if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
+        const percent = Math.round(
+          ((currentVariant.compare_at_price - currentVariant.price) * 100) /
+          currentVariant.compare_at_price
+        );
+        stickyCompare.textContent = formatMoney(currentVariant.compare_at_price);
+        stickySave.textContent = percent + '% OFF';
+        stickyCompare.style.display = 'inline';
+        stickySave.style.display = 'block';
+      } else {
+        stickyCompare.style.display = 'none';
+        stickySave.style.display = 'none';
+      }
+
+      stickyBtn.disabled = !currentVariant.available;
+      stickyBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+    }
+
+    if (qtyInput) {
+      qtyInput.value = 1;
+      validateQuantity();
+    }
+
+    document.dispatchEvent(
+      new CustomEvent('variant:change', { detail: { variant: currentVariant } })
+    );
+  }
+
+  /* -------------------------
+     QUANTITY VALIDATION
+  -------------------------- */
+  function validateQuantity() {
+    if (!currentVariant || !qtyInput) return;
+
+    const maxInventory = currentVariant.inventory_quantity;
+    const inventoryPolicy = currentVariant.inventory_policy;
+
+    let cartQty = 0;
+
+    if (cartData?.items?.length) {
+      const existingItem = cartData.items.find(item => item.id == currentVariant.id);
+      cartQty = existingItem ? existingItem.quantity : 0;
+    }
+
+    const requestedQty = parseInt(qtyInput.value) || 1;
+
+    if (inventoryPolicy === 'deny') {
+      const remaining = maxInventory - cartQty;
+
+      if (remaining <= 0) {
+        qtyInput.value = 1;
+        plusBtn.disabled = true;
+        qtyError.style.display = 'block';
+        qtyError.textContent = 'Sold Out';
+        return;
+      }
+
+      if (requestedQty > remaining) {
+        qtyInput.value = remaining;
+        qtyError.style.display = 'block';
+        qtyError.textContent = `Only ${remaining} left`;
+      } else {
+        qtyError.style.display = 'none';
+      }
+
+      plusBtn.disabled = requestedQty >= remaining;
+    } else {
+      qtyError.style.display = 'none';
+      plusBtn.disabled = false;
+    }
+  }
+
+  if (qtyInput) {
+    plusBtn.addEventListener('click', () => {
+      qtyInput.value = parseInt(qtyInput.value) + 1;
+      validateQuantity();
+    });
+
+    minusBtn.addEventListener('click', () => {
+      if (parseInt(qtyInput.value) > 1) {
+        qtyInput.value = parseInt(qtyInput.value) - 1;
+      }
+      validateQuantity();
+    });
+  }
+/* -------------------------
+   STICKY SHOW / HIDE
+-------------------------- */
+/* -------------------------
+   STICKY CLICK = REAL SUBMIT
+-------------------------- */
+
+if (stickyBtn && form) {
+  stickyBtn.addEventListener('click', function () {
+
+    if (!currentVariant || !currentVariant.available) return;
+
+    // Sync quantity from main input
+    if (qtyInput) {
+      const hiddenQty = form.querySelector("input[name='quantity']");
+      if (hiddenQty) {
+        hiddenQty.value = qtyInput.value;
+      }
+    }
+
+    form.requestSubmit(); // safest way
+  });
+}
+if (sticky && addToCartBtn) {
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sticky.classList.remove('active');
+        } else {
+          sticky.classList.add('active');
+        }
+      });
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(addToCartBtn);
+}
+/* -------------------------
+   SEAL SUBSCRIPTION PRICE SYNC
+-------------------------- */
+
+document.addEventListener('sealsubs:price_update', function(e) {
+
+  if (!e.detail) return;
+
+  const {
+    price,
+    compareAtPrice,
+    pricePerDelivery
+  } = e.detail;
+
+  if (!price) return;
+
+  /* -------------------------
+     UPDATE MAIN PRODUCT PRICE
+  -------------------------- */
+
+  const regularPriceEl = priceWrapper?.querySelector('.regular_price');
+  const comparePriceEl = priceWrapper?.querySelector('.sale_price');
+  const saveEl = priceWrapper?.querySelector('.save');
+
+  if (regularPriceEl) {
+    regularPriceEl.textContent = formatMoney(price);
+  }
+
+  if (compareAtPrice && compareAtPrice > price) {
+
+    if (comparePriceEl) {
+      comparePriceEl.textContent = formatMoney(compareAtPrice);
+      comparePriceEl.style.display = 'inline';
+    }
+
+    if (saveEl) {
+      const percent = Math.round(
+        ((compareAtPrice - price) * 100) / compareAtPrice
+      );
+      saveEl.textContent = percent + '% OFF';
+      saveEl.style.display = 'inline';
+    }
+
+  } else {
+    if (comparePriceEl) comparePriceEl.style.display = 'none';
+    if (saveEl) saveEl.style.display = 'none';
+  }
+
+  /* -------------------------
+     UPDATE STICKY PRICE
+  -------------------------- */
+
+  if (stickyPrice) {
+    stickyPrice.textContent = formatMoney(price);
+  }
+
+});
+})();
+</script>
+{% schema %}
+{
+  "name": "Product Template",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product"
+    },
+    {
+      "type": "checkbox",
+      "id": "section_width",
+      "label": "Full Width"
+    },
+    {
+      "type": "range",
+      "id": "wraper_width",
+      "label": "Container Width",
+      "max": 1900,
+      "min": 900,
+      "default": 1400,
+      "step": 100,
+      "unit": "px",
+      "visible_if": "{{ section.settings.section_width == false }}"
+    },
+    {
+      "type": "color_background",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#fff"
+    },
+    { "type": "header", "content": "Desktop Padding Controls" },
+
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding Controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Product Media"
+    },
+    {
+      "id": "show_thumbs",
+      "label":"Show Media Thumbs",
+      "type": "checkbox",
+      "default":true
+    },
+    {
+      "type": "range",
+      "id": "media-thumb-width",
+      "label": "Product Media Thumbs Width",
+      "max": 300,
+      "min": 80,
+      "step": 10,
+      "unit": "px",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "media-thumb-mobile-width",
+      "label": "Product Media Mobile Thumbs Width",
+      "max": 200,
+      "min": 40,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "media-thumb-border-width",
+      "label": "Thumbs Border Size",
+      "max": 20,
+      "min": 0,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "media_border",
+      "label": "Thumbs Border Color",
+      "default": "#eee"
+    },
+    {
+      "type": "color",
+      "id": "media_border_active",
+      "label": "Thumbs Border Active Color",
+      "default": "#eecdb6"
+    },
+    {
+      "type": "range",
+      "id": "media-radius",
+      "label": "Product Media Radius",
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "media-thumb-radius",
+      "label": "Product Thumb Media Radius",
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+       "type": "@theme"
+    }
+  ]
+}
+{% endschema %}
