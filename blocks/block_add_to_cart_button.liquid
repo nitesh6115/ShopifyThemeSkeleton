@@ -1,0 +1,208 @@
+{% schema %}
+{
+    "tag":null,
+      "name": "Buy Button",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Block Spacing"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "max": 100,
+          "min": 0,
+          "default": 5,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "max": 100,
+          "min": 0,
+          "default": 5,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_left",
+          "label": "Padding Left",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_right",
+          "label": "Padding Right",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Block Radius",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "desktop_text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Desktop Text Alignment"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Mobile Text Alignment"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_color",
+          "label": "Block Background",
+          "default": "#fff"
+        },
+        {
+          "type": "header",
+          "content": "Add to cart Button Style"
+        },
+        {
+          "type": "color_background",
+          "id": "btn_bg",
+          "label": "Button Background Color",
+          "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
+        },
+        {
+          "type": "color_background",
+          "id": "btn_hover_bg",
+          "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+          "label": "Button Hover Background Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_text",
+          "default": "#fff",
+          "label": "Button Text Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_text",
+          "default": "#fff",
+          "label": "Button Hover Text Color"
+        },
+        {
+          "type": "color",
+          "id": "btn_border",
+          "label": "Button Border Color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_border",
+          "label": "Button Hover Border Color"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_qty",
+          "label": "Show Quantity"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_button",
+          "label": "Show Buy Now or Dynamic Button"
+        },
+        {
+          "type": "checkbox",
+          "id": "enabled_sticky_add",
+          "label": "Show Sticky Add Bar"
+        },
+        
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show Price"
+        },
+        {
+          "type": "range",
+          "id": "btn_font",
+          "label": "Button Font Size",
+          "max": 100,
+          "min": 0,
+          "default": 14,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "checkbox",
+          "id": "btn_uppercase",
+          "label": "Button Text Uppercase"
+        },
+        {
+          "type": "range",
+          "id": "btn_radius",
+          "label": "Button Radius",
+          "max": 100,
+          "min": 0,
+          "default": 10,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "btn_border_width",
+          "label": "Border Size",
+          "max": 100,
+          "min": 0,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        }
+      ],
+      "presets": [
+        {
+            "name": "Add To Cart Button"
+        }
+      ]
+    }
+{% endschema %}
