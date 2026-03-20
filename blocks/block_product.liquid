@@ -352,6 +352,60 @@ function initProductScript(sectionId) {
     }
 
 
+    /* PRICE */
+
+    const regular =
+      priceWrapper?.querySelector(
+        ".regular_price"
+      );
+
+    const compare =
+      priceWrapper?.querySelector(
+        ".sale_price"
+      );
+
+    const save =
+      priceWrapper?.querySelector(
+        ".save"
+      );
+
+    if (regular) {
+      regular.textContent =
+        formatMoney(currentVariant.price);
+    }
+
+    if (
+      compare &&
+      currentVariant.compare_at_price >
+        currentVariant.price
+    ) {
+
+      compare.textContent =
+        formatMoney(
+          currentVariant.compare_at_price
+        );
+
+      compare.style.display = "inline";
+
+      const percent = Math.round(
+        (
+          (currentVariant.compare_at_price -
+            currentVariant.price) *
+          100
+        ) /
+          currentVariant.compare_at_price
+      );
+
+      save.textContent = percent + "% OFF";
+      save.style.display = "inline";
+
+    } else {
+
+      compare?.style.display = "none";
+      save?.style.display = "none";
+
+    }
+
 
     /* BUTTON */
 
