@@ -119,6 +119,16 @@
   </div>
 </div>
 <script>
+  function checkOverflow(track) {
+    const container = track.parentElement;
+    const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
+    console.log(container)
+    wrapper.classList.toggle('is-overflowing', isOverflowing);
+    if (!isOverflowing) {
+      currentTranslate = 0;
+      track.style.transform = 'translateX(0px)';
+    }
+  }
   function initProductScript(sectionId) {
     const section = document.querySelector('#MainProduct_' + sectionId);
     if (!section) return;
@@ -136,16 +146,7 @@
     ---------------------------*/
     let currentTranslate = 0;
 
-    function checkOverflow() {
-      const container = track.parentElement;
-      const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
-      console.log(container)
-      wrapper.classList.toggle('is-overflowing', isOverflowing);
-      if (!isOverflowing) {
-        currentTranslate = 0;
-        track.style.transform = 'translateX(0px)';
-      }
-    }
+    
 
     function activateMedia(mediaId) {
       mediaItems.forEach((item) => {
@@ -201,8 +202,7 @@
       });
     });
 
-    checkOverflow();
-    window.addEventListener('resize', checkOverflow);
+    checkOverflow(track);
 
     const variants = section.dataset.variants ? JSON.parse(section.dataset.variants) : [];
     const form = section.querySelector("form[id^='product-form-']");
