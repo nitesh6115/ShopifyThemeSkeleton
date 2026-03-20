@@ -314,6 +314,7 @@ button.add-to-cart,.sticky-btn {
     justify-content: center;
     text-transform: var(--btn-uppercase);
     gap: 10px;
+    font-size: 16px;
     cursor: pointer;
 }
 button.add-to-cart:hover,.sticky-btn:hover {
@@ -351,7 +352,7 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
     justify-content: center;
     text-transform: var(--btn-uppercase);
     gap: 10px;
-    font-size: 15px;
+   font-size: 16px;
     cursor: pointer;
 }
 
