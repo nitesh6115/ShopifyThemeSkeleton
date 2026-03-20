@@ -148,9 +148,12 @@
   height: 100%;
   object-fit: cover;
 }
-.product_information_wrapper.group.group--vertical.box-wrap.block-custom-height-fill {
+.product_information_wrapper.group.group--vertical.box-wrap.block-custom-height-fit {
     flex: 0 0 auto;
-    height: unset;
+    height: 100%;
+}
+.product_information_wrapper.group.group--vertical.box-wrap.block-height-desktop-fill {
+    height: auto;
 }
 .gallery-thumb.is-active {
   border: 2px solid rgba(238, 205, 182, 1);
