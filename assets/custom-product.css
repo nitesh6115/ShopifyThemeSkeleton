@@ -343,7 +343,7 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
     background: var(--buy-btn-bg);
     font-weight: 800;
     color: var(--buy-btn-text);
-    border: var(--btn-border-width) solid var(--buy-btn-border);
+    border: var(--btn-border-width) solid var(--buy-border);
     border-radius: var(--btn-radius);
     transition: .2s ease;
     padding: 0 2rem;
