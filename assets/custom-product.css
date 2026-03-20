@@ -219,7 +219,7 @@ button.thumb-nav.thumb-next {
     background: var(--save-bg);
     font-size: 12px;
     padding: 5px 10px;
-    border-radius: var(--save-radisu);
+    border-radius: var(--save-radius);
 }
 
 .option-value.is-unavailable {
