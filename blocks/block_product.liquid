@@ -515,7 +515,59 @@ if (sticky && addToCartBtn) {
 /* -------------------------
    SEAL SUBSCRIPTION PRICE SYNC
 -------------------------- */
+document.addEventListener('sealsubs:price_update', function(e) {
 
+  if (!e.detail) return;
+
+  const {
+    price,
+    compareAtPrice,
+    pricePerDelivery
+  } = e.detail;
+
+  if (!price) return;
+
+  /* -------------------------
+     UPDATE MAIN PRODUCT PRICE
+  -------------------------- */
+
+  const regularPriceEl = priceWrapper?.querySelector('.regular_price');
+  const comparePriceEl = priceWrapper?.querySelector('.sale_price');
+  const saveEl = priceWrapper?.querySelector('.save');
+
+  if (regularPriceEl) {
+    regularPriceEl.textContent = formatMoney(price);
+  }
+
+  if (compareAtPrice && compareAtPrice > price) {
+
+    if (comparePriceEl) {
+      comparePriceEl.textContent = formatMoney(compareAtPrice);
+      comparePriceEl.style.display = 'inline';
+    }
+
+    if (saveEl) {
+      const percent = Math.round(
+        ((compareAtPrice - price) * 100) / compareAtPrice
+      );
+      saveEl.textContent = percent + '% OFF';
+      saveEl.style.display = 'inline';
+    }
+
+  } else {
+    if (comparePriceEl) comparePriceEl.style.display = 'none';
+    if (saveEl) saveEl.style.display = 'none';
+  }
+
+  /* -------------------------
+     UPDATE STICKY PRICE
+  -------------------------- */
+
+  if (stickyPrice) {
+    stickyPrice.textContent = formatMoney(price);
+  }
+
+});
 
 }
 
