@@ -138,7 +138,6 @@
 
     function checkOverflow() {
       const container = track.parentElement;
-      console.log(container)
 
       const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
 
@@ -493,9 +492,9 @@
     -------------------------- */
   }
 
-      /* -------------------------
-      INIT
-    -------------------------- */
+  /* -------------------------
+   INIT
+-------------------------- */
 
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll("[id^='MainProduct_']").forEach((section) => {
