@@ -374,7 +374,16 @@ function initProductScript(sectionId) {
         formatMoney(currentVariant.price);
     }
 
-    
+    if ( compare && currentVariant.compare_at_price > currentVariant.price ) 
+    {
+
+
+    } else {
+
+      compare?.style.display = "none";
+      save?.style.display = "none";
+
+    }
 
 
 
