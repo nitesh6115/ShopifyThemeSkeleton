@@ -14673,51 +14673,6 @@
                       },
                       "blocks": {}
                     },
-                    "block_image_MKCzny": {
-                      "type": "block_image",
-                      "name": "Image",
-                      "settings": {
-                        "image": "shopify://shop_images/Icon_5.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 32,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 32,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 32,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
                     "block_text_Pfr6Ph": {
                       "type": "block_text",
                       "name": "Text",
@@ -14764,7 +14719,6 @@
                   },
                   "block_order": [
                     "block_icon_KfM7Tg",
-                    "block_image_MKCzny",
                     "block_text_Pfr6Ph"
                   ]
                 }
