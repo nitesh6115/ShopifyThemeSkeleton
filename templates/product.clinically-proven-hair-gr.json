@@ -30,14 +30,14 @@
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
             "padding_right_mobile": 0,
-            "show_thumbs": true,
+            "show_thumbs": false,
             "media-thumb-width": 110,
             "media-thumb-mobile-width": 80,
             "media-thumb-border-width": 2,
             "media_border": "#eeeeee",
-            "media_border_active": "#eecdb6",
-            "media-radius": 10,
-            "media-thumb-radius": 10
+            "media_border_active": "#121212",
+            "media-radius": 0,
+            "media-thumb-radius": 0
           },
           "blocks": {
             "block_group_EekKMC": {
