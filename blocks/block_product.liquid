@@ -2,7 +2,6 @@
 
 {{ 'custom-product.css' | asset_url | stylesheet_tag }}
 {%- capture style_schema -%}
-    --section-bg:{{ block.settings.section_bg }};
     --section-wraper-width:{% if block.settings.section_width %}100%{% else %}{{ block.settings.wraper_width }}px{% endif %};
     --section-padding-top:{{ block.settings.padding_top_desktop }}px;
     --section-padding-bottom:{{ block.settings.padding_bottom_desktop }}px;
