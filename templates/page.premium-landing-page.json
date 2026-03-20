@@ -10192,6 +10192,36 @@
                 "block_group_Y6gTaf"
               ]
             },
+            "block_divider_RU6DFa": {
+              "type": "block_divider",
+              "name": "Divider",
+              "settings": {
+                "border": 2,
+                "color": "#1c1811",
+                "width": "fill",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 100,
+                "width_tablet": "fill",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 100,
+                "width_mobile": "fill",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "pt": 0,
+                "pb": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
+            },
             "block_group_pWarMa": {
               "type": "block_group",
               "name": "Block Container",
@@ -11386,6 +11416,7 @@
           },
           "block_order": [
             "block_group_4KKmpr",
+            "block_divider_RU6DFa",
             "block_group_pWarMa"
           ]
         },
@@ -12661,7 +12692,7 @@
               "type": "block_divider",
               "name": "Divider",
               "settings": {
-                "border": 1,
+                "border": 2,
                 "color": "#e8e0d4",
                 "width": "custom",
                 "custom_width_unit_desktop": "%",
@@ -18619,7 +18650,7 @@
                   "type": "block_divider",
                   "name": "Divider",
                   "settings": {
-                    "border": 1,
+                    "border": 2,
                     "color": "#c9a96e",
                     "width": "fill",
                     "custom_width_unit_desktop": "%",
@@ -18660,7 +18691,7 @@
                   "type": "block_divider",
                   "name": "Divider",
                   "settings": {
-                    "border": 1,
+                    "border": 2,
                     "color": "#c9a96e",
                     "width": "fill",
                     "custom_width_unit_desktop": "%",
