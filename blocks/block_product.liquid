@@ -111,7 +111,7 @@
       {% render 'product_media_gallery', variant_images: variant_images, product: product %}
     </div>
     <div class="product_information_wrapper">
-      <div {{  info_class_list }}" style="{{- Inforation_block -}}">
+      <div class="{{  info_class_list }}" style="{{- Inforation_block -}}">
       {%- assign product_form_id = 'product-form-' | append: block.id -%}
       {% content_for 'blocks' %}
       </div>
