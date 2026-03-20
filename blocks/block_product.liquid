@@ -121,239 +121,231 @@ function initProductScript(sectionId) {
 
   const section = document.querySelector('#MainProduct_' + sectionId);
   if (!section) return;
+  const gallery = document.querySelector(".custom-product-gallery");
+  if (!gallery) return;
+  const thumbs = gallery.querySelectorAll(".gallery-thumb");
+  const track = gallery.querySelector(".gallery-thumbs-track");
+  const mediaItems = gallery.querySelectorAll(".gallery-media-item");
+  const wrapper = gallery.querySelector(".gallery-thumbs-wrapper");
+  const prevBtn = gallery.querySelector(".thumb-prev");
+  const nextBtn = gallery.querySelector(".thumb-next");
 
-  /* -------------------------
-     GALLERY
-  -------------------------- */
 
-  const gallery = section.querySelector(".custom-product-gallery");
-  const thumbs = section.querySelectorAll(".gallery-thumb");
-  const track = section.querySelector(".gallery-thumbs-track");
-  const mediaItems = section.querySelectorAll(".gallery-media-item");
-  const wrapper = section.querySelector(".gallery-thumbs-wrapper");
-  const prevBtn = section.querySelector(".thumb-prev");
-  const nextBtn = section.querySelector(".thumb-next");
-
-  let currentTranslate = 0;
+  /*----------------------------
+      MEDIA ELEMENTS 
+    ---------------------------*/
+    let currentTranslate = 0;
 
   function checkOverflow() {
 
-    if (!track) return;
+  const container = track.parentElement;
 
-    const container = track.parentElement;
+  const isOverflowing =
+    Math.ceil(track.scrollWidth) >
+    Math.ceil(container.clientWidth);
 
-    const isOverflowing =
-      Math.ceil(track.scrollWidth) >
-      Math.ceil(container.clientWidth);
+  wrapper.classList.toggle("is-overflowing", isOverflowing);
 
-    wrapper?.classList.toggle("is-overflowing", isOverflowing);
-
-    if (!isOverflowing) {
-      currentTranslate = 0;
-      track.style.transform = "translateX(0px)";
-    }
+  if (!isOverflowing) {
+    currentTranslate = 0;
+    track.style.transform = "translateX(0px)";
   }
+}
 
   function activateMedia(mediaId) {
-
+  
     mediaItems.forEach(item => {
-
       item.classList.remove("is-active");
-
-      if (item.dataset.mediaId == mediaId) {
+      if (item.dataset.mediaId === mediaId) {
         item.classList.add("is-active");
       }
 
       const video = item.querySelector("video");
       if (video) video.pause();
-
     });
 
     thumbs.forEach(thumb => {
-
       thumb.classList.remove("is-active");
-
-      if (thumb.dataset.mediaId == mediaId) {
+      if (thumb.dataset.mediaId === mediaId) {
         thumb.classList.add("is-active");
+        scrollThumbIntoView(thumb);
       }
-
     });
+  }
+  
+  
+  function scrollThumbIntoView(thumb) {
+    const thumbLeft = thumb.offsetLeft;
+    const thumbRight = thumbLeft + thumb.offsetWidth;
+    const visibleLeft = Math.abs(currentTranslate);
+    const visibleRight = visibleLeft + track.parentElement.offsetWidth;
 
+    if (thumbLeft < visibleLeft) {
+      currentTranslate = -thumbLeft;
+    } else if (thumbRight > visibleRight) {
+      currentTranslate = -(thumbRight - track.parentElement.offsetWidth);
+    }
+
+    track.style.transform = `translateX(${currentTranslate}px)`;
   }
 
-  thumbs.forEach(thumb => {
-    thumb.addEventListener("click", function () {
-      activateMedia(this.dataset.mediaId);
-    });
-  });
-
-  prevBtn?.addEventListener("click", function () {
+  prevBtn?.addEventListener("click", function() {
     currentTranslate += 100;
     if (currentTranslate > 0) currentTranslate = 0;
     track.style.transform = `translateX(${currentTranslate}px)`;
   });
 
-  nextBtn?.addEventListener("click", function () {
-    const maxTranslate =
-      track.parentElement.offsetWidth -
-      track.scrollWidth;
-
+  nextBtn?.addEventListener("click", function() {
+    const maxTranslate = track.parentElement.offsetWidth - track.scrollWidth;
     currentTranslate -= 100;
-
-    if (currentTranslate < maxTranslate)
-      currentTranslate = maxTranslate;
-
-    track.style.transform =
-      `translateX(${currentTranslate}px)`;
+    if (currentTranslate < maxTranslate) currentTranslate = maxTranslate;
+    track.style.transform = `translateX(${currentTranslate}px)`;
   });
 
+  thumbs.forEach(thumb => {
+    thumb.addEventListener("click", function() {
+      activateMedia(this.dataset.mediaId);
+    });
+  });
+  
   checkOverflow();
   window.addEventListener("resize", checkOverflow);
 
-
-  /* -------------------------
-     VARIANTS
-  -------------------------- */
-
-  const variants = section.dataset.variants
-    ? JSON.parse(section.dataset.variants)
-    : [];
-  const form = section.querySelector("[data-type='add-to-cart-form']");
-  console.log(form)
+  const variants = {{ product.variants | json }};
+  const form = section.querySelector("form[id^='product-form-']");
   if (!form) return;
 
   const hiddenInput = form.querySelector("input[name='id']");
-  const priceWrapper = section.querySelector(".product-price");
-  const optionGroups = section.querySelectorAll(".product-option");
-  const addToCartBtn = form.querySelector(".add-to-cart");
- console.log(optionGroups)
-  let selectedOptions = [];
-  let currentVariant = null;
-
-
-  function formatMoney(cents) {
-
-    return new Intl.NumberFormat(
-      Shopify.locale,
-      {
-        style: "currency",
-        currency: Shopify.currency.active,
-      }
-    ).format(cents / 100);
-
-  }
-
+  const priceWrapper = section.querySelector('.product-price');
+  const optionGroups = section.querySelectorAll('.product-option');
+  const addToCartBtn = form.querySelector('.add-to-cart');
+  const showBtnPrice = addToCartBtn?.hasAttribute('data-btn-price');
 
   /* -------------------------
-     INITIAL
+     QUANTITY ELEMENTS
   -------------------------- */
+  const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
+  const qtyInput = qtyWrapper?.querySelector('.qty-input');
+  const plusBtn = qtyWrapper?.querySelector('.qty-plus');
+  const minusBtn = qtyWrapper?.querySelector('.qty-minus');
+  const qtyError = qtyWrapper?.querySelector('.qty-error');
 
+  /* -------------------------
+     STICKY ELEMENTS
+  -------------------------- */
+  const sticky = section.querySelector('.sticky-atc');
+  const stickyBtn = sticky?.querySelector('.sticky-btn');
+  const stickyPrice = sticky?.querySelector('.sticky-price');
+  const stickyCompare = sticky?.querySelector('.sticky-compare');
+  const stickySave = sticky?.querySelector('.sticky-save');
+  const stickyVariant = sticky?.querySelector('.sticky-variant');
+  const stickyImage = sticky?.querySelector('.sticky-image');
+
+  let selectedOptions = [];
+  let currentVariant = null;
+  let cartData = null;
+
+  function formatMoney(cents) {
+    return new Intl.NumberFormat('{{ shop.locale }}', {
+      style: 'currency',
+      currency: '{{ shop.currency }}',
+    }).format(cents / 100);
+  }
+
+  /* -------------------------
+     FETCH CART (once)
+  -------------------------- */
+  fetch('/cart.js')
+    .then(res => res.json())
+    .then(data => {
+      cartData = data;
+    });
+
+  /* -------------------------
+     INITIAL VARIANT
+  -------------------------- */
   const initialVariant =
     variants.find(v => v.id == hiddenInput.value) ||
     variants.find(v => v.available) ||
     variants[0];
 
-  if (!initialVariant) return;
-
   selectedOptions = [
-    initialVariant.option1,
-    initialVariant.option2,
-    initialVariant.option3,
+    initialVariant.option1 || null,
+    initialVariant.option2 || null,
+    initialVariant.option3 || null,
   ];
 
   updateUI();
   updateVariant();
 
-
   /* -------------------------
      OPTION CLICK
   -------------------------- */
-
   optionGroups.forEach((group, index) => {
-
-    group.querySelectorAll(".option-value")
-      .forEach(button => {
-
-        button.addEventListener("click", function () {
-        console.log("click")
-          selectedOptions[index] =
-            this.dataset.value;
-
-          updateUI();
-          updateVariant();
-
-        });
-
+    group.querySelectorAll('.option-value').forEach((button) => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('is-unavailable')) return;
+        selectedOptions[index] = this.dataset.value;
+        updateUI();
+        updateVariant();
       });
-
+    });
   });
 
-
   /* -------------------------
-     UI
+     UPDATE VARIANT
   -------------------------- */
+    function updateUI() {
+  optionGroups.forEach((group, index) => {
+    group.querySelectorAll('.option-value').forEach((button) => {
 
-  function updateUI() {
+      const testOptions = [...selectedOptions];
+      testOptions[index] = button.dataset.value;
 
-    optionGroups.forEach((group, index) => {
+      const existingVariant = variants.find((variant) => {
+        return (
+          (variant.option1 === testOptions[0] || !variant.option1) &&
+          (variant.option2 === testOptions[1] || !variant.option2) &&
+          (variant.option3 === testOptions[2] || !variant.option3)
+        );
+      });
 
-      group.querySelectorAll(".option-value")
-        .forEach(button => {
+      const isAvailable = existingVariant?.available;
+      const exists = !!existingVariant;
 
-          button.classList.remove(
-            "is-active",
-            "is-soldout",
-            "is-unavailable"
-          );
+      button.classList.remove('is-active', 'is-soldout', 'is-unavailable');
 
-          if (
-            button.dataset.value ==
-            selectedOptions[index]
-          ) {
-            button.classList.add("is-active");
-          }
+      if (button.dataset.value === selectedOptions[index]) {
+        button.classList.add('is-active');
+      }
 
-        });
+      if (!exists) {
+        button.classList.add('is-unavailable');
+      } else if (!isAvailable) {
+        button.classList.add('is-soldout');
+      }
 
     });
-
+  });
   }
+  function updateVariant() {
 
-
-  /* -------------------------
-     VARIANT UPDATE
-  -------------------------- */
-
- function updateVariant() {
-
-    currentVariant = variants.find(v => {
-
+    currentVariant = variants.find((variant) => {
       return (
-        v.option1 == selectedOptions[0] &&
-        (v.option2 == selectedOptions[1] || !v.option2) &&
-        (v.option3 == selectedOptions[2] || !v.option3)
+        (variant.option1 === selectedOptions[0] || !variant.option1) &&
+        (variant.option2 === selectedOptions[1] || !variant.option2) &&
+        (variant.option3 === selectedOptions[2] || !variant.option3)
       );
-
     });
 
     if (!currentVariant) return;
 
     hiddenInput.value = currentVariant.id;
-
-
-    /* IMAGE */
-
-    if (currentVariant.featured_media) {
-
-      activateMedia(
-        currentVariant.featured_media.id
-      );
-
-    }
-
-
-    /* PRICE */
-
+     /*-------IMAGE UPDATE --------*/
+     if (currentVariant?.featured_media) {
+  activateMedia(currentVariant.featured_media.id.toString());
+  
+}
     /* ---- PRICE ---- */
     const regularPriceEl = priceWrapper.querySelector('.regular_price');
     const comparePriceEl = priceWrapper.querySelector('.sale_price');
@@ -377,23 +369,151 @@ function initProductScript(sectionId) {
       saveEl.style.display = 'none';
     }
 
-
-    /* BUTTON */
-
+    /* ---- BUTTON ---- */
     if (!currentVariant.available) {
-
       addToCartBtn.disabled = true;
-      addToCartBtn.textContent = "Sold Out";
-
+      addToCartBtn.textContent = 'Sold Out';
     } else {
-
       addToCartBtn.disabled = false;
-      addToCartBtn.textContent =
-        "Add to Cart";
-
+      addToCartBtn.innerHTML = showBtnPrice
+        ? `<span class='btn_text'>Add to Cart</span><span class='icon'>—</span><span class='btn_price'>${formatMoney(currentVariant.price)}</span>`
+        : `<span class='btn_text'>Add to Cart</span>`;
     }
 
+    /* ---- STICKY ---- */
+    if (sticky) {
+      stickyPrice.textContent = formatMoney(currentVariant.price);
+      stickyVariant.textContent = currentVariant.title;
+
+      if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
+        const percent = Math.round(
+          ((currentVariant.compare_at_price - currentVariant.price) * 100) /
+          currentVariant.compare_at_price
+        );
+        stickyCompare.textContent = formatMoney(currentVariant.compare_at_price);
+        stickySave.textContent = percent + '% OFF';
+        stickyCompare.style.display = 'inline';
+        stickySave.style.display = 'block';
+      } else {
+        stickyCompare.style.display = 'none';
+        stickySave.style.display = 'none';
+      }
+
+      stickyBtn.disabled = !currentVariant.available;
+      stickyBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+    }
+
+    if (qtyInput) {
+      qtyInput.value = 1;
+      validateQuantity();
+    }
+
+    document.dispatchEvent(
+      new CustomEvent('variant:change', { detail: { variant: currentVariant } })
+    );
   }
+
+  /* -------------------------
+     QUANTITY VALIDATION
+  -------------------------- */
+  function validateQuantity() {
+    if (!currentVariant || !qtyInput) return;
+
+    const maxInventory = currentVariant.inventory_quantity;
+    const inventoryPolicy = currentVariant.inventory_policy;
+
+    let cartQty = 0;
+
+    if (cartData?.items?.length) {
+      const existingItem = cartData.items.find(item => item.id == currentVariant.id);
+      cartQty = existingItem ? existingItem.quantity : 0;
+    }
+
+    const requestedQty = parseInt(qtyInput.value) || 1;
+
+    if (inventoryPolicy === 'deny') {
+      const remaining = maxInventory - cartQty;
+
+      if (remaining <= 0) {
+        qtyInput.value = 1;
+        plusBtn.disabled = true;
+        qtyError.style.display = 'block';
+        qtyError.textContent = 'Sold Out';
+        return;
+      }
+
+      if (requestedQty > remaining) {
+        qtyInput.value = remaining;
+        qtyError.style.display = 'block';
+        qtyError.textContent = `Only ${remaining} left`;
+      } else {
+        qtyError.style.display = 'none';
+      }
+
+      plusBtn.disabled = requestedQty >= remaining;
+    } else {
+      qtyError.style.display = 'none';
+      plusBtn.disabled = false;
+    }
+  }
+
+  if (qtyInput) {
+    plusBtn.addEventListener('click', () => {
+      qtyInput.value = parseInt(qtyInput.value) + 1;
+      validateQuantity();
+    });
+
+    minusBtn.addEventListener('click', () => {
+      if (parseInt(qtyInput.value) > 1) {
+        qtyInput.value = parseInt(qtyInput.value) - 1;
+      }
+      validateQuantity();
+    });
+  }
+/* -------------------------
+   STICKY SHOW / HIDE
+-------------------------- */
+/* -------------------------
+   STICKY CLICK = REAL SUBMIT
+-------------------------- */
+
+if (stickyBtn && form) {
+  stickyBtn.addEventListener('click', function () {
+
+    if (!currentVariant || !currentVariant.available) return;
+
+    // Sync quantity from main input
+    if (qtyInput) {
+      const hiddenQty = form.querySelector("input[name='quantity']");
+      if (hiddenQty) {
+        hiddenQty.value = qtyInput.value;
+      }
+    }
+
+    form.requestSubmit(); // safest way
+  });
+}
+if (sticky && addToCartBtn) {
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sticky.classList.remove('active');
+        } else {
+          sticky.classList.add('active');
+        }
+      });
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(addToCartBtn);
+}
+/* -------------------------
+   SEAL SUBSCRIPTION PRICE SYNC
+-------------------------- */
+
 
 }
 
