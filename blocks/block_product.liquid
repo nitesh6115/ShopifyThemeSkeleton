@@ -94,7 +94,7 @@
   {% if block.settings.hide_desktop %}hide-desktop;{% endif %}
   {% if block.settings.hide_mobile %}hide-mobile;{% endif %}
 {% endcapture %}
-{% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
+{% assign Inforation_block = Inforation_block | strip_newlines | replace: ';', ' ' | strip %}
 
 <div
   class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
