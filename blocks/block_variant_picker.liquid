@@ -4,11 +4,8 @@
     assign product = collections.all.products.first
   endif
 -%}
- <div
-              class="product_block variant_picker"
-              {{ block.shopify_attributes }}
-              style="
-                --block-bg: {{ block.settings.bg_color }};
+{%- capture style_schema -%}
+--block-bg: {{ block.settings.bg_color }};
                 --block-radius: {{ block.settings.block_radius }}px;
                 --block-desktop-text-alignment: {{ block.settings.desktop_text_align }};
                 --block-mobile-text-alignment: {{ block.settings.mobile_text_align }};
@@ -29,8 +26,9 @@
                 --pill-border: {{ block.settings.pill-border }};
                 --pill-border-width: {{ block.settings.pill-border-width }}px;
                 --pill-hover-border: {{ block.settings.hover-pill-border }};
-              "
-            >
+{%endcapture %}
+{% assign style_schema = style_schema | strip_newlines %}
+ <div class="product_block variant_picker" {{ block.shopify_attributes }} style="{{- style_schema -}}">
               {% for option in product.options_with_values %}
                 <div class="product-option" data-option-position="{{ option.position }}">
                   <label>{{ option.name }}</label>
