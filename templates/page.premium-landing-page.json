@@ -6377,7 +6377,7 @@
             "custom_height": 100,
             "gap": 12,
             "gap_m": 12,
-            "background": "linear-gradient(180deg, rgba(196, 102, 238, 1), rgba(82, 218, 236, 1) 100%)",
+            "background": "",
             "radius": 0,
             "set_full_radius": false,
             "radius_top_left": 0,
@@ -6413,6 +6413,47 @@
             "media-thumb-radius": 0
           },
           "blocks": {
+            "block_heading_MQQbrd": {
+              "type": "block_heading",
+              "name": "Heading",
+              "settings": {
+                "text": "{{ closest.product.title }}",
+                "alignment": "left",
+                "font_italic": false,
+                "font_uppercase": false,
+                "line_height": "1.2",
+                "letter_spacing": 0,
+                "color": "#1a1510",
+                "tag": "h2",
+                "size_mode": "custom",
+                "font_size": 40,
+                "font_size_m": 35,
+                "font_weight": 600,
+                "width": "fill",
+                "custom_width": 100,
+                "width_tablet": "fill",
+                "custom_width_tablet": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "bg": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_mobile": false,
+                "hide_desktop": false
+              },
+              "blocks": {}
+            },
             "block_product_price_VmwDwt": {
               "type": "block_product_price",
               "name": "Product Price",
@@ -6491,6 +6532,7 @@
             }
           },
           "block_order": [
+            "block_heading_MQQbrd",
             "block_product_price_VmwDwt",
             "block_variant_picker_BkYMjf",
             "block_add_to_cart_button_bjxqFJ"
