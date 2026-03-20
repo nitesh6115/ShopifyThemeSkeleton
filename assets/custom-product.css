@@ -157,7 +157,6 @@
   margin-top: 18px;
 }
 .thumb-nav {
-  background: var(--section-bg);
   border: var(--media-thumb-border-size) solid var(--media-thumb-border-color);
   width: 32px;
   height: 32px;
