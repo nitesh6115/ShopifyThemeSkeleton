@@ -148,7 +148,7 @@
   height: 100%;
   object-fit: cover;
 }
-.product_information_wrapper.group.group--vertical.box-wrap.block-custom-height-desktop {
+.product_information_wrapper.group.group--vertical.box-wrap.block-custom-height-fill {
     flex: 0 0 auto;
     height: unset;
 }
