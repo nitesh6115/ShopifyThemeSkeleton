@@ -387,14 +387,6 @@ function initProductScript(sectionId) {
 
       compare.style.display = "inline";
 
-      const percent = Math.round(
-        (
-          (currentVariant.compare_at_price -
-            currentVariant.price) *
-          100
-        ) /
-          currentVariant.compare_at_price
-      );
 
       save.textContent = percent + "% OFF";
       save.style.display = "inline";
