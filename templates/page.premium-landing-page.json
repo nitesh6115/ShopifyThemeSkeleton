@@ -4854,7 +4854,7 @@
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
                 "custom_width_tablet": 100,
-                "width_mobile": "fill",
+                "width_mobile": "custom",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -10590,7 +10590,7 @@
                     "block_group_9kjxV8"
                   ]
                 },
-                "block_divider_dQja7w": {
+                "block_divider_WHzchg": {
                   "type": "block_divider",
                   "name": "Divider",
                   "settings": {
@@ -10606,7 +10606,7 @@
                     "custom_width_tablet": 1,
                     "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 2,
+                    "custom_width_pixel_mobile": 1,
                     "custom_width_mobile": 100,
                     "height": "fill",
                     "custom_height": 100,
@@ -10983,7 +10983,7 @@
                 "block_group_nyRAqE",
                 "block_divider_BdLmtq",
                 "block_group_d7JbGm",
-                "block_divider_dQja7w",
+                "block_divider_WHzchg",
                 "block_group_aRV8XU"
               ]
             }
