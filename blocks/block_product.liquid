@@ -100,6 +100,7 @@
   class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{- style_schema -}}"
   id="MainProduct_{{ block.id }}"
+  data-variants='{{ product.variants | json }}'
   data-section="{{ block.id }}"
   data-product-id="{{ product.id }}"
 >
