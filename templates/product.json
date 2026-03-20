@@ -8071,7 +8071,7 @@
                   "type": "block_icon",
                   "name": "Icon",
                   "settings": {
-                    "icon": "leaf",
+                    "icon": "shield",
                     "svg_code": "",
                     "size": 30,
                     "color": "#8b6a53"
@@ -8082,7 +8082,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "GMP Certified",
+                    "text": "FDA Registered",
                     "alignment": "center",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -8123,7 +8123,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Good Manufacturing Practice</p>",
+                    "text": "<p>Registered Facility</p>",
                     "block_link": "",
                     "alignment": "center",
                     "width": "fill",
@@ -8221,7 +8221,7 @@
                   "type": "block_icon",
                   "name": "Icon",
                   "settings": {
-                    "icon": "leaf",
+                    "icon": "check",
                     "svg_code": "",
                     "size": 30,
                     "color": "#8b6a53"
@@ -8232,7 +8232,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "GMP Certified",
+                    "text": "Third-Party Tested",
                     "alignment": "center",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -8273,7 +8273,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Good Manufacturing Practice</p>",
+                    "text": "<p>Lab Verified Purity</p>",
                     "block_link": "",
                     "alignment": "center",
                     "width": "fill",
@@ -8382,7 +8382,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "GMP Certified",
+                    "text": "Verified Project",
                     "alignment": "center",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -8521,7 +8521,7 @@
                   "type": "block_icon",
                   "name": "Icon",
                   "settings": {
-                    "icon": "leaf",
+                    "icon": "certificate",
                     "svg_code": "",
                     "size": 30,
                     "color": "#8b6a53"
@@ -8532,7 +8532,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "GMP Certified",
+                    "text": "Made in USA",
                     "alignment": "center",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -8573,7 +8573,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Good Manufacturing Practice</p>",
+                    "text": "<p>Domestic Production</p>",
                     "block_link": "",
                     "alignment": "center",
                     "width": "fill",
@@ -8682,7 +8682,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "GMP Certified",
+                    "text": "Vegan Certified",
                     "alignment": "center",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -8723,7 +8723,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Good Manufacturing Practice</p>",
+                    "text": "<p>100% Plant-Based</p>",
                     "block_link": "",
                     "alignment": "center",
                     "width": "fill",
