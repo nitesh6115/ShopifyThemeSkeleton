@@ -344,6 +344,12 @@
               },
               "blocks": {}
             },
+            "seal_subscriptions_subscription_widget_yTaHA4": {
+              "type": "shopify://apps/seal-subscriptions/blocks/subscription-widget/13b25004-a140-4ab7-b5fe-29918f759699",
+              "settings": {
+                "product": "{{closest.product}}"
+              }
+            },
             "block_add_to_cart_button_jjTRmx": {
               "type": "block_add_to_cart_button",
               "name": "Add To Cart Button",
@@ -381,6 +387,7 @@
             "block_text_ti3E3M",
             "block_product_price_RdaFd8",
             "block_variant_picker_g69dWw",
+            "seal_subscriptions_subscription_widget_yTaHA4",
             "block_add_to_cart_button_jjTRmx"
           ]
         }
