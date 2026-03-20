@@ -289,6 +289,36 @@ function initProductScript(sectionId) {
   });
 
 
+  /* -------------------------
+     UI
+  -------------------------- */
+
+  function updateUI() {
+
+    optionGroups.forEach((group, index) => {
+
+      group.querySelectorAll(".option-value")
+        .forEach(button => {
+
+          button.classList.remove(
+            "is-active",
+            "is-soldout",
+            "is-unavailable"
+          );
+
+          if (
+            button.dataset.value ==
+            selectedOptions[index]
+          ) {
+            button.classList.add("is-active");
+          }
+
+        });
+
+    });
+
+  }
+
 
 
 }
