@@ -320,6 +320,46 @@ function initProductScript(sectionId) {
   }
 
 
+  /* -------------------------
+     VARIANT UPDATE
+  -------------------------- */
+
+  function updateVariant() {
+
+    currentVariant = variants.find(v => {
+
+      return (
+        v.option1 == selectedOptions[0] &&
+        (v.option2 == selectedOptions[1] || !v.option2) &&
+        (v.option3 == selectedOptions[2] || !v.option3)
+      );
+
+    });
+
+    if (!currentVariant) return;
+
+    hiddenInput.value = currentVariant.id;
+
+
+    
+
+
+    /* BUTTON */
+
+    if (!currentVariant.available) {
+
+      addToCartBtn.disabled = true;
+      addToCartBtn.textContent = "Sold Out";
+
+    } else {
+
+      addToCartBtn.disabled = false;
+      addToCartBtn.textContent =
+        "Add to Cart";
+
+    }
+
+  }
 
 }
 
