@@ -76,9 +76,21 @@ align--{{ block.settings.align }};
   .align--right .divider-line {
     margin-left: auto;
   }
-  
+  @media (min-width: 1366px) {
+  .block-width-desktop-fill.divider-line{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1365px) {
+.block-width-tablet-fill.divider-line{
+    width: 100%;
+  }
+}
   /* mobile */
   @media (max-width:767px){
+    .block-width-mobile-fill.divider-line{
+    width: 100%;
+  }
     .divider-block {
       padding-top: var(--ptm);
       padding-bottom: var(--pbm);
