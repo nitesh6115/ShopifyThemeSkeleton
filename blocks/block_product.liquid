@@ -67,8 +67,8 @@
 {% assign Inforation_block = style_schema | strip_newlines %}
 {%- capture info_class_list -%}
   group;
-  {{ block.settings.layout_direction }}; 
-  box-{{ block.settings.wrap }};
+  group--horizontal;
+  box-wrap; 
   {% if block.settings.height == 'custom' %}
   block-custom-height-desktop;
   {% else %}
