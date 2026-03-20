@@ -4220,14 +4220,14 @@
                     "block_text_W4zxKV"
                   ]
                 },
-                "block_group_fMMmTz": {
+                "block_group_pbh9wT": {
                   "type": "block_group",
                   "name": "Icon Text",
                   "settings": {
                     "layout_direction": "group--horizontal",
                     "align_x": "flex-start",
                     "align_y": "center",
-                    "wrap": "nowrap",
+                    "wrap": "wrap",
                     "hover_zoom": false,
                     "shadow": false,
                     "width": "fill",
@@ -4268,52 +4268,18 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_7LBpVf": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_HVfrHx": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/Container_67.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 40,
-                        "custom_width": 40,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 40,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 40,
-                        "custom_width_mobile": 15,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "star",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z\" fill=\"white\"></path>\n<path d=\"M15.6648 18.875L16.7727 17.7443L19.6477 20.5795L25.733 14.517L26.858 15.6477L19.6477 22.8295L15.6648 18.875Z\" fill=\"#EC003F\"></path>\n</svg>",
+                        "size": 48,
+                        "color": "#000000"
                       },
                       "blocks": {}
                     },
-                    "block_text_cfjeTq": {
+                    "block_text_btd3pH": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
@@ -4358,18 +4324,18 @@
                     }
                   },
                   "block_order": [
-                    "block_image_7LBpVf",
-                    "block_text_cfjeTq"
+                    "block_icon_HVfrHx",
+                    "block_text_btd3pH"
                   ]
                 },
-                "block_group_RBULtN": {
+                "block_group_gMPPiq": {
                   "type": "block_group",
                   "name": "Icon Text",
                   "settings": {
                     "layout_direction": "group--horizontal",
                     "align_x": "flex-start",
                     "align_y": "center",
-                    "wrap": "nowrap",
+                    "wrap": "wrap",
                     "hover_zoom": false,
                     "shadow": false,
                     "width": "fill",
@@ -4410,52 +4376,18 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_3WJMH7": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_mgJ3gU": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/Container_67.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 40,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 40,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 40,
-                        "custom_width_mobile": 16,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "star",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z\" fill=\"white\"></path>\n<path d=\"M15.6648 18.875L16.7727 17.7443L19.6477 20.5795L25.733 14.517L26.858 15.6477L19.6477 22.8295L15.6648 18.875Z\" fill=\"#EC003F\"></path>\n</svg>",
+                        "size": 48,
+                        "color": "#000000"
                       },
                       "blocks": {}
                     },
-                    "block_text_pPHTTi": {
+                    "block_text_zbB6TT": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
@@ -4500,8 +4432,8 @@
                     }
                   },
                   "block_order": [
-                    "block_image_3WJMH7",
-                    "block_text_pPHTTi"
+                    "block_icon_mgJ3gU",
+                    "block_text_zbB6TT"
                   ]
                 }
               },
@@ -4509,8 +4441,8 @@
                 "block_heading_HqXHFG",
                 "block_text_EidBTw",
                 "block_group_7NMPi4",
-                "block_group_fMMmTz",
-                "block_group_RBULtN"
+                "block_group_pbh9wT",
+                "block_group_gMPPiq"
               ]
             },
             "block_group_3EU3VM": {
