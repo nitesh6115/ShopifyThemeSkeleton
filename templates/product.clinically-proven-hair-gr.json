@@ -123,7 +123,7 @@
             "btn_border": "#121212",
             "btn_hover_border": "",
             "show_qty": true,
-            "show_dynamic_button": true,
+            "show_dynamic_button": false,
             "enabled_sticky_add": false,
             "show_price": true,
             "btn_font": 14,
