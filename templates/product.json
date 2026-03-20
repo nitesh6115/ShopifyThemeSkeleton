@@ -363,7 +363,7 @@
                 "btn_border": "rgba(0,0,0,0)",
                 "btn_hover_border": "",
                 "show_qty": true,
-                "show_dynamic_button": false,
+                "show_dynamic_button": true,
                 "enabled_sticky_add": true,
                 "show_price": false,
                 "btn_font": 14,
@@ -9559,7 +9559,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/09ce9f983a8fa6db32b569a4a768fdf6f6ccd3db.jpg",
+                    "image": "shopify://shop_images/P-IMAGE-1.avif",
                     "image_link": "",
                     "ratio": "square",
                     "hover_zoom": true,
@@ -9797,7 +9797,7 @@
                             "icon": "fill_circle",
                             "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 20 20\" fill=\"none\">\n<g clip-path=\"url(#clip0_80_596)\">\n<path d=\"M10.0003 18.3337C14.6027 18.3337 18.3337 14.6027 18.3337 10.0003C18.3337 5.39795 14.6027 1.66699 10.0003 1.66699C5.39795 1.66699 1.66699 5.39795 1.66699 10.0003C1.66699 14.6027 5.39795 18.3337 10.0003 18.3337Z\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 13.3333V10\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 6.66699H10.0083\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_80_596\">\n<rect width=\"20\" height=\"20\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
                             "size": 20,
-                            "color": "#8F8D8D"
+                            "color": "#8f8d8d"
                           },
                           "blocks": {}
                         }
@@ -10044,7 +10044,7 @@
                             "icon": "fill_circle",
                             "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 20 20\" fill=\"none\">\n<g clip-path=\"url(#clip0_80_596)\">\n<path d=\"M10.0003 18.3337C14.6027 18.3337 18.3337 14.6027 18.3337 10.0003C18.3337 5.39795 14.6027 1.66699 10.0003 1.66699C5.39795 1.66699 1.66699 5.39795 1.66699 10.0003C1.66699 14.6027 5.39795 18.3337 10.0003 18.3337Z\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 13.3333V10\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 6.66699H10.0083\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_80_596\">\n<rect width=\"20\" height=\"20\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
                             "size": 20,
-                            "color": "#8F8D8D"
+                            "color": "#8f8d8d"
                           },
                           "blocks": {}
                         }
@@ -10291,7 +10291,7 @@
                             "icon": "fill_circle",
                             "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 20 20\" fill=\"none\">\n<g clip-path=\"url(#clip0_80_596)\">\n<path d=\"M10.0003 18.3337C14.6027 18.3337 18.3337 14.6027 18.3337 10.0003C18.3337 5.39795 14.6027 1.66699 10.0003 1.66699C5.39795 1.66699 1.66699 5.39795 1.66699 10.0003C1.66699 14.6027 5.39795 18.3337 10.0003 18.3337Z\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 13.3333V10\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 6.66699H10.0083\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_80_596\">\n<rect width=\"20\" height=\"20\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
                             "size": 20,
-                            "color": "#8F8D8D"
+                            "color": "#8f8d8d"
                           },
                           "blocks": {}
                         }
@@ -10538,7 +10538,7 @@
                             "icon": "fill_circle",
                             "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 20 20\" fill=\"none\">\n<g clip-path=\"url(#clip0_80_596)\">\n<path d=\"M10.0003 18.3337C14.6027 18.3337 18.3337 14.6027 18.3337 10.0003C18.3337 5.39795 14.6027 1.66699 10.0003 1.66699C5.39795 1.66699 1.66699 5.39795 1.66699 10.0003C1.66699 14.6027 5.39795 18.3337 10.0003 18.3337Z\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 13.3333V10\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M10 6.66699H10.0083\" stroke=\"currentColor\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_80_596\">\n<rect width=\"20\" height=\"20\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
                             "size": 20,
-                            "color": "#8F8D8D"
+                            "color": "#8f8d8d"
                           },
                           "blocks": {}
                         }
