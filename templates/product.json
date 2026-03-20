@@ -130,8 +130,8 @@
               "type": "block_variant_picker",
               "name": "variant_picker",
               "settings": {
-                "padding_top": 5,
-                "padding_bottom": 5,
+                "padding_top": 0,
+                "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
                 "block_radius": 0,
@@ -148,12 +148,42 @@
                 "pill-radius": 10
               },
               "blocks": {}
+            },
+            "block_add_to_cart_button_jjTRmx": {
+              "type": "block_add_to_cart_button",
+              "name": "Add To Cart Button",
+              "settings": {
+                "padding_top": 5,
+                "padding_bottom": 5,
+                "padding_left": 0,
+                "padding_right": 0,
+                "block_radius": 0,
+                "desktop_text_align": "left",
+                "mobile_text_align": "left",
+                "bg_color": "",
+                "btn_bg": "linear-gradient(90deg, rgba(6, 93, 45, 1), rgba(12, 141, 70, 1) 100%)",
+                "btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+                "btn_text": "#fff",
+                "btn_hover_text": "#fff",
+                "btn_border": "transparent",
+                "btn_hover_border": "",
+                "show_qty": false,
+                "show_dynamic_button": false,
+                "enabled_sticky_add": false,
+                "show_price": false,
+                "btn_font": 14,
+                "btn_uppercase": false,
+                "btn_radius": 10,
+                "btn_border_width": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "block_heading_QtwPx4",
             "block_product_price_RdaFd8",
-            "block_variant_picker_g69dWw"
+            "block_variant_picker_g69dWw",
+            "block_add_to_cart_button_jjTRmx"
           ]
         }
       },
