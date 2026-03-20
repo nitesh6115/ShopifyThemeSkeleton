@@ -161,7 +161,7 @@
                 "compare_price_color": "#A1A1A1",
                 "save_color": "#016630",
                 "save_color_bg": "#DCFCE7",
-                "save_radius": 4,
+                "save_radius": 50,
                 "price_font_size": 30,
                 "mobile_price_font_size": 30,
                 "compare_at_price_font_size": 20,
