@@ -44,6 +44,7 @@
     text-align: var(--block-desktop-text-alignment);
     color: var(--block-text-color);
     font-size: var(--desktop-font-size);
+    width: 100%;
 }
 .product_title{
     font-size: var(--desktop-font-size);
