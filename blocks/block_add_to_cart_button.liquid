@@ -29,6 +29,14 @@
     --btn-uppercase: {% if block.settings.btn_uppercase %} uppercase {% else %} normal {%endif %};
     --btn-border-width: {{ block.settings.btn_border_width }}px;
     --btn-hover-border: {{ block.settings.btn_hover_border }};
+
+    --buy-btn-bg: {{ block.settings.buy_btn_bg }};
+    --buy-btn-text: {{ block.settings.buy_btn_text }};
+    --buy-border: {{ block.settings.buy_btn_border }};
+    --buy-btn-hover-bg: {{ block.settings.buy_btn_hover_bg }};
+    --buy-btn-hover-text: {{ block.settings.buy_btn_hover_text }};
+    --buy-btn-hover-border: {{ block.settings.buy_btn_hover_border }};
+
 {% endcapture %}
 {% assign style_schema = style_schema | strip_newlines %}
 <div
@@ -273,8 +281,50 @@
       "label": "Show Buy Now or Dynamic Button"
     },
     {
+      "type": "color_background",
+      "id": "buy_btn_bg",
+      "label": "Button Background Color",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
+      "default": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)"
+    },
+    {
+      "type": "color_background",
+      "id": "buy_btn_hover_bg",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
+      "default": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(10, 9, 9, 1) 100%)",
+      "label": "Button Hover Background Color"
+    },
+    {
+      "type": "color",
+      "id": "buy_btn_text",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
+      "default": "#fff",
+      "label": "Button Text Color"
+    },
+    {
+      "type": "color",
+      "id": "buy_btn_hover_text",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
+      "default": "#fff",
+      "label": "Button Hover Text Color"
+    },
+    {
+      "type": "color",
+      "id": "buy_btn_border",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
+      "label": "Button Border Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "buy_btn_hover_border",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
+      "label": "Button Hover Border Color"
+    },
+    {
       "type": "checkbox",
       "id": "enabled_sticky_add",
+      "visible_if": "{{ block.settings.show_dynamic_button == true }}",
       "label": "Show Sticky Add Bar"
     },
 
