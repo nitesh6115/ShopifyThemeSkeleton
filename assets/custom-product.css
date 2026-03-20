@@ -461,7 +461,7 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
 }
 
 .sticky-inner {
-  max-width: var(--section-wraper-width);
+  max-width: 1200px;
   margin: auto;
   padding: 12px var(--section-padding-right) 12px var(--section-padding-left);
   display: flex;
