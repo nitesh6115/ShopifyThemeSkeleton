@@ -100,7 +100,7 @@
   class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{- style_schema -}}"
   id="MainProduct_{{ block.id }}"
-  data-variants='{{ product.variants | json }}'
+  data-variants="{{ product.variants | json }}"
   data-section="{{ block.id }}"
   data-product-id="{{ product.id }}"
 >
@@ -112,457 +112,403 @@
     </div>
     <div class="product_information_wrapper">
       <div>
-      {%- assign product_form_id = 'product-form-' | append: block.id -%}
-      {% content_for 'blocks' %}
+        {%- assign product_form_id = 'product-form-' | append: block.id -%}
+        {% content_for 'blocks' %}
       </div>
     </div>
   </div>
 </div>
 <script>
-function initProductScript(sectionId) {
+  function initProductScript(sectionId) {
+    const section = document.querySelector('#MainProduct_' + sectionId);
+    if (!section) return;
+    const gallery = section.querySelector('.custom-product-gallery');
+    if (!gallery) return;
+    const thumbs = gallery.querySelectorAll('.gallery-thumb');
+    const track = gallery.querySelector('.gallery-thumbs-track');
+    const mediaItems = gallery.querySelectorAll('.gallery-media-item');
+    const wrapper = gallery.querySelector('.gallery-thumbs-wrapper');
+    const prevBtn = gallery.querySelector('.thumb-prev');
+    const nextBtn = gallery.querySelector('.thumb-next');
 
-  const section = document.querySelector('#MainProduct_' + sectionId);
-  if (!section) return;
-  const gallery = section.querySelector(".custom-product-gallery");
-  if (!gallery) return;
-  const thumbs = gallery.querySelectorAll(".gallery-thumb");
-  const track = gallery.querySelector(".gallery-thumbs-track");
-  const mediaItems = gallery.querySelectorAll(".gallery-media-item");
-  const wrapper = gallery.querySelector(".gallery-thumbs-wrapper");
-  const prevBtn = gallery.querySelector(".thumb-prev");
-  const nextBtn = gallery.querySelector(".thumb-next");
-
-
-  /*----------------------------
+    /*----------------------------
       MEDIA ELEMENTS 
     ---------------------------*/
     let currentTranslate = 0;
 
-  function checkOverflow() {
+    function checkOverflow() {
+      const container = track.parentElement;
 
-  const container = track.parentElement;
+      const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
 
-  const isOverflowing =
-    Math.ceil(track.scrollWidth) >
-    Math.ceil(container.clientWidth);
+      wrapper.classList.toggle('is-overflowing', isOverflowing);
 
-  wrapper.classList.toggle("is-overflowing", isOverflowing);
-
-  if (!isOverflowing) {
-    currentTranslate = 0;
-    track.style.transform = "translateX(0px)";
-  }
-}
-
-  function activateMedia(mediaId) {
-  
-    mediaItems.forEach(item => {
-      item.classList.remove("is-active");
-      if (item.dataset.mediaId === mediaId) {
-        item.classList.add("is-active");
+      if (!isOverflowing) {
+        currentTranslate = 0;
+        track.style.transform = 'translateX(0px)';
       }
-
-      const video = item.querySelector("video");
-      if (video) video.pause();
-    });
-
-    thumbs.forEach(thumb => {
-      thumb.classList.remove("is-active");
-      if (thumb.dataset.mediaId === mediaId) {
-        thumb.classList.add("is-active");
-        scrollThumbIntoView(thumb);
-      }
-    });
-  }
-  
-  
-  function scrollThumbIntoView(thumb) {
-    const thumbLeft = thumb.offsetLeft;
-    const thumbRight = thumbLeft + thumb.offsetWidth;
-    const visibleLeft = Math.abs(currentTranslate);
-    const visibleRight = visibleLeft + track.parentElement.offsetWidth;
-
-    if (thumbLeft < visibleLeft) {
-      currentTranslate = -thumbLeft;
-    } else if (thumbRight > visibleRight) {
-      currentTranslate = -(thumbRight - track.parentElement.offsetWidth);
     }
 
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  }
+    function activateMedia(mediaId) {
+      mediaItems.forEach((item) => {
+        item.classList.remove('is-active');
+        if (item.dataset.mediaId === mediaId) {
+          item.classList.add('is-active');
+        }
 
-  prevBtn?.addEventListener("click", function() {
-    currentTranslate += 100;
-    if (currentTranslate > 0) currentTranslate = 0;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  });
-
-  nextBtn?.addEventListener("click", function() {
-    const maxTranslate = track.parentElement.offsetWidth - track.scrollWidth;
-    currentTranslate -= 100;
-    if (currentTranslate < maxTranslate) currentTranslate = maxTranslate;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  });
-
-  thumbs.forEach(thumb => {
-    thumb.addEventListener("click", function() {
-      activateMedia(this.dataset.mediaId);
-    });
-  });
-  
-  checkOverflow();
-  window.addEventListener("resize", checkOverflow);
-
-  const variants = section.dataset.variants
-    ? JSON.parse(section.dataset.variants)
-    : [];
-  const form = section.querySelector("form[id^='product-form-']");
-  if (!form) return;
-
-  const hiddenInput = form.querySelector("input[name='id']");
-  const priceWrapper = section.querySelector('.product-price');
-  const optionGroups = section.querySelectorAll('.product-option');
-  const addToCartBtn = form.querySelector('.add-to-cart');
-  const showBtnPrice = addToCartBtn?.hasAttribute('data-btn-price');
-
-  /* -------------------------
-     QUANTITY ELEMENTS
-  -------------------------- */
-  const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
-  const qtyInput = qtyWrapper?.querySelector('.qty-input');
-  const plusBtn = qtyWrapper?.querySelector('.qty-plus');
-  const minusBtn = qtyWrapper?.querySelector('.qty-minus');
-  const qtyError = qtyWrapper?.querySelector('.qty-error');
-
-  /* -------------------------
-     STICKY ELEMENTS
-  -------------------------- */
-  const sticky = section.querySelector('.sticky-atc');
-  const stickyBtn = sticky?.querySelector('.sticky-btn');
-  const stickyPrice = sticky?.querySelector('.sticky-price');
-  const stickyCompare = sticky?.querySelector('.sticky-compare');
-  const stickySave = sticky?.querySelector('.sticky-save');
-  const stickyVariant = sticky?.querySelector('.sticky-variant');
-  const stickyImage = sticky?.querySelector('.sticky-image');
-
-  let selectedOptions = [];
-  let currentVariant = null;
-  let cartData = null;
-
-  function formatMoney(cents) {
-    return new Intl.NumberFormat('{{ shop.locale }}', {
-      style: 'currency',
-      currency: '{{ shop.currency }}',
-    }).format(cents / 100);
-  }
-
-  /* -------------------------
-     FETCH CART (once)
-  -------------------------- */
-  fetch('/cart.js')
-    .then(res => res.json())
-    .then(data => {
-      cartData = data;
-    });
-
-  /* -------------------------
-     INITIAL VARIANT
-  -------------------------- */
-  const initialVariant =
-    variants.find(v => v.id == hiddenInput.value) ||
-    variants.find(v => v.available) ||
-    variants[0];
-
-  selectedOptions = [
-    initialVariant.option1 || null,
-    initialVariant.option2 || null,
-    initialVariant.option3 || null,
-  ];
-
-  updateUI();
-  updateVariant();
-
-  /* -------------------------
-     OPTION CLICK
-  -------------------------- */
-  optionGroups.forEach((group, index) => {
-    group.querySelectorAll('.option-value').forEach((button) => {
-      button.addEventListener('click', function () {
-        if (this.classList.contains('is-unavailable')) return;
-        selectedOptions[index] = this.dataset.value;
-        updateUI();
-        updateVariant();
-      });
-    });
-  });
-
-  /* -------------------------
-     UPDATE VARIANT
-  -------------------------- */
-    function updateUI() {
-  optionGroups.forEach((group, index) => {
-    group.querySelectorAll('.option-value').forEach((button) => {
-
-      const testOptions = [...selectedOptions];
-      testOptions[index] = button.dataset.value;
-
-      const existingVariant = variants.find((variant) => {
-        return (
-          (variant.option1 === testOptions[0] || !variant.option1) &&
-          (variant.option2 === testOptions[1] || !variant.option2) &&
-          (variant.option3 === testOptions[2] || !variant.option3)
-        );
+        const video = item.querySelector('video');
+        if (video) video.pause();
       });
 
-      const isAvailable = existingVariant?.available;
-      const exists = !!existingVariant;
-
-      button.classList.remove('is-active', 'is-soldout', 'is-unavailable');
-
-      if (button.dataset.value === selectedOptions[index]) {
-        button.classList.add('is-active');
-      }
-
-      if (!exists) {
-        button.classList.add('is-unavailable');
-      } else if (!isAvailable) {
-        button.classList.add('is-soldout');
-      }
-
-    });
-  });
-  }
-  function updateVariant() {
-
-    currentVariant = variants.find((variant) => {
-      return (
-        (variant.option1 === selectedOptions[0] || !variant.option1) &&
-        (variant.option2 === selectedOptions[1] || !variant.option2) &&
-        (variant.option3 === selectedOptions[2] || !variant.option3)
-      );
-    });
-
-    if (!currentVariant) return;
-
-    hiddenInput.value = currentVariant.id;
-     /*-------IMAGE UPDATE --------*/
-     if (currentVariant?.featured_media) {
-  activateMedia(currentVariant.featured_media.id.toString());
-  
-}
-    /* ---- PRICE ---- */
-    const regularPriceEl = priceWrapper.querySelector('.regular_price');
-    const comparePriceEl = priceWrapper.querySelector('.sale_price');
-    const saveEl = priceWrapper.querySelector('.save');
-
-    regularPriceEl.textContent = formatMoney(currentVariant.price);
-
-    if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
-      comparePriceEl.textContent = formatMoney(currentVariant.compare_at_price);
-      comparePriceEl.style.display = 'inline';
-
-      const percent = Math.round(
-        ((currentVariant.compare_at_price - currentVariant.price) * 100) /
-        currentVariant.compare_at_price
-      );
-
-      saveEl.textContent = percent + '% OFF';
-      saveEl.style.display = 'inline';
-    } else {
-      comparePriceEl.style.display = 'none';
-      saveEl.style.display = 'none';
-    }
-
-    /* ---- BUTTON ---- */
-    if (!currentVariant.available) {
-      addToCartBtn.disabled = true;
-      addToCartBtn.textContent = 'Sold Out';
-    } else {
-      addToCartBtn.disabled = false;
-      addToCartBtn.innerHTML = showBtnPrice
-        ? `<span class='btn_text'>Add to Cart</span><span class='icon'>—</span><span class='btn_price'>${formatMoney(currentVariant.price)}</span>`
-        : `<span class='btn_text'>Add to Cart</span>`;
-    }
-
-    /* ---- STICKY ---- */
-    if (sticky) {
-      stickyPrice.textContent = formatMoney(currentVariant.price);
-      stickyVariant.textContent = currentVariant.title;
-
-      if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
-        const percent = Math.round(
-          ((currentVariant.compare_at_price - currentVariant.price) * 100) /
-          currentVariant.compare_at_price
-        );
-        stickyCompare.textContent = formatMoney(currentVariant.compare_at_price);
-        stickySave.textContent = percent + '% OFF';
-        stickyCompare.style.display = 'inline';
-        stickySave.style.display = 'block';
-      } else {
-        stickyCompare.style.display = 'none';
-        stickySave.style.display = 'none';
-      }
-
-      stickyBtn.disabled = !currentVariant.available;
-      stickyBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
-    }
-
-    if (qtyInput) {
-      qtyInput.value = 1;
-      validateQuantity();
-    }
-
-    document.dispatchEvent(
-      new CustomEvent('variant:change', { detail: { variant: currentVariant } })
-    );
-  }
-
-  /* -------------------------
-     QUANTITY VALIDATION
-  -------------------------- */
-  function validateQuantity() {
-    if (!currentVariant || !qtyInput) return;
-
-    const maxInventory = currentVariant.inventory_quantity;
-    const inventoryPolicy = currentVariant.inventory_policy;
-
-    let cartQty = 0;
-
-    if (cartData?.items?.length) {
-      const existingItem = cartData.items.find(item => item.id == currentVariant.id);
-      cartQty = existingItem ? existingItem.quantity : 0;
-    }
-
-    const requestedQty = parseInt(qtyInput.value) || 1;
-
-    if (inventoryPolicy === 'deny') {
-      const remaining = maxInventory - cartQty;
-
-      if (remaining <= 0) {
-        qtyInput.value = 1;
-        plusBtn.disabled = true;
-        qtyError.style.display = 'block';
-        qtyError.textContent = 'Sold Out';
-        return;
-      }
-
-      if (requestedQty > remaining) {
-        qtyInput.value = remaining;
-        qtyError.style.display = 'block';
-        qtyError.textContent = `Only ${remaining} left`;
-      } else {
-        qtyError.style.display = 'none';
-      }
-
-      plusBtn.disabled = requestedQty >= remaining;
-    } else {
-      qtyError.style.display = 'none';
-      plusBtn.disabled = false;
-    }
-  }
-
-  if (qtyInput) {
-    plusBtn.addEventListener('click', () => {
-      qtyInput.value = parseInt(qtyInput.value) + 1;
-      validateQuantity();
-    });
-
-    minusBtn.addEventListener('click', () => {
-      if (parseInt(qtyInput.value) > 1) {
-        qtyInput.value = parseInt(qtyInput.value) - 1;
-      }
-      validateQuantity();
-    });
-  }
-/* -------------------------
-   STICKY SHOW / HIDE
--------------------------- */
-/* -------------------------
-   STICKY CLICK = REAL SUBMIT
--------------------------- */
-
-if (stickyBtn && form) {
-  stickyBtn.addEventListener('click', function () {
-
-    if (!currentVariant || !currentVariant.available) return;
-
-    // Sync quantity from main input
-    if (qtyInput) {
-      const hiddenQty = form.querySelector("input[name='quantity']");
-      if (hiddenQty) {
-        hiddenQty.value = qtyInput.value;
-      }
-    }
-
-    form.requestSubmit(); // safest way
-  });
-}
-if (sticky && addToCartBtn) {
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          sticky.classList.remove('active');
-        } else {
-          sticky.classList.add('active');
+      thumbs.forEach((thumb) => {
+        thumb.classList.remove('is-active');
+        if (thumb.dataset.mediaId === mediaId) {
+          thumb.classList.add('is-active');
+          scrollThumbIntoView(thumb);
         }
       });
-    },
-    { threshold: 0 }
-  );
+    }
 
-  observer.observe(addToCartBtn);
-}
-/* -------------------------
-   SEAL SUBSCRIPTION PRICE SYNC
--------------------------- */
+    function scrollThumbIntoView(thumb) {
+      const thumbLeft = thumb.offsetLeft;
+      const thumbRight = thumbLeft + thumb.offsetWidth;
+      const visibleLeft = Math.abs(currentTranslate);
+      const visibleRight = visibleLeft + track.parentElement.offsetWidth;
 
+      if (thumbLeft < visibleLeft) {
+        currentTranslate = -thumbLeft;
+      } else if (thumbRight > visibleRight) {
+        currentTranslate = -(thumbRight - track.parentElement.offsetWidth);
+      }
 
-}
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    }
 
+    prevBtn?.addEventListener('click', function () {
+      currentTranslate += 100;
+      if (currentTranslate > 0) currentTranslate = 0;
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    });
 
-/* -------------------------
-   INIT
--------------------------- */
+    nextBtn?.addEventListener('click', function () {
+      const maxTranslate = track.parentElement.offsetWidth - track.scrollWidth;
+      currentTranslate -= 100;
+      if (currentTranslate < maxTranslate) currentTranslate = maxTranslate;
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    });
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('click', function () {
+        activateMedia(this.dataset.mediaId);
+      });
+    });
 
-    document
-      .querySelectorAll("[id^='MainProduct_']")
-      .forEach(section => {
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
 
-        const id =
-          section.id.replace(
-            "MainProduct_",
-            ""
-          );
+    const variants = section.dataset.variants ? JSON.parse(section.dataset.variants) : [];
+    const form = section.querySelector("form[id^='product-form-']");
+    if (!form) return;
 
-        initProductScript(id);
+    const hiddenInput = form.querySelector("input[name='id']");
+    const priceWrapper = section.querySelector('.product-price');
+    const optionGroups = section.querySelectorAll('.product-option');
+    const addToCartBtn = form.querySelector('.add-to-cart');
+    const showBtnPrice = addToCartBtn?.hasAttribute('data-btn-price');
 
+    /* -------------------------
+     QUANTITY ELEMENTS
+    -------------------------- */
+    const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
+    const qtyInput = qtyWrapper?.querySelector('.qty-input');
+    const plusBtn = qtyWrapper?.querySelector('.qty-plus');
+    const minusBtn = qtyWrapper?.querySelector('.qty-minus');
+    const qtyError = qtyWrapper?.querySelector('.qty-error');
+
+    /* -------------------------
+     STICKY ELEMENTS
+    -------------------------- */
+    const sticky = section.querySelector('.sticky-atc');
+    const stickyBtn = sticky?.querySelector('.sticky-btn');
+    const stickyPrice = sticky?.querySelector('.sticky-price');
+    const stickyCompare = sticky?.querySelector('.sticky-compare');
+    const stickySave = sticky?.querySelector('.sticky-save');
+    const stickyVariant = sticky?.querySelector('.sticky-variant');
+    const stickyImage = sticky?.querySelector('.sticky-image');
+
+    let selectedOptions = [];
+    let currentVariant = null;
+    let cartData = null;
+
+    function formatMoney(cents) {
+      return new Intl.NumberFormat('{{ shop.locale }}', {
+        style: 'currency',
+        currency: '{{ shop.currency }}',
+      }).format(cents / 100);
+    }
+
+    /* -------------------------
+     FETCH CART (once)
+    -------------------------- */
+    fetch('/cart.js')
+      .then((res) => res.json())
+      .then((data) => {
+        cartData = data;
       });
 
-  }
-);
+    /* -------------------------
+     INITIAL VARIANT
+    -------------------------- */
+    const initialVariant =
+      variants.find((v) => v.id == hiddenInput.value) || variants.find((v) => v.available) || variants[0];
 
+    selectedOptions = [initialVariant.option1 || null, initialVariant.option2 || null, initialVariant.option3 || null];
 
-document.addEventListener(
-  "shopify:section:load",
-  function (e) {
+    updateUI();
+    updateVariant();
 
-    const id =
-      e.target.id.replace(
-        "MainProduct_",
-        ""
+    /* -------------------------
+     OPTION CLICK
+    -------------------------- */
+    optionGroups.forEach((group, index) => {
+      group.querySelectorAll('.option-value').forEach((button) => {
+        button.addEventListener('click', function () {
+          if (this.classList.contains('is-unavailable')) return;
+          selectedOptions[index] = this.dataset.value;
+          updateUI();
+          updateVariant();
+        });
+      });
+    });
+
+    /* -------------------------
+     UPDATE VARIANT
+    -------------------------- */
+    function updateUI() {
+      optionGroups.forEach((group, index) => {
+        group.querySelectorAll('.option-value').forEach((button) => {
+          const testOptions = [...selectedOptions];
+          testOptions[index] = button.dataset.value;
+
+          const existingVariant = variants.find((variant) => {
+            return (
+              (variant.option1 === testOptions[0] || !variant.option1) &&
+              (variant.option2 === testOptions[1] || !variant.option2) &&
+              (variant.option3 === testOptions[2] || !variant.option3)
+            );
+          });
+
+          const isAvailable = existingVariant?.available;
+          const exists = !!existingVariant;
+
+          button.classList.remove('is-active', 'is-soldout', 'is-unavailable');
+
+          if (button.dataset.value === selectedOptions[index]) {
+            button.classList.add('is-active');
+          }
+
+          if (!exists) {
+            button.classList.add('is-unavailable');
+          } else if (!isAvailable) {
+            button.classList.add('is-soldout');
+          }
+        });
+      });
+    }
+    function updateVariant() {
+      currentVariant = variants.find((variant) => {
+        return (
+          (variant.option1 === selectedOptions[0] || !variant.option1) &&
+          (variant.option2 === selectedOptions[1] || !variant.option2) &&
+          (variant.option3 === selectedOptions[2] || !variant.option3)
+        );
+      });
+
+      if (!currentVariant) return;
+
+      hiddenInput.value = currentVariant.id;
+      /*-------IMAGE UPDATE --------*/
+      if (currentVariant?.featured_media) {
+        activateMedia(currentVariant.featured_media.id.toString());
+      }
+      /* ---- PRICE ---- */
+      const regularPriceEl = priceWrapper.querySelector('.regular_price');
+      const comparePriceEl = priceWrapper.querySelector('.sale_price');
+      const saveEl = priceWrapper.querySelector('.save');
+
+      regularPriceEl.textContent = formatMoney(currentVariant.price);
+
+      if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
+        comparePriceEl.textContent = formatMoney(currentVariant.compare_at_price);
+        comparePriceEl.style.display = 'inline';
+
+        const percent = Math.round(
+          ((currentVariant.compare_at_price - currentVariant.price) * 100) / currentVariant.compare_at_price
+        );
+
+        saveEl.textContent = percent + '% OFF';
+        saveEl.style.display = 'inline';
+      } else {
+        comparePriceEl.style.display = 'none';
+        saveEl.style.display = 'none';
+      }
+
+      /* ---- BUTTON ---- */
+      if (!currentVariant.available) {
+        addToCartBtn.disabled = true;
+        addToCartBtn.textContent = 'Sold Out';
+      } else {
+        addToCartBtn.disabled = false;
+        addToCartBtn.innerHTML = showBtnPrice
+          ? `<span class='btn_text'>Add to Cart</span><span class='icon'>—</span><span class='btn_price'>${formatMoney(
+              currentVariant.price
+            )}</span>`
+          : `<span class='btn_text'>Add to Cart</span>`;
+      }
+
+      /* ---- STICKY ---- */
+      if (sticky) {
+        stickyPrice.textContent = formatMoney(currentVariant.price);
+        stickyVariant.textContent = currentVariant.title;
+
+        if (currentVariant.compare_at_price && currentVariant.compare_at_price > currentVariant.price) {
+          const percent = Math.round(
+            ((currentVariant.compare_at_price - currentVariant.price) * 100) / currentVariant.compare_at_price
+          );
+          stickyCompare.textContent = formatMoney(currentVariant.compare_at_price);
+          stickySave.textContent = percent + '% OFF';
+          stickyCompare.style.display = 'inline';
+          stickySave.style.display = 'block';
+        } else {
+          stickyCompare.style.display = 'none';
+          stickySave.style.display = 'none';
+        }
+
+        stickyBtn.disabled = !currentVariant.available;
+        stickyBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+      }
+
+      if (qtyInput) {
+        qtyInput.value = 1;
+        validateQuantity();
+      }
+
+      document.dispatchEvent(new CustomEvent('variant:change', { detail: { variant: currentVariant } }));
+    }
+
+    /* -------------------------
+     QUANTITY VALIDATION
+    -------------------------- */
+    function validateQuantity() {
+      if (!currentVariant || !qtyInput) return;
+      const maxInventory = currentVariant.inventory_quantity;
+      const inventoryPolicy = currentVariant.inventory_policy;
+      let cartQty = 0;
+      if (cartData?.items?.length) {
+        const existingItem = cartData.items.find((item) => item.id == currentVariant.id);
+        cartQty = existingItem ? existingItem.quantity : 0;
+      }
+      const requestedQty = parseInt(qtyInput.value) || 1;
+
+      if (inventoryPolicy === 'deny') {
+        const remaining = maxInventory - cartQty;
+
+        if (remaining <= 0) {
+          qtyInput.value = 1;
+          plusBtn.disabled = true;
+          qtyError.style.display = 'block';
+          qtyError.textContent = 'Sold Out';
+          return;
+        }
+
+        if (requestedQty > remaining) {
+          qtyInput.value = remaining;
+          qtyError.style.display = 'block';
+          qtyError.textContent = `Only ${remaining} left`;
+        } else {
+          qtyError.style.display = 'none';
+        }
+
+        plusBtn.disabled = requestedQty >= remaining;
+      } else {
+        qtyError.style.display = 'none';
+        plusBtn.disabled = false;
+      }
+    }
+
+    if (qtyInput) {
+      plusBtn.addEventListener('click', () => {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+        validateQuantity();
+      });
+
+      minusBtn.addEventListener('click', () => {
+        if (parseInt(qtyInput.value) > 1) {
+          qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+        validateQuantity();
+      });
+    }
+    /* -------------------------
+    STICKY SHOW / HIDE
+    -------------------------- */
+    /* -------------------------
+    STICKY CLICK = REAL SUBMIT
+    -------------------------- */
+
+    if (stickyBtn && form) {
+      stickyBtn.addEventListener('click', function () {
+        if (!currentVariant || !currentVariant.available) return;
+
+        // Sync quantity from main input
+        if (qtyInput) {
+          const hiddenQty = form.querySelector("input[name='quantity']");
+          if (hiddenQty) {
+            hiddenQty.value = qtyInput.value;
+          }
+        }
+
+        form.requestSubmit(); // safest way
+      });
+    }
+    if (sticky && addToCartBtn) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              sticky.classList.remove('active');
+            } else {
+              sticky.classList.add('active');
+            }
+          });
+        },
+        { threshold: 0 }
       );
 
-    initProductScript(id);
-
+      observer.observe(addToCartBtn);
+    }
+    /* -------------------------
+    SEAL SUBSCRIPTION PRICE SYNC
+    -------------------------- */
   }
-);
 
+      /* -------------------------
+      INIT
+    -------------------------- */
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll("[id^='MainProduct_']").forEach((section) => {
+      const id = section.id.replace('MainProduct_', '');
+
+      initProductScript(id);
+    });
+  });
+
+  document.addEventListener('shopify:section:load', function (e) {
+    const id = e.target.id.replace('MainProduct_', '');
+
+    initProductScript(id);
+  });
 </script>
 {% schema %}
 {
