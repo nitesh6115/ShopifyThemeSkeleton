@@ -13803,12 +13803,12 @@
                 "desktop_text_align": "left",
                 "mobile_text_align": "left",
                 "bg_color": "#fff",
-                "pill-bg": "#fff",
-                "pill-text": "#000",
-                "pill-border": "#000",
-                "hover-pill-bg": "#000",
-                "hover-pill-text": "#fff",
-                "hover-pill-border": "#000",
+                "pill-bg": "#ffffff",
+                "pill-text": "#000000",
+                "pill-border": "#000000",
+                "hover-pill-bg": "#000000",
+                "hover-pill-text": "#ffffff",
+                "hover-pill-border": "#000000",
                 "pill-border-width": 1,
                 "pill-radius": 10
               },
@@ -13854,11 +13854,41 @@
                 "hide_desktop": false
               },
               "blocks": {}
+            },
+            "block_add_to_cart_button_bjxqFJ": {
+              "type": "block_add_to_cart_button",
+              "name": "Add To Cart Button",
+              "settings": {
+                "padding_top": 5,
+                "padding_bottom": 5,
+                "padding_left": 0,
+                "padding_right": 0,
+                "block_radius": 0,
+                "desktop_text_align": "left",
+                "mobile_text_align": "left",
+                "bg_color": "#fff",
+                "btn_bg": "linear-gradient(90deg, rgba(6, 93, 45, 1), rgba(12, 141, 70, 1) 100%)",
+                "btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+                "btn_text": "#fff",
+                "btn_hover_text": "#fff",
+                "btn_border": "transparent",
+                "btn_hover_border": "",
+                "show_qty": false,
+                "show_dynamic_button": false,
+                "enabled_sticky_add": false,
+                "show_price": false,
+                "btn_font": 14,
+                "btn_uppercase": false,
+                "btn_radius": 10,
+                "btn_border_width": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "block_variant_picker_BkYMjf",
-            "block_heading_xdVhcj"
+            "block_heading_xdVhcj",
+            "block_add_to_cart_button_bjxqFJ"
           ]
         }
       },
