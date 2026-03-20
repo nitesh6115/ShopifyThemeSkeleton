@@ -1,27 +1,28 @@
+{%  assign product = block.settings.product %}
+
 {{ 'custom-product.css' | asset_url | stylesheet_tag }}
 {%- capture style_schema -%}
-    --section-bg:{{ section.settings.section_bg }};
-    --section-wraper-width:{% if section.settings.section_width %}100%{% else %}{{ section.settings.wraper_width }}px{% endif %};
-    --section-padding-top:{{ section.settings.padding_top_desktop }}px;
-    --section-padding-bottom:{{ section.settings.padding_bottom_desktop }}px;
-    --section-padding-left:{{ section.settings.padding_left_desktop }}px;
-    --section-padding-right:{{ section.settings.padding_right_desktop }}px;
-    --section-mobile-padding-top:{{ section.settings.padding_top_mobile }}px;
-    --section-mobile-padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
-    --section-mobile-padding-left:{{ section.settings.padding_left_mobile }}px;
-    --section-mobile-padding-right:{{ section.settings.padding_right_mobile }}px;
-    --media-radius:{{ section.settings.media-radius }}px;
-    --media-thumb-radius:{{ section.settings.media-thumb-radius }}px;
-    --media-thumb-width:{{ section.settings.media-thumb-width }}px;
-    --media-thumb-mobile-width:{{ section.settings.media-thumb-mobile-width }}px;
-    --media-thumb-border-size:{{ section.settings.media-thumb-border-width }}px;
-    --media-thumb-border-color:{{ section.settings.media_border }};
-    --media-thumb-border-active-color:{{ section.settings.media_border_active }};
+    --section-bg:{{ block.settings.section_bg }};
+    --section-wraper-width:{% if block.settings.section_width %}100%{% else %}{{ block.settings.wraper_width }}px{% endif %};
+    --section-padding-top:{{ block.settings.padding_top_desktop }}px;
+    --section-padding-bottom:{{ block.settings.padding_bottom_desktop }}px;
+    --section-padding-left:{{ block.settings.padding_left_desktop }}px;
+    --section-padding-right:{{ block.settings.padding_right_desktop }}px;
+    --section-mobile-padding-top:{{ block.settings.padding_top_mobile }}px;
+    --section-mobile-padding-bottom:{{ block.settings.padding_bottom_mobile }}px;
+    --section-mobile-padding-left:{{ block.settings.padding_left_mobile }}px;
+    --section-mobile-padding-right:{{ block.settings.padding_right_mobile }}px;
+    --media-radius:{{ block.settings.media-radius }}px;
+    --media-thumb-radius:{{ block.settings.media-thumb-radius }}px;
+    --media-thumb-width:{{ block.settings.media-thumb-width }}px;
+    --media-thumb-mobile-width:{{ block.settings.media-thumb-mobile-width }}px;
+    --media-thumb-border-size:{{ block.settings.media-thumb-border-width }}px;
+    --media-thumb-border-color:{{ block.settings.media_border }};
+    --media-thumb-border-active-color:{{ block.settings.media_border_active }};
 {%- endcapture -%}
 {% assign style_schema = style_schema | strip_newlines %}
-{%  assign product = block.settings.product %}
 <div
-  class="product_section {% if section.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
+  class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
   style="{{- style_schema -}}"
   id="MainProduct_{{ block.id }}"
   data-section="{{ block.id }}"
@@ -31,7 +32,7 @@
 
   <div class="product-wrapper">
     <div class="product_media-wrapper">
-      {% render 'product_media_gallery', variant_images: variant_images %}
+      {% render 'product_media_gallery', variant_images: variant_images, product : product %}
     </div>
     <div class="product_information_wrapper">
       {%- assign product_form_id = 'product-form-' | append: block.id -%}
@@ -135,19 +136,19 @@
   window.addEventListener("resize", checkOverflow);
 
   const variants = {{ product.variants | json }};
-  const form = section.querySelector("form[id^='product-form-']");
+  const form = block.querySelector("form[id^='product-form-']");
   if (!form) return;
 
   const hiddenInput = form.querySelector("input[name='id']");
-  const priceWrapper = section.querySelector('.product-price');
-  const optionGroups = section.querySelectorAll('.product-option');
+  const priceWrapper = block.querySelector('.product-price');
+  const optionGroups = block.querySelectorAll('.product-option');
   const addToCartBtn = form.querySelector('.add-to-cart');
   const showBtnPrice = addToCartBtn?.hasAttribute('data-btn-price');
 
   /* -------------------------
      QUANTITY ELEMENTS
   -------------------------- */
-  const qtyWrapper = section.querySelector('[data-quantity-wrapper]');
+  const qtyWrapper = block.querySelector('[data-quantity-wrapper]');
   const qtyInput = qtyWrapper?.querySelector('.qty-input');
   const plusBtn = qtyWrapper?.querySelector('.qty-plus');
   const minusBtn = qtyWrapper?.querySelector('.qty-minus');
@@ -156,7 +157,7 @@
   /* -------------------------
      STICKY ELEMENTS
   -------------------------- */
-  const sticky = section.querySelector('.sticky-atc');
+  const sticky = block.querySelector('.sticky-atc');
   const stickyBtn = sticky?.querySelector('.sticky-btn');
   const stickyPrice = sticky?.querySelector('.sticky-price');
   const stickyCompare = sticky?.querySelector('.sticky-compare');
@@ -519,7 +520,7 @@ document.addEventListener('sealsubs:price_update', function(e) {
       "default": 1400,
       "step": 100,
       "unit": "px",
-      "visible_if": "{{ section.settings.section_width == false }}"
+      "visible_if": "{{ block.settings.section_width == false }}"
     },
     {
       "type": "color_background",
