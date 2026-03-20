@@ -291,6 +291,110 @@ function initProductScript(sectionId) {
 
  
 
+  /* -------------------------
+     VARIANT UPDATE
+  -------------------------- */
+
+  function updateVariant() {
+
+    currentVariant = variants.find(v => {
+
+      return (
+        v.option1 == selectedOptions[0] &&
+        (v.option2 == selectedOptions[1] || !v.option2) &&
+        (v.option3 == selectedOptions[2] || !v.option3)
+      );
+
+    });
+
+    if (!currentVariant) return;
+
+    hiddenInput.value = currentVariant.id;
+
+
+    /* IMAGE */
+
+    if (currentVariant.featured_media) {
+
+      activateMedia(
+        currentVariant.featured_media.id
+      );
+
+    }
+
+
+    /* PRICE */
+
+    const regular =
+      priceWrapper?.querySelector(
+        ".regular_price"
+      );
+
+    const compare =
+      priceWrapper?.querySelector(
+        ".sale_price"
+      );
+
+    const save =
+      priceWrapper?.querySelector(
+        ".save"
+      );
+
+    if (regular) {
+      regular.textContent =
+        formatMoney(currentVariant.price);
+    }
+
+    if (
+      compare &&
+      currentVariant.compare_at_price >
+        currentVariant.price
+    ) {
+
+      compare.textContent =
+        formatMoney(
+          currentVariant.compare_at_price
+        );
+
+      compare.style.display = "inline";
+
+      const percent = Math.round(
+        (
+          (currentVariant.compare_at_price -
+            currentVariant.price) *
+          100
+        ) /
+          currentVariant.compare_at_price
+      );
+
+      save.textContent = percent + "% OFF";
+      save.style.display = "inline";
+
+    } else {
+
+      compare?.style.display = "none";
+      save?.style.display = "none";
+
+    }
+
+
+    /* BUTTON */
+
+    if (!currentVariant.available) {
+
+      addToCartBtn.disabled = true;
+      addToCartBtn.textContent = "Sold Out";
+
+    } else {
+
+      addToCartBtn.disabled = false;
+      addToCartBtn.textContent =
+        "Add to Cart";
+
+    }
+
+  }
+
 }
 
 
