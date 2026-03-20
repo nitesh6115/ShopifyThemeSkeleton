@@ -351,6 +351,7 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
     justify-content: center;
     text-transform: var(--btn-uppercase);
     gap: 10px;
+    font-size: 15px;
     cursor: pointer;
 }
 
