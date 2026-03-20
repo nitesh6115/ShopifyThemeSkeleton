@@ -119,7 +119,6 @@
   </div>
 </div>
 <script>
-
 function initProductScript(sectionId) {
 
   const section = document.querySelector('#MainProduct_' + sectionId);
@@ -137,8 +136,8 @@ function initProductScript(sectionId) {
 
   /*----------------------------
       MEDIA ELEMENTS 
-    ---------------------------*/
-    let currentTranslate = 0;
+  ---------------------------*/
+  let currentTranslate = 0;
 
   function checkOverflow() {
 
@@ -213,7 +212,7 @@ function initProductScript(sectionId) {
   });
   
   checkOverflow();
-
+  
 
   const variants = section.dataset.variants
     ? JSON.parse(section.dataset.variants)
@@ -543,13 +542,13 @@ document.addEventListener(
           );
 
         initProductScript(id);
-          window.addEventListener("resize", checkOverflow);
+
       });
 
   }
 );
-
-
+checkOverflow()
+window.addEventListener("resize", checkOverflow);
 document.addEventListener(
   "shopify:section:load",
   function (e) {
