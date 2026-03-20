@@ -119,6 +119,7 @@
   </div>
 </div>
 <script>
+
 function initProductScript(sectionId) {
 
   const section = document.querySelector('#MainProduct_' + sectionId);
@@ -212,7 +213,7 @@ function initProductScript(sectionId) {
   });
   
   checkOverflow();
-  window.addEventListener("resize", checkOverflow);
+
 
   const variants = section.dataset.variants
     ? JSON.parse(section.dataset.variants)
@@ -542,7 +543,7 @@ document.addEventListener(
           );
 
         initProductScript(id);
-
+          window.addEventListener("resize", checkOverflow);
       });
 
   }
