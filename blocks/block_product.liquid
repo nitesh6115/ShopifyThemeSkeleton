@@ -138,6 +138,7 @@
 
     function checkOverflow() {
       const container = track.parentElement;
+      console.log(container)
 
       const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
 
@@ -204,7 +205,7 @@
     });
 
     checkOverflow();
-    
+    window.addEventListener('resize', checkOverflow);
 
     const variants = section.dataset.variants ? JSON.parse(section.dataset.variants) : [];
     const form = section.querySelector("form[id^='product-form-']");
@@ -509,7 +510,6 @@
 
     initProductScript(id);
   });
-  window.addEventListener('resize', checkOverflow);
 </script>
 {% schema %}
 {
