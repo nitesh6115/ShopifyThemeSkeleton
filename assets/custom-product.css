@@ -359,6 +359,7 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
 .buy_now_enabled button.shopify-payment-button__button.shopify-payment-button__button--unbranded:hover {
     background: var(--buy-btn-hover-bg);
     color: var(--buy-btn-hover-text);
+    border-color: var(--buy-btn-hover-border);
 }
 
 .buy_now_enabled .shopify-payment-button__button[disabled] {
