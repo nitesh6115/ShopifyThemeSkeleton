@@ -1086,48 +1086,14 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_image_htqPqQ": {
-                  "type": "block_image",
-                  "name": "Image",
+                "block_icon_7L9qdg": {
+                  "type": "block_icon",
+                  "name": "Icon",
                   "settings": {
-                    "image": "shopify://shop_images/Container_61.png",
-                    "image_link": "",
-                    "ratio": "auto",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "custom",
-                    "custom_width_unit_desktop": "px",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "custom",
-                    "custom_width_unit_tablet": "px",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "px",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "background": "",
-                    "radius": 0,
-                    "set_full_radius": false,
-                    "radius_top_left": 0,
-                    "radius_top_right": 0,
-                    "radius_bottom_left": 0,
-                    "radius_bottom_right": 0,
-                    "border": 0,
-                    "border_color": "#000000",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
+                    "icon": "star",
+                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M21.937 27.5C21.8477 27.1539 21.6673 26.8381 21.4146 26.5854C21.1619 26.3327 20.8461 26.1523 20.5 26.063L14.365 24.481C14.2603 24.4513 14.1682 24.3883 14.1026 24.3014C14.037 24.2146 14.0015 24.1088 14.0015 24C14.0015 23.8912 14.037 23.7854 14.1026 23.6986C14.1682 23.6118 14.2603 23.5487 14.365 23.519L20.5 21.936C20.846 21.8468 21.1617 21.6666 21.4144 21.414C21.6671 21.1615 21.8476 20.8459 21.937 20.5L23.519 14.365C23.5484 14.2599 23.6114 14.1673 23.6983 14.1014C23.7853 14.0355 23.8914 13.9998 24.0005 13.9998C24.1096 13.9998 24.2157 14.0355 24.3027 14.1014C24.3896 14.1673 24.4526 14.2599 24.482 14.365L26.063 20.5C26.1523 20.8461 26.3327 21.1619 26.5854 21.4146C26.8381 21.6673 27.1539 21.8477 27.5 21.937L33.635 23.518C33.7405 23.5471 33.8335 23.61 33.8998 23.6971C33.9661 23.7841 34.0021 23.8906 34.0021 24C34.0021 24.1094 33.9661 24.2159 33.8998 24.3029C33.8335 24.39 33.7405 24.4529 33.635 24.482L27.5 26.063C27.1539 26.1523 26.8381 26.3327 26.5854 26.5854C26.3327 26.8381 26.1523 27.1539 26.063 27.5L24.481 33.635C24.4516 33.7401 24.3886 33.8327 24.3017 33.8986C24.2147 33.9646 24.1086 34.0003 23.9995 34.0003C23.8904 34.0003 23.7843 33.9646 23.6973 33.8986C23.6104 33.8327 23.5474 33.7401 23.518 33.635L21.937 27.5Z\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M32 15V19\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M34 17H30\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M16 29V31\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M17 30H15\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                    "size": 48,
+                    "color": "#000000"
                   },
                   "blocks": {}
                 },
@@ -1217,7 +1183,7 @@
                 }
               },
               "block_order": [
-                "block_image_htqPqQ",
+                "block_icon_7L9qdg",
                 "block_heading_FiURBd",
                 "block_text_jMXfFt"
               ]
@@ -1270,48 +1236,14 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_image_qhr6NU": {
-                  "type": "block_image",
-                  "name": "Image",
+                "block_icon_iVJWxE": {
+                  "type": "block_icon",
+                  "name": "Icon",
                   "settings": {
-                    "image": "shopify://shop_images/Container_62.png",
-                    "image_link": "",
-                    "ratio": "auto",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "custom",
-                    "custom_width_unit_desktop": "px",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "custom",
-                    "custom_width_unit_tablet": "px",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "px",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "background": "",
-                    "radius": 0,
-                    "set_full_radius": false,
-                    "radius_top_left": 0,
-                    "radius_top_right": 0,
-                    "radius_bottom_left": 0,
-                    "radius_bottom_right": 0,
-                    "border": 0,
-                    "border_color": "#000000",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
+                    "icon": "star",
+                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M19 28.3C21.2 28.3 23 26.47 23 24.25C23 23.09 22.43 21.99 21.29 21.06C20.15 20.13 19.29 18.75 19 17.3C18.71 18.75 17.86 20.14 16.71 21.06C15.56 21.98 15 23.1 15 24.25C15 26.47 16.8 28.3 19 28.3Z\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24.56 18.6C25.2478 17.5011 25.7353 16.2891 26 15.02C26.5 17.52 28 19.92 30 21.52C32 23.12 33 25.02 33 27.02C33.0057 28.4023 32.6009 29.7552 31.8368 30.9071C31.0727 32.059 29.9838 32.9582 28.7081 33.4905C27.4324 34.0229 26.0274 34.1644 24.6712 33.8973C23.3149 33.6302 22.0685 32.9664 21.09 31.99\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                    "size": 48,
+                    "color": "#000000"
                   },
                   "blocks": {}
                 },
@@ -1401,7 +1333,7 @@
                 }
               },
               "block_order": [
-                "block_image_qhr6NU",
+                "block_icon_iVJWxE",
                 "block_heading_kXjq6C",
                 "block_text_cH6HKN"
               ]
@@ -1454,48 +1386,14 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_image_DQrKRw": {
-                  "type": "block_image",
-                  "name": "Image",
+                "block_icon_zeHEF7": {
+                  "type": "block_icon",
+                  "name": "Icon",
                   "settings": {
-                    "image": "shopify://shop_images/Container_63.png",
-                    "image_link": "",
-                    "ratio": "auto",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "custom",
-                    "custom_width_unit_desktop": "px",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "custom",
-                    "custom_width_unit_tablet": "px",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "px",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "background": "",
-                    "radius": 0,
-                    "set_full_radius": false,
-                    "radius_top_left": 0,
-                    "radius_top_right": 0,
-                    "radius_bottom_left": 0,
-                    "radius_bottom_right": 0,
-                    "border": 0,
-                    "border_color": "#000000",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
+                    "icon": "star",
+                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M32 25C32 30 28.5 32.5 24.34 33.95C24.1222 34.0238 23.8855 34.0203 23.67 33.94C19.5 32.5 16 30 16 25V18C16 17.7348 16.1054 17.4805 16.2929 17.2929C16.4804 17.1054 16.7348 17 17 17C19 17 21.5 15.8 23.24 14.28C23.4519 14.099 23.7214 13.9996 24 13.9996C24.2786 13.9996 24.5481 14.099 24.76 14.28C26.51 15.81 29 17 31 17C31.2652 17 31.5196 17.1054 31.7071 17.2929C31.8946 17.4805 32 17.7348 32 18V25Z\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                    "size": 48,
+                    "color": "#000000"
                   },
                   "blocks": {}
                 },
@@ -1585,7 +1483,7 @@
                 }
               },
               "block_order": [
-                "block_image_DQrKRw",
+                "block_icon_zeHEF7",
                 "block_heading_t8Ubgp",
                 "block_text_MRFARw"
               ]
@@ -1638,48 +1536,14 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_image_YDRbg7": {
-                  "type": "block_image",
-                  "name": "Image",
+                "block_icon_YLHGAM": {
+                  "type": "block_icon",
+                  "name": "Icon",
                   "settings": {
-                    "image": "shopify://shop_images/Container_61.png",
-                    "image_link": "",
-                    "ratio": "auto",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "custom",
-                    "custom_width_unit_desktop": "px",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "custom",
-                    "custom_width_unit_tablet": "px",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "px",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "background": "",
-                    "radius": 0,
-                    "set_full_radius": false,
-                    "radius_top_left": 0,
-                    "radius_top_right": 0,
-                    "radius_bottom_left": 0,
-                    "radius_bottom_right": 0,
-                    "border": 0,
-                    "border_color": "#000000",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
+                    "icon": "star",
+                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M24 34C29.5228 34 34 29.5228 34 24C34 18.4772 29.5228 14 24 14C18.4772 14 14 18.4772 14 24C14 29.5228 18.4772 34 24 34Z\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24 18V24L28 26\" stroke=\"#EC003F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                    "size": 48,
+                    "color": "#000000"
                   },
                   "blocks": {}
                 },
@@ -1769,7 +1633,7 @@
                 }
               },
               "block_order": [
-                "block_image_YDRbg7",
+                "block_icon_YLHGAM",
                 "block_heading_VNrb6g",
                 "block_text_egP7Vn"
               ]
