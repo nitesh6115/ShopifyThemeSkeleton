@@ -220,6 +220,7 @@ function initProductScript(sectionId) {
     : [];
 
   const form = section.querySelector("form[id^='product-form-']");
+  console.log(form)
   if (!form) return;
 
   const hiddenInput = form.querySelector("input[name='id']");
