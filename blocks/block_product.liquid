@@ -374,7 +374,38 @@ function initProductScript(sectionId) {
         formatMoney(currentVariant.price);
     }
 
-    
+    if (
+      compare &&
+      currentVariant.compare_at_price >
+        currentVariant.price
+    ) {
+
+      compare.textContent =
+        formatMoney(
+          currentVariant.compare_at_price
+        );
+
+      compare.style.display = "inline";
+
+      const percent = Math.round(
+        (
+          (currentVariant.compare_at_price -
+            currentVariant.price) *
+          100
+        ) /
+          currentVariant.compare_at_price
+      );
+
+      save.textContent = percent + "% OFF";
+      save.style.display = "inline";
+
+    } else {
+
+      compare?.style.display = "none";
+      save?.style.display = "none";
+
+    }
+
 
 
     /* BUTTON */
