@@ -7883,10 +7883,10 @@
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 30,
+                "custom_width_tablet": 31,
                 "width_mobile": "custom",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
@@ -8033,10 +8033,10 @@
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 30,
+                "custom_width_tablet": 31,
                 "width_mobile": "custom",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
@@ -8183,10 +8183,10 @@
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 50,
+                "custom_width_tablet": 31,
                 "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
@@ -8319,7 +8319,7 @@
                 "block_text_aYKiHp"
               ]
             },
-            "block_group_mdzkV4": {
+            "block_group_XD4FDU": {
               "type": "block_group",
               "name": "Text Group 1",
               "settings": {
@@ -8333,11 +8333,11 @@
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 100,
-                "width_mobile": "custom",
+                "custom_width_tablet": 31,
+                "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -8367,7 +8367,7 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_icon_ENwxxV": {
+                "block_icon_Mm3cRD": {
                   "type": "block_icon",
                   "name": "Icon",
                   "settings": {
@@ -8378,7 +8378,7 @@
                   },
                   "blocks": {}
                 },
-                "block_heading_ca7cVP": {
+                "block_heading_BEPXJf": {
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
@@ -8419,7 +8419,7 @@
                   },
                   "blocks": {}
                 },
-                "block_text_DcefjV": {
+                "block_text_JfjcDm": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
@@ -8464,12 +8464,12 @@
                 }
               },
               "block_order": [
-                "block_icon_ENwxxV",
-                "block_heading_ca7cVP",
-                "block_text_DcefjV"
+                "block_icon_Mm3cRD",
+                "block_heading_BEPXJf",
+                "block_text_JfjcDm"
               ]
             },
-            "block_group_D6Qytw": {
+            "block_group_cCQ36M": {
               "type": "block_group",
               "name": "Text Group 1",
               "settings": {
@@ -8483,11 +8483,11 @@
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 100,
-                "width_mobile": "custom",
+                "custom_width_tablet": 31,
+                "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -8517,7 +8517,7 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_icon_M3xafn": {
+                "block_icon_KKE7bk": {
                   "type": "block_icon",
                   "name": "Icon",
                   "settings": {
@@ -8528,7 +8528,7 @@
                   },
                   "blocks": {}
                 },
-                "block_heading_wynGbD": {
+                "block_heading_4GbU8R": {
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
@@ -8569,7 +8569,7 @@
                   },
                   "blocks": {}
                 },
-                "block_text_8PmPjx": {
+                "block_text_HANLBm": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
@@ -8614,12 +8614,12 @@
                 }
               },
               "block_order": [
-                "block_icon_M3xafn",
-                "block_heading_wynGbD",
-                "block_text_8PmPjx"
+                "block_icon_KKE7bk",
+                "block_heading_4GbU8R",
+                "block_text_HANLBm"
               ]
             },
-            "block_group_7fzAiW": {
+            "block_group_VBhcMt": {
               "type": "block_group",
               "name": "Text Group 1",
               "settings": {
@@ -8633,11 +8633,11 @@
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
                 "custom_width": 100,
-                "width_tablet": "fill",
+                "width_tablet": "custom",
                 "custom_width_unit_tablet": "%",
                 "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 100,
-                "width_mobile": "custom",
+                "custom_width_tablet": 31,
+                "width_mobile": "fill",
                 "custom_width_unit_mobile": "%",
                 "custom_width_pixel_mobile": 48,
                 "custom_width_mobile": 100,
@@ -8667,7 +8667,7 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_icon_N9RHCX": {
+                "block_icon_mgcq6E": {
                   "type": "block_icon",
                   "name": "Icon",
                   "settings": {
@@ -8678,7 +8678,7 @@
                   },
                   "blocks": {}
                 },
-                "block_heading_cXpPcd": {
+                "block_heading_GYTnHT": {
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
@@ -8719,7 +8719,7 @@
                   },
                   "blocks": {}
                 },
-                "block_text_z7iUHh": {
+                "block_text_KqUTeB": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
@@ -8764,9 +8764,9 @@
                 }
               },
               "block_order": [
-                "block_icon_N9RHCX",
-                "block_heading_cXpPcd",
-                "block_text_z7iUHh"
+                "block_icon_mgcq6E",
+                "block_heading_GYTnHT",
+                "block_text_KqUTeB"
               ]
             }
           },
@@ -8774,9 +8774,9 @@
             "block_group_tWYynH",
             "block_group_Dp8PJj",
             "block_group_K8FfcL",
-            "block_group_mdzkV4",
-            "block_group_D6Qytw",
-            "block_group_7fzAiW"
+            "block_group_XD4FDU",
+            "block_group_cCQ36M",
+            "block_group_VBhcMt"
           ]
         }
       },
