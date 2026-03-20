@@ -138,11 +138,9 @@
 
     function checkOverflow() {
       const container = track.parentElement;
-
       const isOverflowing = Math.ceil(track.scrollWidth) > Math.ceil(container.clientWidth);
-
+      console.log(container)
       wrapper.classList.toggle('is-overflowing', isOverflowing);
-
       if (!isOverflowing) {
         currentTranslate = 0;
         track.style.transform = 'translateX(0px)';
