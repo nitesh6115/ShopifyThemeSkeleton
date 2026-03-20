@@ -154,61 +154,7 @@ function initProductScript(sectionId) {
     }
   }
 
-  function activateMedia(mediaId) {
-
-    mediaItems.forEach(item => {
-
-      item.classList.remove("is-active");
-
-      if (item.dataset.mediaId == mediaId) {
-        item.classList.add("is-active");
-      }
-
-      const video = item.querySelector("video");
-      if (video) video.pause();
-
-    });
-
-    thumbs.forEach(thumb => {
-
-      thumb.classList.remove("is-active");
-
-      if (thumb.dataset.mediaId == mediaId) {
-        thumb.classList.add("is-active");
-      }
-
-    });
-
-  }
-
-  thumbs.forEach(thumb => {
-    thumb.addEventListener("click", function () {
-      activateMedia(this.dataset.mediaId);
-    });
-  });
-
-  prevBtn?.addEventListener("click", function () {
-    currentTranslate += 100;
-    if (currentTranslate > 0) currentTranslate = 0;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  });
-
-  nextBtn?.addEventListener("click", function () {
-    const maxTranslate =
-      track.parentElement.offsetWidth -
-      track.scrollWidth;
-
-    currentTranslate -= 100;
-
-    if (currentTranslate < maxTranslate)
-      currentTranslate = maxTranslate;
-
-    track.style.transform =
-      `translateX(${currentTranslate}px)`;
-  });
-
-  checkOverflow();
-  window.addEventListener("resize", checkOverflow);
+  
 
 
   /* -------------------------
