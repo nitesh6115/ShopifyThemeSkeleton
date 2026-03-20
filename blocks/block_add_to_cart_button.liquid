@@ -36,6 +36,7 @@
   {{ block.shopify_attributes }}
   style="{{- style_schema -}}"
 >
+  {%- assign product_form_id = 'product-form-' | append: block.id -%}
   {%- form 'product',
     product,
     id: product_form_id,
