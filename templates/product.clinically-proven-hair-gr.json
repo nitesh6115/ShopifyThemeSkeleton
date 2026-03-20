@@ -3491,7 +3491,7 @@
               "settings": {
                 "layout_direction": "group--vertical",
                 "align_x": "flex-start",
-                "align_y": "center",
+                "align_y": "flex-start",
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
@@ -3641,7 +3641,7 @@
               "settings": {
                 "layout_direction": "group--vertical",
                 "align_x": "flex-start",
-                "align_y": "center",
+                "align_y": "flex-start",
                 "wrap": "wrap",
                 "hover_zoom": false,
                 "shadow": false,
