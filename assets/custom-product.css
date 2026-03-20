@@ -1,6 +1,9 @@
 .product_section{
   background: var(--section-bg);
 }
+.section-content .gallery-thumbs {
+    width: 0;
+}
 .product-wrapper{
   padding: var(--section-padding-top) var(--section-padding-right) var(--section-padding-bottom) var(--section-padding-left);
   max-width: var(--section-wraper-width);
