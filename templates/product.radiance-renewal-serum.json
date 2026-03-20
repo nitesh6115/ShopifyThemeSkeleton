@@ -266,9 +266,9 @@
                 "desktop_text_align": "left",
                 "mobile_text_align": "left",
                 "bg_color": "",
-                "price_color": "#DC2626",
+                "price_color": "#dc2626",
                 "compare_price_color": "#a1a1a1",
-                "save_color": "#DC2626",
+                "save_color": "#dc2626",
                 "save_color_bg": "#ffe4e6",
                 "save_radius": 50,
                 "price_font_size": 30,
@@ -839,11 +839,11 @@
                 "mobile_text_align": "left",
                 "bg_color": "",
                 "pill-bg": "#ffffff",
-                "pill-text": "#6D7175",
+                "pill-text": "#6d7175",
                 "pill-border": "#d4d4d4",
                 "hover-pill-bg": "#fff1f2",
-                "hover-pill-text": "#DC2626",
-                "hover-pill-border": "#DC2626",
+                "hover-pill-text": "#dc2626",
+                "hover-pill-border": "#dc2626",
                 "pill-border-width": 2,
                 "pill-radius": 10
               },
@@ -865,7 +865,7 @@
                 "btn_hover_bg": "#000",
                 "btn_text": "#ffffff",
                 "btn_hover_text": "#ffffff",
-                "btn_border": "#DC2626",
+                "btn_border": "#dc2626",
                 "btn_hover_border": "#121212",
                 "show_qty": true,
                 "show_dynamic_button": true,
@@ -4877,54 +4877,9 @@
                       "name": "Icon",
                       "settings": {
                         "icon": "star",
-                        "svg_code": "",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M26.3153 16.3636V28H24.554V18.125H24.4858L21.7017 19.9432V18.2614L24.6051 16.3636H26.3153Z\" fill=\"#EC003F\"></path>\n</svg>",
                         "size": 48,
                         "color": "#000000"
-                      },
-                      "blocks": {}
-                    },
-                    "block_image_mQGCAx": {
-                      "type": "block_image",
-                      "name": "Image",
-                      "settings": {
-                        "image": "shopify://shop_images/Container_68.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
                       },
                       "blocks": {}
                     },
@@ -4974,7 +4929,6 @@
                   },
                   "block_order": [
                     "block_icon_bFCpqa",
-                    "block_image_mQGCAx",
                     "block_text_KGKRJg"
                   ]
                 },
@@ -5026,48 +4980,14 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_DGp7Mr": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_zATWJr": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/Container_77.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "star",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M26.3153 16.3636V28H24.554V18.125H24.4858L21.7017 19.9432V18.2614L24.6051 16.3636H26.3153Z\" fill=\"#EC003F\"></path>\n</svg>",
+                        "size": 48,
+                        "color": "#000000"
                       },
                       "blocks": {}
                     },
@@ -5116,7 +5036,7 @@
                     }
                   },
                   "block_order": [
-                    "block_image_DGp7Mr",
+                    "block_icon_zATWJr",
                     "block_text_REyCHP"
                   ]
                 },
@@ -5168,48 +5088,14 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_x9pENU": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_trmmKD": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/Container_78.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "star",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M26.3153 16.3636V28H24.554V18.125H24.4858L21.7017 19.9432V18.2614L24.6051 16.3636H26.3153Z\" fill=\"#EC003F\"></path>\n</svg>",
+                        "size": 48,
+                        "color": "#000000"
                       },
                       "blocks": {}
                     },
@@ -5258,7 +5144,7 @@
                     }
                   },
                   "block_order": [
-                    "block_image_x9pENU",
+                    "block_icon_trmmKD",
                     "block_text_q9jyp7"
                   ]
                 },
@@ -5310,48 +5196,14 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_TH3Vwe": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_q4dBjW": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/Container_79.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "#000000",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "star",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#FFE4E6\"></path>\n<path d=\"M26.3153 16.3636V28H24.554V18.125H24.4858L21.7017 19.9432V18.2614L24.6051 16.3636H26.3153Z\" fill=\"#EC003F\"></path>\n</svg>",
+                        "size": 48,
+                        "color": "#000000"
                       },
                       "blocks": {}
                     },
@@ -5400,7 +5252,7 @@
                     }
                   },
                   "block_order": [
-                    "block_image_TH3Vwe",
+                    "block_icon_q4dBjW",
                     "block_text_AhK43M"
                   ]
                 }
