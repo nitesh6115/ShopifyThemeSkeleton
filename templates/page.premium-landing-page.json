@@ -6675,14 +6675,14 @@
                 "desktop_text_align": "left",
                 "mobile_text_align": "left",
                 "bg_color": "",
-                "pill-bg": "#ffffff",
-                "pill-text": "#000000",
-                "pill-border": "#000000",
+                "pill-bg": "#f9f3e9",
+                "pill-text": "#c9a96e",
+                "pill-border": "#6b5e4e",
                 "hover-pill-bg": "#000000",
                 "hover-pill-text": "#ffffff",
-                "hover-pill-border": "#000000",
-                "pill-border-width": 1,
-                "pill-radius": 10
+                "hover-pill-border": "#c9a96e",
+                "pill-border-width": 2,
+                "pill-radius": 0
               },
               "blocks": {}
             },
