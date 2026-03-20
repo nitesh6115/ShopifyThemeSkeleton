@@ -77,20 +77,23 @@ align--{{ block.settings.align }};
     margin-left: auto;
   }
   @media (min-width: 1366px) {
-  .block-width-desktop-fill .divider-line{
-    width: 100%;
-  }
+  .divider-block.block-width-desktop-fill {
+    align-self: stretch;
+    flex: unset;
+}
 }
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
-.block-width-tablet-fill .divider-line{
-    width: 100%;
-  }
+.divider-block.block-width-tablet-fill {
+    align-self: stretch;
+    flex: unset;
+}
 }
   /* mobile */
   @media (max-width:767px){
-    .block-width-mobile-fill .divider-line{
-    width: 100%;
-  }
+  .divider-block.block-mobile-desktop-fill {
+    align-self: stretch;
+    flex: unset;
+}
     .divider-block {
       padding-top: var(--ptm);
       padding-bottom: var(--pbm);
