@@ -6705,7 +6705,7 @@
                 "btn_border": "#c9a96e",
                 "btn_hover_border": "#121212",
                 "show_qty": true,
-                "show_dynamic_button": false,
+                "show_dynamic_button": true,
                 "enabled_sticky_add": false,
                 "show_price": true,
                 "btn_font": 14,
