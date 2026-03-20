@@ -41,6 +41,7 @@
             data-value="{{ value | escape }}"
           >
             {{ value }}
+            <span>{{ value.variant.price | money}}</span>
           </button>
         {% endfor %}
       </div>
