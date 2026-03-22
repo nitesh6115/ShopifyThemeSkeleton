@@ -7180,7 +7180,7 @@
                     "tablet_px_height": 415,
                     "tablet_vh_height": 20,
                     "mobile_height_type": "px",
-                    "mobile_px_height": 100,
+                    "mobile_px_height": 310,
                     "mobile_vh_height": 20,
                     "hide_desktop": false,
                     "hide_mobile": false
