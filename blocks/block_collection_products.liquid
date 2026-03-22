@@ -21,11 +21,7 @@ style="{{ style_schema }}"
 data-slider-id="{{ block.id }}"
 {{ block.shopify_attributes }}
 >
-
 {% assign col = collections[block.settings.collection] %}
-{% capture children %}
-  {% content_for 'blocks', closest.product: product %}
-{% endcapture %}
 <div class="collection-track">
 
 {% for product in col.products limit: block.settings.limit %}
