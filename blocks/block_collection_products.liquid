@@ -29,15 +29,7 @@ data-slider-id="{{ block.id }}"
 {% for product in col.products limit: block.settings.limit %}
 {% assign product = closest.product %}
 <div class="collection-item">
-
-<a href="{{ product.url }}">
-
-<div class="card-image">
-{{ product.featured_image | image_url: width: 600 | image_tag }}
-</div>
- {%  content_for 'blocks' %}
-</a>
-
+ {% render '_product-card', children: children, product: product %}
 </div>
 
 {% endfor %}
@@ -148,7 +140,7 @@ move();
 {% schema %}
 {
 "name":"Collection",
-"blocks": [{ "type": "@theme"}],
+"blocks": [{ "type": "@theme"},{"type": "_product-card"}],
 "settings":[
 
 { "type":"collection","id":"collection","label":"Collection" },
