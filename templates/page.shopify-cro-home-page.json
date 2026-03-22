@@ -7143,7 +7143,6 @@
                 "gap": 12,
                 "gap_m": 12,
                 "background": "",
-                "bg_image": "shopify://shop_images/6ca5b2a11bdcc68cc271c7efadbe77ebd1cd9dd9_1.jpg",
                 "radius": 0,
                 "set_full_radius": false,
                 "radius_top_left": 0,
@@ -7165,9 +7164,9 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_height_spacer_wb73xE": {
-                  "type": "block_height_spacer",
-                  "name": "Spacer",
+                "blcok_background_image_GMJqpz": {
+                  "type": "blcok_background_image",
+                  "name": "Background Image",
                   "settings": {
                     "desktop_height_type": "px",
                     "desktop_px_height": 100,
@@ -7182,84 +7181,10 @@
                     "hide_mobile": false
                   },
                   "blocks": {}
-                },
-                "block_heading_3WxRNB": {
-                  "type": "block_heading",
-                  "name": "Heading",
-                  "settings": {
-                    "text": "Heading",
-                    "alignment": "left",
-                    "font_italic": false,
-                    "font_uppercase": false,
-                    "line_height": "1.2",
-                    "letter_spacing": 0,
-                    "color": "#000000",
-                    "tag": "h2",
-                    "size_mode": "auto",
-                    "font_size": 32,
-                    "font_size_m": 24,
-                    "font_weight": 600,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_tablet": "fill",
-                    "custom_width_tablet": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "hide_mobile": false,
-                    "hide_desktop": false
-                  },
-                  "blocks": {}
-                },
-                "block_text_jmHTCF": {
-                  "type": "block_text",
-                  "name": "Text",
-                  "settings": {
-                    "text": "<p>Clinical-grade formulas for whole-body wellness</p>",
-                    "block_link": "",
-                    "alignment": "left",
-                    "width": "fill",
-                    "custom_width_unit_desktop": "%",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "fill",
-                    "custom_width_unit_tablet": "%",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "fill",
-                    "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "font_size": 16,
-                    "font_size_mobile": 14,
-                    "text_uppercase": false,
-                    "font_weight": "400",
-                    "color": "#f3f4f6",
-                    "background": "",
-                    "radius": 0,
-                    "border": 0,
-                    "border_color": "",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
-                "block_height_spacer_wb73xE",
-                "block_heading_3WxRNB",
-                "block_text_jmHTCF"
+                "blcok_background_image_GMJqpz"
               ]
             }
           },

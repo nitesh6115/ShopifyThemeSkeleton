@@ -36,7 +36,7 @@ mobile-vh-height;
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
-  {%  content_for 'blocks' %}}
+  {%  content_for 'blocks' %}
 </div>
 {% stylesheet %}
 .background-image-block {
