@@ -8885,7 +8885,7 @@
         "custom_width": 1200,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
-        "background_color": "#FFFFFF",
+        "background_color": "linear-gradient(180deg, #FFFFFF 0%, #FDFCFC 25%, #FBFAF8 50%, #F9F7F5 75%, #F7F5F2 100%)",
         "overlay_color": "",
         "overlay_opacity": 0,
         "bg_position": "center center",
