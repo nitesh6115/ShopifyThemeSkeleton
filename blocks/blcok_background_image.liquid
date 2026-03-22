@@ -46,6 +46,9 @@ mobile-vh-height;
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
+{% liquid
+  assign product = block.settings.product
+-%}
 <div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
   {% if block.settings.overlay_color != blank %}
     <div class="block-overlay"></div>
