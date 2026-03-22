@@ -96,6 +96,37 @@ mobile-vh-height;
         "label": "Background Image",
         "id": "image"
     },
+    { "type": "color_background", "id": "overlay_color", "label": "Overlay Color" },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Overlay Opacity",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Background Position",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "select",
+      "id": "bg_size",
+      "label": "Background Size",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ],
+      "default": "cover"
+    },
     {
       "type": "header",
       "content": "Height Desktop"
