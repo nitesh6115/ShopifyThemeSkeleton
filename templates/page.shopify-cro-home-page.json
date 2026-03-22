@@ -7121,7 +7121,7 @@
               "name": "Background Image",
               "settings": {
                 "image": "shopify://shop_images/6ca5b2a11bdcc68cc271c7efadbe77ebd1cd9dd9_1.jpg",
-                "overlay_color": "radial-gradient(rgba(121, 128, 252, 1), rgba(215, 204, 250, 1) 100%, rgba(247, 197, 204, 1) 100%)",
+                "overlay_color": "linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)",
                 "overlay_opacity": 85,
                 "bg_position": "center center",
                 "bg_size": "cover",
