@@ -7494,8 +7494,8 @@
                     "tablet_height_type": "px",
                     "tablet_px_height": 340,
                     "tablet_vh_height": 20,
-                    "mobile_height_type": "auto",
-                    "mobile_px_height": 100,
+                    "mobile_height_type": "px",
+                    "mobile_px_height": 430,
                     "mobile_vh_height": 20,
                     "hide_desktop": false,
                     "hide_mobile": false
