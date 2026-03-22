@@ -1732,11 +1732,10 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_DC8g8e": {
+                    "block_image_XVNJ48": {
                       "type": "block_image",
                       "name": "Image",
                       "settings": {
-                        "image": "{{ closest.product.featured_image }}",
                         "image_link": "",
                         "ratio": "auto",
                         "hover_zoom": false,
@@ -1789,10 +1788,10 @@
                         "desktop_text_align": "left",
                         "mobile_text_align": "left",
                         "bg_color": "",
-                        "price_color": "#000",
-                        "compare_price_color": "#A1A1A1",
+                        "price_color": "#000000",
+                        "compare_price_color": "#a1a1a1",
                         "save_color": "#016630",
-                        "save_color_bg": "#DCFCE7",
+                        "save_color_bg": "#dcfce7",
                         "save_radius": 4,
                         "price_font_size": 30,
                         "mobile_price_font_size": 30,
@@ -1803,7 +1802,7 @@
                     }
                   },
                   "block_order": [
-                    "block_image_DC8g8e",
+                    "block_image_XVNJ48",
                     "block_product_price_pTNg7m"
                   ]
                 }
