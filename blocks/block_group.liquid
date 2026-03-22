@@ -1,3 +1,9 @@
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
 {%- capture style_schema -%}
   --align-x: {{ block.settings.align_x }};
   --align-y: {{ block.settings.align_y }};
@@ -76,6 +82,17 @@
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
+  {% if block.settings.bg_image != blank %}
+    {%- capture img_alt -%}{%- if block.settings.image.alt != blank -%}{{ block.settings.image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
+    {{ block.settings.image | image_url: width: 1600
+            | image_tag:
+            loading: 'lazy',
+            fetch_priority: fetch_priority,
+            widths: '360, 540, 720, 900, 1080, 1320, 1600',
+            sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+            alt: img_alt
+        }}
+  {% endif %}
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
   {% endif %}
@@ -519,6 +536,12 @@ a.image_link.link_overlay {
       "type": "color_background",
       "id": "background",
       "label": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Block Background Image",
+      "info": "If you want the block background image"
     },
     {
       "type": "header",
