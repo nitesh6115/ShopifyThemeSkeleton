@@ -87,7 +87,10 @@
   endif
 -%}
 <div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
-  
+  {% liquid
+  assign product = closest.product
+-%}
+
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
   {% endif %}
