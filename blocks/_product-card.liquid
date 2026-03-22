@@ -80,7 +80,12 @@
 {% endcapture %}
 
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
-
+{% liquid
+  assign product = closest.product
+  if request.visual_preview_mode and product == blank
+    assign product = collections.all.products.first
+  endif
+-%}
 <div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
   
   {% if block.settings.image_link != blank %}
