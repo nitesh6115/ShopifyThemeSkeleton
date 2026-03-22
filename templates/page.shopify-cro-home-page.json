@@ -7122,7 +7122,7 @@
               "settings": {
                 "layout_direction": "group--horizontal",
                 "align_x": "flex-start",
-                "align_y": "flex-start",
+                "align_y": "flex-end",
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
@@ -7456,7 +7456,7 @@
               "settings": {
                 "layout_direction": "group--horizontal",
                 "align_x": "flex-start",
-                "align_y": "flex-start",
+                "align_y": "flex-end",
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
@@ -7790,7 +7790,7 @@
               "settings": {
                 "layout_direction": "group--horizontal",
                 "align_x": "flex-start",
-                "align_y": "flex-start",
+                "align_y": "flex-end",
                 "wrap": "wrap",
                 "hover_zoom": true,
                 "shadow": false,
