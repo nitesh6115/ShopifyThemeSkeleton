@@ -38,60 +38,109 @@ data-slider-id="{{ block.id }}"
 </div>
 
 {% stylesheet %}
-  .collection-block {
-width:100%;
+.collection-block {
+  width: 100%;
+  min-width: 0;
 }
+
+
+/* =========================
+   TRACK DEFAULT (FLEX GRID)
+========================= */
 
 .collection-track {
-display:grid;
-grid-template-columns:repeat(var(--per-row-desktop),1fr);
-gap:var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  width: 100%;
+  min-width: 0;
 }
 
-/* slider mode */
 
-.is-slider .collection-track{
-display:flex;
-overflow:hidden;
+/* item width desktop */
+
+.collection-item {
+  flex: 0 0 calc(
+    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
+    / var(--per-row-desktop)
+  );
+  min-width: 0;
 }
 
-.is-slider .collection-item{
-flex:0 0 calc(100% / var(--per-row-desktop));
+
+/* =========================
+   SLIDER MODE DESKTOP
+========================= */
+
+.is-slider .collection-track {
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
-/* tablet */
-
-@media(max-width:1365px){
-
-.collection-track{
-grid-template-columns:repeat(var(--per-row-tablet),1fr);
+.is-slider .collection-item {
+  flex: 0 0 calc(100% / var(--per-row-desktop));
 }
 
-.slider-tablet .collection-track{
-display:flex;
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width:1365px) {
+
+.collection-track {
+  gap: var(--gap-m);
 }
 
-.slider-tablet .collection-item{
-flex:0 0 calc(100% / var(--per-row-tablet));
+.collection-item {
+  flex: 0 0 calc(
+    (100% - (var(--gap-m) * (var(--per-row-tablet) - 1)))
+    / var(--per-row-tablet)
+  );
+}
+
+
+/* slider tablet */
+
+.slider-tablet .collection-track {
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.slider-tablet .collection-item {
+  flex: 0 0 calc(100% / var(--per-row-tablet));
 }
 
 }
 
-/* mobile */
 
-@media(max-width:767px){
+/* =========================
+   MOBILE
+========================= */
 
-.collection-track{
-grid-template-columns:repeat(var(--per-row-mobile),1fr);
-gap:var(--gap-m);
+@media (max-width:767px) {
+
+.collection-track {
+  gap: var(--gap-m);
 }
 
-.slider-mobile .collection-track{
-display:flex;
+.collection-item {
+  flex: 0 0 calc(
+    (100% - (var(--gap-m) * (var(--per-row-mobile) - 1)))
+    / var(--per-row-mobile)
+  );
 }
 
-.slider-mobile .collection-item{
-flex:0 0 calc(100% / var(--per-row-mobile));
+
+/* slider mobile */
+
+.slider-mobile .collection-track {
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.slider-mobile .collection-item {
+  flex: 0 0 calc(100% / var(--per-row-mobile));
 }
 
 }
