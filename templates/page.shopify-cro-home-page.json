@@ -7476,7 +7476,7 @@
                 "custom_height": 100,
                 "gap": 12,
                 "gap_m": 12,
-                "background": "",
+                "background": "linear-gradient(89deg, rgba(219, 149, 250, 1) 7%, rgba(148, 88, 255, 1) 94%)",
                 "radius": 14,
                 "set_full_radius": false,
                 "radius_top_left": 0,
