@@ -2201,7 +2201,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Hair Thinning",
+                        "text": "Skin Aging",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -2230,7 +2230,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Hair Growth Complex</p>",
+                        "text": "<p>Collagen Peptides</p>",
                         "block_link": "",
                         "alignment": "center",
                         "width": "fit-content",
@@ -2273,7 +2273,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Clinically proven to increase hair density by 34% in 90 days</p>",
+                        "text": "<p>Reduces fine lines and improves elasticity within 8 weeks</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -2469,7 +2469,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Hair Thinning",
+                        "text": "Dull Complexion",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -2498,7 +2498,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Hair Growth Complex</p>",
+                        "text": "<p>Vitamin C Serum</p>",
                         "block_link": "",
                         "alignment": "center",
                         "width": "fit-content",
@@ -2541,7 +2541,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Clinically proven to increase hair density by 34% in 90 days</p>",
+                        "text": "<p>Brightens and evens skin tone with 20% pure L-ascorbic acid</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -2683,7 +2683,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Hair Thinning",
+                        "text": "Low Energy",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -2712,7 +2712,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Hair Growth Complex</p>",
+                        "text": "<p>B-Complex + Adaptogens</p>",
                         "block_link": "",
                         "alignment": "center",
                         "width": "fit-content",
@@ -2755,7 +2755,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Clinically proven to increase hair density by 34% in 90 days</p>",
+                        "text": "<p>Supports cellular energy production and stress resilience</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
