@@ -310,6 +310,73 @@ a.image_link.link_overlay {
 .is-shadow {
 	box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
 }
+/* =========================
+   FIX FILL HEIGHT WITH WRAP
+========================= */
+
+.group {
+  min-height: 0;
+}
+
+.group > * {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* horizontal parent */
+.group--horizontal {
+  align-items: stretch !important;
+}
+
+/* allow children to stretch */
+.group--horizontal > .block-height-desktop-fill {
+  flex: 1 1 0%;
+  align-self: stretch;
+}
+
+/* vertical blocks */
+.group--vertical.block-height-desktop-fill {
+  flex: 1 1 0%;
+  align-self: stretch;
+}
+
+/* children inside vertical */
+.group--vertical.block-height-desktop-fill > * {
+  flex: 0 0 auto;
+}
+
+/* IMPORTANT FOR WRAP */
+.box-wrap.group--horizontal {
+  align-items: stretch;
+}
+
+.box-wrap.group--horizontal > * {
+  align-self: stretch;
+}
+
+/* fill width + height */
+.block-width-desktop-fill {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.block-height-desktop-fill {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* fix nested groups */
+.group--vertical,
+.group--horizontal {
+  min-height: 0;
+}
+
+/* prevent shrink bug */
+.group > * {
+  min-height: 0;
+  min-width: 0;
+}
 {% endstylesheet %}
 
 {% schema %}
