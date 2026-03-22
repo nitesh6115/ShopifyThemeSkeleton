@@ -354,6 +354,29 @@
               },
               "blocks": {}
             },
+            "block_variant_picker_npKjFC": {
+              "type": "block_variant_picker",
+              "name": "variant_picker",
+              "settings": {
+                "padding_top": 5,
+                "padding_bottom": 5,
+                "padding_left": 0,
+                "padding_right": 0,
+                "block_radius": 0,
+                "desktop_text_align": "left",
+                "mobile_text_align": "left",
+                "bg_color": "",
+                "pill-bg": "#fff",
+                "pill-text": "#000",
+                "pill-border": "#000",
+                "hover-pill-bg": "#000",
+                "hover-pill-text": "#fff",
+                "hover-pill-border": "#000",
+                "pill-border-width": 1,
+                "pill-radius": 10
+              },
+              "blocks": {}
+            },
             "block_buttons_6mmmdm": {
               "type": "block_buttons",
               "name": "Add to cart Button Link",
@@ -691,6 +714,7 @@
             "block_group_JqjR7M",
             "block_heading_GpCY6m",
             "block_text_zB8MUN",
+            "block_variant_picker_npKjFC",
             "block_buttons_6mmmdm",
             "block_group_Y7DNfm"
           ]
