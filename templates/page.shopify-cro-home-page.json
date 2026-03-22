@@ -7183,6 +7183,35 @@
                   },
                   "blocks": {}
                 },
+                "block_heading_3WxRNB": {
+                  "type": "block_heading",
+                  "name": "Heading",
+                  "settings": {
+                    "text": "Heading",
+                    "alignment": "left",
+                    "font_italic": false,
+                    "font_uppercase": false,
+                    "line_height": "1.2",
+                    "letter_spacing": 0,
+                    "color": "#000000",
+                    "tag": "h2",
+                    "size_mode": "auto",
+                    "font_size": 32,
+                    "font_size_m": 24,
+                    "font_weight": 600,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "hide_mobile": false,
+                    "hide_desktop": false
+                  },
+                  "blocks": {}
+                },
                 "block_text_jmHTCF": {
                   "type": "block_text",
                   "name": "Text",
@@ -7229,6 +7258,7 @@
               },
               "block_order": [
                 "block_height_spacer_wb73xE",
+                "block_heading_3WxRNB",
                 "block_text_jmHTCF"
               ]
             }
