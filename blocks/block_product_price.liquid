@@ -46,7 +46,7 @@
     </span>
     {% assign discount = current_variant.compare_at_price | minus: current_variant.price %}
     {% assign discount_percentage = discount | times: 100 | divided_by: current_variant.compare_at_price %}
-    <span class="save"> {% if current_variant.compare_at_price %}{{ discount_percentage }}% OFF {% endif %}</span>
+    <span class="save {% if current_variant.compare_at_price %}{% else %} hidden {% endif %}"> {% if current_variant.compare_at_price %}{{ discount_percentage }}% OFF {% endif %}</span>
   </div>
 </div>
 {% stylesheet %}
