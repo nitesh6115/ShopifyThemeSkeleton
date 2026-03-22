@@ -51,6 +51,9 @@
 
 {%- capture class_list -%}
   group;
+  {% if block.settings.bg_image != blank %}
+    bg_enabled_block
+  {% endif %}
   {{ block.settings.layout_direction }}; 
   box-{{ block.settings.wrap }};
   {% if block.settings.height == 'custom' %}
