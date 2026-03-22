@@ -1671,7 +1671,7 @@
               "type": "block_collection_products",
               "name": "Collection Products",
               "settings": {
-                "collection": "noble",
+                "collection": "t-shirts",
                 "limit": 8,
                 "per_row_desktop": 4,
                 "per_row_tablet": 3,
