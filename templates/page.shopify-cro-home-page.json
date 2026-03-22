@@ -9254,10 +9254,10 @@
                       "type": "block_icon",
                       "name": "Icon",
                       "settings": {
-                        "icon": "close_with_circle",
+                        "icon": "check",
                         "svg_code": "",
                         "size": 26,
-                        "color": "#d13030"
+                        "color": "#ffffff"
                       },
                       "blocks": {}
                     },
@@ -9286,7 +9286,7 @@
                         "font_size_mobile": 14,
                         "text_uppercase": false,
                         "font_weight": "400",
-                        "color": "#b8b6b2",
+                        "color": "#FFFFFF",
                         "background": "",
                         "radius": 0,
                         "border": 0,
@@ -9310,7 +9310,7 @@
                     "block_text_iyTMez"
                   ]
                 },
-                "block_group_hkAzpn": {
+                "block_group_jbQXz6": {
                   "type": "block_group",
                   "name": "Pointer Checks",
                   "settings": {
@@ -9358,56 +9358,22 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_7C46iK": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_6KUQYB": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/span.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 20,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 20,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 20,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "check",
+                        "svg_code": "",
+                        "size": 26,
+                        "color": "#ffffff"
                       },
                       "blocks": {}
                     },
-                    "block_text_3jeQ7n": {
+                    "block_text_6TyMdH": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Dull, uneven skin tone that no product fixes</p>",
+                        "text": "<p>Save 15% on every subscription order</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -9428,7 +9394,7 @@
                         "font_size_mobile": 14,
                         "text_uppercase": false,
                         "font_weight": "400",
-                        "color": "#b8b6b2",
+                        "color": "#FFFFFF",
                         "background": "",
                         "radius": 0,
                         "border": 0,
@@ -9448,11 +9414,11 @@
                     }
                   },
                   "block_order": [
-                    "block_image_7C46iK",
-                    "block_text_3jeQ7n"
+                    "block_icon_6KUQYB",
+                    "block_text_6TyMdH"
                   ]
                 },
-                "block_group_9iwMVc": {
+                "block_group_A8cGpP": {
                   "type": "block_group",
                   "name": "Pointer Checks",
                   "settings": {
@@ -9500,56 +9466,22 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_jMQr49": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_CMM88A": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/span.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 20,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 20,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 20,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "check",
+                        "svg_code": "",
+                        "size": 26,
+                        "color": "#ffffff"
                       },
                       "blocks": {}
                     },
-                    "block_text_tJKypT": {
+                    "block_text_3CM3b9": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Retinol that irritates and causes peeling</p>",
+                        "text": "<p>Fine lines and wrinkles deepening with age</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -9570,7 +9502,7 @@
                         "font_size_mobile": 14,
                         "text_uppercase": false,
                         "font_weight": "400",
-                        "color": "#b8b6b2",
+                        "color": "#FFFFFF",
                         "background": "",
                         "radius": 0,
                         "border": 0,
@@ -9590,11 +9522,11 @@
                     }
                   },
                   "block_order": [
-                    "block_image_jMQr49",
-                    "block_text_tJKypT"
+                    "block_icon_CMM88A",
+                    "block_text_3CM3b9"
                   ]
                 },
-                "block_group_aFd4nX": {
+                "block_group_t9bpQ4": {
                   "type": "block_group",
                   "name": "Pointer Checks",
                   "settings": {
@@ -9642,56 +9574,22 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_rCXD7L": {
-                      "type": "block_image",
-                      "name": "Image",
+                    "block_icon_BADYpX": {
+                      "type": "block_icon",
+                      "name": "Icon",
                       "settings": {
-                        "image": "shopify://shop_images/span.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 20,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 20,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 20,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
+                        "icon": "check",
+                        "svg_code": "",
+                        "size": 26,
+                        "color": "#ffffff"
                       },
                       "blocks": {}
                     },
-                    "block_text_AJ7FYt": {
+                    "block_text_datVgc": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Expensive treatments that only last weeks</p>",
+                        "text": "<p>Fine lines and wrinkles deepening with age</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -9712,7 +9610,7 @@
                         "font_size_mobile": 14,
                         "text_uppercase": false,
                         "font_weight": "400",
-                        "color": "#b8b6b2",
+                        "color": "#FFFFFF",
                         "background": "",
                         "radius": 0,
                         "border": 0,
@@ -9732,150 +9630,8 @@
                     }
                   },
                   "block_order": [
-                    "block_image_rCXD7L",
-                    "block_text_AJ7FYt"
-                  ]
-                },
-                "block_group_JXQh7a": {
-                  "type": "block_group",
-                  "name": "Pointer Checks",
-                  "settings": {
-                    "layout_direction": "group--horizontal",
-                    "align_x": "flex-start",
-                    "align_y": "center",
-                    "wrap": "wrap",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "fit-content",
-                    "custom_width_unit_desktop": "%",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "fit-content",
-                    "custom_width_unit_tablet": "%",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "gap": 6,
-                    "gap_m": 6,
-                    "background": "",
-                    "radius": 0,
-                    "set_full_radius": false,
-                    "radius_top_left": 0,
-                    "radius_top_right": 0,
-                    "radius_bottom_left": 0,
-                    "radius_bottom_right": 0,
-                    "border": 0,
-                    "border_color": "rgba(0,0,0,0)",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "ptm": 0,
-                    "pbm": 0,
-                    "plm": 0,
-                    "prm": 0,
-                    "hide_desktop": false,
-                    "hide_mobile": false,
-                    "image_link": ""
-                  },
-                  "blocks": {
-                    "block_image_GdCB7U": {
-                      "type": "block_image",
-                      "name": "Image",
-                      "settings": {
-                        "image": "shopify://shop_images/span.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 20,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 20,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 20,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_text_cBtmk9": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>The endless cycle of skincare disappointment</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 14,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#b8b6b2",
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "block_image_GdCB7U",
-                    "block_text_cBtmk9"
+                    "block_icon_BADYpX",
+                    "block_text_datVgc"
                   ]
                 }
               },
@@ -9884,10 +9640,9 @@
                 "block_heading_BQH9GR",
                 "block_text_egGMEE",
                 "block_group_kxLzf9",
-                "block_group_hkAzpn",
-                "block_group_9iwMVc",
-                "block_group_aFd4nX",
-                "block_group_JXQh7a"
+                "block_group_jbQXz6",
+                "block_group_A8cGpP",
+                "block_group_t9bpQ4"
               ]
             },
             "block_group_RwqyrM": {
