@@ -29,7 +29,6 @@ data-slider-id="{{ block.id }}"
 <div class="collection-track">
 
 {% for product in col.products limit: block.settings.limit %}
-{% assign product = closest.product %}
 <div class="collection-item">
   {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: null %}
 </div>
