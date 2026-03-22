@@ -1,0 +1,187 @@
+{%- capture style_schema -%}
+--per-row-desktop: {{ block.settings.per_row_desktop }};
+--per-row-tablet: {{ block.settings.per_row_tablet }};
+--per-row-mobile: {{ block.settings.per_row_mobile }};
+--gap: {{ block.settings.gap }}px;
+--gap-m: {{ block.settings.gap_m }}px;
+{%- endcapture -%}
+
+{% assign style_schema = style_schema | strip_newlines %}
+
+<div
+class="collection-block
+{% if block.settings.enable_slider %}is-slider{% endif %}
+{% if block.settings.slider_desktop %}slider-desktop{% endif %}
+{% if block.settings.slider_tablet %}slider-tablet{% endif %}
+{% if block.settings.slider_mobile %}slider-mobile{% endif %}
+block-width-desktop-fill
+block-width-tablet-fill
+block-width-mobile-fill"
+style="{{ style_schema }}"
+data-slider-id="{{ block.id }}"
+{{ block.shopify_attributes }}
+>
+
+{% assign col = collections[block.settings.collection] %}
+
+<div class="collection-track">
+
+{% for product in col.products limit: block.settings.limit %}
+
+<div class="collection-item">
+
+<a href="{{ product.url }}">
+
+<div class="card-image">
+{{ product.featured_image | image_url: width: 600 | image_tag }}
+</div>
+
+<div class="card-title">
+{{ product.title }}
+</div>
+
+<div class="card-price">
+{{ product.price | money }}
+</div>
+
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="slider-dots"></div>
+
+</div>
+
+{% stylesheet %}
+  .collection-block {
+width:100%;
+}
+
+.collection-track {
+display:grid;
+grid-template-columns:repeat(var(--per-row-desktop),1fr);
+gap:var(--gap);
+}
+
+/* slider mode */
+
+.is-slider .collection-track{
+display:flex;
+overflow:hidden;
+}
+
+.is-slider .collection-item{
+flex:0 0 calc(100% / var(--per-row-desktop));
+}
+
+/* tablet */
+
+@media(max-width:1365px){
+
+.collection-track{
+grid-template-columns:repeat(var(--per-row-tablet),1fr);
+}
+
+.slider-tablet .collection-track{
+display:flex;
+}
+
+.slider-tablet .collection-item{
+flex:0 0 calc(100% / var(--per-row-tablet));
+}
+
+}
+
+/* mobile */
+
+@media(max-width:767px){
+
+.collection-track{
+grid-template-columns:repeat(var(--per-row-mobile),1fr);
+gap:var(--gap-m);
+}
+
+.slider-mobile .collection-track{
+display:flex;
+}
+
+.slider-mobile .collection-item{
+flex:0 0 calc(100% / var(--per-row-mobile));
+}
+
+}
+{% endstylesheet %}
+{%  javascript %}
+  document.querySelectorAll(".collection-block").forEach(block=>{
+
+let track = block.querySelector(".collection-track");
+let id = block.dataset.sliderId;
+
+let prev = document.querySelector(`[data-prev="${id}"]`);
+let next = document.querySelector(`[data-next="${id}"]`);
+
+if(!track) return;
+
+let index = 0;
+
+function move(){
+
+let item = track.children[0];
+if(!item) return;
+
+let w = item.offsetWidth;
+
+track.style.transform =
+`translateX(${index * -w}px)`;
+
+}
+
+next?.addEventListener("click",()=>{
+index++;
+move();
+});
+
+prev?.addEventListener("click",()=>{
+index--;
+if(index<0) index=0;
+move();
+});
+
+});
+{% endjavascript %}
+{% schema %}
+{
+"name":"Collection",
+
+"settings":[
+
+{ "type":"collection","id":"collection","label":"Collection" },
+
+{ "type":"range","id":"limit","min":1,"max":20,"default":8,"step": 1,"label": "Limit" },
+
+{ "type":"range","id":"per_row_desktop","min":1,"max":6,"default":4,"step": 1,"label": "Per Row Desktop" },
+
+{ "type":"range","id":"per_row_tablet","min":1,"max":4,"default":2,"step": 1,"label": "Pre Row Tablet" },
+
+{ "type":"range","id":"per_row_mobile","min":1,"max":3,"default":1,"step": 1,"label": "Pre Row Mobile" },
+
+{ "type":"checkbox","id":"enable_slider","label":"Enable slider" },
+
+{ "type":"checkbox","id":"slider_desktop","label":"Slider desktop" },
+
+{ "type":"checkbox","id":"slider_tablet","label":"Slider tablet" },
+
+{ "type":"checkbox","id":"slider_mobile","label":"Slider mobile" },
+
+{ "type":"range","id":"gap","min":0,"max":40,"default":16,"step": 1,"label": "Gap Desktop" },
+
+{ "type":"range","id":"gap_m","min":0,"max":40,"default":12,"step": 1,"label": "Gap Mobile" }
+
+]
+
+}
+{% endschema %}
