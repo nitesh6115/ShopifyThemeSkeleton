@@ -91,20 +91,8 @@
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
   {% endif %}
-  {% liquid
-  assign product = closest.product
-%}
-<div class="product-card">
-  <a href="{{ product.url }}">
-    <div class="product-card__media">
-      {% if product.featured_image %}
-        {{ product.featured_image | image_url: width: 600 | image_tag }}
-      {% endif %}
-      {% content_for "blocks" %}
-    </div>
-  </a>
-</div>
   
+  {% content_for 'blocks' %}
 </div>
 
 {% stylesheet %}
