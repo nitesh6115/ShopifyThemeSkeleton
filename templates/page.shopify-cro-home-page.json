@@ -7090,7 +7090,7 @@
             "custom_width_unit_mobile": "%",
             "custom_width_pixel_mobile": 48,
             "custom_width_mobile": 100,
-            "height": "fit",
+            "height": "fill",
             "custom_height": 100,
             "gap": 24,
             "gap_m": 16,
