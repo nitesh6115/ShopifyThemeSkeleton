@@ -1982,8 +1982,8 @@
                           "name": "Block Group",
                           "settings": {
                             "layout_direction": "group--horizontal",
-                            "align_x": "flex-start",
-                            "align_y": "flex-start",
+                            "align_x": "space-between",
+                            "align_y": "center",
                             "wrap": "nowrap",
                             "hover_zoom": false,
                             "shadow": false,
