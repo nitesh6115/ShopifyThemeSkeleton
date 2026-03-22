@@ -24,7 +24,7 @@ data-slider-id="{{ block.id }}"
 {% assign col = collections[block.settings.collection] %}
 <div class="collection-track">
 
-{% for product in col.products limit: block.settings.limit %}
+{% for product in block.settings.collection.products limit: block.settings.limit %}
 <div class="collection-item">
   {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: null %}
 </div>
