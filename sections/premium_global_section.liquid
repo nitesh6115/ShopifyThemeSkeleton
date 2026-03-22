@@ -10,7 +10,7 @@
     --max-width: {% if section.settings.section_width == 'custom' %}{{ section.settings.custom_width }}px{% elsif section.settings.section_width == 'full' %}100%{% else %}var(--page-width){% endif %};
     --content-align-desktop: {{ section.settings.content_alignment_desktop }};
     --content-align-mobile: {{ section.settings.content_alignment_mobile }};
-    --align_y: {{ section.settings.align_y }}
+    --align_y: {{ section.settings.align_y }};
 
   /* Desktop Padding */
   --pt-desktop: {{ section.settings.padding_top_desktop }}px;
