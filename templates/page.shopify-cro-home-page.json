@@ -7186,24 +7186,6 @@
                     "hide_mobile": false
                   },
                   "blocks": {
-                    "block_height_spacer_ngNhE8": {
-                      "type": "block_height_spacer",
-                      "name": "Spacer",
-                      "settings": {
-                        "desktop_height_type": "px",
-                        "desktop_px_height": 285,
-                        "desktop_vh_height": 20,
-                        "tablet_height_type": "px",
-                        "tablet_px_height": 325,
-                        "tablet_vh_height": 20,
-                        "mobile_height_type": "px",
-                        "mobile_px_height": 330,
-                        "mobile_vh_height": 20,
-                        "hide_desktop": false,
-                        "hide_mobile": false
-                      },
-                      "blocks": {}
-                    },
                     "block_group_yEYiqD": {
                       "type": "block_group",
                       "name": "Block Group",
@@ -7441,7 +7423,6 @@
                     }
                   },
                   "block_order": [
-                    "block_height_spacer_ngNhE8",
                     "block_group_yEYiqD"
                   ]
                 }
@@ -7507,11 +7488,11 @@
                     "overlay_opacity": 85,
                     "bg_position": "center center",
                     "bg_size": "cover",
-                    "desktop_height_type": "auto",
-                    "desktop_px_height": 100,
+                    "desktop_height_type": "px",
+                    "desktop_px_height": 290,
                     "desktop_vh_height": 20,
-                    "tablet_height_type": "auto",
-                    "tablet_px_height": 100,
+                    "tablet_height_type": "px",
+                    "tablet_px_height": 340,
                     "tablet_vh_height": 20,
                     "mobile_height_type": "auto",
                     "mobile_px_height": 100,
@@ -7520,24 +7501,6 @@
                     "hide_mobile": false
                   },
                   "blocks": {
-                    "block_height_spacer_wzHidE": {
-                      "type": "block_height_spacer",
-                      "name": "Spacer",
-                      "settings": {
-                        "desktop_height_type": "px",
-                        "desktop_px_height": 285,
-                        "desktop_vh_height": 20,
-                        "tablet_height_type": "px",
-                        "tablet_px_height": 325,
-                        "tablet_vh_height": 20,
-                        "mobile_height_type": "px",
-                        "mobile_px_height": 330,
-                        "mobile_vh_height": 20,
-                        "hide_desktop": false,
-                        "hide_mobile": false
-                      },
-                      "blocks": {}
-                    },
                     "block_group_UMgF7V": {
                       "type": "block_group",
                       "name": "Block Group",
@@ -7775,7 +7738,6 @@
                     }
                   },
                   "block_order": [
-                    "block_height_spacer_wzHidE",
                     "block_group_UMgF7V"
                   ]
                 }
@@ -7854,24 +7816,6 @@
                     "hide_mobile": false
                   },
                   "blocks": {
-                    "block_height_spacer_NM4KBc": {
-                      "type": "block_height_spacer",
-                      "name": "Spacer",
-                      "settings": {
-                        "desktop_height_type": "px",
-                        "desktop_px_height": 285,
-                        "desktop_vh_height": 20,
-                        "tablet_height_type": "px",
-                        "tablet_px_height": 325,
-                        "tablet_vh_height": 20,
-                        "mobile_height_type": "px",
-                        "mobile_px_height": 330,
-                        "mobile_vh_height": 20,
-                        "hide_desktop": false,
-                        "hide_mobile": false
-                      },
-                      "blocks": {}
-                    },
                     "block_group_wyzcg9": {
                       "type": "block_group",
                       "name": "Block Group",
@@ -8109,7 +8053,6 @@
                     }
                   },
                   "block_order": [
-                    "block_height_spacer_NM4KBc",
                     "block_group_wyzcg9"
                   ]
                 }
