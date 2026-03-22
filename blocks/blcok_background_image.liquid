@@ -7,10 +7,10 @@
   --tablet-vh-height: {{ block.settings.tablet_vh_height }}vh;
   --mobile-vh-height: {{ block.settings.mobile_vh_height }}vh;
 
-  --bg-size:{{ section.settings.bg_size }};
-  --bg-position:{{ section.settings.bg_position }};
-  --overlay-bg: {{ section.settings.overlay_color }};
-  --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  --bg-size:{{ block.settings.bg_size }};
+  --bg-position:{{ block.settings.bg_position }};
+  --overlay-bg: {{ block.settings.overlay_color }};
+  --overlay-opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
 
   {%if block.settings.image != blank %}
     background-Image: url({{ block.settings.image | image_url: width: 1600 }};)
