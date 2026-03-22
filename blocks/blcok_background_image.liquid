@@ -41,6 +41,9 @@ mobile-vh-height;
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
+  {% if block.settings.overlay_color != blank %}
+    <div class="block-overlay"></div>
+  {% endif %}
   {%  content_for 'blocks' %}
 </div>
 {% stylesheet %}
@@ -48,6 +51,13 @@ mobile-vh-height;
     width: 100%;
     background-size:var(--bg-size);
     background-position:var(--bg-position);
+}
+.block-overlay{
+    position:absolute;
+    inset:0;
+    background: var(--oberlay-bg);
+    opacity: var(--oberlay-opacity);
+    pointer-events:none;
 }
 @media (min-width: 1366px) {
 .background-image-block.desktop-vh-height {
