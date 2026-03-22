@@ -46,9 +46,36 @@
     </span>
     {% assign discount = current_variant.compare_at_price | minus: current_variant.price %}
     {% assign discount_percentage = discount | times: 100 | divided_by: current_variant.compare_at_price %}
-    <span class="save"> {{ discount_percentage }}% OFF </span>
+    <span class="save"> {% if discount_percentage %}{{ discount_percentage }}% OFF {% endif %}</span>
   </div>
 </div>
+{% stylesheet %}
+  .product-price {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.product-price .regular_price {
+    color: var(--price-color);
+    font-size: var(--price-desktop-font-size);
+}
+
+.product-price .sale_price {
+    color: var(--price-compare_at);
+    font-size: var(--price-compare-at-desktop-font-size);
+    text-decoration: line-through;
+}
+
+.product-price .save {
+    color: var(--save-color);
+    background: var(--save-bg);
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: var(--save-radius);
+}
+
+{% endstylesheet %}
 {% schema %}
 {
   "tag": null,
