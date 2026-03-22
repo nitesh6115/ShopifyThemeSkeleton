@@ -80,8 +80,8 @@ image_block;
     <a class="block_link" href="{{ block.settings.image_link }}">
   {% endif %}
   {% if block.settings.image != blank %}
-    {%- capture img_alt -%}{%- if block.settings.bg_image.alt != blank -%}{{ block.settings.bg_image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
-    {{ block.settings.bg_image | image_url: width: 1600
+    {%- capture img_alt -%}{%- if block.settings.image.alt != blank -%}{{ block.settings.image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
+    {{ block.settings.image | image_url: width: 1600
             | image_tag:
             loading: 'lazy',
             fetch_priority: fetch_priority,
