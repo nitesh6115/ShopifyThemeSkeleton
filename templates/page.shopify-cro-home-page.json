@@ -7168,6 +7168,7 @@
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
+                    "image": "shopify://shop_images/6ca5b2a11bdcc68cc271c7efadbe77ebd1cd9dd9_1.jpg",
                     "desktop_height_type": "px",
                     "desktop_px_height": 100,
                     "desktop_vh_height": 20,
