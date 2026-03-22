@@ -86,6 +86,7 @@
     {%- capture img_alt -%}{%- if block.settings.bg_image.alt != blank -%}{{ block.settings.bg_image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
     {{ block.settings.bg_image | image_url: width: 1600
             | image_tag:
+            class: 'bg_image',
             loading: 'lazy',
             fetch_priority: fetch_priority,
             widths: '360, 540, 720, 900, 1080, 1320, 1600',
