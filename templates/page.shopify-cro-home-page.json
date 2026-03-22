@@ -4469,7 +4469,7 @@
               "name": "Heading",
               "settings": {
                 "text": "Real Results, Real Reviews",
-                "alignment": "left",
+                "alignment": "center",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
