@@ -1,11 +1,11 @@
 {%- capture style_schema -%}
-  --desktop-px-height: {{ block.settings.desktop_px_height }};
-  --tablet-px-height: {{ block.settings.tablet_px_height }};
-  --mobile-px-height: {{ block.settings.mobile_px_height }};
+  --desktop-px-height: {{ block.settings.desktop_px_height }}px;
+  --tablet-px-height: {{ block.settings.tablet_px_height }}px;
+  --mobile-px-height: {{ block.settings.mobile_px_height }}px;
 
-  --desktop-vh-height: {{ block.settings.desktop_vh_height }};
-  --tablet-vh-height: {{ block.settings.tablet_vh_height }};
-  --mobile-vh-height: {{ block.settings.mobile_vh_height }};
+  --desktop-vh-height: {{ block.settings.desktop_vh_height }}vh;
+  --tablet-vh-height: {{ block.settings.tablet_vh_height }}vh;
+  --mobile-vh-height: {{ block.settings.mobile_vh_height }}vh;
 {% endcapture %}
 {% assign style_schema = style_schema | strip_newlines %}
 
