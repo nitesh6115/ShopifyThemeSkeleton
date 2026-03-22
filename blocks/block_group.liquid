@@ -45,6 +45,7 @@
   {% if block.settings.width_mobile == 'custom' %}
   --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
   {% endif %}
+  background-image: url({{ block.settings.bg_image | image_url: width: 1600 }});
 {%- endcapture -%}
 
 {% assign style_schema = style_schema | strip_newlines %}
@@ -85,18 +86,7 @@
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
-  {% if block.settings.bg_image != blank %}
-    {%- capture img_alt -%}{%- if block.settings.bg_image.alt != blank -%}{{ block.settings.bg_image.alt }}{% else %}{{ shop.name }}{% endif %}{%- endcapture -%}
-    {{ block.settings.bg_image | image_url: width: 1600
-            | image_tag:
-            class: 'bg_image',
-            loading: 'lazy',
-            fetch_priority: fetch_priority,
-            widths: '360, 540, 720, 900, 1080, 1320, 1600',
-            sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-            alt: img_alt
-        }}
-  {% endif %}
+  
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
   {% endif %}
@@ -120,6 +110,9 @@
 	padding-right: var(--pr);
 	width: 100%;
 	position: relative;
+}
+.bg_enabled_block{
+  background-size: cover;
 }
 a.image_link.link_overlay {
 	position: absolute;
