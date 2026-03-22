@@ -35,15 +35,7 @@ data-slider-id="{{ block.id }}"
 <div class="card-image">
 {{ product.featured_image | image_url: width: 600 | image_tag }}
 </div>
-
-<div class="card-title">
-{{ product.title }}
-</div>
-
-<div class="card-price">
-{{ product.price | money }}
-</div>
-
+ {%  content_for 'blocks' %}
 </a>
 
 </div>
