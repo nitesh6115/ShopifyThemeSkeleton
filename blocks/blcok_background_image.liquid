@@ -7,6 +7,11 @@
   --tablet-vh-height: {{ block.settings.tablet_vh_height }}vh;
   --mobile-vh-height: {{ block.settings.mobile_vh_height }}vh;
 
+  --bg-size:{{ section.settings.bg_size }};
+  --bg-position:{{ section.settings.bg_position }};
+  --overlay-bg: {{ section.settings.overlay_color }};
+  --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  
   {%if block.settings.image != blank %}
     background-Image: url({{ block.settings.image | image_url: width: 1600 }};)
 {% endif %}
@@ -41,6 +46,8 @@ mobile-vh-height;
 {% stylesheet %}
 .background-image-block {
     width: 100%;
+    object-fit:var(--bg-size);
+    object-position:var(--bg_position);
 }
 @media (min-width: 1366px) {
 .background-image-block.desktop-vh-height {
