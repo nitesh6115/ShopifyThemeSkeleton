@@ -95,10 +95,10 @@
 	flex-direction: row;
 	flex-wrap: var(--wrap);
 	justify-content: var(--align-x);
-	align-items: var(--align-y, stretch);
+	align-items: var(--align-y);
 	gap: var(--gap);
 	background: var(--bg);
-	border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left);
+	border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
 	border: var(--border) solid var(--border-color);
 	padding-top: var(--pt);
 	padding-bottom: var(--pb);
@@ -106,7 +106,6 @@
 	padding-right: var(--pr);
 	width: 100%;
 	position: relative;
-	min-height: 0;
 }
 
 a.image_link.link_overlay {
@@ -115,126 +114,73 @@ a.image_link.link_overlay {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	border-radius: inherit;
+	border-radius: var(--radius);
 }
-
 .group--vertical {
 	flex-direction: column;
 	justify-content: var(--align-y, flex-start);
 	align-items: var(--align-x, stretch);
-	min-height: 0;
 }
-
-.group > * {
-	min-height: 0;
-}
-
-.group > * {
+.group>* {
 	height: auto;
 }
-
-
-/* =========================
-   HEIGHT SYSTEM FIX
-========================= */
-
 .block-height-desktop-fill {
-	flex: 1 1 0%;
-	min-height: 0;
+	height: 100%;
 }
-
 .block-height-desktop-fit {
 	height: auto;
 }
-
+.group--vertical.block-height-desktop-fill>* {
+	flex: 0 0 auto;
+}
+.group--vertical.block-custom-height-desktop>* {
+	flex: 0 0 auto;
+}
 .block-custom-height-desktop {
 	height: var(--block-custom-height-desktop);
-	display: flex;
-	min-height: 0;
 }
-
-.group--vertical.block-height-desktop-fill > * {
-	flex: 1 1 0%;
-	min-height: 0;
+.box-nowrap.block-height-desktop-fit>* {
+	height: 100%;
 }
-
-.group--vertical.block-custom-height-desktop > * {
-	flex: 0 0 auto;
+.box-nowrap >*{
+  width: 100%;
+  flex: 0 0 auto;
 }
-
-
-/* =========================
-   NOWRAP FIX
-========================= */
-
-.box-nowrap > * {
-	width: 100%;
-	flex: 0 0 auto;
-	min-height: 0;
-}
-
-.box-nowrap.block-height-desktop-fit > * {
-	flex: 1 1 auto;
-	min-height: 0;
-}
-
-
-/* =========================
-   WIDTH DESKTOP
-========================= */
-
 @media (min-width: 1366px) {
-
-.block-custom-width-desktop {
-  flex: 0 0 var(--block-custom-width-desktop);
-  width: var(--block-custom-width-desktop);
-  max-width: var(--block-custom-width-desktop);
+  
+	.block-width-desktop-fill {
+		flex: 1;
+	}
+	.block-custom-width-desktop {
+		width: var(--block-custom-width-desktop);
+	}
+	.block-width-desktop-fit-content {
+		width: fit-content;
+	}
+  .block-custom-width-desktop .btn{
+  flex: 1;
+}
 }
 
-.block-width-desktop-fill {
-  flex: 1 1 0%;
-  min-width: 0;
+@media only screen and (min-width: 768px) and (max-width: 1365px) {
+	.block-width-tablet-fill {
+		flex: 1;
+	}
+  .block-custom-width-tablet .btn{
+  flex: 1;
 }
-
-.block-width-desktop-fit-content {
-  flex: 0 0 auto;
-  width: fit-content;
+	.block-width-tablet-fit-content {
+		width: fit-content;
+	}
+	.block-custom-width-tablet {
+		width: var(--block-custom-width-tablet);
+	}
+	.block-custom-width-tablet {
+		height: auto;
+	}
 }
-
-}
-
-
-/* =========================
-   WIDTH TABLET
-========================= */
-
-@media (min-width:768px) and (max-width:1365px) {
-
-.block-custom-width-tablet {
-  flex: 0 0 var(--block-custom-width-tablet);
-  width: var(--block-custom-width-tablet);
-  max-width: var(--block-custom-width-tablet);
-}
-
-.block-width-tablet-fill {
-  flex: 1 1 0%;
-  min-width: 0;
-}
-
-.block-width-tablet-fit-content {
-  flex: 0 0 auto;
-  width: fit-content;
-}
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 767px) {
-
 	.group {
 		gap: var(--gap-m);
 		padding-top: var(--ptm);
@@ -242,142 +188,47 @@ a.image_link.link_overlay {
 		padding-left: var(--plm);
 		padding-right: var(--prm);
 	}
-
-    .block-custom-width-mobile {
-    flex: 0 0 var(--block-custom-width-mobile);
-    width: var(--block-custom-width-mobile);
-    max-width: var(--block-custom-width-mobile);
-    }
-
-    .block-width-mobile-fill {
-    flex: 1 1 0%;
-    min-width: 0;
-    }
-
-    .block-width-mobile-fit-content {
-    flex: 0 0 auto;
-    width: fit-content;
-    }
-
-	.block-custom-width-mobile .btn {
+  .block-custom-width-mobile .btn{
+  flex: 1;
+}
+	.block-width-mobile-fill {
 		flex: 1;
 	}
-
+	.block-width-mobile-fit-content {
+		width: fit-content;
+	}
+	.block-custom-width-mobile {
+		width: var(--block-custom-width-mobile);
+		flex-shrink: 0;
+	}
 	.block-height-desktop-fill,
 	.block-custom-height-desktop {
 		height: auto;
 		min-height: auto;
 	}
 }
-
-
-/* =========================
-   VISIBILITY
-========================= */
-
 .hide-desktop {
 	display: none !important;
 }
-
-@media (max-width: 768px) {
-
-	.hide-desktop {
-		display: flex !important;
-	}
-
-	.hide-mobile {
-		display: none !important;
-	}
-}
-
-
-/* =========================
-   EFFECTS
-========================= */
-
 .is-zoom {
 	transition: all .25s ease;
 }
-
-.is-zoom:hover img,
-.is-zoom:hover video,
-.is-zoom:hover iframe {
+.is-zoom:hover img ,.is-zoom:hover video,.is-zoom:hover iframe {
 	transform: scale(1.08);
 }
-
 .is-zoom:hover {
 	transform: translateY(-4px);
 }
-
 .is-shadow {
 	box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
 }
-/* =========================
-   FIX FILL HEIGHT WITH WRAP
-========================= */
-
-.group {
-  min-height: 0;
-}
-
-.group > * {
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* horizontal parent */
-.group--horizontal {
-  align-items: stretch !important;
-}
-
-/* allow children to stretch */
-.group--horizontal > .block-height-desktop-fill {
-  flex: 1 1 0%;
-  align-self: stretch;
-}
-
-/* vertical blocks */
-.group--vertical.block-height-desktop-fill {
-  flex: 1 1 0%;
-  align-self: stretch;
-}
-
-/* children inside vertical */
-.group--vertical.block-height-desktop-fill > * {
-  flex: 0 0 auto;
-}
-
-/* IMPORTANT FOR WRAP */
-.box-wrap.group--horizontal {
-  align-items: stretch;
-}
-
-.box-wrap.group--horizontal > * {
-  align-self: stretch;
-}
-
-/* fill width + height */
-.block-width-desktop-fill {
-  flex: 1 1 0%;
-  min-width: 0;
-}
-
-.block-height-desktop-fill {
-  flex: 1 1 auto;
-  min-height: 0;
-}
-
-/* fix nested groups */
-.group--vertical,
-.group--horizontal {
-  min-height: 0;
-}
-
-/* prevent shrink bug */
-.group > * {
-  min-height: 0;
-  min-width: 0;
+@media (max-width: 768px) {
+	.hide-desktop {
+		display: flex !important;
+	}
+	.hide-mobile {
+		display: none !important;
+	}
 }
 {% endstylesheet %}
 
