@@ -9075,7 +9075,7 @@
                       "name": "Icon",
                       "settings": {
                         "icon": "refresh",
-                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"5\" viewbox=\"0 0 14 5\" fill=\"none\">\n<path d=\"M12.667 0.666504V1.33317C12.667 2.04041 12.386 2.71869 11.8859 3.21879C11.3858 3.71889 10.7076 3.99984 10.0003 3.99984H0.666992\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                        "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\">\n<g clip-path=\"url(#clip0_141_713)\">\n<path d=\"M11.333 1.3335L13.9997 4.00016L11.333 6.66683\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M2 7.33333V6.66667C2 5.95942 2.28095 5.28115 2.78105 4.78105C3.28115 4.28095 3.95942 4 4.66667 4H14\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M4.66667 14.6668L2 12.0002L4.66667 9.3335\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M14 8.6665V9.33317C14 10.0404 13.719 10.7187 13.219 11.2188C12.7189 11.7189 12.0406 11.9998 11.3333 11.9998H2\" stroke=\"white\" stroke-width=\"1.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_141_713\">\n<rect width=\"16\" height=\"16\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
                         "size": 20,
                         "color": "#ffffff"
                       },
