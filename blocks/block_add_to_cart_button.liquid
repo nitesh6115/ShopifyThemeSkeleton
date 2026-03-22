@@ -127,6 +127,38 @@
     </div>
   {% endif %}
 </div>
+{% stylesheet %}
+  button.add-to-cart,.sticky-btn {
+    width: 100%;
+    height: 56px;
+    background: var(--btn-bg);
+    font-weight: 800;
+    color: var(--btn-text);
+    border: var(--btn-border-width) solid var(--btn-border);
+    border-radius: var(--btn-radius);
+    transition: .2s ease;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: var(--btn-uppercase);
+    gap: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button.add-to-cart:hover,.sticky-btn:hover {
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+    border: var(--btn-border-width) solid var(--btn-hover-border);
+}
+.sticky-btn{
+width: auto;
+}
+button.add-to-cart[disabled],.sticky-btn[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+{% endstylesheet %}
 {% schema %}
 {
   "tag": null,
