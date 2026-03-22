@@ -45,16 +45,12 @@
   {% if block.settings.width_mobile == 'custom' %}
   --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
   {% endif %}
-  background-image: url({{ block.settings.bg_image | image_url: width: 1600 }});
 {%- endcapture -%}
 
 {% assign style_schema = style_schema | strip_newlines %}
 
 {%- capture class_list -%}
   group;
-  {% if block.settings.bg_image != blank %}
-    bg_enabled_block
-  {% endif %}
   {{ block.settings.layout_direction }}; 
   box-{{ block.settings.wrap }};
   {% if block.settings.height == 'custom' %}
@@ -111,11 +107,7 @@
 	width: 100%;
 	position: relative;
 }
-.bg_enabled_block {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+
 a.image_link.link_overlay {
 	position: absolute;
 	top: 0;
@@ -123,16 +115,6 @@ a.image_link.link_overlay {
 	left: 0;
 	right: 0;
 	border-radius: var(--radius);
-}
-.group img.bg_image {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--radius);
 }
 .group--vertical {
 	flex-direction: column;
@@ -545,12 +527,6 @@ a.image_link.link_overlay {
       "type": "color_background",
       "id": "background",
       "label": "Background"
-    },
-    {
-      "type": "image_picker",
-      "id": "bg_image",
-      "label": "Block Background Image",
-      "info": "If you want the block background image"
     },
     {
       "type": "header",
