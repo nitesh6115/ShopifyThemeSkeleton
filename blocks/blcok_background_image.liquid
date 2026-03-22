@@ -1,0 +1,230 @@
+{%- capture style_schema -%}
+  --desktop-px-height: {{ block.settings.desktop_px_height }}px;
+  --tablet-px-height: {{ block.settings.tablet_px_height }}px;
+  --mobile-px-height: {{ block.settings.mobile_px_height }}px;
+
+  --desktop-vh-height: {{ block.settings.desktop_vh_height }}vh;
+  --tablet-vh-height: {{ block.settings.tablet_vh_height }}vh;
+  --mobile-vh-height: {{ block.settings.mobile_vh_height }}vh;
+
+  {%if block.settings.image != blank %}
+    background-Image: url({{ block.settings.image | image_url: width: 1600 }};)
+{% endif %}
+{% endcapture %}
+{% assign style_schema = style_schema | strip_newlines %}
+
+{%- capture class_list -%}
+background-image-block; 
+{% if block.settings.hide_mobile %}hide-mobile;{% endif %} 
+{% if block.settings.hide_desktop %}hide-desktop;{% endif %}
+{% if block.settings.desktop_height_type == 'px' %}
+desktop-px-height;
+{% else %}
+desktop-vh-height; 
+{% endif %}
+{% if block.settings.tablet_height_type == 'px' %}
+tablet-px-height;
+{% else %}
+tablet-vh-height;
+{% endif %}
+{% if block.settings.mobile_height_type == 'px' %}
+mobile-px-height;
+{% else %}
+mobile-vh-height;
+  {% endif %}
+{% endcapture %}
+{% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
+
+<div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
+  {%  content_for 'blocks' %}}
+</div>
+{% stylesheet %}
+.background-image-block {
+    width: 100%;
+}
+@media (min-width: 1366px) {
+.background-image-block.desktop-vh-height {
+    width: 100%;
+    height: var(--desktop-vh-hegiht);
+}
+.background-image-block.desktop-px-height {
+    width: 100%;
+    height: var(--desktop-px-height);
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1365px) {
+    .background-image-block.tablet-vh-height {
+    width: 100%;
+    height: var(--tablet-vh-hegiht);
+}
+.background-image-block.tablet-px-height {
+    width: 100%;
+    height: var(--tablet-px-hegiht);
+}
+
+}
+  /* mobile */
+  @media (max-width:767px){
+.background-image-block.mobile-vh-height {
+    width: 100%;
+    height: var(--mobile-vh-hegiht);
+}
+.background-image-block.mobile-px-height {
+    width: 100%;
+    height: var(--mobile-px-hegiht);
+}
+  }
+  /* hide */
+  @media (min-width:768px){
+    .hide-desktop{ display:none !important; }
+  }
+  @media (max-width:767px){
+    .hide-mobile{ display:none !important; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Background Image",
+  "tag": null,
+  "blocks": [
+    {"type": "@theme"}
+  ],
+  "settings": [
+    {
+        "type": "image_picker",
+        "label": "Background Image",
+        "id": "image"
+    },
+    {
+      "type": "header",
+      "content": "Height Desktop"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height_type",
+      "options": [
+        {
+            "label": "Pixel",
+            "value": "px"
+        },
+        {
+            "label": "Window Height (VH)",
+            "value": "vh"
+        }
+      ],
+      "default": "px",
+      "label": "Desktop Height Type"
+    },
+    {
+      "type": "range",
+      "id": "desktop_px_height",
+      "visible_if": "{{ block.settings.desktop_height_type == 'px' }}",
+      "label": "Height In px",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "desktop_vh_height",
+      "visible_if": "{{ block.settings.desktop_height_type == 'vh' }}",
+      "label": "Height In VH",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "tablet_height_type",
+      "options": [
+        {
+            "label": "Pixel",
+            "value": "px"
+        },
+        {
+            "label": "Window Height (VH)",
+            "value": "vh"
+        }
+      ],
+      "default": "px",
+      "label": "Tablet Height Type"
+    },
+    {
+      "type": "range",
+      "id": "tablet_px_height",
+      "visible_if": "{{ block.settings.tablet_height_type == 'px' }}",
+      "label": "Height In px",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "tablet_vh_height",
+      "visible_if": "{{ block.settings.tablet_height_type == 'vh' }}",
+      "label": "Height in VH",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "mobile_height_type",
+      "options": [
+        {
+            "label": "Pixel",
+            "value": "px"
+        },
+        {
+            "label": "Mobile Height (VH)",
+            "value": "vh"
+        }
+      ],
+      "default": "px",
+      "label": "Mobile Height Type"
+    },
+    {
+      "type": "range",
+      "id": "mobile_px_height",
+      "visible_if": "{{ block.settings.mobile_height_type == 'px' }}",
+      "label": "Height In px",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_vh_height",
+      "visible_if": "{{ block.settings.mobile_height_type == 'vh' }}",
+      "label": "Height in VH",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide desktop"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide mobile"
+    }
+  ],
+  "presets": [{ "name": "Background Image" }]
+}
+{% endschema %}
