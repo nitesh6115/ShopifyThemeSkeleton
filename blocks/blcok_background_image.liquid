@@ -24,18 +24,24 @@ background-image-block;
 {% if block.settings.hide_desktop %}hide-desktop;{% endif %}
 {% if block.settings.desktop_height_type == 'px' %}
 desktop-px-height;
-{% else %}
+{% elsif block.settings.desktop_height_type == 'vh' %}
 desktop-vh-height; 
+{% else %}
+    desktop-auto-height; 
 {% endif %}
 {% if block.settings.tablet_height_type == 'px' %}
 tablet-px-height;
-{% else %}
+{% elsif block.settings.tablet_height_type == 'vh' %}
 tablet-vh-height;
+{% else %}
+tablet-auto-height;
 {% endif %}
 {% if block.settings.mobile_height_type == 'px' %}
 mobile-px-height;
-{% else %}
+{% elsif block.settings.mobile_height_type == 'vh' %}
 mobile-vh-height;
+{% else %}
+    mobile-auto-height;
   {% endif %}
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
