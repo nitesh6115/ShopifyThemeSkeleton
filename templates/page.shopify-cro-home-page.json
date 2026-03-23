@@ -2077,6 +2077,8 @@
                                 "show_price": false,
                                 "btn_font": 14,
                                 "btn_uppercase": false,
+                                "btn_height": 37,
+                                "btn_height_mobile": 38,
                                 "btn_radius": 10,
                                 "btn_border_width": 0
                               },
