@@ -23,8 +23,9 @@ data-slider-id="{{ block.id }}"
 >
 <div class="collection-track">
 {% for product in block.settings.collection.products limit: block.settings.limit %}
+    {% assign pid = 'product-' | append: product.id %}
 <div class="collection-item">
-  {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
+  {% content_for 'block', type: '_product-card', id: 'static_id', closest.product: product %}
 </div>
 {% endfor %}
 </div>
@@ -48,6 +49,13 @@ Next
 <div class="slider-dots"></div>
 </div>
 {% stylesheet %}
+.collection-track {
+  transition: transform .4s ease;
+}
+
+.is-slider .collection-track {
+  will-change: transform;
+}
 .collection-block {
   width: 100%;
   min-width: 0;
@@ -138,41 +146,85 @@ Next
     max-width: 100%;
 }
 {% endstylesheet %}
-{%  javascript %}
-  document.querySelectorAll(".collection-block").forEach(block=>{
+{% javascript %}
+document.querySelectorAll(".collection-block").forEach(block => {
 
-let track = block.querySelector(".collection-track");
-let id = block.dataset.sliderId;
+  const track = block.querySelector(".collection-track");
+  if (!track) return;
 
-let prev = document.querySelector(`[data-prev="${id}"]`);
-let next = document.querySelector(`[data-next="${id}"]`);
+  const id = block.dataset.sliderId;
 
-if(!track) return;
+  const prev = block.querySelector(`[data-prev="${id}"]`);
+  const next = block.querySelector(`[data-next="${id}"]`);
 
-let index = 0;
+  let index = 0;
 
-function move(){
+  function getItemWidth() {
 
-let item = track.children[0];
-if(!item) return;
+    const item = track.children[0];
+    if (!item) return 0;
 
-let w = item.offsetWidth;
+    const gap = parseFloat(
+      getComputedStyle(track).gap
+    ) || 0;
 
-track.style.transform =
-`translateX(${index * -w}px)`;
+    return item.offsetWidth + gap;
 
-}
+  }
 
-next?.addEventListener("click",()=>{
-index++;
-move();
-});
+  function getVisible() {
 
-prev?.addEventListener("click",()=>{
-index--;
-if(index<0) index=0;
-move();
-});
+    const item = track.children[0];
+    if (!item) return 1;
+
+    return Math.round(
+      track.offsetWidth / item.offsetWidth
+    );
+
+  }
+
+  function move() {
+
+    const w = getItemWidth();
+
+    track.style.transform =
+      `translateX(${index * -w}px)`;
+
+  }
+
+  function maxIndex() {
+
+    const total = track.children.length;
+    const visible = getVisible();
+
+    return Math.max(0, total - visible);
+
+  }
+
+  next?.addEventListener("click", () => {
+
+    if (index < maxIndex()) {
+      index++;
+    }
+
+    move();
+
+  });
+
+  prev?.addEventListener("click", () => {
+
+    if (index > 0) {
+      index--;
+    }
+
+    move();
+
+  });
+
+  window.addEventListener("resize", () => {
+    index = 0;
+    move();
+  });
 
 });
 {% endjavascript %}
