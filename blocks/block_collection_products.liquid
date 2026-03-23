@@ -9,10 +9,7 @@
 {% assign style_schema = style_schema | strip_newlines %}
 
 <div class="collection_block_container" style="{{- style_schema -}}">
-     {% if block.settings.show_arrows %}
-      <button class="collection-slider-prev" data-id="{{ block.id }}">‹</button>
-      <button class="collection-slider-next" data-id="{{ block.id }}">›</button>
-    {% endif %}
+    
   <div
     class="
       collection_block_slider
@@ -28,6 +25,10 @@
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
   >
+     {% if block.settings.show_arrows %}
+      <button class="collection-slider-prev" data-id="{{ block.id }}">‹</button>
+      <button class="collection-slider-next" data-id="{{ block.id }}">›</button>
+    {% endif %}
     <div class="collection-slider-inner">
       <div
         class="collection-slider-track collection-track"
@@ -45,7 +46,7 @@
       </div>
     </div>
    
-
+    
     {% if block.settings.show_dots %}
       <div class="collection-slider-dots" id="dots-{{ block.id }}"></div>
     {% endif %}
