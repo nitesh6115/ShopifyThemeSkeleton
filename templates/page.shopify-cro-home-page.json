@@ -1675,7 +1675,7 @@
                 "max_items": 8,
                 "enable_desktop": true,
                 "enable_tablet": true,
-                "enable_mobile": false,
+                "enable_mobile": true,
                 "autoplay": false,
                 "autoplay_speed": 3000,
                 "show_arrows": true,
