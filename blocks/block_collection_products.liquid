@@ -77,6 +77,52 @@
   display: none;
 }
 
+ /* arrows */
+
+    .collection-slider-prev,
+    .collection-slider-next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:36px;
+    height:36px;
+    border:none;
+    cursor:pointer;
+    background:var(--arrow-bg);
+    color:var(--arrow-color);
+    box-shadow: 0px 4px 6px -4px #0000001A;
+    border-radius: 100%;
+    z-index:5;
+    }
+
+    .collection-slider-prev{ left:0; }
+    .collection-slider-next{ right:0; }
+
+
+    /* dots */
+
+    .collection-slider-dots{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    margin-top:8px;
+    }
+
+    .collection-slider-dots button{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    border:none;
+    background:var(--dot-color);
+    opacity:.4;
+    }
+
+    .collection-slider-dots button.active{
+    background:var(--dot-active);
+    width: 42px;
+    border-radius: 10px;
+    opacity:1;
+    }
 
 
 
