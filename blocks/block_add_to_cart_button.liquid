@@ -94,7 +94,7 @@
           data-btn-price
         {% endif %}
       >
-        <span class="btn_text">Add to Cart</span>
+        <span class="btn_text">{{ block.settings.btn_text_label | default : 'Add to Cart'}}</span>
         {% if block.settings.show_price %}
           <span class="icon">—</span>
           <span class="btn_price">{{ current_variant.price | money }}</span>
