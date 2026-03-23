@@ -24,9 +24,9 @@
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
   >
-    <div class="slider-inner">
+    <div class="collection-slider-inner">
       <div
-        class="slider-track collection-track"
+        class="collection-slider-track collection-track"
         id="track-{{ block.id }}"
       >
         {% for product in block.settings.collection.products limit: block.settings.max_items %}
@@ -45,12 +45,12 @@
 
 
     {% if block.settings.show_arrows %}
-      <button class="slider-prev" data-id="{{ block.id }}">‹</button>
-      <button class="slider-next" data-id="{{ block.id }}">›</button>
+      <button class="collection-slider-prev" data-id="{{ block.id }}">‹</button>
+      <button class="collection-slider-next" data-id="{{ block.id }}">›</button>
     {% endif %}
 
     {% if block.settings.show_dots %}
-      <div class="slider-dots" id="dots-{{ block.id }}"></div>
+      <div class="collection-slider-dots" id="dots-{{ block.id }}"></div>
     {% endif %}
 
   </div>
@@ -64,7 +64,7 @@
 .collection_block_slider .sealsubs-target-element.sls-homepage-automatic.sealsubs-full {
     display: none;
 }
-.collection_block_slider .slider-track {
+.collection_block_slider .collection-slider-track {
   display: flex;
   gap: var(--gap);
   overflow-x: auto;
@@ -73,7 +73,7 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
-.collection_block_slider .slider-track::-webkit-scrollbar {
+.collection_block_slider .collection-slider-track::-webkit-scrollbar {
   display: none;
 }
 
@@ -91,19 +91,19 @@
   );
   scroll-snap-align: start;
 }
-.collection_block_slider:not(.slider-desktop) .slider-track {
+.collection_block_slider:not(.slider-desktop) .collection-slider-track {
   overflow: visible;
   flex-wrap: wrap;
 }
-.collection_block_slider:not(.slider-desktop) .slider-prev,
-.collection_block_slider:not(.slider-desktop) .slider-next,
-.collection_block_slider:not(.slider-desktop) .slider-dots {
+.collection_block_slider:not(.slider-desktop) .collection-slider-prev,
+.collection_block_slider:not(.slider-desktop) .collection-slider-next,
+.collection_block_slider:not(.slider-desktop) .collection-slider-dots {
   display: none;
 }
 }
 /* TABLET */
 @media only screen and (min-width:768px) and (max-width:1365px){
-.collection_block_slider .slider-track {
+.collection_block_slider .collection-slider-track {
   gap: var(--gap-m);
 }
 .collection_block_slider .collection-item {
@@ -112,13 +112,13 @@
     / var(--per-row-tablet)
   );
 }
-.collection_block_slider:not(.slider-tablet) .slider-track {
+.collection_block_slider:not(.slider-tablet) .collection-slider-track {
   overflow: visible;
   flex-wrap: wrap;
 }
-.collection_block_slider:not(.slider-tablet) .slider-prev,
-.collection_block_slider:not(.slider-tablet) .slider-next,
-.collection_block_slider:not(.slider-tablet) .slider-dots {
+.collection_block_slider:not(.slider-tablet) .collection-slider-prev,
+.collection_block_slider:not(.slider-tablet) .collection-slider-next,
+.collection_block_slider:not(.slider-tablet) .collection-slider-dots {
   display: none;
 }
 }
@@ -128,7 +128,7 @@
 
 @media (max-width:767px){
 
-.collection_block_slider .slider-track {
+.collection_block_slider .collection-slider-track {
   gap: var(--gap-m);
 }
 
@@ -141,16 +141,16 @@
 
 }
 
-.collection_block_slider:not(.slider-mobile) .slider-track {
+.collection_block_slider:not(.slider-mobile) .collection-slider-track {
 
   overflow: visible;
   flex-wrap: wrap;
 
 }
 
-.collection_block_slider:not(.slider-mobile) .slider-prev,
-.collection_block_slider:not(.slider-mobile) .slider-next,
-.collection_block_slider:not(.slider-mobile) .slider-dots {
+.collection_block_slider:not(.slider-mobile) .collection-slider-prev,
+.collection_block_slider:not(.slider-mobile) .collection-slider-next,
+.collection_block_slider:not(.slider-mobile) .collection-slider-dots {
 
   display: none;
 
@@ -166,8 +166,8 @@ function initSlider(id) {
 
   const track = document.getElementById('track-' + id);
 
-  const prev = slider.querySelector('.slider-prev');
-  const next = slider.querySelector('.slider-next');
+  const prev = slider.querySelector('.collection-slider-prev');
+  const next = slider.querySelector('.collection-slider-next');
   const dotsWrap = document.getElementById('dots-' + id);
 
   const autoplay = slider.dataset.autoplay === 'true';
