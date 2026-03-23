@@ -1671,9 +1671,9 @@
               "type": "block_collection_products",
               "name": "Collection Products",
               "settings": {
-                "collection": "noble",
+                "collection": "t-shirts",
                 "max_items": 8,
-                "enable_desktop": true,
+                "enable_desktop": false,
                 "enable_tablet": false,
                 "enable_mobile": false,
                 "autoplay": false,
