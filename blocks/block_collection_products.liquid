@@ -239,65 +239,155 @@ function initSlider(id) {
   const slides = track.children;
 
 
+
+  /* -------------------------
+     get per row by device
+  ------------------------- */
+
+  function getPerRow() {
+
+    const style = getComputedStyle(slider);
+
+    if (window.innerWidth >= 1366) {
+      return parseInt(
+        style.getPropertyValue("--per-row-desktop")
+      ) || 1;
+    }
+
+    if (window.innerWidth >= 768) {
+      return parseInt(
+        style.getPropertyValue("--per-row-tablet")
+      ) || 1;
+    }
+
+    return parseInt(
+      style.getPropertyValue("--per-row-mobile")
+    ) || 1;
+  }
+
+
+
+  /* -------------------------
+     go
+  ------------------------- */
+
   function go(i) {
+
+    const perRow = getPerRow();
+
     if (i < 0) i = 0;
-    if (i >= slides.length) i = slides.length - 1;
+
+    const max =
+      slides.length - perRow;
+
+    if (i > max) i = max;
+
     index = i;
+
     const slide = slides[index];
+
     track.scrollTo({
       left: slide.offsetLeft,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
+
     updateDots();
   }
 
 
-  if (prev) prev.onclick = () => go(index - 1);
-  if (next) next.onclick = () => go(index + 1);
+
+  /* -------------------------
+     arrows
+  ------------------------- */
+
+  if (prev)
+    prev.onclick = () =>
+      go(index - getPerRow());
+
+  if (next)
+    next.onclick = () =>
+      go(index + getPerRow());
 
 
-  if (dotsWrap) {
 
-    dotsWrap.innerHTML = '';
+  /* -------------------------
+     dots
+  ------------------------- */
 
-    for (let i = 0; i < slides.length; i++) {
+  function buildDots() {
 
-      let b = document.createElement('button');
+    if (!dotsWrap) return;
 
-      b.onclick = () => go(i);
+    dotsWrap.innerHTML = "";
+
+    const perRow = getPerRow();
+
+    const pages = Math.ceil(
+      slides.length / perRow
+    );
+
+    for (let i = 0; i < pages; i++) {
+
+      let b = document.createElement("button");
+
+      b.onclick = () =>
+        go(i * perRow);
 
       dotsWrap.appendChild(b);
     }
   }
 
 
+
   function updateDots() {
+
     if (!dotsWrap) return;
-    dotsWrap.querySelectorAll('button').forEach((d, i) => {
-      d.classList.toggle('active', i === index);
-    });
+
+    const perRow = getPerRow();
+
+    const page =
+      Math.floor(index / perRow);
+
+    dotsWrap
+      .querySelectorAll("button")
+      .forEach((d, i) => {
+
+        d.classList.toggle(
+          "active",
+          i === page
+        );
+
+      });
+
   }
 
+
+
+  /* -------------------------
+     autoplay
+  ------------------------- */
 
   if (autoplay) {
 
     setInterval(() => {
 
-      index++;
-
-      if (index >= slides.length) index = 0;
-
-      go(index);
+      go(index + getPerRow());
 
     }, speed);
+
   }
 
+
+
+  /* -------------------------
+     drag
+  ------------------------- */
 
   let isDown = false;
   let startX;
   let scrollLeft;
 
-  track.addEventListener('pointerdown', (e) => {
+  track.addEventListener("pointerdown", (e) => {
 
     isDown = true;
 
@@ -307,10 +397,10 @@ function initSlider(id) {
 
   });
 
-  track.addEventListener('pointerup', () => isDown = false);
-  track.addEventListener('pointerleave', () => isDown = false);
+  track.addEventListener("pointerup", () => isDown = false);
+  track.addEventListener("pointerleave", () => isDown = false);
 
-  track.addEventListener('pointermove', (e) => {
+  track.addEventListener("pointermove", (e) => {
 
     if (!isDown) return;
 
@@ -319,34 +409,89 @@ function initSlider(id) {
     track.scrollLeft = scrollLeft - walk;
 
   });
-  function updateSliderItems(slider, track) {
 
-  const inner = slider.querySelector(".collection-slider-inner");
-  if (!inner) return;
 
-  const style = getComputedStyle(slider);
 
-  const perRow =
-    parseInt(style.getPropertyValue("--per-row-desktop")) || 4;
+  /* -------------------------
+     width calc fix
+  ------------------------- */
 
-  const gap =
-    parseFloat(style.getPropertyValue("--gap")) || 0;
+  function updateSliderItems() {
 
-  const containerWidth = inner.clientWidth;
+    const inner =
+      slider.querySelector(
+        ".collection-slider-inner"
+      );
 
-  const itemWidth =
-    (containerWidth - gap * (perRow - 1)) / perRow;
+    if (!inner) return;
 
-  [...track.children].forEach(el => {
-    el.style.flex = "0 0 auto";
-    el.style.width = itemWidth + "px";
+    const style =
+      getComputedStyle(slider);
+
+    const perRow = getPerRow();
+
+    const gap =
+      parseFloat(
+        style.getPropertyValue("--gap")
+      ) || 0;
+
+    const containerWidth =
+      inner.clientWidth;
+
+    const itemWidth =
+      (containerWidth -
+        gap * (perRow - 1)) / perRow;
+
+    [...track.children].forEach(el => {
+
+      el.style.flex = "0 0 auto";
+      el.style.width =
+        itemWidth + "px";
+
+    });
+
+  }
+
+
+
+  /* -------------------------
+     init
+  ------------------------- */
+
+  updateSliderItems();
+
+  buildDots();
+
+  updateDots();
+
+
+
+  /* -------------------------
+     resize fix
+  ------------------------- */
+
+  window.addEventListener("resize", () => {
+
+    updateSliderItems();
+
+    buildDots();
+
+    updateDots();
+
   });
 
 }
-}
 
 
-document.querySelectorAll('.slider_block, .collection_block_slider')
+
+/* -------------------------
+   init all
+------------------------- */
+
+document
+.querySelectorAll(
+  ".slider_block, .collection_block_slider"
+)
 .forEach((el) => {
 
   initSlider(el.dataset.id);
@@ -354,15 +499,20 @@ document.querySelectorAll('.slider_block, .collection_block_slider')
 });
 
 
-document.addEventListener('shopify:section:load', function (e) {
 
-  e.target
-  .querySelectorAll('.slider_block, .collection_block_slider')
-  .forEach((el) => {
+document.addEventListener(
+  "shopify:section:load",
+  function (e) {
 
-    initSlider(el.dataset.id);
+    e.target
+    .querySelectorAll(
+      ".slider_block, .collection_block_slider"
+    )
+    .forEach((el) => {
 
-  });
+      initSlider(el.dataset.id);
+
+    });
 
 });
 {% endjavascript %}
