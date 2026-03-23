@@ -29,7 +29,7 @@
         class="slider-track collection-track"
         id="track-{{ block.id }}"
       >
-        {% for product in block.settings.collection.products limit: max_items %}
+        {% for product in block.settings.collection.products limit: block.settigs.max_items %}
           <div class="collection-item">
             {% content_for 'block',
               type: '_product-card',
