@@ -355,7 +355,7 @@ function initSlider(id) {
 
   });
   function fixItemWidth(slider, track) {
-
+  
   const perRow =
     getComputedStyle(slider)
       .getPropertyValue("--per-row-desktop") || 4;
@@ -379,13 +379,18 @@ function initSlider(id) {
   }
 
 }
+fixItemWidth(slider, track);
+const slides = track.children;
 }
 
-
+window.addEventListener("resize", () => {
+  fixItemWidth(slider, track);
+});
 document.querySelectorAll('.slider_block, .collection_block_slider')
 .forEach((el) => {
 
   initSlider(el.dataset.id);
+  fixItemWidth(slider, track);
 
 });
 
@@ -397,6 +402,7 @@ document.addEventListener('shopify:section:load', function (e) {
   .forEach((el) => {
 
     initSlider(el.dataset.id);
+    fixItemWidth(slider, track);
 
   });
 
