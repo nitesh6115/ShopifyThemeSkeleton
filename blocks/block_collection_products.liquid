@@ -222,30 +222,17 @@
 {% endstylesheet %}
 {% javascript %}
 function initSlider(id) {
-
   const slider = document.getElementById("slider-" + id);
   if (!slider) return;
-
   const track = document.getElementById("track-" + id);
-
   const prev = slider.querySelector(".collection-slider-prev");
   const next = slider.querySelector(".collection-slider-next");
   const dotsWrap = document.getElementById("dots-" + id);
-
   const autoplay = slider.dataset.autoplay === "true";
   const speed = parseInt(slider.dataset.speed) || 3000;
-
   let index = 0;
   const slides = track.children;
-
-
-
-  /* ------------------------
-     GET PER ROW
-  ------------------------ */
-
   function getPerRow() {
-
     const style = getComputedStyle(slider);
 
     if (window.innerWidth >= 1366) {
@@ -253,272 +240,143 @@ function initSlider(id) {
         style.getPropertyValue("--per-row-desktop")
       ) || 1;
     }
-
     if (window.innerWidth >= 768) {
       return parseInt(
         style.getPropertyValue("--per-row-tablet")
       ) || 1;
     }
-
     return parseInt(
       style.getPropertyValue("--per-row-mobile")
     ) || 1;
   }
-
-
-
-  /* ------------------------
-     GO
-  ------------------------ */
-
   function go(i) {
-
     const perRow = getPerRow();
-
     const pages =
       Math.ceil(slides.length / perRow);
-
     const maxIndex =
       (pages - 1) * perRow;
-
     if (i < 0) i = 0;
-
     if (i > maxIndex) i = maxIndex;
-
     index = i;
-
     const slide = slides[index];
-
     if (!slide) return;
-
     track.scrollTo({
       left: slide.offsetLeft,
       behavior: "smooth"
     });
-
     updateDots();
-
   }
-
-
-
-  /* ------------------------
-     ARROWS
-  ------------------------ */
 
   if (prev)
     prev.onclick = () =>
       go(index - getPerRow());
-
   if (next)
     next.onclick = () =>
       go(index + getPerRow());
-
-
-
-  /* ------------------------
-     DOTS
-  ------------------------ */
-
   function buildDots() {
-
     if (!dotsWrap) return;
-
     dotsWrap.innerHTML = "";
-
     const perRow = getPerRow();
-
     const pages =
       Math.ceil(slides.length / perRow);
-
     for (let i = 0; i < pages; i++) {
-
       let b = document.createElement("button");
-
       b.onclick = () =>
         go(i * perRow);
-
       dotsWrap.appendChild(b);
-
     }
-
   }
 
-
-
   function updateDots() {
-
     if (!dotsWrap) return;
-
     const perRow = getPerRow();
-
     const page =
       Math.round(index / perRow);
-
     dotsWrap
       .querySelectorAll("button")
       .forEach((d, i) => {
-
         d.classList.toggle(
           "active",
           i === page
         );
-
       });
-
   }
-
-
-
-  /* ------------------------
-     AUTOPLAY
-  ------------------------ */
 
   if (autoplay) {
-
     setInterval(() => {
-
       go(index + getPerRow());
-
     }, speed);
-
   }
-
-
-
-  /* ------------------------
-     DRAG
-  ------------------------ */
-
   let isDown = false;
   let startX;
   let scrollLeft;
-
   track.addEventListener("pointerdown", (e) => {
-
     isDown = true;
     startX = e.pageX;
     scrollLeft = track.scrollLeft;
-
   });
-
   track.addEventListener("pointerup", () => isDown = false);
   track.addEventListener("pointerleave", () => isDown = false);
-
   track.addEventListener("pointermove", (e) => {
-
     if (!isDown) return;
-
     const walk = e.pageX - startX;
-
     track.scrollLeft =
       scrollLeft - walk;
-
   });
-
-
-
-  /* ------------------------
-     WIDTH FIX
-  ------------------------ */
-
   function updateSliderItems() {
-
     const inner =
       slider.querySelector(
         ".collection-slider-inner"
       );
-
     if (!inner) return;
-
     const style =
       getComputedStyle(slider);
-
     const perRow = getPerRow();
-
     const gap =
       parseFloat(
         style.getPropertyValue("--gap")
       ) || 0;
-
     const containerWidth =
       inner.clientWidth;
-
     const itemWidth =
       (containerWidth -
         gap * (perRow - 1)) / perRow;
-
     [...track.children].forEach(el => {
-
       el.style.flex = "0 0 auto";
       el.style.width =
         itemWidth + "px";
-
     });
-
   }
-
-
-
-  /* ------------------------
-     INIT
-  ------------------------ */
-
   updateSliderItems();
   buildDots();
   updateDots();
-
-
-
-  /* ------------------------
-     RESIZE FIX
-  ------------------------ */
-
   window.addEventListener(
     "resize",
     () => {
-
       updateSliderItems();
       buildDots();
       updateDots();
-
     }
   );
-
 }
-
-
-
-/* ------------------------
-   INIT ALL
------------------------- */
-
 document
 .querySelectorAll(
   ".slider_block, .collection_block_slider"
 )
 .forEach((el) => {
-
   initSlider(el.dataset.id);
-
 });
-
-
 
 document.addEventListener(
   "shopify:section:load",
   function (e) {
-
     e.target
       .querySelectorAll(
         ".slider_block, .collection_block_slider"
       )
       .forEach((el) => {
-
         initSlider(el.dataset.id);
-
       });
-
   }
 );
 {% endjavascript %}
