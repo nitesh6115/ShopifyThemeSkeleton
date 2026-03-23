@@ -1977,7 +1977,7 @@
                             "block_text_Xz9LpW"
                           ]
                         },
-                        "block_text_jGPgnn": {
+                        "block_text_QkGa36": {
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
@@ -2138,7 +2138,7 @@
                       "block_order": [
                         "block_text_9dxWDU",
                         "block_group_jjaEBL",
-                        "block_text_jGPgnn",
+                        "block_text_QkGa36",
                         "block_group_L8Fgfg"
                       ]
                     }
@@ -10293,11 +10293,83 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_text_8GAdWB": {
+                "block_text_CbK6D4": {
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>WITH LUMIÈRE</p>",
+                    "text": "<p>Save 25%</p>",
+                    "block_link": "",
+                    "alignment": "left",
+                    "width": "fit-content",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fit-content",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "font_size": 14,
+                    "font_size_mobile": 12,
+                    "text_uppercase": false,
+                    "font_weight": "400",
+                    "color": "#c9a961",
+                    "background": "#C9A9611A",
+                    "radius": 30,
+                    "border": 0,
+                    "border_color": "",
+                    "pt": 8,
+                    "pb": 8,
+                    "pl": 12,
+                    "pr": 12,
+                    "pt_m": 8,
+                    "pb_m": 8,
+                    "pl_m": 12,
+                    "pr_m": 12,
+                    "hide_mobile": false,
+                    "hide_desktop": false
+                  },
+                  "blocks": {}
+                },
+                "block_heading_G6nDqW": {
+                  "type": "block_heading",
+                  "name": "Heading",
+                  "settings": {
+                    "text": "Complete Wellness Bundle",
+                    "alignment": "left",
+                    "font_italic": false,
+                    "font_uppercase": false,
+                    "line_height": "0.9",
+                    "letter_spacing": 0,
+                    "color": "#0a4d4d",
+                    "tag": "h2",
+                    "size_mode": "custom",
+                    "font_size": 36,
+                    "font_size_m": 34,
+                    "font_weight": 600,
+                    "width": "custom",
+                    "custom_width": 100,
+                    "width_tablet": "custom",
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "hide_mobile": false,
+                    "hide_desktop": false
+                  },
+                  "blocks": {}
+                },
+                "block_text_jjpeC3": {
+                  "type": "block_text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p>Get our three best-selling products in one comprehensive routine designed for total-body transformation.</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -10314,11 +10386,11 @@
                     "custom_width_mobile": 100,
                     "height": "fit",
                     "custom_height": 100,
-                    "font_size": 11,
-                    "font_size_mobile": 11,
-                    "text_uppercase": true,
+                    "font_size": 16,
+                    "font_size_mobile": 14,
+                    "text_uppercase": false,
                     "font_weight": "400",
-                    "color": "#c9a96e",
+                    "color": "#4a5565",
                     "background": "",
                     "radius": 0,
                     "border": 0,
@@ -10331,64 +10403,6 @@
                     "pb_m": 0,
                     "pl_m": 0,
                     "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
-                  },
-                  "blocks": {}
-                },
-                "block_heading_G6nDqW": {
-                  "type": "block_heading",
-                  "name": "Heading",
-                  "settings": {
-                    "text": "Cellular Renewal.",
-                    "alignment": "left",
-                    "font_italic": false,
-                    "font_uppercase": false,
-                    "line_height": "0.9",
-                    "letter_spacing": 0,
-                    "color": "#1a1510",
-                    "tag": "h2",
-                    "size_mode": "custom",
-                    "font_size": 32,
-                    "font_size_m": 24,
-                    "font_weight": 600,
-                    "width": "custom",
-                    "custom_width": 80,
-                    "width_tablet": "custom",
-                    "custom_width_tablet": 80,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "hide_mobile": false,
-                    "hide_desktop": false
-                  },
-                  "blocks": {}
-                },
-                "block_heading_PCrr7j": {
-                  "type": "block_heading",
-                  "name": "Heading",
-                  "settings": {
-                    "text": "Real Results.",
-                    "alignment": "left",
-                    "font_italic": true,
-                    "font_uppercase": false,
-                    "line_height": "0.9",
-                    "letter_spacing": 0,
-                    "color": "#c9a96e",
-                    "tag": "h2",
-                    "size_mode": "custom",
-                    "font_size": 32,
-                    "font_size_m": 24,
-                    "font_weight": 600,
-                    "width": "custom",
-                    "custom_width": 80,
-                    "width_tablet": "custom",
-                    "custom_width_tablet": 80,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
                     "hide_mobile": false,
                     "hide_desktop": false
                   },
@@ -10442,56 +10456,11 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_image_n6fEG9": {
-                      "type": "block_image",
-                      "name": "Image",
-                      "settings": {
-                        "image": "shopify://shop_images/span_1.png",
-                        "image_link": "",
-                        "ratio": "auto",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "custom",
-                        "custom_width_unit_desktop": "px",
-                        "custom_width_pixel": 20,
-                        "custom_width": 100,
-                        "width_tablet": "custom",
-                        "custom_width_unit_tablet": "px",
-                        "custom_width_tablet_pixel": 20,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "custom",
-                        "custom_width_unit_mobile": "px",
-                        "custom_width_pixel_mobile": 20,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "radius": 0,
-                        "set_full_radius": false,
-                        "radius_top_left": 0,
-                        "radius_top_right": 0,
-                        "radius_bottom_left": 0,
-                        "radius_bottom_right": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
                     "block_text_iaYPrw": {
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>67% reduction in visible fine lines — proven</p>",
+                        "text": "<p>Hair Growth Complex<br/><br/></p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -10532,7 +10501,6 @@
                     }
                   },
                   "block_order": [
-                    "block_image_n6fEG9",
                     "block_text_iaYPrw"
                   ]
                 },
@@ -11106,9 +11074,9 @@
                 }
               },
               "block_order": [
-                "block_text_8GAdWB",
+                "block_text_CbK6D4",
                 "block_heading_G6nDqW",
-                "block_heading_PCrr7j",
+                "block_text_jjpeC3",
                 "block_group_69gYWD",
                 "block_group_HzYcD4",
                 "block_group_QDfCNb",
