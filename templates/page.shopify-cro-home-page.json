@@ -12006,7 +12006,7 @@
               "name": "Divider",
               "settings": {
                 "border": 1,
-                "color": "#ffffff",
+                "color": "#fbf4ee",
                 "width": "custom",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
