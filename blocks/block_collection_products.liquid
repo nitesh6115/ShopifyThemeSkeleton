@@ -332,27 +332,141 @@ document.addEventListener('shopify:section:load', function (e) {
 "blocks": [{ "type": "@theme"},{"type": "_product-card"}],
 "settings":[
 
-{ "type":"collection","id":"collection","label":"Collection" },
+{
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
 
-{ "type":"range","id":"limit","min":1,"max":20,"default":8,"step": 1,"label": "Limit" },
+    {
+      "type": "range",
+      "id": "max_items",
+      "label": "Max products",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
 
-{ "type":"range","id":"per_row_desktop","min":1,"max":6,"default":4,"step": 1,"label": "Per Row Desktop" },
 
-{ "type":"range","id":"per_row_tablet","min":1,"max":4,"default":2,"step": 1,"label": "Pre Row Tablet" },
+    {
+      "type": "header",
+      "content": "Slider enable"
+    },
 
-{ "type":"range","id":"per_row_mobile","min":1,"max":3,"default":1,"step": 1,"label": "Pre Row Mobile" },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop",
+      "label": "Enable slider desktop",
+      "default": true
+    },
 
-{ "type":"checkbox","id":"enable_slider","label":"Enable slider" },
+    {
+      "type": "checkbox",
+      "id": "enable_tablet",
+      "label": "Enable slider tablet",
+      "default": true
+    },
 
-{ "type":"checkbox","id":"slider_desktop","label":"Slider desktop" },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile",
+      "label": "Enable slider mobile",
+      "default": true
+    },
 
-{ "type":"checkbox","id":"slider_tablet","label":"Slider tablet" },
 
-{ "type":"checkbox","id":"slider_mobile","label":"Slider mobile" },
+    {
+      "type": "header",
+      "content": "Slider options"
+    },
 
-{ "type":"range","id":"gap","min":0,"max":40,"default":16,"step": 1,"label": "Gap Desktop" },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay"
+    },
 
-{ "type":"range","id":"gap_m","min":0,"max":40,"default":12,"step": 1,"label": "Gap Mobile" }
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed",
+      "min": 1000,
+      "max": 8000,
+      "step": 500,
+      "default": 3000
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show arrows",
+      "default": true
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots",
+      "default": true
+    },
+
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+
+    {
+      "type": "range",
+      "id": "per_row_desktop",
+      "label": "Per row desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+
+    {
+      "type": "range",
+      "id": "per_row_tablet",
+      "label": "Per row tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+
+    {
+      "type": "range",
+      "id": "per_row_mobile",
+      "label": "Per row mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+
+
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap desktop",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 12
+    },
+
+    {
+      "type": "range",
+      "id": "gap_m",
+      "label": "Gap mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 8
+    },
 
 ],
 "presets": [{
