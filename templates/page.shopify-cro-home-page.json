@@ -1680,8 +1680,8 @@
                 "slider_desktop": false,
                 "slider_tablet": false,
                 "slider_mobile": false,
-                "gap": 16,
-                "gap_m": 12
+                "gap": 32,
+                "gap_m": 20
               },
               "blocks": {
                 "static-product-card": {
@@ -1708,7 +1708,7 @@
                     "custom_width_mobile": 100,
                     "height": "fit",
                     "custom_height": 100,
-                    "gap": 26,
+                    "gap": 0,
                     "gap_m": 0,
                     "background": "",
                     "radius": 16,
