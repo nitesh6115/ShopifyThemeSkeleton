@@ -108,89 +108,164 @@
   </div>
 </div>
 {% javascript %}
-  function initSlider(id) {
-    const slider = document.getElementById('slider-' + id);
-    if (!slider) return;
-    const track = document.getElementById('track-' + id);
-    const prev = slider.querySelector('.slider-prev');
-    const next = slider.querySelector('.slider-next');
-    const dotsWrap = document.getElementById('dots-' + id);
-    const autoplay = slider.dataset.autoplay === 'true';
-    const speed = parseInt(slider.dataset.speed) || 3000;
-    let index = 0;
-    const slides = track.children;
-    function go(i) {
-      if (i < 0) i = 0;
-      if (i >= slides.length) i = slides.length - 1;
+function initSlider(id) {
+  const slider = document.getElementById("slider-" + id);
+  if (!slider) return;
+  const track = document.getElementById("track-" + id);
+  const prev = slider.querySelector(".slider-prev");
+  const next = slider.querySelector(".slider-next");
+  const dotsWrap = document.getElementById("dots-" + id);
+  const autoplay = slider.dataset.autoplay === "true";
+  const speed = parseInt(slider.dataset.speed) || 3000;
+  let index = 0;
+  const slides = track.children;
+  function getPerRow() {
+    const style = getComputedStyle(slider);
 
-      index = i;
+    if (window.innerWidth >= 1366) {
+      return parseInt(
+        style.getPropertyValue("--per-row-desktop")
+      ) || 1;
+    }
+    if (window.innerWidth >= 768) {
+      return parseInt(
+        style.getPropertyValue("--per-row-tablet")
+      ) || 1;
+    }
+    return parseInt(
+      style.getPropertyValue("--per-row-mobile")
+    ) || 1;
+  }
+  function go(i) {
+    const perRow = getPerRow();
+    const pages =
+      Math.ceil(slides.length / perRow);
+    const maxIndex =
+      (pages - 1) * perRow;
+    if (i < 0) i = 0;
+    if (i > maxIndex) i = maxIndex;
+    index = i;
+    const slide = slides[index];
+    if (!slide) return;
+    track.scrollTo({
+      left: slide.offsetLeft,
+      behavior: "smooth"
+    });
+    updateDots();
+  }
 
-      const slide = slides[index];
+  if (prev)
+    prev.onclick = () =>
+      go(index - getPerRow());
+  if (next)
+    next.onclick = () =>
+      go(index + getPerRow());
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    const perRow = getPerRow();
+    const pages =
+      Math.ceil(slides.length / perRow);
+    for (let i = 0; i < pages; i++) {
+      let b = document.createElement("button");
+      b.onclick = () =>
+        go(i * perRow);
+      dotsWrap.appendChild(b);
+    }
+  }
 
-      track.scrollTo({
-        left: slide.offsetLeft,
-        behavior: 'smooth'
+  function updateDots() {
+    if (!dotsWrap) return;
+    const perRow = getPerRow();
+    const page =
+      Math.round(index / perRow);
+    dotsWrap
+      .querySelectorAll("button")
+      .forEach((d, i) => {
+        d.classList.toggle(
+          "active",
+          i === page
+        );
       });
+  }
 
+  if (autoplay) {
+    setInterval(() => {
+      go(index + getPerRow());
+    }, speed);
+  }
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  track.addEventListener("pointerdown", (e) => {
+    isDown = true;
+    startX = e.pageX;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener("pointerup", () => isDown = false);
+  track.addEventListener("pointerleave", () => isDown = false);
+  track.addEventListener("pointermove", (e) => {
+    if (!isDown) return;
+    const walk = e.pageX - startX;
+    track.scrollLeft =
+      scrollLeft - walk;
+  });
+  function updateSliderItems() {
+    const inner =
+      slider.querySelector(
+        ".slider-inner"
+      );
+    if (!inner) return;
+    const style =
+      getComputedStyle(slider);
+    const perRow = getPerRow();
+    const gap =
+      parseFloat(
+        style.getPropertyValue("--gap")
+      ) || 0;
+    const containerWidth =
+      inner.clientWidth;
+    const itemWidth =
+      (containerWidth -
+        gap * (perRow - 1)) / perRow;
+    [...track.children].forEach(el => {
+      el.style.flex = "0 0 auto";
+      el.style.width =
+        itemWidth + "px";
+    });
+  }
+  updateSliderItems();
+  buildDots();
+  updateDots();
+  window.addEventListener(
+    "resize",
+    () => {
+      updateSliderItems();
+      buildDots();
       updateDots();
     }
-    if (prev) prev.onclick = () => go(index - 1);
-    if (next) next.onclick = () => go(index + 1);
-    if (dotsWrap) {
-      dotsWrap.innerHTML = '';
-      for (let i = 0; i < slides.length; i++) {
-        let b = document.createElement('button');
-        b.onclick = () => go(i);
-        dotsWrap.appendChild(b);
-      }
-    }
-    function updateDots() {
-      if (!dotsWrap) return;
-      dotsWrap.querySelectorAll('button').forEach((d, i) => {
-        d.classList.toggle('active', i === index);
+  );
+}
+document
+.querySelectorAll(
+  ".slider_block"
+)
+.forEach((el) => {
+  initSlider(el.dataset.id);
+});
+
+document.addEventListener(
+  "shopify:section:load",
+  function (e) {
+    e.target
+      .querySelectorAll(
+        ".slider_block"
+      )
+      .forEach((el) => {
+        initSlider(el.dataset.id);
       });
-    }
-    if (autoplay) {
-      setInterval(() => {
-        index++;
-        if (index >= slides.length) index = 0;
-        go(index);
-      }, speed);
-    }
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    track.addEventListener('pointerdown', (e) => {
-      isDown = true;
-      track.classList.add('dragging');
-      startX = e.pageX;
-      scrollLeft = track.scrollLeft;
-    });
-    track.addEventListener('pointerleave', () => {
-      isDown = false;
-      track.classList.remove('dragging');
-    });
-    track.addEventListener('pointerup', () => {
-      isDown = false;
-      track.classList.remove('dragging');
-    });
-    track.addEventListener('pointermove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX;
-      const walk = (x - startX) * 1;
-      track.scrollLeft = scrollLeft - walk;
-    });
-    track.style.scrollBehavior = 'auto';
   }
-  document.querySelectorAll('.slider_block').forEach((el) => {
-    initSlider(el.dataset.id);
-  });
-  document.addEventListener('shopify:section:load', function (e) {
-    e.target.querySelectorAll('.slider_block').forEach((el) => {
-      initSlider(el.dataset.id);
-    });
-  });
+);
 {% endjavascript %}
 {% stylesheet %}
        .slider_block_container {
