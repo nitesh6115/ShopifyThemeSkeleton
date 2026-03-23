@@ -1672,7 +1672,7 @@
               "name": "Collection Products",
               "settings": {
                 "collection": "t-shirts",
-                "max_items": 6,
+                "max_items": 4,
                 "enable_desktop": true,
                 "enable_tablet": false,
                 "enable_mobile": false,
