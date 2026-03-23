@@ -4,6 +4,10 @@
 --per-row-mobile: {{ block.settings.per_row_mobile }};
 --gap: {{ block.settings.gap }}px;
 --gap-m: {{ block.settings.gap_m }}px;
+--arrow-color: {{ block.settings.arrow_color }};
+      --arrow-bg: {{ block.settings.arrow_bg }};
+      --dot-color: {{ block.settings.dot_color }};
+      --dot-active: {{ block.settings.dot_active }};
 {%- endcapture -%}
 
 {% assign style_schema = style_schema | strip_newlines %}
