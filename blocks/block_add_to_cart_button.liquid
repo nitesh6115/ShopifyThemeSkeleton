@@ -19,6 +19,9 @@
     --block-mobile-padding-left: {{ block.settings.padding_left  | times: 0.55 | round: 0  }}px;
     --block-mobile-padding-right: {{ block.settings.padding_right  | times: 0.55 | round: 0 }}px;
 
+    --btn-height: {{ block.settings.btn_height }}px;
+    --btn-height-mobile: {{ block.settings.btn_height_mobile }}px;
+
     --btn-bg: {{ block.settings.btn_bg }};
     --btn-text: {{ block.settings.btn_text }};
     --btn-hover-bg: {{ block.settings.btn_hover_bg }};
@@ -139,6 +142,7 @@
     transition: .2s ease;
     padding: 0 2rem;
     display: flex;
+    min-height: var(--btn-height);
     align-items: center;
     justify-content: center;
     text-transform: var(--btn-uppercase);
@@ -174,6 +178,7 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
     padding: 0 2rem;
     display: flex;
     align-items: center;
+    min-height: var(--btn-height);
     justify-content: center;
     text-transform: var(--btn-uppercase);
     gap: 10px;
@@ -227,6 +232,11 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
 }
 .group.group--horizontal.box-nowrap .product_block.buy_buttons {
     width: auto;
+}
+@media (max-width: 767px){
+  button.add-to-cart,.buy_now_enabled button.shopify-payment-button__button.shopify-payment-button__button--unbranded{
+    min-height: var(--btn-height-mobile);
+  }
 }
 {% endstylesheet %}
 {% schema %}
@@ -409,6 +419,24 @@ button.add-to-cart[disabled],.sticky-btn[disabled] {
       "type": "checkbox",
       "id": "btn_uppercase",
       "label": "Button Text Uppercase"
+    },
+    {
+      "type": "range",
+      "id": "btn_height",
+      "label": "Button Height Desktop",
+      "min": 15,
+      "max": 80,
+      "step": 1,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "btn_height_mobile",
+      "label": "Button Height Mobile",
+      "min": 15,
+      "max": 80,
+      "step": 1,
+      "default": 56
     },
     {
       "type": "range",
