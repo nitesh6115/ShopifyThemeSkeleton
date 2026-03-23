@@ -28,6 +28,23 @@ data-slider-id="{{ block.id }}"
 </div>
 {% endfor %}
 </div>
+<div class="slider-arrows">
+
+<button
+class="slider-prev"
+data-prev="{{ block.settings.target }}"
+>
+Prev
+</button>
+
+<button
+class="slider-next"
+data-next="{{ block.settings.target }}"
+>
+Next
+</button>
+
+</div>
 <div class="slider-dots"></div>
 </div>
 {% stylesheet %}
