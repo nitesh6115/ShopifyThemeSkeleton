@@ -1677,7 +1677,7 @@
                 "per_row_tablet": 3,
                 "per_row_mobile": 1,
                 "enable_slider": false,
-                "slider_desktop": false,
+                "slider_desktop": true,
                 "slider_tablet": false,
                 "slider_mobile": false,
                 "gap": 32,
