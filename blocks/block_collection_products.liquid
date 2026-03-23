@@ -48,6 +48,13 @@ Next
 <div class="slider-dots"></div>
 </div>
 {% stylesheet %}
+.collection-track {
+  transition: transform .4s ease;
+}
+
+.is-slider .collection-track {
+  will-change: transform;
+}
 .collection-block {
   width: 100%;
   min-width: 0;
