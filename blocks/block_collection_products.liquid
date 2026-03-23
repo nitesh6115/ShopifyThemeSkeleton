@@ -144,12 +144,17 @@ Next
 .collection-item .product_information_wrapper {
     max-width: 100%;
 }
+.slider-arrows.is-hidden {
+  display: none;
+}
 {% endstylesheet %}
 {% javascript %}
 document.querySelectorAll(".collection-block").forEach(block => {
 
   const track = block.querySelector(".collection-track");
-  if (!track) return;
+  const arrows = block.querySelector(".slider-arrows");
+
+  if (!track || !arrows) return;
 
   const id = block.dataset.sliderId;
 
@@ -158,14 +163,31 @@ document.querySelectorAll(".collection-block").forEach(block => {
 
   let index = 0;
 
+  function isSliderActive() {
+
+    const w = window.innerWidth;
+
+    if (block.classList.contains("is-slider")) {
+
+      if (w > 1365 && block.classList.contains("slider-desktop")) return true;
+
+      if (w <= 1365 && w > 767 && block.classList.contains("slider-tablet")) return true;
+
+      if (w <= 767 && block.classList.contains("slider-mobile")) return true;
+
+    }
+
+    return false;
+
+  }
+
   function getItemWidth() {
 
     const item = track.children[0];
     if (!item) return 0;
 
-    const gap = parseFloat(
-      getComputedStyle(track).gap
-    ) || 0;
+    const gap =
+      parseFloat(getComputedStyle(track).gap) || 0;
 
     return item.offsetWidth + gap;
 
@@ -182,6 +204,15 @@ document.querySelectorAll(".collection-block").forEach(block => {
 
   }
 
+  function maxIndex() {
+
+    const total = track.children.length;
+    const visible = getVisible();
+
+    return Math.max(0, total - visible);
+
+  }
+
   function move() {
 
     const w = getItemWidth();
@@ -191,12 +222,20 @@ document.querySelectorAll(".collection-block").forEach(block => {
 
   }
 
-  function maxIndex() {
+  function checkArrows() {
 
-    const total = track.children.length;
-    const visible = getVisible();
+    if (!isSliderActive()) {
+      arrows.classList.add("is-hidden");
+      track.style.transform = "";
+      index = 0;
+      return;
+    }
 
-    return Math.max(0, total - visible);
+    if (track.children.length <= getVisible()) {
+      arrows.classList.add("is-hidden");
+    } else {
+      arrows.classList.remove("is-hidden");
+    }
 
   }
 
@@ -220,10 +259,15 @@ document.querySelectorAll(".collection-block").forEach(block => {
 
   });
 
-  window.addEventListener("resize", () => {
+  function update() {
     index = 0;
     move();
-  });
+    checkArrows();
+  }
+
+  update();
+
+  window.addEventListener("resize", update);
 
 });
 {% endjavascript %}
