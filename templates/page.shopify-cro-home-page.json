@@ -1671,7 +1671,7 @@
               "type": "block_collection_products",
               "name": "Collection Products",
               "settings": {
-                "collection": "all",
+                "collection": "noble",
                 "max_items": 8,
                 "enable_desktop": true,
                 "enable_tablet": false,
