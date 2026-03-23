@@ -389,7 +389,6 @@ document.querySelectorAll('.slider_block, .collection_block_slider')
 .forEach((el) => {
 
   initSlider(el.dataset.id);
-  fixItemWidth(slider, track);
 
 });
 
@@ -401,7 +400,6 @@ document.addEventListener('shopify:section:load', function (e) {
   .forEach((el) => {
 
     initSlider(el.dataset.id);
-    fixItemWidth(slider, track);
 
   });
 
