@@ -12000,13 +12000,44 @@
                 "hide_mobile": false
               },
               "blocks": {}
+            },
+            "block_divider_rcetAc": {
+              "type": "block_divider",
+              "name": "Divider",
+              "settings": {
+                "border": 1,
+                "color": "#ffffff",
+                "width": "custom",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 80,
+                "width_tablet": "custom",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 80,
+                "width_mobile": "fill",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background": "",
+                "pt": 10,
+                "pb": 10,
+                "ptm": 8,
+                "pbm": 8,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "block_group_kxjqV4",
             "block_heading_Y6Fz7y",
             "block_text_XEytTL",
-            "block_buttons_gH8jkz"
+            "block_buttons_gH8jkz",
+            "block_divider_rcetAc"
           ]
         }
       },
