@@ -1744,7 +1744,7 @@
                       "name": "Image",
                       "settings": {
                         "image": "{{ closest.product.featured_image }}",
-                        "image_link": "",
+                        "image_link": "{{ closest.product.url }}",
                         "ratio": "square",
                         "hover_zoom": false,
                         "shadow": false,
