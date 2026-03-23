@@ -1678,8 +1678,8 @@
                 "per_row_mobile": 1,
                 "enable_slider": true,
                 "slider_desktop": true,
-                "slider_tablet": true,
-                "slider_mobile": true,
+                "slider_tablet": false,
+                "slider_mobile": false,
                 "gap": 32,
                 "gap_m": 20
               },
