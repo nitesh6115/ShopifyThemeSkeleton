@@ -1977,6 +1977,49 @@
                             "block_text_Xz9LpW"
                           ]
                         },
+                        "block_text_jGPgnn": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p>With Biotin & Saw Palmetto</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fit-content",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fit-content",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 14,
+                            "font_size_mobile": 12,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#0a4d4d",
+                            "background": "#C9A9611A",
+                            "radius": 30,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 8,
+                            "pb": 8,
+                            "pl": 12,
+                            "pr": 12,
+                            "pt_m": 8,
+                            "pb_m": 8,
+                            "pl_m": 12,
+                            "pr_m": 12,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        },
                         "block_group_L8Fgfg": {
                           "type": "block_group",
                           "name": "Block Group",
@@ -2095,6 +2138,7 @@
                       "block_order": [
                         "block_text_9dxWDU",
                         "block_group_jjaEBL",
+                        "block_text_jGPgnn",
                         "block_group_L8Fgfg"
                       ]
                     }
