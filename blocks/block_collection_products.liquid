@@ -81,7 +81,6 @@
     .collection-slider-prev,
     .collection-slider-next{
     position:absolute;
-    background: #fff;
     top:50%;
     transform:translateY(-50%);
     width:36px;
@@ -427,7 +426,34 @@ document.addEventListener('shopify:section:load', function (e) {
       "label": "Show dots",
       "default": true
     },
+    
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#000"
+    },
 
+    {
+      "type": "color",
+      "id": "arrow_bg",
+      "label": "Arrow bg",
+      "default": "#fff"
+    },
+
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot color",
+      "default": "#999"
+    },
+
+    {
+      "type": "color",
+      "id": "dot_active",
+      "label": "Active dot",
+      "default": "#000"
+    },
 
     {
       "type": "header",
