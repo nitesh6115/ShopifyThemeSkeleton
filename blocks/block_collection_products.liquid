@@ -240,19 +240,14 @@ function initSlider(id) {
 
 
   function go(i) {
-
     if (i < 0) i = 0;
     if (i >= slides.length) i = slides.length - 1;
-
     index = i;
-
     const slide = slides[index];
-
     track.scrollTo({
       left: slide.offsetLeft,
       behavior: 'smooth'
     });
-
     updateDots();
   }
 
