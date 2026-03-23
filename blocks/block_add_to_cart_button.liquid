@@ -21,9 +21,11 @@
 
     --btn-height: {{ block.settings.btn_height }}px;
     --btn-height-mobile: {{ block.settings.btn_height_mobile }}px;
+    --btn-padding: {{ block.settings.btn_height | times: 0.55 | round: 0 }}px;
 
     --btn-bg: {{ block.settings.btn_bg }};
     --btn-text: {{ block.settings.btn_text }};
+
     --btn-hover-bg: {{ block.settings.btn_hover_bg }};
     --btn-hover-text: {{ block.settings.btn_hover_text }};
     --btn-radius: {{ block.settings.btn_radius }}px;
