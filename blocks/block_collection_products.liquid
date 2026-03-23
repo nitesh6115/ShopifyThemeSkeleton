@@ -9,45 +9,34 @@
 {% assign style_schema = style_schema | strip_newlines %}
 
 <div class="collection_block_container">
-
   <div
     class="
       collection_block_slider
       slider-{{ block.id }}
-
       {% if block.settings.enable_desktop %} slider-desktop{% endif %}
       {% if block.settings.enable_tablet %} slider-tablet{% endif %}
       {% if block.settings.enable_mobile %} slider-mobile{% endif %}
     "
-
     data-id="{{ block.id }}"
     id="slider-{{ block.id }}"
-
     data-autoplay="{{ block.settings.autoplay }}"
     data-speed="{{ block.settings.autoplay_speed }}"
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
   >
-
     <div class="slider-inner">
-
       <div
         class="slider-track collection-track"
         id="track-{{ block.id }}"
       >
-
         {% for product in section.settings.collection.products limit: max_items %}
-
           <div class="collection-item">
-
             {% content_for 'block',
               type: '_product-card',
               id: 'static-product-card',
               closest.product: product
             %}
-
           </div>
-
         {% endfor %}
 
       </div>
