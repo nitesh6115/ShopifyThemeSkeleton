@@ -77,7 +77,6 @@
 {%- endcapture -%}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
-
 <div class="{{- class_list -}}" style="{{- style_schema -}}"{{ block.shopify_attributes }}>
   <{{ tag }} class="heading_text {% if block.settings.size_mode == 'custom' %}size--custom{% endif %}">
     {{ block.settings.text }}
@@ -105,7 +104,6 @@
     font-weight: var(--fw);
     line-height: var(--line-height);
     letter-spacing: var(--letter-spacing);
-    
   }
   @media (max-width:767px){
     .heading-block{
