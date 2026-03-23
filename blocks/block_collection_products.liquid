@@ -25,10 +25,7 @@
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
   >
-     {% if block.settings.show_arrows %}
-      <button class="collection-slider-prev" data-id="{{ block.id }}">‹</button>
-      <button class="collection-slider-next" data-id="{{ block.id }}">›</button>
-    {% endif %}
+    
     <div class="collection-slider-inner">
       <div
         class="collection-slider-track collection-track"
@@ -45,8 +42,10 @@
         {% endfor %}
       </div>
     </div>
-   
-    
+     {% if block.settings.show_arrows %}
+      <button class="collection-slider-prev" data-id="{{ block.id }}">‹</button>
+      <button class="collection-slider-next" data-id="{{ block.id }}">›</button>
+    {% endif %}
     {% if block.settings.show_dots %}
       <div class="collection-slider-dots" id="dots-{{ block.id }}"></div>
     {% endif %}
