@@ -38,7 +38,7 @@
         {% for product in block.settings.collection.products limit: block.settings.max_items %}
           <div class="collection-item">
             {% content_for 'block',
-              type: '_product-card',
+              type: '_block_product_card',
               id: 'static-product-card',
               closest.product: product
             %}
