@@ -1981,7 +1981,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>With Biotin & Saw Palmetto</p>",
+                            "text": "<p>{{ closest.product.vendor }}</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fit-content",
