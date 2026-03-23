@@ -9,11 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page",
-      "disabled": true,
-      "settings": {}
-    },
     "premium_global_section_rCdyQU": {
       "type": "premium_global_section",
       "blocks": {
@@ -16154,7 +16149,6 @@
     }
   },
   "order": [
-    "main",
     "premium_global_section_rCdyQU",
     "premium_global_section_JWrNtg",
     "premium_global_section_LcWnHf",
