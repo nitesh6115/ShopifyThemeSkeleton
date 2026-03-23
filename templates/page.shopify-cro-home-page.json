@@ -1621,7 +1621,7 @@
         },
         "block_group_rVYCDa": {
           "type": "block_group",
-          "name": "Block Group",
+          "name": "Product Container",
           "settings": {
             "layout_direction": "group--vertical",
             "align_x": "flex-start",
@@ -1671,12 +1671,12 @@
               "type": "block_collection_products",
               "name": "Collection Products",
               "settings": {
-                "collection": "t-shirts",
+                "collection": "all",
                 "limit": 8,
                 "per_row_desktop": 4,
                 "per_row_tablet": 3,
                 "per_row_mobile": 1,
-                "enable_slider": false,
+                "enable_slider": true,
                 "slider_desktop": false,
                 "slider_tablet": false,
                 "slider_mobile": false,
