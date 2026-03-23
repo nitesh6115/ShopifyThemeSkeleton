@@ -122,7 +122,14 @@
     opacity:1;
     }
 
+.collection-item {
 
+  flex: 0 0 calc(
+    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
+    / var(--per-row-desktop)
+  );
+
+}
 
 
 /* DESKTOP */
