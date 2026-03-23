@@ -1676,7 +1676,7 @@
                 "per_row_desktop": 4,
                 "per_row_tablet": 3,
                 "per_row_mobile": 1,
-                "enable_slider": false,
+                "enable_slider": true,
                 "slider_desktop": true,
                 "slider_tablet": false,
                 "slider_mobile": false,
