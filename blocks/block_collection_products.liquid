@@ -21,33 +21,20 @@ style="{{ style_schema }}"
 data-slider-id="{{ block.id }}"
 {{ block.shopify_attributes }}
 >
-{% assign col = collections[block.settings.collection] %}
 <div class="collection-track">
-
 {% for product in block.settings.collection.products limit: block.settings.limit %}
 <div class="collection-item">
   {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
 </div>
-
 {% endfor %}
-
 </div>
-
 <div class="slider-dots"></div>
-
 </div>
-
 {% stylesheet %}
 .collection-block {
   width: 100%;
   min-width: 0;
 }
-
-
-/* =========================
-   TRACK DEFAULT (FLEX GRID)
-========================= */
-
 .collection-track {
   display: flex;
   flex-wrap: wrap;
@@ -55,10 +42,6 @@ data-slider-id="{{ block.id }}"
   width: 100%;
   min-width: 0;
 }
-
-
-/* item width desktop */
-
 .collection-item {
   flex: 0 0 calc(
     (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
@@ -66,12 +49,6 @@ data-slider-id="{{ block.id }}"
   );
   min-width: 0;
 }
-
-
-/* =========================
-   SLIDER MODE DESKTOP
-========================= */
-
 .is-slider .collection-track {
   flex-wrap: nowrap;
   overflow: hidden;
@@ -80,11 +57,6 @@ data-slider-id="{{ block.id }}"
 .is-slider .collection-item {
   flex: 0 0 calc(100% / var(--per-row-desktop));
 }
-
-
-/* =========================
-   TABLET
-========================= */
 
 @media (max-width:1365px) {
 
@@ -98,10 +70,6 @@ data-slider-id="{{ block.id }}"
     / var(--per-row-tablet)
   );
 }
-
-
-/* slider tablet */
-
 .slider-tablet .collection-track {
   flex-wrap: nowrap;
   overflow: hidden;
@@ -112,11 +80,6 @@ data-slider-id="{{ block.id }}"
 }
 
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width:767px) {
 
@@ -130,10 +93,6 @@ data-slider-id="{{ block.id }}"
     / var(--per-row-mobile)
   );
 }
-
-
-/* slider mobile */
-
 .slider-mobile .collection-track {
   flex-wrap: nowrap;
   overflow: hidden;
