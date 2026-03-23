@@ -354,7 +354,31 @@ function initSlider(id) {
     track.scrollLeft = scrollLeft - walk;
 
   });
+  function fixItemWidth(slider, track) {
 
+  const perRow =
+    getComputedStyle(slider)
+      .getPropertyValue("--per-row-desktop") || 4;
+
+  const gap =
+    getComputedStyle(slider)
+      .getPropertyValue("--gap") || 0;
+
+  const items = track.children;
+
+  const containerWidth =
+    slider.querySelector(".slider-inner").clientWidth;
+
+  const totalGap = (perRow - 1) * parseFloat(gap);
+
+  const itemWidth =
+    (containerWidth - totalGap) / perRow;
+
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.width = itemWidth + "px";
+  }
+
+}
 }
 
 
