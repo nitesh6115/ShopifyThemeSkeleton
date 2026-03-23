@@ -1674,7 +1674,7 @@
                 "collection": "t-shirts",
                 "max_items": 8,
                 "enable_desktop": true,
-                "enable_tablet": false,
+                "enable_tablet": true,
                 "enable_mobile": false,
                 "autoplay": false,
                 "autoplay_speed": 3000,
