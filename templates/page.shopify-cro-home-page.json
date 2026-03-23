@@ -2061,6 +2061,7 @@
                                 "bg_color": "",
                                 "btn_bg": "#0A4D4D",
                                 "btn_hover_bg": "#000",
+                                "btn_text_label": "+ Add",
                                 "btn_text": "#ffffff",
                                 "btn_hover_text": "#ffffff",
                                 "btn_border": "#234a55",
