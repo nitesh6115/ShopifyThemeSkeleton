@@ -8156,9 +8156,9 @@
                             "save_color_bg": "#dcfce7",
                             "save_radius": 4,
                             "price_font_size": 24,
-                            "mobile_price_font_size": 20,
+                            "mobile_price_font_size": 18,
                             "compare_at_price_font_size": 20,
-                            "mobile_compare_at_price_font_size": 15
+                            "mobile_compare_at_price_font_size": 14
                           },
                           "blocks": {}
                         }
