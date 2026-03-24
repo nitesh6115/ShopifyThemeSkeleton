@@ -7823,7 +7823,7 @@
                 "per_row_tablet": 3,
                 "per_row_mobile": 2,
                 "gap": 32,
-                "gap_m": 10
+                "gap_m": 6
               },
               "blocks": {
                 "static-product-card": {
