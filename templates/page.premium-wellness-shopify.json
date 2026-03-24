@@ -4929,117 +4929,12 @@
                 "hide_desktop": false
               },
               "blocks": {}
-            },
-            "block_group_p8VAjg": {
-              "type": "block_group",
-              "name": "Border Box Text",
-              "settings": {
-                "layout_direction": "group--horizontal",
-                "align_x": "flex-start",
-                "align_y": "center",
-                "wrap": "wrap",
-                "hover_zoom": false,
-                "shadow": false,
-                "width": "fit-content",
-                "custom_width_unit_desktop": "%",
-                "custom_width_pixel": 48,
-                "custom_width": 100,
-                "width_tablet": "fit-content",
-                "custom_width_unit_tablet": "%",
-                "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 100,
-                "width_mobile": "fit-content",
-                "custom_width_unit_mobile": "%",
-                "custom_width_pixel_mobile": 48,
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "gap": 12,
-                "gap_m": 12,
-                "background": "",
-                "radius": 0,
-                "border": 0,
-                "border_color": "#234a55",
-                "pt": 0,
-                "pb": 0,
-                "pl": 0,
-                "pr": 0,
-                "ptm": 0,
-                "pbm": 0,
-                "plm": 0,
-                "prm": 0,
-                "hide_desktop": false,
-                "hide_mobile": false,
-                "image_link": ""
-              },
-              "blocks": {
-                "block_icon_X39TRa": {
-                  "type": "block_icon",
-                  "name": "Icon",
-                  "settings": {
-                    "icon": "certificate",
-                    "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
-                    "svg_code": "",
-                    "size": 150,
-                    "color": "#234a55"
-                  },
-                  "blocks": {}
-                },
-                "block_text_9rmUig": {
-                  "type": "block_text",
-                  "name": "Text",
-                  "settings": {
-                    "text": "<p><strong>4.9 /</strong> 5.0</p>",
-                    "block_link": "",
-                    "alignment": "left",
-                    "width": "fill",
-                    "custom_width_unit_desktop": "%",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "fill",
-                    "custom_width_unit_tablet": "%",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "fill",
-                    "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "font_size": 20,
-                    "font_size_mobile": 18,
-                    "text_uppercase": false,
-                    "font_weight": "400",
-                    "color": "#364153",
-                    "background": "",
-                    "radius": 0,
-                    "border": 0,
-                    "border_color": "",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
-                    "hide_mobile": false,
-                    "hide_desktop": false
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "block_icon_X39TRa",
-                "block_text_9rmUig"
-              ]
             }
           },
           "block_order": [
             "block_text_tFHVnb",
             "block_heading_wKNAaj",
-            "block_text_Um6iF8",
-            "block_group_p8VAjg"
+            "block_text_Um6iF8"
           ]
         },
         "block_group_4nJExi": {
@@ -6160,918 +6055,6 @@
             "hide_desktop": false
           },
           "blocks": {}
-        },
-        "block_group_83EWM9": {
-          "type": "block_group",
-          "name": "Reviews Container",
-          "disabled": true,
-          "settings": {
-            "layout_direction": "group--vertical",
-            "align_x": "flex-start",
-            "align_y": "flex-start",
-            "wrap": "wrap",
-            "hover_zoom": false,
-            "shadow": false,
-            "width": "fill",
-            "custom_width_unit_desktop": "%",
-            "custom_width_pixel": 48,
-            "custom_width": 100,
-            "width_tablet": "fill",
-            "custom_width_unit_tablet": "%",
-            "custom_width_tablet_pixel": 48,
-            "custom_width_tablet": 100,
-            "width_mobile": "fill",
-            "custom_width_unit_mobile": "%",
-            "custom_width_pixel_mobile": 48,
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "gap": 0,
-            "gap_m": 0,
-            "background": "",
-            "radius": 0,
-            "border": 0,
-            "border_color": "",
-            "pt": 0,
-            "pb": 0,
-            "pl": 0,
-            "pr": 0,
-            "ptm": 0,
-            "pbm": 0,
-            "plm": 0,
-            "prm": 0,
-            "hide_desktop": false,
-            "hide_mobile": false,
-            "image_link": ""
-          },
-          "blocks": {
-            "block_group_4KKmpr": {
-              "type": "block_group",
-              "name": "Block Container",
-              "settings": {
-                "layout_direction": "group--horizontal",
-                "align_x": "flex-start",
-                "align_y": "flex-start",
-                "wrap": "wrap",
-                "hover_zoom": false,
-                "shadow": false,
-                "width": "fill",
-                "custom_width_unit_desktop": "%",
-                "custom_width_pixel": 48,
-                "custom_width": 100,
-                "width_tablet": "fill",
-                "custom_width_unit_tablet": "%",
-                "custom_width_tablet_pixel": 48,
-                "custom_width_tablet": 100,
-                "width_mobile": "fill",
-                "custom_width_unit_mobile": "%",
-                "custom_width_pixel_mobile": 48,
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "gap": 24,
-                "gap_m": 16,
-                "background": "",
-                "radius": 0,
-                "border": 0,
-                "border_color": "",
-                "pt": 0,
-                "pb": 0,
-                "pl": 0,
-                "pr": 0,
-                "ptm": 0,
-                "pbm": 0,
-                "plm": 0,
-                "prm": 0,
-                "hide_desktop": false,
-                "hide_mobile": false,
-                "image_link": ""
-              },
-              "blocks": {
-                "block_group_iqgbkw": {
-                  "type": "block_group",
-                  "name": "Review Block 1",
-                  "settings": {
-                    "layout_direction": "group--vertical",
-                    "align_x": "flex-start",
-                    "align_y": "flex-start",
-                    "wrap": "wrap",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "fill",
-                    "custom_width_unit_desktop": "%",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "fill",
-                    "custom_width_unit_tablet": "%",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fill",
-                    "custom_height": 100,
-                    "gap": 12,
-                    "gap_m": 12,
-                    "background": "#FFF",
-                    "radius": 14,
-                    "border": 0,
-                    "border_color": "#edecec",
-                    "pt": 44,
-                    "pb": 44,
-                    "pl": 36,
-                    "pr": 36,
-                    "ptm": 30,
-                    "pbm": 30,
-                    "plm": 24,
-                    "prm": 24,
-                    "hide_desktop": false,
-                    "hide_mobile": false,
-                    "image_link": ""
-                  },
-                  "blocks": {
-                    "block_icon_KAQFWe": {
-                      "type": "block_icon",
-                      "name": "Icon",
-                      "settings": {
-                        "icon": "certificate",
-                        "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
-                        "svg_code": "",
-                        "size": 100,
-                        "color": "#234a55"
-                      },
-                      "blocks": {}
-                    },
-                    "block_text_tnUwTB": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>After 8 weeks of using the Hair Growth Complex, I noticed significantly less shedding and visible new growth. The quality is exceptional.</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 12,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#364153",
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_divider_G4bec4": {
-                      "type": "block_divider",
-                      "name": "Divider",
-                      "settings": {
-                        "border": 2,
-                        "color": "#f3f4f6",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "pt": 20,
-                        "pb": 10,
-                        "ptm": 12,
-                        "pbm": 8,
-                        "hide_desktop": false,
-                        "hide_mobile": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_group_VgR93J": {
-                      "type": "block_group",
-                      "name": "Border Box Text",
-                      "settings": {
-                        "layout_direction": "group--horizontal",
-                        "align_x": "space-between",
-                        "align_y": "center",
-                        "wrap": "wrap",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "gap": 12,
-                        "gap_m": 12,
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "rgba(0,0,0,0)",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "ptm": 0,
-                        "pbm": 0,
-                        "plm": 0,
-                        "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false,
-                        "image_link": ""
-                      },
-                      "blocks": {
-                        "block_text_wUXAEW": {
-                          "type": "block_text",
-                          "name": "Text",
-                          "settings": {
-                            "text": "<p><strong>Sarah M.</strong><br/>Hair Growth Complex</p>",
-                            "block_link": "",
-                            "alignment": "left",
-                            "width": "fill",
-                            "custom_width_unit_desktop": "%",
-                            "custom_width_pixel": 48,
-                            "custom_width": 100,
-                            "width_tablet": "fill",
-                            "custom_width_unit_tablet": "%",
-                            "custom_width_tablet_pixel": 48,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "fill",
-                            "custom_width_unit_mobile": "%",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "font_size": 12,
-                            "font_size_mobile": 12,
-                            "text_uppercase": false,
-                            "font_weight": "400",
-                            "color": "#b8b6b2",
-                            "background": "",
-                            "radius": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        },
-                        "block_text_jYRFXt": {
-                          "type": "block_text",
-                          "name": "Text",
-                          "settings": {
-                            "text": "<p>Verified</p>",
-                            "block_link": "",
-                            "alignment": "left",
-                            "width": "fit-content",
-                            "custom_width_unit_desktop": "%",
-                            "custom_width_pixel": 48,
-                            "custom_width": 100,
-                            "width_tablet": "fit-content",
-                            "custom_width_unit_tablet": "%",
-                            "custom_width_tablet_pixel": 48,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "fit-content",
-                            "custom_width_unit_mobile": "%",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "font_size": 16,
-                            "font_size_mobile": 14,
-                            "text_uppercase": false,
-                            "font_weight": "400",
-                            "color": "#234a55",
-                            "background": "",
-                            "radius": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "block_text_wUXAEW",
-                        "block_text_jYRFXt"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "block_icon_KAQFWe",
-                    "block_text_tnUwTB",
-                    "block_divider_G4bec4",
-                    "block_group_VgR93J"
-                  ]
-                },
-                "block_group_L8h4te": {
-                  "type": "block_group",
-                  "name": "Review Block 1",
-                  "settings": {
-                    "layout_direction": "group--vertical",
-                    "align_x": "flex-start",
-                    "align_y": "flex-start",
-                    "wrap": "wrap",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "fill",
-                    "custom_width_unit_desktop": "%",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "fill",
-                    "custom_width_unit_tablet": "%",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fill",
-                    "custom_height": 100,
-                    "gap": 12,
-                    "gap_m": 12,
-                    "background": "#FFF",
-                    "radius": 14,
-                    "border": 0,
-                    "border_color": "#edecec",
-                    "pt": 44,
-                    "pb": 44,
-                    "pl": 36,
-                    "pr": 36,
-                    "ptm": 30,
-                    "pbm": 30,
-                    "plm": 24,
-                    "prm": 24,
-                    "hide_desktop": false,
-                    "hide_mobile": false,
-                    "image_link": ""
-                  },
-                  "blocks": {
-                    "block_icon_GngnkB": {
-                      "type": "block_icon",
-                      "name": "Icon",
-                      "settings": {
-                        "icon": "certificate",
-                        "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
-                        "svg_code": "",
-                        "size": 100,
-                        "color": "#234a55"
-                      },
-                      "blocks": {}
-                    },
-                    "block_text_YVdVnt": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>After 8 weeks of using the Hair Growth Complex, I noticed significantly less shedding and visible new growth. The quality is exceptional.</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 12,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#364153",
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_divider_6FTF6A": {
-                      "type": "block_divider",
-                      "name": "Divider",
-                      "settings": {
-                        "border": 2,
-                        "color": "#f3f4f6",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "pt": 20,
-                        "pb": 10,
-                        "ptm": 12,
-                        "pbm": 8,
-                        "hide_desktop": false,
-                        "hide_mobile": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_group_cywfHV": {
-                      "type": "block_group",
-                      "name": "Border Box Text",
-                      "settings": {
-                        "layout_direction": "group--horizontal",
-                        "align_x": "space-between",
-                        "align_y": "center",
-                        "wrap": "wrap",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "gap": 12,
-                        "gap_m": 12,
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "rgba(0,0,0,0)",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "ptm": 0,
-                        "pbm": 0,
-                        "plm": 0,
-                        "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false,
-                        "image_link": ""
-                      },
-                      "blocks": {
-                        "block_text_6y4qJN": {
-                          "type": "block_text",
-                          "name": "Text",
-                          "settings": {
-                            "text": "<p><strong>Sarah M.</strong><br/>Hair Growth Complex</p>",
-                            "block_link": "",
-                            "alignment": "left",
-                            "width": "fill",
-                            "custom_width_unit_desktop": "%",
-                            "custom_width_pixel": 48,
-                            "custom_width": 100,
-                            "width_tablet": "fill",
-                            "custom_width_unit_tablet": "%",
-                            "custom_width_tablet_pixel": 48,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "fill",
-                            "custom_width_unit_mobile": "%",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "font_size": 12,
-                            "font_size_mobile": 12,
-                            "text_uppercase": false,
-                            "font_weight": "400",
-                            "color": "#b8b6b2",
-                            "background": "",
-                            "radius": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        },
-                        "block_text_D8YPBr": {
-                          "type": "block_text",
-                          "name": "Text",
-                          "settings": {
-                            "text": "<p>Verified</p>",
-                            "block_link": "",
-                            "alignment": "left",
-                            "width": "fit-content",
-                            "custom_width_unit_desktop": "%",
-                            "custom_width_pixel": 48,
-                            "custom_width": 100,
-                            "width_tablet": "fit-content",
-                            "custom_width_unit_tablet": "%",
-                            "custom_width_tablet_pixel": 48,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "fit-content",
-                            "custom_width_unit_mobile": "%",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "font_size": 16,
-                            "font_size_mobile": 14,
-                            "text_uppercase": false,
-                            "font_weight": "400",
-                            "color": "#234a55",
-                            "background": "",
-                            "radius": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "block_text_6y4qJN",
-                        "block_text_D8YPBr"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "block_icon_GngnkB",
-                    "block_text_YVdVnt",
-                    "block_divider_6FTF6A",
-                    "block_group_cywfHV"
-                  ]
-                },
-                "block_group_tG4kTi": {
-                  "type": "block_group",
-                  "name": "Review Block 1",
-                  "settings": {
-                    "layout_direction": "group--vertical",
-                    "align_x": "flex-start",
-                    "align_y": "flex-start",
-                    "wrap": "wrap",
-                    "hover_zoom": false,
-                    "shadow": false,
-                    "width": "fill",
-                    "custom_width_unit_desktop": "%",
-                    "custom_width_pixel": 48,
-                    "custom_width": 100,
-                    "width_tablet": "fill",
-                    "custom_width_unit_tablet": "%",
-                    "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 100,
-                    "width_mobile": "custom",
-                    "custom_width_unit_mobile": "%",
-                    "custom_width_pixel_mobile": 48,
-                    "custom_width_mobile": 100,
-                    "height": "fill",
-                    "custom_height": 100,
-                    "gap": 12,
-                    "gap_m": 12,
-                    "background": "#FFF",
-                    "radius": 14,
-                    "border": 0,
-                    "border_color": "#edecec",
-                    "pt": 44,
-                    "pb": 44,
-                    "pl": 36,
-                    "pr": 36,
-                    "ptm": 30,
-                    "pbm": 30,
-                    "plm": 24,
-                    "prm": 24,
-                    "hide_desktop": false,
-                    "hide_mobile": false,
-                    "image_link": ""
-                  },
-                  "blocks": {
-                    "block_icon_JBzebY": {
-                      "type": "block_icon",
-                      "name": "Icon",
-                      "settings": {
-                        "icon": "certificate",
-                        "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
-                        "svg_code": "",
-                        "size": 100,
-                        "color": "#234a55"
-                      },
-                      "blocks": {}
-                    },
-                    "block_text_gNDqAX": {
-                      "type": "block_text",
-                      "name": "Text",
-                      "settings": {
-                        "text": "<p>After 8 weeks of using the Hair Growth Complex, I noticed significantly less shedding and visible new growth. The quality is exceptional.</p>",
-                        "block_link": "",
-                        "alignment": "left",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "font_size": 14,
-                        "font_size_mobile": 12,
-                        "text_uppercase": false,
-                        "font_weight": "400",
-                        "color": "#364153",
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "pt_m": 0,
-                        "pb_m": 0,
-                        "pl_m": 0,
-                        "pr_m": 0,
-                        "hide_mobile": false,
-                        "hide_desktop": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_divider_L7tGdU": {
-                      "type": "block_divider",
-                      "name": "Divider",
-                      "settings": {
-                        "border": 2,
-                        "color": "#f3f4f6",
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background": "",
-                        "pt": 20,
-                        "pb": 10,
-                        "ptm": 12,
-                        "pbm": 8,
-                        "hide_desktop": false,
-                        "hide_mobile": false
-                      },
-                      "blocks": {}
-                    },
-                    "block_group_3G7Ey9": {
-                      "type": "block_group",
-                      "name": "Border Box Text",
-                      "settings": {
-                        "layout_direction": "group--horizontal",
-                        "align_x": "space-between",
-                        "align_y": "center",
-                        "wrap": "wrap",
-                        "hover_zoom": false,
-                        "shadow": false,
-                        "width": "fill",
-                        "custom_width_unit_desktop": "%",
-                        "custom_width_pixel": 48,
-                        "custom_width": 100,
-                        "width_tablet": "fill",
-                        "custom_width_unit_tablet": "%",
-                        "custom_width_tablet_pixel": 48,
-                        "custom_width_tablet": 100,
-                        "width_mobile": "fill",
-                        "custom_width_unit_mobile": "%",
-                        "custom_width_pixel_mobile": 48,
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "gap": 12,
-                        "gap_m": 12,
-                        "background": "",
-                        "radius": 0,
-                        "border": 0,
-                        "border_color": "rgba(0,0,0,0)",
-                        "pt": 0,
-                        "pb": 0,
-                        "pl": 0,
-                        "pr": 0,
-                        "ptm": 0,
-                        "pbm": 0,
-                        "plm": 0,
-                        "prm": 0,
-                        "hide_desktop": false,
-                        "hide_mobile": false,
-                        "image_link": ""
-                      },
-                      "blocks": {
-                        "block_text_ybXLmn": {
-                          "type": "block_text",
-                          "name": "Text",
-                          "settings": {
-                            "text": "<p><strong>Sarah M.</strong><br/>Hair Growth Complex</p>",
-                            "block_link": "",
-                            "alignment": "left",
-                            "width": "fill",
-                            "custom_width_unit_desktop": "%",
-                            "custom_width_pixel": 48,
-                            "custom_width": 100,
-                            "width_tablet": "fill",
-                            "custom_width_unit_tablet": "%",
-                            "custom_width_tablet_pixel": 48,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "fill",
-                            "custom_width_unit_mobile": "%",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "font_size": 12,
-                            "font_size_mobile": 12,
-                            "text_uppercase": false,
-                            "font_weight": "400",
-                            "color": "#b8b6b2",
-                            "background": "",
-                            "radius": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        },
-                        "block_text_EArJAV": {
-                          "type": "block_text",
-                          "name": "Text",
-                          "settings": {
-                            "text": "<p>Verified</p>",
-                            "block_link": "",
-                            "alignment": "left",
-                            "width": "fit-content",
-                            "custom_width_unit_desktop": "%",
-                            "custom_width_pixel": 48,
-                            "custom_width": 100,
-                            "width_tablet": "fit-content",
-                            "custom_width_unit_tablet": "%",
-                            "custom_width_tablet_pixel": 48,
-                            "custom_width_tablet": 100,
-                            "width_mobile": "fit-content",
-                            "custom_width_unit_mobile": "%",
-                            "custom_width_pixel_mobile": 48,
-                            "custom_width_mobile": 100,
-                            "height": "fit",
-                            "custom_height": 100,
-                            "font_size": 16,
-                            "font_size_mobile": 14,
-                            "text_uppercase": false,
-                            "font_weight": "400",
-                            "color": "#234a55",
-                            "background": "",
-                            "radius": 0,
-                            "border": 0,
-                            "border_color": "",
-                            "pt": 0,
-                            "pb": 0,
-                            "pl": 0,
-                            "pr": 0,
-                            "pt_m": 0,
-                            "pb_m": 0,
-                            "pl_m": 0,
-                            "pr_m": 0,
-                            "hide_mobile": false,
-                            "hide_desktop": false
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "block_text_ybXLmn",
-                        "block_text_EArJAV"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "block_icon_JBzebY",
-                    "block_text_gNDqAX",
-                    "block_divider_L7tGdU",
-                    "block_group_3G7Ey9"
-                  ]
-                }
-              },
-              "block_order": [
-                "block_group_iqgbkw",
-                "block_group_L8h4te",
-                "block_group_tG4kTi"
-              ]
-            }
-          },
-          "block_order": [
-            "block_group_4KKmpr"
-          ]
         }
       },
       "block_order": [
@@ -7079,8 +6062,7 @@
         "block_group_4nJExi",
         "block_group_mCmGE4",
         "block_divider_6rhGLa",
-        "block_text_wAgpaQ",
-        "block_group_83EWM9"
+        "block_text_wAgpaQ"
       ],
       "name": "REAL RESULT",
       "settings": {
@@ -7124,10 +6106,1092 @@
         "hide_desktop": false
       }
     },
-    "premium_global_section_yeBVc7": {
+    "premium_global_section_9Cgezg": {
       "type": "premium_global_section",
       "blocks": {
-        "block_group_Bdp8EL": {
+        "block_group_6BCrcF": {
+          "type": "block_group",
+          "name": "Top Header",
+          "settings": {
+            "layout_direction": "group--vertical",
+            "align_x": "center",
+            "align_y": "flex-start",
+            "wrap": "wrap",
+            "hover_zoom": false,
+            "shadow": false,
+            "width": "fill",
+            "custom_width_unit_desktop": "%",
+            "custom_width_pixel": 48,
+            "custom_width": 100,
+            "width_tablet": "fill",
+            "custom_width_unit_tablet": "%",
+            "custom_width_tablet_pixel": 48,
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_unit_mobile": "%",
+            "custom_width_pixel_mobile": 48,
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "gap": 12,
+            "gap_m": 12,
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false,
+            "image_link": ""
+          },
+          "blocks": {
+            "block_heading_LbaLtY": {
+              "type": "block_heading",
+              "name": "Heading",
+              "settings": {
+                "text": "Trusted by Thousands",
+                "alignment": "center",
+                "font_italic": false,
+                "font_uppercase": false,
+                "line_height": "1.2",
+                "letter_spacing": 0,
+                "color": "#1a2332",
+                "tag": "h2",
+                "size_mode": "custom",
+                "font_size": 48,
+                "font_size_m": 40,
+                "font_weight": 500,
+                "width": "fill",
+                "custom_width": 100,
+                "width_tablet": "fill",
+                "custom_width_tablet": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "hide_mobile": false,
+                "hide_desktop": false
+              },
+              "blocks": {}
+            },
+            "block_text_gbPRBN": {
+              "type": "block_text",
+              "name": "Text",
+              "settings": {
+                "text": "<p>Real results from real customers. See why people choose VitaNova for their wellness journey.</p>",
+                "block_link": "",
+                "alignment": "center",
+                "width": "custom",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 50,
+                "width_tablet": "custom",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 50,
+                "width_mobile": "fit-content",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "font_size": 18,
+                "font_size_mobile": 14,
+                "text_uppercase": false,
+                "font_weight": "400",
+                "color": "#6b7280",
+                "background": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "pt_m": 0,
+                "pb_m": 0,
+                "pl_m": 0,
+                "pr_m": 0,
+                "hide_mobile": false,
+                "hide_desktop": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_LbaLtY",
+            "block_text_gbPRBN"
+          ]
+        },
+        "block_group_YmAh7r": {
+          "type": "block_group",
+          "name": "Reviews Container",
+          "settings": {
+            "layout_direction": "group--vertical",
+            "align_x": "flex-start",
+            "align_y": "flex-start",
+            "wrap": "wrap",
+            "hover_zoom": false,
+            "shadow": false,
+            "width": "fill",
+            "custom_width_unit_desktop": "%",
+            "custom_width_pixel": 48,
+            "custom_width": 100,
+            "width_tablet": "fill",
+            "custom_width_unit_tablet": "%",
+            "custom_width_tablet_pixel": 48,
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_unit_mobile": "%",
+            "custom_width_pixel_mobile": 48,
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "gap": 0,
+            "gap_m": 0,
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "ptm": 0,
+            "pbm": 0,
+            "plm": 0,
+            "prm": 0,
+            "hide_desktop": false,
+            "hide_mobile": false,
+            "image_link": ""
+          },
+          "blocks": {
+            "block_group_pYQQ4R": {
+              "type": "block_group",
+              "name": "Block Container",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "align_x": "flex-start",
+                "align_y": "flex-start",
+                "wrap": "wrap",
+                "hover_zoom": false,
+                "shadow": false,
+                "width": "fill",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 100,
+                "width_tablet": "fill",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 100,
+                "width_mobile": "fill",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "gap": 24,
+                "gap_m": 16,
+                "background": "",
+                "radius": 0,
+                "border": 0,
+                "border_color": "",
+                "pt": 0,
+                "pb": 0,
+                "pl": 0,
+                "pr": 0,
+                "ptm": 0,
+                "pbm": 0,
+                "plm": 0,
+                "prm": 0,
+                "hide_desktop": false,
+                "hide_mobile": false,
+                "image_link": ""
+              },
+              "blocks": {
+                "block_group_QAkbVR": {
+                  "type": "block_group",
+                  "name": "Review Block 1",
+                  "settings": {
+                    "layout_direction": "group--vertical",
+                    "align_x": "flex-start",
+                    "align_y": "flex-start",
+                    "wrap": "wrap",
+                    "hover_zoom": false,
+                    "shadow": false,
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "custom",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fill",
+                    "custom_height": 100,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "background": "#F5F4F1",
+                    "radius": 4,
+                    "border": 0,
+                    "border_color": "#edecec",
+                    "pt": 44,
+                    "pb": 44,
+                    "pl": 36,
+                    "pr": 36,
+                    "ptm": 30,
+                    "pbm": 30,
+                    "plm": 24,
+                    "prm": 24,
+                    "hide_desktop": false,
+                    "hide_mobile": false,
+                    "image_link": ""
+                  },
+                  "blocks": {
+                    "block_icon_8ByatT": {
+                      "type": "block_icon",
+                      "name": "Icon",
+                      "settings": {
+                        "icon": "certificate",
+                        "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
+                        "svg_code": "",
+                        "size": 100,
+                        "color": "#234a55"
+                      },
+                      "blocks": {}
+                    },
+                    "block_text_9KLcRV": {
+                      "type": "block_text",
+                      "name": "Text",
+                      "settings": {
+                        "text": "<p>After 8 weeks, my skin looks more radiant than it has in years. The Radiance Serum has become a non-negotiable in my routine.</p>",
+                        "block_link": "",
+                        "alignment": "left",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "font_size": 14,
+                        "font_size_mobile": 12,
+                        "text_uppercase": false,
+                        "font_weight": "400",
+                        "color": "#1a2332",
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "pt_m": 0,
+                        "pb_m": 0,
+                        "pl_m": 0,
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
+                      },
+                      "blocks": {}
+                    },
+                    "block_divider_HyXmFP": {
+                      "type": "block_divider",
+                      "name": "Divider",
+                      "settings": {
+                        "border": 2,
+                        "color": "#e8e6e3",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "background": "",
+                        "pt": 20,
+                        "pb": 10,
+                        "ptm": 12,
+                        "pbm": 8,
+                        "hide_desktop": false,
+                        "hide_mobile": false
+                      },
+                      "blocks": {}
+                    },
+                    "block_group_BBKbbw": {
+                      "type": "block_group",
+                      "name": "Border Box Text",
+                      "settings": {
+                        "layout_direction": "group--vertical",
+                        "align_x": "space-between",
+                        "align_y": "center",
+                        "wrap": "wrap",
+                        "hover_zoom": false,
+                        "shadow": false,
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "gap": 12,
+                        "gap_m": 12,
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "rgba(0,0,0,0)",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "ptm": 0,
+                        "pbm": 0,
+                        "plm": 0,
+                        "prm": 0,
+                        "hide_desktop": false,
+                        "hide_mobile": false,
+                        "image_link": ""
+                      },
+                      "blocks": {
+                        "block_text_eBBPAx": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p><strong>Sarah M.</strong><br/>New York, NY</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fill",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fill",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fill",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 12,
+                            "font_size_mobile": 12,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#1a2332",
+                            "background": "",
+                            "radius": 0,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 0,
+                            "pb": 0,
+                            "pl": 0,
+                            "pr": 0,
+                            "pt_m": 0,
+                            "pb_m": 0,
+                            "pl_m": 0,
+                            "pr_m": 0,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        },
+                        "block_text_Y9Xfcg": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p>Verified Purchase: Radiance Serum</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fit-content",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fit-content",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 16,
+                            "font_size_mobile": 14,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#0d3b66",
+                            "background": "",
+                            "radius": 0,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 0,
+                            "pb": 0,
+                            "pl": 0,
+                            "pr": 0,
+                            "pt_m": 0,
+                            "pb_m": 0,
+                            "pl_m": 0,
+                            "pr_m": 0,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "block_text_eBBPAx",
+                        "block_text_Y9Xfcg"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "block_icon_8ByatT",
+                    "block_text_9KLcRV",
+                    "block_divider_HyXmFP",
+                    "block_group_BBKbbw"
+                  ]
+                },
+                "block_group_9hCgdT": {
+                  "type": "block_group",
+                  "name": "Review Block 1",
+                  "settings": {
+                    "layout_direction": "group--vertical",
+                    "align_x": "flex-start",
+                    "align_y": "flex-start",
+                    "wrap": "wrap",
+                    "hover_zoom": false,
+                    "shadow": false,
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "custom",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fill",
+                    "custom_height": 100,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "background": "#F5F4F1",
+                    "radius": 4,
+                    "border": 0,
+                    "border_color": "#edecec",
+                    "pt": 44,
+                    "pb": 44,
+                    "pl": 36,
+                    "pr": 36,
+                    "ptm": 30,
+                    "pbm": 30,
+                    "plm": 24,
+                    "prm": 24,
+                    "hide_desktop": false,
+                    "hide_mobile": false,
+                    "image_link": ""
+                  },
+                  "blocks": {
+                    "block_icon_Nh9j6R": {
+                      "type": "block_icon",
+                      "name": "Icon",
+                      "settings": {
+                        "icon": "certificate",
+                        "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
+                        "svg_code": "",
+                        "size": 100,
+                        "color": "#234a55"
+                      },
+                      "blocks": {}
+                    },
+                    "block_text_xGXgGy": {
+                      "type": "block_text",
+                      "name": "Text",
+                      "settings": {
+                        "text": "<p>After 8 weeks, my skin looks more radiant than it has in years. The Radiance Serum has become a non-negotiable in my routine.</p>",
+                        "block_link": "",
+                        "alignment": "left",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "font_size": 14,
+                        "font_size_mobile": 12,
+                        "text_uppercase": false,
+                        "font_weight": "400",
+                        "color": "#1a2332",
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "pt_m": 0,
+                        "pb_m": 0,
+                        "pl_m": 0,
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
+                      },
+                      "blocks": {}
+                    },
+                    "block_divider_6Ecpzw": {
+                      "type": "block_divider",
+                      "name": "Divider",
+                      "settings": {
+                        "border": 2,
+                        "color": "#e8e6e3",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "background": "",
+                        "pt": 20,
+                        "pb": 10,
+                        "ptm": 12,
+                        "pbm": 8,
+                        "hide_desktop": false,
+                        "hide_mobile": false
+                      },
+                      "blocks": {}
+                    },
+                    "block_group_TRFkgr": {
+                      "type": "block_group",
+                      "name": "Border Box Text",
+                      "settings": {
+                        "layout_direction": "group--vertical",
+                        "align_x": "space-between",
+                        "align_y": "center",
+                        "wrap": "wrap",
+                        "hover_zoom": false,
+                        "shadow": false,
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "gap": 12,
+                        "gap_m": 12,
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "rgba(0,0,0,0)",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "ptm": 0,
+                        "pbm": 0,
+                        "plm": 0,
+                        "prm": 0,
+                        "hide_desktop": false,
+                        "hide_mobile": false,
+                        "image_link": ""
+                      },
+                      "blocks": {
+                        "block_text_BKkkyF": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p><strong>Sarah M.</strong><br/>New York, NY</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fill",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fill",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fill",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 12,
+                            "font_size_mobile": 12,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#1a2332",
+                            "background": "",
+                            "radius": 0,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 0,
+                            "pb": 0,
+                            "pl": 0,
+                            "pr": 0,
+                            "pt_m": 0,
+                            "pb_m": 0,
+                            "pl_m": 0,
+                            "pr_m": 0,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        },
+                        "block_text_kANjfw": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p>Verified Purchase: Radiance Serum</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fit-content",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fit-content",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 16,
+                            "font_size_mobile": 14,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#0d3b66",
+                            "background": "",
+                            "radius": 0,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 0,
+                            "pb": 0,
+                            "pl": 0,
+                            "pr": 0,
+                            "pt_m": 0,
+                            "pb_m": 0,
+                            "pl_m": 0,
+                            "pr_m": 0,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "block_text_BKkkyF",
+                        "block_text_kANjfw"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "block_icon_Nh9j6R",
+                    "block_text_xGXgGy",
+                    "block_divider_6Ecpzw",
+                    "block_group_TRFkgr"
+                  ]
+                },
+                "block_group_P8Wxfx": {
+                  "type": "block_group",
+                  "name": "Review Block 1",
+                  "settings": {
+                    "layout_direction": "group--vertical",
+                    "align_x": "flex-start",
+                    "align_y": "flex-start",
+                    "wrap": "wrap",
+                    "hover_zoom": false,
+                    "shadow": false,
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "custom",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fill",
+                    "custom_height": 100,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "background": "#F5F4F1",
+                    "radius": 4,
+                    "border": 0,
+                    "border_color": "#edecec",
+                    "pt": 44,
+                    "pb": 44,
+                    "pl": 36,
+                    "pr": 36,
+                    "ptm": 30,
+                    "pbm": 30,
+                    "plm": 24,
+                    "prm": 24,
+                    "hide_desktop": false,
+                    "hide_mobile": false,
+                    "image_link": ""
+                  },
+                  "blocks": {
+                    "block_icon_jE4UEX": {
+                      "type": "block_icon",
+                      "name": "Icon",
+                      "settings": {
+                        "icon": "certificate",
+                        "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
+                        "svg_code": "",
+                        "size": 100,
+                        "color": "#234a55"
+                      },
+                      "blocks": {}
+                    },
+                    "block_text_N7WBY6": {
+                      "type": "block_text",
+                      "name": "Text",
+                      "settings": {
+                        "text": "<p>After 8 weeks, my skin looks more radiant than it has in years. The Radiance Serum has become a non-negotiable in my routine.</p>",
+                        "block_link": "",
+                        "alignment": "left",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "font_size": 14,
+                        "font_size_mobile": 12,
+                        "text_uppercase": false,
+                        "font_weight": "400",
+                        "color": "#1a2332",
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "pt_m": 0,
+                        "pb_m": 0,
+                        "pl_m": 0,
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
+                      },
+                      "blocks": {}
+                    },
+                    "block_divider_NeyyY9": {
+                      "type": "block_divider",
+                      "name": "Divider",
+                      "settings": {
+                        "border": 2,
+                        "color": "#e8e6e3",
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "background": "",
+                        "pt": 20,
+                        "pb": 10,
+                        "ptm": 12,
+                        "pbm": 8,
+                        "hide_desktop": false,
+                        "hide_mobile": false
+                      },
+                      "blocks": {}
+                    },
+                    "block_group_PNwLdE": {
+                      "type": "block_group",
+                      "name": "Border Box Text",
+                      "settings": {
+                        "layout_direction": "group--vertical",
+                        "align_x": "space-between",
+                        "align_y": "center",
+                        "wrap": "wrap",
+                        "hover_zoom": false,
+                        "shadow": false,
+                        "width": "fill",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fill",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fill",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "gap": 12,
+                        "gap_m": 12,
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "rgba(0,0,0,0)",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "ptm": 0,
+                        "pbm": 0,
+                        "plm": 0,
+                        "prm": 0,
+                        "hide_desktop": false,
+                        "hide_mobile": false,
+                        "image_link": ""
+                      },
+                      "blocks": {
+                        "block_text_3jHbQy": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p><strong>Sarah M.</strong><br/>New York, NY</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fill",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fill",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fill",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 12,
+                            "font_size_mobile": 12,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#1a2332",
+                            "background": "",
+                            "radius": 0,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 0,
+                            "pb": 0,
+                            "pl": 0,
+                            "pr": 0,
+                            "pt_m": 0,
+                            "pb_m": 0,
+                            "pl_m": 0,
+                            "pr_m": 0,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        },
+                        "block_text_QwzdxB": {
+                          "type": "block_text",
+                          "name": "Text",
+                          "settings": {
+                            "text": "<p>Verified Purchase: Radiance Serum</p>",
+                            "block_link": "",
+                            "alignment": "left",
+                            "width": "fit-content",
+                            "custom_width_unit_desktop": "%",
+                            "custom_width_pixel": 48,
+                            "custom_width": 100,
+                            "width_tablet": "fit-content",
+                            "custom_width_unit_tablet": "%",
+                            "custom_width_tablet_pixel": 48,
+                            "custom_width_tablet": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_unit_mobile": "%",
+                            "custom_width_pixel_mobile": 48,
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "font_size": 16,
+                            "font_size_mobile": 14,
+                            "text_uppercase": false,
+                            "font_weight": "400",
+                            "color": "#0d3b66",
+                            "background": "",
+                            "radius": 0,
+                            "border": 0,
+                            "border_color": "",
+                            "pt": 0,
+                            "pb": 0,
+                            "pl": 0,
+                            "pr": 0,
+                            "pt_m": 0,
+                            "pb_m": 0,
+                            "pl_m": 0,
+                            "pr_m": 0,
+                            "hide_mobile": false,
+                            "hide_desktop": false
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "block_text_3jHbQy",
+                        "block_text_QwzdxB"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "block_icon_jE4UEX",
+                    "block_text_N7WBY6",
+                    "block_divider_NeyyY9",
+                    "block_group_PNwLdE"
+                  ]
+                }
+              },
+              "block_order": [
+                "block_group_QAkbVR",
+                "block_group_9hCgdT",
+                "block_group_P8Wxfx"
+              ]
+            }
+          },
+          "block_order": [
+            "block_group_pYQQ4R"
+          ]
+        }
+      },
+      "block_order": [
+        "block_group_6BCrcF",
+        "block_group_YmAh7r"
+      ],
+      "name": "TRUSTED BY",
+      "settings": {
+        "section_width": "custom",
+        "custom_width": 1200,
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "center",
+        "background_color": "#FFFFFF",
+        "overlay_color": "",
+        "overlay_opacity": 0,
+        "bg_position": "center center",
+        "bg_size": "cover",
+        "align_y": "flex-start",
+        "columns_desktop": 1,
+        "columns_mobile": 1,
+        "gap": 48,
+        "gap_m": 24,
+        "border_radius": 0,
+        "border_width": 0,
+        "border_color": "#000000",
+        "heading": "",
+        "heading_size_desktop": 42,
+        "heading_size_mobile": 26,
+        "heading_weight": 700,
+        "heading_color": "#111111",
+        "text": "",
+        "text_size_desktop": 16,
+        "text_size_mobile": 14,
+        "text_color": "#111111",
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 52,
+        "padding_left_mobile": 16,
+        "padding_right_mobile": 16,
+        "hide_mobile": false,
+        "hide_desktop": false
+      }
+    },
+    "premium_global_section_QwCHwy": {
+      "type": "premium_global_section",
+      "blocks": {
+        "block_group_ydncKJ": {
           "type": "block_group",
           "name": "Block Group",
           "settings": {
@@ -7170,7 +7234,7 @@
             "image_link": ""
           },
           "blocks": {
-            "block_group_667HKE": {
+            "block_group_YVHwpP": {
               "type": "block_group",
               "name": "Block Group",
               "settings": {
@@ -7196,7 +7260,7 @@
                 "custom_height": 100,
                 "gap": 12,
                 "gap_m": 12,
-                "background": "",
+                "background": "#F5F4F1",
                 "radius": 14,
                 "border": 0,
                 "border_color": "",
@@ -7213,7 +7277,7 @@
                 "image_link": ""
               },
               "blocks": {
-                "blcok_background_image_FPbVFw": {
+                "blcok_background_image_8BDMXF": {
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
@@ -7235,7 +7299,7 @@
                     "hide_mobile": false
                   },
                   "blocks": {
-                    "block_group_yEYiqD": {
+                    "block_group_dK9iNz": {
                       "type": "block_group",
                       "name": "Block Group",
                       "settings": {
@@ -7278,7 +7342,7 @@
                         "image_link": ""
                       },
                       "blocks": {
-                        "block_heading_HqjRVm": {
+                        "block_heading_jg8e9g": {
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
@@ -7307,7 +7371,7 @@
                           },
                           "blocks": {}
                         },
-                        "block_text_6z47Xd": {
+                        "block_text_6wadJq": {
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
@@ -7350,7 +7414,7 @@
                           },
                           "blocks": {}
                         },
-                        "block_group_fwi4YR": {
+                        "block_group_t6eBgr": {
                           "type": "block_group",
                           "name": "Block Group",
                           "settings": {
@@ -7393,7 +7457,7 @@
                             "image_link": ""
                           },
                           "blocks": {
-                            "block_text_LfbXq4": {
+                            "block_text_FgaFUT": {
                               "type": "block_text",
                               "name": "Text",
                               "settings": {
@@ -7436,7 +7500,7 @@
                               },
                               "blocks": {}
                             },
-                            "block_icon_NEiygb": {
+                            "block_icon_wQ9LN7": {
                               "type": "block_icon",
                               "name": "Icon",
                               "settings": {
@@ -7449,28 +7513,28 @@
                             }
                           },
                           "block_order": [
-                            "block_text_LfbXq4",
-                            "block_icon_NEiygb"
+                            "block_text_FgaFUT",
+                            "block_icon_wQ9LN7"
                           ]
                         }
                       },
                       "block_order": [
-                        "block_heading_HqjRVm",
-                        "block_text_6z47Xd",
-                        "block_group_fwi4YR"
+                        "block_heading_jg8e9g",
+                        "block_text_6wadJq",
+                        "block_group_t6eBgr"
                       ]
                     }
                   },
                   "block_order": [
-                    "block_group_yEYiqD"
+                    "block_group_dK9iNz"
                   ]
                 }
               },
               "block_order": [
-                "blcok_background_image_FPbVFw"
+                "blcok_background_image_8BDMXF"
               ]
             },
-            "block_group_wD4QQK": {
+            "block_group_Eyf4c6": {
               "type": "block_group",
               "name": "Block Group",
               "settings": {
@@ -7513,7 +7577,7 @@
                 "image_link": ""
               },
               "blocks": {
-                "blcok_background_image_6icgYA": {
+                "blcok_background_image_3dynfx": {
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
@@ -7535,7 +7599,7 @@
                     "hide_mobile": false
                   },
                   "blocks": {
-                    "block_group_UMgF7V": {
+                    "block_group_k76mp7": {
                       "type": "block_group",
                       "name": "Block Group",
                       "settings": {
@@ -7578,7 +7642,7 @@
                         "image_link": ""
                       },
                       "blocks": {
-                        "block_heading_WpNYaV": {
+                        "block_heading_mbDzFx": {
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
@@ -7607,7 +7671,7 @@
                           },
                           "blocks": {}
                         },
-                        "block_text_wfJGDc": {
+                        "block_text_fHXaPF": {
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
@@ -7650,7 +7714,7 @@
                           },
                           "blocks": {}
                         },
-                        "block_group_qcb3Gi": {
+                        "block_group_KdHLPC": {
                           "type": "block_group",
                           "name": "Block Group",
                           "settings": {
@@ -7693,7 +7757,7 @@
                             "image_link": ""
                           },
                           "blocks": {
-                            "block_text_jRRmnN": {
+                            "block_text_XmLMgM": {
                               "type": "block_text",
                               "name": "Text",
                               "settings": {
@@ -7736,7 +7800,7 @@
                               },
                               "blocks": {}
                             },
-                            "block_icon_96kDhG": {
+                            "block_icon_bGVwDP": {
                               "type": "block_icon",
                               "name": "Icon",
                               "settings": {
@@ -7749,28 +7813,28 @@
                             }
                           },
                           "block_order": [
-                            "block_text_jRRmnN",
-                            "block_icon_96kDhG"
+                            "block_text_XmLMgM",
+                            "block_icon_bGVwDP"
                           ]
                         }
                       },
                       "block_order": [
-                        "block_heading_WpNYaV",
-                        "block_text_wfJGDc",
-                        "block_group_qcb3Gi"
+                        "block_heading_mbDzFx",
+                        "block_text_fHXaPF",
+                        "block_group_KdHLPC"
                       ]
                     }
                   },
                   "block_order": [
-                    "block_group_UMgF7V"
+                    "block_group_k76mp7"
                   ]
                 }
               },
               "block_order": [
-                "blcok_background_image_6icgYA"
+                "blcok_background_image_3dynfx"
               ]
             },
-            "block_group_g7cXdn": {
+            "block_group_faaXqb": {
               "type": "block_group",
               "name": "Block Group",
               "settings": {
@@ -7813,7 +7877,7 @@
                 "image_link": ""
               },
               "blocks": {
-                "blcok_background_image_EW8igG": {
+                "blcok_background_image_AMKRxa": {
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
@@ -7835,7 +7899,7 @@
                     "hide_mobile": false
                   },
                   "blocks": {
-                    "block_group_wyzcg9": {
+                    "block_group_8ANHmt": {
                       "type": "block_group",
                       "name": "Block Group",
                       "settings": {
@@ -7878,7 +7942,7 @@
                         "image_link": ""
                       },
                       "blocks": {
-                        "block_heading_cja49P": {
+                        "block_heading_hP7cix": {
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
@@ -7907,7 +7971,7 @@
                           },
                           "blocks": {}
                         },
-                        "block_text_f8MwaJ": {
+                        "block_text_9WGJ8f": {
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
@@ -7950,7 +8014,7 @@
                           },
                           "blocks": {}
                         },
-                        "block_group_gc3hWg": {
+                        "block_group_YAUHLj": {
                           "type": "block_group",
                           "name": "Block Group",
                           "settings": {
@@ -7993,7 +8057,7 @@
                             "image_link": ""
                           },
                           "blocks": {
-                            "block_text_BwRKkz": {
+                            "block_text_TD8X3U": {
                               "type": "block_text",
                               "name": "Text",
                               "settings": {
@@ -8036,7 +8100,7 @@
                               },
                               "blocks": {}
                             },
-                            "block_icon_KTyF8a": {
+                            "block_icon_PPpX6m": {
                               "type": "block_icon",
                               "name": "Icon",
                               "settings": {
@@ -8049,37 +8113,37 @@
                             }
                           },
                           "block_order": [
-                            "block_text_BwRKkz",
-                            "block_icon_KTyF8a"
+                            "block_text_TD8X3U",
+                            "block_icon_PPpX6m"
                           ]
                         }
                       },
                       "block_order": [
-                        "block_heading_cja49P",
-                        "block_text_f8MwaJ",
-                        "block_group_gc3hWg"
+                        "block_heading_hP7cix",
+                        "block_text_9WGJ8f",
+                        "block_group_YAUHLj"
                       ]
                     }
                   },
                   "block_order": [
-                    "block_group_wyzcg9"
+                    "block_group_8ANHmt"
                   ]
                 }
               },
               "block_order": [
-                "blcok_background_image_EW8igG"
+                "blcok_background_image_AMKRxa"
               ]
             }
           },
           "block_order": [
-            "block_group_667HKE",
-            "block_group_wD4QQK",
-            "block_group_g7cXdn"
+            "block_group_YVHwpP",
+            "block_group_Eyf4c6",
+            "block_group_faaXqb"
           ]
         }
       },
       "block_order": [
-        "block_group_Bdp8EL"
+        "block_group_ydncKJ"
       ],
       "name": "THE CATEGORIES",
       "settings": {
@@ -11810,7 +11874,8 @@
     "premium_global_section_CYnaJz",
     "premium_global_section_crphKL",
     "premium_global_section_TDVHbj",
-    "premium_global_section_yeBVc7",
+    "premium_global_section_9Cgezg",
+    "premium_global_section_QwCHwy",
     "premium_global_section_AQHizV",
     "premium_global_section_aWA6Ma",
     "premium_global_section_RWTKH4"
