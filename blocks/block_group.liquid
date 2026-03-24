@@ -75,8 +75,8 @@
 {% endcapture %}
 
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
-
-<div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
+{% assign child_count = block.blocks.size %}
+<div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }} data-child-size="{{ child_count }}">
   
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
