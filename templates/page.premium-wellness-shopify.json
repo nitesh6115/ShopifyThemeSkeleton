@@ -10006,7 +10006,7 @@
           "type": "block_group",
           "name": "Reviews Container",
           "settings": {
-            "layout_direction": "group--vertical",
+            "layout_direction": "group--horizontal",
             "align_x": "flex-start",
             "align_y": "flex-start",
             "wrap": "nowrap",
