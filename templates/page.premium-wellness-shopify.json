@@ -7820,7 +7820,7 @@
                 "dot_color": "#999999",
                 "dot_active": "#000000",
                 "per_row_desktop": 3,
-                "per_row_tablet": 3,
+                "per_row_tablet": 2,
                 "per_row_mobile": 2,
                 "gap": 32,
                 "gap_m": 6
