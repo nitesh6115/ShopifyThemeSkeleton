@@ -3841,7 +3841,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Resveratrol",
+                        "text": "Vitamin C",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -3870,7 +3870,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Cellular longevity</p>",
+                        "text": "<p>Collagen synthesis</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -3913,7 +3913,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Activates sirtuins to support healthy aging at the cellular level</p>",
+                        "text": "<p>Essential cofactor for collagen production and antioxidant protection</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -4018,7 +4018,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Resveratrol",
+                        "text": "Omega-3 DHA",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -4047,7 +4047,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Cellular longevity</p>",
+                        "text": "<p>Cognitive function</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -4090,7 +4090,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Activates sirtuins to support healthy aging at the cellular level</p>",
+                        "text": "<p>Supports brain health, memory, and inflammatory response</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -4195,7 +4195,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Resveratrol",
+                        "text": "Hyaluronic Acid",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -4224,7 +4224,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Cellular longevity</p>",
+                        "text": "<p>Skin hydration</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -4267,7 +4267,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Activates sirtuins to support healthy aging at the cellular level</p>",
+                        "text": "<p>Multi-molecular weight HA for deep and surface hydration</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
