@@ -7821,9 +7821,9 @@
                 "dot_active": "#000000",
                 "per_row_desktop": 3,
                 "per_row_tablet": 3,
-                "per_row_mobile": 1,
+                "per_row_mobile": 2,
                 "gap": 32,
-                "gap_m": 20
+                "gap_m": 10
               },
               "blocks": {
                 "static-product-card": {
