@@ -7810,7 +7810,7 @@
                 "max_items": 6,
                 "enable_desktop": false,
                 "enable_tablet": false,
-                "enable_mobile": true,
+                "enable_mobile": false,
                 "autoplay": false,
                 "autoplay_speed": 3000,
                 "show_arrows": true,
@@ -7821,7 +7821,7 @@
                 "dot_active": "#000000",
                 "per_row_desktop": 3,
                 "per_row_tablet": 3,
-                "per_row_mobile": 1,
+                "per_row_mobile": 2,
                 "gap": 32,
                 "gap_m": 6
               },
