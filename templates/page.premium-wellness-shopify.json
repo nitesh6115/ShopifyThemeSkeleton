@@ -1714,7 +1714,7 @@
                 "primary_border_size": 2,
                 "primary_border_radius": 4,
                 "secondary_label": "View All Products",
-                "secondary_link": "",
+                "secondary_link": "shopify://collections/all",
                 "secondary_bg": "rgba(0,0,0,0)",
                 "secondary_text": "#0d3b66",
                 "secondary_border": "#0d3b66",
