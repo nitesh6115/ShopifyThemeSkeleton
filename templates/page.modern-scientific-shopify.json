@@ -313,7 +313,7 @@
                   "settings": {
                     "layout_direction": "group--horizontal",
                     "align_x": "flex-start",
-                    "align_y": "center",
+                    "align_y": "flex-start",
                     "wrap": "wrap",
                     "hover_zoom": false,
                     "shadow": false,
@@ -356,7 +356,7 @@
                       "settings": {
                         "icon": "shield",
                         "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M0 10C0 4.47715 4.47715 0 10 0H30C35.5228 0 40 4.47715 40 10V30C40 35.5228 35.5228 40 30 40H10C4.47715 40 0 35.5228 0 30V10Z\" fill=\"#0891B2\" fill-opacity=\"0.1\"></path>\n<path d=\"M26.6673 20.8333C26.6673 25 23.7507 27.0833 20.284 28.2916C20.1025 28.3531 19.9053 28.3502 19.7257 28.2833C16.2507 27.0833 13.334 25 13.334 20.8333V15C13.334 14.779 13.4218 14.567 13.5781 14.4107C13.7343 14.2544 13.9463 14.1666 14.1673 14.1666C15.834 14.1666 17.9173 13.1666 19.3673 11.9C19.5439 11.7491 19.7684 11.6663 20.0007 11.6663C20.2329 11.6663 20.4574 11.7491 20.634 11.9C22.0923 13.175 24.1673 14.1666 25.834 14.1666C26.055 14.1666 26.267 14.2544 26.4232 14.4107C26.5795 14.567 26.6673 14.779 26.6673 15V20.8333Z\" stroke=\"#0891B2\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
-                        "size": 40,
+                        "size": 50,
                         "color": "#0ea5e9"
                       },
                       "blocks": {}
@@ -459,7 +459,7 @@
                       "settings": {
                         "icon": "leaf",
                         "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\">\n<path d=\"M0 10C0 4.47715 4.47715 0 10 0H30C35.5228 0 40 4.47715 40 10V30C40 35.5228 35.5228 40 30 40H10C4.47715 40 0 35.5228 0 30V10Z\" fill=\"#0891B2\" fill-opacity=\"0.1\"></path>\n<g clip-path=\"url(#clip0_152_3206)\">\n<path d=\"M19.1674 26.6666C17.7041 26.6711 16.2926 26.1254 15.2129 25.1378C14.1331 24.1502 13.4639 22.7929 13.338 21.335C13.2122 19.8772 13.6388 18.4253 14.5334 17.2672C15.4279 16.1092 16.725 15.3297 18.1674 15.0833C22.9174 14.1666 24.1674 13.7333 25.8341 11.6666C26.6674 13.3333 27.5008 15.15 27.5008 18.3333C27.5008 22.9166 23.5174 26.6666 19.1674 26.6666Z\" stroke=\"#0891B2\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M11.666 27.5C11.666 25 13.2077 23.0333 15.8993 22.5C17.916 22.1 19.9993 20.8333 20.8327 20\" stroke=\"#0891B2\" stroke-width=\"1.66667\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_152_3206\">\n<rect width=\"20\" height=\"20\" fill=\"white\" transform=\"translate(10 10)\"></rect>\n</clippath>\n</defs>\n</svg>",
-                        "size": 40,
+                        "size": 50,
                         "color": "#0ea5e9"
                       },
                       "blocks": {}
