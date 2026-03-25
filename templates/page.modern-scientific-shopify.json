@@ -1875,7 +1875,7 @@
               "name": "Collection Products",
               "settings": {
                 "collection": "all",
-                "max_items": 8,
+                "max_items": 4,
                 "enable_desktop": false,
                 "enable_tablet": false,
                 "enable_mobile": false,
@@ -1888,7 +1888,7 @@
                 "dot_color": "#999",
                 "dot_active": "#000",
                 "per_row_desktop": 4,
-                "per_row_tablet": 3,
+                "per_row_tablet": 4,
                 "per_row_mobile": 1,
                 "gap": 26,
                 "gap_m": 16
@@ -1948,7 +1948,7 @@
                       "settings": {
                         "image": "{{ closest.product.featured_image }}",
                         "image_link": "{{ closest.product.url }}",
-                        "ratio": "auto",
+                        "ratio": "square",
                         "hover_zoom": false,
                         "shadow": false,
                         "width": "fill",
