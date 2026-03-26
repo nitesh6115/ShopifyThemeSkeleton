@@ -12,7 +12,8 @@
 
 {% assign style_schema = style_schema | strip_newlines %}
 
-<div class="collection_block_container" style="{{- style_schema -}}">
+<div class="collection_block_container {% if block.settings.hide_desktop %}hide-desktop;{% endif %}
+  {% if block.settings.hide_mobile %}hide-mobile;{% endif %}" style="{{- style_schema -}}">
     
   <div
     class="
@@ -551,6 +552,12 @@ document.addEventListener(
       "step": 2,
       "default": 8
     },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" }
 
 ],
 "presets": [{
