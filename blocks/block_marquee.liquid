@@ -49,6 +49,8 @@
   {% else %}
   block-width-mobile-{{ block.settings.width_mobile }};
   {% endif %}
+  {% if block.settings.hide_desktop %}hide-desktop;{% endif %}
+  {% if block.settings.hide_mobile %}hide-mobile;{% endif %}
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 <div
