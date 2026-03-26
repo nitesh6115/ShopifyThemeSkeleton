@@ -8163,7 +8163,7 @@
                 "custom_height": 100,
                 "gap": 12,
                 "gap_m": 12,
-                "background": "",
+                "background": "#ffffff",
                 "radius": 14,
                 "border": 1,
                 "border_color": "#f2fbff",
@@ -8184,7 +8184,7 @@
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
-                    "image": "shopify://shop_images/5b2d3242004059dcdcd913aada49a7fb51b9403d.jpg",
+                    "image": "shopify://shop_images/ce5326d43c1d8e6a35c44500f31c9740b2dade57_85646c4b-5ed5-4121-9f64-a20b652b36f1.jpg",
                     "overlay_color": "",
                     "overlay_opacity": 85,
                     "bg_position": "center center",
@@ -8460,7 +8460,7 @@
                 "custom_height": 100,
                 "gap": 12,
                 "gap_m": 12,
-                "background": "",
+                "background": "#ffffff",
                 "radius": 14,
                 "border": 1,
                 "border_color": "#f2fbff",
@@ -8481,7 +8481,7 @@
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
-                    "image": "shopify://shop_images/5b2d3242004059dcdcd913aada49a7fb51b9403d.jpg",
+                    "image": "shopify://shop_images/83c2b478d41ea626e65e42da1a4cc77535ccf6fb.jpg",
                     "overlay_color": "",
                     "overlay_opacity": 85,
                     "bg_position": "center center",
@@ -8547,7 +8547,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Supplements",
+                        "text": "Skincare",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -8576,7 +8576,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Advanced formulas for whole-body wellness</p>",
+                        "text": "<p>Clinical-grade actives for visible results</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -8662,7 +8662,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Explore Supplements</p>",
+                            "text": "<p>Explore Skincare</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fit-content",
@@ -8757,7 +8757,7 @@
                 "custom_height": 100,
                 "gap": 12,
                 "gap_m": 12,
-                "background": "",
+                "background": "#ffffff",
                 "radius": 14,
                 "border": 1,
                 "border_color": "#f2fbff",
@@ -8778,7 +8778,7 @@
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
-                    "image": "shopify://shop_images/5b2d3242004059dcdcd913aada49a7fb51b9403d.jpg",
+                    "image": "shopify://shop_images/b651495bc09dd0eb08b6d197c434bf6c6b2be557.jpg",
                     "overlay_color": "",
                     "overlay_opacity": 85,
                     "bg_position": "center center",
@@ -8844,7 +8844,7 @@
                       "type": "block_heading",
                       "name": "Heading",
                       "settings": {
-                        "text": "Supplements",
+                        "text": "Haircare",
                         "alignment": "left",
                         "font_italic": false,
                         "font_uppercase": false,
@@ -8873,7 +8873,7 @@
                       "type": "block_text",
                       "name": "Text",
                       "settings": {
-                        "text": "<p>Advanced formulas for whole-body wellness</p>",
+                        "text": "<p>Science-backed solutions for healthy hair</p>",
                         "block_link": "",
                         "alignment": "left",
                         "width": "fill",
@@ -8959,7 +8959,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Explore Supplements</p>",
+                            "text": "<p>Explore Haircare</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fit-content",
