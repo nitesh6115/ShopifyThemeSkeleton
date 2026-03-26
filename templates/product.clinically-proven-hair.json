@@ -279,6 +279,7 @@
               "type": "block_image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/b651495bc09dd0eb08b6d197c434bf6c6b2be557.jpg",
                 "image_link": "",
                 "ratio": "auto",
                 "hover_zoom": false,
@@ -323,6 +324,7 @@
               "type": "block_image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/fdf7ee81a2eb169f1ba281308de1092f8b5671bb_2.jpg",
                 "image_link": "",
                 "ratio": "auto",
                 "hover_zoom": false,
