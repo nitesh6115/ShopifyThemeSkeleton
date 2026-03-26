@@ -117,20 +117,48 @@
   </div>
 </div>
 {% javascript %}
-  function initSlider(id) {
-    const slider = document.getElementById("slider-" + id);
-    if (!slider) return;
-    const infinite = slider.dataset.infinite === "true";
-    const adaptive = slider.dataset.adaptive === "true";
-    const track = document.getElementById("track-" + id);
-    const prev = slider.querySelector(".slider-prev");
-    const next = slider.querySelector(".slider-next");
-    const dotsWrap = document.getElementById("dots-" + id);
-    const autoplay = slider.dataset.autoplay === "true";
-    const speed = parseInt(slider.dataset.speed) || 3000;
-    let index = 0;
-    const slides = track.children;
-    function getPerRow() {
+
+function initSlider(id) {
+
+  const slider =
+    document.getElementById("slider-" + id);
+
+  if (!slider) return;
+
+  const track =
+    document.getElementById("track-" + id);
+
+  const prev =
+    slider.querySelector(".slider-prev");
+
+  const next =
+    slider.querySelector(".slider-next");
+
+  const dotsWrap =
+    document.getElementById("dots-" + id);
+
+  const slides =
+    [...track.children];
+
+  const infinite =
+    slider.dataset.infinite === "true";
+
+  const adaptive =
+    slider.dataset.adaptive === "true";
+
+  const autoplay =
+    slider.dataset.autoplay === "true";
+
+  const speed =
+    parseInt(slider.dataset.speed) || 3000;
+
+  let index = 0;
+
+
+
+  /* -------------------- */
+
+  function getPerRow() {
 
     const desktop =
       parseInt(slider.dataset.perDesktop) || 1;
@@ -141,157 +169,313 @@
     const mobile =
       parseInt(slider.dataset.perMobile) || 1;
 
-    if (window.innerWidth >= 1366) {
+    if (window.innerWidth >= 1366)
       return desktop;
-    }
 
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 768)
       return tablet;
-    }
 
     return mobile;
+
   }
+
+
+
+  /* -------------------- */
+
   function updateHeight() {
 
-  if (!adaptive) return;
+    if (!adaptive) return;
 
-  const inner =
-    slider.querySelector(".slider-inner");
+    const inner =
+      slider.querySelector(".slider-inner");
 
-  const slide = slides[index];
+    const slide =
+      slides[index];
 
-  if (!slide) return;
+    if (!slide) return;
 
-  const h = slide.offsetHeight;
+    inner.style.height =
+      slide.offsetHeight + "px";
 
-  inner.style.height = h + "px";
+  }
 
-}
+
+
+  /* -------------------- */
+
   function go(i) {
 
-  const perRow = getPerRow();
+    const perRow =
+      getPerRow();
 
-  const pages =
-    Math.ceil(slides.length / perRow);
+    const pages =
+      Math.ceil(
+        slides.length / perRow
+      );
 
-  const maxIndex =
-    (pages - 1) * perRow;
+    const maxIndex =
+      (pages - 1) * perRow;
 
-  if (infinite) {
+    if (infinite) {
 
-    if (i > maxIndex) {
-      i = 0;
+      if (i > maxIndex)
+        i = 0;
+
+      if (i < 0)
+        i = maxIndex;
+
+    } else {
+
+      if (i > maxIndex)
+        i = maxIndex;
+
+      if (i < 0)
+        i = 0;
+
     }
 
-    if (i < 0) {
-      i = maxIndex;
-    }
+    index = i;
 
-  } else {
+    const slide =
+      slides[index];
 
-    if (i > maxIndex) {
-      i = maxIndex;
-    }
+    if (!slide) return;
 
-    if (i < 0) {
-      i = 0;
-    }
+    track.scrollTo({
+      left: slide.offsetLeft,
+      behavior: "smooth"
+    });
+
+    updateDots();
+    updateHeight();
 
   }
 
-  index = i;
 
-  const slide = slides[index];
 
-  if (!slide) return;
+  /* -------------------- */
+  /* swipe / scroll dots fix */
 
-  track.scrollTo({
-    left: slide.offsetLeft,
-    behavior: "smooth"
-  });
+  let scrollTimer;
 
-  updateDots();
-  updateHeight();
-  }
+  track.addEventListener(
+    "scroll",
+    () => {
+
+      clearTimeout(scrollTimer);
+
+      scrollTimer =
+        setTimeout(() => {
+
+          const perRow =
+            getPerRow();
+
+          let closest = 0;
+          let min = Infinity;
+
+          slides.forEach(
+            (slide, i) => {
+
+              const diff =
+                Math.abs(
+                  slide.offsetLeft -
+                  track.scrollLeft
+                );
+
+              if (diff < min) {
+
+                min = diff;
+                closest = i;
+
+              }
+
+            }
+          );
+
+          index =
+            Math.floor(
+              closest / perRow
+            ) * perRow;
+
+          updateDots();
+          updateHeight();
+
+        }, 80);
+
+    }
+  );
+
+
+
+  /* -------------------- */
 
   if (prev)
-    prev.onclick = () =>
-      go(index - getPerRow());
+    prev.onclick =
+      () => go(
+        index - getPerRow()
+      );
+
   if (next)
-    next.onclick = () =>
-      go(index + getPerRow());
+    next.onclick =
+      () => go(
+        index + getPerRow()
+      );
+
+
+
+  /* -------------------- */
+
   function buildDots() {
+
     if (!dotsWrap) return;
+
     dotsWrap.innerHTML = "";
-    const perRow = getPerRow();
+
+    const perRow =
+      getPerRow();
+
     const pages =
-      Math.ceil(slides.length / perRow);
+      Math.ceil(
+        slides.length / perRow
+      );
+
     for (let i = 0; i < pages; i++) {
-      let b = document.createElement("button");
-      b.onclick = () =>
-        go(i * perRow);
+
+      const b =
+        document.createElement("button");
+
+      b.onclick =
+        () => go(
+          i * perRow
+        );
+
       dotsWrap.appendChild(b);
+
     }
+
   }
+
+
+
+  /* -------------------- */
 
   function updateDots() {
+
     if (!dotsWrap) return;
-    const perRow = getPerRow();
+
+    const perRow =
+      getPerRow();
+
     const page =
-      Math.round(index / perRow);
+      Math.round(
+        index / perRow
+      );
+
     dotsWrap
       .querySelectorAll("button")
-      .forEach((d, i) => {
-        d.classList.toggle(
-          "active",
-          i === page
-        );
-      });
+      .forEach(
+        (d, i) => {
+
+          d.classList.toggle(
+            "active",
+            i === page
+          );
+
+        }
+      );
+
   }
 
+
+
+  /* -------------------- */
+
   if (autoplay) {
+
     setInterval(() => {
-      go(index + getPerRow());
+
+      go(
+        index + getPerRow()
+      );
+
     }, speed);
+
   }
+
+
+
+  /* -------------------- */
+  /* drag */
+
   let isDown = false;
   let startX;
   let scrollLeft;
-  track.addEventListener("pointerdown", (e) => {
-    isDown = true;
-    startX = e.pageX;
-    scrollLeft = track.scrollLeft;
-  });
-  track.addEventListener("pointerup", () => isDown = false);
-  track.addEventListener("pointerleave", () => isDown = false);
-  track.addEventListener("pointermove", (e) => {
-    if (!isDown) return;
-    const walk = e.pageX - startX;
-    track.scrollLeft =
-      scrollLeft - walk;
-  });
+
+  track.addEventListener(
+    "pointerdown",
+    (e) => {
+
+      isDown = true;
+      startX = e.pageX;
+      scrollLeft =
+        track.scrollLeft;
+
+    }
+  );
+
+  track.addEventListener(
+    "pointerup",
+    () => isDown = false
+  );
+
+  track.addEventListener(
+    "pointerleave",
+    () => isDown = false
+  );
+
+  track.addEventListener(
+    "pointermove",
+    (e) => {
+
+      if (!isDown) return;
+
+      const walk =
+        e.pageX - startX;
+
+      track.scrollLeft =
+        scrollLeft - walk;
+
+    }
+  );
+
+
+
+  /* -------------------- */
+
   function updateSliderItems() {
 
-    const perRow = getPerRow();
-
-    const trackRect =
-      track.getBoundingClientRect();
+    const perRow =
+      getPerRow();
 
     const gap =
       parseFloat(
         getComputedStyle(track).gap
       ) || 0;
 
-    const containerWidth =
-      trackRect.width;
+    const width =
+      track.getBoundingClientRect()
+        .width;
 
     const itemWidth =
-      (containerWidth -
-        gap * (perRow - 1)) / perRow;
+      (width -
+        gap * (perRow - 1))
+      / perRow;
 
-    [...track.children].forEach(el => {
+    slides.forEach(el => {
 
-      el.style.flex = "0 0 auto";
+      el.style.flex =
+        "0 0 auto";
 
       el.style.width =
         itemWidth + "px";
@@ -299,40 +483,69 @@
     });
 
   }
+
+
+
+  /* -------------------- */
+
   updateSliderItems();
   buildDots();
   updateDots();
   updateHeight();
+
+
+
   window.addEventListener(
     "resize",
     () => {
+
       updateSliderItems();
       buildDots();
       updateDots();
       updateHeight();
+
     }
   );
-  }
+
+}
+
+
+
+/* ---------- INIT ---------- */
+
 document
-.querySelectorAll(
-  ".slider_block"
-)
-.forEach((el) => {
-  initSlider(el.dataset.id);
-});
+  .querySelectorAll(
+    ".slider_block"
+  )
+  .forEach(el => {
+
+    initSlider(
+      el.dataset.id
+    );
+
+  });
+
+
 
 document.addEventListener(
   "shopify:section:load",
   function (e) {
+
     e.target
       .querySelectorAll(
         ".slider_block"
       )
-      .forEach((el) => {
-        initSlider(el.dataset.id);
+      .forEach(el => {
+
+        initSlider(
+          el.dataset.id
+        );
+
       });
+
   }
 );
+
 {% endjavascript %}
 {% stylesheet %}
        .slider_block_container {
