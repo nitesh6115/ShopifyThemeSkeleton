@@ -3912,7 +3912,7 @@
                     "height": "fit",
                     "custom_height": 100,
                     "background": "",
-                    "radius": 0,
+                    "radius": 16,
                     "set_full_radius": false,
                     "radius_top_left": 0,
                     "radius_top_right": 0,
