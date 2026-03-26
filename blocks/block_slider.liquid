@@ -117,39 +117,39 @@
   </div>
 </div>
 {% javascript %}
-function initSlider(id) {
-  const slider = document.getElementById("slider-" + id);
-  if (!slider) return;
-  const infinite = slider.dataset.infinite === "true";
-  const track = document.getElementById("track-" + id);
-  const prev = slider.querySelector(".slider-prev");
-  const next = slider.querySelector(".slider-next");
-  const dotsWrap = document.getElementById("dots-" + id);
-  const autoplay = slider.dataset.autoplay === "true";
-  const speed = parseInt(slider.dataset.speed) || 3000;
-  let index = 0;
-  const slides = track.children;
-  function getPerRow() {
+  function initSlider(id) {
+    const slider = document.getElementById("slider-" + id);
+    if (!slider) return;
+    const infinite = slider.dataset.infinite === "true";
+    const track = document.getElementById("track-" + id);
+    const prev = slider.querySelector(".slider-prev");
+    const next = slider.querySelector(".slider-next");
+    const dotsWrap = document.getElementById("dots-" + id);
+    const autoplay = slider.dataset.autoplay === "true";
+    const speed = parseInt(slider.dataset.speed) || 3000;
+    let index = 0;
+    const slides = track.children;
+    function getPerRow() {
 
-  const desktop =
-    parseInt(slider.dataset.perDesktop) || 1;
+    const desktop =
+      parseInt(slider.dataset.perDesktop) || 1;
 
-  const tablet =
-    parseInt(slider.dataset.perTablet) || 1;
+    const tablet =
+      parseInt(slider.dataset.perTablet) || 1;
 
-  const mobile =
-    parseInt(slider.dataset.perMobile) || 1;
+    const mobile =
+      parseInt(slider.dataset.perMobile) || 1;
 
-  if (window.innerWidth >= 1366) {
-    return desktop;
+    if (window.innerWidth >= 1366) {
+      return desktop;
+    }
+
+    if (window.innerWidth >= 768) {
+      return tablet;
+    }
+
+    return mobile;
   }
-
-  if (window.innerWidth >= 768) {
-    return tablet;
-  }
-
-  return mobile;
-}
   function go(i) {
 
   const perRow = getPerRow();
@@ -194,7 +194,7 @@ function initSlider(id) {
   });
 
   updateDots();
-}
+  }
 
   if (prev)
     prev.onclick = () =>
@@ -292,27 +292,27 @@ function initSlider(id) {
       updateDots();
     }
   );
-}
-document
-.querySelectorAll(
-  ".slider_block"
-)
-.forEach((el) => {
-  initSlider(el.dataset.id);
-});
-
-document.addEventListener(
-  "shopify:section:load",
-  function (e) {
-    e.target
-      .querySelectorAll(
-        ".slider_block"
-      )
-      .forEach((el) => {
-        initSlider(el.dataset.id);
-      });
   }
-);
+  document
+  .querySelectorAll(
+    ".slider_block"
+  )
+  .forEach((el) => {
+    initSlider(el.dataset.id);
+  });
+
+  document.addEventListener(
+    "shopify:section:load",
+    function (e) {
+      e.target
+        .querySelectorAll(
+          ".slider_block"
+        )
+        .forEach((el) => {
+          initSlider(el.dataset.id);
+        });
+    }
+  );
 {% endjavascript %}
 {% stylesheet %}
        .slider_block_container {
@@ -421,7 +421,17 @@ document.addEventListener(
       width:100%;
     }
 
+    .slider-track > *{
+    transition: opacity .35s ease;
+    }
 
+    .slider-fade-out > *{
+    opacity: 0;
+    }
+
+    .slider-fade-in > *{
+    opacity: 1;
+}
     /* responsive enable */
 
     @media (min-width: 1366px){
