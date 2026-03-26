@@ -168,28 +168,25 @@ function initMarquee(block) {
 
   function buildLoop() {
 
-    track.innerHTML = "";
-    track.appendChild(loop);
+  track.innerHTML = "";
 
-    let clone;
+  const base = loop.cloneNode(true);
 
-    if (!dup) {
-      loopSize = loop.offsetWidth;
-      return;
-    }
+  track.appendChild(base);
 
-    let total = loop.offsetWidth;
+  let total = base.offsetWidth;
 
-    while (total < block.offsetWidth * 2) {
+  while (total < block.offsetWidth * 2) {
 
-      clone = loop.cloneNode(true);
-      track.appendChild(clone);
+    const clone = loop.cloneNode(true);
 
-      total += clone.offsetWidth;
-    }
+    track.appendChild(clone);
 
-    loopSize = loop.offsetWidth;
+    total += clone.offsetWidth;
   }
+
+  loopSize = base.offsetWidth;
+}
 
 
 
@@ -197,30 +194,34 @@ function initMarquee(block) {
 
   function frame(time) {
 
-    if (!lastTime) lastTime = time;
+  if (!lastTime) lastTime = time;
 
-    const delta = time - lastTime;
+  const delta = time - lastTime;
 
-    lastTime = time;
+  lastTime = time;
 
-    if (!isPaused && !isDown) {
+  if (!isPaused && !isDown) {
 
-      const move =
-        (speed * delta) / 40;
+    const move = (speed * delta) / 40;
 
-      pos += reverse ? move : -move;
+    pos += reverse ? move : -move;
 
-      if (Math.abs(pos) >= loopSize) {
-        pos = 0;
-      }
+    /* ✅ smooth loop fix */
 
-      track.style.transform =
-        `translate3d(${pos}px,0,0)`;
+    if (pos <= -loopSize) {
+      pos += loopSize;
     }
 
-    requestAnimationFrame(frame);
+    if (pos >= loopSize) {
+      pos -= loopSize;
+    }
+
+    track.style.transform =
+      `translate3d(${pos}px,0,0)`;
   }
 
+  requestAnimationFrame(frame);
+}
 
 
   /* ---------------- HOVER ---------------- */
