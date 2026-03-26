@@ -56,7 +56,6 @@
   class="{{ class_list }}"
   style="{{ style_schema }}"
   data-speed="{{ block.settings.speed }}"
-  data-dir="{{ block.settings.marquee_direction }}"
   data-reverse="{{ block.settings.reverse }}"
   data-hover="{{ block.settings.pause_hover }}"
   data-drag="{{ block.settings.drag }}"
@@ -105,9 +104,6 @@
     .marquee-loop > * {
       flex: 0 0 auto;
     }
-  .marquee[data-dir="vertical"] .marquee-track {
-    flex-direction: column;
-  }
   .marquee.is-paused .marquee-track {
     animation-play-state: paused;
     pointer-events: auto;
