@@ -162,62 +162,58 @@ function initMarquee(block) {
 
   /* ---------------- DUPLICATE ---------------- */
 
-function buildLoop() {
+    function buildLoop() {
 
-    track.innerHTML = "";
+      track.innerHTML = "";
 
-    const base = loop.cloneNode(true);
+      const base = loop.cloneNode(true);
 
-    track.appendChild(base);
+      track.appendChild(base);
 
-    let total = base.offsetWidth;
+      let total = base.offsetWidth;
 
-    while (total < block.offsetWidth * 3) {
+      while (total < block.offsetWidth * 3) {
 
-      const clone = loop.cloneNode(true);
+        const clone = loop.cloneNode(true);
 
-      track.appendChild(clone);
+        track.appendChild(clone);
 
-      total += clone.offsetWidth;
+        total += clone.offsetWidth;
+      }
+
+      loopSize = base.getBoundingClientRect().width;
     }
-
-    loopSize = base.offsetWidth;
-  }
 
 
 
   /* ---------------- ANIMATION ---------------- */
 
-  function frame(time) {
+    function frame(time) {
 
-    if (!lastTime) lastTime = time;
+      if (!lastTime) lastTime = time;
 
-    const delta = time - lastTime;
+      const delta = time - lastTime;
 
-    lastTime = time;
+      lastTime = time;
 
-    if (!isPaused && !isDown) {
+      if (!isPaused && !isDown) {
 
-      const move = (speed * delta) / 50;
+        const move = (speed * delta) / 50;
 
-      pos += reverse ? move : -move;
+        pos += reverse ? move : -move;
 
-      /* ✅ real infinite */
+        /* ✅ smooth infinite using modulo */
 
-      if (pos <= -loopSize) {
-        pos += loopSize;
+        if (loopSize > 0) {
+          pos = pos % loopSize;
+        }
+
+        track.style.transform =
+          `translate3d(${pos}px,0,0)`;
       }
 
-      if (pos >= 0) {
-        pos -= loopSize;
-      }
-
-      track.style.transform =
-        `translate3d(${pos}px,0,0)`;
+      requestAnimationFrame(frame);
     }
-
-    requestAnimationFrame(frame);
-  }
 
 
   /* ---------------- HOVER ---------------- */
