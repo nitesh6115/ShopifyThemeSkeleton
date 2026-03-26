@@ -66,14 +66,19 @@
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list -}}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
-  <div
-    class="
-      slider_block slider-{{ block.id }}
+  {% capture slider_style %}
+    --arrow-color: {{ block.settings.arrow_color }};
+      --arrow-bg: {{ block.settings.arrow_bg }};
+      --dot-color: {{ block.settings.dot_color }};
+      --dot-active: {{ block.settings.dot_active }};
+      --per-row-desktop: {{ block.settings.per_row_desktop }};
+      --per-row-tablet: {{ block.settings.per_row_tablet }};
+      --per-row-mobile: {{ block.settings.per_row_mobile }};
+  {% endcapture %}
+  {% assign slider_style = slider_style | strip_newlines %}
 
-      {% if block.settings.enable_desktop %} slider-desktop{% endif %}
-      {% if block.settings.enable_tablet %} slider-tablet{% endif %}
-      {% if block.settings.enable_mobile %} slider-mobile{% endif %}
-    "
+  <div
+    class=" slider_block slider-{{ block.id }} {% if block.settings.enable_desktop %} slider-desktop{% endif %} {% if block.settings.enable_tablet %} slider-tablet{% endif %} {% if block.settings.enable_mobile %} slider-mobile{% endif %}"
     data-id="{{ block.id }}"
     id="slider-{{ block.id }}"
     data-adaptive="{{ block.settings.adaptive_height }}"
@@ -82,21 +87,10 @@
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
     data-infinite="{{ block.settings.infinite }}"
-
     data-per-desktop="{{ block.settings.per_row_desktop }}"
     data-per-tablet="{{ block.settings.per_row_tablet }}"
     data-per-mobile="{{ block.settings.per_row_mobile }}"
-
-    style="
-      --arrow-color: {{ block.settings.arrow_color }};
-      --arrow-bg: {{ block.settings.arrow_bg }};
-      --dot-color: {{ block.settings.dot_color }};
-      --dot-active: {{ block.settings.dot_active }};
-
-      --per-row-desktop: {{ block.settings.per_row_desktop }};
-      --per-row-tablet: {{ block.settings.per_row_tablet }};
-      --per-row-mobile: {{ block.settings.per_row_mobile }};
-    "
+    style="{{- slider_style -}}"
   >
     <div class="slider-inner">
       <div class="slider-track" id="track-{{ block.id }}">
