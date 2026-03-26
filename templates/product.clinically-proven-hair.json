@@ -230,7 +230,7 @@
             "per_row_desktop": 3,
             "per_row_tablet": 1,
             "per_row_mobile": 1,
-            "slide_effect": "fade",
+            "slide_effect": "slide",
             "enable_desktop": true,
             "enable_tablet": true,
             "enable_mobile": true,
