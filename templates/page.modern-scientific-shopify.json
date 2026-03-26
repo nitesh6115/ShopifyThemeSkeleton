@@ -12733,7 +12733,7 @@
           "settings": {
             "marquee_direction": "horizontal",
             "align_y": "center",
-            "reverse": false,
+            "reverse": true,
             "pause_hover": true,
             "drag": true,
             "auto_duplicate": true,
