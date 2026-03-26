@@ -168,25 +168,25 @@ function initMarquee(block) {
 
 function buildLoop() {
 
-  track.innerHTML = "";
+    track.innerHTML = "";
 
-  const base = loop.cloneNode(true);
+    const base = loop.cloneNode(true);
 
-  track.appendChild(base);
+    track.appendChild(base);
 
-  let total = base.offsetWidth;
+    let total = base.offsetWidth;
 
-  while (total < block.offsetWidth * 3) {
+    while (total < block.offsetWidth * 3) {
 
-    const clone = loop.cloneNode(true);
+      const clone = loop.cloneNode(true);
 
-    track.appendChild(clone);
+      track.appendChild(clone);
 
-    total += clone.offsetWidth;
+      total += clone.offsetWidth;
+    }
+
+    loopSize = base.offsetWidth;
   }
-
-  loopSize = base.offsetWidth;
-}
 
 
 
