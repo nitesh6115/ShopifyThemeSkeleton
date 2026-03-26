@@ -83,6 +83,9 @@ mobile-vh-height;
     width: 100%;
     height: var(--desktop-vh-hegiht);
 }
+.background-image-block.desktop-auto-height {
+    aspect-ratio: var(--desktop-auto-height);
+}
 .background-image-block.desktop-px-height,
 .block-height-desktop-fill .background-image-block.desktop-px-height {
     width: 100%;
@@ -91,7 +94,9 @@ mobile-vh-height;
 }
 }
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
-    
+ .background-image-block.tablet-auto-height {
+    aspect-ratio: var(--desktop-auto-height);
+}   
     .background-image-block.tablet-vh-height {
     width: 100%;
     height: var(--tablet-vh-height);
@@ -104,6 +109,9 @@ mobile-vh-height;
 }
   /* mobile */
   @media (max-width:767px){
+    .background-image-block.mobile-auto-height {
+    aspect-ratio: var(--desktop-auto-height);
+}
 .background-image-block.mobile-vh-height {
     width: 100%;
     height: var(--mobile-vh-height);
