@@ -143,32 +143,30 @@ function initMarquee(block) {
   let dup = block.dataset.dup === "true";
 
   let pos = 0;
-  let last = 0;
+  let lastTime = 0;
+  let isPaused = false;
+  let isDown = false;
+  let startX = 0;
+
   let loopSize = 0;
   let speed = 0;
-
-  let paused = false;
-  let down = false;
-  let startX = 0;
 
 
 
   /* ---------------- SPEED ---------------- */
 
   function getSpeed() {
-
     speed =
       window.innerWidth < 768
         ? speedMobile
         : speedDesktop;
-
   }
 
 
 
-  /* ---------------- BUILD ---------------- */
+  /* ---------------- DUPLICATE ---------------- */
 
-  function build() {
+function buildLoop() {
 
     track.innerHTML = "";
 
@@ -178,61 +176,65 @@ function initMarquee(block) {
 
     let total = base.offsetWidth;
 
-    while (total < block.offsetWidth * 4) {
+    while (total < block.offsetWidth * 3) {
 
       const clone = loop.cloneNode(true);
 
       track.appendChild(clone);
 
       total += clone.offsetWidth;
-
     }
 
     loopSize = base.offsetWidth;
-
   }
 
 
 
-  /* ---------------- FRAME ---------------- */
+  /* ---------------- ANIMATION ---------------- */
 
-  function frame(t) {
+  function frame(time) {
 
-    if (!last) last = t;
+    if (!lastTime) lastTime = time;
 
-    const dt = t - last;
+    const delta = time - lastTime;
 
-    last = t;
+    lastTime = time;
 
-    if (!paused && !down) {
+    if (!isPaused && !isDown) {
 
-      const move = (speed * dt) / 40;
+      const move = (speed * delta) / 50;
 
       pos += reverse ? move : -move;
 
-      /* REAL modulo loop */
+      /* ✅ real infinite */
 
-      pos = pos % loopSize;
+      if (pos <= -loopSize) {
+        pos += loopSize;
+      }
 
+      if (pos >= 0) {
+        pos -= loopSize;
+      }
+
+      track.style.transform =
+        `translate3d(${pos}px,0,0)`;
     }
 
-    track.style.transform =
-      `translate3d(${pos}px,0,0)`;
-
     requestAnimationFrame(frame);
-
   }
-
 
 
   /* ---------------- HOVER ---------------- */
 
   if (pauseHover) {
 
-    block.addEventListener("mouseenter", () => paused = true);
+    block.addEventListener("mouseenter", () => {
+      isPaused = true;
+    });
 
-    block.addEventListener("mouseleave", () => paused = false);
-
+    block.addEventListener("mouseleave", () => {
+      isPaused = false;
+    });
   }
 
 
@@ -243,25 +245,25 @@ function initMarquee(block) {
 
     block.addEventListener("mousedown", e => {
 
-      down = true;
+      isDown = true;
       startX = e.clientX;
 
     });
 
-    window.addEventListener("mouseup", () => down = false);
+    window.addEventListener("mouseup", () => {
+      isDown = false;
+    });
 
     window.addEventListener("mousemove", e => {
 
-      if (!down) return;
+      if (!isDown) return;
 
       const dx = e.clientX - startX;
 
       pos += dx;
 
       startX = e.clientX;
-
     });
-
   }
 
 
@@ -270,16 +272,18 @@ function initMarquee(block) {
 
   block.addEventListener("touchstart", e => {
 
-    down = true;
+    isDown = true;
     startX = e.touches[0].clientX;
 
   });
 
-  block.addEventListener("touchend", () => down = false);
+  block.addEventListener("touchend", () => {
+    isDown = false;
+  });
 
   block.addEventListener("touchmove", e => {
 
-    if (!down) return;
+    if (!isDown) return;
 
     const dx =
       e.touches[0].clientX - startX;
@@ -298,9 +302,9 @@ function initMarquee(block) {
 
     getSpeed();
 
-    build();
+    buildLoop();
 
-    last = 0;
+    lastTime = 0;
 
   }
 
@@ -310,11 +314,21 @@ function initMarquee(block) {
 
 
 
-  window.addEventListener("resize", init);
+  /* ---------------- RESIZE FIX ---------------- */
 
+  window.addEventListener(
+    "resize",
+    () => {
+
+      init();
+
+    }
+  );
 }
 
 
+
+/* ---------- INIT ---------- */
 
 document
   .querySelectorAll(".marquee")
