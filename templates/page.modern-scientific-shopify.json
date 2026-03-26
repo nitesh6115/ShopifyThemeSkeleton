@@ -872,7 +872,7 @@
               "name": "Heading",
               "settings": {
                 "text": "Science-Backed Performance",
-                "alignment": "left",
+                "alignment": "center",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
