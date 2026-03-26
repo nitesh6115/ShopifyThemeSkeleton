@@ -6,7 +6,15 @@
   --desktop-vh-height: {{ block.settings.desktop_vh_height }}vh;
   --tablet-vh-height: {{ block.settings.tablet_vh_height }}vh;
   --mobile-vh-height: {{ block.settings.mobile_vh_height }}vh;
-
+  {% if block.settings.desktop_height_type == 'auto' %}
+  --desktop-auto-height: {{ block.settings.image.height }}px;
+  {% endif %}
+  {% if block.settings.tablet_height_type == 'auto' %}
+  --tablet-auto-height: {{ block.settings.image.height }}px;
+  {% endif %}
+  {% if block.settings.mobile_height_type == 'auto' %}
+  --mobile-auto-height: {{ block.settings.image.height }}px;
+  {% endif %}
   --bg-size:{{ block.settings.bg_size }};
   --bg-position:{{ block.settings.bg_position }};
   --overlay-bg: {{ block.settings.overlay_color }};
