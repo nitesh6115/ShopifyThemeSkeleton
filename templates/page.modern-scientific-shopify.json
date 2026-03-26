@@ -8185,8 +8185,8 @@
                   "name": "Background Image",
                   "settings": {
                     "image": "shopify://shop_images/ce5326d43c1d8e6a35c44500f31c9740b2dade57_85646c4b-5ed5-4121-9f64-a20b652b36f1.jpg",
-                    "overlay_color": "",
-                    "overlay_opacity": 85,
+                    "overlay_color": "linear-gradient(0deg, #0EA5E9 0%, #0DA3E5 7.69%, #0DA2E0 15.38%, #0CA0DC 23.08%, #0B9FD8 30.77%, #0B9DD4 38.46%, #0A9CCF 46.15%, #0A9ACB 53.85%, #0999C7 61.54%, #0997C3 69.23%, #0996BF 76.92%, #0894BA 84.62%, #0893B6 92.31%, #0891B2 100%)",
+                    "overlay_opacity": 40,
                     "bg_position": "center center",
                     "bg_size": "cover",
                     "desktop_height_type": "px",
@@ -8482,8 +8482,8 @@
                   "name": "Background Image",
                   "settings": {
                     "image": "shopify://shop_images/83c2b478d41ea626e65e42da1a4cc77535ccf6fb.jpg",
-                    "overlay_color": "",
-                    "overlay_opacity": 85,
+                    "overlay_color": "linear-gradient(0deg, rgba(14, 165, 233, 1), rgba(13, 163, 229, 1) 7.69%, rgba(13, 162, 224, 1) 15.38%, rgba(12, 160, 220, 1) 23.08%, rgba(11, 159, 216, 1) 30.77%, rgba(11, 157, 212, 1) 38.46%, rgba(10, 156, 207, 1) 46.15%, rgba(10, 154, 203, 1) 53.85%, rgba(9, 153, 199, 1) 61.54%, rgba(9, 151, 195, 1) 69.23%, rgba(9, 150, 191, 1) 76.92%, rgba(8, 148, 186, 1) 84.62%, rgba(8, 147, 182, 1) 92.31%, rgba(8, 145, 178, 1) 100%)",
+                    "overlay_opacity": 40,
                     "bg_position": "center center",
                     "bg_size": "cover",
                     "desktop_height_type": "px",
@@ -8779,8 +8779,8 @@
                   "name": "Background Image",
                   "settings": {
                     "image": "shopify://shop_images/b651495bc09dd0eb08b6d197c434bf6c6b2be557.jpg",
-                    "overlay_color": "",
-                    "overlay_opacity": 85,
+                    "overlay_color": "linear-gradient(0deg, rgba(14, 165, 233, 1), rgba(13, 163, 229, 1) 7.69%, rgba(13, 162, 224, 1) 15.38%, rgba(12, 160, 220, 1) 23.08%, rgba(11, 159, 216, 1) 30.77%, rgba(11, 157, 212, 1) 38.46%, rgba(10, 156, 207, 1) 46.15%, rgba(10, 154, 203, 1) 53.85%, rgba(9, 153, 199, 1) 61.54%, rgba(9, 151, 195, 1) 69.23%, rgba(9, 150, 191, 1) 76.92%, rgba(8, 148, 186, 1) 84.62%, rgba(8, 147, 182, 1) 92.31%, rgba(8, 145, 178, 1) 100%)",
+                    "overlay_opacity": 40,
                     "bg_position": "center center",
                     "bg_size": "cover",
                     "desktop_height_type": "px",
