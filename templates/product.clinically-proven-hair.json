@@ -296,10 +296,58 @@
                 "hide_mobile": false
               },
               "blocks": {}
+            },
+            "blcok_background_image_8PqkEz": {
+              "type": "blcok_background_image",
+              "name": "Background Image",
+              "settings": {
+                "image": "shopify://shop_images/0bfaf9ae142d65564d6691862b9e48adf6ed9e9b_1.jpg",
+                "overlay_color": "",
+                "overlay_opacity": 0,
+                "bg_position": "center center",
+                "bg_size": "cover",
+                "desktop_height_type": "auto",
+                "desktop_px_height": 100,
+                "desktop_vh_height": 20,
+                "tablet_height_type": "auto",
+                "tablet_px_height": 100,
+                "tablet_vh_height": 20,
+                "mobile_height_type": "auto",
+                "mobile_px_height": 100,
+                "mobile_vh_height": 20,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
+            },
+            "blcok_background_image_Y6mX44": {
+              "type": "blcok_background_image",
+              "name": "Background Image",
+              "settings": {
+                "image": "shopify://shop_images/0bfaf9ae142d65564d6691862b9e48adf6ed9e9b_1.jpg",
+                "overlay_color": "",
+                "overlay_opacity": 0,
+                "bg_position": "center center",
+                "bg_size": "cover",
+                "desktop_height_type": "auto",
+                "desktop_px_height": 100,
+                "desktop_vh_height": 20,
+                "tablet_height_type": "auto",
+                "tablet_px_height": 100,
+                "tablet_vh_height": 20,
+                "mobile_height_type": "auto",
+                "mobile_px_height": 100,
+                "mobile_vh_height": 20,
+                "hide_desktop": false,
+                "hide_mobile": false
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "blcok_background_image_3jpCWL"
+            "blcok_background_image_3jpCWL",
+            "blcok_background_image_8PqkEz",
+            "blcok_background_image_Y6mX44"
           ]
         }
       },
@@ -308,7 +356,7 @@
       ],
       "name": "Premium Global Section",
       "settings": {
-        "section_width": "custom",
+        "section_width": "full",
         "custom_width": 1200,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
