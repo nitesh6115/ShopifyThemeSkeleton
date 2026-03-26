@@ -89,6 +89,10 @@
       --arrow-bg: {{ block.settings.arrow_bg }};
       --dot-color: {{ block.settings.dot_color }};
       --dot-active: {{ block.settings.dot_active }};
+
+      --per-row-desktop: {{ block.settings.per_row_desktop }};
+      --per-row-tablet: {{ block.settings.per_row_tablet }};
+      --per-row-mobile: {{ block.settings.per_row_mobile }};
     "
   >
     <div class="slider-inner">
@@ -434,7 +438,7 @@ document.addEventListener(
       "min": 1,
       "max": 6,
       "step": 1,
-      "default": 4
+      "default": 1
     },
 
     {
@@ -444,7 +448,7 @@ document.addEventListener(
       "min": 1,
       "max": 4,
       "step": 1,
-      "default": 3
+      "default": 1
     },
 
     {
