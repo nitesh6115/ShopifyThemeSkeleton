@@ -289,6 +289,31 @@
   updateSliderItems();
   buildDots();
   updateDots();
+  const perRow = getPerRow();
+
+const useFade =
+  effect === "fade" &&
+  perRow === 1;
+
+if (useFade) {
+
+  slider.classList.add(
+    "slider-fade-mode"
+  );
+
+  if (slides.length) {
+
+    [...slides].forEach(el =>
+      el.classList.remove("active")
+    );
+
+    slides[0].classList.add(
+      "active"
+    );
+
+  }
+
+}
  window.addEventListener(
   "resize",
   () => {
