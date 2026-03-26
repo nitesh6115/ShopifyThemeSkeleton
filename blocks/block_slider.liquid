@@ -84,7 +84,7 @@
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
     data-infinite="{{ block.settings.infinite }}"
-
+    data-effect="{{ block.settings.slide_effect }}"
     data-per-desktop="{{ block.settings.per_row_desktop }}"
     data-per-tablet="{{ block.settings.per_row_tablet }}"
     data-per-mobile="{{ block.settings.per_row_mobile }}"
@@ -121,6 +121,7 @@
     const slider = document.getElementById("slider-" + id);
     if (!slider) return;
     const infinite = slider.dataset.infinite === "true";
+    const effect = slider.dataset.effect || "slide";
     const track = document.getElementById("track-" + id);
     const prev = slider.querySelector(".slider-prev");
     const next = slider.querySelector(".slider-next");
@@ -129,6 +130,10 @@
     const speed = parseInt(slider.dataset.speed) || 3000;
     let index = 0;
     const slides = track.children;
+    // ✅ add here
+    if (slides.length) {
+    slides[0].classList.add("active");
+    }
     function getPerRow() {
 
     const desktop =
@@ -152,38 +157,49 @@
   }
   function go(i) {
 
-    const perRow = getPerRow();
+  const perRow = getPerRow();
 
-    const pages =
-      Math.ceil(slides.length / perRow);
+  const useFade =
+    effect === "fade" && perRow === 1;
 
-    const maxIndex =
-      (pages - 1) * perRow;
+  const pages =
+    Math.ceil(slides.length / perRow);
 
-    if (i < 0) i = 0;
-    if (i > maxIndex) i = maxIndex;
+  const maxIndex =
+    (pages - 1) * perRow;
 
-    index = i;
+  if (i < 0) i = 0;
+  if (i > maxIndex) i = maxIndex;
 
-    const slide = slides[index];
+  index = i;
 
-    if (!slide) return;
+  const slide = slides[index];
 
-    track.style.opacity = 0;
+  if (!slide) return;
 
-    setTimeout(() => {
+  if (useFade) {
 
-      track.scrollTo({
-        left: slide.offsetLeft,
-        behavior: "smooth"
-      });
+    slider.classList.add("slider-fade-mode");
 
-      track.style.opacity = 1;
+    slides.forEach(el =>
+      el.classList.remove("active")
+    );
 
-    }, 150);
+    slide.classList.add("active");
 
-    updateDots();
+  } else {
+
+    slider.classList.remove("slider-fade-mode");
+
+    track.scrollTo({
+      left: slide.offsetLeft,
+      behavior: "smooth"
+    });
+
   }
+
+  updateDots();
+}
 
   if (prev)
     prev.onclick = () =>
@@ -430,6 +446,22 @@
 .slider-track{
   transition: opacity .25s ease;
 }
+
+.slider-fade-mode .slider-track{
+  position: relative;
+}
+
+.slider-fade-mode .slider-track > *{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.slider-fade-mode .slider-track > *.active{
+  opacity: 1;
+  position: relative;
+}
     /* responsive enable */
 
     @media (min-width: 1366px){
@@ -513,6 +545,16 @@
       "max": 3,
       "step": 1,
       "default": 1
+    },
+    {
+      "type": "select",
+      "id": "slide_effect",
+      "label": "Slide Effect",
+      "options": [
+        { "value": "slide", "label": "Slide" },
+        { "value": "fade", "label": "Fade" }
+      ],
+      "default": "slide"
     },
     {
       "type": "checkbox",
