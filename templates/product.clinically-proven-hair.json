@@ -227,7 +227,7 @@
           "type": "block_slider",
           "name": "Slider Block",
           "settings": {
-            "per_row_desktop": 1,
+            "per_row_desktop": 3,
             "per_row_tablet": 1,
             "per_row_mobile": 1,
             "enable_desktop": false,
