@@ -300,7 +300,7 @@
                   "type": "block_group",
                   "name": "Block Group",
                   "settings": {
-                    "layout_direction": "group--vertical",
+                    "layout_direction": "group--horizontal",
                     "align_x": "center",
                     "align_y": "center",
                     "wrap": "wrap",
