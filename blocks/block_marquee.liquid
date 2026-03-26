@@ -134,8 +134,8 @@ function initMarquee(block) {
   const track = block.querySelector(".marquee-track");
   const loop = block.querySelector(".marquee-loop");
 
-  let speedDesktop = parseFloat(block.dataset.speed) || 30;
-  let speedMobile = parseFloat(block.dataset.speedM) || 20;
+  let speedDesktop = parseFloat(block.dataset.speed) || 1;
+  let speedMobile = parseFloat(block.dataset.speedM) || 1;
 
   let reverse = block.dataset.reverse === "true";
   let pauseHover = block.dataset.hover === "true";
