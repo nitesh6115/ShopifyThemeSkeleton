@@ -6551,7 +6551,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>NSF Verified</p>",
+                            "text": "<p>Third-Party Tested</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -6654,7 +6654,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>NSF Verified</p>",
+                            "text": "<p>Vegan Certified</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
