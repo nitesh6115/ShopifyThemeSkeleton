@@ -83,7 +83,8 @@
     data-speed="{{ block.settings.autoplay_speed }}"
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
-    
+    data-infinite="{{ block.settings.infinite }}"
+
     data-per-desktop="{{ block.settings.per_row_desktop }}"
     data-per-tablet="{{ block.settings.per_row_tablet }}"
     data-per-mobile="{{ block.settings.per_row_mobile }}"
@@ -119,6 +120,7 @@
 function initSlider(id) {
   const slider = document.getElementById("slider-" + id);
   if (!slider) return;
+  const infinite = slider.dataset.infinite === "true";
   const track = document.getElementById("track-" + id);
   const prev = slider.querySelector(".slider-prev");
   const next = slider.querySelector(".slider-next");
@@ -149,22 +151,50 @@ function initSlider(id) {
   return mobile;
 }
   function go(i) {
-    const perRow = getPerRow();
-    const pages =
-      Math.ceil(slides.length / perRow);
-    const maxIndex =
-      (pages - 1) * perRow;
-    if (i < 0) i = 0;
-    if (i > maxIndex) i = maxIndex;
-    index = i;
-    const slide = slides[index];
-    if (!slide) return;
-    track.scrollTo({
-      left: slide.offsetLeft,
-      behavior: "smooth"
-    });
-    updateDots();
+
+  const perRow = getPerRow();
+
+  const pages =
+    Math.ceil(slides.length / perRow);
+
+  const maxIndex =
+    (pages - 1) * perRow;
+
+  if (infinite) {
+
+    if (i > maxIndex) {
+      i = 0;
+    }
+
+    if (i < 0) {
+      i = maxIndex;
+    }
+
+  } else {
+
+    if (i > maxIndex) {
+      i = maxIndex;
+    }
+
+    if (i < 0) {
+      i = 0;
+    }
+
   }
+
+  index = i;
+
+  const slide = slides[index];
+
+  if (!slide) return;
+
+  track.scrollTo({
+    left: slide.offsetLeft,
+    behavior: "smooth"
+  });
+
+  updateDots();
+}
 
   if (prev)
     prev.onclick = () =>
@@ -509,6 +539,12 @@ document.addEventListener(
       "max": 8000,
       "step": 500,
       "default": 3000
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite loop",
+      "default": true
     },
     {
       "type": "checkbox",
