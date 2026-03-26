@@ -152,37 +152,48 @@
   }
   function go(i) {
 
-    const perRow = getPerRow();
+  const perRow = getPerRow();
 
-    const pages =
-      Math.ceil(slides.length / perRow);
+  const pages =
+    Math.ceil(slides.length / perRow);
 
-    const maxIndex =
-      (pages - 1) * perRow;
+  const maxIndex =
+    (pages - 1) * perRow;
 
-    if (i < 0) i = 0;
-    if (i > maxIndex) i = maxIndex;
+  if (infinite) {
 
-    index = i;
+    if (i > maxIndex) {
+      i = 0;
+    }
 
-    const slide = slides[index];
+    if (i < 0) {
+      i = maxIndex;
+    }
 
-    if (!slide) return;
+  } else {
 
-    track.style.opacity = 0;
+    if (i > maxIndex) {
+      i = maxIndex;
+    }
 
-    setTimeout(() => {
+    if (i < 0) {
+      i = 0;
+    }
 
-      track.scrollTo({
-        left: slide.offsetLeft,
-        behavior: "smooth"
-      });
+  }
 
-      track.style.opacity = 1;
+  index = i;
 
-    }, 150);
+  const slide = slides[index];
 
-    updateDots();
+  if (!slide) return;
+
+  track.scrollTo({
+    left: slide.offsetLeft,
+    behavior: "smooth"
+  });
+
+  updateDots();
   }
 
   if (prev)
@@ -282,26 +293,26 @@
     }
   );
   }
-  document
-  .querySelectorAll(
-    ".slider_block"
-  )
-  .forEach((el) => {
-    initSlider(el.dataset.id);
-  });
+document
+.querySelectorAll(
+  ".slider_block"
+)
+.forEach((el) => {
+  initSlider(el.dataset.id);
+});
 
-  document.addEventListener(
-    "shopify:section:load",
-    function (e) {
-      e.target
-        .querySelectorAll(
-          ".slider_block"
-        )
-        .forEach((el) => {
-          initSlider(el.dataset.id);
-        });
-    }
-  );
+document.addEventListener(
+  "shopify:section:load",
+  function (e) {
+    e.target
+      .querySelectorAll(
+        ".slider_block"
+      )
+      .forEach((el) => {
+        initSlider(el.dataset.id);
+      });
+  }
+);
 {% endjavascript %}
 {% stylesheet %}
        .slider_block_container {
@@ -410,26 +421,7 @@
       width:100%;
     }
 
-    .slider-track > *{
-    transition: opacity .35s ease;
-    }
 
-    .slider-fade-out > *{
-    opacity: 0;
-    }
-
-    .slider-fade-in > *{
-    opacity: 1;
-}
-.slider-track > *{
-  opacity: 1;
-  transition:
-    opacity .35s ease,
-    transform .35s ease;
-}
-.slider-track{
-  transition: opacity .25s ease;
-}
     /* responsive enable */
 
     @media (min-width: 1366px){
