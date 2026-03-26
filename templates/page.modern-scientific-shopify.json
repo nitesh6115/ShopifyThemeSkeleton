@@ -7809,95 +7809,112 @@
                 "image_link": ""
               },
               "blocks": {
-                "block_icon_tJRAMF": {
-                  "type": "block_icon",
-                  "name": "Icon",
+                "block_group_EJXjQw": {
+                  "type": "block_group",
+                  "name": "Block Group",
                   "settings": {
-                    "icon": "certificate",
-                    "icon_image": "shopify://shop_images/Container_-_2026-03-19T162924.779.png",
-                    "svg_code": "",
-                    "size": 100,
-                    "color": "#234a55"
-                  },
-                  "blocks": {}
-                },
-                "block_heading_7QVnj9": {
-                  "type": "block_heading",
-                  "name": "Heading",
-                  "settings": {
-                    "text": "4.9",
-                    "alignment": "left",
-                    "font_italic": false,
-                    "font_uppercase": false,
-                    "line_height": "1.2",
-                    "letter_spacing": 0,
-                    "color": "#1a2332",
-                    "tag": "h5",
-                    "size_mode": "auto",
-                    "font_size": 32,
-                    "font_size_m": 24,
-                    "font_weight": 600,
+                    "layout_direction": "group--horizontal",
+                    "align_x": "flex-start",
+                    "align_y": "flex-start",
+                    "wrap": "wrap",
+                    "hover_zoom": false,
+                    "shadow": false,
                     "width": "fit-content",
-                    "custom_width": 100,
-                    "width_tablet": "fit-content",
-                    "custom_width_tablet": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "hide_mobile": false,
-                    "hide_desktop": false
-                  },
-                  "blocks": {}
-                },
-                "block_text_EtEqHK": {
-                  "type": "block_text",
-                  "name": "Text",
-                  "settings": {
-                    "text": "<p>Based on 12,000+ verified customer reviews</p>",
-                    "block_link": "",
-                    "alignment": "center",
-                    "width": "custom",
                     "custom_width_unit_desktop": "%",
                     "custom_width_pixel": 48,
                     "custom_width": 100,
-                    "width_tablet": "custom",
+                    "width_tablet": "fit-content",
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "fit-content",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
                     "height": "fit",
                     "custom_height": 100,
-                    "font_size": 14,
-                    "font_size_mobile": 12,
-                    "text_uppercase": false,
-                    "font_weight": "400",
-                    "color": "#6b7280",
-                    "background": "",
-                    "radius": 0,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "background": "#F1F5F9",
+                    "radius": 10,
                     "border": 0,
                     "border_color": "",
-                    "pt": 0,
-                    "pb": 0,
-                    "pl": 0,
-                    "pr": 0,
-                    "pt_m": 0,
-                    "pb_m": 0,
-                    "pl_m": 0,
-                    "pr_m": 0,
+                    "pt": 10,
+                    "pb": 10,
+                    "pl": 20,
+                    "pr": 20,
+                    "ptm": 10,
+                    "pbm": 10,
+                    "plm": 20,
+                    "prm": 20,
+                    "hide_desktop": false,
                     "hide_mobile": false,
-                    "hide_desktop": false
+                    "image_link": ""
                   },
-                  "blocks": {}
+                  "blocks": {
+                    "block_icon_tkNVGK": {
+                      "type": "block_icon",
+                      "name": "Icon",
+                      "settings": {
+                        "icon": "star",
+                        "svg_code": "",
+                        "size": 20,
+                        "color": "#0ea5e9"
+                      },
+                      "blocks": {}
+                    },
+                    "block_text_KBe7HN": {
+                      "type": "block_text",
+                      "name": "Text",
+                      "settings": {
+                        "text": "<p><strong>4.9/5</strong> average rating from 10,000+ verified reviews</p>",
+                        "block_link": "",
+                        "alignment": "left",
+                        "width": "fit-content",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 100,
+                        "width_tablet": "fit-content",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 100,
+                        "width_mobile": "fit-content",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "font_size": 14,
+                        "font_size_mobile": 12,
+                        "text_uppercase": false,
+                        "font_weight": "400",
+                        "color": "#6b7280",
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "pt_m": 0,
+                        "pb_m": 0,
+                        "pl_m": 0,
+                        "pr_m": 0,
+                        "hide_mobile": false,
+                        "hide_desktop": false
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "block_icon_tkNVGK",
+                    "block_text_KBe7HN"
+                  ]
                 }
               },
               "block_order": [
-                "block_icon_tJRAMF",
-                "block_heading_7QVnj9",
-                "block_text_EtEqHK"
+                "block_group_EJXjQw"
               ]
             }
           },
