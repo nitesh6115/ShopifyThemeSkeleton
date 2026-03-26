@@ -289,14 +289,49 @@
   updateSliderItems();
   buildDots();
   updateDots();
-  window.addEventListener(
-    "resize",
-    () => {
-      updateSliderItems();
-      buildDots();
-      updateDots();
+ window.addEventListener(
+  "resize",
+  () => {
+
+    updateSliderItems();
+    buildDots();
+
+    const perRow = getPerRow();
+
+    const useFade =
+      effect === "fade" &&
+      perRow === 1;
+
+    if (useFade) {
+
+      slider.classList.add(
+        "slider-fade-mode"
+      );
+
+      [...slides].forEach(el =>
+        el.classList.remove("active")
+      );
+
+      index = 0;
+
+      if (slides[0]) {
+        slides[0].classList.add(
+          "active"
+        );
+      }
+
+    } else {
+
+      slider.classList.remove(
+        "slider-fade-mode"
+      );
+
     }
-  );
+
+    updateDots();
+
+  }
+);
   }
   document
   .querySelectorAll(
