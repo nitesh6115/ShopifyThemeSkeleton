@@ -11932,7 +11932,7 @@
               "name": "Heading",
               "settings": {
                 "text": "Ready to Experience",
-                "alignment": "left",
+                "alignment": "center",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
@@ -11961,7 +11961,7 @@
               "name": "Heading",
               "settings": {
                 "text": "The ScienceWell Difference?",
-                "alignment": "left",
+                "alignment": "center",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
@@ -11991,7 +11991,7 @@
               "settings": {
                 "text": "<p>Join thousands who have transformed their wellness journey with our clinically proven formulations.</p>",
                 "block_link": "",
-                "alignment": "left",
+                "alignment": "center",
                 "width": "fill",
                 "custom_width_unit_desktop": "%",
                 "custom_width_pixel": 48,
