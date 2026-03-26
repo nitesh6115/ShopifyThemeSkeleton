@@ -1,36 +1,5 @@
-{% doc %}
-  Advanced Text Block
-{% enddoc %}
-
-<div
-  class="
-    slider_block_container
-    {% if block.settings.height == 'custom' %}
-     block-custom-height-desktop
-     {% else %}
-    block-height-desktop-{{ block.settings.height }}
-    {% endif %}
-    {% if block.settings.width == 'custom' %}
-    block-custom-width-desktop
-    {% else %}
-    block-width-desktop-{{ block.settings.width }}
-    {% endif %}
-     {% if block.settings.width_tablet == 'custom' %}
-    block-custom-width-tablet
-    {% else %}
-     block-width-tablet-{{ block.settings.width_tablet }}
-    {% endif %}
-    {% if block.settings.width_mobile == 'custom' %}
-    block-custom-width-mobile
-    {% else %}
-     block-width-mobile-{{ block.settings.width_mobile }}
-    {% endif %}
-    ratio--{{ block.settings.ratio }}
-    {% if block.settings.hover_zoom %}is-zoom{% endif %}
-    {% if block.settings.shadow %}is-shadow{% endif %}
-  "
-  style="
-    --bg: {{ block.settings.background }};
+{% capture style_schema %}
+--bg: {{ block.settings.background }};
     {% if block.settings.set_full_radius %}
     --radius-top-left: {{ block.settings.radius_top_left }}px;
     --radius-top-right: {{ block.settings.radius_top_right }}px;
@@ -65,9 +34,38 @@
     {% if block.settings.width_mobile == 'custom' %}
     --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
     {% endif %}
-  "
-  {{ block.shopify_attributes }}
->
+{% endcapture %}
+{% assign style_schema = style_schema | strip_newlines %}
+
+{% capture class_list %}
+  slider_block_container;
+    {% if block.settings.height == 'custom' %}
+     block-custom-height-desktop;
+     {% else %}
+    block-height-desktop-{{ block.settings.height }};
+    {% endif %}
+    {% if block.settings.width == 'custom' %}
+    block-custom-width-desktop;
+    {% else %}
+    block-width-desktop-{{ block.settings.width }};
+    {% endif %}
+     {% if block.settings.width_tablet == 'custom' %}
+    block-custom-width-tablet;
+    {% else %}
+     block-width-tablet-{{ block.settings.width_tablet }};
+    {% endif %}
+    {% if block.settings.width_mobile == 'custom' %}
+    block-custom-width-mobile;
+    {% else %}
+     block-width-mobile-{{ block.settings.width_mobile }};
+    {% endif %}
+    ratio--{{ block.settings.ratio }}
+    {% if block.settings.hover_zoom %}is-zoom;{% endif %}
+    {% if block.settings.shadow %}is-shadow;{% endif %}
+{% endcapture %}
+{% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
+
+<div class="{{- class_list -}}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
   <div
     class="
       slider_block slider-{{ block.id }}
