@@ -391,17 +391,34 @@ function initSlider(id) {
 
   /* -------------------- */
 
-  if (autoplay) {
+  let autoTimer = null;
 
-    setInterval(() => {
+function startAutoplay() {
 
-      go(
-        index + getPerRow()
-      );
+  if (!autoplay) return;
 
-    }, speed);
+  stopAutoplay();
+
+  autoTimer = setInterval(() => {
+
+    go(
+      index + getPerRow()
+    );
+
+  }, speed);
+
+}
+
+function stopAutoplay() {
+
+  if (autoTimer) {
+
+    clearInterval(autoTimer);
+    autoTimer = null;
 
   }
+
+}
 
 
 
@@ -413,26 +430,37 @@ function initSlider(id) {
   let scrollLeft;
 
   track.addEventListener(
-    "pointerdown",
-    (e) => {
+  "pointerdown",
+  (e) => {
 
-      isDown = true;
-      startX = e.pageX;
-      scrollLeft =
-        track.scrollLeft;
+    stopAutoplay();
 
-    }
-  );
+    isDown = true;
+    startX = e.pageX;
+    scrollLeft = track.scrollLeft;
 
-  track.addEventListener(
-    "pointerup",
-    () => isDown = false
-  );
+  }
+);
 
   track.addEventListener(
-    "pointerleave",
-    () => isDown = false
-  );
+  "pointerup",
+  () => {
+
+    isDown = false;
+    startAutoplay();
+
+  }
+);
+
+ track.addEventListener(
+  "pointerleave",
+  () => {
+
+    isDown = false;
+    startAutoplay();
+
+  }
+);
 
   track.addEventListener(
     "pointermove",
@@ -492,7 +520,7 @@ function initSlider(id) {
   buildDots();
   updateDots();
   updateHeight();
-
+  startAutoplay();
 
 
   window.addEventListener(
@@ -503,6 +531,7 @@ function initSlider(id) {
       buildDots();
       updateDots();
       updateHeight();
+      startAutoplay();
 
     }
   );
