@@ -84,7 +84,7 @@
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
     data-infinite="{{ block.settings.infinite }}"
-    data-effect="{{ block.settings.slide_effect }}"
+
     data-per-desktop="{{ block.settings.per_row_desktop }}"
     data-per-tablet="{{ block.settings.per_row_tablet }}"
     data-per-mobile="{{ block.settings.per_row_mobile }}"
@@ -121,7 +121,6 @@
     const slider = document.getElementById("slider-" + id);
     if (!slider) return;
     const infinite = slider.dataset.infinite === "true";
-    const effect = slider.dataset.effect || "slide";
     const track = document.getElementById("track-" + id);
     const prev = slider.querySelector(".slider-prev");
     const next = slider.querySelector(".slider-next");
@@ -130,10 +129,6 @@
     const speed = parseInt(slider.dataset.speed) || 3000;
     let index = 0;
     const slides = track.children;
-    // ✅ add here
-    if (slides.length) {
-    slides[0].classList.add("active");
-    }
     function getPerRow() {
 
     const desktop =
@@ -157,49 +152,38 @@
   }
   function go(i) {
 
-  const perRow = getPerRow();
+    const perRow = getPerRow();
 
-  const useFade =
-    effect === "fade" && perRow === 1;
+    const pages =
+      Math.ceil(slides.length / perRow);
 
-  const pages =
-    Math.ceil(slides.length / perRow);
+    const maxIndex =
+      (pages - 1) * perRow;
 
-  const maxIndex =
-    (pages - 1) * perRow;
+    if (i < 0) i = 0;
+    if (i > maxIndex) i = maxIndex;
 
-  if (i < 0) i = 0;
-  if (i > maxIndex) i = maxIndex;
+    index = i;
 
-  index = i;
+    const slide = slides[index];
 
-  const slide = slides[index];
+    if (!slide) return;
 
-  if (!slide) return;
+    track.style.opacity = 0;
 
-  if (useFade) {
+    setTimeout(() => {
 
-    slider.classList.add("slider-fade-mode");
+      track.scrollTo({
+        left: slide.offsetLeft,
+        behavior: "smooth"
+      });
 
-    slides.forEach(el =>
-      el.classList.remove("active")
-    );
+      track.style.opacity = 1;
 
-    slide.classList.add("active");
+    }, 150);
 
-  } else {
-
-    slider.classList.remove("slider-fade-mode");
-
-    track.scrollTo({
-      left: slide.offsetLeft,
-      behavior: "smooth"
-    });
-
+    updateDots();
   }
-
-  updateDots();
-}
 
   if (prev)
     prev.onclick = () =>
@@ -289,74 +273,14 @@
   updateSliderItems();
   buildDots();
   updateDots();
-  const perRow = getPerRow();
-
-const useFade =
-  effect === "fade" &&
-  perRow === 1;
-
-if (useFade) {
-
-  slider.classList.add(
-    "slider-fade-mode"
-  );
-
-  if (slides.length) {
-
-    [...slides].forEach(el =>
-      el.classList.remove("active")
-    );
-
-    slides[0].classList.add(
-      "active"
-    );
-
-  }
-
-}
- window.addEventListener(
-  "resize",
-  () => {
-
-    updateSliderItems();
-    buildDots();
-
-    const perRow = getPerRow();
-
-    const useFade =
-      effect === "fade" &&
-      perRow === 1;
-
-    if (useFade) {
-
-      slider.classList.add(
-        "slider-fade-mode"
-      );
-
-      [...slides].forEach(el =>
-        el.classList.remove("active")
-      );
-
-      index = 0;
-
-      if (slides[0]) {
-        slides[0].classList.add(
-          "active"
-        );
-      }
-
-    } else {
-
-      slider.classList.remove(
-        "slider-fade-mode"
-      );
-
+  window.addEventListener(
+    "resize",
+    () => {
+      updateSliderItems();
+      buildDots();
+      updateDots();
     }
-
-    updateDots();
-
-  }
-);
+  );
   }
   document
   .querySelectorAll(
@@ -506,22 +430,6 @@ if (useFade) {
 .slider-track{
   transition: opacity .25s ease;
 }
-
-.slider-fade-mode .slider-track{
-  position: relative;
-}
-
-.slider-fade-mode .slider-track > *{
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity .4s ease;
-}
-
-.slider-fade-mode .slider-track > *.active{
-  opacity: 1;
-  position: relative;
-}
     /* responsive enable */
 
     @media (min-width: 1366px){
@@ -605,16 +513,6 @@ if (useFade) {
       "max": 3,
       "step": 1,
       "default": 1
-    },
-    {
-      "type": "select",
-      "id": "slide_effect",
-      "label": "Slide Effect",
-      "options": [
-        { "value": "slide", "label": "Slide" },
-        { "value": "fade", "label": "Fade" }
-      ],
-      "default": "slide"
     },
     {
       "type": "checkbox",
