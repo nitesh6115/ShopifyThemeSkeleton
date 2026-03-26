@@ -6706,6 +6706,55 @@
                     "block_group_C8XACA",
                     "block_group_VyrCTa"
                   ]
+                },
+                "block_buttons_Gbcqax": {
+                  "type": "block_buttons",
+                  "name": "Add to cart Button Link",
+                  "settings": {
+                    "alignment": "flex-start",
+                    "primary_label": "View Full Research Data",
+                    "primary_link": "shopify://collections/all",
+                    "primary_bg": "#0ea5e9",
+                    "primary_text": "#ffffff",
+                    "primary_border": "#0ea5e9",
+                    "primary_bg_hover": "#1a1a2e",
+                    "primary_text_hover": "#ffffff",
+                    "primary_border_hover": "#1a1a2e",
+                    "primary_border_size": 2,
+                    "primary_border_radius": 10,
+                    "secondary_label": "",
+                    "secondary_link": "",
+                    "secondary_bg": "#ffffff",
+                    "secondary_text": "#0ea5e9",
+                    "secondary_border": "#0ea5e9",
+                    "secondary_bg_hover": "#0ea5e9",
+                    "secondary_text_hover": "#ffffff",
+                    "secondary_border_hover": "#0ea5e9",
+                    "secondary_border_size": 2,
+                    "secondary_border_radius": 10,
+                    "width": "fit-content",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 80,
+                    "width_tablet": "fit-content",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 80,
+                    "width_mobile": "fit-content",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "btn_full_width": true,
+                    "btn_height": 57,
+                    "btn_height_mobile": 45,
+                    "font_size": 16,
+                    "font_size_mobile": 14,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "hide_desktop": false,
+                    "hide_mobile": false
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
@@ -6716,7 +6765,8 @@
                 "block_group_CTkLDX",
                 "block_group_h7eFwr",
                 "block_text_7r3QGE",
-                "block_group_MKGNiq"
+                "block_group_MKGNiq",
+                "block_buttons_Gbcqax"
               ]
             }
           },
