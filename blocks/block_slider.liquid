@@ -83,6 +83,10 @@
     data-speed="{{ block.settings.autoplay_speed }}"
     data-arrows="{{ block.settings.show_arrows }}"
     data-dots="{{ block.settings.show_dots }}"
+    
+    data-per-desktop="{{ block.settings.per_row_desktop }}"
+    data-per-tablet="{{ block.settings.per_row_tablet }}"
+    data-per-mobile="{{ block.settings.per_row_mobile }}"
 
     style="
       --arrow-color: {{ block.settings.arrow_color }};
@@ -124,22 +128,26 @@ function initSlider(id) {
   let index = 0;
   const slides = track.children;
   function getPerRow() {
-    const style = getComputedStyle(slider);
 
-    if (window.innerWidth >= 1366) {
-      return parseInt(
-        style.getPropertyValue("--per-row-desktop")
-      ) || 1;
-    }
-    if (window.innerWidth >= 768) {
-      return parseInt(
-        style.getPropertyValue("--per-row-tablet")
-      ) || 1;
-    }
-    return parseInt(
-      style.getPropertyValue("--per-row-mobile")
-    ) || 1;
+  const desktop =
+    parseInt(slider.dataset.perDesktop) || 1;
+
+  const tablet =
+    parseInt(slider.dataset.perTablet) || 1;
+
+  const mobile =
+    parseInt(slider.dataset.perMobile) || 1;
+
+  if (window.innerWidth >= 1366) {
+    return desktop;
   }
+
+  if (window.innerWidth >= 768) {
+    return tablet;
+  }
+
+  return mobile;
+}
   function go(i) {
     const perRow = getPerRow();
     const pages =
