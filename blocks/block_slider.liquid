@@ -152,48 +152,37 @@
   }
   function go(i) {
 
-  const perRow = getPerRow();
+    const perRow = getPerRow();
 
-  const pages =
-    Math.ceil(slides.length / perRow);
+    const pages =
+      Math.ceil(slides.length / perRow);
 
-  const maxIndex =
-    (pages - 1) * perRow;
+    const maxIndex =
+      (pages - 1) * perRow;
 
-  if (infinite) {
+    if (i < 0) i = 0;
+    if (i > maxIndex) i = maxIndex;
 
-    if (i > maxIndex) {
-      i = 0;
-    }
+    index = i;
 
-    if (i < 0) {
-      i = maxIndex;
-    }
+    const slide = slides[index];
 
-  } else {
+    if (!slide) return;
 
-    if (i > maxIndex) {
-      i = maxIndex;
-    }
+    track.style.opacity = 0;
 
-    if (i < 0) {
-      i = 0;
-    }
+    setTimeout(() => {
 
-  }
+      track.scrollTo({
+        left: slide.offsetLeft,
+        behavior: "smooth"
+      });
 
-  index = i;
+      track.style.opacity = 1;
 
-  const slide = slides[index];
+    }, 150);
 
-  if (!slide) return;
-
-  track.scrollTo({
-    left: slide.offsetLeft,
-    behavior: "smooth"
-  });
-
-  updateDots();
+    updateDots();
   }
 
   if (prev)
@@ -431,6 +420,12 @@
 
     .slider-fade-in > *{
     opacity: 1;
+}
+.slider-track > *{
+  opacity: 1;
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
 }
     /* responsive enable */
 
