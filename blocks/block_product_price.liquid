@@ -41,7 +41,7 @@
     <span class="price regular_price">
       {{ current_variant.price | money }}
     </span>
-    <span class="sale_pricecp  {% unless block.settings.show_%}hidden{% endunless %}">
+    <span class="sale_price  {% unless block.settings.show_%}hidden{% endunless %}">
       {{ current_variant.compare_at_price | money }}
     </span>
     {% assign discount = current_variant.compare_at_price | minus: current_variant.price %}
@@ -74,6 +74,9 @@
     padding: 5px 10px;
     border-radius: var(--save-radius);
 }
+.product-price .sale_price {
+    font-size: var(--price-compare-at-desktop-font-size);
+}
 @media(max-width: 767px){
   .product-price .regular_price {
     font-size: var(--price-mobile-font-size);
@@ -82,7 +85,8 @@
     font-size: var(--price-compare-at-mobile-font-size);
 }
 }
-span.save.hidden {
+
+span.save.hidden,span.sale_price.hidden {
     display: none;
 }
 .group.group--horizontal.box-nowrap .product_block.product__title {
