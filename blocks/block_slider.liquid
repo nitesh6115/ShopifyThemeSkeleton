@@ -599,7 +599,7 @@ document.addEventListener(
 
     .slider-track{
     display:flex;
-    gap:var(--carousel-gap,8px);
+    gap:var(--gap,8px);
     overflow-x:auto;
     scroll-behavior:smooth;
     scroll-snap-type:x mandatory;
@@ -719,6 +719,9 @@ document.addEventListener(
     .slider_block:not(.slider-mobile) .slider-next,
     .slider_block:not(.slider-mobile) .slider-dots{
       display: none;
+    }
+    .slider-track{
+    gap:var(--gap-m,8px);
     }
       .slider_block_container{
             padding-top: var(--pt-m);
