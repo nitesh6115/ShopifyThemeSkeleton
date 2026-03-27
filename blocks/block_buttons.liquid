@@ -71,15 +71,15 @@
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list -}}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
-  <div class="button_box {% if block.settings.btn_full_width %} btn_full_width {% endif %}">
+  <div class="button_box {% if block.settings.btn_full_width %} btn_full_width {% endif %} {% if block.settings.icon_1 != blank or  block.settings.icon_1 != blank %}with_icon{% endif %}">
     {% if block.settings.primary_label != blank %}
       <a href="{{ block.settings.primary_link }}" class="btn btn-primary">
-        {{ block.settings.primary_label }}
+        <span>{{ block.settings.primary_label }} </span>{% if block.settings.icon_1 != blank %}<span class="svg_icon">{{ block.settings.icon_1 }} </span>{% endif %}
       </a>
     {% endif %}
     {% if block.settings.secondary_label != blank %}
       <a href="{{ block.settings.secondary_link }}" class="btn btn-secondary">
-        {{ block.settings.secondary_label }}
+        <span>{{ block.settings.secondary_label }} </span>{% if block.settings.icon_2!= blank %}<span class="svg_icon">{{ block.settings.icon_2 }} </span>{% endif %}
       </a>
     {% endif %}
   </div>
