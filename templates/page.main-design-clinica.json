@@ -2596,7 +2596,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Hair Thinning",
+                    "text": "Skin Aging",
                     "alignment": "left",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -2668,7 +2668,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Hair Growth Formula</p>",
+                    "text": "<p>Advanced Collagen Complex</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -2711,7 +2711,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Clinically proven biotin & collagen complex for stronger, fuller hair</p>",
+                    "text": "<p>Reduces fine lines and improves elasticity from within</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -3013,7 +3013,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Hair Thinning",
+                    "text": "Dull Complexion",
                     "alignment": "left",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -3085,7 +3085,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Hair Growth Formula</p>",
+                    "text": "<p>Vitamin C Serum</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -3128,7 +3128,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Clinically proven biotin & collagen complex for stronger, fuller hair</p>",
+                    "text": "<p>15% stabilized Vitamin C for radiant, even-toned skin</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -3430,7 +3430,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Hair Thinning",
+                    "text": "Low Energy",
                     "alignment": "left",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -3502,7 +3502,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Hair Growth Formula</p>",
+                    "text": "<p>Vitality Multivitamin</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -3545,7 +3545,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Clinically proven biotin & collagen complex for stronger, fuller hair</p>",
+                    "text": "<p>Complete nutrient support for sustained daily energy</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
