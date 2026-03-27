@@ -41,7 +41,7 @@
     {% assign w = block.settings.custom_width %}
     {% assign items = 100 | divided_by: w %}
     calc(
-      {{ w }}% - ({{ section.settings.gap }}px / {{ items }})
+      {{ w }}% - ({{ block.settings.gap }}px / {{ items }})
     )
   {% else %}
     {{ block.settings.custom_width }}%
@@ -57,7 +57,7 @@
     {% assign w = block.settings.custom_width_tablet %}
     {% assign items = 100 | divided_by: w %}
     calc(
-      {{ w }}% - ({{ section.settings.gap }}px / {{ items }})
+      {{ w }}% - ({{ block.settings.gap }}px / {{ items }})
     )
   {% else %}
     {{ block.settings.custom_width_tablet }}%
@@ -72,7 +72,7 @@
     {% assign w = block.settings.custom_width_tablet %}
     {% assign items = 100 | divided_by: w %}
     calc(
-      {{ w }}% - ({{ section.settings.gap }}px / {{ items }})
+      {{ w }}% - ({{ block.settings.gap }}px / {{ items }})
     )
   {% else %}
     {{ block.settings.custom_width_mobile }}%
