@@ -32,7 +32,7 @@
   --block-custom-height-desktop: {{ block.settings.custom_height }}%;
   {% endif %}
   {% if block.settings.width == 'custom' %}
-  --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{{ block.settings.custom_width }}%{% endif %};
+  --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{% if block.settings.custom_width < 100 %}calc({{ block.settings.custom_width }}% - {{ section.settings.gap }}px){%else%}{{ block.settings.custom_width }}%{% endif%}{% endif %};
   {% endif %}
   {% if block.settings.width_tablet == 'custom' %}
   --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
