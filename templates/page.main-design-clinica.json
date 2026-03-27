@@ -7150,8 +7150,8 @@
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
-                    "image": "shopify://shop_images/30f25a495c2c8d9e432e46bca15112b9abf0ebb9_1.jpg",
-                    "overlay_color": "linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)",
+                    "image": "shopify://shop_images/417e52ed226a3b86b11c2c8c3e0bf2c0cbdfa0b4_5a6c2351-a4d0-442e-b275-f35ed13582fc.jpg",
+                    "overlay_color": "linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)",
                     "overlay_opacity": 85,
                     "bg_position": "center center",
                     "bg_size": "cover",
@@ -7215,7 +7215,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Supplements",
+                            "text": "Skincare",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -7244,7 +7244,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Premium vitamins & nutrients for whole-body wellness</p>",
+                            "text": "<p>Clinical-grade formulations for radiant, healthy skin</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -7396,8 +7396,8 @@
                   "type": "blcok_background_image",
                   "name": "Background Image",
                   "settings": {
-                    "image": "shopify://shop_images/30f25a495c2c8d9e432e46bca15112b9abf0ebb9_1.jpg",
-                    "overlay_color": "linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)",
+                    "image": "shopify://shop_images/5fb51e78cd86876f6a144ac931df8cbc0afff692.jpg",
+                    "overlay_color": "linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)",
                     "overlay_opacity": 85,
                     "bg_position": "center center",
                     "bg_size": "cover",
@@ -7461,7 +7461,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Supplements",
+                            "text": "Haircare",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -7490,7 +7490,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Premium vitamins & nutrients for whole-body wellness</p>",
+                            "text": "<p>Science-backed solutions for stronger, fuller hair</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
