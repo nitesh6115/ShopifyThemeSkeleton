@@ -521,7 +521,7 @@
               "settings": {
                 "image": "shopify://shop_images/30f25a495c2c8d9e432e46bca15112b9abf0ebb9.jpg",
                 "image_link": "",
-                "ratio": "portrait",
+                "ratio": "auto",
                 "hover_zoom": false,
                 "shadow": true,
                 "width": "fill",
