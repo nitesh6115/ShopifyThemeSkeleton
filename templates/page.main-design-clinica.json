@@ -9960,8 +9960,8 @@
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
                     "btn_full_width": false,
-                    "btn_height": 56,
-                    "btn_height_mobile": 56,
+                    "btn_height": 30,
+                    "btn_height_mobile": 30,
                     "font_size": 16,
                     "font_size_mobile": 14,
                     "gap": 12,
@@ -10030,7 +10030,7 @@
                   "name": "Icon",
                   "settings": {
                     "icon": "star",
-                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"62\" height=\"62\" viewbox=\"0 0 62 62\" fill=\"none\">\n<g filter=\"url(#filter0_dd_155_4927)\">\n<path d=\"M3 30C3 14.536 15.536 2 31 2C46.464 2 59 14.536 59 30C59 45.464 46.464 58 31 58C15.536 58 3 45.464 3 30Z\" fill=\"white\" shape-rendering=\"crispEdges\"></path>\n<path d=\"M31 18.3335V27.6668\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M22.752 28.7515L24.397 30.3965\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M19.334 37H21.6673\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M40.334 37H42.6673\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M39.2485 28.7515L37.6035 30.3965\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M42.6673 41.6665H19.334\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M26.334 23.0002L31.0007 18.3335L35.6673 23.0002\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M35.6673 37.0002C35.6673 35.7625 35.1757 34.5755 34.3005 33.7003C33.4253 32.8252 32.2383 32.3335 31.0007 32.3335C29.763 32.3335 28.576 32.8252 27.7008 33.7003C26.8256 34.5755 26.334 35.7625 26.334 37.0002\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<filter id=\"filter0_dd_155_4927\" x=\"0\" y=\"0\" width=\"62\" height=\"62\" filterunits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n<feflood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feflood>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<femorphology radius=\"1\" operator=\"erode\" in=\"SourceAlpha\" result=\"effect1_dropShadow_155_4927\"></femorphology>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_155_4927\"></feblend>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1.5\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"effect1_dropShadow_155_4927\" result=\"effect2_dropShadow_155_4927\"></feblend>\n<feblend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect2_dropShadow_155_4927\" result=\"shape\"></feblend>\n</filter>\n</defs>\n</svg>",
+                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"62\" height=\"62\" viewbox=\"0 0 62 62\" fill=\"none\">\n<g filter=\"url(#filter0_dd_155_4967)\">\n<path d=\"M3 30C3 14.536 15.536 2 31 2C46.464 2 59 14.536 59 30C59 45.464 46.464 58 31 58C15.536 58 3 45.464 3 30Z\" fill=\"white\" shape-rendering=\"crispEdges\"></path>\n<path d=\"M31 19.5C29.6076 20.8924 28.8254 22.7809 28.8254 24.75C28.8254 26.7191 29.6076 28.6076 31 30C32.3924 31.3924 34.2809 32.1746 36.25 32.1746C38.2191 32.1746 40.1076 31.3924 41.5 30C41.5 32.0767 40.8842 34.1068 39.7304 35.8335C38.5767 37.5602 36.9368 38.906 35.0182 39.7007C33.0996 40.4955 30.9884 40.7034 28.9516 40.2982C26.9148 39.8931 25.0438 38.8931 23.5754 37.4246C22.1069 35.9562 21.1069 34.0852 20.7018 32.0484C20.2966 30.0116 20.5045 27.9004 21.2993 25.9818C22.094 24.0632 23.4398 22.4233 25.1665 21.2696C26.8932 20.1158 28.9233 19.5 31 19.5Z\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<filter id=\"filter0_dd_155_4967\" x=\"0\" y=\"0\" width=\"62\" height=\"62\" filterunits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n<feflood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feflood>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<femorphology radius=\"1\" operator=\"erode\" in=\"SourceAlpha\" result=\"effect1_dropShadow_155_4967\"></femorphology>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_155_4967\"></feblend>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1.5\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"effect1_dropShadow_155_4967\" result=\"effect2_dropShadow_155_4967\"></feblend>\n<feblend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect2_dropShadow_155_4967\" result=\"shape\"></feblend>\n</filter>\n</defs>\n</svg>",
                     "size": 48,
                     "color": "#000000"
                   },
@@ -10040,7 +10040,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Morning Routine",
+                    "text": "Evening Routine",
                     "alignment": "left",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -10069,7 +10069,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Energize & Protect</p>",
+                    "text": "<p>Repair & Restore</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -10112,7 +10112,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p><strong>Step 1<br/></strong>Vitality Multivitamin</p>",
+                    "text": "<p><strong>Step 1<br/></strong>Collagen Complex</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "custom",
@@ -10155,7 +10155,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p><strong>Step 2<br/></strong>Vitamin C Serum</p>",
+                    "text": "<p><strong>Step 2<br/></strong>Night Cream</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "custom",
@@ -10275,8 +10275,8 @@
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
                     "btn_full_width": false,
-                    "btn_height": 56,
-                    "btn_height_mobile": 56,
+                    "btn_height": 30,
+                    "btn_height_mobile": 30,
                     "font_size": 16,
                     "font_size_mobile": 14,
                     "gap": 12,
@@ -10345,7 +10345,7 @@
                   "name": "Icon",
                   "settings": {
                     "icon": "star",
-                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"62\" height=\"62\" viewbox=\"0 0 62 62\" fill=\"none\">\n<g filter=\"url(#filter0_dd_155_4927)\">\n<path d=\"M3 30C3 14.536 15.536 2 31 2C46.464 2 59 14.536 59 30C59 45.464 46.464 58 31 58C15.536 58 3 45.464 3 30Z\" fill=\"white\" shape-rendering=\"crispEdges\"></path>\n<path d=\"M31 18.3335V27.6668\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M22.752 28.7515L24.397 30.3965\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M19.334 37H21.6673\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M40.334 37H42.6673\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M39.2485 28.7515L37.6035 30.3965\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M42.6673 41.6665H19.334\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M26.334 23.0002L31.0007 18.3335L35.6673 23.0002\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M35.6673 37.0002C35.6673 35.7625 35.1757 34.5755 34.3005 33.7003C33.4253 32.8252 32.2383 32.3335 31.0007 32.3335C29.763 32.3335 28.576 32.8252 27.7008 33.7003C26.8256 34.5755 26.334 35.7625 26.334 37.0002\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<filter id=\"filter0_dd_155_4927\" x=\"0\" y=\"0\" width=\"62\" height=\"62\" filterunits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n<feflood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feflood>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<femorphology radius=\"1\" operator=\"erode\" in=\"SourceAlpha\" result=\"effect1_dropShadow_155_4927\"></femorphology>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_155_4927\"></feblend>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1.5\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"effect1_dropShadow_155_4927\" result=\"effect2_dropShadow_155_4927\"></feblend>\n<feblend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect2_dropShadow_155_4927\" result=\"shape\"></feblend>\n</filter>\n</defs>\n</svg>",
+                    "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"62\" height=\"62\" viewbox=\"0 0 62 62\" fill=\"none\">\n<g filter=\"url(#filter0_dd_155_5000)\">\n<path d=\"M3 30C3 14.536 15.536 2 31 2C46.464 2 59 14.536 59 30C59 45.464 46.464 58 31 58C15.536 58 3 45.464 3 30Z\" fill=\"white\" shape-rendering=\"crispEdges\"></path>\n<path d=\"M28.594 34.0833C28.4898 33.6795 28.2794 33.3111 27.9845 33.0162C27.6897 32.7214 27.3212 32.511 26.9175 32.4068L19.76 30.5611C19.6379 30.5265 19.5304 30.4529 19.4539 30.3517C19.3773 30.2504 19.3359 30.1269 19.3359 30C19.3359 29.873 19.3773 29.7496 19.4539 29.6483C19.5304 29.547 19.6379 29.4735 19.76 29.4388L26.9175 27.592C27.3211 27.4879 27.6895 27.2776 27.9843 26.983C28.2791 26.6884 28.4897 26.3202 28.594 25.9166L30.4397 18.7591C30.474 18.6365 30.5474 18.5285 30.6489 18.4516C30.7503 18.3747 30.8741 18.333 31.0014 18.333C31.1287 18.333 31.2525 18.3747 31.354 18.4516C31.4554 18.5285 31.5288 18.6365 31.5632 18.7591L33.4077 25.9166C33.5118 26.3204 33.7223 26.6888 34.0171 26.9837C34.3119 27.2785 34.6804 27.489 35.0842 27.5931L42.2417 29.4376C42.3647 29.4716 42.4733 29.545 42.5506 29.6466C42.628 29.7481 42.6699 29.8723 42.6699 30C42.6699 30.1276 42.628 30.2518 42.5506 30.3534C42.4733 30.455 42.3647 30.5283 42.2417 30.5623L35.0842 32.4068C34.6804 32.511 34.3119 32.7214 34.0171 33.0162C33.7223 33.3111 33.5118 33.6795 33.4077 34.0833L31.562 41.2408C31.5277 41.3634 31.4542 41.4714 31.3528 41.5483C31.2514 41.6253 31.1275 41.6669 31.0002 41.6669C30.8729 41.6669 30.7491 41.6253 30.6477 41.5483C30.5463 41.4714 30.4728 41.3634 30.4385 41.2408L28.594 34.0833Z\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M40.334 19.5V24.1667\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M42.6667 21.8335H38\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M21.666 35.8335V38.1668\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M22.8333 37H20.5\" stroke=\"#0A3A5C\" stroke-width=\"2.33333\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</g>\n<defs>\n<filter id=\"filter0_dd_155_5000\" x=\"0\" y=\"0\" width=\"62\" height=\"62\" filterunits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n<feflood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feflood>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<femorphology radius=\"1\" operator=\"erode\" in=\"SourceAlpha\" result=\"effect1_dropShadow_155_5000\"></femorphology>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_155_5000\"></feblend>\n<fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix>\n<feoffset dy=\"1\"></feoffset>\n<fegaussianblur stddeviation=\"1.5\"></fegaussianblur>\n<fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0\"></fecolormatrix>\n<feblend mode=\"normal\" in2=\"effect1_dropShadow_155_5000\" result=\"effect2_dropShadow_155_5000\"></feblend>\n<feblend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect2_dropShadow_155_5000\" result=\"shape\"></feblend>\n</filter>\n</defs>\n</svg>",
                     "size": 48,
                     "color": "#000000"
                   },
@@ -10355,7 +10355,7 @@
                   "type": "block_heading",
                   "name": "Heading",
                   "settings": {
-                    "text": "Morning Routine",
+                    "text": "Hair Recovery",
                     "alignment": "left",
                     "font_italic": false,
                     "font_uppercase": false,
@@ -10384,7 +10384,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p>Energize & Protect</p>",
+                    "text": "<p>Strengthen & Grow</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fill",
@@ -10427,7 +10427,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p><strong>Step 1<br/></strong>Vitality Multivitamin</p>",
+                    "text": "<p><strong>Step 1<br/></strong>Hair Growth Formula</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "custom",
@@ -10470,7 +10470,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p><strong>Step 2<br/></strong>Vitamin C Serum</p>",
+                    "text": "<p><strong>Step 2<br/></strong>Biotin Complex</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "custom",
@@ -10513,7 +10513,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p><strong>Step 3<br/></strong>SPF Moisturizer</p>",
+                    "text": "<p><strong>Step 3<br/></strong>Scalp Serum</p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "custom",
@@ -10590,8 +10590,8 @@
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
                     "btn_full_width": false,
-                    "btn_height": 56,
-                    "btn_height_mobile": 56,
+                    "btn_height": 30,
+                    "btn_height_mobile": 30,
                     "font_size": 16,
                     "font_size_mobile": 14,
                     "gap": 12,
