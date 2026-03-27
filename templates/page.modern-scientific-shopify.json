@@ -11088,7 +11088,7 @@
                     "image": "shopify://shop_images/234f0c021e366b6ba45d6459102b05504b7e5716_1.jpg",
                     "overlay_color": "linear-gradient(0deg, rgba(14, 165, 233, 1), rgba(13, 163, 229, 1) 7.69%, rgba(13, 162, 224, 1) 15.38%, rgba(12, 160, 220, 1) 23.08%, rgba(11, 159, 216, 1) 30.77%, rgba(11, 157, 212, 1) 38.46%, rgba(10, 156, 207, 1) 46.15%, rgba(10, 154, 203, 1) 53.85%, rgba(9, 153, 199, 1) 61.54%, rgba(9, 151, 195, 1) 69.23%, rgba(9, 150, 191, 1) 76.92%, rgba(8, 148, 186, 1) 84.62%, rgba(8, 147, 182, 1) 92.31%, rgba(8, 145, 178, 1) 100%)",
                     "overlay_opacity": 40,
-                    "radius": 0,
+                    "radius": 14,
                     "bg_position": "center center",
                     "bg_size": "cover",
                     "desktop_height_type": "px",
