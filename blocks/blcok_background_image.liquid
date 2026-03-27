@@ -3,7 +3,7 @@
     --radius-top-right: {{ block.settings.radius }}px;
     --radius-bottom-left: {{ block.settings.radius }}px;
     --radius-bottom-right: {{ block.settings.radius }}px;
-    
+
   --desktop-px-height: {{ block.settings.desktop_px_height }}px;
   --tablet-px-height: {{ block.settings.tablet_px_height }}px;
   --mobile-px-height: {{ block.settings.mobile_px_height }}px;
@@ -62,7 +62,7 @@ mobile-vh-height;
 {% liquid
   assign product = block.settings.product
 -%}
-<div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
+<div class="{{- class_list -}}" data-product="{{ product }}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
   {% if block.settings.overlay_color != blank %}
     <div class="block-overlay"></div>
   {% endif %}
