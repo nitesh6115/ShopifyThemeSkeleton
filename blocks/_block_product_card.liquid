@@ -1,9 +1,4 @@
-{%- liquid
-  assign fetch_priority = 'auto'
-  if section.index == 1
-    assign fetch_priority = 'high'
-  endif
--%}
+
 {%- capture style_schema -%}
   --align-x: {{ block.settings.align_x }};
   --align-y: {{ block.settings.align_y }};
