@@ -1,4 +1,9 @@
 {%- capture style_schema -%}
+   --radius-top-left: {{ block.settings.radius }}px;
+    --radius-top-right: {{ block.settings.radius }}px;
+    --radius-bottom-left: {{ block.settings.radius }}px;
+    --radius-bottom-right: {{ block.settings.radius }}px;
+    
   --desktop-px-height: {{ block.settings.desktop_px_height }}px;
   --tablet-px-height: {{ block.settings.tablet_px_height }}px;
   --mobile-px-height: {{ block.settings.mobile_px_height }}px;
@@ -72,6 +77,7 @@ mobile-vh-height;
     display: flex;
     justify-content: var(--align-x);
     align-items: var(--align-y);
+    border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
 }
 .block-overlay{
     border-radius: inherit;
@@ -80,6 +86,7 @@ mobile-vh-height;
     background: var(--overlay-bg);
     opacity: var(--overlay-opacity);
     pointer-events:none;
+    border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
 }
 @media (min-width: 1366px) {
 .background-image-block.desktop-vh-height {
