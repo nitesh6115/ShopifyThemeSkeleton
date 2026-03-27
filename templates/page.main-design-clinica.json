@@ -11995,7 +11995,7 @@
                   "name": "Buttons",
                   "settings": {
                     "alignment": "flex-start",
-                    "primary_label": "View Full Ingredient List",
+                    "primary_label": "View All Research",
                     "primary_link": "",
                     "primary_bg": "#ffffff",
                     "primary_text": "#0a3a5c",
