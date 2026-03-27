@@ -1,8 +1,12 @@
 {% if template contains 'page.premium-wellness-shopify' or template contains 'page.shopify-cro-hoe-page'
-or template contains 'page.premium-landing-page' or template contains 'page.main-design-clinica'%}
+or template contains 'page.premium-landing-page'%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+{% elsif  template contains 'page.main-design-clinica' %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 {% endif %}
 {% style %}
   {{ settings.heading_font | font_face: font_display: 'swap' }}
@@ -55,8 +59,12 @@ or template contains 'page.premium-landing-page' or template contains 'page.main
       }
       
       :root {
-        {% if template contains 'page' %}
+        {% if template contains 'page.premium-wellness-shopify' or template contains 'page.shopify-cro-hoe-page'
+        or template contains 'page.premium-landing-page'%}
         --font-heading: 'Playfair Display', {{ settings.heading_font.fallback_families }};
+        
+        {% elsif  template contains 'page.main-design-clinica' %}
+          --font-heading: 'Cormorant', {{ settings.heading_font.fallback_families }};
         {% else %}
         --font-heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
         {% endif %}
