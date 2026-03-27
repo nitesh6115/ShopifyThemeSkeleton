@@ -4,6 +4,7 @@
     assign fetch_priority = 'high'
   endif
 -%}
+{% assign child_count = block.blocks.size %}
 {%- capture style_schema -%}
   --align-x: {{ block.settings.align_x }};
   --align-y: {{ block.settings.align_y }};
@@ -32,7 +33,7 @@
   --block-custom-height-desktop: {{ block.settings.custom_height }}%;
   {% endif %}
   {% if block.settings.width == 'custom' %}
-  --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{% if block.settings.custom_width < 100 %}calc({{ block.settings.custom_width }}% - {{ section.settings.gap }}px){%else%}{{ block.settings.custom_width }}%{% endif%}{% endif %};
+  --block-custom-width-desktop: {% if block.settings.custom_width_unit_desktop == 'px' %}{{ block.settings.custom_width_pixel }}px{% else %}{% if block.settings.custom_width < 100 %}calc({{ block.settings.custom_width }}% - {{ section.settings.gap }}px * {{  child_count | minus: 1 }} /  {{  child_count }}){%else%}{{ block.settings.custom_width }}%{% endif%}{% endif %};
   {% endif %}
   {% if block.settings.width_tablet == 'custom' %}
   --block-custom-width-tablet: {% if block.settings.custom_width_unit_tablet == 'px' %}{{ block.settings.custom_width_tablet_pixel }}px{% else %}{{ block.settings.custom_width_tablet }}%{% endif %};
@@ -75,7 +76,7 @@
 {% endcapture %}
 
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
-{% assign child_count = block.blocks.size %}
+
 <div class="{{- class_list }}" style="{{- style_schema -}}" {{ block.shopify_attributes }} data-child-size="{{ child_count }}">
   
   {% if block.settings.image_link != blank %}
