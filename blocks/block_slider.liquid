@@ -699,17 +699,6 @@ document.addEventListener(
     .slider_block:not(.slider-desktop) .slider-inner {
     height: auto !important;
 }
- .slider_block:not(.slider-desktop) .slider-track {
-  display: grid;
-  grid-auto-columns: calc(
-    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
-    / var(--per-row-desktop)
-  );
-  gap: var(--gap);
- }
-  }
-   .slider_block:not(.slider-desktop) .slider-track .slider-track>*{
-    width: 100% !important
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1365px) {
