@@ -539,7 +539,7 @@
                 "height": "fit",
                 "custom_height": 100,
                 "background": "",
-                "radius": 16,
+                "radius": 14,
                 "set_full_radius": false,
                 "radius_top_left": 0,
                 "radius_top_right": 0,
