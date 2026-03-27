@@ -1988,7 +1988,7 @@
         },
         "block_slider_Arqa9V": {
           "type": "block_slider",
-          "name": "Slider Block",
+          "name": "Pointer Container Slider",
           "settings": {
             "per_row_desktop": 2,
             "per_row_tablet": 2,
@@ -1997,7 +1997,7 @@
             "gap_m": 30,
             "enable_desktop": false,
             "enable_tablet": false,
-            "enable_mobile": true,
+            "enable_mobile": false,
             "autoplay": false,
             "autoplay_speed": 3000,
             "infinite": true,
