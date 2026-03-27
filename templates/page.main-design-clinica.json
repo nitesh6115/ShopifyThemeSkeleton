@@ -1994,7 +1994,7 @@
             "per_row_tablet": 2,
             "per_row_mobile": 2,
             "gap": 40,
-            "gap_m": 30,
+            "gap_m": 16,
             "enable_desktop": false,
             "enable_tablet": false,
             "enable_mobile": false,
