@@ -7681,7 +7681,7 @@
                           "name": "Icon",
                           "settings": {
                             "icon": "certificate",
-                            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#E8F1ED\"></path>\n<path d=\"M32 22C32 26.993 26.461 32.193 24.601 33.799C24.4277 33.9293 24.2168 33.9998 24 33.9998C23.7832 33.9998 23.5723 33.9293 23.399 33.799C21.539 32.193 16 26.993 16 22C16 19.8783 16.8429 17.8434 18.3431 16.3431C19.8434 14.8429 21.8783 14 24 14C26.1217 14 28.1566 14.8429 29.6569 16.3431C31.1571 17.8434 32 19.8783 32 22Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24 25C25.6569 25 27 23.6569 27 22C27 20.3431 25.6569 19 24 19C22.3431 19 21 20.3431 21 22C21 23.6569 22.3431 25 24 25Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#E8F1ED\"></path>\n<path d=\"M32 25C32 30 28.5 32.5 24.34 33.95C24.1222 34.0238 23.8855 34.0202 23.67 33.94C19.5 32.5 16 30 16 25V18C16 17.7347 16.1054 17.4804 16.2929 17.2929C16.4804 17.1053 16.7348 17 17 17C19 17 21.5 15.8 23.24 14.28C23.4519 14.099 23.7214 13.9995 24 13.9995C24.2786 13.9995 24.5481 14.099 24.76 14.28C26.51 15.81 29 17 31 17C31.2652 17 31.5196 17.1053 31.7071 17.2929C31.8946 17.4804 32 17.7347 32 18V25Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M21 24L23 26L27 22\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
                             "size": 48,
                             "color": "#234a55"
                           },
@@ -7691,7 +7691,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Traceable Origins",
+                            "text": "Purity Standards",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -7720,7 +7720,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Every ingredient sourced from verified, sustainable suppliers</p>",
+                            "text": "<p>99%+ purity guaranteed on all active ingredients</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -7814,7 +7814,7 @@
                           "name": "Icon",
                           "settings": {
                             "icon": "certificate",
-                            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#E8F1ED\"></path>\n<path d=\"M32 22C32 26.993 26.461 32.193 24.601 33.799C24.4277 33.9293 24.2168 33.9998 24 33.9998C23.7832 33.9998 23.5723 33.9293 23.399 33.799C21.539 32.193 16 26.993 16 22C16 19.8783 16.8429 17.8434 18.3431 16.3431C19.8434 14.8429 21.8783 14 24 14C26.1217 14 28.1566 14.8429 29.6569 16.3431C31.1571 17.8434 32 19.8783 32 22Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24 25C25.6569 25 27 23.6569 27 22C27 20.3431 25.6569 19 24 19C22.3431 19 21 20.3431 21 22C21 23.6569 22.3431 25 24 25Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#E8F1ED\"></path>\n<path d=\"M26.5 14V31.5C26.5 32.9 25.4 34 24 34C22.6 34 21.5 32.9 21.5 31.5V14\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M20.5 14H27.5\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M26.5 28H21.5\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
                             "size": 48,
                             "color": "#234a55"
                           },
@@ -7824,7 +7824,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Traceable Origins",
+                            "text": "Lab Tested",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -7853,7 +7853,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Every ingredient sourced from verified, sustainable suppliers</p>",
+                            "text": "<p>Third-party tested for potency, purity & safety</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -7947,7 +7947,7 @@
                           "name": "Icon",
                           "settings": {
                             "icon": "certificate",
-                            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#E8F1ED\"></path>\n<path d=\"M32 22C32 26.993 26.461 32.193 24.601 33.799C24.4277 33.9293 24.2168 33.9998 24 33.9998C23.7832 33.9998 23.5723 33.9293 23.399 33.799C21.539 32.193 16 26.993 16 22C16 19.8783 16.8429 17.8434 18.3431 16.3431C19.8434 14.8429 21.8783 14 24 14C26.1217 14 28.1566 14.8429 29.6569 16.3431C31.1571 17.8434 32 19.8783 32 22Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M24 25C25.6569 25 27 23.6569 27 22C27 20.3431 25.6569 19 24 19C22.3431 19 21 20.3431 21 22C21 23.6569 22.3431 25 24 25Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+                            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\">\n<path d=\"M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z\" fill=\"#E8F1ED\"></path>\n<path d=\"M22.9997 32C21.2438 32.0053 19.55 31.3505 18.2543 30.1654C16.9585 28.9803 16.1555 27.3515 16.0045 25.6021C15.8534 23.8527 16.3654 22.1104 17.4389 20.7207C18.5123 19.3311 20.0689 18.3957 21.7997 18.1C27.4997 17 28.9997 16.48 30.9997 14C31.9997 16 32.9997 18.18 32.9997 22C32.9997 27.5 28.2197 32 22.9997 32Z\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M14 33C14 30 15.85 27.64 19.08 27C21.5 26.52 24 25 25 24\" stroke=\"#2F5E4F\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
                             "size": 48,
                             "color": "#234a55"
                           },
@@ -7957,7 +7957,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Traceable Origins",
+                            "text": "Clean Formula",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -7986,7 +7986,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Every ingredient sourced from verified, sustainable suppliers</p>",
+                            "text": "<p>Free from parabens, sulfates & synthetic fragrances</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -8039,12 +8039,62 @@
                     "block_group_c9LGWU",
                     "block_group_nQHb6f"
                   ]
+                },
+                "block_buttons_EFnEx9": {
+                  "type": "block_buttons",
+                  "name": "Buttons",
+                  "settings": {
+                    "alignment": "flex-start",
+                    "primary_label": "View Full Ingredient List",
+                    "primary_link": "",
+                    "primary_bg": "#ffffff",
+                    "primary_text": "#0a3a5c",
+                    "primary_border": "#000000",
+                    "primary_bg_hover": "#333333",
+                    "primary_text_hover": "#ffffff",
+                    "primary_border_hover": "#333333",
+                    "primary_border_size": 0,
+                    "primary_border_radius": 0,
+                    "secondary_label": "",
+                    "secondary_link": "",
+                    "secondary_bg": "#ffffff",
+                    "secondary_text": "#000000",
+                    "secondary_border": "#000000",
+                    "secondary_bg_hover": "#000000",
+                    "secondary_text_hover": "#ffffff",
+                    "secondary_border_hover": "#000000",
+                    "secondary_border_size": 0,
+                    "secondary_border_radius": 0,
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "btn_full_width": false,
+                    "btn_height": 56,
+                    "btn_height_mobile": 56,
+                    "font_size": 16,
+                    "font_size_mobile": 14,
+                    "gap": 12,
+                    "gap_m": 12,
+                    "hide_desktop": false,
+                    "hide_mobile": false
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "block_heading_rDY3yk",
                 "block_text_wwcPaz",
-                "block_group_J3ncmD"
+                "block_group_J3ncmD",
+                "block_buttons_EFnEx9"
               ]
             },
             "block_group_dgf7rz": {
