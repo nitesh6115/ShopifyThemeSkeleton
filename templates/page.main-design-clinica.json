@@ -15058,13 +15058,13 @@
       "block_order": [
         "block_group_736kVk"
       ],
-      "name": "BUILD YOUR",
+      "name": "SUBSCRIBE SAVE",
       "settings": {
         "section_width": "custom",
         "custom_width": 1280,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
-        "background_color": "linear-gradient(135deg, #0A3A5C 0%, #0D3D5B 7.14%, #0F3F5B 14.29%, #12425A 21.43%, #144559 28.57%, #174759 35.71%, #1A4A58 42.86%, #1C4C57 50%, #1F4F56 57.14%, #225255 64.29%, #245454 71.43%, #275753 78.57%, #2A5952 85.71%, #2C5C50 92.86%, #2F5E4F 100%)",
+        "background_color": "linear-gradient(135deg, rgba(10, 58, 92, 1), rgba(13, 61, 91, 1) 7.14%, rgba(15, 63, 91, 1) 14.29%, rgba(18, 66, 90, 1) 21.43%, rgba(20, 69, 89, 1) 28.57%, rgba(23, 71, 89, 1) 35.71%, rgba(26, 74, 88, 1) 42.86%, rgba(28, 76, 87, 1) 50%, rgba(31, 79, 86, 1) 57.14%, rgba(34, 82, 85, 1) 64.29%, rgba(36, 84, 84, 1) 71.43%, rgba(39, 87, 83, 1) 78.57%, rgba(42, 89, 82, 1) 85.71%, rgba(44, 92, 80, 1) 92.86%, rgba(47, 94, 79, 1) 100%)",
         "overlay_color": "",
         "overlay_opacity": 0,
         "bg_position": "center center",
