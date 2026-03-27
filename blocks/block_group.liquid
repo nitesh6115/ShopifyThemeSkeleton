@@ -83,8 +83,29 @@
 {% endif %};
   {% endif %}
   {% if block.settings.width_mobile == 'custom' %}
-  --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}{{ block.settings.custom_width_pixel_mobile }}px{% else %}{{ block.settings.custom_width_mobile }}%{% endif %};
+  --block-custom-width-mobile: {% if block.settings.custom_width_unit_mobile == 'px' %}
+
+  {{ block.settings.custom_width_pixel_mobile }}px
+
+{% else %}
+
+  {% if block.settings.custom_width_mobile < 100 %}
+
+    {% assign w = block.settings.custom_width_tablet %}
+    {% assign items = 100 | divided_by: w %}
+
+    calc(
+      {{ w }}% - ({{ section.settings.gap }}px / {{ items }})
+    )
+
+  {% else %}
+
+    {{ block.settings.custom_width_mobile }}%
+
   {% endif %}
+
+{% endif %};
+{% endif %}
 {%- endcapture -%}
 
 {% assign style_schema = style_schema | strip_newlines %}
