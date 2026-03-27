@@ -12801,7 +12801,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Emma S.",
+                            "text": "Rachel M.",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -12830,7 +12830,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Clinical Vitamin C Serum</p>",
+                            "text": "<p>Advanced Collagen Complex</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -12959,7 +12959,7 @@
                               "type": "block_text",
                               "name": "Text",
                               "settings": {
-                                "text": "<p>8 weeks</p>",
+                                "text": "<p>12 weeks</p>",
                                 "block_link": "",
                                 "alignment": "left",
                                 "width": "fit-content",
@@ -13008,7 +13008,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Results:<br/>Reduced dark spots, brighter complexion</p>",
+                            "text": "<p>Results:<br/>Improved skin firmness, reduced fine lines</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -13196,7 +13196,7 @@
                           "type": "block_heading",
                           "name": "Heading",
                           "settings": {
-                            "text": "Emma S.",
+                            "text": "Lisa K.",
                             "alignment": "left",
                             "font_italic": false,
                             "font_uppercase": false,
@@ -13225,7 +13225,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Clinical Vitamin C Serum</p>",
+                            "text": "<p>Hair Growth Formula</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
@@ -13403,7 +13403,7 @@
                           "type": "block_text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>Results:<br/>Reduced dark spots, brighter complexion</p>",
+                            "text": "<p>Results:<br/>Thicker hair, reduced shedding</p>",
                             "block_link": "",
                             "alignment": "left",
                             "width": "fill",
