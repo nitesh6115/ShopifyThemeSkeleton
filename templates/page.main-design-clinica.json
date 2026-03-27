@@ -167,18 +167,18 @@
               "type": "block_heading",
               "name": "Heading",
               "settings": {
-                "text": "Advanced Wellness",
+                "text": "Clinical-Grade Wellness for Skin, Hair & Vitality",
                 "alignment": "left",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
                 "letter_spacing": 0,
-                "color": "#1a1a2e",
+                "color": "#0a3a5c",
                 "tag": "h2",
                 "size_mode": "custom",
                 "font_size": 60,
                 "font_size_m": 45,
-                "font_weight": 600,
+                "font_weight": 500,
                 "width": "fill",
                 "custom_width": 100,
                 "width_tablet": "fill",
@@ -682,7 +682,7 @@
         "custom_width": 1280,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
-        "background_color": "linear-gradient(135deg, rgba(241, 245, 249, 1), rgba(244, 247, 250, 1) 10%, rgba(247, 249, 251, 1) 20%, rgba(249, 251, 253, 1) 30%, rgba(252, 253, 254, 1) 40%, rgba(255, 255, 255, 1) 50%, rgba(252, 253, 254, 1) 60%, rgba(249, 251, 253, 1) 70%, rgba(247, 249, 251, 1) 80%, rgba(244, 247, 250, 1) 90%, rgba(241, 245, 249, 1) 100%)",
+        "background_color": "linear-gradient(135deg, #E8F1ED 0%, #EBF3F0 14.29%, #EFF5F2 28.57%, #F2F7F5 42.86%, #F5F9F7 57.14%, #F8FBFA 71.43%, #FCFDFC 85.71%, #FFFFFF 100%)",
         "overlay_color": "",
         "overlay_opacity": 0,
         "bg_position": "center center",
@@ -1897,7 +1897,9 @@
             "per_row_tablet": 4,
             "per_row_mobile": 1,
             "gap": 26,
-            "gap_m": 16
+            "gap_m": 16,
+            "hide_mobile": false,
+            "hide_desktop": false
           },
           "blocks": {
             "static-product-card": {
