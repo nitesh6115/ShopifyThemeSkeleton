@@ -583,28 +583,27 @@ initZoom();
 }
 
   function activateMedia(mediaId) {
-  
-    mediaItems.forEach(item => {
-      item.classList.remove("is-active");
-      if (item.dataset.mediaId === mediaId) {
-        item.classList.add("is-active");
-      }
 
-      const video = item.querySelector("video");
-      if (video) video.pause();
-    });
+  mediaItems.forEach((item, i) => {
+    const isMatch = item.dataset.mediaId === mediaId;
 
-    thumbs.forEach(thumb => {
-      thumb.classList.remove("is-active");
-      if (thumb.dataset.mediaId === mediaId) {
-        thumb.classList.add("is-active");
-        scrollThumbIntoView(thumb);
-      }
-    });
-    setTimeout(() => {
-  initZoom();
-}, 50);
-  }
+    item.classList.toggle("is-active", isMatch);
+
+    if (isMatch) {
+      currentIndex = i; // 👈 sync slider index
+    }
+
+    const video = item.querySelector("video");
+    if (video) video.pause();
+  });
+
+  thumbs.forEach(thumb => {
+    thumb.classList.toggle(
+      "is-active",
+      thumb.dataset.mediaId === mediaId
+    );
+  });
+}
   
   
   function scrollThumbIntoView(thumb) {
