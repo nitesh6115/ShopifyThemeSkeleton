@@ -432,6 +432,7 @@ function initZoom() {
     let isPinching = false;
     /* -------- DESKTOP HOVER -------- */
     if (window.matchMedia("(hover: hover)").matches) {
+      console.log(container)
       container.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
