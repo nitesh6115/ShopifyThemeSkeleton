@@ -41,7 +41,7 @@
             data-value="{{ value | escape }}"
           >
            <span> {{ value }}</span>
-           {% if block.settings.show_price %}
+           {% if block.settings.show_price and product.option.size == 1%}
             <span class="v_price">{{ value.variant.price | money }}</span>
             {% endif %}
           </button>
