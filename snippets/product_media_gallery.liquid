@@ -25,6 +25,7 @@
         
         {% case featured_media.media_type %}
           {% when 'image' %}
+            <div class="zoom-container">
             {{ featured_media
             | image_url: width: 1600
             | image_tag:
@@ -34,6 +35,7 @@
             sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
             alt: featured_media.alt | escape
             }}
+            </div>
           {% when 'video' %}
             {{ featured_media | video_tag: controls: true }}
 
@@ -63,6 +65,7 @@
 
           {% case media.media_type %}
             {% when 'image' %}
+              <div class="zoom-container">
               {{ media
             | image_url: width: 1600
             | image_tag:
@@ -72,7 +75,7 @@
             sizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
             alt: media.alt | escape
             }}
-
+            </div>
             {% when 'video' %}
               {{ media | video_tag: controls: true }}
 
