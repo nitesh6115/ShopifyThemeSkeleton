@@ -115,6 +115,18 @@
 .hide_thumbs .prdouctThubs {
     display: none;
 }
+.product-wrapper .zoom-container {
+  position: relative;
+  overflow: hidden;
+  touch-action: none; /* required for pinch */
+  cursor: zoom-in;
+}
+
+.product-wrapper .zoom-image {
+  width: 100%;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
 @media (max-width: 767px){
   .button_from {
     position: sticky;
