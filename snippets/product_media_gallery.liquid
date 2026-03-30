@@ -92,10 +92,10 @@
     {% endfor %}
 
   </ul>
-  {% unless block.settings.show_thumbs %}
+  {% if product.media.size > 1 and block.settings.show_thumbs == false %}
   <button class="main-nav main-prev">‹</button>
   <button class="main-nav main-next">›</button>
-  {% endunless %}
+  {% endif %}
   <div class="prdouctThubs">
   <div class="gallery-thumbs-wrapper">
 
