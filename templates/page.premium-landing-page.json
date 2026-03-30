@@ -5544,7 +5544,7 @@
                 "pill-bg": "#f9f3e9",
                 "pill-text": "#121212",
                 "pill-border": "#6b5e4e",
-                "hover-pill-bg": "#c9a96e",
+                "hover-pill-bg": "#f9f3e9",
                 "hover-pill-text": "#ffffff",
                 "hover-pill-border": "#121212",
                 "pill-border-width": 2,
