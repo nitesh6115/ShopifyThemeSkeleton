@@ -6093,7 +6093,6 @@
         "block_slider_efeai9": {
           "type": "block_slider",
           "name": "Slider Block",
-          "disabled": true,
           "settings": {
             "per_row_desktop": 1,
             "per_row_tablet": 1,
