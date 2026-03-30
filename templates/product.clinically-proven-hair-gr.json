@@ -253,7 +253,7 @@
                 "padding_right": 0,
                 "block_radius": 0,
                 "bg_color": "",
-                "show_price": false,
+                "show_price": true,
                 "price_color": "#000000",
                 "compare_color": "#dddddd",
                 "show_saving_off": false,
