@@ -49,7 +49,7 @@
             {% endif %}
            <span> {{ value }}</span>
            {% if block.settings.show_price and product.options.size == 1%}
-            <span class="v_price">{{ value.variant.price | money }}</span>
+            <span class="v_price">{{ value.variant.price | money }} {% if value.variant.compare_at_price %}<sapn class="v_compare_price">{{ value.variant.compare_at_price | money }}</sapn>{% endif %}</span> 
             {% endif %}
           </button>
         {% endfor %}
