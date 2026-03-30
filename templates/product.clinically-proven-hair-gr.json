@@ -30,7 +30,7 @@
             "padding_bottom_mobile": 32,
             "padding_left_mobile": 16,
             "padding_right_mobile": 16,
-            "enable_zoom": true,
+            "enable_zoom": false,
             "show_thumbs": false,
             "media-thumb-width": 110,
             "media-thumb-mobile-width": 80,
