@@ -425,6 +425,7 @@ function initZoom() {
   const zoomContainers = gallery.querySelectorAll('.zoom-container');
 
   zoomContainers.forEach(container => {
+      console.log(container)
     const img = container.querySelector('.zoom-image');
     if (!img) return;
     let scale = 1;
