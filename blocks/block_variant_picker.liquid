@@ -26,6 +26,10 @@
                 --pill-border: {{ block.settings.pill-border }};
                 --pill-border-width: {{ block.settings.pill-border-width }}px;
                 --pill-hover-border: {{ block.settings.hover-pill-border }};
+                --price-color: {{ block.settings.price_color }};
+                --compare-color: {{ block.settings.compare_color }};
+                --save-bg: {{ block.settings.saving_off_bg }};
+                --save-color: {{ block.settings.saving_off_color }};
 {% endcapture %}
 {% assign style_schema = style_schema | strip_newlines %}
 <div class="product_block variant_picker" {{ block.shopify_attributes }} style="{{- style_schema -}}">
