@@ -37,9 +37,16 @@
         {% for value in option.values %}
           <button
             type="button"
-            class="option-value"
+            class="option-value {% if block.settings.show_price and product.options.size == 1%} single_price_option {% endif %}"
             data-value="{{ value | escape }}"
           >
+            {% if block.settings.show_saving_off and product.options.size == 1 %}
+              {% if value.variant.compareAtPrice and value.variant.price > value.variant.compare_at_price %}
+              {% assign discount = value.variant.compare_at_price | minus: value.variant.price %}
+    {% assign discount_percentage = discount | times: 100 | divided_by: value.variant.compare_at_price %}
+    {{ discount_percentage }}% OFF 
+              {% endif %}
+            {% endif %}
            <span> {{ value }}</span>
            {% if block.settings.show_price and product.options.size == 1%}
             <span class="v_price">{{ value.variant.price | money }}</span>
