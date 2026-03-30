@@ -85,7 +85,7 @@
 {% endcapture %}
 {% assign info_class_list = info_class_list | strip_newlines | replace: ';', ' ' | strip %}
 <div
-  class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %}"
+  class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %} {% if block.settings.enable_zoom %} zoom-enabled {% endif %}"
   style="{{- style_schema -}}"
   id="MainProduct_{{ block.id }}"
   data-variants='{{ product.variants | json }}'
@@ -390,6 +390,9 @@ button.thumb-nav.thumb-next {
 span.sticky-compare {
     text-decoration: line-through;
     opacity: .8;
+}
+.product_section:not(.zoom-enabled) .zoom-container {
+  cursor: default;
 }
 @media(max-width:768px){
   
