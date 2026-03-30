@@ -416,7 +416,85 @@ function initProductScript(sectionId) {
   const prevBtn = gallery.querySelector(".thumb-prev");
   const nextBtn = gallery.querySelector(".thumb-next");
 
+/* -------------------------
+   IMAGE ZOOM (DESKTOP + MOBILE)
+-------------------------- */
 
+function initZoom() {
+
+  const zoomContainers = gallery.querySelectorAll('.zoom-container');
+
+  zoomContainers.forEach(container => {
+    const img = container.querySelector('.zoom-image');
+
+    if (!img) return;
+
+    let scale = 1;
+    let startDistance = 0;
+    let isPinching = false;
+
+    /* -------- DESKTOP HOVER -------- */
+    if (window.matchMedia("(hover: hover)").matches) {
+
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = "scale(2)";
+      });
+
+      container.addEventListener('mouseleave', () => {
+        img.style.transform = "scale(1)";
+        img.style.transformOrigin = "center";
+      });
+    }
+
+    /* -------- MOBILE PINCH -------- */
+
+    container.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        isPinching = true;
+        startDistance = getDistance(e.touches);
+      }
+    });
+
+    container.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2 && isPinching) {
+        e.preventDefault();
+
+        const newDistance = getDistance(e.touches);
+        const zoomFactor = newDistance / startDistance;
+
+        scale = Math.min(Math.max(1, zoomFactor), 3);
+        img.style.transform = `scale(${scale})`;
+      }
+    });
+
+    container.addEventListener('touchend', () => {
+      isPinching = false;
+
+      if (scale < 1.1) {
+        scale = 1;
+        img.style.transform = "scale(1)";
+      }
+    });
+
+  });
+}
+
+/* helper */
+function getDistance(touches) {
+  return Math.sqrt(
+    Math.pow(touches[0].clientX - touches[1].clientX, 2) +
+    Math.pow(touches[0].clientY - touches[1].clientY, 2)
+  );
+}
+
+/* INIT */
+initZoom();
   /*----------------------------
       MEDIA ELEMENTS 
     ---------------------------*/
