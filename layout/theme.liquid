@@ -17,7 +17,6 @@
       {{ settings.body_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
     {% endunless %}
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'premium-builder.css' | asset_url | stylesheet_tag: preload: true }}
     {% render 'meta-tags' %}
     {{ content_for_header }}
   </head>
