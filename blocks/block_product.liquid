@@ -127,6 +127,30 @@
   transition: transform 0.2s ease;
   transform-origin: center;
 }
+.main-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.main-prev { left: 10px; }
+.main-next { right: 10px; }
+
+.hide_thumbs .main-nav {
+  display: block;
+}
+
+.enable_thumbs .main-nav {
+  display: none;
+}
 @media (max-width: 767px){
   .button_from {
     position: sticky;
