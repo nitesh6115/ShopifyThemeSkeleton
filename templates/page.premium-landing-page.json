@@ -5571,7 +5571,7 @@
                 "btn_hover_border": "#121212",
                 "show_qty": true,
                 "show_dynamic_button": true,
-                "buy_btn_bg": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)",
+                "buy_btn_bg": "linear-gradient(90deg, rgba(6, 93, 45, 1), rgba(12, 141, 70, 1) 100%)",
                 "buy_btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(10, 9, 9, 1) 100%)",
                 "buy_btn_text": "#ffffff",
                 "buy_btn_hover_text": "#ffffff",
