@@ -220,6 +220,7 @@
             "block_product_price_RdaFd8": {
               "type": "block_product_price",
               "name": "Product Price",
+              "disabled": true,
               "settings": {
                 "padding_top": 5,
                 "padding_bottom": 5,
