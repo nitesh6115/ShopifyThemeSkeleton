@@ -139,7 +139,28 @@ button.option-value.single_price_option {
 .product-option {
     padding: 10px 0;
 }
+span.v_price {
+    color: var(--price-color);
+    font-size: 17px;
+    font-weight: bold;
+}
 
+span.v_price span.v_compare_price {
+    font-size: 15px;
+    text-decoration: line-through;
+    color: var(--compare-color);
+}
+
+.product-option .option-values span.saving {
+    position: absolute;
+    top: -18px;
+    margin: 0 auto;
+    background: var(--save-bg);
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--save-color);
+    border-radius: var(--pill-radius);
+}
 {% endstylesheet %}
 {% schema %}
 {
@@ -227,7 +248,7 @@ button.option-value.single_price_option {
       "id": "compare_color",
       "visible_if": "{{ block.settings.show_price == true }}",
       "label": "Compare Price Color",
-      "default": "#eee"
+      "default": "#ddd"
     },
     {
       "type": "checkbox",
@@ -246,8 +267,8 @@ button.option-value.single_price_option {
       "type": "color",
       "id": "saving_off_color",
       "visible_if": "{{ block.settings.show_saving_off == true }}",
-      "label": "Saving Of Background Color",
-      "default": "#000"
+      "label": "Saving of Color",
+      "default": "#fff"
     },
     {
       "type": "color",
