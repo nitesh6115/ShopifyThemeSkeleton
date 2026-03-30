@@ -442,7 +442,45 @@ function initProductScript(sectionId) {
   const wrapper = gallery.querySelector(".gallery-thumbs-wrapper");
   const prevBtn = gallery.querySelector(".thumb-prev");
   const nextBtn = gallery.querySelector(".thumb-next");
+/* -------------------------
+   MAIN SLIDER (NO THUMBS)
+-------------------------- */
 
+const mainItems = gallery.querySelectorAll(".gallery-media-item");
+const prevMain = gallery.querySelector(".main-prev");
+const nextMain = gallery.querySelector(".main-next");
+
+let currentIndex = 0;
+
+function showSlide(index) {
+  if (!mainItems.length) return;
+
+  currentIndex = index;
+
+  if (currentIndex < 0) currentIndex = mainItems.length - 1;
+  if (currentIndex >= mainItems.length) currentIndex = 0;
+
+  mainItems.forEach((item, i) => {
+    item.classList.toggle("is-active", i === currentIndex);
+  });
+
+  // sync thumbs if exist (optional safe)
+  thumbs.forEach(thumb => {
+    thumb.classList.toggle(
+      "is-active",
+      thumb.dataset.mediaId === mainItems[currentIndex].dataset.mediaId
+    );
+  });
+}
+
+/* buttons */
+prevMain?.addEventListener("click", () => {
+  showSlide(currentIndex - 1);
+});
+
+nextMain?.addEventListener("click", () => {
+  showSlide(currentIndex + 1);
+});
 /* -------------------------
    IMAGE ZOOM (DESKTOP + MOBILE)
 -------------------------- */
