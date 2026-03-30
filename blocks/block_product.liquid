@@ -10,7 +10,7 @@
 {%- endcapture -%}
 {% assign style_schema = style_schema | strip_newlines %}
 
-{%- capture Inforation_block -%}
+{%- capture infoBlock -%}
   --align-x: {{ block.settings.align_x }};
   --align-y: {{ block.settings.align_y }};
   --child-size: {{ block.size }};
@@ -53,7 +53,8 @@
   {% endif %}
 {%- endcapture -%}
 
-{% assign Inforation_block = Inforation_block | strip_newlines %}
+{% assign infoBlock = infoBlock | strip_newlines %}
+
 {%- capture info_class_list -%}
   group;
   group--vertical;
@@ -97,7 +98,7 @@
     <div class="product_media-wrapper">
       {% render 'product_media_gallery', variant_images: variant_images, product: product %}
     </div>
-    <div class="product_information_wrapper {{  info_class_list }}" style="{{- Inforation_block -}}">
+    <div class="product_information_wrapper {{  info_class_list }}" style="{{- infoBlock -}}">
       {% content_for 'blocks' %}
     </div>
   </div>
