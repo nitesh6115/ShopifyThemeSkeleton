@@ -95,7 +95,10 @@
     {% endfor %}
 
   </ul>
-
+  {% unless block.settings.show_thumbs %}
+  <button class="main-nav main-prev">‹</button>
+  <button class="main-nav main-next">›</button>
+  {% endunless %}
   <div class="prdouctThubs">
   <div class="gallery-thumbs-wrapper">
 
