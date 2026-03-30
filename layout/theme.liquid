@@ -23,10 +23,14 @@
   </head>
   <body>
     <div class="menu_overlay">&nbsp;</div>
+    {% comment %}
     {% sections 'header-group' %}
+    {% endcomment %}
     <div class="main-contant-container" role="main">
     {{ content_for_layout }}
     </div>
+      {% comment %}
     {% sections 'footer-group' %}
+     {% endcomment %}
   </body>
 </html>
