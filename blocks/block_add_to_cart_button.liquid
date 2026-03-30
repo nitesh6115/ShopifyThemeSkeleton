@@ -50,6 +50,7 @@
   style="{{- style_schema -}}"
 >
   {%- assign product_form_id = 'product-form-' | append: block.id -%}
+  {% assign current_variant = product.selected_or_first_available_variant %}
   {%- form 'product',
     product,
     id: product_form_id,
