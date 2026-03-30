@@ -211,13 +211,40 @@ button.option-value.single_price_option {
       "label": "Show Each Varaints Price",
       "info": "Its work when prodcut have only one option"
     },
+        {
+      "type": "color",
+      "id": "price_color",
+      "visible_if": "{{ block.settings.show_price == true }}",
+      "label": "Price Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "compare_color",
+      "visible_if": "{{ block.settings.show_price == true }}",
+      "label": "Compare Price Color",
+      "default": "#eee"
+    },
     {
       "type": "checkbox",
       "id": "show_saving_off",
       "label": "Show Saving Off",
       "info": "Its work when prodcut have only one option and its varaints has compare price"
     },
-    
+    {
+      "type": "color",
+      "id": "saving_off_bg",
+      "visible_if": "{{ block.settings.show_saving_off == true }}",
+      "label": "Saving Of Background Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "saving_off_color",
+      "visible_if": "{{ block.settings.show_saving_off == true }}",
+      "label": "Saving Of Background Color",
+      "default": "#000"
+    },
     {
       "type": "color",
       "id": "pill-bg",
