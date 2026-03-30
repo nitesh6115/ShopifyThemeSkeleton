@@ -601,8 +601,24 @@ function initProductScript(sectionId) {
     function updateButton() {
       if (!addToCartBtn || !currentVariant) return;
 
+      const showBtnPrice = addToCartBtn.hasAttribute('data-btn-price');
+
       addToCartBtn.disabled = !currentVariant.available;
-      addToCartBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+
+      if (!currentVariant.available) {
+        addToCartBtn.textContent = 'Sold Out';
+        return;
+      }
+
+      if (showBtnPrice) {
+        addToCartBtn.innerHTML = `
+          <span class="btn_text">Add to Cart</span>
+          <span class="btn_separator">—</span>
+          <span class="btn_price">${formatMoney(currentVariant.price)}</span>
+        `;
+      } else {
+        addToCartBtn.innerHTML = `<span class="btn_text">Add to Cart</span>`;
+      }
     }
 
     function updateVariant() {
