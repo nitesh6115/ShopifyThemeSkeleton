@@ -40,7 +40,10 @@
             class="option-value"
             data-value="{{ value | escape }}"
           >
-            {{ value }}
+           <span> {{ value }}</span>
+           {% if block.settings.show_price %}
+            <span class="v_price">{{ value.Variant.price }}</span>
+            {% endif %}
           </button>
         {% endfor %}
       </div>
