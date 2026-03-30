@@ -776,7 +776,7 @@
                 "block_radius": 0,
                 "bg_color": "",
                 "show_price": true,
-                "show_saving_off": false,
+                "show_saving_off": true,
                 "pill-bg": "#ffffff",
                 "pill-text": "#6d7175",
                 "pill-border": "#d4d4d4",
