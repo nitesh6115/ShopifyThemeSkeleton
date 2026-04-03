@@ -1265,7 +1265,7 @@
                             "block_radius": 0,
                             "bg_color": "",
                             "show_price": true,
-                            "price_color": "#000000",
+                            "price_color": "#d4a574",
                             "compare_color": "#dddddd",
                             "show_saving_off": true,
                             "saving_off_bg": "#d4a574",
