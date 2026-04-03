@@ -1346,7 +1346,8 @@
       "custom_css": [
         ".product_media-wrapper {display: none;}",
         ".product_section {width: 100%;}",
-        ".product_media-wrapper,.product_information_wrapper {max-width: 100%;}"
+        ".product_media-wrapper,.product_information_wrapper {max-width: 100%;}",
+        ".product-option .option-values {gap: 10px; --variant-min-width: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--variant-min-width), 1fr));}"
       ],
       "name": "Product Variants",
       "settings": {
