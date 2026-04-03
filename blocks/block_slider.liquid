@@ -77,8 +77,8 @@
       --per-row-tablet: {{ block.settings.per_row_tablet }};
       --per-row-mobile: {{ block.settings.per_row_mobile }};
 
-      --gap: {{ block.settings.gap }}px;
-      --gap-m: {{ block.settings.gap_m }}px;
+      --s-gap: {{ block.settings.gap }}px;
+      --s-gap-m: {{ block.settings.gap_m }}px;
   {% endcapture %}
   {% assign slider_style = slider_style | strip_newlines %}
 
@@ -661,7 +661,7 @@ document.addEventListener(
 } 
   .slider_block .slider-track > *{
     width: calc(
-    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
+    (100% - (var(--s-gap) * (var(--per-row-desktop) - 1)))
     / var(--per-row-desktop)
   );
    box-sizing: border-box;
@@ -683,7 +683,7 @@ document.addEventListener(
 }
  .slider_block .slider-track > *{
     width: calc(
-    (100% - (var(--gap) * (var(--per-row-tablet) - 1)))
+    (100% - (var(--s-gap) * (var(--per-row-tablet) - 1)))
     / var(--per-row-tablet)
   );
    box-sizing: border-box;
@@ -704,7 +704,7 @@ document.addEventListener(
     height: auto !important;
 }
     .slider-track{
-    gap:var(--gap-m,8px);
+    gap:var(--s-gap-m);
     }
       .slider_block_container{
             padding-top: var(--pt-m);
@@ -714,7 +714,7 @@ document.addEventListener(
           }
            .slider_block .slider-track > *{
     width: calc(
-    (100% - (var(--gap-m) * (var(--per-row-mobile) - 1)))
+    (100% - (var(--s-gap-m) * (var(--per-row-mobile) - 1)))
     / var(--per-row-mobile)
   );
    box-sizing: border-box;
