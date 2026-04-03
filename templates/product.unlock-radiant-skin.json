@@ -7131,6 +7131,7 @@
                       "type": "block_video",
                       "name": "Video",
                       "settings": {
+                        "radius": 16,
                         "video_url": "https://www.youtube.com/watch?v=JMKYPDem8o8",
                         "autoplay": false,
                         "loop": false,
