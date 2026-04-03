@@ -1,16 +1,11 @@
 {%- capture style_schema -%}
 --bg: {{ block.settings.background }};
-    {% if block.settings.set_full_radius %}
-    --radius-top-left: {{ block.settings.radius_top_left }}px;
-    --radius-top-right: {{ block.settings.radius_top_right }}px;
-    --radius-bottom-left: {{ block.settings.radius_bottom_left }}px;
-    --radius-bottom-right: {{ block.settings.radius_bottom_right }}px;
-    {% else %}
+    
     --radius-top-left: {{ block.settings.radius }}px;
     --radius-top-right: {{ block.settings.radius }}px;
     --radius-bottom-left: {{ block.settings.radius }}px;
     --radius-bottom-right: {{ block.settings.radius }}px;
-    {% endif %}
+    
     --border: {{ block.settings.border }}px;
     --border-color: {{ block.settings.border_color }};
 
