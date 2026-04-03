@@ -2,8 +2,8 @@
 --per-row-desktop: {{ block.settings.per_row_desktop }};
 --per-row-tablet: {{ block.settings.per_row_tablet }};
 --per-row-mobile: {{ block.settings.per_row_mobile }};
---gap: {{ block.settings.gap }}px;
---gap-m: {{ block.settings.gap_m }}px;
+--c-gap: {{ block.settings.gap }}px;
+--c-gap-m: {{ block.settings.gap_m }}px;
 --arrow-color: {{ block.settings.arrow_color }};
       --arrow-bg: {{ block.settings.arrow_bg }};
       --dot-color: {{ block.settings.dot_color }};
@@ -70,10 +70,10 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: calc(
-    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
+    (100% - (var(--c-gap) * (var(--per-row-desktop) - 1)))
     / var(--per-row-desktop)
   );
-  gap: var(--gap);
+  gap: var(--c-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
@@ -142,10 +142,10 @@
 @media (min-width:1366px){
 .collection_block_slider.slider-desktop .slider-track{
   grid-auto-columns: calc(
-    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
+    (100% - (var(--c-gap) * (var(--per-row-desktop) - 1)))
     / var(--per-row-desktop)
   );
-  gap: var(--gap-m);
+  gap: var(--c-gap-m);
 }
 .collection_block_slider:not(.slider-desktop) .collection-slider-track{
   grid-auto-flow: row;
@@ -167,14 +167,14 @@
 /* TABLET */
 @media only screen and (min-width:768px) and (max-width:1365px){
 .collection_block_slider .collection-slider-track {
-  gap: var(--gap-m);
+  gap: var(--c-gap-m);
 }
 .collection_block_slider.slider-tablet .collection-slider-track{
   grid-auto-columns: calc(
-    (100% - (var(--gap-m) * (var(--per-row-tablet) - 1)))
+    (100% - (var(--c-gap-m) * (var(--per-row-tablet) - 1)))
     / var(--per-row-tablet)
   );
-  gap: var(--gap-m);
+  gap: var(--c-gap-m);
 }
 .collection_block_slider:not(.slider-tablet) .collection-slider-track{
   grid-auto-flow: row;
@@ -199,15 +199,15 @@
 @media (max-width:767px){
 
 .collection_block_slider .collection-slider-track {
-  gap: var(--gap-m);
+  gap: var(--c-gap-m);
 }
 
 .collection_block_slider.slider-mobile .collection-slider-track{
   grid-auto-columns: calc(
-    (100% - (var(--gap-m) * (var(--per-row-mobile) - 1)))
+    (100% - (var(--c-gap-m) * (var(--per-row-mobile) - 1)))
     / var(--per-row-mobile)
   );
-  gap: var(--gap-m);
+  gap: var(--c-gap-m);
 }
 .collection_block_slider:not(.slider-mobile) .collection-slider-track{
   grid-auto-flow: row;
