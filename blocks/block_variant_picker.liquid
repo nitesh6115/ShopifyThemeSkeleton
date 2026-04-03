@@ -90,12 +90,13 @@ label#seal-purchase-options-label {
     display: none;
 }
 button.option-value.single_price_option {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 9px;
-    padding: 25px 20px;
-    min-width: 150px;
+   gap: 20px;
+  --variant-min-width: 200px;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--variant-min-width), 1fr)
+  );
 }
 .sls-widget-branding {
     display: none;
@@ -162,12 +163,6 @@ button.option-value.single_price_option {
     font-weight: bold;
     color: var(--save-color);
     border-radius: var(--pill-radius);
-}
-@media(max-width: 767px){
-  button.option-value.single_price_option{
-    max-width: calc(50% - 10px);
-    width: 50%;
-  }
 }
 {% endstylesheet %}
 {% schema %}
