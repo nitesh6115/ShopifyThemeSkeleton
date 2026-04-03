@@ -1347,7 +1347,8 @@
         ".product_media-wrapper {display: none;}",
         ".product_section {width: 100%;}",
         ".product_media-wrapper,.product_information_wrapper {max-width: 100%;}",
-        ".product-option .option-values {gap: 20px; --variant-min-width: 50px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}"
+        ".product-option .option-values {gap: 20px; --variant-min-width: 50px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
+        ".product-option:nth-child(2) span.saving,.product-option:nth-child(2) span.v_price,.product-option:nth-child(3) span.v_price,.product-option:nth-child(3) span.saving {display: none !important;}"
       ],
       "name": "Product Variants",
       "settings": {
