@@ -480,28 +480,33 @@ function stopAutoplay() {
 
   function updateSliderItems() {
 
-    const inner =
-      slider.querySelector(
-        ".slider-inner"
-      );
-    if (!inner) return;
-    const style =
-      getComputedStyle(slider);
-    const perRow = getPerRow();
+    const perRow =
+      getPerRow();
+
     const gap =
       parseFloat(
-        style.getPropertyValue("--gap")
+        getComputedStyle(track).gap
       ) || 0;
-    const containerWidth =
-      inner.clientWidth;
+
+    const width =
+      track.getBoundingClientRect()
+        .width;
+
     const itemWidth =
-      (containerWidth -
-        gap * (perRow - 1)) / perRow;
-    [...track.children].forEach(el => {
-      el.style.flex = "0 0 auto";
+      (width -
+        gap * (perRow - 1))
+      / perRow;
+
+    slides.forEach(el => {
+
+      el.style.flex =
+        "0 0 auto";
+
       el.style.width =
         itemWidth + "px";
+
     });
+
   }
 
 
