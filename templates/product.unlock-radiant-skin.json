@@ -1295,6 +1295,9 @@
         "block_group_VwAqTL",
         "block_group_jxpGD6"
       ],
+      "custom_css": [
+        ".product_media-wrapper{display: none;}"
+      ],
       "name": "Product Variants",
       "settings": {
         "section_width": "custom",
