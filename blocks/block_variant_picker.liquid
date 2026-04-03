@@ -43,11 +43,11 @@
 
   <button
     type="button"
-    class="option-value {% if block.settings.show_price and product.options.size == 1 %} single_price_option {% endif %}"
+    class="option-value {% if block.settings.show_price and product.options.size > 0 %} single_price_option {% endif %}"
     data-value="{{ value | escape }}"
   >
 
-    {% if block.settings.show_saving_off and product.options.size == 1 %}
+    {% if block.settings.show_saving_off and product.options.size > 0 %}
       {% if variant.compare_at_price > variant.price %}
         {% assign discount = variant.compare_at_price | minus: variant.price %}
         {% assign discount_percentage = discount | times: 100 | divided_by: variant.compare_at_price | round %}
