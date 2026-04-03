@@ -4,7 +4,6 @@ or template contains 'page.premium-landing-page' or template contains 'product.u
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-yes
 {% elsif  template contains 'page.main-design-clinica' %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +61,7 @@ yes
       
       :root {
         {% if template contains 'page.premium-wellness-shopify' or template contains 'page.shopify-cro-hoe-page'
-        or template contains 'page.premium-landing-page'%}
+        or template contains 'page.premium-landing-page' or template contains 'product.unlock-radiant-skin' %}
         --font-heading: 'Playfair Display', {{ settings.heading_font.fallback_families }};
         
         {% elsif  template contains 'page.main-design-clinica' %}
