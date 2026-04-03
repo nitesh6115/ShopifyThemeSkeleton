@@ -1849,7 +1849,7 @@
         },
         "block_group_x4C94c": {
           "type": "block_group",
-          "name": "Block Group",
+          "name": "Subscribe Box",
           "settings": {
             "layout_direction": "group--vertical",
             "align_x": "flex-start",
@@ -1871,8 +1871,8 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "custom_height": 100,
-            "gap": 12,
-            "gap_m": 12,
+            "gap": 30,
+            "gap_m": 20,
             "background": "#fff",
             "radius": 16,
             "border": 0,
