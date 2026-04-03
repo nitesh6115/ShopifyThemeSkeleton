@@ -549,58 +549,58 @@ function initProductScript(sectionId) {
     ];
 
     function updateUI() {
-  optionGroups.forEach((group, index) => {
-    $$('.option-value', group).forEach(btn => {
+      optionGroups.forEach((group, index) => {
+        $$('.option-value', group).forEach(btn => {
 
-      const test = [...selectedOptions];
-      test[index] = btn.dataset.value;
+          const test = [...selectedOptions];
+          test[index] = btn.dataset.value;
 
-      const matchedVariant = variants.find(v =>
-        (!v.option1 || v.option1 === test[0]) &&
-        (!v.option2 || v.option2 === test[1]) &&
-        (!v.option3 || v.option3 === test[2])
-      );
+          const matchedVariant = variants.find(v =>
+            (!v.option1 || v.option1 === test[0]) &&
+            (!v.option2 || v.option2 === test[1]) &&
+            (!v.option3 || v.option3 === test[2])
+          );
 
-      // ACTIVE / AVAILABLE STATES
-      btn.classList.toggle('is-active', btn.dataset.value === selectedOptions[index]);
-      btn.classList.toggle('is-unavailable', !matchedVariant);
-      btn.classList.toggle('is-soldout', matchedVariant && !matchedVariant.available);
+          // ACTIVE / AVAILABLE STATES
+          btn.classList.toggle('is-active', btn.dataset.value === selectedOptions[index]);
+          btn.classList.toggle('is-unavailable', !matchedVariant);
+          btn.classList.toggle('is-soldout', matchedVariant && !matchedVariant.available);
 
-      // -------------------------
-      // 🔥 UPDATE PRICE PER OPTION
-      // -------------------------
-      const priceEl = btn.querySelector('.v_price');
-      const compareEl = btn.querySelector('.v_compare_price');
-      const savingEl = btn.querySelector('.saving');
+          // -------------------------
+          // 🔥 UPDATE PRICE PER OPTION
+          // -------------------------
+          const priceEl = btn.querySelector('.v_price');
+          const compareEl = btn.querySelector('.v_compare_price');
+          const savingEl = btn.querySelector('.saving');
 
-      if (matchedVariant && priceEl) {
-        priceEl.childNodes[0].nodeValue = formatMoney(matchedVariant.price) + ' ';
+          if (matchedVariant && priceEl) {
+            priceEl.childNodes[0].nodeValue = formatMoney(matchedVariant.price) + ' ';
 
-        if (compareEl) {
-          if (matchedVariant.compare_at_price > matchedVariant.price) {
-            compareEl.textContent = formatMoney(matchedVariant.compare_at_price);
-            compareEl.style.display = 'inline';
-          } else {
-            compareEl.style.display = 'none';
+            if (compareEl) {
+              if (matchedVariant.compare_at_price > matchedVariant.price) {
+                compareEl.textContent = formatMoney(matchedVariant.compare_at_price);
+                compareEl.style.display = 'inline';
+              } else {
+                compareEl.style.display = 'none';
+              }
+            }
+
+            if (savingEl) {
+              if (matchedVariant.compare_at_price > matchedVariant.price) {
+                const percent = Math.round(
+                  ((matchedVariant.compare_at_price - matchedVariant.price) * 100) /
+                  matchedVariant.compare_at_price
+                );
+                savingEl.textContent = percent + '% OFF';
+                savingEl.style.display = 'block';
+              } else {
+                savingEl.style.display = 'none';
+              }
+            }
           }
-        }
-
-        if (savingEl) {
-          if (matchedVariant.compare_at_price > matchedVariant.price) {
-            const percent = Math.round(
-              ((matchedVariant.compare_at_price - matchedVariant.price) * 100) /
-              matchedVariant.compare_at_price
-            );
-            savingEl.textContent = percent + '% OFF';
-            savingEl.style.display = 'block';
-          } else {
-            savingEl.style.display = 'none';
-          }
-        }
-      }
-    });
-  });
-}
+        });
+      });
+    }
 
     function updatePrice() {
       if (!priceWrapper || !currentVariant) return;
