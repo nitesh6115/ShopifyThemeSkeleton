@@ -714,7 +714,8 @@ document.addEventListener(
            .slider_block .slider-track > *{
     width: calc(
     (100% - (var(--gap-m) * (var(--per-row-mobile) - 1)))
-    / var(--per-row-mobile)
+    / var(--per-row-mobile);
+     box-sizing: border-box;
   );
   }
       }
