@@ -307,10 +307,15 @@
   }
 {% endstylesheet %}
 <script>
- const container = document.querySelector('#ba-container-{{ block.id }}');
-  container.querySelector('.slider_button_befor').addEventListener('input', (e) => {
-    container.style.setProperty('--position', `${e.target.value}%`);
-  });
+ document.querySelectorAll('[id^="ba-container-"]').forEach((container) => {
+  const slider = container.querySelector('.slider_button_befor');
+
+  if (slider) {
+    slider.addEventListener('input', (e) => {
+      container.style.setProperty('--position', `${e.target.value}%`);
+    });
+  }
+});
 </script>
 {% schema %}
 {
