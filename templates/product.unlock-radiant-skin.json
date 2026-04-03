@@ -1168,25 +1168,25 @@
                 "media-thumb-radius": 10
               },
               "blocks": {
-                "block_group_ethQy6": {
+                "block_group_iW3pp4": {
                   "type": "block_group",
-                  "name": "Varaint Picker Box",
+                  "name": "Block Group",
                   "settings": {
-                    "layout_direction": "group--vertical",
+                    "layout_direction": "group--horizontal",
                     "align_x": "center",
                     "align_y": "flex-start",
                     "wrap": "wrap",
                     "hover_zoom": false,
                     "shadow": false,
-                    "width": "custom",
+                    "width": "fill",
                     "custom_width_unit_desktop": "%",
                     "custom_width_pixel": 48,
-                    "custom_width": 70,
-                    "width_tablet": "custom",
+                    "custom_width": 100,
+                    "width_tablet": "fill",
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
-                    "custom_width_tablet": 70,
-                    "width_mobile": "custom",
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -1211,78 +1211,126 @@
                     "image_link": ""
                   },
                   "blocks": {
-                    "block_variant_picker_xeUQpK": {
-                      "type": "block_variant_picker",
-                      "name": "variant_picker",
+                    "block_group_cm3JTn": {
+                      "type": "block_group",
+                      "name": "Varaint Picker Box",
                       "settings": {
-                        "padding_top": 5,
-                        "padding_bottom": 5,
-                        "padding_left": 0,
-                        "padding_right": 0,
-                        "block_radius": 0,
-                        "bg_color": "",
-                        "show_price": true,
-                        "price_color": "#000",
-                        "compare_color": "#ddd",
-                        "show_saving_off": true,
-                        "saving_off_bg": "#000",
-                        "saving_off_color": "#fff",
-                        "pill-bg": "#fff",
-                        "pill-text": "#1a1a1a",
-                        "pill-border": "#e5e7eb",
-                        "hover-pill-bg": "#f8f1f0",
-                        "hover-pill-text": "#1a1a1a",
-                        "hover-pill-border": "#d4a574",
-                        "pill-border-width": 2,
-                        "pill-radius": 10
+                        "layout_direction": "group--vertical",
+                        "align_x": "center",
+                        "align_y": "flex-start",
+                        "wrap": "wrap",
+                        "hover_zoom": false,
+                        "shadow": false,
+                        "width": "custom",
+                        "custom_width_unit_desktop": "%",
+                        "custom_width_pixel": 48,
+                        "custom_width": 70,
+                        "width_tablet": "custom",
+                        "custom_width_unit_tablet": "%",
+                        "custom_width_tablet_pixel": 48,
+                        "custom_width_tablet": 70,
+                        "width_mobile": "custom",
+                        "custom_width_unit_mobile": "%",
+                        "custom_width_pixel_mobile": 48,
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "gap": 12,
+                        "gap_m": 12,
+                        "background": "",
+                        "radius": 0,
+                        "border": 0,
+                        "border_color": "",
+                        "pt": 0,
+                        "pb": 0,
+                        "pl": 0,
+                        "pr": 0,
+                        "ptm": 0,
+                        "pbm": 0,
+                        "plm": 0,
+                        "prm": 0,
+                        "hide_desktop": false,
+                        "hide_mobile": false,
+                        "image_link": ""
                       },
-                      "blocks": {}
-                    },
-                    "block_add_to_cart_button_fYdUKR": {
-                      "type": "block_add_to_cart_button",
-                      "name": "Add To Cart Button",
-                      "settings": {
-                        "padding_top": 5,
-                        "padding_bottom": 5,
-                        "padding_left": 0,
-                        "padding_right": 0,
-                        "block_radius": 0,
-                        "bg_color": "",
-                        "btn_bg": "linear-gradient(90deg, rgba(6, 93, 45, 1), rgba(12, 141, 70, 1) 100%)",
-                        "btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
-                        "btn_text_label": "Add to cart",
-                        "btn_text": "#fff",
-                        "btn_hover_text": "#fff",
-                        "btn_border": "transparent",
-                        "btn_hover_border": "",
-                        "show_qty": false,
-                        "show_dynamic_button": false,
-                        "buy_btn_bg": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)",
-                        "buy_btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(10, 9, 9, 1) 100%)",
-                        "buy_btn_text": "#fff",
-                        "buy_btn_hover_text": "#fff",
-                        "buy_btn_border": "transparent",
-                        "buy_btn_hover_border": "",
-                        "enabled_sticky_add": false,
-                        "show_price": true,
-                        "btn_font": 14,
-                        "btn_uppercase": false,
-                        "btn_height": 56,
-                        "btn_height_mobile": 56,
-                        "btn_radius": 10,
-                        "btn_border_width": 0
+                      "blocks": {
+                        "block_variant_picker_qBXafT": {
+                          "type": "block_variant_picker",
+                          "name": "variant_picker",
+                          "settings": {
+                            "padding_top": 5,
+                            "padding_bottom": 5,
+                            "padding_left": 0,
+                            "padding_right": 0,
+                            "block_radius": 0,
+                            "bg_color": "",
+                            "show_price": true,
+                            "price_color": "#000",
+                            "compare_color": "#ddd",
+                            "show_saving_off": true,
+                            "saving_off_bg": "#000",
+                            "saving_off_color": "#fff",
+                            "pill-bg": "#fff",
+                            "pill-text": "#1a1a1a",
+                            "pill-border": "#e5e7eb",
+                            "hover-pill-bg": "#f8f1f0",
+                            "hover-pill-text": "#1a1a1a",
+                            "hover-pill-border": "#d4a574",
+                            "pill-border-width": 2,
+                            "pill-radius": 10
+                          },
+                          "blocks": {}
+                        },
+                        "block_add_to_cart_button_xJdzrr": {
+                          "type": "block_add_to_cart_button",
+                          "name": "Add To Cart Button",
+                          "settings": {
+                            "padding_top": 5,
+                            "padding_bottom": 5,
+                            "padding_left": 0,
+                            "padding_right": 0,
+                            "block_radius": 0,
+                            "bg_color": "",
+                            "btn_bg": "linear-gradient(90deg, rgba(6, 93, 45, 1), rgba(12, 141, 70, 1) 100%)",
+                            "btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(1, 132, 38, 1) 100%)",
+                            "btn_text_label": "Add to cart",
+                            "btn_text": "#fff",
+                            "btn_hover_text": "#fff",
+                            "btn_border": "transparent",
+                            "btn_hover_border": "",
+                            "show_qty": false,
+                            "show_dynamic_button": false,
+                            "buy_btn_bg": "linear-gradient(90deg, #065D2D 0%, #0C8D46 100%)",
+                            "buy_btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(10, 9, 9, 1) 100%)",
+                            "buy_btn_text": "#fff",
+                            "buy_btn_hover_text": "#fff",
+                            "buy_btn_border": "transparent",
+                            "buy_btn_hover_border": "",
+                            "enabled_sticky_add": false,
+                            "show_price": true,
+                            "btn_font": 14,
+                            "btn_uppercase": false,
+                            "btn_height": 56,
+                            "btn_height_mobile": 56,
+                            "btn_radius": 10,
+                            "btn_border_width": 0
+                          },
+                          "blocks": {}
+                        }
                       },
-                      "blocks": {}
+                      "block_order": [
+                        "block_variant_picker_qBXafT",
+                        "block_add_to_cart_button_xJdzrr"
+                      ]
                     }
                   },
                   "block_order": [
-                    "block_variant_picker_xeUQpK",
-                    "block_add_to_cart_button_fYdUKR"
+                    "block_group_cm3JTn"
                   ]
                 }
               },
               "block_order": [
-                "block_group_ethQy6"
+                "block_group_iW3pp4"
               ]
             }
           },
@@ -1298,7 +1346,7 @@
       "custom_css": [
         ".product_media-wrapper {display: none;}",
         ".product_section {width: 100%;}",
-        ".product_media-wrapper, .product_information_wrapper{max-width: 100%;}"
+        ".product_media-wrapper,.product_information_wrapper {max-width: 100%;}"
       ],
       "name": "Product Variants",
       "settings": {
