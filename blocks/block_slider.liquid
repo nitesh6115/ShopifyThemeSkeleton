@@ -699,7 +699,10 @@ document.addEventListener(
     }
     .slider_block:not(.slider-desktop) .slider-inner {
     height: auto !important;
-}
+} 
+  .slider_block .slider-track > *{
+    width: calc(100% / var(--per-row-desktop) - var(--gap)/ var(--per-row-desktop));
+  }
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1365px) {
