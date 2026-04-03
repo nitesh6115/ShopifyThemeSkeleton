@@ -1769,18 +1769,11 @@
                             "hide_desktop": false
                           },
                           "blocks": {}
-                        },
-                        "seal_subscriptions_subscription_widget_WwgPq7": {
-                          "type": "shopify://apps/seal-subscriptions/blocks/subscription-widget/13b25004-a140-4ab7-b5fe-29918f759699",
-                          "settings": {
-                            "product": "{{closest.product}}"
-                          }
                         }
                       },
                       "block_order": [
                         "block_heading_Ha7RrX",
-                        "block_text_KdDwJk",
-                        "seal_subscriptions_subscription_widget_WwgPq7"
+                        "block_text_KdDwJk"
                       ]
                     }
                   },
@@ -1808,7 +1801,7 @@
         ".product_media-wrapper {display: none;}",
         ".product_section {width: 100%;}",
         ".product_media-wrapper,.product_information_wrapper {max-width: 100%;}",
-        ".product-option .option-values {gap: 20px; --variant-min-width: 50px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
+        ".product-option .option-values, {gap: 20px; --variant-min-width: 50px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
         ".product-option:nth-child(2) span.saving,.product-option:nth-child(2) span.v_price,.product-option:nth-child(3) span.v_price,.product-option:nth-child(3) span.saving {display: none !important;}"
       ],
       "name": "Product Variants",
