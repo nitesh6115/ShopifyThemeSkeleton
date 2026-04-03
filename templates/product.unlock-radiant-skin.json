@@ -1296,7 +1296,8 @@
         "block_group_jxpGD6"
       ],
       "custom_css": [
-        ".product_media-wrapper{display: none;}"
+        ".product_media-wrapper {display: none;}",
+        ".product_section {width: 100%;}"
       ],
       "name": "Product Variants",
       "settings": {
