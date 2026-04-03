@@ -7054,6 +7054,36 @@
                     "block_text_9dRiEE"
                   ]
                 },
+                "block_divider_LUix4h": {
+                  "type": "block_divider",
+                  "name": "Divider",
+                  "settings": {
+                    "border": 1,
+                    "color": "#ffffff",
+                    "width": "fill",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "background": "",
+                    "pt": 10,
+                    "pb": 10,
+                    "ptm": 8,
+                    "pbm": 8,
+                    "hide_desktop": false,
+                    "hide_mobile": false
+                  },
+                  "blocks": {}
+                },
                 "block_group_JVnUBH": {
                   "type": "block_group",
                   "name": "Video",
@@ -7084,11 +7114,11 @@
                     "radius": 16,
                     "border": 0,
                     "border_color": "",
-                    "pt": 20,
+                    "pt": 0,
                     "pb": 0,
                     "pl": 0,
                     "pr": 0,
-                    "ptm": 20,
+                    "ptm": 0,
                     "pbm": 0,
                     "plm": 0,
                     "prm": 0,
@@ -7132,6 +7162,7 @@
                 "block_text_iqbeq3",
                 "block_text_AzLaYJ",
                 "block_group_zMYE6P",
+                "block_divider_LUix4h",
                 "block_group_JVnUBH"
               ]
             }
