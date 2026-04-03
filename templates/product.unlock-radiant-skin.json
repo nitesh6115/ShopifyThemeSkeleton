@@ -1199,12 +1199,12 @@
                     "saving_off_bg": "#000",
                     "saving_off_color": "#fff",
                     "pill-bg": "#fff",
-                    "pill-text": "#000",
-                    "pill-border": "#000",
-                    "hover-pill-bg": "#000",
-                    "hover-pill-text": "#fff",
-                    "hover-pill-border": "#000",
-                    "pill-border-width": 1,
+                    "pill-text": "#1a1a1a",
+                    "pill-border": "#e5e7eb",
+                    "hover-pill-bg": "#f8f1f0",
+                    "hover-pill-text": "#1a1a1a",
+                    "hover-pill-border": "#d4a574",
+                    "pill-border-width": 2,
                     "pill-radius": 10
                   },
                   "blocks": {}
