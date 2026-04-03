@@ -665,6 +665,7 @@ document.addEventListener(
     (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
     / var(--per-row-desktop)
   );
+   box-sizing: border-box;
   }
   }
 
@@ -686,6 +687,7 @@ document.addEventListener(
     (100% - (var(--gap) * (var(--per-row-tablet) - 1)))
     / var(--per-row-tablet)
   );
+   box-sizing: border-box;
   }
     }
 
@@ -714,9 +716,9 @@ document.addEventListener(
            .slider_block .slider-track > *{
     width: calc(
     (100% - (var(--gap-m) * (var(--per-row-mobile) - 1)))
-    / var(--per-row-mobile);
-     box-sizing: border-box;
+    / var(--per-row-mobile)
   );
+   box-sizing: border-box;
   }
       }
 {% endstylesheet %}
