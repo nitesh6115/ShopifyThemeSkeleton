@@ -475,45 +475,8 @@ function stopAutoplay() {
   );
 
 
-
   /* -------------------- */
 
-  function updateSliderItems() {
-
-    const perRow =
-      getPerRow();
-
-    const gap =
-      parseFloat(
-        getComputedStyle(track).gap
-      ) || 0;
-
-    const width =
-      track.getBoundingClientRect()
-        .width;
-
-    const itemWidth =
-      (width -
-        gap * (perRow - 1))
-      / perRow;
-
-    slides.forEach(el => {
-
-      el.style.flex =
-        "0 0 auto";
-
-      el.style.width =
-        itemWidth + "px";
-
-    });
-
-  }
-
-
-
-  /* -------------------- */
-
-  //updateSliderItems();
   buildDots();
   updateDots();
   updateHeight();
@@ -523,13 +486,10 @@ function stopAutoplay() {
   window.addEventListener(
     "resize",
     () => {
-
-      //updateSliderItems();
       buildDots();
       updateDots();
       updateHeight();
       startAutoplay();
-
     }
   );
 
