@@ -8498,7 +8498,7 @@
                 "gap": 0,
                 "gap_m": 0,
                 "enable_desktop": true,
-                "enable_tablet": false,
+                "enable_tablet": true,
                 "enable_mobile": true,
                 "autoplay": false,
                 "autoplay_speed": 3000,
