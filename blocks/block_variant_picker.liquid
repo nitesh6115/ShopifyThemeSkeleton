@@ -90,16 +90,11 @@ label#seal-purchase-options-label {
     display: none;
 }
 button.option-value.single_price_option {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 9px;
     padding: 25px 20px;
-    gap: 20px;
-  --variant-min-width: 150px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(var(--variant-min-width), 1fr)
-  );
 }
 .sls-widget-branding {
     display: none;
@@ -129,9 +124,13 @@ button.option-value.single_price_option {
 }
 
 .product-option .option-values {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 20px;
+  --variant-min-width: 200px;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--variant-min-width), 1fr)
+  );
 }
 
 .product-option .option-value.is-active,
