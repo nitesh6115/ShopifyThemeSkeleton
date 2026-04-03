@@ -1799,8 +1799,8 @@
       ],
       "custom_css": [
         ".product_media-wrapper {display: none;}",
-        ".product_media-wrapper,.product_information_wrapper,.product_section {max-width: 100%; width:100%;}",
-        ".product-option .option-values,.sls-purchase-options-container {gap: 20px; --variant-min-width: 50px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
+        ".product_media-wrapper,.product_information_wrapper,.product_section {max-width: 100%; width: 100%;}",
+        ".product-option .option-values,.sls-purchase-options-container {gap: 20px; --variant-min-width: 200px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
         ".product-option:nth-child(2) .saving,.product-option:nth-child(2) .v_price,.product-option:nth-child(3) .v_price,.product-option:nth-child(3) .saving {display: none !important;}"
       ],
       "name": "Product Variants",
