@@ -7733,12 +7733,56 @@
             "block_group_ApGRME",
             "block_group_xGQUHX"
           ]
+        },
+        "block_text_pXfNHG": {
+          "type": "block_text",
+          "name": "Text",
+          "settings": {
+            "text": "<p>✓ No Parabens ✓ No Sulfates ✓ No Fillers ✓ Cruelty-Free ✓ FDA Compliant</p>",
+            "block_link": "",
+            "alignment": "center",
+            "width": "custom",
+            "custom_width_unit_desktop": "%",
+            "custom_width_pixel": 48,
+            "custom_width": 100,
+            "width_tablet": "custom",
+            "custom_width_unit_tablet": "%",
+            "custom_width_tablet_pixel": 48,
+            "custom_width_tablet": 100,
+            "width_mobile": "fill",
+            "custom_width_unit_mobile": "%",
+            "custom_width_pixel_mobile": 48,
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "font_size": 16,
+            "font_size_mobile": 14,
+            "text_uppercase": false,
+            "font_weight": "400",
+            "color": "#4a5565",
+            "background": "",
+            "radius": 0,
+            "border": 0,
+            "border_color": "",
+            "pt": 0,
+            "pb": 0,
+            "pl": 0,
+            "pr": 0,
+            "pt_m": 0,
+            "pb_m": 0,
+            "pl_m": 0,
+            "pr_m": 0,
+            "hide_mobile": false,
+            "hide_desktop": false
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "block_group_wbNjYU",
         "block_group_UX6J6r",
-        "block_group_tMiX88"
+        "block_group_tMiX88",
+        "block_text_pXfNHG"
       ],
       "custom_css": [],
       "name": "Science Backed",
