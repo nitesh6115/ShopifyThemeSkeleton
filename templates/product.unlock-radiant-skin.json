@@ -1297,7 +1297,8 @@
       ],
       "custom_css": [
         ".product_media-wrapper {display: none;}",
-        ".product_section {width: 100%;}"
+        ".product_section {width: 100%;}",
+        ".product_media-wrapper, .product_information_wrapper{max-width: 100%;}"
       ],
       "name": "Product Variants",
       "settings": {
