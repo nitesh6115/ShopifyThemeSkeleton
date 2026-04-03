@@ -8042,7 +8042,7 @@
                   "name": "Befor After Image",
                   "settings": {
                     "before": "shopify://shop_images/9f0635811cafe1a1372f89581859fb1d7b7ecd42.jpg",
-                    "after": "shopify://shop_images/9f0635811cafe1a1372f89581859fb1d7b7ecd42_11c85146-7207-4f8e-a52f-622d4fb8b11e.jpg",
+                    "after": "shopify://shop_images/9f0635811cafe1a1372f89581859fb1d7b7ecd42.jpg",
                     "position": 50,
                     "hover_zoom": false,
                     "shadow": false,
@@ -8174,7 +8174,7 @@
                   "name": "Befor After Image",
                   "settings": {
                     "before": "shopify://shop_images/ebfb08ce177e2029ca61d2721c7f7d30fba29d46.jpg",
-                    "after": "shopify://shop_images/ebfb08ce177e2029ca61d2721c7f7d30fba29d46_e91dc2c9-5ea7-4111-b575-810788087988.jpg",
+                    "after": "shopify://shop_images/ebfb08ce177e2029ca61d2721c7f7d30fba29d46.jpg",
                     "position": 50,
                     "hover_zoom": false,
                     "shadow": false,
