@@ -1420,11 +1420,55 @@
                                     "hide_desktop": false
                                   },
                                   "blocks": {}
+                                },
+                                "block_text_xDWKGF": {
+                                  "type": "block_text",
+                                  "name": "Text",
+                                  "settings": {
+                                    "text": "<p>Add $16 more</p>",
+                                    "block_link": "",
+                                    "alignment": "left",
+                                    "width": "fit-content",
+                                    "custom_width_unit_desktop": "%",
+                                    "custom_width_pixel": 48,
+                                    "custom_width": 100,
+                                    "width_tablet": "fit-content",
+                                    "custom_width_unit_tablet": "%",
+                                    "custom_width_tablet_pixel": 48,
+                                    "custom_width_tablet": 100,
+                                    "width_mobile": "fill",
+                                    "custom_width_unit_mobile": "%",
+                                    "custom_width_pixel_mobile": 48,
+                                    "custom_width_mobile": 100,
+                                    "height": "fit",
+                                    "custom_height": 100,
+                                    "font_size": 14,
+                                    "font_size_mobile": 14,
+                                    "text_uppercase": false,
+                                    "font_weight": "300",
+                                    "color": "#6a7282",
+                                    "background": "",
+                                    "radius": 0,
+                                    "border": 0,
+                                    "border_color": "",
+                                    "pt": 0,
+                                    "pb": 0,
+                                    "pl": 0,
+                                    "pr": 0,
+                                    "pt_m": 0,
+                                    "pb_m": 0,
+                                    "pl_m": 0,
+                                    "pr_m": 0,
+                                    "hide_mobile": false,
+                                    "hide_desktop": false
+                                  },
+                                  "blocks": {}
                                 }
                               },
                               "block_order": [
                                 "block_icon_4MpAg6",
-                                "block_text_AtVyMw"
+                                "block_text_AtVyMw",
+                                "block_text_xDWKGF"
                               ]
                             },
                             "block_group_FEyBd8": {
