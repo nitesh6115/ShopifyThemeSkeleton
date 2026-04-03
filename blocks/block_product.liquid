@@ -679,7 +679,66 @@ function initProductScript(sectionId) {
         new CustomEvent('variant:change', { detail: { variant: currentVariant } })
       );
     }
+    function initStickyVariantSync() {
+      const sticky = section.querySelector('.sticky-atc');
+      if (!sticky) return;
+      const priceEl = sticky.querySelector('.sticky-price');
+      const compareEl = sticky.querySelector('.sticky-compare');
+      const saveEl = sticky.querySelector('.sticky-save');
+      const variantEl = sticky.querySelector('.sticky-variant');
+      const btn = sticky.querySelector('.sticky-btn');
+      document.addEventListener('variant:change', (e) => {
+        const variant = e.detail.variant;
+        if (!variant) return;
 
+        // -------------------------
+        // VARIANT TITLE
+        // -------------------------
+        if (variantEl) {
+          variantEl.textContent = [
+            variant.option1,
+            variant.option2,
+            variant.option3
+          ].filter(Boolean).join(' / ');
+        }
+
+        // -------------------------
+        // PRICE
+        // -------------------------
+        if (priceEl) {
+          priceEl.textContent = formatMoney(variant.price);
+        }
+
+        // -------------------------
+        // COMPARE + SAVE
+        // -------------------------
+        if (compareEl && saveEl) {
+          if (variant.compare_at_price > variant.price) {
+            compareEl.textContent = formatMoney(variant.compare_at_price);
+            compareEl.style.display = 'inline';
+
+            const percent = Math.round(
+              ((variant.compare_at_price - variant.price) * 100) /
+              variant.compare_at_price
+            );
+
+            saveEl.textContent = percent + '% OFF';
+            saveEl.style.display = 'inline';
+          } else {
+            compareEl.style.display = 'none';
+            saveEl.style.display = 'none';
+          }
+        }
+
+        // -------------------------
+        // BUTTON STATE
+        // -------------------------
+        if (btn) {
+          btn.disabled = !variant.available;
+          btn.textContent = variant.available ? 'Add to Cart' : 'Sold Out';
+        }
+      });
+    }
     optionGroups.forEach((group, index) => {
       $$('.option-value', group).forEach(btn => {
         btn.addEventListener('click', () => {
@@ -690,7 +749,7 @@ function initProductScript(sectionId) {
         });
       });
     });
-
+    initStickyVariantSync();
     updateUI();
     updateVariant();
   }
