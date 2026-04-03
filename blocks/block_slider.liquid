@@ -721,6 +721,12 @@ document.addEventListener(
     .slider_block:not(.slider-tablet) .slider-inner {
     height: auto !important;
 }
+ .slider_block .slider-track > *{
+    width: calc(
+    (100% - (var(--gap) * (var(--per-row-tablet) - 1)))
+    / var(--per-row-tablet)
+  );
+  }
     }
 
     @media(max-width:767px){
@@ -745,6 +751,12 @@ document.addEventListener(
             padding-left: var(--pl-m);
             padding-right: var(--pr-m);
           }
+           .slider_block .slider-track > *{
+    width: calc(
+    (100% - (var(--gap-m) * (var(--per-row-mobile) - 1)))
+    / var(--per-row-mobile)
+  );
+  }
       }
 {% endstylesheet %}
 {% schema %}
