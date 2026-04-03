@@ -701,7 +701,10 @@ document.addEventListener(
     height: auto !important;
 } 
   .slider_block .slider-track > *{
-    width: calc(100% / var(--per-row-desktop) - var(--gap)/ var(--per-row-desktop));
+    width: calc(
+    (100% - (var(--gap) * (var(--per-row-desktop) - 1)))
+    / var(--per-row-desktop)
+  );
   }
   }
 
