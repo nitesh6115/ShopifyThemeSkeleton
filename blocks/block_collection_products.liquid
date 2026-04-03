@@ -335,37 +335,11 @@ function initSlider(id) {
     track.scrollLeft =
       scrollLeft - walk;
   });
-  function updateSliderItems() {
-    const inner =
-      slider.querySelector(
-        ".collection-slider-inner"
-      );
-    if (!inner) return;
-    const style =
-      getComputedStyle(slider);
-    const perRow = getPerRow();
-    const gap =
-      parseFloat(
-        style.getPropertyValue("--gap")
-      ) || 0;
-    const containerWidth =
-      inner.clientWidth;
-    const itemWidth =
-      (containerWidth -
-        gap * (perRow - 1)) / perRow;
-    [...track.children].forEach(el => {
-      el.style.flex = "0 0 auto";
-      el.style.width =
-        itemWidth + "px";
-    });
-  }
-  updateSliderItems();
   buildDots();
   updateDots();
   window.addEventListener(
     "resize",
     () => {
-      updateSliderItems();
       buildDots();
       updateDots();
     }
