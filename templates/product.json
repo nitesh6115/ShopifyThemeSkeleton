@@ -339,7 +339,7 @@
                 "buy_btn_border": "#121212",
                 "buy_btn_hover_border": "#121212",
                 "enabled_sticky_add": true,
-                "show_price": false,
+                "show_price": true,
                 "btn_font": 14,
                 "btn_uppercase": false,
                 "btn_height": 56,
