@@ -51,10 +51,55 @@ align--{{ block.settings.align }};
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
-  {{ block.settings.liquid }}
+ {% liquid
+  assign threshold = block.settings.threshold | times: 100
+%}
+<div class="cart-progress-wrapper"
+    data-threshold="{{ threshold }}"
+    data-pre-goal-message-template="{{ block.settings.pre_message | escape }}"
+    data-post-goal-message="{{ block.settings.success_message | escape }}"
+    style="
+      --bar-bg: {{ block.settings.bg_color }};
+      --bar-fill: {{ block.settings.fill_color }};
+    ">
+    <div class="cart-progress-bar-container">
+      <div class="cart-progress-bar"></div>
+    </div>
+    <div class="goal-message"></div>
+</div>
 </div>
 {% stylesheet %}
-  .custom-liquid-block {
+.cart-progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: var(--bar-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cart-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--bar-fill);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.goal-message {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.cart-progress-wrapper.is-complete .cart-progress-bar {
+  animation: pulse 1s ease;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.custom-liquid-block {
     background: var(--bg);
     padding-top: var(--pt);
     padding-bottom: var(--pb);
@@ -90,15 +135,101 @@ align-self: stretch;
   }
 {% endstylesheet %}
 
+{%  javascript %}
+  function updateFreeShippingBar() {
+  fetch('/cart.js')
+    .then(res => res.json())
+    .then(cart => {
+
+      const wrappers = document.querySelectorAll(".cart-progress-wrapper");
+      if (!wrappers.length) return;
+
+      // ✅ Exclude subscription products
+      let nonSubscriptionTotal = 0;
+
+      cart.items.forEach(item => {
+        if (!item.selling_plan_allocation) {
+          nonSubscriptionTotal += item.line_price;
+        }
+      });
+
+      wrappers.forEach((wrapper) => {
+        const bar = wrapper.querySelector(".cart-progress-bar");
+        const message = wrapper.querySelector(".goal-message");
+
+        const thresholdUSD = parseInt(wrapper.dataset.threshold || 0);
+        if (!thresholdUSD) return;
+
+        const rate = Shopify?.currency?.rate || 1;
+        const currency = Shopify?.currency?.active || 'USD';
+
+        const threshold = thresholdUSD * rate;
+        const cartTotal = nonSubscriptionTotal * rate;
+
+        let progress = (cartTotal / threshold) * 100;
+        progress = Math.min(progress, 100);
+
+        let remaining = Math.max(threshold - cartTotal, 0);
+
+        const formatted = new Intl.NumberFormat('en-IN', {
+          style: 'currency',
+          currency: currency,
+        }).format(remaining / 100);
+
+        // UI update
+        if (bar) bar.style.width = progress + "%";
+
+        const template = wrapper.dataset.preGoalMessageTemplate;
+        const success = wrapper.dataset.postGoalMessage;
+
+        if (message) {
+          if (remaining > 0) {
+            message.innerHTML = template.replace('[amount]', formatted);
+          } else {
+            message.innerHTML = success;
+          }
+        }
+      });
+    });
+}
+document.querySelectorAll('[id^="bar-"]').forEach((container) => {
+  
+});
+{% endjavascript %}
 {% schema %}
 {
   "name": "Custom Liquid",
   "tag": null,
   "settings": [
     {
-        "type": "liquid",
-        "label": "Custom Liquid",
-        "id": "liquid"
+      "type": "number",
+      "id": "threshold",
+      "label": "Free Shipping Threshold",
+      "default": 75
+    },
+    {
+      "type": "text",
+      "id": "pre_message",
+      "label": "Message before goal",
+      "default": "You're only [amount] away from FREE SHIPPING"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "🎉 Congrats! You've unlocked FREE SHIPPING"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Bar Background",
+      "default": "#eee"
+    },
+    {
+      "type": "color",
+      "id": "fill_color",
+      "label": "Bar Fill Color",
+      "default": "#000"
     },
     {
       "type": "header",
