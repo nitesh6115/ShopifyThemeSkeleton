@@ -7,7 +7,7 @@
     --pb: {{ block.settings.pb }}px;
     --ptm: {{ block.settings.ptm }}px;
     --pbm: {{ block.settings.pbm }}px;
-
+    --msg-align: {{ block.settings.text_align }};
     --bar-bg: {{ block.settings.bg_color }};
     --bar-fill: {{ block.settings.fill_color }};
     --bar-height: {{ block.settings.bar_height }}px;
@@ -81,6 +81,7 @@ align--{{ block.settings.align }};
   background: var(--bar-bg);
   border-radius: var(--bar-radius, 10px);
   overflow: hidden;
+  text-align: var(--msg-align);
 }
 
 .cart-progress-bar {
@@ -275,6 +276,17 @@ align-self: stretch;
       "id": "threshold",
       "label": "Free Shipping Threshold",
       "default": 75
+    },
+    {
+    "type": "select",
+    "id": "text_align",
+    "label": "Message Alignment",
+    "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+    ],
+    "default": "left"
     },
     {
       "type": "text",
