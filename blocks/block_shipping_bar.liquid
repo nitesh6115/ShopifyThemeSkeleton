@@ -194,7 +194,7 @@ align-self: stretch;
         if (!thresholdUSD) return;
 
         const threshold = thresholdUSD * rate;
-        const cartTotal = nonSubscriptionTotal * rate;
+        const cartTotal = nonSubscriptionTotal;
 
         let progress = (cartTotal / threshold) * 100;
         progress = Math.min(progress, 100);
