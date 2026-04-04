@@ -80,6 +80,10 @@
   <div class="before-after-wrapper">
     <div class="before-after-image-container" id="ba-container-{{ block.id }}">
       <div class="image-container">
+        
+        
+        <!-- BEFORE IMAGE OR PLACEHOLDER -->
+      {% if block.settings.before != blank %}
         {{
           block.settings.before
           | image_url: width: 1500
@@ -91,6 +95,14 @@
             class: 'image-before slider-image',
             alt: block.settings.before.alt | escape | default : 'block_image'
         }}
+      {% else %}
+        <div class="image-before slider-image ba-placeholder">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+
+      <!-- AFTER IMAGE OR PLACEHOLDER -->
+      {% if block.settings.after != blank %}
         {{
           block.settings.after
           | image_url: width: 1500
@@ -102,6 +114,11 @@
             class: 'image-after slider-image',
             alt: block.settings.after.alt | escape | default : 'block_image'
         }}
+      {% else %}
+        <div class="image-after slider-image ba-placeholder">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
       </div>
       <!-- step="10" -->
       <input
