@@ -170,7 +170,10 @@ align-self: stretch;
       // ✅ Calculate NON-subscription total
       let nonSubscriptionTotal = 0;
       cart.items.forEach(item => {
-          nonSubscriptionTotal += item.line_price;
+        // if (!item.selling_plan_allocation) {
+        //   nonSubscriptionTotal += item.line_price;
+        // }
+         nonSubscriptionTotal += item.line_price;
       });
 
       const rate = Shopify?.currency?.rate || 1;
@@ -186,7 +189,7 @@ align-self: stretch;
 
         const threshold = thresholdUSD * rate;
         const cartTotal = nonSubscriptionTotal;
-        console.log(cartTotal)
+        console.log()
         let progress = (cartTotal / threshold) * 100;
         progress = Math.min(progress, 100);
 
