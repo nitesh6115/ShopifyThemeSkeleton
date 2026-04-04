@@ -62,184 +62,181 @@ align--{{ block.settings.align }};
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
-<div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
- {% liquid
-  assign threshold = block.settings.threshold | times: 100
-%}
-<div class="cart-progress-wrapper"
+<div class="{{- class_list -}}" style=" {{- style_schema -}}" {{ block.shopify_attributes }}>
+  {% liquid
+    assign threshold = block.settings.threshold | times: 100
+  %}
+  <div
+    class="cart-progress-wrapper"
     data-threshold="{{ threshold }}"
     data-pre-goal-message-template="{{ block.settings.pre_message | escape }}"
     data-post-goal-message="{{ block.settings.success_message | escape }}"
-    >
+  >
     <div class="cart-progress-bar-container">
       <div class="cart-progress-bar"></div>
     </div>
     <div class="goal-message"></div>
-</div>
+  </div>
 </div>
 {% stylesheet %}
-.cart-progress-bar-container {
-  width: 100%;
-  height: var(--bar-height, 6px);
-  background: var(--bar-bg);
-  border-radius: var(--bar-radius, 10px);
-  overflow: hidden;
-  text-align: var(--msg-align);
-}
-
-.cart-progress-bar {
-  width: 0%;
-  height: 100%;
-  background: var(--bar-fill);
-  border-radius: var(--bar-radius, 10px);
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.goal-message {
-  margin-top: 8px;
-  font-size: var(--msg-size-desktop);
-  font-weight: var(--msg-weight);
-  text-align: var(--msg-align);
-  min-height: 15px;
-  color: var(--msg-color);
-}
-
-.cart-progress-wrapper.is-complete .goal-message {
-  color: var(--success-color);
-}
-.cart-progress-wrapper.is-complete .cart-progress-bar {
-  animation: pulse 1s ease;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
-}
-
-.progres-bar-block {
-    background: var(--bg);
-    padding-top: var(--pt);
-    padding-bottom: var(--pb);
+  .cart-progress-bar-container {
+    width: 100%;
+    height: var(--bar-height, 6px);
+    background: var(--bar-bg);
+    border-radius: var(--bar-radius, 10px);
+    overflow: hidden;
+    text-align: var(--msg-align);
   }
-  
-  @media (min-width: 1366px) {
-  .progres-bar-block.block-width-desktop-fill {
-    align-self: stretch;
-}
-}
-@media only screen and (min-width: 768px) and (max-width: 1365px) {
-.progres-bar-block.block-width-tablet-fill{
-align-self: stretch;
-}
-}
-  /* mobile */
-  @media (max-width:767px){
-  .progres-bar-block.block-mobile-desktop-fill {
-    align-self: stretch;
-    flex: unset;
-}
-    .progres-bar-block {
-      padding-top: var(--ptm);
-      padding-bottom: var(--pbm);
+
+  .cart-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--bar-fill);
+    border-radius: var(--bar-radius, 10px);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .goal-message {
+    margin-top: 8px;
+    font-size: var(--msg-size-desktop);
+    font-weight: var(--msg-weight);
+    text-align: var(--msg-align);
+    min-height: 15px;
+    color: var(--msg-color);
+  }
+
+  .cart-progress-wrapper.is-complete .goal-message {
+    color: var(--success-color);
+  }
+  .cart-progress-wrapper.is-complete .cart-progress-bar {
+    animation: pulse 1s ease;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+
+  .progres-bar-block {
+      background: var(--bg);
+      padding-top: var(--pt);
+      padding-bottom: var(--pb);
     }
+
+    @media (min-width: 1366px) {
+    .progres-bar-block.block-width-desktop-fill {
+      align-self: stretch;
   }
-  /* hide */
-  @media (min-width:768px){
-    .hide-desktop{ display:none !important; }
   }
-  @media (max-width:767px){
-    .hide-mobile{ display:none !important; }
+  @media only screen and (min-width: 768px) and (max-width: 1365px) {
+  .progres-bar-block.block-width-tablet-fill{
+  align-self: stretch;
   }
+  }
+    /* mobile */
+    @media (max-width:767px){
+    .progres-bar-block.block-mobile-desktop-fill {
+      align-self: stretch;
+      flex: unset;
+  }
+      .progres-bar-block {
+        padding-top: var(--ptm);
+        padding-bottom: var(--pbm);
+      }
+    }
+    /* hide */
+    @media (min-width:768px){
+      .hide-desktop{ display:none !important; }
+    }
+    @media (max-width:767px){
+      .hide-mobile{ display:none !important; }
+    }
 {% endstylesheet %}
 {% javascript %}
-(function () {
-  let cartCache = null;
-  function getCart() {
-    return fetch('/cart.js')
-      .then(res => res.json())
-      .then(cart => {
-        cartCache = cart;
-        return cart;
-      });
-  }
-  function updateFreeShippingBar() {
-    getCart().then(cart => {
-      const wrappers = document.querySelectorAll(".cart-progress-wrapper");
-      if (!wrappers.length) return;
-      // ✅ Calculate NON-subscription total
-      let nonSubscriptionTotal = 0;
-      cart.items.forEach(item => {
-        // if (!item.selling_plan_allocation) {
-        //   nonSubscriptionTotal += item.line_price;
-        // }
-         nonSubscriptionTotal += item.line_price;
-      });
+  (function () {
+    let cartCache = null;
+    function getCart() {
+      return fetch('/cart.js')
+        .then((res) => res.json())
+        .then((cart) => {
+          cartCache = cart;
+          return cart;
+        });
+    }
+    function updateFreeShippingBar() {
+      getCart().then((cart) => {
+        const wrappers = document.querySelectorAll('.cart-progress-wrapper');
+        if (!wrappers.length) return;
+        // ✅ Calculate NON-subscription total
+        let nonSubscriptionTotal = 0;
+        cart.items.forEach((item) => {
+          // if (!item.selling_plan_allocation) {
+          //   nonSubscriptionTotal += item.line_price;
+          // }
+          nonSubscriptionTotal += item.line_price;
+        });
 
-      const rate = Shopify?.currency?.rate || 1;
-      const currency = Shopify?.currency?.active || 'USD';
+        const rate = Shopify?.currency?.rate || 1;
+        const currency = Shopify?.currency?.active || 'USD';
 
-      wrappers.forEach((wrapper) => {
+        wrappers.forEach((wrapper) => {
+          const bar = wrapper.querySelector('.cart-progress-bar');
+          const message = wrapper.querySelector('.goal-message');
 
-        const bar = wrapper.querySelector(".cart-progress-bar");
-        const message = wrapper.querySelector(".goal-message");
+          const thresholdUSD = parseInt(wrapper.dataset.threshold || 0);
+          if (!thresholdUSD) return;
 
-        const thresholdUSD = parseInt(wrapper.dataset.threshold || 0);
-        if (!thresholdUSD) return;
+          const threshold = thresholdUSD * rate;
+          const cartTotal = nonSubscriptionTotal;
+          console.log();
+          let progress = (cartTotal / threshold) * 100;
+          progress = Math.min(progress, 100);
 
-        const threshold = thresholdUSD * rate;
-        const cartTotal = nonSubscriptionTotal;
-        console.log()
-        let progress = (cartTotal / threshold) * 100;
-        progress = Math.min(progress, 100);
+          let remaining = Math.max(threshold - cartTotal, 0);
 
-        let remaining = Math.max(threshold - cartTotal, 0);
+          const formatted = new Intl.NumberFormat(undefined, {
+            style: 'currency',
+            currency: currency,
+          }).format(remaining / 100);
 
-        const formatted = new Intl.NumberFormat(undefined, {
-          style: 'currency',
-          currency: currency,
-        }).format(remaining / 100);
+          // ✅ UI update
+          if (bar) bar.style.width = progress + '%';
 
-        // ✅ UI update
-        if (bar) bar.style.width = progress + "%";
-
-        if (wrapper) {
-          if (progress >= 100) {
-            wrapper.classList.add("is-complete");
-          } else {
-            wrapper.classList.remove("is-complete");
+          if (wrapper) {
+            if (progress >= 100) {
+              wrapper.classList.add('is-complete');
+            } else {
+              wrapper.classList.remove('is-complete');
+            }
           }
-        }
 
-        const template = wrapper.dataset.preGoalMessageTemplate;
-        const success = wrapper.dataset.postGoalMessage;
+          const template = wrapper.dataset.preGoalMessageTemplate;
+          const success = wrapper.dataset.postGoalMessage;
 
-        if (message) {
-          if (remaining > 0) {
-            message.innerHTML = template.replace('[amount]', formatted);
-          } else {
-            message.innerHTML = success;
+          if (message) {
+            if (remaining > 0) {
+              message.innerHTML = template.replace('[amount]', formatted);
+            } else {
+              message.innerHTML = success;
+            }
           }
-        }
-
+        });
       });
+    }
 
+    // ✅ INIT
+    document.addEventListener('DOMContentLoaded', updateFreeShippingBar);
+
+    // ✅ Shopify cart events (if supported)
+    document.addEventListener('cart:updated', updateFreeShippingBar);
+    document.addEventListener('ajaxCart:updated', updateFreeShippingBar);
+
+    // ✅ Fallback (works in ALL themes)
+    document.addEventListener('click', function () {
+      setTimeout(updateFreeShippingBar, 300);
     });
-  }
-
-  // ✅ INIT
-  document.addEventListener("DOMContentLoaded", updateFreeShippingBar);
-
-  // ✅ Shopify cart events (if supported)
-  document.addEventListener("cart:updated", updateFreeShippingBar);
-  document.addEventListener("ajaxCart:updated", updateFreeShippingBar);
-
-  // ✅ Fallback (works in ALL themes)
-  document.addEventListener("click", function () {
-    setTimeout(updateFreeShippingBar, 300);
-  });
-
-})();
+  })();
 {% endjavascript %}
 
 {% schema %}
@@ -248,29 +245,29 @@ align-self: stretch;
   "tag": null,
   "settings": [
     {
-        "type": "header",
-        "content": "Progress Bar"
+      "type": "header",
+      "content": "Progress Bar"
     },
     {
-  "type": "range",
-  "id": "bar_height",
-  "label": "Bar Height",
-  "min": 2,
-  "max": 20,
-  "step": 1,
-  "unit": "px",
-  "default": 6
-},
-{
-  "type": "range",
-  "id": "bar_radius",
-  "label": "Bar Border Radius",
-  "min": 0,
-  "max": 50,
-  "step": 1,
-  "unit": "px",
-  "default": 10
-},
+      "type": "range",
+      "id": "bar_height",
+      "label": "Bar Height",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "bar_radius",
+      "label": "Bar Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
     {
       "type": "number",
       "id": "threshold",
@@ -278,48 +275,48 @@ align-self: stretch;
       "default": 75
     },
     {
-    "type": "select",
-    "id": "text_align",
-    "label": "Message Alignment",
-    "options": [
+      "type": "select",
+      "id": "text_align",
+      "label": "Message Alignment",
+      "options": [
         { "value": "left", "label": "Left" },
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
-    ],
-    "default": "left"
+      ],
+      "default": "left"
     },
     {
-  "type": "range",
-  "id": "font_size_desktop",
-  "label": "Font Size (Desktop)",
-  "min": 10,
-  "max": 30,
-  "step": 1,
-  "unit": "px",
-  "default": 14
-},
-{
-  "type": "range",
-  "id": "font_size_mobile",
-  "label": "Font Size (Mobile)",
-  "min": 10,
-  "max": 24,
-  "step": 1,
-  "unit": "px",
-  "default": 13
-},
-{
-  "type": "select",
-  "id": "font_weight",
-  "label": "Font Weight",
-  "options": [
-    { "value": "400", "label": "Normal" },
-    { "value": "500", "label": "Medium" },
-    { "value": "600", "label": "Semi Bold" },
-    { "value": "700", "label": "Bold" }
-  ],
-  "default": "400"
-},
+      "type": "range",
+      "id": "font_size_desktop",
+      "label": "Font Size (Desktop)",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font Size (Mobile)",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
     {
       "type": "text",
       "id": "pre_message",
@@ -333,16 +330,16 @@ align-self: stretch;
       "default": "🎉 Congrats! You've unlocked FREE SHIPPING"
     },
     {
-    "type": "color",
-    "id": "message_color",
-    "label": "Message Color",
-    "default": "#000000"
+      "type": "color",
+      "id": "message_color",
+      "label": "Message Color",
+      "default": "#000000"
     },
     {
-    "type": "color",
-    "id": "success_color",
-    "label": "Success Message Color",
-    "default": "#0a8a0a"
+      "type": "color",
+      "id": "success_color",
+      "label": "Success Message Color",
+      "default": "#0a8a0a"
     },
     {
       "type": "color",
