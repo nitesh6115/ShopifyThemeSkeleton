@@ -94,10 +94,12 @@
   data-product-id="{{ product.id }}"
 >
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-  <div class="product-wrapper">
+  <div class="product-wrapper {% if block.settings.show_media == false %} without-media {% endif %}">
+    {% if block.settings.show_media %}
     <div class="product_media-wrapper">
       {% render 'product_media_gallery', variant_images: variant_images, product: product %}
     </div>
+    {% endif %}
     <div class="product_information_wrapper {{  info_class_list }}" style="{{- info_block -}}">
       {% content_for 'blocks' %}
     </div>
@@ -1040,6 +1042,12 @@ document.addEventListener("shopify:section:load", (e) => {
     {
       "type": "header",
       "content": "Product Media"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_media",
+      "label": "Show Product Media",
+      "default": true
     },
     {
       "type": "checkbox",
