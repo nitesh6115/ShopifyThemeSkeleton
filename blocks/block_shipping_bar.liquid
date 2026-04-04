@@ -154,9 +154,7 @@ align-self: stretch;
 {% endstylesheet %}
 {% javascript %}
 (function () {
-
   let cartCache = null;
-
   function getCart() {
     return fetch('/cart.js')
       .then(res => res.json())
@@ -165,17 +163,12 @@ align-self: stretch;
         return cart;
       });
   }
-
   function updateFreeShippingBar() {
-
     getCart().then(cart => {
-
       const wrappers = document.querySelectorAll(".cart-progress-wrapper");
       if (!wrappers.length) return;
-
       // ✅ Calculate NON-subscription total
       let nonSubscriptionTotal = 0;
-
       cart.items.forEach(item => {
         if (!item.selling_plan_allocation) {
           nonSubscriptionTotal += item.line_price;
@@ -195,7 +188,7 @@ align-self: stretch;
 
         const threshold = thresholdUSD * rate;
         const cartTotal = nonSubscriptionTotal;
-
+        console.log(cartTotal)
         let progress = (cartTotal / threshold) * 100;
         progress = Math.min(progress, 100);
 
