@@ -31,39 +31,40 @@
 document.addEventListener('sealsubs:subscription_widget_created', function(e) {
   const buttons = document.querySelectorAll(".purchase-btn");
 
-  // IMPORTANT: adjust selectors based on Seal widget
-  const subscriptionWrapper = document.querySelector(".sealsubs-target-element"); 
+  // Seal elements (UPDATE THESE SELECTORS IF NEEDED)
+  const oneTimeOption = document.querySelector(".seal-one-time");
+  const subscriptionOptions = document.querySelector(".seal-subscription-options");
+
   const oneTimeRadio = document.querySelector('input[value="onetime"]');
   const subscriptionRadio = document.querySelector('input[value="subscription"]');
-  console.log(subscriptionWrapper)
+
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
 
-      // toggle active state
       buttons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
       const type = btn.dataset.type;
 
       if (type === "onetime") {
-        // hide subscription UI
-        if (subscriptionWrapper) {
-          subscriptionWrapper.style.display = "none";
-        }
 
-        // trigger one-time purchase
+        // ✅ Show only one-time
+        if (oneTimeOption) oneTimeOption.style.display = "block";
+        if (subscriptionOptions) subscriptionOptions.style.display = "none";
+
+        // trigger selection
         if (oneTimeRadio) {
           oneTimeRadio.checked = true;
           oneTimeRadio.dispatchEvent(new Event("change", { bubbles: true }));
         }
 
       } else {
-        // show subscription UI
-        if (subscriptionWrapper) {
-          subscriptionWrapper.style.display = "block";
-        }
 
-        // trigger subscription
+        // ✅ Show only subscription
+        if (oneTimeOption) oneTimeOption.style.display = "none";
+        if (subscriptionOptions) subscriptionOptions.style.display = "block";
+
+        // trigger selection
         if (subscriptionRadio) {
           subscriptionRadio.checked = true;
           subscriptionRadio.dispatchEvent(new Event("change", { bubbles: true }));
