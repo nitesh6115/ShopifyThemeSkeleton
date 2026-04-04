@@ -9,8 +9,6 @@
                 --mobile-font-size: {{ block.settings.mobile_font_size }}px;
                 --block-bg: {{ block.settings.bg_color }};
                 --block-radius: {{ block.settings.block_radius }}px;
-                --block-desktop-text-alignment: {{ block.settings.desktop_text_align }};
-                --block-mobile-text-alignment: {{ block.settings.mobile_text_align }};
                 --block-text-color: {{ block.settings.text_color }};
                 --block-desktop-padding-top: {{ block.settings.padding_top }}px;
                 --block-desktop-padding-bottom: {{ block.settings.padding_bottom }}px;
@@ -148,46 +146,6 @@ span.save.hidden,span.sale_price.hidden {
       "default": 0,
       "step": 1,
       "unit": "px"
-    },
-    {
-      "type": "select",
-      "id": "desktop_text_align",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "label": "Desktop Text Alignment"
-    },
-    {
-      "type": "select",
-      "id": "mobile_text_align",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "label": "Mobile Text Alignment"
     },
     {
       "type": "color_background",
