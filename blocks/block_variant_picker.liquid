@@ -38,135 +38,133 @@
       <label>{{ option.name }}</label>
 
       <div class="option-values">
-{% for value in option.values %}
-  {% assign variant = value.variant %}
+        {% for value in option.values %}
+          {% assign variant = value.variant %}
 
-  <button
-    type="button"
-    class="option-value {% if block.settings.show_price and product.options.size > 0 %} single_price_option {% endif %}"
-    data-value="{{ value | escape }}"
-  >
+          <button
+            type="button"
+            class="option-value {% if block.settings.show_price and product.options.size > 0 %} single_price_option {% endif %}"
+            data-value="{{ value | escape }}"
+          >
+            {% if block.settings.show_saving_off and product.options.size > 0 %}
+              {% if variant.compare_at_price > variant.price %}
+                {% assign discount = variant.compare_at_price | minus: variant.price %}
+                {% assign discount_percentage = discount | times: 100 | divided_by: variant.compare_at_price | round %}
+                <span class="saving">{{ discount_percentage }}% OFF</span>
+              {% endif %}
+            {% endif %}
 
-    {% if block.settings.show_saving_off and product.options.size > 0 %}
-      {% if variant.compare_at_price > variant.price %}
-        {% assign discount = variant.compare_at_price | minus: variant.price %}
-        {% assign discount_percentage = discount | times: 100 | divided_by: variant.compare_at_price | round %}
-        <span class="saving">{{ discount_percentage }}% OFF</span>
-      {% endif %}
-    {% endif %}
+            <span>{{ value }}</span>
 
-    <span>{{ value }}</span>
-
-    {% if block.settings.show_price and product.options.size > 0 %}
-      <span class="v_price">
-        {{ variant.price | money }}
-        {% if variant.compare_at_price > variant.price %}
-          <span class="v_compare_price">
-            {{ variant.compare_at_price | money }}
-          </span>
-        {% endif %}
-      </span>
-    {% endif %}
-
-  </button>
-{% endfor %}
+            {% if block.settings.show_price and product.options.size > 0 %}
+              <span class="v_price">
+                {{ variant.price | money }}
+                {% if variant.compare_at_price > variant.price %}
+                  <span class="v_compare_price">
+                    {{ variant.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </span>
+            {% endif %}
+          </button>
+        {% endfor %}
       </div>
     </div>
   {% endfor %}
 </div>
 {% stylesheet %}
-  
-.option-value.is-unavailable {
-  opacity: 0.3;
-  pointer-events: none;
-}
-.sls-selling-plan-group-options{
-    display: flex !important;
-}
-label#seal-purchase-options-label {
-    display: none;
-}
-.sls-more-info-container {
-    display: none;
-}
-button.option-value.single_price_option {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 9px;
-    padding: 25px 20px;
-    margin-top: 20px;
-}
-.sls-widget-branding {
-    display: none;
-}
-.sls-option-container.seal-table.sls-active {
-    border: 2px solid #eecdb6 !important;
-    box-shadow: none !important;
-}
-.option-value.is-soldout {
-  opacity: 0.5;
-  text-decoration: line-through;
-  cursor: not-allowed !important;
-}
-.product-option label {
-    font-size: 14px;
-}
-.product-option .option-value {
-    min-height: 44px;
-    padding: 0 15px;
-    background: var(--pill-bg);
-    border: var(--pill-border-width) solid var(--pill-border);
-    border-radius: var(--pill-radius);
-    color: var(--pill-text);
-    cursor: pointer;
-    position: relative;
-    font-size: 14px;
-}
 
-.product-option .option-values {
-    gap: 20px;
-  --variant-min-width: 100px;
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(var(--variant-min-width), 1fr)
-  );
-}
-
-.product-option .option-value.is-active,
-.product-option .option-value:hover {
-    background: var(--pill-hover-bg);
-    color: var(--pill-hover-text);
-    border-color: var(--pill-hover-border);
-}
-
-.product-option {
-    padding: 10px 0;
-}
-.product-option span.v_price {
-    color: var(--price-color);
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.product-option span.v_price span.v_compare_price {
-    font-size: 15px;
+  .option-value.is-unavailable {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .sls-selling-plan-group-options{
+      display: flex !important;
+  }
+  label#seal-purchase-options-label {
+      display: none;
+  }
+  .sls-more-info-container {
+      display: none;
+  }
+  button.option-value.single_price_option {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 9px;
+      padding: 25px 20px;
+      margin-top: 20px;
+  }
+  .sls-widget-branding {
+      display: none;
+  }
+  .sls-option-container.seal-table.sls-active {
+      border: 2px solid #eecdb6 !important;
+      box-shadow: none !important;
+  }
+  .option-value.is-soldout {
+    opacity: 0.5;
     text-decoration: line-through;
-    color: var(--compare-color);
-}
+    cursor: not-allowed !important;
+  }
+  .product-option label {
+      font-size: 14px;
+  }
+  .product-option .option-value {
+      min-height: 44px;
+      padding: 0 15px;
+      background: var(--pill-bg);
+      border: var(--pill-border-width) solid var(--pill-border);
+      border-radius: var(--pill-radius);
+      color: var(--pill-text);
+      cursor: pointer;
+      position: relative;
+      font-size: 14px;
+  }
 
-.product-option .option-values span.saving {
-    position: absolute;
-    top: -18px;
-    margin: 0 auto;
-    background: var(--save-bg);
-    padding: 8px 10px;
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--save-color);
-    border-radius: var(--pill-radius);
-}
+  .product-option .option-values {
+      gap: 20px;
+    --variant-min-width: 100px;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--variant-min-width), 1fr)
+    );
+  }
+
+  .product-option .option-value.is-active,
+  .product-option .option-value:hover {
+      background: var(--pill-hover-bg);
+      color: var(--pill-hover-text);
+      border-color: var(--pill-hover-border);
+  }
+
+  .product-option {
+      padding: 10px 0;
+  }
+  .product-option span.v_price {
+      color: var(--price-color);
+      font-size: 17px;
+      font-weight: bold;
+  }
+
+  .product-option span.v_price span.v_compare_price {
+      font-size: 15px;
+      text-decoration: line-through;
+      color: var(--compare-color);
+  }
+
+  .product-option .option-values span.saving {
+      position: absolute;
+      top: -18px;
+      margin: 0 auto;
+      background: var(--save-bg);
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--save-color);
+      border-radius: var(--pill-radius);
+  }
 {% endstylesheet %}
 {% schema %}
 {
@@ -242,7 +240,7 @@ button.option-value.single_price_option {
       "label": "Show Each Varaints Price",
       "info": "Its work when prodcut have only one option"
     },
-        {
+    {
       "type": "color",
       "id": "price_color",
       "visible_if": "{{ block.settings.show_price == true }}",

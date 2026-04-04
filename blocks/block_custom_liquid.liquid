@@ -50,44 +50,44 @@ align--{{ block.settings.align }};
 {% endcapture %}
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
-<div class="{{- class_list -}}" style=" {{- style_schema -}}"{{ block.shopify_attributes }}>
+<div class="{{- class_list -}}" style=" {{- style_schema -}}" {{ block.shopify_attributes }}>
   {{ block.settings.liquid }}
 </div>
 {% stylesheet %}
-  .custom-liquid-block {
-    background: var(--bg);
-    padding-top: var(--pt);
-    padding-bottom: var(--pb);
-  }
-  
-  @media (min-width: 1366px) {
-  .custom-liquid-block.block-width-desktop-fill {
-    align-self: stretch;
-}
-}
-@media only screen and (min-width: 768px) and (max-width: 1365px) {
-.custom-liquid-block.block-width-tablet-fill{
-align-self: stretch;
-}
-}
-  /* mobile */
-  @media (max-width:767px){
-  .custom-liquid-block.block-mobile-desktop-fill {
-    align-self: stretch;
-    flex: unset;
-}
     .custom-liquid-block {
-      padding-top: var(--ptm);
-      padding-bottom: var(--pbm);
+      background: var(--bg);
+      padding-top: var(--pt);
+      padding-bottom: var(--pb);
     }
+
+    @media (min-width: 1366px) {
+    .custom-liquid-block.block-width-desktop-fill {
+      align-self: stretch;
   }
-  /* hide */
-  @media (min-width:768px){
-    .hide-desktop{ display:none !important; }
   }
-  @media (max-width:767px){
-    .hide-mobile{ display:none !important; }
+  @media only screen and (min-width: 768px) and (max-width: 1365px) {
+  .custom-liquid-block.block-width-tablet-fill{
+  align-self: stretch;
   }
+  }
+    /* mobile */
+    @media (max-width:767px){
+    .custom-liquid-block.block-mobile-desktop-fill {
+      align-self: stretch;
+      flex: unset;
+  }
+      .custom-liquid-block {
+        padding-top: var(--ptm);
+        padding-bottom: var(--pbm);
+      }
+    }
+    /* hide */
+    @media (min-width:768px){
+      .hide-desktop{ display:none !important; }
+    }
+    @media (max-width:767px){
+      .hide-mobile{ display:none !important; }
+    }
 {% endstylesheet %}
 
 {% schema %}
@@ -96,9 +96,9 @@ align-self: stretch;
   "tag": null,
   "settings": [
     {
-        "type": "liquid",
-        "label": "Custom Liquid",
-        "id": "liquid"
+      "type": "liquid",
+      "label": "Custom Liquid",
+      "id": "liquid"
     },
     {
       "type": "header",
