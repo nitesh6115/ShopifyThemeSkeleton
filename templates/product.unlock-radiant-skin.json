@@ -6870,7 +6870,6 @@
                   "type": "block_befor_after",
                   "name": "Befor After Image",
                   "settings": {
-                    "before": "shopify://shop_images/9f0635811cafe1a1372f89581859fb1d7b7ecd42.jpg",
                     "position": 50,
                     "hover_zoom": false,
                     "shadow": false,
