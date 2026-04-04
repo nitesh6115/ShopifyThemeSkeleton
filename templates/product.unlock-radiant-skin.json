@@ -2502,7 +2502,7 @@
         "custom_width": 800,
         "content_alignment_desktop": "center",
         "content_alignment_mobile": "center",
-        "background_color": "linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)",
+        "background_color": "",
         "overlay_color": "",
         "overlay_opacity": 0,
         "bg_position": "center center",
