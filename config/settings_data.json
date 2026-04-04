@@ -12,6 +12,13 @@
     "logo": "shopify://shop_images/Container_97.png",
     "type_primary_font": "sans_serif_n4",
     "content_for_index": [],
+    "blocks": {
+      "341186785192672687": {
+        "type": "shopify://apps/seal-subscriptions/blocks/subscription-script-append/13b25004-a140-4ab7-b5fe-29918f759699",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
