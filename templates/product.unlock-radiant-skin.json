@@ -2464,7 +2464,7 @@
                               "name": "Block Group",
                               "settings": {
                                 "layout_direction": "group--vertical",
-                                "align_x": "flex-end",
+                                "align_x": "center",
                                 "align_y": "center",
                                 "wrap": "wrap",
                                 "hover_zoom": false,
@@ -2477,7 +2477,7 @@
                                 "custom_width_unit_tablet": "%",
                                 "custom_width_tablet_pixel": 48,
                                 "custom_width_tablet": 100,
-                                "width_mobile": "fit-content",
+                                "width_mobile": "custom",
                                 "custom_width_unit_mobile": "%",
                                 "custom_width_pixel_mobile": 48,
                                 "custom_width_mobile": 100,
