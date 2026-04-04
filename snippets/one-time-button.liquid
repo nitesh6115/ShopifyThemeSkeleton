@@ -36,34 +36,68 @@ document.addEventListener('sealsubs:subscription_widget_created', function(e) {
 
     const buttons = document.querySelectorAll(".purchase-btn");
 
-    // ✅ All option blocks
     const allOptions = wrapper.querySelectorAll(".sls-option-container");
 
-    // ✅ One-time container (last one)
-    const oneTimeContainer = wrapper.querySelector('[data-one-time-option-radio]')?.closest('.sls-option-container');
+    const oneTimeContainer = wrapper
+      .querySelector('[data-one-time-option-radio]')
+      ?.closest('.sls-option-container');
 
-    // ✅ Subscription containers (all except one-time)
     const subscriptionContainers = [...allOptions].filter(el => el !== oneTimeContainer);
 
-    // ✅ Radios
     const oneTimeRadio = wrapper.querySelector('input[data-type="one_time"]');
-    const firstSubscriptionRadio = wrapper.querySelector('input[data-type="subscription"]');
+    const subscriptionRadios = wrapper.querySelectorAll('input[data-type="subscription"]');
 
+    const oneTimeBtn = document.querySelector('.purchase-btn[data-type="onetime"]');
+    const subBtn = document.querySelector('.purchase-btn[data-type="subscription"]');
+
+    // ✅ 1. Hide One-time button if not available
+    if (!oneTimeContainer && oneTimeBtn) {
+      oneTimeBtn.style.display = "none";
+    }
+
+    // ✅ Helper functions
+    function activateOneTime() {
+      buttons.forEach(b => b.classList.remove("active"));
+      oneTimeBtn?.classList.add("active");
+
+      if (oneTimeContainer) oneTimeContainer.style.display = "block";
+      subscriptionContainers.forEach(el => el.style.display = "none");
+    }
+
+    function activateSubscription() {
+      buttons.forEach(b => b.classList.remove("active"));
+      subBtn?.classList.add("active");
+
+      subscriptionContainers.forEach(el => el.style.display = "block");
+      if (oneTimeContainer) oneTimeContainer.style.display = "none";
+    }
+
+    // ✅ 2. Detect initial selected state
+    const checkedRadio = wrapper.querySelector('input.sls-option:checked');
+
+    if (checkedRadio) {
+      const type = checkedRadio.dataset.type;
+
+      if (type === "one_time") {
+        activateOneTime();
+      } else {
+        activateSubscription();
+      }
+    } else {
+      // fallback (default to subscription)
+      activateSubscription();
+    }
+
+    // ✅ 3. Button click logic
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
-
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
 
         const type = btn.dataset.type;
 
         if (type === "onetime") {
 
-          // ✅ Show only one-time
-          if (oneTimeContainer) oneTimeContainer.style.display = "block";
-          subscriptionContainers.forEach(el => el.style.display = "none");
+          activateOneTime();
 
-          // ✅ Select one-time
           if (oneTimeRadio) {
             oneTimeRadio.checked = true;
             oneTimeRadio.dispatchEvent(new Event("change", { bubbles: true }));
@@ -71,11 +105,9 @@ document.addEventListener('sealsubs:subscription_widget_created', function(e) {
 
         } else {
 
-          // ✅ Show subscriptions
-          subscriptionContainers.forEach(el => el.style.display = "block");
-          if (oneTimeContainer) oneTimeContainer.style.display = "none";
+          activateSubscription();
 
-          // ✅ Select first subscription option
+          const firstSubscriptionRadio = subscriptionRadios[0];
           if (firstSubscriptionRadio) {
             firstSubscriptionRadio.checked = true;
             firstSubscriptionRadio.dispatchEvent(new Event("change", { bubbles: true }));
