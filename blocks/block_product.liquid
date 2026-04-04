@@ -686,20 +686,58 @@ function initProductScript(sectionId) {
       );
     }
     function initStickyVariantSync() {
+
       const sticky = section.querySelector('.sticky-atc');
       if (!sticky) return;
+
       const priceEl = sticky.querySelector('.sticky-price');
       const compareEl = sticky.querySelector('.sticky-compare');
       const saveEl = sticky.querySelector('.sticky-save');
       const variantEl = sticky.querySelector('.sticky-variant');
       const btn = sticky.querySelector('.sticky-btn');
+
+      let currentVariantData = null;
+
+      /* -------------------------
+        VARIANT CHANGE
+      -------------------------- */
       document.addEventListener('variant:change', (e) => {
+
         const variant = e.detail.variant;
         if (!variant) return;
 
-        // -------------------------
-        // VARIANT TITLE
-        // -------------------------
+        currentVariantData = variant;
+
+        updateStickyUI();
+      });
+
+      /* -------------------------
+        SEAL SUBSCRIPTION CHANGE
+      -------------------------- */
+      document.addEventListener('sealsubs:price_update', (e) => {
+
+        if (!e.detail) return;
+
+        const { price, compareAtPrice } = e.detail;
+
+        if (!price) return;
+
+        subscriptionPrice = price;
+        subscriptionCompare = compareAtPrice || null;
+
+        updateStickyUI();
+      });
+
+      /* -------------------------
+        MAIN UPDATE FUNCTION
+      -------------------------- */
+      function updateStickyUI() {
+
+        if (!currentVariantData) return;
+
+        const variant = currentVariantData;
+
+        // TITLE
         if (variantEl) {
           variantEl.textContent = [
             variant.option1,
@@ -708,43 +746,42 @@ function initProductScript(sectionId) {
           ].filter(Boolean).join(' / ');
         }
 
-        // -------------------------
-        // PRICE
-        // -------------------------
+        // PRICE (🔥 FIXED)
         if (priceEl) {
           const finalPrice = subscriptionPrice || variant.price;
           priceEl.textContent = formatMoney(finalPrice);
         }
 
-        // -------------------------
-        // COMPARE + SAVE
-        // -------------------------
+        // COMPARE + SAVE (🔥 FIXED)
         if (compareEl && saveEl) {
-          if (variant.compare_at_price > variant.price) {
-            compareEl.textContent = formatMoney(variant.compare_at_price);
+
+          const finalCompare = subscriptionCompare || variant.compare_at_price;
+          const finalPrice = subscriptionPrice || variant.price;
+
+          if (finalCompare > finalPrice) {
+
+            compareEl.textContent = formatMoney(finalCompare);
             compareEl.style.display = 'inline';
 
             const percent = Math.round(
-              ((variant.compare_at_price - variant.price) * 100) /
-              variant.compare_at_price
+              ((finalCompare - finalPrice) * 100) / finalCompare
             );
 
             saveEl.textContent = percent + '% OFF';
             saveEl.style.display = 'inline';
+
           } else {
             compareEl.style.display = 'none';
             saveEl.style.display = 'none';
           }
         }
 
-        // -------------------------
-        // BUTTON STATE
-        // -------------------------
+        // BUTTON
         if (btn) {
           btn.disabled = !variant.available;
           btn.textContent = variant.available ? 'Add to Cart' : 'Sold Out';
         }
-      });
+      }
     }
     optionGroups.forEach((group, index) => {
       $$('.option-value', group).forEach(btn => {
