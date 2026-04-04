@@ -521,7 +521,8 @@ function initProductScript(sectionId) {
      VARIANTS
   -------------------------- */
   function initVariants(galleryAPI) {
-
+    let subscriptionPrice = null;
+    let subscriptionCompare = null;
     const form = $("form[id^='product-form-']");
     if (!form) return;
 
@@ -609,18 +610,21 @@ function initProductScript(sectionId) {
       const compare = $('.sale_price', priceWrapper);
       const save = $('.save', priceWrapper);
 
+      // ✅ PRIORITY: subscription > variant
+      const finalPrice = subscriptionPrice || currentVariant.price;
+      const finalCompare = subscriptionCompare || currentVariant.compare_at_price;
+
       if (regular) {
-        regular.textContent = formatMoney(currentVariant.price);
+        regular.textContent = formatMoney(finalPrice);
       }
 
       if (compare && save) {
-        if (currentVariant.compare_at_price > currentVariant.price) {
-          compare.textContent = formatMoney(currentVariant.compare_at_price);
+        if (finalCompare > finalPrice) {
+          compare.textContent = formatMoney(finalCompare);
           compare.style.display = 'inline';
 
           const percent = Math.round(
-            ((currentVariant.compare_at_price - currentVariant.price) * 100) /
-            currentVariant.compare_at_price
+            ((finalCompare - finalPrice) * 100) / finalCompare
           );
 
           save.textContent = percent + '% OFF';
@@ -748,6 +752,15 @@ function initProductScript(sectionId) {
           updateVariant();
         });
       });
+    });
+    document.addEventListener('sealsubs:price_update', (e) => {
+      if (!e.detail) return;
+      const { price, compareAtPrice } = e.detail;
+      if (!price) return;
+      subscriptionPrice = price;
+      subscriptionCompare = compareAtPrice || null;
+      updatePrice();       // 🔥 force UI update
+      updateButton();      // 🔥 sync button
     });
     initStickyVariantSync();
     updateUI();
