@@ -1225,7 +1225,7 @@
                         "show_price": true,
                         "price_color": "#d4a574",
                         "compare_color": "#dddddd",
-                        "show_saving_off": true,
+                        "show_saving_off": false,
                         "saving_off_bg": "#d4a574",
                         "saving_off_color": "#ffffff",
                         "pill-bg": "#ffffff",
@@ -2661,7 +2661,7 @@
         ".sls-active {background: #f8f1f0;}",
         ".sls-selling-plan-group-first-line {display: block;}",
         ".seal-col-radio {display: none !important;}",
-        ".ht-money {font-size: 24px; color: #D4A574;}",
+        ".ht-money {font-size: 24px; color: #d4a574;}",
         ".sls-purchase-options-container {gap: 20px; --variant-min-width: 200px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
         ".product-option:nth-child(2) .saving,.product-option:nth-child(2) .v_price,.product-option:nth-child(3) .v_price,.product-option:nth-child(3) .saving {display: none !important;}"
       ],
