@@ -1526,6 +1526,23 @@
                     "block_text_DEtfA4"
                   ]
                 },
+                "block_custom_liquid_RT4Vpc": {
+                  "type": "block_custom_liquid",
+                  "name": "Custom Liquid",
+                  "settings": {
+                    "liquid": "<div class=\"sealsubs-target-element\" data-product=\"{{ product | json | escape }}\" data-handle=\"{{ product.handle }}\"></div>",
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_tablet": "fill",
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "hide_desktop": false,
+                    "hide_mobile": false
+                  },
+                  "blocks": {}
+                },
                 "block_add_to_cart_button_Rapfh9": {
                   "type": "block_add_to_cart_button",
                   "name": "Add To Cart Button",
@@ -1566,6 +1583,7 @@
               "block_order": [
                 "block_variant_picker_3BXxVD",
                 "block_group_zN3Tfr",
+                "block_custom_liquid_RT4Vpc",
                 "block_add_to_cart_button_Rapfh9"
               ]
             }
@@ -1970,23 +1988,6 @@
                 "pr_m": 0,
                 "hide_mobile": false,
                 "hide_desktop": false
-              },
-              "blocks": {}
-            },
-            "block_custom_liquid_RCt8ta": {
-              "type": "block_custom_liquid",
-              "name": "Custom Liquid",
-              "settings": {
-                "liquid": "<div class=\"sealsubs-target-element\" data-product=\"{{ product | json | escape }}\" data-handle=\"{{ product.handle }}\"></div>",
-                "width": "fill",
-                "custom_width": 100,
-                "width_tablet": "fill",
-                "custom_width_tablet": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "hide_desktop": false,
-                "hide_mobile": false
               },
               "blocks": {}
             },
@@ -3837,7 +3838,6 @@
           },
           "block_order": [
             "block_text_NeBAbw",
-            "block_custom_liquid_RCt8ta",
             "block_group_biqRnh",
             "block_group_cwt9NR",
             "block_group_JgXfag",
