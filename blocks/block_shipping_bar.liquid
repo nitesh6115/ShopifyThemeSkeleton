@@ -12,7 +12,10 @@
     --bar-fill: {{ block.settings.fill_color }};
     --bar-height: {{ block.settings.bar_height }}px;
     --bar-radius: {{ block.settings.bar_radius }}px;
-
+     --msg-weight: {{block.settings.font_weight}};
+    --msg-size-desktop: {{ block.settings.font_size_desktop }}px;
+    --msg-size-mobile: {{ block.settings.font_size_mobile }}px;
+    
     --msg-color: {{ block.settings.message_color }};
     --success-color: {{ block.settings.success_color }};
 
@@ -94,7 +97,8 @@ align--{{ block.settings.align }};
 
 .goal-message {
   margin-top: 8px;
-  font-size: 14px;
+  font-size: var(--msg-size-desktop);
+  font-weight: var(--msg-weight);
   text-align: var(--msg-align);
   min-height: 15px;
   color: var(--msg-color);
