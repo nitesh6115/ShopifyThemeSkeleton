@@ -660,6 +660,8 @@ function initProductScript(sectionId) {
     }
 
     function updateVariant() {
+      subscriptionPrice = null;
+      subscriptionCompare = null;
       currentVariant = variants.find(v =>
         (!v.option1 || v.option1 === selectedOptions[0]) &&
         (!v.option2 || v.option2 === selectedOptions[1]) &&
