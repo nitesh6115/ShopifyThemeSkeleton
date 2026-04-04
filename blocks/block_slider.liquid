@@ -558,13 +558,16 @@ document.addEventListener(
     }
 
     .slider-track{
-    display:flex;
-    gap:var(--s-gap);
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    scroll-snap-type:x mandatory;
+      display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(
+    (100% - (var(--s-gap) * (var(--per-row-desktop) - 1)))
+    / var(--per-row-desktop)
+  );
+  gap: var(--s-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 
-  align-items:flex-start;
     }
   .slider-track{
   overflow-x:auto;
@@ -659,13 +662,16 @@ document.addEventListener(
     .slider_block:not(.slider-desktop) .slider-inner {
     height: auto !important;
 } 
-  .slider_block .slider-track > *{
-    width: calc(
+
+  
+    .slider-track{
+  grid-auto-columns: calc(
     (100% - (var(--s-gap) * (var(--per-row-desktop) - 1)))
     / var(--per-row-desktop)
   );
-   box-sizing: border-box;
-  }
+  gap: var(--s-gap);
+
+    }
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1365px) {
@@ -681,13 +687,15 @@ document.addEventListener(
     .slider_block:not(.slider-tablet) .slider-inner {
     height: auto !important;
 }
- .slider_block .slider-track > *{
-    width: calc(
+ 
+    .slider-track{
+  grid-auto-columns: calc(
     (100% - (var(--s-gap) * (var(--per-row-tablet) - 1)))
     / var(--per-row-tablet)
   );
-   box-sizing: border-box;
-  }
+  gap: var(--s-gap);
+
+    }
     }
 
     @media(max-width:767px){
@@ -703,22 +711,21 @@ document.addEventListener(
     .slider_block:not(.slider-mobile) .slider-inner {
     height: auto !important;
 }
-    .slider-track{
-    gap:var(--s-gap-m);
-    }
       .slider_block_container{
             padding-top: var(--pt-m);
             padding-bottom: var(--pb-m);
             padding-left: var(--pl-m);
             padding-right: var(--pr-m);
           }
-           .slider_block .slider-track > *{
-    width: calc(
-    (100% - (var(--s-gap-m) * (var(--per-row-mobile) - 1)))
-    / var(--per-row-mobile)
+       .slider-track{
+  grid-auto-columns: calc(
+    (100% - (var(--s-gap) * (var(--per-row-tablet) - 1)))
+    / var(--per-row-tablet)
   );
-   box-sizing: border-box;
-  }
+  gap: var(--s-gap-);
+
+    }
+
       }
 {% endstylesheet %}
 {% schema %}
