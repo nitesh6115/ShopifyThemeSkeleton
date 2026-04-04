@@ -134,17 +134,28 @@ align-self: stretch;
     .hide-mobile{ display:none !important; }
   }
 {% endstylesheet %}
+{% javascript %}
+(function () {
 
-{%  javascript %}
+  let cartCache = null;
+
+  function getCart() {
+    return fetch('/cart.js')
+      .then(res => res.json())
+      .then(cart => {
+        cartCache = cart;
+        return cart;
+      });
+  }
+
   function updateFreeShippingBar() {
-  fetch('/cart.js')
-    .then(res => res.json())
-    .then(cart => {
+
+    getCart().then(cart => {
 
       const wrappers = document.querySelectorAll(".cart-progress-wrapper");
       if (!wrappers.length) return;
 
-      // ✅ Exclude subscription products
+      // ✅ Calculate NON-subscription total
       let nonSubscriptionTotal = 0;
 
       cart.items.forEach(item => {
@@ -153,15 +164,16 @@ align-self: stretch;
         }
       });
 
+      const rate = Shopify?.currency?.rate || 1;
+      const currency = Shopify?.currency?.active || 'USD';
+
       wrappers.forEach((wrapper) => {
+
         const bar = wrapper.querySelector(".cart-progress-bar");
         const message = wrapper.querySelector(".goal-message");
 
         const thresholdUSD = parseInt(wrapper.dataset.threshold || 0);
         if (!thresholdUSD) return;
-
-        const rate = Shopify?.currency?.rate || 1;
-        const currency = Shopify?.currency?.active || 'USD';
 
         const threshold = thresholdUSD * rate;
         const cartTotal = nonSubscriptionTotal * rate;
@@ -171,13 +183,21 @@ align-self: stretch;
 
         let remaining = Math.max(threshold - cartTotal, 0);
 
-        const formatted = new Intl.NumberFormat('en-IN', {
+        const formatted = new Intl.NumberFormat(undefined, {
           style: 'currency',
           currency: currency,
         }).format(remaining / 100);
 
-        // UI update
+        // ✅ UI update
         if (bar) bar.style.width = progress + "%";
+
+        if (wrapper) {
+          if (progress >= 100) {
+            wrapper.classList.add("is-complete");
+          } else {
+            wrapper.classList.remove("is-complete");
+          }
+        }
 
         const template = wrapper.dataset.preGoalMessageTemplate;
         const success = wrapper.dataset.postGoalMessage;
@@ -189,13 +209,27 @@ align-self: stretch;
             message.innerHTML = success;
           }
         }
+
       });
+
     });
-}
-document.querySelectorAll('[id^="bar-"]').forEach((container) => {
-  
-});
+  }
+
+  // ✅ INIT
+  document.addEventListener("DOMContentLoaded", updateFreeShippingBar);
+
+  // ✅ Shopify cart events (if supported)
+  document.addEventListener("cart:updated", updateFreeShippingBar);
+  document.addEventListener("ajaxCart:updated", updateFreeShippingBar);
+
+  // ✅ Fallback (works in ALL themes)
+  document.addEventListener("click", function () {
+    setTimeout(updateFreeShippingBar, 300);
+  });
+
+})();
 {% endjavascript %}
+
 {% schema %}
 {
   "name": "Custom Liquid",
