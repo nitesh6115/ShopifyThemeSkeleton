@@ -76,7 +76,7 @@
 
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 {% assign child_count = block.blocks.size %}
-<div class="{{- class_list }}" fetch-img="{{ fetch_priority }}" style="{{- style_schema -}}" {{ block.shopify_attributes }} data-child-size="{{ child_count }}">
+<div id="{{ block.id }}" class="{{- class_list }}" fetch-img="{{ fetch_priority }}" style="{{- style_schema -}}" {{ block.shopify_attributes }} data-child-size="{{ child_count }}">
   
   {% if block.settings.image_link != blank %}
     <a class="image_link link_overlay" href="{{ block.settings.image_link }}"></a>
