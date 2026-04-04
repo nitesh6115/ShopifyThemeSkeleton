@@ -2615,8 +2615,8 @@
         "block_product_9U9LBi"
       ],
       "custom_css": [
-        ".product_media-wrapper{display: none;}",
-        ".sls-active {background:#F8F1F0}",
+        ".product_media-wrapper {display: none;}",
+        ".sls-active {background: #f8f1f0;}",
         ".product_media-wrapper,.product_information_wrapper,.product_section {max-width: 100%; width: 100%;}",
         ".sls-purchase-options-container {gap: 20px; --variant-min-width: 200px; display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--variant-min-width), 1fr) );}",
         ".product-option:nth-child(2) .saving,.product-option:nth-child(2) .v_price,.product-option:nth-child(3) .v_price,.product-option:nth-child(3) .saving {display: none !important;}"
@@ -6871,7 +6871,6 @@
                   "name": "Befor After Image",
                   "settings": {
                     "before": "shopify://shop_images/9f0635811cafe1a1372f89581859fb1d7b7ecd42.jpg",
-                    "after": "shopify://shop_images/9f0635811cafe1a1372f89581859fb1d7b7ecd42.jpg",
                     "position": 50,
                     "hover_zoom": false,
                     "shadow": false,
