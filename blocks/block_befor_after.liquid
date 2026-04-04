@@ -81,49 +81,50 @@
 {% assign class_list = class_list | strip_newlines | replace: ';', ' ' | strip %}
 
 <div id="ba-{{ block.id }}" class="{{- class_list -}}" style="{{- style_schema -}}" {{ block.shopify_attributes }}>
- 
   <div class="before-after-wrapper">
     <div class="before-after-image-container" id="ba-container-{{ block.id }}">
       <div class="image-container">
-        
-        
         <!-- BEFORE IMAGE OR PLACEHOLDER -->
-      {% if block.settings.before != blank %}
-        {{
-          block.settings.before
-          | image_url: width: 1500
-          | image_tag:
-            widths: widths,
-            sizes: '(min-width: 1200px) 700px, 100vw',
-            loading: 'lazy',
-            fetch_priority: fetch_priority,
-            class: 'image-before slider-image',
-            alt: block.settings.before.alt | escape | default : 'block_image'
-        }}
-      {% else %}
-        <div class="image-before slider-image ba-placeholder">
-          {{ 'image' | placeholder_svg_tag }}
-        </div>
-      {% endif %}
+        {% if block.settings.before != blank %}
+          {{
+            block.settings.before
+            | image_url: width: 1500
+            | image_tag:
+              widths: widths,
+              sizes: '(min-width: 1200px) 700px, 100vw',
+              loading: 'lazy',
+              fetch_priority: fetch_priority,
+              class: 'image-before slider-image',
+              alt: block.settings.before.alt
+            | escape
+            | default: 'block_image'
+          }}
+        {% else %}
+          <div class="image-before slider-image ba-placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
 
-      <!-- AFTER IMAGE OR PLACEHOLDER -->
-      {% if block.settings.after != blank %}
-        {{
-          block.settings.after
-          | image_url: width: 1500
-          | image_tag:
-            widths: widths,
-            fetch_priority: fetch_priority,
-            sizes: '(min-width: 1200px) 700px, 100vw',
-            loading: 'lazy',
-            class: 'image-after slider-image',
-            alt: block.settings.after.alt | escape | default : 'block_image'
-        }}
-      {% else %}
-        <div class="image-after slider-image ba-placeholder">
-          {{ 'image' | placeholder_svg_tag }}
-        </div>
-      {% endif %}
+        <!-- AFTER IMAGE OR PLACEHOLDER -->
+        {% if block.settings.after != blank %}
+          {{
+            block.settings.after
+            | image_url: width: 1500
+            | image_tag:
+              widths: widths,
+              fetch_priority: fetch_priority,
+              sizes: '(min-width: 1200px) 700px, 100vw',
+              loading: 'lazy',
+              class: 'image-after slider-image',
+              alt: block.settings.after.alt
+            | escape
+            | default: 'block_image'
+          }}
+        {% else %}
+          <div class="image-after slider-image ba-placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
       </div>
       <!-- step="10" -->
       <input
@@ -195,175 +196,181 @@
           ></polyline>
         </svg>
       </div>
-      <div class="before-after-label label-before">Before</div>
-      <div class="before-after-label label-after">After</div>
+      {% if block.settings.before != blank and block.settings.after != blank %}
+        <div class="before-after-label label-before">
+          {{ block.settings.before_text }}
+        </div>
+        <div class="before-after-label label-after">
+          {{ block.settings.after_text }}
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
 {% stylesheet %}
-  .before_after_block {
-    background: var(--bg);
-    border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
-	  border: var(--border) solid var(--border-color);
-    padding-top: var(--pt);
-    padding-bottom: var(--pb);
-    padding-left: var(--pl);
-    padding-right: var(--pr);
-    overflow: hidden;
-    position: relative;
-  }
-  .before-after-container {
-    position: relative;
-  }
-  .before-after-container img {
-    display: block;
-    width: 100%;
-  }
-  .ba-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    .before_after_block {
+      background: var(--bg);
+      border-radius: var(--radius-top-left) var(--radius-top-right) var(--radius-bottom-right) var(--radius-bottom-left) ;
+  	  border: var(--border) solid var(--border-color);
+      padding-top: var(--pt);
+      padding-bottom: var(--pb);
+      padding-left: var(--pl);
+      padding-right: var(--pr);
+      overflow: hidden;
+      position: relative;
+    }
+    .before-after-container {
+      position: relative;
+    }
+    .before-after-container img {
+      display: block;
+      width: 100%;
+    }
+    .ba-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ba-placeholder svg {
+      width: 80px;
+      height: 80px;
+      opacity: 0.4;
+    }
+    .before-after-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+    .before-after-slider {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background:var(--star-line-color);
+      cursor: ew-resize;
+    }
+    .before-after-label {
+    position: absolute;
+    top: 20px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
   }
 
-  .ba-placeholder svg {
-    width: 80px;
-    height: 80px;
-    opacity: 0.4;
+  /* BEFORE */
+  .label-before {
+    left: 20px;
+    background: var(--before-bg);
+    color: var(--before-color);
   }
-  .before-after-after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-  }
-  .before-after-slider {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 3px;
-    height: 100%;
-    background:var(--star-line-color);
-    cursor: ew-resize;
-  }
-  .before-after-label {
-  position: absolute;
-  top: 20px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-}
 
-/* BEFORE */
-.label-before {
-  left: 20px;
-  background: var(--before-bg);
-  color: var(--before-color);
-}
+  /* AFTER */
+  .label-after {
+    right: 20px;
+    background: var(--after-bg);
+    color: var(--after-color);
+  }
 
-/* AFTER */
-.label-after {
-  right: 20px;
-  background: var(--after-bg);
-  color: var(--after-color);
-}
-
-  .label-before { left: 20px; }
-  .label-after { right: 20px; }
-  .before-after-container img,
-  .ba-placeholder svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .before-after-after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-  }
-  .ba-placeholder {
-    width: 100%;
-    height: 100%;
-    background: #f4f4f4;
-  }
-  .before-after-container .before-after-image-container{
-    display: grid;
-    position: relative;
-    overflow: hidden;
-    --position: 50%;
-  }
-  .before-after-container .slider-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left;
-  }
-  .before-after-container .image-before {
-    position: absolute;
-    inset: 0;
-    width: var(--position);
-  }
-  .before-after-container .slider {
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .before-after-container .slider:focus-visible ~ .slider-button {
-    outline: 5px solid black;
-    outline-offset: 3px;
-  }
-  .before-after-container .slider-line {
-    position: absolute;
-    inset: 0;
-    width: .2rem;
-    height: 100%;
-    background-color: #fff;
-    /* z-index: 10; */
-    left: var(--position);
-    transform: translateX(-50%);
-    pointer-events: none;
-  }
-  .before-after-container .slider-button {
-    position: absolute;
-    background-color: #fff;
-    color: black;
-    padding: .5rem;
-    border-radius: 100vw;
-    display: grid;
-    place-items: center;
-    top: 50%;
-    left: var(--position);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    box-shadow: 1px 1px 1px hsl(0, 50%, 2%, .5);
-  }
-  @media screen and (max-width: 767px) {
-  .before_after_block{
-    padding-top: var(--pt-m);
-    padding-bottom: var(--pb-m);
-    padding-left: var(--pl-m);
-    padding-right: var(--pr-m);
-  }
-  }
+    .label-before { left: 20px; }
+    .label-after { right: 20px; }
+    .before-after-container img,
+    .ba-placeholder svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .before-after-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .ba-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #f4f4f4;
+    }
+    .before-after-container .before-after-image-container{
+      display: grid;
+      position: relative;
+      overflow: hidden;
+      --position: 50%;
+    }
+    .before-after-container .slider-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left;
+    }
+    .before-after-container .image-before {
+      position: absolute;
+      inset: 0;
+      width: var(--position);
+    }
+    .before-after-container .slider {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .before-after-container .slider:focus-visible ~ .slider-button {
+      outline: 5px solid black;
+      outline-offset: 3px;
+    }
+    .before-after-container .slider-line {
+      position: absolute;
+      inset: 0;
+      width: .2rem;
+      height: 100%;
+      background-color: #fff;
+      /* z-index: 10; */
+      left: var(--position);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .before-after-container .slider-button {
+      position: absolute;
+      background-color: #fff;
+      color: black;
+      padding: .5rem;
+      border-radius: 100vw;
+      display: grid;
+      place-items: center;
+      top: 50%;
+      left: var(--position);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      box-shadow: 1px 1px 1px hsl(0, 50%, 2%, .5);
+    }
+    @media screen and (max-width: 767px) {
+    .before_after_block{
+      padding-top: var(--pt-m);
+      padding-bottom: var(--pb-m);
+      padding-left: var(--pl-m);
+      padding-right: var(--pr-m);
+    }
+    }
 {% endstylesheet %}
 <script>
- document.querySelectorAll('[id^="ba-container-"]').forEach((container) => {
-  const slider = container.querySelector('.slider_button_befor');
+  document.querySelectorAll('[id^="ba-container-"]').forEach((container) => {
+    const slider = container.querySelector('.slider_button_befor');
 
-  if (slider) {
-    slider.addEventListener('input', (e) => {
-      container.style.setProperty('--position', `${e.target.value}%`);
-    });
-  }
-});
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        container.style.setProperty('--position', `${e.target.value}%`);
+      });
+    }
+  });
 </script>
 {% schema %}
 {
@@ -388,6 +395,22 @@
       "max": 100,
       "step": 1,
       "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Label Text"
+    },
+    {
+      "type": "text",
+      "id": "before_text",
+      "label": "Before Label Text",
+      "default": "Before"
+    },
+    {
+      "type": "text",
+      "id": "after_text",
+      "label": "After Label Text",
+      "default": "After"
     },
     {
       "type": "header",
