@@ -652,7 +652,7 @@ function initProductScript(sectionId) {
         addToCartBtn.innerHTML = `
           <span class="btn_text">Add to Cart</span>
           <span class="btn_separator">—</span>
-          <span class="btn_price">${formatMoney(currentVariant.price)}</span>
+          <span class="btn_price">${formatMoney(finalPrice)}</span>
         `;
       } else {
         addToCartBtn.innerHTML = `<span class="btn_text">Add to Cart</span>`;
