@@ -21,6 +21,11 @@
     --border: {{ block.settings.border }}px;
     --border-color: {{ block.settings.border_color }};
 
+    --before-bg: {{ block.settings.before_bg }};
+    --before-color: {{ block.settings.before_text_color }};
+    --after-bg: {{ block.settings.after_bg }};
+    --after-color: {{ block.settings.after_text_color }};
+
     --pt: {{ block.settings.pt }}px;
     --pb: {{ block.settings.pb }}px;
     --pl: {{ block.settings.pl }}px;
@@ -218,7 +223,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f4f4f4;
     width: 100%;
     height: 100%;
   }
@@ -245,13 +249,27 @@
     cursor: ew-resize;
   }
   .before-after-label {
-    position: absolute;
-    top: 20px;
-    background: #fff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 14px;
-  }
+  position: absolute;
+  top: 20px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* BEFORE */
+.label-before {
+  left: 20px;
+  background: var(--before-bg);
+  color: var(--before-color);
+}
+
+/* AFTER */
+.label-after {
+  right: 20px;
+  background: var(--after-bg);
+  color: var(--after-color);
+}
+
   .label-before { left: 20px; }
   .label-after { right: 20px; }
   .before-after-container img,
