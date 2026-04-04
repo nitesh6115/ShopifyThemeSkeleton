@@ -7,6 +7,12 @@
     --pb: {{ block.settings.pb }}px;
     --ptm: {{ block.settings.ptm }}px;
     --pbm: {{ block.settings.pbm }}px;
+
+    --bar-bg: {{ block.settings.bg_color }};
+    --bar-fill: {{ block.settings.fill_color }};
+    --bar-height: {{ block.settings.bar_height }}px;
+    --bar-radius: {{ block.settings.bar_radius }}px;
+
     {% if block.settings.height == 'custom' %}
     --block-custom-height-desktop: {{ block.settings.custom_height }}%;
     {% endif %}
@@ -23,7 +29,7 @@
 {% assign style_schema = style_schema | strip_newlines %}
 
 {%- capture class_list -%}
-custom-liquid-block; 
+progres-bar-block; 
 align--{{ block.settings.align }}; 
 {% if block.settings.hide_mobile %}hide-mobile;{% endif %} 
 {% if block.settings.hide_desktop %}hide-desktop;{% endif %}
@@ -58,10 +64,7 @@ align--{{ block.settings.align }};
     data-threshold="{{ threshold }}"
     data-pre-goal-message-template="{{ block.settings.pre_message | escape }}"
     data-post-goal-message="{{ block.settings.success_message | escape }}"
-    style="
-      --bar-bg: {{ block.settings.bg_color }};
-      --bar-fill: {{ block.settings.fill_color }};
-    ">
+    >
     <div class="cart-progress-bar-container">
       <div class="cart-progress-bar"></div>
     </div>
@@ -99,29 +102,29 @@ align--{{ block.settings.align }};
   100% { opacity: 0.6; }
 }
 
-.custom-liquid-block {
+.progres-bar-block {
     background: var(--bg);
     padding-top: var(--pt);
     padding-bottom: var(--pb);
   }
   
   @media (min-width: 1366px) {
-  .custom-liquid-block.block-width-desktop-fill {
+  .progres-bar-block.block-width-desktop-fill {
     align-self: stretch;
 }
 }
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
-.custom-liquid-block.block-width-tablet-fill{
+.progres-bar-block.block-width-tablet-fill{
 align-self: stretch;
 }
 }
   /* mobile */
   @media (max-width:767px){
-  .custom-liquid-block.block-mobile-desktop-fill {
+  .progres-bar-block.block-mobile-desktop-fill {
     align-self: stretch;
     flex: unset;
 }
-    .custom-liquid-block {
+    .progres-bar-block {
       padding-top: var(--ptm);
       padding-bottom: var(--pbm);
     }
