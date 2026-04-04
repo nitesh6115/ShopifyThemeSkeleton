@@ -710,7 +710,8 @@ function initProductScript(sectionId) {
         // PRICE
         // -------------------------
         if (priceEl) {
-          priceEl.textContent = formatMoney(variant.price);
+          const finalPrice = subscriptionPrice || variant.price;
+          priceEl.textContent = formatMoney(finalPrice);
         }
 
         // -------------------------
