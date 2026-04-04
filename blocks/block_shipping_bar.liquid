@@ -170,9 +170,7 @@ align-self: stretch;
       // ✅ Calculate NON-subscription total
       let nonSubscriptionTotal = 0;
       cart.items.forEach(item => {
-        if (!item.selling_plan_allocation) {
           nonSubscriptionTotal += item.line_price;
-        }
       });
 
       const rate = Shopify?.currency?.rate || 1;
