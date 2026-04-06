@@ -654,22 +654,21 @@ function initProductScript(sectionId) {
       if (!addToCartBtn || !currentVariant) return;
       const finalPrice = subscriptionPrice || currentVariant.price;
       const showBtnPrice = addToCartBtn.hasAttribute('data-btn-price');
-
+      const defaultText = addToCartBtn.dataset.btnText || 'Add to Cart';
+      const soldOutText = addToCartBtn.dataset.btnSoldout || 'Sold Out';
       addToCartBtn.disabled = !currentVariant.available;
-
       if (!currentVariant.available) {
-        addToCartBtn.textContent = 'Sold Out';
+        addToCartBtn.innerHTML = `<span class="btn_text">${soldOutText}</span>`;
         return;
       }
-
       if (showBtnPrice) {
         addToCartBtn.innerHTML = `
-          <span class="btn_text">Add to Cart</span>
+          <span class="btn_text">${defaultText}</span>
           <span class="btn_separator">—</span>
           <span class="btn_price">${formatMoney(finalPrice)}</span>
         `;
       } else {
-        addToCartBtn.innerHTML = `<span class="btn_text">Add to Cart</span>`;
+        addToCartBtn.innerHTML = `<span class="btn_text">${defaultText}</span>`;
       }
     }
 
@@ -793,7 +792,9 @@ function initProductScript(sectionId) {
         // BUTTON
         if (btn) {
           btn.disabled = !variant.available;
-          btn.textContent = variant.available ? 'Add to Cart' : 'Sold Out';
+          const defaultText = btn.dataset.btnText || 'Add to Cart';
+          const soldOutText = btn.dataset.btnSoldout || 'Sold Out';
+          btn.textContent = variant.available ? defaultText : soldOutText;
         }
       }
     }
