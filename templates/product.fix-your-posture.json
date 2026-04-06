@@ -3303,7 +3303,7 @@
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -3406,7 +3406,7 @@
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -3505,7 +3505,7 @@
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -3517,7 +3517,7 @@
                     "ptm": 8,
                     "pbm": 8,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": true
                   },
                   "blocks": {}
                 },
@@ -3539,7 +3539,7 @@
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -3642,7 +3642,7 @@
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -3741,7 +3741,7 @@
                     "custom_width_unit_tablet": "%",
                     "custom_width_tablet_pixel": 48,
                     "custom_width_tablet": 100,
-                    "width_mobile": "fill",
+                    "width_mobile": "custom",
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
@@ -3753,7 +3753,7 @@
                     "ptm": 8,
                     "pbm": 8,
                     "hide_desktop": false,
-                    "hide_mobile": false
+                    "hide_mobile": true
                   },
                   "blocks": {}
                 },
@@ -4019,7 +4019,7 @@
               "name": "Heading",
               "settings": {
                 "text": "3 Simple Steps to Better Posture",
-                "alignment": "left",
+                "alignment": "center",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
