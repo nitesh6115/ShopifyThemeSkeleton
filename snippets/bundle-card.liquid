@@ -11,7 +11,8 @@
   {% if product.tags contains 'Bestseller' %}
     <span class="bundle-badge">Bestseller</span>
   {% endif %}
-  <div class="bundle-image">
+  <div class="bundle-image 
+    ratio--{{ section.settings.ratio }};">
     {{ product.featured_image
   | image_url: width: 533
   | image_tag:
