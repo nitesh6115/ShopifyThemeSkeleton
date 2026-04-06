@@ -474,10 +474,16 @@
 
       @media (min-width: 1366px){
       .slider_block:not(.slider-desktop) .slider-track{
-        overflow: visible;
-        display: grid;
-        grid-template-columns: repeat(var(--per-row-desktop), 1fr);
-      }
+  overflow: visible;
+
+  /* RESET slider behavior */
+  grid-auto-flow: unset;
+  grid-auto-columns: unset;
+
+  /* APPLY grid */
+  display: grid;
+  grid-template-columns: repeat(var(--per-row-desktop), minmax(0,1fr));
+}
       .slider_block:not(.slider-desktop) .slider-prev,
       .slider_block:not(.slider-desktop) .slider-next,
       .slider_block:not(.slider-desktop) .slider-dots{
