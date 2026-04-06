@@ -6289,7 +6289,7 @@
                 "font_weight": "400",
                 "color": "#ffffff",
                 "background": "#22C55E",
-                "radius": 30,
+                "radius": 50,
                 "border": 0,
                 "border_color": "rgba(0,0,0,0)",
                 "pt": 10,
