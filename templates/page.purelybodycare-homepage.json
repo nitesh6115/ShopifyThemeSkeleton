@@ -444,7 +444,7 @@
                     "custom_width_unit_mobile": "%",
                     "custom_width_pixel_mobile": 48,
                     "custom_width_mobile": 100,
-                    "btn_full_width": true,
+                    "btn_full_width": false,
                     "btn_height": 56,
                     "btn_height_mobile": 56,
                     "font_size": 16,
