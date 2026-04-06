@@ -4924,6 +4924,97 @@
             "image_link": ""
           },
           "blocks": {
+            "block_group_6XNJAd": {
+              "type": "block_group",
+              "name": "Block Group",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "align_x": "flex-start",
+                "align_y": "center",
+                "wrap": "wrap",
+                "hover_zoom": false,
+                "shadow": false,
+                "width": "fit-content",
+                "custom_width_unit_desktop": "%",
+                "custom_width_pixel": 48,
+                "custom_width": 100,
+                "width_tablet": "fit-content",
+                "custom_width_unit_tablet": "%",
+                "custom_width_tablet_pixel": 48,
+                "custom_width_tablet": 100,
+                "width_mobile": "fit-content",
+                "custom_width_unit_mobile": "%",
+                "custom_width_pixel_mobile": 48,
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "gap": 12,
+                "gap_m": 12,
+                "background": "#D1FAE5",
+                "radius": 30,
+                "border": 0,
+                "border_color": "",
+                "pt": 10,
+                "pb": 10,
+                "pl": 16,
+                "pr": 16,
+                "ptm": 10,
+                "pbm": 10,
+                "plm": 16,
+                "prm": 16,
+                "hide_desktop": false,
+                "hide_mobile": false,
+                "image_link": ""
+              },
+              "blocks": {
+                "block_text_rVbfRQ": {
+                  "type": "block_text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p>Simple Process</p>",
+                    "block_link": "",
+                    "alignment": "left",
+                    "width": "fit-content",
+                    "custom_width_unit_desktop": "%",
+                    "custom_width_pixel": 48,
+                    "custom_width": 100,
+                    "width_tablet": "fit-content",
+                    "custom_width_unit_tablet": "%",
+                    "custom_width_tablet_pixel": 48,
+                    "custom_width_tablet": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_unit_mobile": "%",
+                    "custom_width_pixel_mobile": 48,
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "font_size": 16,
+                    "font_size_mobile": 14,
+                    "text_uppercase": false,
+                    "font_weight": "400",
+                    "color": "#0f766e",
+                    "background": "",
+                    "radius": 0,
+                    "border": 0,
+                    "border_color": "",
+                    "pt": 0,
+                    "pb": 0,
+                    "pl": 0,
+                    "pr": 0,
+                    "pt_m": 0,
+                    "pb_m": 0,
+                    "pl_m": 0,
+                    "pr_m": 0,
+                    "hide_mobile": false,
+                    "hide_desktop": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "block_text_rVbfRQ"
+              ]
+            },
             "block_heading_fgYMyT": {
               "type": "block_heading",
               "name": "Heading",
@@ -4998,6 +5089,7 @@
             }
           },
           "block_order": [
+            "block_group_6XNJAd",
             "block_heading_fgYMyT",
             "block_text_qiPbVB"
           ]
