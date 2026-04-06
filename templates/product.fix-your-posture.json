@@ -3172,7 +3172,7 @@
         },
         "block_group_tA7UnG": {
           "type": "block_group",
-          "name": "Block Group",
+          "name": "Bottom Block",
           "settings": {
             "layout_direction": "group--vertical",
             "align_x": "center",
@@ -3897,8 +3897,8 @@
         "align_y": "flex-start",
         "columns_desktop": 1,
         "columns_mobile": 1,
-        "gap": 24,
-        "gap_m": 24,
+        "gap": 48,
+        "gap_m": 32,
         "border_radius": 0,
         "border_width": 0,
         "border_color": "rgba(0,0,0,0)",
