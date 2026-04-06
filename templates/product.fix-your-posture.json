@@ -1471,7 +1471,7 @@
               "name": "Heading",
               "settings": {
                 "text": "Desk Work Is Damaging Your Body",
-                "alignment": "left",
+                "alignment": "center",
                 "font_italic": false,
                 "font_uppercase": false,
                 "line_height": "1.2",
