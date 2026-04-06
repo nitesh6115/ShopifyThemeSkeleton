@@ -390,6 +390,7 @@
                 "btn_bg": "#22C55E",
                 "btn_hover_bg": "linear-gradient(90deg, rgba(10, 9, 9, 1), rgba(18, 18, 18, 1) 100%)",
                 "btn_text_label": "Improve Your Posture Today",
+                "btn_soldout_text": "Sold Out",
                 "btn_text": "#ffffff",
                 "btn_hover_text": "#ffffff",
                 "btn_border": "#22c55e",
@@ -4183,7 +4184,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/07d87cc5f861c81b0aa86716a565be94d1b6e84a_1.jpg",
+                    "image": "shopify://shop_images/Container_3_faab9620-7542-41bf-9ff6-3ffa962fbeba.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": true,
@@ -4871,7 +4872,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/07d87cc5f861c81b0aa86716a565be94d1b6e84a_1.jpg",
+                    "image": "shopify://shop_images/Container_4_e5bd4399-6773-4197-8b41-8b8c7581c4ca.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": true,
@@ -5013,7 +5014,7 @@
                   "type": "block_image",
                   "name": "Image",
                   "settings": {
-                    "image": "shopify://shop_images/07d87cc5f861c81b0aa86716a565be94d1b6e84a_1.jpg",
+                    "image": "shopify://shop_images/Container_2.png",
                     "image_link": "",
                     "ratio": "auto",
                     "hover_zoom": true,
@@ -11509,6 +11510,7 @@
                         "btn_bg": "#0F766E",
                         "btn_hover_bg": "#000",
                         "btn_text_label": "+ Add",
+                        "btn_soldout_text": "Sold Out",
                         "btn_text": "#ffffff",
                         "btn_hover_text": "#ffffff",
                         "btn_border": "rgba(0,0,0,0)",
