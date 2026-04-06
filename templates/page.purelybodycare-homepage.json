@@ -4738,7 +4738,7 @@
               "type": "block_text",
               "name": "Text",
               "settings": {
-                "text": "<p>78% of desk workers experience chronic pain from poor posture</p>",
+                "text": "<p><strong>Clinically tested </strong>and recommended by physical therapists & ergonomic specialists</p>",
                 "block_link": "",
                 "alignment": "center",
                 "width": "fit-content",
