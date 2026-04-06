@@ -2647,7 +2647,7 @@
                   "type": "block_text",
                   "name": "Text",
                   "settings": {
-                    "text": "<p><strong>Read all 12,456 reviews</strong></p>",
+                    "text": "<p><strong>Sound familiar? There's a better way</strong></p>",
                     "block_link": "",
                     "alignment": "left",
                     "width": "fit-content",
