@@ -91,6 +91,9 @@
       <button
         type="submit"
         class="add-to-cart"
+        data-btn-text="{{ block.settings.btn_text | escape }}"
+        data-btn-soldout="{{ block.settings.btn_soldout_text | escape }}"
+        
         {% if block.settings.show_price %}
           data-btn-price
         {% endif %}
