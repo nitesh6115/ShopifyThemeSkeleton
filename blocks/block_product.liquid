@@ -809,7 +809,7 @@ function initProductScript(sectionId) {
         });
       });
     });
-    document.addEventListener('sealsubs:subscription_widget_created', function(e) {
+    
     document.addEventListener('sealsubs:price_update', (e) => {
       console.log(e)
       if (!e.detail) return;
@@ -820,7 +820,6 @@ function initProductScript(sectionId) {
       updatePrice();       // 🔥 force UI update
       updateButton();      // 🔥 sync button
     });
-    })
     initStickyVariantSync();
     updateUI();
     updateVariant();
