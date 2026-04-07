@@ -797,6 +797,16 @@ function initProductScript(sectionId) {
           btn.textContent = variant.available ? defaultText : soldOutText;
         }
       }
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const mainBtn = section.querySelector('.add-to-cart');
+
+          if (!mainBtn || mainBtn.disabled) return;
+
+          // Trigger real form submit
+          mainBtn.click();
+        });
+      }
     }
     optionGroups.forEach((group, index) => {
       $$('.option-value', group).forEach(btn => {
