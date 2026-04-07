@@ -811,7 +811,7 @@ function initProductScript(sectionId) {
     });
     
     document.addEventListener('sealsubs:price_update', (e) => {
-      console.log(e)
+      
       if (!e.detail) return;
       const { price, compareAtPrice } = e.detail;
       if (!price) return;
