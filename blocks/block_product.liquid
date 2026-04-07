@@ -626,7 +626,7 @@ function initProductScript(sectionId) {
 
       // ✅ PRIORITY: subscription > variant
       const finalPrice = subscriptionPrice || currentVariant.price;
-      
+      console.log(finalPrice)
       const finalCompare = subscriptionCompare || currentVariant.compare_at_price;
 
       if (regular) {
@@ -810,6 +810,7 @@ function initProductScript(sectionId) {
       });
     });
     document.addEventListener('sealsubs:price_update', (e) => {
+      console.log(e)
       if (!e.detail) return;
       const { price, compareAtPrice } = e.detail;
       if (!price) return;
