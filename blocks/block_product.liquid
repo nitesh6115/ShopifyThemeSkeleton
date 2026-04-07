@@ -587,7 +587,7 @@ function initProductScript(sectionId) {
           const priceEl = btn.querySelector('.v_price');
           const compareEl = btn.querySelector('.v_compare_price');
           const savingEl = btn.querySelector('.saving');
-
+          console.log(priceEl)
           if (matchedVariant && priceEl) {
             priceEl.childNodes[0].nodeValue = formatMoney(matchedVariant.price) + ' ';
 
