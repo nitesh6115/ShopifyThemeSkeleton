@@ -191,15 +191,36 @@
       "type": "range",
       "id": "custom_width",
       "label": "Custom Max Width",
+      "visible_if": "{{ section.settings.section_width == 'custom' }}",
       "min": 800,
       "max": 1800,
       "step": 20,
       "unit": "px",
       "default": 1200
     },
-
+    {
+      "type": "select",
+      "id": "content_alignment_desktop",
+      "label": "Section Header Alignment (Desktop)",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment_mobile",
+      "label": "Section Header Alignment (Mobile)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
     { "type": "header", "content": "Background Controls" },
-    { "type": "color_background", "id": "background_color", "label": "Background Color" },
+    { "type": "color_background", "id": "background_color", "label": "Background Color"},
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
     { "type": "color_background", "id": "overlay_color", "label": "Overlay Color" },
     {
@@ -211,7 +232,60 @@
       "label": "Overlay Opacity",
       "default": 0
     },
-
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Background Position",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "select",
+      "id": "bg_size",
+      "label": "Background Size",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Block Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "align_y",
+      "label": "Alignment",
+      "default": "flex-start",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns per Row (Desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns per Row (Mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
     {
       "type": "range",
       "id": "gap",
@@ -232,11 +306,111 @@
       "unit": "px",
       "default": 24
     },
+    { "type": "header", "content": "Border Controls" },
 
-    { "type": "header", "content": "Padding" },
     {
       "type": "range",
-      "id": "padding_top",
+      "id": "border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Width",
+      "default": 0
+    },
+    { "type": "color", "id": "border_color", "label": "Border Color", "default": "#000000" },
+
+    { "type": "header", "content": "Typography Controls" },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Section Heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "label": "Heading Weight",
+      "default": 700
+    },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#111111" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Section Content Inforation Here</p>",
+      "label": "Text Content"
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Mobile)",
+      "default": 14
+    },
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#111111" },
+    { "type": "range", "id": "line_height", "min": 1, "max": 2, "step": 0.1, "label": "Line Height", "default": 1.4 },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter Spacing",
+      "default": 0
+    },
+    
+    { "type": "header", "content": "Desktop Padding Controls" },
+
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
       "min": 0,
       "max": 200,
       "step": 4,
@@ -246,51 +420,91 @@
     },
     {
       "type": "range",
-      "id": "padding_bottom",
+      "id": "padding_bottom_desktop",
       "min": 0,
       "max": 200,
       "step": 4,
       "unit": "px",
       "label": "Padding Bottom",
       "default": 80
-    }
-  ],
-
-  "blocks": [
-    { "type": "@theme" },
-    { "type": "@app" }
-  ],
-
-  "presets": [
+    },
     {
-      "name": "Premium Global Section",
-      "blocks": [
-        {
-          "type": "block_text",
-          "settings": {
-            "text": "<p>THE TRUTH ABOUT YOUR SKIN</p>"
-          }
-        },
-        {
-          "type": "block_heading",
-          "settings": {
-            "text": "You've Tried Everything."
-          }
-        },
-        {
-          "type": "block_heading",
-          "settings": {
-            "text": "Nothing Worked."
-          }
-        },
-        {
-          "type": "block_text",
-          "settings": {
-            "text": "<p>Most serums sit on top of your skin. Lumière works at the cellular level.</p>"
-          }
-        }
-      ]
+      "type": "range",
+      "id": "padding_left_desktop",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding Controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    { "type": "header", "content": "Visibility" },
+
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
     }
-  ]
+  ],
+  "presets": [{ "name": "Premium Global Section" }]
 }
 {% endschema %}
