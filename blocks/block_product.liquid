@@ -85,7 +85,7 @@
   {% if block.settings.hide_mobile %}hide-mobile;{% endif %}
 {% endcapture %}
 {% assign info_class_list = info_class_list | strip_newlines | replace: ';', ' ' | strip %}
-<div
+<div data-currency="{{ shop.currency }}" data-locale="{{ request.locale.iso_code }}"
   class="product_section {% if block.settings.show_thumbs %} enable_thumbs {% else %} hide_thumbs {% endif %} {% if block.settings.enable_zoom %} zoom-enabled {% endif %}"
   style="{{- style_schema -}}"
   id="MainProduct_{{ block.id }}"
@@ -445,69 +445,72 @@ span.sticky-compare {
   }
 }
 {% endstylesheet %}
-<script>
+{% javascript %}
 function initProductScript(sectionId) {
-
   const section = document.querySelector('#MainProduct_' + sectionId);
-  if (!section) return;
+  if (!section || section._initialized) return;
+  section._initialized = true;
 
-  /* -------------------------
-     HELPERS
-  -------------------------- */
   const $ = (sel, parent = section) => parent?.querySelector(sel);
   const $$ = (sel, parent = section) => parent ? [...parent.querySelectorAll(sel)] : [];
-
-  const formatMoney = (cents) => {
-    return new Intl.NumberFormat('{{ shop.locale }}', {
+  
+  const shopCurrency = section.dataset.currency;
+  const shopLocale = section.dataset.locale;
+  console.log(shopCurrency);
+  console.log(shopLocale)
+  
+    const formatMoney = (cents) => {
+    const rate = Shopify?.currency?.rate || 1;
+    const converted = (cents / 100);
+    return new Intl.NumberFormat(Shopify.locale, {
       style: 'currency',
-      currency: '{{ shop.currency }}',
-    }).format(cents / 100);
+      currency: Shopify.currency.active,
+    }).format(converted);
   };
+/* ---------------- VARIANTS CACHE ---------------- */
+  if (!section._variants) {
+    section._variants = JSON.parse(section.dataset.variants || '[]');
+  }
+  const variants = section._variants;
 
-  /* -------------------------
-     GALLERY
-  -------------------------- */
+  const variantMap = new Map();
+  variants.forEach(v => {
+    const key = [v.option1, v.option2, v.option3].join('|');
+    variantMap.set(key, v);
+  });
+
+  /* ---------------- GALLERY ---------------- */
   function initGallery() {
     const gallery = $('.custom-product-gallery');
     if (!gallery) return;
 
     const mainItems = $$('.gallery-media-item', gallery);
     const thumbs = $$('.gallery-thumb', gallery);
-    const prevMain = $('.main-prev', gallery);
-    const nextMain = $('.main-next', gallery);
-
     let currentIndex = 0;
 
     function showSlide(index) {
-      if (!mainItems.length) return;
-
       currentIndex = (index + mainItems.length) % mainItems.length;
 
-      mainItems.forEach((el, i) => {
-        el.classList.toggle('is-active', i === currentIndex);
-      });
+      mainItems.forEach((el, i) =>
+        el.classList.toggle('is-active', i === currentIndex)
+      );
 
-      thumbs.forEach(t => {
+      thumbs.forEach(t =>
         t.classList.toggle(
           'is-active',
           t.dataset.mediaId === mainItems[currentIndex].dataset.mediaId
-        );
-      });
+        )
+      );
     }
 
-    prevMain?.addEventListener('click', () => showSlide(currentIndex - 1));
-    nextMain?.addEventListener('click', () => showSlide(currentIndex + 1));
-
-    thumbs.forEach((thumb, i) => {
-      thumb.addEventListener('click', () => showSlide(i));
-    });
+    thumbs.forEach((thumb, i) =>
+      thumb.addEventListener('click', () => showSlide(i))
+    );
 
     return { showSlide };
   }
 
-  /* -------------------------
-     ZOOM
-  -------------------------- */
+  /* ---------------- ZOOM (RAF OPTIMIZED) ---------------- */
   function initZoom() {
     if (!section.classList.contains('zoom-enabled')) return;
 
@@ -515,42 +518,43 @@ function initProductScript(sectionId) {
       const img = $('.zoom-image', container);
       if (!img) return;
 
-      if (window.matchMedia("(hover: hover)").matches) {
-        container.addEventListener('mousemove', (e) => {
+      let raf;
+
+      container.addEventListener('mousemove', (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = null;
           const rect = container.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
           const y = ((e.clientY - rect.top) / rect.height) * 100;
           img.style.transformOrigin = `${x}% ${y}%`;
           img.style.transform = "scale(2)";
         });
+      });
 
-        container.addEventListener('mouseleave', () => {
-          img.style.transform = "scale(1)";
-        });
-      }
+      container.addEventListener('mouseleave', () => {
+        img.style.transform = "scale(1)";
+      });
     });
   }
 
-  /* -------------------------
-     VARIANTS
-  -------------------------- */
+  /* ---------------- VARIANTS ---------------- */
   function initVariants(galleryAPI) {
-    let subscriptionPrice = null;
-    let subscriptionCompare = null;
     const form = $("form[id^='product-form-']");
     if (!form) return;
-
-    const variants = section.dataset.variants
-      ? JSON.parse(section.dataset.variants)
-      : [];
 
     const hiddenInput = $("input[name='id']", form);
     const optionGroups = $$('.product-option');
     const addToCartBtn = $('.add-to-cart', form);
     const priceWrapper = $('.product-price');
 
+    const btnText = addToCartBtn?.querySelector('.btn_text');
+    const btnPrice = addToCartBtn?.querySelector('.btn_price');
+
     let selectedOptions = [];
     let currentVariant = null;
+    let subscriptionPrice = null;
+    let subscriptionCompare = null;
 
     const initialVariant =
       variants.find(v => v.id == hiddenInput?.value) ||
@@ -563,124 +567,15 @@ function initProductScript(sectionId) {
       initialVariant?.option3 || null,
     ];
 
-    function updateUI() {
-      optionGroups.forEach((group, index) => {
-        $$('.option-value', group).forEach(btn => {
-
-          const test = [...selectedOptions];
-          test[index] = btn.dataset.value;
-
-          const matchedVariant = variants.find(v =>
-            (!v.option1 || v.option1 === test[0]) &&
-            (!v.option2 || v.option2 === test[1]) &&
-            (!v.option3 || v.option3 === test[2])
-          );
-
-          // ACTIVE / AVAILABLE STATES
-          btn.classList.toggle('is-active', btn.dataset.value === selectedOptions[index]);
-          btn.classList.toggle('is-unavailable', !matchedVariant);
-          btn.classList.toggle('is-soldout', matchedVariant && !matchedVariant.available);
-
-          // -------------------------
-          // 🔥 UPDATE PRICE PER OPTION
-          // -------------------------
-          const priceEl = btn.querySelector('.v_price');
-          const compareEl = btn.querySelector('.v_compare_price');
-          const savingEl = btn.querySelector('.saving');
-
-          if (matchedVariant && priceEl) {
-            priceEl.childNodes[0].nodeValue = formatMoney(matchedVariant.price) + ' ';
-
-            if (compareEl) {
-              if (matchedVariant.compare_at_price > matchedVariant.price) {
-                compareEl.textContent = formatMoney(matchedVariant.compare_at_price);
-                compareEl.style.display = 'inline';
-              } else {
-                compareEl.style.display = 'none';
-              }
-            }
-
-            if (savingEl) {
-              if (matchedVariant.compare_at_price > matchedVariant.price) {
-                const percent = Math.round(
-                  ((matchedVariant.compare_at_price - matchedVariant.price) * 100) /
-                  matchedVariant.compare_at_price
-                );
-                savingEl.textContent = percent + '% OFF';
-                savingEl.style.display = 'block';
-              } else {
-                savingEl.style.display = 'none';
-              }
-            }
-          }
-        });
-      });
-    }
-
-    function updatePrice() {
-      if (!priceWrapper || !currentVariant) return;
-
-      const regular = $('.regular_price', priceWrapper);
-      const compare = $('.sale_price', priceWrapper);
-      const save = $('.save', priceWrapper);
-
-      // ✅ PRIORITY: subscription > variant
-      const finalPrice = subscriptionPrice || currentVariant.price;
-      const finalCompare = subscriptionCompare || currentVariant.compare_at_price;
-
-      if (regular) {
-        regular.textContent = formatMoney(finalPrice);
-      }
-
-      if (compare && save) {
-        if (finalCompare > finalPrice) {
-          compare.textContent = formatMoney(finalCompare);
-          compare.style.display = 'inline';
-
-          const percent = Math.round(
-            ((finalCompare - finalPrice) * 100) / finalCompare
-          );
-
-          save.textContent = percent + '% OFF';
-          save.style.display = 'inline';
-        } else {
-          compare.style.display = 'none';
-          save.style.display = 'none';
-        }
-      }
-    }
-
-    function updateButton() {
-      if (!addToCartBtn || !currentVariant) return;
-      const finalPrice = subscriptionPrice || currentVariant.price;
-      const showBtnPrice = addToCartBtn.hasAttribute('data-btn-price');
-      const defaultText = addToCartBtn.dataset.btnText || 'Add to Cart';
-      const soldOutText = addToCartBtn.dataset.btnSoldout || 'Sold Out';
-      addToCartBtn.disabled = !currentVariant.available;
-      if (!currentVariant.available) {
-        addToCartBtn.innerHTML = `<span class="btn_text">${soldOutText}</span>`;
-        return;
-      }
-      if (showBtnPrice) {
-        addToCartBtn.innerHTML = `
-          <span class="btn_text">${defaultText}</span>
-          <span class="btn_separator">—</span>
-          <span class="btn_price">${formatMoney(finalPrice)}</span>
-        `;
-      } else {
-        addToCartBtn.innerHTML = `<span class="btn_text">${defaultText}</span>`;
-      }
+    function getVariant() {
+      return variantMap.get(selectedOptions.join('|'));
     }
 
     function updateVariant() {
       subscriptionPrice = null;
       subscriptionCompare = null;
-      currentVariant = variants.find(v =>
-        (!v.option1 || v.option1 === selectedOptions[0]) &&
-        (!v.option2 || v.option2 === selectedOptions[1]) &&
-        (!v.option3 || v.option3 === selectedOptions[2])
-      );
 
+      currentVariant = getVariant();
       if (!currentVariant) return;
 
       if (hiddenInput) hiddenInput.value = currentVariant.id;
@@ -698,143 +593,80 @@ function initProductScript(sectionId) {
         new CustomEvent('variant:change', { detail: { variant: currentVariant } })
       );
     }
-    function initStickyVariantSync() {
 
-      const sticky = section.querySelector('.sticky-atc');
-      if (!sticky) return;
+    function updatePrice() {
+      if (!priceWrapper || !currentVariant) return;
 
-      const priceEl = sticky.querySelector('.sticky-price');
-      const compareEl = sticky.querySelector('.sticky-compare');
-      const saveEl = sticky.querySelector('.sticky-save');
-      const variantEl = sticky.querySelector('.sticky-variant');
-      const btn = sticky.querySelector('.sticky-btn');
+      const regular = $('.regular_price', priceWrapper);
+      const compare = $('.sale_price', priceWrapper);
+      const save = $('.save', priceWrapper);
 
-      let currentVariantData = null;
+      const finalPrice = subscriptionPrice || currentVariant.price;
+      const finalCompare = subscriptionCompare || currentVariant.compare_at_price;
 
-      /* -------------------------
-        VARIANT CHANGE
-      -------------------------- */
-      document.addEventListener('variant:change', (e) => {
+      if (regular) regular.textContent = formatMoney(finalPrice);
 
-        const variant = e.detail.variant;
-        if (!variant) return;
+      if (compare && save) {
+        if (finalCompare > finalPrice) {
+          compare.textContent = formatMoney(finalCompare);
+          compare.style.display = 'inline';
 
-        currentVariantData = variant;
-
-        updateStickyUI();
-      });
-
-      /* -------------------------
-        SEAL SUBSCRIPTION CHANGE
-      -------------------------- */
-      document.addEventListener('sealsubs:price_update', (e) => {
-
-        if (!e.detail) return;
-
-        const { price, compareAtPrice } = e.detail;
-
-        if (!price) return;
-
-        subscriptionPrice = price;
-        subscriptionCompare = compareAtPrice || null;
-
-        updateStickyUI();
-      });
-
-      /* -------------------------
-        MAIN UPDATE FUNCTION
-      -------------------------- */
-      function updateStickyUI() {
-
-        if (!currentVariantData) return;
-
-        const variant = currentVariantData;
-
-        // TITLE
-        if (variantEl) {
-          variantEl.textContent = [
-            variant.option1,
-            variant.option2,
-            variant.option3
-          ].filter(Boolean).join(' / ');
+          const percent = Math.round(((finalCompare - finalPrice) * 100) / finalCompare);
+          save.textContent = percent + '% OFF';
+          save.style.display = 'inline';
+        } else {
+          compare.style.display = 'none';
+          save.style.display = 'none';
         }
-
-        // PRICE (🔥 FIXED)
-        if (priceEl) {
-          const finalPrice = subscriptionPrice || variant.price;
-          priceEl.textContent = formatMoney(finalPrice);
-        }
-
-        // COMPARE + SAVE (🔥 FIXED)
-        if (compareEl && saveEl) {
-
-          const finalCompare = subscriptionCompare || variant.compare_at_price;
-          const finalPrice = subscriptionPrice || variant.price;
-
-          if (finalCompare > finalPrice) {
-
-            compareEl.textContent = formatMoney(finalCompare);
-            compareEl.style.display = 'inline';
-
-            const percent = Math.round(
-              ((finalCompare - finalPrice) * 100) / finalCompare
-            );
-
-            saveEl.textContent = percent + '% OFF';
-            saveEl.style.display = 'inline';
-
-          } else {
-            compareEl.style.display = 'none';
-            saveEl.style.display = 'none';
-          }
-        }
-
-        // BUTTON
-        if (btn) {
-          btn.disabled = !variant.available;
-          const defaultText = btn.dataset.btnText || 'Add to Cart';
-          const soldOutText = btn.dataset.btnSoldout || 'Sold Out';
-          btn.textContent = variant.available ? defaultText : soldOutText;
-        }
-      }
-      if (btn) {
-        btn.addEventListener('click', () => {
-          const mainBtn = section.querySelector('.add-to-cart');
-
-          if (!mainBtn || mainBtn.disabled) return;
-
-          // Trigger real form submit
-          mainBtn.click();
-        });
       }
     }
+
+    function updateButton() {
+      if (!addToCartBtn || !currentVariant) return;
+
+      const finalPrice = subscriptionPrice || currentVariant.price;
+      const defaultText = addToCartBtn.dataset.btnText || 'Add to Cart';
+      const soldOutText = addToCartBtn.dataset.btnSoldout || 'Sold Out';
+
+      addToCartBtn.disabled = !currentVariant.available;
+
+      if (!currentVariant.available) {
+        btnText.textContent = soldOutText;
+        return;
+      }
+
+      btnText.textContent = defaultText;
+      if (btnPrice) btnPrice.textContent = formatMoney(finalPrice);
+    }
+
+    /* OPTION CLICK */
     optionGroups.forEach((group, index) => {
       $$('.option-value', group).forEach(btn => {
         btn.addEventListener('click', () => {
           if (btn.classList.contains('is-unavailable')) return;
           selectedOptions[index] = btn.dataset.value;
-          updateUI();
           updateVariant();
         });
       });
     });
-    document.addEventListener('sealsubs:price_update', (e) => {
-      if (!e.detail) return;
-      const { price, compareAtPrice } = e.detail;
-      if (!price) return;
-      subscriptionPrice = price;
-      subscriptionCompare = compareAtPrice || null;
-      updatePrice();       // 🔥 force UI update
-      updateButton();      // 🔥 sync button
-    });
-    initStickyVariantSync();
-    updateUI();
+
+    /* SUBSCRIPTION UPDATE */
+    if (!section._subsBound) {
+      section._subsBound = true;
+
+      document.addEventListener('sealsubs:price_update', (e) => {
+        if (!e.detail) return;
+        subscriptionPrice = e.detail.price;
+        subscriptionCompare = e.detail.compareAtPrice || null;
+        updatePrice();
+        updateButton();
+      });
+    }
+
     updateVariant();
   }
 
-  /* -------------------------
-     QUANTITY
-  -------------------------- */
+  /* ---------------- QUANTITY ---------------- */
   function initQuantity() {
     const wrapper = $('[data-quantity-wrapper]');
     if (!wrapper) return;
@@ -843,39 +675,30 @@ function initProductScript(sectionId) {
     const plus = $('.qty-plus', wrapper);
     const minus = $('.qty-minus', wrapper);
 
-    if (!input) return;
-
-    plus?.addEventListener('click', () => {
-      input.value = parseInt(input.value || 1) + 1;
-    });
-
+    plus?.addEventListener('click', () => input.value = (+input.value || 1) + 1);
     minus?.addEventListener('click', () => {
       if (input.value > 1) input.value--;
     });
   }
 
-  /* -------------------------
-     STICKY
-  -------------------------- */
+  /* ---------------- STICKY ---------------- */
   function initSticky() {
     const sticky = $('.sticky-atc');
     const btn = $('.add-to-cart');
-
     if (!sticky || !btn) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        sticky.classList.toggle('active', !entry.isIntersecting);
-      },
-      { threshold: 0 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      sticky.classList.toggle('active', !entry.isIntersecting);
+    });
 
     observer.observe(btn);
+
+    section.addEventListener('shopify:section:unload', () => {
+      observer.disconnect();
+    });
   }
 
-  /* -------------------------
-     INIT ALL
-  -------------------------- */
+  /* ---------------- INIT ---------------- */
   const galleryAPI = initGallery();
   initZoom();
   initVariants(galleryAPI);
@@ -883,9 +706,7 @@ function initProductScript(sectionId) {
   initSticky();
 }
 
-/* -------------------------
-   GLOBAL INIT
--------------------------- */
+/* GLOBAL INIT */
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[id^='MainProduct_']").forEach(section => {
     initProductScript(section.id.replace("MainProduct_", ""));
@@ -895,7 +716,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("shopify:section:load", (e) => {
   initProductScript(e.target.id.replace("MainProduct_", ""));
 });
-</script>
+{% endjavascript %}
 {% schema %}
 {
   "tag": null,
