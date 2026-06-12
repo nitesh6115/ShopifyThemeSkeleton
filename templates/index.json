@@ -60,6 +60,7 @@
         "tier_inactive_bg": "#fbf4ee",
         "tier_inactive_text": "#6b7280",
         "bar_message_color": "#16a34a",
+        "ratio": "square",
         "desktop_product_title_size": 16,
         "mobile_product_title_size": 14,
         "card_bg": "#ffffff",
@@ -88,9 +89,25 @@
         "footer_bg": "#F9FAFB",
         "footer_radius": 14
       }
+    },
+    "new_fit_energy_zJh9gi": {
+      "type": "new-fit-energy",
+      "name": "New Fit Energy",
+      "settings": {
+        "heading": "NEW FIT ENERGY",
+        "view_all_link": "",
+        "view_all_text": "View all",
+        "show_tabs": true,
+        "tab1_label": "Women's",
+        "tab1_collection": "t-shirts",
+        "tab2_label": "Men's",
+        "tab2_collection": "style-1",
+        "products_to_show": 8
+      }
     }
   },
   "order": [
-    "custom_bundle_dzRKPA"
+    "custom_bundle_dzRKPA",
+    "new_fit_energy_zJh9gi"
   ]
 }
