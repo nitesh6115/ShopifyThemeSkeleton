@@ -794,52 +794,260 @@
     border-bottom: 1px solid var(--ma-accent);
     transform: rotate(45deg);
   }
+/* =========================================================
+   VISUAL CATEGORY ACCORDION
+========================================================= */
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-categories {
-    margin-top: 3px;
+#ModernAussiesHeader-{{ section.id }} .ma-visual-categories {
+  margin-top: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   CATEGORY ROW
+--------------------------------------------------------- */
+
+#ModernAussiesHeader-{{ section.id }} .ma-visual-category {
+  width: 100%;
+  min-height: 30px;
+  padding: 5px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border-top: 1px solid var(--ma-border);
+
+  background: transparent;
+  color: var(--ma-mega-text);
+
+  font-size: 9px;
+  line-height: 1.25;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+}
+
+
+/* Bottom border only for normal links */
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-link:last-child {
+  border-bottom: 1px solid var(--ma-border);
+}
+
+
+/* Accordion parent button */
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-toggle {
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  text-align: left;
+}
+
+
+/* ---------------------------------------------------------
+   CATEGORY TITLE
+--------------------------------------------------------- */
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-title {
+  flex: 1;
+  min-width: 0;
+
+  transition:
+    color .16s ease,
+    transform .16s ease;
+}
+
+
+/* Hover */
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category:hover
+.ma-visual-category-title {
+  color: var(--ma-accent);
+  transform: translateX(2px);
+}
+
+
+/* ---------------------------------------------------------
+   PLUS / MINUS CIRCLE
+--------------------------------------------------------- */
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-plus {
+  width: 23px;
+  height: 23px;
+
+  flex: 0 0 23px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ded8ca;
+  border-radius: 50%;
+
+  color: #6d6a61;
+
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 300;
+
+  box-sizing: border-box;
+}
+
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-plus .ma-plus,
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-plus .ma-minus {
+  display: block;
+}
+
+
+/* Default */
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-plus .ma-minus {
+  display: none;
+}
+
+
+/* Open accordion */
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-group.is-open
+.ma-visual-category-plus .ma-plus {
+  display: none;
+}
+
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-group.is-open
+.ma-visual-category-plus .ma-minus {
+  display: block;
+}
+
+
+/* ---------------------------------------------------------
+   ACCORDION CONTENT
+--------------------------------------------------------- */
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-content {
+  padding: 0 0 8px 18px;
+
+  border-left: 2px solid var(--ma-accent);
+
+  margin: 0 0 0 2px;
+
+  animation: maVisualCategoryOpen .18s ease;
+}
+
+
+@keyframes maVisualCategoryOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
   }
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-category {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    min-height: 30px;
-    padding: 5px 0;
-    border-top: 1px solid var(--ma-border);
-    color: var(--ma-mega-text);
-    font-size: 9px;
-    line-height: 1.25;
-    font-weight: 600;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-category:last-child {
-    border-bottom: 1px solid var(--ma-border);
-  }
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-category span {
-    transition: color .16s ease, transform .16s ease;
-  }
+/* ---------------------------------------------------------
+   CHILD LINKS
+--------------------------------------------------------- */
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-category:hover span:first-child {
-    color: var(--ma-accent);
-    transform: translateX(2px);
-  }
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-children {
+  display: grid;
+  gap: 0;
+}
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-category-plus {
-    width: 14px;
-    height: 14px;
-    flex: 0 0 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    font-size: 10px;
-    line-height: 1;
-    font-weight: 400;
-  }
 
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-child {
+  display: block;
+
+  padding: 7px 10px 7px 0;
+
+  color: var(--ma-mega-text);
+
+  font-size: 10px;
+  line-height: 1.35;
+
+  text-decoration: none;
+
+  transition:
+    color .16s ease,
+    transform .16s ease;
+}
+
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-child:hover {
+  color: var(--ma-accent);
+  transform: translateX(2px);
+}
+
+
+/* ---------------------------------------------------------
+   VIEW ALL
+--------------------------------------------------------- */
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 5px;
+  padding: 4px 0;
+
+  color: var(--ma-mega-text);
+
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-view-all:hover {
+  color: var(--ma-accent);
+}
+
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-arrow {
+  font-size: 15px;
+  line-height: 1;
+
+  transition: transform .16s ease;
+}
+
+
+#ModernAussiesHeader-{{ section.id }}
+.ma-visual-category-view-all:hover
+.ma-visual-category-arrow {
+  transform: translateX(3px);
+}
   #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
     position: relative;
     display: block;
