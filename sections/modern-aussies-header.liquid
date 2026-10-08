@@ -3416,6 +3416,35 @@
 
   <script>
     (() => {
+      document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector(
+            '#ModernAussiesHeader-{{ section.id }}'
+        );
+
+        if (!header) return;
+
+        function updateHeaderHeight() {
+            const headerHeight = header.getBoundingClientRect().height;
+
+            document.body.style.setProperty(
+            '--header-height',
+            `${headerHeight}px`
+            );
+        }
+
+        // Initial
+        updateHeaderHeight();
+
+        // Resize
+        window.addEventListener('resize', updateHeaderHeight);
+
+        // Also catches changes caused by content/layout changes
+        if (window.ResizeObserver) {
+            const observer = new ResizeObserver(updateHeaderHeight);
+            observer.observe(header);
+        }
+        });
+
       const root = document.getElementById('ModernAussiesHeader-{{ section.id }}');
         
       if (!root || root.dataset.initialized === 'true') return;
