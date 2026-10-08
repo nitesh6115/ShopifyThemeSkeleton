@@ -3055,7 +3055,87 @@
           closeDesktopMenus();
         }
       });
+      /* -------------------------------------------------------
+        VISUAL MEGA MENU CATEGORY ACCORDIONS
+        ------------------------------------------------------- */
 
+        const visualAccordions = Array.from(
+        root.querySelectorAll('[data-visual-accordion]')
+        );
+
+        visualAccordions.forEach((group) => {
+        const button = group.querySelector(
+            ':scope > .ma-visual-category-toggle'
+        );
+
+        const content = group.querySelector(
+            ':scope > .ma-visual-category-content'
+        );
+
+        if (!button || !content) return;
+
+        button.addEventListener('click', () => {
+
+            const isOpen = group.classList.contains('is-open');
+
+            /* Close all other accordions */
+            visualAccordions.forEach((otherGroup) => {
+
+            if (otherGroup === group) return;
+
+            otherGroup.classList.remove('is-open');
+
+            const otherButton = otherGroup.querySelector(
+                ':scope > .ma-visual-category-toggle'
+            );
+
+            const otherContent = otherGroup.querySelector(
+                ':scope > .ma-visual-category-content'
+            );
+
+            if (otherButton) {
+                otherButton.setAttribute(
+                'aria-expanded',
+                'false'
+                );
+            }
+
+            if (otherContent) {
+                otherContent.hidden = true;
+            }
+
+            });
+
+
+            /* Toggle clicked accordion */
+
+            if (isOpen) {
+
+            group.classList.remove('is-open');
+
+            button.setAttribute(
+                'aria-expanded',
+                'false'
+            );
+
+            content.hidden = true;
+
+            } else {
+
+            group.classList.add('is-open');
+
+            button.setAttribute(
+                'aria-expanded',
+                'true'
+            );
+
+            content.hidden = false;
+
+            }
+
+        });
+
+        });
       /* -------------------------------------------------------
          MOBILE DRAWER
       ------------------------------------------------------- */
