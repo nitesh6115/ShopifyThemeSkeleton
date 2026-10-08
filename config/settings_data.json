@@ -11,6 +11,85 @@
   "current": {
     "logo": "shopify://shop_images/Container_97.png",
     "type_primary_font": "sans_serif_n4",
+    "sections": {
+      "modern-aussies-header": {
+        "type": "modern-aussies-header",
+        "blocks": {
+          "mega_menu_ctRQc6": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "",
+              "layout": "columns_featured",
+              "show_hot_badge": false,
+              "hot_badge_text": "Hot",
+              "column_1_title": "",
+              "column_1_menu": "",
+              "column_2_title": "",
+              "column_2_menu": "",
+              "column_3_title": "",
+              "column_3_menu": "",
+              "column_4_title": "",
+              "column_4_menu": "",
+              "featured_badge": "Featured",
+              "featured_title": "",
+              "featured_description": "",
+              "cta_text": "Shop Now",
+              "cta_link": "",
+              "product_1": "",
+              "product_2": "",
+              "product_3": "",
+              "product_4": "",
+              "product_5": "",
+              "product_6": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega_menu_ctRQc6"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/LOGO-APOLLO.webp",
+          "logo_width": 150,
+          "mobile_logo_width": 125,
+          "menu": "main-menu",
+          "navigation_label": "Main navigation",
+          "nav_font_size": 14,
+          "nav_font_weight": "600",
+          "menu_gap": 24,
+          "header_height": 87,
+          "container_width": 1800,
+          "mobile_breakpoint": 900,
+          "mobile_padding": 14,
+          "header_background": "#f4efe4",
+          "header_text": "#1b2a4a",
+          "header_hover": "#a47118",
+          "accent_color": "#a47118",
+          "border_color": "#ded8ca",
+          "mega_background": "#f4efe4",
+          "mega_text": "#1b2a4a",
+          "mega_title_size": 19,
+          "mega_link_size": 13,
+          "mega_radius": 4,
+          "card_radius": 3,
+          "mouse_leave_delay": 150,
+          "product_title_size": 12,
+          "product_price_size": 14,
+          "button_font_size": 13,
+          "button_radius": 3,
+          "button_text_color": "#ffffff",
+          "button_hover_background": "#1b2a4a",
+          "button_hover_text": "#ffffff",
+          "enable_trust_bar": false,
+          "trust_background": "#1b2a4a",
+          "trust_text": "#f4efe4",
+          "enable_search": true,
+          "search_placeholder": "Search products...",
+          "show_account": true,
+          "show_currency": true,
+          "mobile_nav_font_size": 14
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "341186785192672687": {
