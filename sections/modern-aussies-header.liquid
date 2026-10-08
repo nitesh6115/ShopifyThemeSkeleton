@@ -124,7 +124,7 @@
   #ModernAussiesHeader-{{ section.id }}.ma-sticky-scrolled {
     box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
   }
-  
+
       #ModernAussiesHeader-{{ section.id }} *,
       #ModernAussiesHeader-{{ section.id }} *::before,
       #ModernAussiesHeader-{{ section.id }} *::after {
@@ -3416,62 +3416,54 @@
 
   <script>
     (() => {
-      document.addEventListener('DOMContentLoaded', () => {
-        const header = document.querySelector(
-            '#ModernAussiesHeader-{{ section.id }}'
-        );
-
-        if (!header) return;
-
-        function updateHeaderHeight() {
-            const headerHeight = header.getBoundingClientRect().height;
-
-            document.body.style.setProperty(
-            '--header-height',
-            `${headerHeight}px`
-            );
-        }
-
-        // Initial
-        updateHeaderHeight();
-
-        // Resize
-        window.addEventListener('resize', updateHeaderHeight);
-
-        // Also catches changes caused by content/layout changes
-        if (window.ResizeObserver) {
-            const observer = new ResizeObserver(updateHeaderHeight);
-            observer.observe(header);
-        }
-        });
-
       const root = document.getElementById('ModernAussiesHeader-{{ section.id }}');
-        
+
       if (!root || root.dataset.initialized === 'true') return;
 
       root.dataset.initialized = 'true';
-
-      const leaveDelay = Number(root.dataset.leaveDelay || 150);
-
-      let closeTimer = null;
+      const stickyMode = root.dataset.stickyMode;
       /* -------------------------------------------------------
-        STICKY HEADER
+        HEADER HEIGHT
         ------------------------------------------------------- */
 
-        const stickyMode = root.dataset.stickyMode;
+      function updateHeaderHeight() {
+        const headerHeight = root.getBoundingClientRect().height;
 
-        if (stickyMode === 'on_scroll') {
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+      }
 
+      /* Initial */
+      updateHeaderHeight();
+
+      /* Browser resize */
+      window.addEventListener('resize', updateHeaderHeight, { passive: true });
+
+      /* Header content/height changes */
+      let headerResizeObserver;
+
+      if (window.ResizeObserver) {
+        headerResizeObserver = new ResizeObserver(() => {
+          updateHeaderHeight();
+        });
+
+        headerResizeObserver.observe(root);
+      }
+      /* -------------------------------------------------------
+   STICKY HEADER
+------------------------------------------------------- */
+
+      if (stickyMode === 'on_scroll') {
         let lastScrollY = window.scrollY;
         let ticking = false;
 
         function updateStickyHeader() {
+          const currentScrollY = window.scrollY;
 
-            const currentScrollY = window.scrollY;
+          /* ---------------------------------------------
+       TOP OF PAGE
+    --------------------------------------------- */
 
-            /* At the very top */
-            if (currentScrollY <= 10) {
-
+          if (currentScrollY <= 10) {
             root.classList.remove('ma-header-hidden');
             root.classList.remove('ma-header-visible');
             root.classList.remove('ma-sticky-scroll');
@@ -3479,26 +3471,23 @@
             document.body.classList.remove('ma-header-hidden');
             document.body.classList.remove('ma-header-visible');
             document.body.classList.remove('ma-sticky-scroll');
-            
+          } else if (currentScrollY > lastScrollY) {
 
-            }
-
-            /* Scrolling down */
-            else if (currentScrollY > lastScrollY) {
-
+          /* ---------------------------------------------
+       SCROLLING DOWN
+    --------------------------------------------- */
             root.classList.add('ma-header-hidden');
             root.classList.remove('ma-header-visible');
             root.classList.add('ma-sticky-scroll');
 
             document.body.classList.add('ma-header-hidden');
             document.body.classList.remove('ma-header-visible');
-            document.body.classList.add('ma-sticky-scroll'); 
+            document.body.classList.add('ma-sticky-scroll');
+          } else if (currentScrollY < lastScrollY) {
 
-            }
-
-            /* Scrolling up */
-            else if (currentScrollY < lastScrollY) {
-
+          /* ---------------------------------------------
+       SCROLLING UP
+    --------------------------------------------- */
             root.classList.remove('ma-header-hidden');
             root.classList.add('ma-header-visible');
             root.classList.add('ma-sticky-scroll');
@@ -3506,36 +3495,39 @@
             document.body.classList.remove('ma-header-hidden');
             document.body.classList.add('ma-header-visible');
             document.body.classList.add('ma-sticky-scroll');
+          }
 
-            }
+          lastScrollY = currentScrollY;
 
-            lastScrollY = currentScrollY;
-
-            ticking = false;
+          ticking = false;
         }
-
 
         window.addEventListener(
-            'scroll',
-            () => {
+          'scroll',
+          () => {
+            if (ticking) return;
 
-            if (!ticking) {
+            window.requestAnimationFrame(() => {
+              /*
+               * Update height BEFORE changing
+               * the header visibility.
+               */
+              updateHeaderHeight();
 
-                window.requestAnimationFrame(
-                updateStickyHeader
-                );
+              updateStickyHeader();
+            });
 
-                ticking = true;
-
-            }
-
-            },
-            {
-            passive: true
-            }
+            ticking = true;
+          },
+          {
+            passive: true,
+          }
         );
+      }
+      const leaveDelay = Number(root.dataset.leaveDelay || 150);
 
-        }
+      let closeTimer = null;
+
       const desktopItems = Array.from(root.querySelectorAll('.ma-desktop-nav .ma-nav-item.has-mega'));
 
       function clearCloseTimer() {
