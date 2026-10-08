@@ -2152,11 +2152,11 @@
       }
     }
 </style>
-
 <header
   id="ModernAussiesHeader-{{ section.id }}"
-  class="ma-header"
+  class="ma-header ma-sticky-{{ section.settings.sticky_header }}"
   data-section-id="{{ section.id }}"
+  data-sticky-mode="{{ section.settings.sticky_header }}"
   data-mobile-breakpoint="{{ section.settings.mobile_breakpoint }}"
   data-leave-delay="{{ section.settings.mouse_leave_delay }}"
 >
