@@ -3647,7 +3647,95 @@
           }
         });
       });
+      /* -------------------------------------------------------
+        MOBILE VISUAL MEGA MENU ACCORDIONS
+        ------------------------------------------------------- */
 
+        const mobileVisualAccordionGroups = Array.from(
+        root.querySelectorAll('.ma-mobile-visual-category-group')
+        );
+
+        mobileVisualAccordionGroups.forEach((group) => {
+
+        const button = group.querySelector(
+            ':scope > .ma-mobile-visual-category-toggle'
+        );
+
+        const content = group.querySelector(
+            ':scope > .ma-mobile-visual-category-content'
+        );
+
+        if (!button || !content) return;
+
+
+        button.addEventListener('click', () => {
+
+            const isOpen = group.classList.contains('is-open');
+
+
+            /* ---------------------------------------------
+            Close all other category accordions
+            --------------------------------------------- */
+
+            mobileVisualAccordionGroups.forEach((otherGroup) => {
+
+            if (otherGroup === group) return;
+
+            otherGroup.classList.remove('is-open');
+
+            const otherButton = otherGroup.querySelector(
+                ':scope > .ma-mobile-visual-category-toggle'
+            );
+
+            const otherContent = otherGroup.querySelector(
+                ':scope > .ma-mobile-visual-category-content'
+            );
+
+            if (otherButton) {
+                otherButton.setAttribute(
+                'aria-expanded',
+                'false'
+                );
+            }
+
+            if (otherContent) {
+                otherContent.hidden = true;
+            }
+
+            });
+
+
+            /* ---------------------------------------------
+            Toggle current category
+            --------------------------------------------- */
+
+            if (isOpen) {
+
+            group.classList.remove('is-open');
+
+            button.setAttribute(
+                'aria-expanded',
+                'false'
+            );
+
+            content.hidden = true;
+
+            } else {
+
+            group.classList.add('is-open');
+
+            button.setAttribute(
+                'aria-expanded',
+                'true'
+            );
+
+            content.hidden = false;
+
+            }
+
+        });
+
+        });
       /* -------------------------------------------------------
          SEARCH
       ------------------------------------------------------- */
