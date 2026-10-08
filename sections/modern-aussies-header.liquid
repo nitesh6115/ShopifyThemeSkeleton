@@ -42,843 +42,1542 @@
 -%}
 
 <style>
-    #ModernAussiesHeader-{{ section.id }} {
-      --ma-header-bg: {{ section.settings.header_background }};
-      --ma-header-text: {{ section.settings.header_text }};
-      --ma-header-hover: {{ section.settings.header_hover }};
-      --ma-accent: {{ section.settings.accent_color }};
-      --ma-mega-bg: {{ section.settings.mega_background }};
-      --ma-mega-text: {{ section.settings.mega_text }};
-      --ma-border: {{ section.settings.border_color }};
-      --ma-trust-bg: {{ section.settings.trust_background }};
-      --ma-trust-text: {{ section.settings.trust_text }};
-      --ma-header-height: {{ section.settings.header_height }}px;
-      --ma-logo-width: {{ logo_width }}px;
-      --ma-nav-size: {{ section.settings.nav_font_size }}px;
-      --ma-nav-weight: {{ section.settings.nav_font_weight }};
-      --ma-mega-title-size: {{ section.settings.mega_title_size }}px;
-      --ma-mega-link-size: {{ section.settings.mega_link_size }}px;
-      --ma-product-title-size: {{ section.settings.product_title_size }}px;
-      --ma-product-price-size: {{ section.settings.product_price_size }}px;
-      --ma-container-width: {{ section.settings.container_width }}px;
-      --ma-menu-gap: {{ section.settings.menu_gap }}px;
-      --ma-mega-radius: {{ section.settings.mega_radius }}px;
-      --ma-card-radius: {{ section.settings.card_radius }}px;
-      --ma-breakpoint: {{ section.settings.mobile_breakpoint }}px;
-      --ma-leave-delay: {{ section.settings.mouse_leave_delay }}ms;
-      --ma-mobile-logo-width: {{ section.settings.mobile_logo_width }}px;
-      --ma-mobile-nav-size: {{ section.settings.mobile_nav_font_size }}px;
-      --ma-mobile-padding: {{ section.settings.mobile_padding }}px;
+      #ModernAussiesHeader-{{ section.id }} {
+        --ma-header-bg: {{ section.settings.header_background }};
+        --ma-header-text: {{ section.settings.header_text }};
+        --ma-header-hover: {{ section.settings.header_hover }};
+        --ma-accent: {{ section.settings.accent_color }};
+        --ma-mega-bg: {{ section.settings.mega_background }};
+        --ma-mega-text: {{ section.settings.mega_text }};
+        --ma-border: {{ section.settings.border_color }};
+        --ma-trust-bg: {{ section.settings.trust_background }};
+        --ma-trust-text: {{ section.settings.trust_text }};
+        --ma-header-height: {{ section.settings.header_height }}px;
+        --ma-logo-width: {{ logo_width }}px;
+        --ma-nav-size: {{ section.settings.nav_font_size }}px;
+        --ma-nav-weight: {{ section.settings.nav_font_weight }};
+        --ma-mega-title-size: {{ section.settings.mega_title_size }}px;
+        --ma-mega-link-size: {{ section.settings.mega_link_size }}px;
+        --ma-product-title-size: {{ section.settings.product_title_size }}px;
+        --ma-product-price-size: {{ section.settings.product_price_size }}px;
+        --ma-container-width: {{ section.settings.container_width }}px;
+        --ma-menu-gap: {{ section.settings.menu_gap }}px;
+        --ma-mega-radius: {{ section.settings.mega_radius }}px;
+        --ma-card-radius: {{ section.settings.card_radius }}px;
+        --ma-breakpoint: {{ section.settings.mobile_breakpoint }}px;
+        --ma-leave-delay: {{ section.settings.mouse_leave_delay }}ms;
+        --ma-mobile-logo-width: {{ section.settings.mobile_logo_width }}px;
+        --ma-mobile-nav-size: {{ section.settings.mobile_nav_font_size }}px;
+        --ma-mobile-padding: {{ section.settings.mobile_padding }}px;
 
-      position: relative;
-      z-index: 50;
-      width: 100%;
-      background: var(--ma-header-bg);
-      color: var(--ma-header-text);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} *,
-    #ModernAussiesHeader-{{ section.id }} *::before,
-    #ModernAussiesHeader-{{ section.id }} *::after {
-      box-sizing: border-box;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} button,
-    #ModernAussiesHeader-{{ section.id }} input,
-    #ModernAussiesHeader-{{ section.id }} select {
-      font: inherit;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-header-main {
-      width: 100%;
-      min-height: var(--ma-header-height);
-      border-bottom: 1px solid var(--ma-border);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-header-container {
-      width: min(100% - 40px, var(--ma-container-width));
-      min-height: var(--ma-header-height);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 30px;
-    }
+        position: relative;
+        z-index: 50;
+        width: 100%;
+        background: var(--ma-header-bg);
+        color: var(--ma-header-text);
+      }
+        /* =========================================================
+        STICKY HEADER
+    ========================================================= */
 
     /* ---------------------------------------------------------
-       LOGO
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-logo {
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-shrink: 0;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-logo img {
-      display: block;
-      width: var(--ma-logo-width);
-      height: auto;
-      max-height: calc(var(--ma-header-height) - 18px);
-      object-fit: contain;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-logo-text {
-      color: var(--ma-header-text);
-      font-size: 22px;
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    /* ---------------------------------------------------------
-       DESKTOP NAV
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-desktop-nav {
-      min-width: 0;
-      height: 100%;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-list {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--ma-menu-gap);
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      height: 100%;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-item {
-      position: static;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-link {
-      position: relative;
-      height: 100%;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding:0;
-      color: var(--ma-header-text);
-      font-size: var(--ma-nav-size);
-      line-height: 1.2;
-      font-weight: var(--ma-nav-weight);
-      white-space: nowrap;
-      transition: color .18s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-link:hover,
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-link:focus-visible,
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open > .ma-nav-link {
-      color: var(--ma-header-hover);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      background: var(--ma-accent);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform .18s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open > .ma-nav-link::after,
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-link:hover::after {
-      transform: scaleX(1);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-arrow {
-      width: 8px;
-      height: 8px;
-      border-right: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-      transform: rotate(45deg) translateY(-2px);
-      transition: transform .18s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open .ma-nav-arrow {
-      transform: rotate(225deg) translate(-1px, -1px);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-hot {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3px 6px;
-      border-radius: 999px;
-      background: var(--ma-accent);
-      color: #fff;
-      font-size: 9px;
-      line-height: 1;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    /* ---------------------------------------------------------
-       HEADER ACTIONS
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-actions {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-action {
-      position: relative;
-      width: 38px;
-      height: 38px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 0;
-      background: transparent;
-      color: var(--ma-header-text);
-      cursor: pointer;
-      padding: 0;
-      border-radius: 50%;
-      transition: background .18s ease, color .18s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-action:hover,
-    #ModernAussiesHeader-{{ section.id }} .ma-action:focus-visible {
-      color: var(--ma-header-hover);
-      background: rgba(164, 113, 24, .08);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-action svg {
-      width: 21px;
-      height: 21px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.8;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-cart-count {
-      position: absolute;
-      top: 1px;
-      right: 0;
-      min-width: 17px;
-      height: 17px;
-      padding: 0 4px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: var(--ma-accent);
-      color: #fff;
-      font-size: 9px;
-      line-height: 1;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-currency {
-      display: inline-flex;
-      align-items: center;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-currency select {
-      appearance: none;
-      border: 0;
-      background: transparent;
-      color: var(--ma-header-text);
-      cursor: pointer;
-      padding: 5px 18px 5px 3px;
-      font-size: 12px;
-      font-weight: 700;
-      background-image:
-        linear-gradient(45deg, transparent 50%, currentColor 50%),
-        linear-gradient(135deg, currentColor 50%, transparent 50%);
-      background-position:
-        calc(100% - 8px) 50%,
-        calc(100% - 4px) 50%;
-      background-size: 4px 4px, 4px 4px;
-      background-repeat: no-repeat;
-    }
-
-    /* ---------------------------------------------------------
-       SEARCH
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-search-wrap {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      display: none;
-      padding: 14px 20px;
-      background: var(--ma-header-bg);
-      border-bottom: 1px solid var(--ma-border);
-      box-shadow: 0 10px 30px rgba(27,42,74,.10);
-    }
-
-    #ModernAussiesHeader-{{ section.id }}.search-open .ma-search-wrap {
-      display: block;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-search-form {
-      width: min(100%, 760px);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      border: 1px solid var(--ma-border);
-      background: #fff;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-search-form input {
-      flex: 1;
-      min-width: 0;
-      height: 48px;
-      border: 0;
-      outline: 0;
-      padding: 0 15px;
-      color: #1B2A4A;
-      background: transparent;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-search-form button {
-      width: 50px;
-      height: 48px;
-      border: 0;
-      background: var(--ma-accent);
-      color: #fff;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* ---------------------------------------------------------
-       MEGA MENU
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mega {
-      position: absolute;
-      z-index: 60;
-      top: 100%;
-      left: 0;
-      right: 0;
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-5px);
-      transition:
-        opacity .16s ease,
-        transform .16s ease,
-        visibility .16s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open .ma-mega {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mega-inner {
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mega-panel {
-      background: var(--ma-mega-bg);
-      color: var(--ma-mega-text);
-      border: 1px solid var(--ma-border);
-      border-radius: var(--ma-mega-radius);
-      box-shadow: 0 18px 50px rgba(27,42,74,.14);
-      overflow: hidden;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mega-content {
-      padding: 25px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mega-heading {
-      margin: 0 0 15px;
-      color: var(--ma-mega-text);
-      font-size: var(--ma-mega-title-size);
-      line-height: 1.2;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-column-heading {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      line-height: 1.3;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-link-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-link-list li + li {
-      margin-top: 7px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-link-list a {
-      display: inline-block;
-      color: var(--ma-mega-text);
-      font-size: var(--ma-mega-link-size);
-      line-height: 1.4;
-      transition: color .16s ease, transform .16s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-link-list a:hover {
-      color: var(--ma-accent);
-      transform: translateX(2px);
-    }
-
-    /* ---------------------------------------------------------
-       LAYOUT 1 - COLUMNS + FEATURED
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-layout-columns {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(260px, 1.15fr);
-      gap: 25px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-feature-card {
-      position: relative;
-      min-height: 250px;
-      overflow: hidden;
-      border-radius: var(--ma-card-radius);
-      background: #e8e3d8;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-feature-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-feature-overlay {
-      position: absolute;
-      inset: auto 0 0;
-      padding: 20px;
-      color: #fff;
-      background: linear-gradient(transparent, rgba(0,0,0,.72));
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-badge {
-      display: inline-flex;
-      padding: 5px 8px;
-      margin-bottom: 7px;
-      border-radius: 3px;
-      background: var(--ma-accent);
-      color: #fff;
-      font-size: 10px;
-      line-height: 1;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-feature-title {
-      margin: 0 0 5px;
-      color: inherit;
-      font-size: 21px;
-      line-height: 1.15;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-feature-description {
-      margin: 0 0 12px;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    /* ---------------------------------------------------------
-       LAYOUT 2 - SIDE IMAGE + COLUMNS + PRODUCTS
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-layout-side {
-      display: grid;
-      grid-template-columns: 220px minmax(0, 1fr) minmax(320px, 1.2fr);
-      gap: 25px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-side-image {
-      min-height: 280px;
-      overflow: hidden;
-      border-radius: var(--ma-card-radius);
-      background: #e8e3d8;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-side-image img {
-      width: 100%;
-      height: 100%;
-      min-height: 280px;
-      display: block;
-      object-fit: cover;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-side-content {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 25px;
-    }
-
-    /* ---------------------------------------------------------
-       LAYOUT 3 - LARGE HERO
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-layout-hero {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      min-height: 330px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-hero-image {
-      min-height: 330px;
-      overflow: hidden;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-hero-image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-hero-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 38px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-hero-copy .ma-feature-title {
-      color: var(--ma-mega-text);
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-hero-copy .ma-feature-description {
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      max-width: 460px;
-      margin-bottom: 20px;
-    }
-
-    /* ---------------------------------------------------------
-       LAYOUT 4 - LINKS ONLY
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-layout-links {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 30px;
-    }
-
-    /* ---------------------------------------------------------
-       LAYOUT 5 - PRODUCTS FOCUS
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-layout-products {
-      display: grid;
-      grid-template-columns: minmax(190px, .75fr) minmax(0, 1.75fr);
-      gap: 30px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-products-heading {
-      margin: 0 0 15px;
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-card {
-      min-width: 0;
-      border: 1px solid var(--ma-border);
-      border-radius: var(--ma-card-radius);
-      background: var(--ma-mega-bg);
-      overflow: hidden;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 7px 18px rgba(27,42,74,.10);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-image {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      background: #f0ece3;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      transition: transform .25s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-card:hover .ma-product-image img {
-      transform: scale(1.03);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-badge {
-      position: absolute;
-      left: 8px;
-      top: 8px;
-      z-index: 1;
-      padding: 4px 6px;
-      border-radius: 3px;
-      background: var(--ma-accent);
-      color: #fff;
-      font-size: 9px;
-      line-height: 1;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-info {
-      padding: 10px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-title {
-      display: -webkit-box;
-      overflow: hidden;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      margin: 0 0 7px;
-      color: var(--ma-mega-text);
-      font-size: var(--ma-product-title-size);
-      line-height: 1.3;
-      font-weight: 700;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-rating {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      margin-bottom: 5px;
-      color: var(--ma-accent);
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-product-price {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 7px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-current-price {
-      color: var(--ma-mega-text);
-      font-size: var(--ma-product-price-size);
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-compare-price {
-      color: #777;
-      font-size: 12px;
-      text-decoration: line-through;
-    }
-
-    /* ---------------------------------------------------------
-       NEW LAYOUT - VISUAL HOME / PRODUCTS / FEATURED
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
-      display: grid;
-      grid-template-columns: minmax(250px, .78fr) minmax(520px, 1.7fr) minmax(250px, .72fr);
-      min-height: 570px;
-      background: var(--ma-mega-bg);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      padding: 24px 20px 18px;
-      border-right: 1px solid var(--ma-border);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-eyebrow {
-      margin: 0 0 4px;
-      color: var(--ma-accent);
-      font-size: 13px;
-      line-height: 1.2;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-title {
-      margin: 0 0 8px;
-      color: var(--ma-mega-text);
-      font-size: 30px;
-      line-height: 1.08;
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-description {
-      margin: 0 0 13px;
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      line-height: 1.5;
-      opacity: .82;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-trust {
-      display: grid;
-      gap: 6px;
-      margin: 0 0 14px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      line-height: 1.25;
-      font-weight: 600;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-icon {
-      width: 16px;
-      height: 16px;
-      flex: 0 0 16px;
-      border: 1px solid var(--ma-accent);
-      border-radius: 50%;
-      position: relative;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-icon::after {
-      content: '';
-      position: absolute;
-      left: 3px;
-      top: 2px;
-      width: 3px;
-      height: 5px;
-      border-right: 1px solid var(--ma-accent);
-      border-bottom: 1px solid var(--ma-accent);
-      transform: rotate(45deg);
-    }
-  /* =========================================================
-     VISUAL CATEGORY ACCORDION
-  ========================================================= */
-
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-categories {
-    margin-top: 3px;
+     STICKY ALWAYS
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-always {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
 
   /* ---------------------------------------------------------
-     CATEGORY ROW
+     STICKY ON SCROLL
   --------------------------------------------------------- */
 
-  #ModernAussiesHeader-{{ section.id }} .ma-visual-category {
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-on_scroll {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease;
+  }
+
+
+  /* Header hidden while scrolling down */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-on_scroll.ma-header-hidden {
+    transform: translateY(-100%);
+  }
+
+
+  /* Header visible */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-on_scroll.ma-header-visible {
+    transform: translateY(0);
+  }
+
+
+  /* Shadow after scrolling */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-scrolled {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+  }
+      #ModernAussiesHeader-{{ section.id }} *,
+      #ModernAussiesHeader-{{ section.id }} *::before,
+      #ModernAussiesHeader-{{ section.id }} *::after {
+        box-sizing: border-box;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} button,
+      #ModernAussiesHeader-{{ section.id }} input,
+      #ModernAussiesHeader-{{ section.id }} select {
+        font: inherit;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-header-main {
+        width: 100%;
+        min-height: var(--ma-header-height);
+        border-bottom: 1px solid var(--ma-border);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-header-container {
+        width: min(100% - 40px, var(--ma-container-width));
+        min-height: var(--ma-header-height);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 30px;
+      }
+
+      /* ---------------------------------------------------------
+         LOGO
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-logo img {
+        display: block;
+        width: var(--ma-logo-width);
+        height: auto;
+        max-height: calc(var(--ma-header-height) - 18px);
+        object-fit: contain;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-logo-text {
+        color: var(--ma-header-text);
+        font-size: 22px;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      /* ---------------------------------------------------------
+         DESKTOP NAV
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-desktop-nav {
+        min-width: 0;
+        height: 100%;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--ma-menu-gap);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-item {
+        position: static;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-link {
+        position: relative;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding:0;
+        color: var(--ma-header-text);
+        font-size: var(--ma-nav-size);
+        line-height: 1.2;
+        font-weight: var(--ma-nav-weight);
+        white-space: nowrap;
+        transition: color .18s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-link:hover,
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-link:focus-visible,
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open > .ma-nav-link {
+        color: var(--ma-header-hover);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background: var(--ma-accent);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform .18s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open > .ma-nav-link::after,
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-link:hover::after {
+        transform: scaleX(1);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-arrow {
+        width: 8px;
+        height: 8px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg) translateY(-2px);
+        transition: transform .18s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open .ma-nav-arrow {
+        transform: rotate(225deg) translate(-1px, -1px);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-hot {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 6px;
+        border-radius: 999px;
+        background: var(--ma-accent);
+        color: #fff;
+        font-size: 9px;
+        line-height: 1;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+      }
+
+      /* ---------------------------------------------------------
+         HEADER ACTIONS
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-action {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        background: transparent;
+        color: var(--ma-header-text);
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+        transition: background .18s ease, color .18s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-action:hover,
+      #ModernAussiesHeader-{{ section.id }} .ma-action:focus-visible {
+        color: var(--ma-header-hover);
+        background: rgba(164, 113, 24, .08);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-action svg {
+        width: 21px;
+        height: 21px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-cart-count {
+        position: absolute;
+        top: 1px;
+        right: 0;
+        min-width: 17px;
+        height: 17px;
+        padding: 0 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--ma-accent);
+        color: #fff;
+        font-size: 9px;
+        line-height: 1;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-currency {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-currency select {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: var(--ma-header-text);
+        cursor: pointer;
+        padding: 5px 18px 5px 3px;
+        font-size: 12px;
+        font-weight: 700;
+        background-image:
+          linear-gradient(45deg, transparent 50%, currentColor 50%),
+          linear-gradient(135deg, currentColor 50%, transparent 50%);
+        background-position:
+          calc(100% - 8px) 50%,
+          calc(100% - 4px) 50%;
+        background-size: 4px 4px, 4px 4px;
+        background-repeat: no-repeat;
+      }
+
+      /* ---------------------------------------------------------
+         SEARCH
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-search-wrap {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 14px 20px;
+        background: var(--ma-header-bg);
+        border-bottom: 1px solid var(--ma-border);
+        box-shadow: 0 10px 30px rgba(27,42,74,.10);
+      }
+
+      #ModernAussiesHeader-{{ section.id }}.search-open .ma-search-wrap {
+        display: block;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-search-form {
+        width: min(100%, 760px);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--ma-border);
+        background: #fff;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-search-form input {
+        flex: 1;
+        min-width: 0;
+        height: 48px;
+        border: 0;
+        outline: 0;
+        padding: 0 15px;
+        color: #1B2A4A;
+        background: transparent;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-search-form button {
+        width: 50px;
+        height: 48px;
+        border: 0;
+        background: var(--ma-accent);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* ---------------------------------------------------------
+         MEGA MENU
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mega {
+        position: absolute;
+        z-index: 60;
+        top: 100%;
+        left: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-5px);
+        transition:
+          opacity .16s ease,
+          transform .16s ease,
+          visibility .16s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open .ma-mega {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mega-inner {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mega-panel {
+        background: var(--ma-mega-bg);
+        color: var(--ma-mega-text);
+        border: 1px solid var(--ma-border);
+        border-radius: var(--ma-mega-radius);
+        box-shadow: 0 18px 50px rgba(27,42,74,.14);
+        overflow: hidden;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mega-content {
+        padding: 25px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mega-heading {
+        margin: 0 0 15px;
+        color: var(--ma-mega-text);
+        font-size: var(--ma-mega-title-size);
+        line-height: 1.2;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-column-heading {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        line-height: 1.3;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-link-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-link-list li + li {
+        margin-top: 7px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-link-list a {
+        display: inline-block;
+        color: var(--ma-mega-text);
+        font-size: var(--ma-mega-link-size);
+        line-height: 1.4;
+        transition: color .16s ease, transform .16s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-link-list a:hover {
+        color: var(--ma-accent);
+        transform: translateX(2px);
+      }
+
+      /* ---------------------------------------------------------
+         LAYOUT 1 - COLUMNS + FEATURED
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-layout-columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(260px, 1.15fr);
+        gap: 25px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-feature-card {
+        position: relative;
+        min-height: 250px;
+        overflow: hidden;
+        border-radius: var(--ma-card-radius);
+        background: #e8e3d8;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-feature-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-feature-overlay {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 20px;
+        color: #fff;
+        background: linear-gradient(transparent, rgba(0,0,0,.72));
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-badge {
+        display: inline-flex;
+        padding: 5px 8px;
+        margin-bottom: 7px;
+        border-radius: 3px;
+        background: var(--ma-accent);
+        color: #fff;
+        font-size: 10px;
+        line-height: 1;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-feature-title {
+        margin: 0 0 5px;
+        color: inherit;
+        font-size: 21px;
+        line-height: 1.15;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-feature-description {
+        margin: 0 0 12px;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      /* ---------------------------------------------------------
+         LAYOUT 2 - SIDE IMAGE + COLUMNS + PRODUCTS
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-layout-side {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr) minmax(320px, 1.2fr);
+        gap: 25px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-side-image {
+        min-height: 280px;
+        overflow: hidden;
+        border-radius: var(--ma-card-radius);
+        background: #e8e3d8;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-side-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 280px;
+        display: block;
+        object-fit: cover;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-side-content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+      }
+
+      /* ---------------------------------------------------------
+         LAYOUT 3 - LARGE HERO
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-layout-hero {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        min-height: 330px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-hero-image {
+        min-height: 330px;
+        overflow: hidden;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-hero-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 38px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-hero-copy .ma-feature-title {
+        color: var(--ma-mega-text);
+        font-size: 30px;
+        margin-bottom: 12px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-hero-copy .ma-feature-description {
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        max-width: 460px;
+        margin-bottom: 20px;
+      }
+
+      /* ---------------------------------------------------------
+         LAYOUT 4 - LINKS ONLY
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-layout-links {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 30px;
+      }
+
+      /* ---------------------------------------------------------
+         LAYOUT 5 - PRODUCTS FOCUS
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-layout-products {
+        display: grid;
+        grid-template-columns: minmax(190px, .75fr) minmax(0, 1.75fr);
+        gap: 30px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-products-heading {
+        margin: 0 0 15px;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 15px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-card {
+        min-width: 0;
+        border: 1px solid var(--ma-border);
+        border-radius: var(--ma-card-radius);
+        background: var(--ma-mega-bg);
+        overflow: hidden;
+        transition: transform .18s ease, box-shadow .18s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 18px rgba(27,42,74,.10);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-image {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background: #f0ece3;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform .25s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-card:hover .ma-product-image img {
+        transform: scale(1.03);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-badge {
+        position: absolute;
+        left: 8px;
+        top: 8px;
+        z-index: 1;
+        padding: 4px 6px;
+        border-radius: 3px;
+        background: var(--ma-accent);
+        color: #fff;
+        font-size: 9px;
+        line-height: 1;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-info {
+        padding: 10px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-title {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        margin: 0 0 7px;
+        color: var(--ma-mega-text);
+        font-size: var(--ma-product-title-size);
+        line-height: 1.3;
+        font-weight: 700;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-rating {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-bottom: 5px;
+        color: var(--ma-accent);
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-product-price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 7px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-current-price {
+        color: var(--ma-mega-text);
+        font-size: var(--ma-product-price-size);
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-compare-price {
+        color: #777;
+        font-size: 12px;
+        text-decoration: line-through;
+      }
+
+      /* ---------------------------------------------------------
+         NEW LAYOUT - VISUAL HOME / PRODUCTS / FEATURED
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
+        display: grid;
+        grid-template-columns: minmax(250px, .78fr) minmax(520px, 1.7fr) minmax(250px, .72fr);
+        min-height: 570px;
+        background: var(--ma-mega-bg);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        padding: 24px 20px 18px;
+        border-right: 1px solid var(--ma-border);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-eyebrow {
+        margin: 0 0 4px;
+        color: var(--ma-accent);
+        font-size: 13px;
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-title {
+        margin: 0 0 8px;
+        color: var(--ma-mega-text);
+        font-size: 30px;
+        line-height: 1.08;
+        font-weight: 800;
+        letter-spacing: -.02em;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-description {
+        margin: 0 0 13px;
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        line-height: 1.5;
+        opacity: .82;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-trust {
+        display: grid;
+        gap: 6px;
+        margin: 0 0 14px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        line-height: 1.25;
+        font-weight: 600;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-icon {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+        border: 1px solid var(--ma-accent);
+        border-radius: 50%;
+        position: relative;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-icon::after {
+        content: '';
+        position: absolute;
+        left: 3px;
+        top: 2px;
+        width: 3px;
+        height: 5px;
+        border-right: 1px solid var(--ma-accent);
+        border-bottom: 1px solid var(--ma-accent);
+        transform: rotate(45deg);
+      }
+    /* =========================================================
+       VISUAL CATEGORY ACCORDION
+    ========================================================= */
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-categories {
+      margin-top: 3px;
+    }
+
+
+    /* ---------------------------------------------------------
+       CATEGORY ROW
+    --------------------------------------------------------- */
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-category {
+      width: 100%;
+      min-height: 30px;
+      padding: 5px 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      border-top: 1px solid var(--ma-border);
+
+      background: transparent;
+      color: var(--ma-mega-text);
+
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 600;
+
+      text-decoration: none;
+
+      box-sizing: border-box;
+    }
+
+
+    /* Bottom border only for normal links */
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-link:last-child {
+      border-bottom: 1px solid var(--ma-border);
+    }
+
+
+    /* Accordion parent button */
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-toggle {
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      cursor: pointer;
+
+      font-family: inherit;
+      text-align: left;
+    }
+
+
+    /* ---------------------------------------------------------
+       CATEGORY TITLE
+    --------------------------------------------------------- */
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-title {
+      flex: 1;
+      min-width: 0;
+
+      transition:
+        color .16s ease,
+        transform .16s ease;
+    }
+
+
+    /* Hover */
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category:hover
+    .ma-visual-category-title {
+      color: var(--ma-accent);
+      transform: translateX(2px);
+    }
+
+
+    /* ---------------------------------------------------------
+       PLUS / MINUS CIRCLE
+    --------------------------------------------------------- */
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-plus {
+      width: 23px;
+      height: 23px;
+
+      flex: 0 0 23px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid #ded8ca;
+      border-radius: 50%;
+
+      color: #6d6a61;
+
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 300;
+
+      box-sizing: border-box;
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-plus .ma-plus,
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-plus .ma-minus {
+      display: block;
+    }
+
+
+    /* Default */
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-plus .ma-minus {
+      display: none;
+    }
+
+
+    /* Open accordion */
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-group.is-open
+    .ma-visual-category-plus .ma-plus {
+      display: none;
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-group.is-open
+    .ma-visual-category-plus .ma-minus {
+      display: block;
+    }
+
+
+    /* ---------------------------------------------------------
+       ACCORDION CONTENT
+    --------------------------------------------------------- */
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-content {
+      padding: 0 0 8px 18px;
+
+      border-left: 2px solid var(--ma-accent);
+
+      margin: 0 0 0 2px;
+
+      animation: maVisualCategoryOpen .18s ease;
+    }
+
+
+    @keyframes maVisualCategoryOpen {
+      from {
+        opacity: 0;
+        transform: translateY(-3px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* ---------------------------------------------------------
+       CHILD LINKS
+    --------------------------------------------------------- */
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-children {
+      display: grid;
+      gap: 0;
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-child {
+      display: block;
+
+      padding: 7px 10px 7px 0;
+
+      color: var(--ma-mega-text);
+
+      font-size: 13px;
+      line-height: 1.35;
+
+      text-decoration: none;
+
+      transition:
+        color .16s ease,
+        transform .16s ease;
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-child:hover {
+      color: var(--ma-accent);
+      transform: translateX(2px);
+    }
+
+
+    /* ---------------------------------------------------------
+       VIEW ALL
+    --------------------------------------------------------- */
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-top: 5px;
+      padding: 4px 0;
+
+      color: var(--ma-mega-text);
+
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 700;
+
+      text-decoration: none;
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-view-all:hover {
+      color: var(--ma-accent);
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-arrow {
+      font-size: 15px;
+      line-height: 1;
+
+      transition: transform .16s ease;
+    }
+
+
+    #ModernAussiesHeader-{{ section.id }}
+    .ma-visual-category-view-all:hover
+    .ma-visual-category-arrow {
+      transform: translateX(3px);
+    }
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
+        position: relative;
+        display: block;
+        margin-top: auto;
+        min-height: 58px;
+        overflow: hidden;
+        border-radius: var(--ma-card-radius);
+        background: #e8e3d8;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner img {
+        width: 100%;
+        height: 58px;
+        display: block;
+        object-fit: cover;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
+        min-width: 0;
+        padding: 24px 16px 18px;
+        display: flex;
+        flex-direction: column;
+        background: var(--ma-header-bg);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-products-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 13px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-products-eyebrow {
+        margin: 0 0 3px;
+        color: var(--ma-accent);
+        font-size: 13px;
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-products-title {
+        margin: 0;
+        color: var(--ma-mega-text);
+        font-size: 24px;
+        line-height: 1.15;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-view-all {
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        line-height: 1.2;
+        font-weight: 800;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-view-all:hover {
+        color: var(--ma-accent);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-card {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-image {
+        position: relative;
+        aspect-ratio: 1.48 / 1;
+        overflow: hidden;
+        border: 1px solid var(--ma-border);
+        border-radius: var(--ma-card-radius);
+        background: #eeeae1;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform .25s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-card:hover .ma-visual-product-image img {
+        transform: scale(1.025);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-badge {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        z-index: 1;
+        padding: 3px 5px;
+        border-radius: 3px;
+        background: #102a4e;
+        color: #fff;
+        font-size: 13px;
+        line-height: 1;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-info {
+        padding: 6px 0 0;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-title {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        margin: 0 0 3px;
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        line-height: 1.25;
+        font-weight: 700;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-rating {
+        margin: 0 0 3px;
+        color: var(--ma-accent);
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 1px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-product-price {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-current-price {
+        color: var(--ma-mega-text);
+        font-size: 14px;
+        line-height: 1.2;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-compare-price {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.2;
+        text-decoration: line-through;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-products-cta {
+        margin-top: auto;
+        padding-top: 14px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-products-cta .ma-cta {
+        width: 100%;
+        min-height: 34px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature {
+        position: relative;
+        min-width: 0;
+        min-height: 570px;
+        overflow: hidden;
+        background: #d9d3c8;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature::after {
+        content: '';
+        position: absolute;
+        inset: 25% 0 0;
+        background: linear-gradient(transparent, rgba(9,25,52,.96));
+        pointer-events: none;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-copy {
+        position: absolute;
+        z-index: 2;
+        left: 18px;
+        right: 18px;
+        bottom: 20px;
+        color: #fff;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-badge {
+        display: inline-flex;
+        margin-bottom: 8px;
+        padding: 4px 6px;
+        border-radius: 3px;
+        background: #b17c18;
+        color: #fff;
+        font-size: 13px;
+        line-height: 1;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-label {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 13px;
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-title {
+        margin: 0 0 5px;
+        color: inherit;
+        font-size: 24px;
+        line-height: 1.05;
+        font-weight: 800;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-description {
+        margin: 0 0 10px;
+        font-size: 14px;
+        line-height: 1.45;
+        opacity: .92;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-link {
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.2;
+        font-weight: 800;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 1200px) {
+        #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
+          grid-template-columns: 230px minmax(0, 1fr) 240px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
+          padding-left: 13px;
+          padding-right: 13px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
+
+      @media (max-width: {{ section.settings.mobile_breakpoint }}px) {
+        #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
+          display: block;
+          min-height: 0;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar,
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
+          padding: 18px 16px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--ma-border);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
+          margin-top: 14px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-visual-feature {
+          min-height: 390px;
+        }
+      }
+
+      /* ---------------------------------------------------------
+         CTA
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        min-height: 42px;
+        padding: 10px 18px;
+        border: 1px solid var(--ma-accent);
+        border-radius: {{ section.settings.button_radius }}px;
+        background: var(--ma-accent);
+        color: {{ section.settings.button_text_color }};
+        font-size: {{ section.settings.button_font_size }}px;
+        line-height: 1.2;
+        font-weight: 800;
+        transition: background .18s ease, color .18s ease, border-color .18s ease;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-cta:hover {
+        background: {{ section.settings.button_hover_background }};
+        color: {{ section.settings.button_hover_text }};
+        border-color: {{ section.settings.button_hover_background }};
+      }
+
+      /* ---------------------------------------------------------
+         TRUST BAR
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-trust-bar {
+        width: 100%;
+        background: var(--ma-trust-bg);
+        color: var(--ma-trust-text);
+        border-top: 1px solid var(--ma-border);
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-trust-inner {
+        width: min(100% - 40px, var(--ma-container-width));
+        min-height: 40px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-trust-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 9px 12px;
+        font-size: 14px;
+        line-height: 1.2;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-trust-icon {
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-trust-icon svg {
+        width: 100%;
+        height: 100%;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+      }
+
+      /* ---------------------------------------------------------
+         MOBILE
+      --------------------------------------------------------- */
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mobile-header {
+        display: none;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mobile-drawer {
+        display: none;
+      }
+
+      #ModernAussiesHeader-{{ section.id }} .ma-mobile-overlay {
+        display: none;
+      }
+
+      @media (max-width: 1200px) {
+        #ModernAussiesHeader-{{ section.id }} .ma-header-container {
+          gap: 18px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-nav-list {
+          gap: 16px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-nav-link {
+          font-size: 13px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-layout-columns {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-layout-columns > .ma-feature-card {
+          grid-column: span 3;
+          min-height: 220px;
+        }
+      }
+
+      @media (max-width: {{ section.settings.mobile_breakpoint }}px) {
+        /* =========================================================
+     MOBILE VISUAL MEGA MENU ACCORDION
+  ========================================================= */
+
+  #ModernAussiesHeader-{{ section.id }}
+  .ma-mobile-visual-category-group {
+    border-top: 1px solid var(--ma-border);
+  }
+
+
+  /* ---------------------------------------------------------
+     CATEGORY BUTTON
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }}
+  .ma-mobile-visual-category-toggle {
+
     width: 100%;
-    min-height: 30px;
-    padding: 5px 0;
+
+    min-height: 44px;
+
+    padding: 10px 0;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    gap: 10px;
+    gap: 12px;
 
-    border-top: 1px solid var(--ma-border);
+    border: 0;
 
     background: transparent;
+
     color: var(--ma-mega-text);
 
+    font-family: inherit;
+
     font-size: 13px;
-    line-height: 1.25;
+
+    line-height: 1.3;
+
     font-weight: 600;
 
-    text-decoration: none;
-
-    box-sizing: border-box;
-  }
-
-
-  /* Bottom border only for normal links */
-  #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-link:last-child {
-    border-bottom: 1px solid var(--ma-border);
-  }
-
-
-  /* Accordion parent button */
-  #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-toggle {
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-
-    appearance: none;
-    -webkit-appearance: none;
+    text-align: left;
 
     cursor: pointer;
 
-    font-family: inherit;
-    text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
   }
 
 
   /* ---------------------------------------------------------
-     CATEGORY TITLE
+     TITLE
   --------------------------------------------------------- */
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-title {
+  .ma-mobile-visual-category-title {
     flex: 1;
-    min-width: 0;
 
     transition:
-      color .16s ease,
-      transform .16s ease;
+      color .15s ease,
+      transform .15s ease;
   }
 
 
-  /* Hover */
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category:hover
-  .ma-visual-category-title {
+  .ma-mobile-visual-category-toggle:hover
+  .ma-mobile-visual-category-title {
+
     color: var(--ma-accent);
+
     transform: translateX(2px);
   }
 
@@ -888,55 +1587,49 @@
   --------------------------------------------------------- */
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-plus {
-    width: 23px;
-    height: 23px;
+  .ma-mobile-visual-category-icon {
 
-    flex: 0 0 23px;
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 24px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid #ded8ca;
+    border: 1px solid var(--ma-border);
+
     border-radius: 50%;
 
     color: #6d6a61;
 
-    font-size: 13px;
+    font-size: 15px;
+
+    font-weight: 400;
+
     line-height: 1;
-    font-weight: 300;
-
-    box-sizing: border-box;
   }
 
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-plus .ma-plus,
-  #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-plus .ma-minus {
-    display: block;
-  }
-
-
-  /* Default */
-  #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-plus .ma-minus {
+  .ma-mobile-visual-minus {
     display: none;
   }
 
 
-  /* Open accordion */
+  /* Open state */
+
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-group.is-open
-  .ma-visual-category-plus .ma-plus {
+  .ma-mobile-visual-category-group.is-open
+  .ma-mobile-visual-plus {
     display: none;
   }
 
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-group.is-open
-  .ma-visual-category-plus .ma-minus {
+  .ma-mobile-visual-category-group.is-open
+  .ma-mobile-visual-minus {
     display: block;
   }
 
@@ -946,27 +1639,30 @@
   --------------------------------------------------------- */
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-content {
-    padding: 0 0 8px 18px;
+  .ma-mobile-visual-category-content {
+
+    padding: 3px 0 12px 18px;
+
+    margin-bottom: 0;
 
     border-left: 2px solid var(--ma-accent);
 
-    margin: 0 0 0 2px;
-
-    animation: maVisualCategoryOpen .18s ease;
+    animation: maMobileVisualAccordionOpen .18s ease;
   }
 
 
-  @keyframes maVisualCategoryOpen {
+  @keyframes maMobileVisualAccordionOpen {
+
     from {
       opacity: 0;
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
 
     to {
       opacity: 1;
       transform: translateY(0);
     }
+
   }
 
 
@@ -975,34 +1671,40 @@
   --------------------------------------------------------- */
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-children {
+  .ma-mobile-visual-category-children {
+
     display: grid;
+
     gap: 0;
   }
 
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-child {
+  .ma-mobile-visual-category-child {
+
     display: block;
 
-    padding: 7px 10px 7px 0;
+    padding: 7px 0;
 
     color: var(--ma-mega-text);
 
     font-size: 13px;
-    line-height: 1.35;
+
+    line-height: 1.4;
 
     text-decoration: none;
 
     transition:
-      color .16s ease,
-      transform .16s ease;
+      color .15s ease,
+      transform .15s ease;
   }
 
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-child:hover {
+  .ma-mobile-visual-category-child:hover {
+
     color: var(--ma-accent);
+
     transform: translateX(2px);
   }
 
@@ -1012,18 +1714,24 @@
   --------------------------------------------------------- */
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-view-all {
+  .ma-mobile-visual-category-view-all {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
 
-    margin-top: 5px;
-    padding: 4px 0;
+    margin-top: 7px;
+
+    padding: 5px 0;
 
     color: var(--ma-mega-text);
 
-    font-size: 14px;
+    font-size: 13px;
+
     line-height: 1.3;
+
     font-weight: 700;
 
     text-decoration: none;
@@ -1031,1126 +1739,466 @@
 
 
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-view-all:hover {
+  .ma-mobile-visual-category-view-all:hover {
+
     color: var(--ma-accent);
   }
 
 
+  /* ---------------------------------------------------------
+     CATEGORY WITHOUT CHILDREN
+  --------------------------------------------------------- */
+
   #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-arrow {
+  .ma-mobile-visual-category-link {
+
+    min-height: 44px;
+
+    padding: 10px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border-top: 1px solid var(--ma-border);
+
+    color: var(--ma-mega-text);
+
+    font-size: 13px;
+
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
+  }
+
+
+  #ModernAussiesHeader-{{ section.id }}
+  .ma-mobile-visual-category-link:hover {
+
+    color: var(--ma-accent);
+  }
+
+
+  /* Simple + */
+
+  #ModernAussiesHeader-{{ section.id }}
+  .ma-mobile-visual-category-plus {
+
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--ma-border);
+
+    border-radius: 50%;
+
     font-size: 15px;
+
+    font-weight: 400;
+
     line-height: 1;
-
-    transition: transform .16s ease;
   }
 
-
-  #ModernAussiesHeader-{{ section.id }}
-  .ma-visual-category-view-all:hover
-  .ma-visual-category-arrow {
-    transform: translateX(3px);
-  }
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
-      position: relative;
-      display: block;
-      margin-top: auto;
-      min-height: 58px;
-      overflow: hidden;
-      border-radius: var(--ma-card-radius);
-      background: #e8e3d8;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner img {
-      width: 100%;
-      height: 58px;
-      display: block;
-      object-fit: cover;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
-      min-width: 0;
-      padding: 24px 16px 18px;
-      display: flex;
-      flex-direction: column;
-      background: var(--ma-header-bg);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-products-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 13px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-products-eyebrow {
-      margin: 0 0 3px;
-      color: var(--ma-accent);
-      font-size: 13px;
-      line-height: 1.2;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-products-title {
-      margin: 0;
-      color: var(--ma-mega-text);
-      font-size: 24px;
-      line-height: 1.15;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-view-all {
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      line-height: 1.2;
-      font-weight: 800;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-view-all:hover {
-      color: var(--ma-accent);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-card {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-image {
-      position: relative;
-      aspect-ratio: 1.48 / 1;
-      overflow: hidden;
-      border: 1px solid var(--ma-border);
-      border-radius: var(--ma-card-radius);
-      background: #eeeae1;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      transition: transform .25s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-card:hover .ma-visual-product-image img {
-      transform: scale(1.025);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-badge {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      z-index: 1;
-      padding: 3px 5px;
-      border-radius: 3px;
-      background: #102a4e;
-      color: #fff;
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-info {
-      padding: 6px 0 0;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-title {
-      display: -webkit-box;
-      overflow: hidden;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      margin: 0 0 3px;
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      line-height: 1.25;
-      font-weight: 700;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-rating {
-      margin: 0 0 3px;
-      color: var(--ma-accent);
-      font-size: 13px;
-      line-height: 1;
-      letter-spacing: 1px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-product-price {
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-      flex-wrap: wrap;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-current-price {
-      color: var(--ma-mega-text);
-      font-size: 14px;
-      line-height: 1.2;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-compare-price {
-      color: #777;
-      font-size: 13px;
-      line-height: 1.2;
-      text-decoration: line-through;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-products-cta {
-      margin-top: auto;
-      padding-top: 14px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-products-cta .ma-cta {
-      width: 100%;
-      min-height: 34px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature {
-      position: relative;
-      min-width: 0;
-      min-height: 570px;
-      overflow: hidden;
-      background: #d9d3c8;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature > img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature::after {
-      content: '';
-      position: absolute;
-      inset: 25% 0 0;
-      background: linear-gradient(transparent, rgba(9,25,52,.96));
-      pointer-events: none;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-copy {
-      position: absolute;
-      z-index: 2;
-      left: 18px;
-      right: 18px;
-      bottom: 20px;
-      color: #fff;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-badge {
-      display: inline-flex;
-      margin-bottom: 8px;
-      padding: 4px 6px;
-      border-radius: 3px;
-      background: #b17c18;
-      color: #fff;
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-label {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 13px;
-      line-height: 1.2;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-title {
-      margin: 0 0 5px;
-      color: inherit;
-      font-size: 24px;
-      line-height: 1.05;
-      font-weight: 800;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-description {
-      margin: 0 0 10px;
-      font-size: 14px;
-      line-height: 1.45;
-      opacity: .92;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-link {
-      color: #fff;
-      font-size: 14px;
-      line-height: 1.2;
-      font-weight: 800;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 1200px) {
-      #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
-        grid-template-columns: 230px minmax(0, 1fr) 240px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
-        padding-left: 13px;
-        padding-right: 13px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-    }
-
-    @media (max-width: {{ section.settings.mobile_breakpoint }}px) {
-      #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
-        display: block;
-        min-height: 0;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar,
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
-        padding: 18px 16px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
-        border-right: 0;
-        border-bottom: 1px solid var(--ma-border);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
-        margin-top: 14px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-visual-feature {
-        min-height: 390px;
-      }
-    }
-
-    /* ---------------------------------------------------------
-       CTA
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      min-height: 42px;
-      padding: 10px 18px;
-      border: 1px solid var(--ma-accent);
-      border-radius: {{ section.settings.button_radius }}px;
-      background: var(--ma-accent);
-      color: {{ section.settings.button_text_color }};
-      font-size: {{ section.settings.button_font_size }}px;
-      line-height: 1.2;
-      font-weight: 800;
-      transition: background .18s ease, color .18s ease, border-color .18s ease;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-cta:hover {
-      background: {{ section.settings.button_hover_background }};
-      color: {{ section.settings.button_hover_text }};
-      border-color: {{ section.settings.button_hover_background }};
-    }
-
-    /* ---------------------------------------------------------
-       TRUST BAR
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-trust-bar {
-      width: 100%;
-      background: var(--ma-trust-bg);
-      color: var(--ma-trust-text);
-      border-top: 1px solid var(--ma-border);
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-trust-inner {
-      width: min(100% - 40px, var(--ma-container-width));
-      min-height: 40px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      align-items: center;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-trust-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 9px 12px;
-      font-size: 14px;
-      line-height: 1.2;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-trust-icon {
-      display: inline-flex;
-      width: 16px;
-      height: 16px;
-      flex: 0 0 16px;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-trust-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.8;
-    }
-
-    /* ---------------------------------------------------------
-       MOBILE
-    --------------------------------------------------------- */
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mobile-header {
-      display: none;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mobile-drawer {
-      display: none;
-    }
-
-    #ModernAussiesHeader-{{ section.id }} .ma-mobile-overlay {
-      display: none;
-    }
-
-    @media (max-width: 1200px) {
-      #ModernAussiesHeader-{{ section.id }} .ma-header-container {
-        gap: 18px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-nav-list {
-        gap: 16px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-nav-link {
-        font-size: 13px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-layout-columns {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-layout-columns > .ma-feature-card {
-        grid-column: span 3;
-        min-height: 220px;
-      }
-    }
-
-    @media (max-width: {{ section.settings.mobile_breakpoint }}px) {
-      /* =========================================================
-   MOBILE VISUAL MEGA MENU ACCORDION
-========================================================= */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-group {
-  border-top: 1px solid var(--ma-border);
-}
-
-
-/* ---------------------------------------------------------
-   CATEGORY BUTTON
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-toggle {
-
-  width: 100%;
-
-  min-height: 44px;
-
-  padding: 10px 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 12px;
-
-  border: 0;
-
-  background: transparent;
-
-  color: var(--ma-mega-text);
-
-  font-family: inherit;
-
-  font-size: 13px;
-
-  line-height: 1.3;
-
-  font-weight: 600;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-
-/* ---------------------------------------------------------
-   TITLE
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-title {
-  flex: 1;
-
-  transition:
-    color .15s ease,
-    transform .15s ease;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-toggle:hover
-.ma-mobile-visual-category-title {
-
-  color: var(--ma-accent);
-
-  transform: translateX(2px);
-}
-
-
-/* ---------------------------------------------------------
-   PLUS / MINUS CIRCLE
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-icon {
-
-  width: 24px;
-  height: 24px;
-
-  flex: 0 0 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid var(--ma-border);
-
-  border-radius: 50%;
-
-  color: #6d6a61;
-
-  font-size: 15px;
-
-  font-weight: 400;
-
-  line-height: 1;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-minus {
-  display: none;
-}
-
-
-/* Open state */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-group.is-open
-.ma-mobile-visual-plus {
-  display: none;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-group.is-open
-.ma-mobile-visual-minus {
-  display: block;
-}
-
-
-/* ---------------------------------------------------------
-   ACCORDION CONTENT
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-content {
-
-  padding: 3px 0 12px 18px;
-
-  margin-bottom: 0;
-
-  border-left: 2px solid var(--ma-accent);
-
-  animation: maMobileVisualAccordionOpen .18s ease;
-}
-
-
-@keyframes maMobileVisualAccordionOpen {
-
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-
-/* ---------------------------------------------------------
-   CHILD LINKS
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-children {
-
-  display: grid;
-
-  gap: 0;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-child {
-
-  display: block;
-
-  padding: 7px 0;
-
-  color: var(--ma-mega-text);
-
-  font-size: 13px;
-
-  line-height: 1.4;
-
-  text-decoration: none;
-
-  transition:
-    color .15s ease,
-    transform .15s ease;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-child:hover {
-
-  color: var(--ma-accent);
-
-  transform: translateX(2px);
-}
-
-
-/* ---------------------------------------------------------
-   VIEW ALL
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-view-all {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  margin-top: 7px;
-
-  padding: 5px 0;
-
-  color: var(--ma-mega-text);
-
-  font-size: 13px;
-
-  line-height: 1.3;
-
-  font-weight: 700;
-
-  text-decoration: none;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-view-all:hover {
-
-  color: var(--ma-accent);
-}
-
-
-/* ---------------------------------------------------------
-   CATEGORY WITHOUT CHILDREN
---------------------------------------------------------- */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-link {
-
-  min-height: 44px;
-
-  padding: 10px 0;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 12px;
-
-  border-top: 1px solid var(--ma-border);
-
-  color: var(--ma-mega-text);
-
-  font-size: 13px;
-
-  line-height: 1.3;
-
-  font-weight: 600;
-
-  text-decoration: none;
-
-  box-sizing: border-box;
-}
-
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-link:hover {
-
-  color: var(--ma-accent);
-}
-
-
-/* Simple + */
-
-#ModernAussiesHeader-{{ section.id }}
-.ma-mobile-visual-category-plus {
-
-  width: 24px;
-  height: 24px;
-
-  flex: 0 0 24px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid var(--ma-border);
-
-  border-radius: 50%;
-
-  font-size: 15px;
-
-  font-weight: 400;
-
-  line-height: 1;
-}
-
-      #ModernAussiesHeader-{{ section.id }} .ma-header-main {
-        display: none;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-header {
-        min-height: 66px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 8px var(--ma-mobile-padding);
-        border-bottom: 1px solid var(--ma-border);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-left,
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-right {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        max-width: var(--ma-mobile-logo-width);
-        margin: 0 auto;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo img {
-        width: var(--ma-mobile-logo-width);
-        max-width: 100%;
-        height: auto;
-        max-height: 48px;
-        object-fit: contain;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo-text {
-        font-size: 19px;
-        font-weight: 800;
-        color: var(--ma-header-text);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-action {
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        border: 0;
-        border-radius: 50%;
-        background: transparent;
-        color: var(--ma-header-text);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-action svg {
-        width: 21px;
-        height: 21px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-action:hover {
-        color: var(--ma-header-hover);
-        background: rgba(164,113,24,.08);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-cart {
-        position: relative;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-cart-count {
-        position: absolute;
-        top: 2px;
-        right: 1px;
-        min-width: 16px;
-        height: 16px;
-        padding: 0 3px;
-        border-radius: 999px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--ma-accent);
-        color: #fff;
-        font-size: 9px;
-        font-weight: 800;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-overlay {
-        position: fixed;
-        z-index: 998;
-        inset: 0;
-        display: block;
-        background: rgba(0,0,0,.42);
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity .2s ease, visibility .2s ease;
-      }
-
-      #ModernAussiesHeader-{{ section.id }}.drawer-open .ma-mobile-overlay {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-drawer {
-        position: fixed;
-        z-index: 999;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: min(88vw, 390px);
-        display: flex;
-        flex-direction: column;
-        background: var(--ma-mega-bg);
-        color: var(--ma-mega-text);
-        box-shadow: 10px 0 35px rgba(0,0,0,.16);
-        transform: translateX(-100%);
-        transition: transform .25s ease;
-        overflow: hidden;
-      }
-
-      #ModernAussiesHeader-{{ section.id }}.drawer-open .ma-mobile-drawer {
-        transform: translateX(0);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-drawer-header {
-        min-height: 66px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 16px;
-        border-bottom: 1px solid var(--ma-border);
-        flex-shrink: 0;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-drawer-logo img {
-        width: var(--ma-mobile-logo-width);
-        max-height: 44px;
-        object-fit: contain;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-drawer-logo-text {
-        font-size: 19px;
-        font-weight: 800;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-drawer-close {
-        width: 38px;
-        height: 38px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 0;
-        background: transparent;
-        color: var(--ma-mega-text);
-        cursor: pointer;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-drawer-close svg {
-        width: 22px;
-        height: 22px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-drawer-scroll {
-        flex: 1;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu > li {
-        border-bottom: 1px solid var(--ma-border);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button,
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-link {
-        width: 100%;
-        min-height: 52px;
-        padding: 13px 17px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        border: 0;
-        background: transparent;
-        color: var(--ma-mega-text);
-        font-size: var(--ma-mobile-nav-size);
-        line-height: 1.3;
-        font-weight: 750;
-        text-align: left;
-        cursor: pointer;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button:hover,
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button.is-expanded,
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-link:hover {
-        color: var(--ma-accent);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-icon {
-        width: 18px;
-        height: 18px;
-        flex: 0 0 18px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-icon svg {
-        width: 16px;
-        height: 16px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu {
-        display: none;
-        padding: 0 16px 16px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-item.is-expanded > .ma-mobile-submenu {
-        display: block;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-section {
-        padding: 12px 0;
-        border-top: 1px solid var(--ma-border);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-title {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--ma-mega-text);
-        font-size: 13px;
-        line-height: 1.3;
-        font-weight: 800;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list li + li {
-        margin-top: 4px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list a {
-        display: block;
-        padding: 5px 0;
-        color: var(--ma-mega-text);
-        font-size: 13px;
-        line-height: 1.4;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list a:hover {
-        color: var(--ma-accent);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-products {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 12px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-product-title {
-        font-size: 11px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-product-price {
-        font-size: 11px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-compare-price {
-        font-size: 10px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-account {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        padding: 15px 16px;
-        border-top: 1px solid var(--ma-border);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-account a {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--ma-border);
-        border-radius: 3px;
-        color: var(--ma-mega-text);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-account a:hover {
-        border-color: var(--ma-accent);
-        color: var(--ma-accent);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency {
-        padding: 0 16px 16px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency form {
-        border: 1px solid var(--ma-border);
-        border-radius: 3px;
-        padding: 0 10px;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency select {
-        width: 100%;
-        min-height: 42px;
-        border: 0;
-        background: transparent;
-        color: var(--ma-mega-text);
-        font-size: 12px;
-        font-weight: 700;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-trust {
-        display: block;
-        padding: 14px 16px;
-        border-top: 1px solid var(--ma-border);
-        background: var(--ma-trust-bg);
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-trust .ma-trust-item {
-        justify-content: flex-start;
-        padding: 5px 0;
-        text-align: left;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-trust-bar {
-        display: none;
-      }
-
-      #ModernAussiesHeader-{{ section.id }} .ma-search-wrap {
-        top: 66px;
-      }
-    }
-
-    @media (min-width: {{ section.settings.mobile_breakpoint | plus: 1 }}px) {
-      #ModernAussiesHeader-{{ section.id }} .ma-mobile-only {
-        display: none !important;
-      }
-    }
-
-    @media (max-width: 749px) {
-      #ModernAussiesHeader-{{ section.id }} .ma-search-form {
-        width: 100%;
-      }
-    }
-
-    /* Accessibility */
-    #ModernAussiesHeader-{{ section.id }} :focus-visible {
-      outline: 2px solid var(--ma-accent);
-      outline-offset: 3px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #ModernAussiesHeader-{{ section.id }} *,
-      #ModernAussiesHeader-{{ section.id }} *::before,
-      #ModernAussiesHeader-{{ section.id }} *::after {
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+        #ModernAussiesHeader-{{ section.id }} .ma-header-main {
+          display: none;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-header {
+          min-height: 66px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 8px var(--ma-mobile-padding);
+          border-bottom: 1px solid var(--ma-border);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-left,
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-right {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          max-width: var(--ma-mobile-logo-width);
+          margin: 0 auto;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo img {
+          width: var(--ma-mobile-logo-width);
+          max-width: 100%;
+          height: auto;
+          max-height: 48px;
+          object-fit: contain;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo-text {
+          font-size: 19px;
+          font-weight: 800;
+          color: var(--ma-header-text);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-action {
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          border: 0;
+          border-radius: 50%;
+          background: transparent;
+          color: var(--ma-header-text);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-action svg {
+          width: 21px;
+          height: 21px;
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 1.8;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-action:hover {
+          color: var(--ma-header-hover);
+          background: rgba(164,113,24,.08);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-cart {
+          position: relative;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-cart-count {
+          position: absolute;
+          top: 2px;
+          right: 1px;
+          min-width: 16px;
+          height: 16px;
+          padding: 0 3px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--ma-accent);
+          color: #fff;
+          font-size: 9px;
+          font-weight: 800;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-overlay {
+          position: fixed;
+          z-index: 998;
+          inset: 0;
+          display: block;
+          background: rgba(0,0,0,.42);
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity .2s ease, visibility .2s ease;
+        }
+
+        #ModernAussiesHeader-{{ section.id }}.drawer-open .ma-mobile-overlay {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-drawer {
+          position: fixed;
+          z-index: 999;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: min(88vw, 390px);
+          display: flex;
+          flex-direction: column;
+          background: var(--ma-mega-bg);
+          color: var(--ma-mega-text);
+          box-shadow: 10px 0 35px rgba(0,0,0,.16);
+          transform: translateX(-100%);
+          transition: transform .25s ease;
+          overflow: hidden;
+        }
+
+        #ModernAussiesHeader-{{ section.id }}.drawer-open .ma-mobile-drawer {
+          transform: translateX(0);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-drawer-header {
+          min-height: 66px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 16px;
+          border-bottom: 1px solid var(--ma-border);
+          flex-shrink: 0;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-drawer-logo img {
+          width: var(--ma-mobile-logo-width);
+          max-height: 44px;
+          object-fit: contain;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-drawer-logo-text {
+          font-size: 19px;
+          font-weight: 800;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-drawer-close {
+          width: 38px;
+          height: 38px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 0;
+          background: transparent;
+          color: var(--ma-mega-text);
+          cursor: pointer;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-drawer-close svg {
+          width: 22px;
+          height: 22px;
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 1.8;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-drawer-scroll {
+          flex: 1;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu > li {
+          border-bottom: 1px solid var(--ma-border);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button,
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-link {
+          width: 100%;
+          min-height: 52px;
+          padding: 13px 17px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          border: 0;
+          background: transparent;
+          color: var(--ma-mega-text);
+          font-size: var(--ma-mobile-nav-size);
+          line-height: 1.3;
+          font-weight: 750;
+          text-align: left;
+          cursor: pointer;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button:hover,
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button.is-expanded,
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-link:hover {
+          color: var(--ma-accent);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-icon {
+          width: 18px;
+          height: 18px;
+          flex: 0 0 18px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-icon svg {
+          width: 16px;
+          height: 16px;
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 1.8;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu {
+          display: none;
+          padding: 0 16px 16px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-item.is-expanded > .ma-mobile-submenu {
+          display: block;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-section {
+          padding: 12px 0;
+          border-top: 1px solid var(--ma-border);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-title {
+          display: block;
+          margin-bottom: 8px;
+          color: var(--ma-mega-text);
+          font-size: 13px;
+          line-height: 1.3;
+          font-weight: 800;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list li + li {
+          margin-top: 4px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list a {
+          display: block;
+          padding: 5px 0;
+          color: var(--ma-mega-text);
+          font-size: 13px;
+          line-height: 1.4;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list a:hover {
+          color: var(--ma-accent);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-products {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: 12px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-product-title {
+          font-size: 11px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-product-price {
+          font-size: 11px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-compare-price {
+          font-size: 10px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-account {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          padding: 15px 16px;
+          border-top: 1px solid var(--ma-border);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-account a {
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid var(--ma-border);
+          border-radius: 3px;
+          color: var(--ma-mega-text);
+          font-size: 12px;
+          font-weight: 800;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-account a:hover {
+          border-color: var(--ma-accent);
+          color: var(--ma-accent);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency {
+          padding: 0 16px 16px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency form {
+          border: 1px solid var(--ma-border);
+          border-radius: 3px;
+          padding: 0 10px;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency select {
+          width: 100%;
+          min-height: 42px;
+          border: 0;
+          background: transparent;
+          color: var(--ma-mega-text);
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-trust {
+          display: block;
+          padding: 14px 16px;
+          border-top: 1px solid var(--ma-border);
+          background: var(--ma-trust-bg);
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-trust .ma-trust-item {
+          justify-content: flex-start;
+          padding: 5px 0;
+          text-align: left;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-trust-bar {
+          display: none;
+        }
+
+        #ModernAussiesHeader-{{ section.id }} .ma-search-wrap {
+          top: 66px;
+        }
+      }
+
+      @media (min-width: {{ section.settings.mobile_breakpoint | plus: 1 }}px) {
+        #ModernAussiesHeader-{{ section.id }} .ma-mobile-only {
+          display: none !important;
+        }
+      }
+
+      @media (max-width: 749px) {
+        #ModernAussiesHeader-{{ section.id }} .ma-search-form {
+          width: 100%;
+        }
+      }
+
+      /* Accessibility */
+      #ModernAussiesHeader-{{ section.id }} :focus-visible {
+        outline: 2px solid var(--ma-accent);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #ModernAussiesHeader-{{ section.id }} *,
+        #ModernAussiesHeader-{{ section.id }} *::before,
+        #ModernAussiesHeader-{{ section.id }} *::after {
+          transition-duration: .01ms !important;
+          scroll-behavior: auto !important;
+        }
       }
-    }
 </style>
 <header
   id="ModernAussiesHeader-{{ section.id }}"
@@ -2583,7 +2631,20 @@
             aria-label="Search"
             aria-expanded="false"
           >
-            <svg class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle> </svg>
+            <svg
+              class="lucide lucide-search"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle>
+            </svg>
           </button>
         {%- endif -%}
 
@@ -2593,21 +2654,39 @@
             class="ma-action"
             aria-label="Account"
           >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 32 32" version="1.1">
-        <title>user</title>
-        <path d="M16 16.75c4.28 0 7.75-3.47 7.75-7.75s-3.47-7.75-7.75-7.75c-4.28 0-7.75 3.47-7.75 7.75v0c0.005 4.278 3.472 7.745 7.75 7.75h0zM16 2.75c3.452 0 6.25 2.798 6.25 6.25s-2.798 6.25-6.25 6.25c-3.452 0-6.25-2.798-6.25-6.25v0c0.004-3.45 2.8-6.246 6.25-6.25h0zM30.41 29.84c-1.503-6.677-7.383-11.59-14.41-11.59s-12.907 4.913-14.391 11.491l-0.019 0.099c-0.011 0.048-0.017 0.103-0.017 0.16 0 0.414 0.336 0.75 0.75 0.75 0.357 0 0.656-0.25 0.731-0.585l0.001-0.005c1.351-5.998 6.633-10.41 12.945-10.41s11.594 4.413 12.929 10.322l0.017 0.089c0.076 0.34 0.374 0.59 0.732 0.59 0 0 0.001 0 0.001 0h-0c0.057-0 0.112-0.007 0.165-0.019l-0.005 0.001c0.34-0.076 0.59-0.375 0.59-0.733 0-0.057-0.006-0.112-0.018-0.165l0.001 0.005z"/>
-        </svg>
-        </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              width="800px"
+              height="800px"
+              viewBox="0 0 32 32"
+              version="1.1"
+            >
+              <title>user</title>
+              <path d="M16 16.75c4.28 0 7.75-3.47 7.75-7.75s-3.47-7.75-7.75-7.75c-4.28 0-7.75 3.47-7.75 7.75v0c0.005 4.278 3.472 7.745 7.75 7.75h0zM16 2.75c3.452 0 6.25 2.798 6.25 6.25s-2.798 6.25-6.25 6.25c-3.452 0-6.25-2.798-6.25-6.25v0c0.004-3.45 2.8-6.246 6.25-6.25h0zM30.41 29.84c-1.503-6.677-7.383-11.59-14.41-11.59s-12.907 4.913-14.391 11.491l-0.019 0.099c-0.011 0.048-0.017 0.103-0.017 0.16 0 0.414 0.336 0.75 0.75 0.75 0.357 0 0.656-0.25 0.731-0.585l0.001-0.005c1.351-5.998 6.633-10.41 12.945-10.41s11.594 4.413 12.929 10.322l0.017 0.089c0.076 0.34 0.374 0.59 0.732 0.59 0 0 0.001 0 0.001 0h-0c0.057-0 0.112-0.007 0.165-0.019l-0.005 0.001c0.34-0.076 0.59-0.375 0.59-0.733 0-0.057-0.006-0.112-0.018-0.165l0.001 0.005z"/>
+            </svg>
+          </a>
         {%- endif -%}
-
-        
 
         <a
           href="{{ routes.cart_url }}"
           class="ma-action"
           aria-label="Cart{% if cart_count > 0 %}, {{ cart_count }} items{% endif %}"
         >
-          <svg class="lucide lucide-shopping-bag" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M16 10a4 4 0 0 1-8 0"></path> <path d="M3.103 6.034h17.794"></path> <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path> </svg>
+          <svg
+            class="lucide lucide-shopping-bag"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M16 10a4 4 0 0 1-8 0"></path> <path d="M3.103 6.034h17.794"></path> <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path>
+          </svg>
 
           {%- if cart_count > 0 -%}
             <span class="ma-cart-count">
@@ -2638,7 +2717,20 @@
         <input type="hidden" name="options[prefix]" value="last">
 
         <button type="submit" aria-label="Submit search">
-          <svg class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle> </svg>
+          <svg
+            class="lucide lucide-search"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle>
+          </svg>
         </button>
       </form>
     </div>
@@ -2863,116 +2955,94 @@
                         {%- endif -%}
 
                         {%- for menu_number in (1..4) -%}
-
-                            {%- capture category_key -%}
+                          {%- capture category_key -%}
                                 column_menu_{{ menu_number }}
                             {%- endcapture -%}
 
-                            {%- assign category_menu = matching_block.settings[category_key] -%}
+                          {%- assign category_menu = matching_block.settings[category_key] -%}
 
-                            {%- if category_menu != blank -%}
+                          {%- if category_menu != blank -%}
+                            {%- for category_link in category_menu.links -%}
+                              {%- if category_link.links != blank -%}
+                                <!--
+                                  =========================================
+                                      MOBILE CATEGORY WITH CHILDREN
+                                  ==========================================
+                                -->
 
-                                {%- for category_link in category_menu.links -%}
-
-                                {%- if category_link.links != blank -%}
-
-                                    <!-- =========================================
-                                        MOBILE CATEGORY WITH CHILDREN
-                                    ========================================== -->
-
-                                    <div class="ma-mobile-visual-category-group">
-
-                                    <button
-                                        type="button"
-                                        class="ma-mobile-visual-category-toggle"
-                                        aria-expanded="false"
-                                    >
-
-                                        <span class="ma-mobile-visual-category-title">
-                                        {{ category_link.title }}
-                                        </span>
-
-                                        <span
-                                        class="ma-mobile-visual-category-icon"
-                                        aria-hidden="true"
-                                        >
-                                        <span class="ma-mobile-visual-plus">+</span>
-                                        <span class="ma-mobile-visual-minus">−</span>
-                                        </span>
-
-                                    </button>
-
-
-                                    <!-- Children -->
-                                    <div
-                                        class="ma-mobile-visual-category-content"
-                                        hidden
-                                    >
-
-                                        <div class="ma-mobile-visual-category-children">
-
-                                        {%- for child_link in category_link.links -%}
-
-                                            <a
-                                            href="{{ child_link.url }}"
-                                            class="ma-mobile-visual-category-child"
-                                            >
-                                            {{ child_link.title }}
-                                            </a>
-
-                                        {%- endfor -%}
-
-                                        </div>
-
-
-                                        <!-- View All -->
-                                        <a
-                                        href="{{ category_link.url }}"
-                                        class="ma-mobile-visual-category-view-all"
-                                        >
-                                        <span>
-                                            View All {{ category_link.title }}
-                                        </span>
-
-                                        <span aria-hidden="true">→</span>
-                                        </a>
-
-                                    </div>
-
-                                    </div>
-
-
-                                {%- else -%}
-
-                                    <!-- =========================================
-                                        MOBILE CATEGORY WITHOUT CHILDREN
-                                    ========================================== -->
-
-                                    <a
-                                    class="ma-mobile-visual-category-link"
-                                    href="{{ category_link.url }}"
-                                    >
-
-                                    <span>
-                                        {{ category_link.title }}
+                                <div class="ma-mobile-visual-category-group">
+                                  <button
+                                    type="button"
+                                    class="ma-mobile-visual-category-toggle"
+                                    aria-expanded="false"
+                                  >
+                                    <span class="ma-mobile-visual-category-title">
+                                      {{ category_link.title }}
                                     </span>
 
                                     <span
-                                        class="ma-mobile-visual-category-plus"
-                                        aria-hidden="true"
+                                      class="ma-mobile-visual-category-icon"
+                                      aria-hidden="true"
                                     >
-                                        +
+                                      <span class="ma-mobile-visual-plus">+</span>
+                                      <span class="ma-mobile-visual-minus">−</span>
                                     </span>
+                                  </button>
 
+                                  <!-- Children -->
+                                  <div
+                                    class="ma-mobile-visual-category-content"
+                                    hidden
+                                  >
+                                    <div class="ma-mobile-visual-category-children">
+                                      {%- for child_link in category_link.links -%}
+                                        <a
+                                          href="{{ child_link.url }}"
+                                          class="ma-mobile-visual-category-child"
+                                        >
+                                          {{ child_link.title }}
+                                        </a>
+                                      {%- endfor -%}
+                                    </div>
+
+                                    <!-- View All -->
+                                    <a
+                                      href="{{ category_link.url }}"
+                                      class="ma-mobile-visual-category-view-all"
+                                    >
+                                      <span> View All {{ category_link.title }} </span>
+
+                                      <span aria-hidden="true">→</span>
                                     </a>
+                                  </div>
+                                </div>
 
-                                {%- endif -%}
+                              {%- else -%}
+                                <!--
+                                  =========================================
+                                      MOBILE CATEGORY WITHOUT CHILDREN
+                                  ==========================================
+                                -->
 
-                                {%- endfor -%}
+                                <a
+                                  class="ma-mobile-visual-category-link"
+                                  href="{{ category_link.url }}"
+                                >
+                                  <span>
+                                    {{ category_link.title }}
+                                  </span>
 
-                            {%- endif -%}
-
+                                  <span
+                                    class="ma-mobile-visual-category-plus"
+                                    aria-hidden="true"
+                                  >
+                                    +
+                                  </span>
+                                </a>
+                              {%- endif -%}
                             {%- endfor -%}
+                          {%- endif -%}
+                        {%- endfor -%}
                       </div>
 
                     {%- else -%}
@@ -3452,83 +3522,54 @@
         VISUAL MEGA MENU CATEGORY ACCORDIONS
         ------------------------------------------------------- */
 
-        const visualAccordions = Array.from(
-        root.querySelectorAll('[data-visual-accordion]')
-        );
+      const visualAccordions = Array.from(root.querySelectorAll('[data-visual-accordion]'));
 
-        visualAccordions.forEach((group) => {
-        const button = group.querySelector(
-            ':scope > .ma-visual-category-toggle'
-        );
+      visualAccordions.forEach((group) => {
+        const button = group.querySelector(':scope > .ma-visual-category-toggle');
 
-        const content = group.querySelector(
-            ':scope > .ma-visual-category-content'
-        );
+        const content = group.querySelector(':scope > .ma-visual-category-content');
 
         if (!button || !content) return;
 
         button.addEventListener('click', () => {
+          const isOpen = group.classList.contains('is-open');
 
-            const isOpen = group.classList.contains('is-open');
-
-            /* Close all other accordions */
-            visualAccordions.forEach((otherGroup) => {
-
+          /* Close all other accordions */
+          visualAccordions.forEach((otherGroup) => {
             if (otherGroup === group) return;
 
             otherGroup.classList.remove('is-open');
 
-            const otherButton = otherGroup.querySelector(
-                ':scope > .ma-visual-category-toggle'
-            );
+            const otherButton = otherGroup.querySelector(':scope > .ma-visual-category-toggle');
 
-            const otherContent = otherGroup.querySelector(
-                ':scope > .ma-visual-category-content'
-            );
+            const otherContent = otherGroup.querySelector(':scope > .ma-visual-category-content');
 
             if (otherButton) {
-                otherButton.setAttribute(
-                'aria-expanded',
-                'false'
-                );
+              otherButton.setAttribute('aria-expanded', 'false');
             }
 
             if (otherContent) {
-                otherContent.hidden = true;
+              otherContent.hidden = true;
             }
+          });
 
-            });
+          /* Toggle clicked accordion */
 
-
-            /* Toggle clicked accordion */
-
-            if (isOpen) {
-
+          if (isOpen) {
             group.classList.remove('is-open');
 
-            button.setAttribute(
-                'aria-expanded',
-                'false'
-            );
+            button.setAttribute('aria-expanded', 'false');
 
             content.hidden = true;
-
-            } else {
-
+          } else {
             group.classList.add('is-open');
 
-            button.setAttribute(
-                'aria-expanded',
-                'true'
-            );
+            button.setAttribute('aria-expanded', 'true');
 
             content.hidden = false;
-
-            }
-
+          }
         });
-
-        });
+      });
       /* -------------------------------------------------------
          MOBILE DRAWER
       ------------------------------------------------------- */
@@ -3638,91 +3679,59 @@
         MOBILE VISUAL MEGA MENU ACCORDIONS
         ------------------------------------------------------- */
 
-        const mobileVisualAccordionGroups = Array.from(
-        root.querySelectorAll('.ma-mobile-visual-category-group')
-        );
+      const mobileVisualAccordionGroups = Array.from(root.querySelectorAll('.ma-mobile-visual-category-group'));
 
-        mobileVisualAccordionGroups.forEach((group) => {
+      mobileVisualAccordionGroups.forEach((group) => {
+        const button = group.querySelector(':scope > .ma-mobile-visual-category-toggle');
 
-        const button = group.querySelector(
-            ':scope > .ma-mobile-visual-category-toggle'
-        );
-
-        const content = group.querySelector(
-            ':scope > .ma-mobile-visual-category-content'
-        );
+        const content = group.querySelector(':scope > .ma-mobile-visual-category-content');
 
         if (!button || !content) return;
 
-
         button.addEventListener('click', () => {
+          const isOpen = group.classList.contains('is-open');
 
-            const isOpen = group.classList.contains('is-open');
-
-
-            /* ---------------------------------------------
+          /* ---------------------------------------------
             Close all other category accordions
             --------------------------------------------- */
 
-            mobileVisualAccordionGroups.forEach((otherGroup) => {
-
+          mobileVisualAccordionGroups.forEach((otherGroup) => {
             if (otherGroup === group) return;
 
             otherGroup.classList.remove('is-open');
 
-            const otherButton = otherGroup.querySelector(
-                ':scope > .ma-mobile-visual-category-toggle'
-            );
+            const otherButton = otherGroup.querySelector(':scope > .ma-mobile-visual-category-toggle');
 
-            const otherContent = otherGroup.querySelector(
-                ':scope > .ma-mobile-visual-category-content'
-            );
+            const otherContent = otherGroup.querySelector(':scope > .ma-mobile-visual-category-content');
 
             if (otherButton) {
-                otherButton.setAttribute(
-                'aria-expanded',
-                'false'
-                );
+              otherButton.setAttribute('aria-expanded', 'false');
             }
 
             if (otherContent) {
-                otherContent.hidden = true;
+              otherContent.hidden = true;
             }
+          });
 
-            });
-
-
-            /* ---------------------------------------------
+          /* ---------------------------------------------
             Toggle current category
             --------------------------------------------- */
 
-            if (isOpen) {
-
+          if (isOpen) {
             group.classList.remove('is-open');
 
-            button.setAttribute(
-                'aria-expanded',
-                'false'
-            );
+            button.setAttribute('aria-expanded', 'false');
 
             content.hidden = true;
-
-            } else {
-
+          } else {
             group.classList.add('is-open');
 
-            button.setAttribute(
-                'aria-expanded',
-                'true'
-            );
+            button.setAttribute('aria-expanded', 'true');
 
             content.hidden = false;
-
-            }
-
+          }
         });
-
-        });
+      });
       /* -------------------------------------------------------
          SEARCH
       ------------------------------------------------------- */
@@ -3796,24 +3805,24 @@
   "class": "section-modern-aussies-header",
   "settings": [
     {
-    "type": "select",
-    "id": "sticky_header",
-    "label": "Sticky header",
-    "options": [
+      "type": "select",
+      "id": "sticky_header",
+      "label": "Sticky header",
+      "options": [
         {
-        "value": "none",
-        "label": "None"
+          "value": "none",
+          "label": "None"
         },
         {
-        "value": "on_scroll",
-        "label": "Sticky on scroll"
+          "value": "on_scroll",
+          "label": "Sticky on scroll"
         },
         {
-        "value": "always",
-        "label": "Sticky always"
+          "value": "always",
+          "label": "Sticky always"
         }
-    ],
-    "default": "none"
+      ],
+      "default": "none"
     },
     {
       "type": "header",
