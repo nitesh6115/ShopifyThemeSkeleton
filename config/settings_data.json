@@ -18,7 +18,7 @@
           "mega_menu_2_XNKrEq": {
             "type": "mega_menu_2",
             "settings": {
-              "menu_item": "Solutions",
+              "menu_item": "Shop All",
               "layout": "products_featured",
               "eyebrow": "A More Comfortable Home",
               "title": "Better Nights, Easier Days",
@@ -62,9 +62,9 @@
           "mega_menu_ctRQc6": {
             "type": "mega_menu",
             "settings": {
-              "menu_item": "Shop All",
+              "menu_item": "Solutions",
               "layout": "products_focus",
-              "show_hot_badge": true,
+              "show_hot_badge": false,
               "hot_badge_text": "Hot",
               "column_1_title": "adsfasd",
               "column_1_menu": "main-menu",
