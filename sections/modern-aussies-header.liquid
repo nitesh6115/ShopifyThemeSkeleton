@@ -2209,7 +2209,7 @@
               -%}
 
               <li
-                class="ma-nav-item{% if has_mega %} has-mega{% endif %}"
+                class="ma-nav-item{% if has_mega or link.links != blank  %} has-mega{% endif %}"
                 data-menu-item="{{ menu_handle }}"
               >
                 <a
