@@ -17,6 +17,7 @@
         "blocks": {
           "mega_menu_2_XNKrEq": {
             "type": "mega_menu_2",
+            "disabled": true,
             "settings": {
               "menu_item": "Solutions",
               "layout": "products_featured",
