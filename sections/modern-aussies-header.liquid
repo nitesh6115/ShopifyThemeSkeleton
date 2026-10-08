@@ -91,7 +91,40 @@
   }
 
 
- 
+  /* ---------------------------------------------------------
+     STICKY ON SCROLL
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-scroll {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease;
+  }
+
+
+  /* Header hidden while scrolling down */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-scroll.ma-header-hidden {
+    transform: translateY(-100%);
+  }
+
+
+  /* Header visible */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-scroll.ma-header-visible {
+    transform: translateY(0);
+  }
+
+
+  /* Shadow after scrolling */
+
+  #ModernAussiesHeader-{{ section.id }}.ma-sticky-scrolled {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+  }
+  
       #ModernAussiesHeader-{{ section.id }} *,
       #ModernAussiesHeader-{{ section.id }} *::before,
       #ModernAussiesHeader-{{ section.id }} *::after {
