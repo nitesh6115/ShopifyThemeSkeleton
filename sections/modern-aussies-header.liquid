@@ -713,6 +713,427 @@
   }
 
   /* ---------------------------------------------------------
+     NEW LAYOUT - VISUAL HOME / PRODUCTS / FEATURED
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
+    display: grid;
+    grid-template-columns: minmax(250px, .78fr) minmax(520px, 1.7fr) minmax(250px, .72fr);
+    min-height: 570px;
+    background: var(--ma-mega-bg);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 24px 20px 18px;
+    border-right: 1px solid var(--ma-border);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-eyebrow {
+    margin: 0 0 4px;
+    color: var(--ma-accent);
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-title {
+    margin: 0 0 8px;
+    color: var(--ma-mega-text);
+    font-size: 23px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-description {
+    margin: 0 0 13px;
+    color: var(--ma-mega-text);
+    font-size: 10px;
+    line-height: 1.5;
+    opacity: .82;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-trust {
+    display: grid;
+    gap: 6px;
+    margin: 0 0 14px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--ma-mega-text);
+    font-size: 9px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-icon {
+    width: 11px;
+    height: 11px;
+    flex: 0 0 11px;
+    border: 1px solid var(--ma-accent);
+    border-radius: 50%;
+    position: relative;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-trust-icon::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    width: 3px;
+    height: 5px;
+    border-right: 1px solid var(--ma-accent);
+    border-bottom: 1px solid var(--ma-accent);
+    transform: rotate(45deg);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-categories {
+    margin-top: 3px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 30px;
+    padding: 5px 0;
+    border-top: 1px solid var(--ma-border);
+    color: var(--ma-mega-text);
+    font-size: 9px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-category:last-child {
+    border-bottom: 1px solid var(--ma-border);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-category span {
+    transition: color .16s ease, transform .16s ease;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-category:hover span:first-child {
+    color: var(--ma-accent);
+    transform: translateX(2px);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-category-plus {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
+    position: relative;
+    display: block;
+    margin-top: auto;
+    min-height: 58px;
+    overflow: hidden;
+    border-radius: var(--ma-card-radius);
+    background: #e8e3d8;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner img {
+    width: 100%;
+    height: 58px;
+    display: block;
+    object-fit: cover;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
+    min-width: 0;
+    padding: 24px 16px 18px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-products-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 13px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-products-eyebrow {
+    margin: 0 0 3px;
+    color: var(--ma-accent);
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-products-title {
+    margin: 0;
+    color: var(--ma-mega-text);
+    font-size: 17px;
+    line-height: 1.15;
+    font-weight: 800;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-view-all {
+    color: var(--ma-mega-text);
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-view-all:hover {
+    color: var(--ma-accent);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-image {
+    position: relative;
+    aspect-ratio: 1.48 / 1;
+    overflow: hidden;
+    border: 1px solid var(--ma-border);
+    border-radius: var(--ma-card-radius);
+    background: #eeeae1;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .25s ease;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-card:hover .ma-visual-product-image img {
+    transform: scale(1.025);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    z-index: 1;
+    padding: 3px 5px;
+    border-radius: 3px;
+    background: #102a4e;
+    color: #fff;
+    font-size: 7px;
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-info {
+    padding: 6px 0 0;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin: 0 0 3px;
+    color: var(--ma-mega-text);
+    font-size: 9px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-rating {
+    margin: 0 0 3px;
+    color: var(--ma-accent);
+    font-size: 7px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-product-price {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-current-price {
+    color: var(--ma-mega-text);
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-compare-price {
+    color: #777;
+    font-size: 7px;
+    line-height: 1.2;
+    text-decoration: line-through;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-products-cta {
+    margin-top: auto;
+    padding-top: 14px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-products-cta .ma-cta {
+    width: 100%;
+    min-height: 34px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 8px;
+    text-transform: uppercase;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature {
+    position: relative;
+    min-width: 0;
+    min-height: 570px;
+    overflow: hidden;
+    background: #d9d3c8;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature::after {
+    content: '';
+    position: absolute;
+    inset: 25% 0 0;
+    background: linear-gradient(transparent, rgba(9,25,52,.96));
+    pointer-events: none;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-copy {
+    position: absolute;
+    z-index: 2;
+    left: 18px;
+    right: 18px;
+    bottom: 20px;
+    color: #fff;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-badge {
+    display: inline-flex;
+    margin-bottom: 8px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    background: #b17c18;
+    color: #fff;
+    font-size: 7px;
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 7px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-title {
+    margin: 0 0 5px;
+    color: inherit;
+    font-size: 20px;
+    line-height: 1.05;
+    font-weight: 800;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-description {
+    margin: 0 0 10px;
+    font-size: 8px;
+    line-height: 1.45;
+    opacity: .92;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-visual-feature-link {
+    color: #fff;
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1200px) {
+    #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
+      grid-template-columns: 230px minmax(0, 1fr) 240px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
+      padding-left: 13px;
+      padding-right: 13px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  @media (max-width: {{ section.settings.mobile_breakpoint }}px) {
+    #ModernAussiesHeader-{{ section.id }} .ma-layout-visual {
+      display: block;
+      min-height: 0;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar,
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-products {
+      padding: 18px 16px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar {
+      border-right: 0;
+      border-bottom: 1px solid var(--ma-border);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-sidebar-banner {
+      margin-top: 14px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-visual-feature {
+      min-height: 390px;
+    }
+  }
+
+  /* ---------------------------------------------------------
      CTA
   --------------------------------------------------------- */
 
@@ -1265,7 +1686,7 @@
                 assign has_mega = false
 
                 for block in section.blocks
-                  if block.type == 'mega_menu'
+                  if block.type == 'mega_menu' or block.type == 'mega_menu_2'
                     assign block_menu_handle = block.settings.menu_item | handleize
 
                     if block_menu_handle == menu_handle
@@ -1300,11 +1721,164 @@
                 </a>
 
                 {%- if has_mega -%}
-                  {% render 'modern-aussies-mega-menu',
-                    block: matching_block,
-                    link: link,
-                    section: section
-                  %}
+
+                  {%- if matching_block.type == 'mega_menu_2' -%}
+                    <div class="ma-mega ma-mega-visual">
+                      <div class="ma-mega-inner">
+                        <div class="ma-mega-panel">
+
+                          <div class="ma-layout-visual" {{ matching_block.shopify_attributes }}>
+
+                            <div class="ma-visual-sidebar">
+                              {%- if matching_block.settings.eyebrow != blank -%}
+                                <p class="ma-visual-eyebrow">{{ matching_block.settings.eyebrow }}</p>
+                              {%- endif -%}
+
+                              {%- if matching_block.settings.title != blank -%}
+                                <h3 class="ma-visual-title">{{ matching_block.settings.title }}</h3>
+                              {%- endif -%}
+
+                              {%- if matching_block.settings.description != blank -%}
+                                <p class="ma-visual-description">{{ matching_block.settings.description }}</p>
+                              {%- endif -%}
+
+                              {%- if matching_block.settings.show_trust_bar -%}
+                                <div class="ma-visual-trust">
+                                  {%- assign visual_trust_items = 'trust_1_text|trust_2_text|trust_3_text' | split: '|' -%}
+                                  {%- for trust_key in visual_trust_items -%}
+                                    {%- assign trust_text = matching_block.settings[trust_key] -%}
+                                    {%- if trust_text != blank -%}
+                                      <div class="ma-visual-trust-item">
+                                        <span class="ma-visual-trust-icon" aria-hidden="true"></span>
+                                        <span>{{ trust_text }}</span>
+                                      </div>
+                                    {%- endif -%}
+                                  {%- endfor -%}
+                                </div>
+                              {%- endif -%}
+
+                              <div class="ma-visual-categories">
+                                {%- for menu_number in (1..4) -%}
+                                  {%- capture category_key -%}column_menu_{{ menu_number }}{%- endcapture -%}
+                                  {%- assign category_menu = matching_block.settings[category_key] -%}
+                                  {%- if category_menu != blank -%}
+                                    {%- for category_link in category_menu.links -%}
+                                      <a class="ma-visual-category" href="{{ category_link.url }}">
+                                        <span>{{ category_link.title }}</span>
+                                        <span class="ma-visual-category-plus" aria-hidden="true">+</span>
+                                      </a>
+                                    {%- endfor -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+
+                              {%- if matching_block.settings.side_image != blank -%}
+                                {%- assign sidebar_image_link = matching_block.settings.side_image_url | default: link.url -%}
+                                <a class="ma-visual-sidebar-banner" href="{{ sidebar_image_link }}">
+                                  {{ matching_block.settings.side_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,500,700,800', alt: matching_block.settings.side_image_alt }}
+                                </a>
+                              {%- endif -%}
+                            </div>
+
+                            <div class="ma-visual-products">
+                              <div class="ma-visual-products-head">
+                                <div>
+                                  {%- if matching_block.settings.products_eyebrow != blank -%}
+                                    <p class="ma-visual-products-eyebrow">{{ matching_block.settings.products_eyebrow }}</p>
+                                  {%- endif -%}
+                                  {%- if matching_block.settings.products_title != blank -%}
+                                    <h3 class="ma-visual-products-title">{{ matching_block.settings.products_title }}</h3>
+                                  {%- endif -%}
+                                </div>
+                                {%- if matching_block.settings.products_view_all_url != blank -%}
+                                  <a class="ma-visual-view-all" href="{{ matching_block.settings.products_view_all_url }}">
+                                    {{ matching_block.settings.products_view_all_label | default: 'View all →' }}
+                                  </a>
+                                {%- endif -%}
+                              </div>
+
+                              <div class="ma-visual-product-grid">
+                                {%- for product_number in (1..4) -%}
+                                  {%- capture product_key -%}product_{{ product_number }}{%- endcapture -%}
+                                  {%- capture badge_key -%}product_{{ product_number }}_badge{%- endcapture -%}
+                                  {%- assign visual_product = matching_block.settings[product_key] -%}
+                                  {%- assign visual_badge = matching_block.settings[badge_key] -%}
+
+                                  {%- if visual_product != blank -%}
+                                    <a class="ma-visual-product-card" href="{{ visual_product.url }}">
+                                      <div class="ma-visual-product-image">
+                                        {%- if visual_badge != blank -%}
+                                          <span class="ma-visual-product-badge">{{ visual_badge }}</span>
+                                        {%- endif -%}
+                                        {%- if visual_product.featured_image != blank -%}
+                                          {{ visual_product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300,450,600,750,900', alt: visual_product.title }}
+                                        {%- endif -%}
+                                      </div>
+                                      <div class="ma-visual-product-info">
+                                        <p class="ma-visual-product-title">{{ visual_product.title }}</p>
+                                        {%- if matching_block.settings.show_product_rating -%}
+                                          <div class="ma-visual-product-rating" aria-label="5 out of 5 stars">★★★★★</div>
+                                        {%- endif -%}
+                                        <div class="ma-visual-product-price">
+                                          <span class="ma-visual-current-price">{{ visual_product.price | money }}</span>
+                                          {%- if visual_product.compare_at_price > visual_product.price -%}
+                                            <span class="ma-visual-compare-price">{{ visual_product.compare_at_price | money }}</span>
+                                          {%- endif -%}
+                                        </div>
+                                      </div>
+                                    </a>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+
+                              {%- if matching_block.settings.products_cta_url != blank -%}
+                                <div class="ma-visual-products-cta">
+                                  <a class="ma-cta" href="{{ matching_block.settings.products_cta_url }}">
+                                    {{ matching_block.settings.products_cta_label | default: 'Shop all home & living →' }}
+                                  </a>
+                                </div>
+                              {%- endif -%}
+                            </div>
+
+                            <div class="ma-visual-feature">
+                              {%- if matching_block.settings.featured_image != blank -%}
+                                {{ matching_block.settings.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500,700,900,1200', alt: matching_block.settings.featured_title }}
+                              {%- endif -%}
+
+                              <div class="ma-visual-feature-copy">
+                                {%- if matching_block.settings.featured_badge != blank -%}
+                                  <span class="ma-visual-feature-badge">{{ matching_block.settings.featured_badge }}</span>
+                                {%- endif -%}
+                                {%- if matching_block.settings.featured_label != blank -%}
+                                  <span class="ma-visual-feature-label">{{ matching_block.settings.featured_label }}</span>
+                                {%- endif -%}
+                                {%- if matching_block.settings.featured_title != blank -%}
+                                  <h3 class="ma-visual-feature-title">{{ matching_block.settings.featured_title }}</h3>
+                                {%- endif -%}
+                                {%- if matching_block.settings.featured_description != blank -%}
+                                  <p class="ma-visual-feature-description">{{ matching_block.settings.featured_description }}</p>
+                                {%- endif -%}
+                                {%- if matching_block.settings.featured_cta_url != blank -%}
+                                  <a class="ma-visual-feature-link" href="{{ matching_block.settings.featured_cta_url }}">
+                                    {{ matching_block.settings.featured_cta_label | default: 'Shop the edit →' }}
+                                  </a>
+                                {%- endif -%}
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  {%- else -%}
+                    {% render 'modern-aussies-mega-menu',
+                      block: matching_block,
+                      link: link,
+                      section: section
+                    %}
+                  {%- endif -%}
+
                 {%- elsif link.links != blank -%}
                   <div class="ma-mega">
                     <div class="ma-mega-inner">
@@ -1578,7 +2152,7 @@
               assign has_mega = false
 
               for block in section.blocks
-                if block.type == 'mega_menu'
+                if block.type == 'mega_menu' or block.type == 'mega_menu_2'
                   assign block_menu_handle = block.settings.menu_item | handleize
 
                   if block_menu_handle == menu_handle
@@ -1645,6 +2219,49 @@
                   </div>
 
                   {%- if has_mega -%}
+
+                    {%- if matching_block.type == 'mega_menu_2' -%}
+                      <div class="ma-mobile-submenu-section">
+                        {%- if matching_block.settings.eyebrow != blank -%}
+                          <div class="ma-visual-eyebrow">{{ matching_block.settings.eyebrow }}</div>
+                        {%- endif -%}
+                        {%- if matching_block.settings.title != blank -%}
+                          <strong class="ma-mobile-submenu-title">{{ matching_block.settings.title }}</strong>
+                        {%- endif -%}
+                        {%- if matching_block.settings.description != blank -%}
+                          <div style="font-size:13px;line-height:1.45;margin-bottom:10px;">{{ matching_block.settings.description }}</div>
+                        {%- endif -%}
+
+                        {%- if matching_block.settings.show_trust_bar -%}
+                          <div class="ma-visual-trust">
+                            {%- assign mobile_visual_trust_items = 'trust_1_text|trust_2_text|trust_3_text' | split: '|' -%}
+                            {%- for trust_key in mobile_visual_trust_items -%}
+                              {%- assign trust_text = matching_block.settings[trust_key] -%}
+                              {%- if trust_text != blank -%}
+                                <div class="ma-visual-trust-item">
+                                  <span class="ma-visual-trust-icon" aria-hidden="true"></span>
+                                  <span>{{ trust_text }}</span>
+                                </div>
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </div>
+                        {%- endif -%}
+
+                        {%- for menu_number in (1..4) -%}
+                          {%- capture category_key -%}column_menu_{{ menu_number }}{%- endcapture -%}
+                          {%- assign category_menu = matching_block.settings[category_key] -%}
+                          {%- if category_menu != blank -%}
+                            {%- for category_link in category_menu.links -%}
+                              <a class="ma-visual-category" href="{{ category_link.url }}">
+                                <span>{{ category_link.title }}</span>
+                                <span class="ma-visual-category-plus" aria-hidden="true">+</span>
+                              </a>
+                            {%- endfor -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+
+                    {%- else -%}
 
                     {%- case matching_block.settings.layout -%}
 
@@ -1804,6 +2421,8 @@
                         </div>
 
                     {%- endcase -%}
+
+                    {%- endif -%}
 
                   {%- else -%}
 
@@ -2924,7 +3543,7 @@
     },
     {
       "type": "mega_menu_2",
-      "name": "Mega menu 2",
+      "name": "Menus/Products/Featured",
       "settings": [
         {
           "type": "text",
