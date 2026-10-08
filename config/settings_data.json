@@ -47,7 +47,6 @@
               "products_cta_label": "Shop all home & living →",
               "products_cta_url": "shopify://collections",
               "featured_image": "shopify://shop_images/may3rd-44_541ca75b-5ac6-4ba5-bdc6-37e32429b555.jpg",
-              "side_image": "shopify://shop_images/may3rd-41.jpg",
               "side_image_url": "shopify://products/test-edfa",
               "side_image_alt": "DFAE DFAE",
               "featured_badge": "Save up to 35%",
@@ -124,6 +123,7 @@
           "mega_menu_tif8pB"
         ],
         "settings": {
+          "sticky_header": "on_scroll",
           "logo": "shopify://shop_images/LOGO-APOLLO.webp",
           "logo_width": 150,
           "mobile_logo_width": 125,
