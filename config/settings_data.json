@@ -34,7 +34,7 @@
               "products_eyebrow": "Shop the favourites",
               "products_title": "Trending now",
               "products_view_all_label": "View all →",
-              "products_view_all_url": "",
+              "products_view_all_url": "shopify://collections",
               "product_1": "essentialworkers",
               "product_1_badge": "Best Seller",
               "product_2": "heroine",
