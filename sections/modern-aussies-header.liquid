@@ -2553,7 +2553,7 @@
       <div class="ma-actions">
         {%- if section.settings.show_currency and localization.available_countries.size > 1 -%}
           <div class="ma-currency">
-            {%- form 'localization', id: 'HeaderCurrencyForm-' | append: section.id, class: 'ma-localization-form' -%}
+            {%- form 'localization', id: 'HeaderCurrencyForm-', class: 'ma-localization-form' -%}
               <select
                 name="country_code"
                 aria-label="Currency"
