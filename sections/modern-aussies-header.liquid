@@ -1642,13 +1642,14 @@
   data-mobile-breakpoint="{{ section.settings.mobile_breakpoint }}"
   data-leave-delay="{{ section.settings.mouse_leave_delay }}"
 >
-  <!-- ======================================================
-       DESKTOP HEADER
-  ======================================================= -->
+  <!--
+    ======================================================
+         DESKTOP HEADER
+    =======================================================
+  -->
 
   <div class="ma-header-main">
     <div class="ma-header-container">
-
       <!-- Logo -->
       <a
         class="ma-logo"
@@ -1659,11 +1660,7 @@
           {{
             header_logo
             | image_url: width: 600
-            | image_tag:
-              loading: 'eager',
-              widths: '120,180,240,320,400,500,600',
-              class: 'ma-logo-image',
-              alt: shop.name
+            | image_tag: loading: 'eager', widths: '120,180,240,320,400,500,600', class: 'ma-logo-image', alt: shop.name
           }}
         {%- else -%}
           <span class="ma-logo-text">{{ shop.name }}</span>
@@ -1677,9 +1674,7 @@
       >
         {%- if menu != blank -%}
           <ul class="ma-nav-list" role="list">
-
             {%- for link in menu.links -%}
-
               {%- liquid
                 assign menu_handle = link.title | handleize
                 assign matching_block = blank
@@ -1705,7 +1700,9 @@
                 <a
                   href="{{ link.url }}"
                   class="ma-nav-link"
-                  {% if has_mega %}aria-haspopup="true" aria-expanded="false"{% endif %}
+                  {% if has_mega %}
+                    aria-haspopup="true" aria-expanded="false"
+                  {% endif %}
                 >
                   <span>{{ link.title }}</span>
 
@@ -1721,14 +1718,11 @@
                 </a>
 
                 {%- if has_mega -%}
-
                   {%- if matching_block.type == 'mega_menu_2' -%}
                     <div class="ma-mega ma-mega-visual">
                       <div class="ma-mega-inner">
                         <div class="ma-mega-panel">
-
                           <div class="ma-layout-visual" {{ matching_block.shopify_attributes }}>
-
                             <div class="ma-visual-sidebar">
                               {%- if matching_block.settings.eyebrow != blank -%}
                                 <p class="ma-visual-eyebrow">{{ matching_block.settings.eyebrow }}</p>
@@ -1744,7 +1738,9 @@
 
                               {%- if matching_block.settings.show_trust_bar -%}
                                 <div class="ma-visual-trust">
-                                  {%- assign visual_trust_items = 'trust_1_text|trust_2_text|trust_3_text' | split: '|' -%}
+                                  {%- assign visual_trust_items = 'trust_1_text|trust_2_text|trust_3_text'
+                                    | split: '|'
+                                  -%}
                                   {%- for trust_key in visual_trust_items -%}
                                     {%- assign trust_text = matching_block.settings[trust_key] -%}
                                     {%- if trust_text != blank -%}
@@ -1758,24 +1754,123 @@
                               {%- endif -%}
 
                               <div class="ma-visual-categories">
+                                {%- assign accordion_opened = false -%}
+
                                 {%- for menu_number in (1..4) -%}
                                   {%- capture category_key -%}column_menu_{{ menu_number }}{%- endcapture -%}
                                   {%- assign category_menu = matching_block.settings[category_key] -%}
                                   {%- if category_menu != blank -%}
                                     {%- for category_link in category_menu.links -%}
-                                      <a class="ma-visual-category" href="{{ category_link.url }}">
-                                        <span>{{ category_link.title }}</span>
-                                        <span class="ma-visual-category-plus" aria-hidden="true">+</span>
-                                      </a>
+                                      {%- assign has_children = false -%}
+
+                                      {%- if category_link.links != blank -%}
+                                        {%- assign has_children = true -%}
+                                      {%- endif -%}
+
+                                      {%- if has_children -%}
+                                        {%- assign is_first_open = false -%}
+
+                                        {%- unless accordion_opened -%}
+                                          {%- assign is_first_open = true -%}
+                                          {%- assign accordion_opened = true -%}
+                                        {%- endunless -%}
+
+                                        <div
+                                          class="ma-visual-category-group{% if is_first_open %} is-open{% endif %}"
+                                          data-visual-accordion
+                                        >
+                                          <!-- Parent -->
+                                          <button
+                                            type="button"
+                                            class="ma-visual-category ma-visual-category-toggle"
+                                            aria-expanded="{% if is_first_open %}true{% else %}false{% endif %}"
+                                            aria-controls="VisualCategory-{{ section.id }}-{{ matching_block.id }}-{{ menu_number }}-{{ forloop.index }}"
+                                          >
+                                            <span class="ma-visual-category-title">
+                                              {{ category_link.title }}
+                                            </span>
+
+                                            <span
+                                              class="ma-visual-category-plus"
+                                              aria-hidden="true"
+                                            >
+                                              <span class="ma-plus">+</span>
+                                              <span class="ma-minus">−</span>
+                                            </span>
+                                          </button>
+
+                                          <!-- Accordion content -->
+                                          <div
+                                            id="VisualCategory-{{ section.id }}-{{ matching_block.id }}-{{ menu_number }}-{{ forloop.index }}"
+                                            class="ma-visual-category-content"
+                                            {% unless is_first_open %}
+                                              hidden
+                                            {% endunless %}
+                                          >
+                                            <div class="ma-visual-category-children">
+                                              {%- for child_link in category_link.links -%}
+                                                <a
+                                                  class="ma-visual-category-child"
+                                                  href="{{ child_link.url }}"
+                                                >
+                                                  {{ child_link.title }}
+                                                </a>
+                                              {%- endfor -%}
+                                            </div>
+
+                                            <!-- View All -->
+                                            <a
+                                              class="ma-visual-category-view-all"
+                                              href="{{ category_link.url }}"
+                                            >
+                                              <span> View All {{ category_link.title }} </span>
+
+                                              <span
+                                                class="ma-visual-category-arrow"
+                                                aria-hidden="true"
+                                              >
+                                                →
+                                              </span>
+                                            </a>
+                                          </div>
+                                        </div>
+
+                                      {%- else -%}
+                                        <!-- Normal category without children -->
+                                        <a
+                                          class="ma-visual-category ma-visual-category-link"
+                                          href="{{ category_link.url }}"
+                                        >
+                                          <span class="ma-visual-category-title">
+                                            {{ category_link.title }}
+                                          </span>
+
+                                          <span
+                                            class="ma-visual-category-plus"
+                                            aria-hidden="true"
+                                          >
+                                            +
+                                          </span>
+                                        </a>
+                                      {%- endif -%}
                                     {%- endfor -%}
                                   {%- endif -%}
                                 {%- endfor -%}
                               </div>
 
                               {%- if matching_block.settings.side_image != blank -%}
-                                {%- assign sidebar_image_link = matching_block.settings.side_image_url | default: link.url -%}
+                                {%- assign sidebar_image_link = matching_block.settings.side_image_url
+                                  | default: link.url
+                                -%}
                                 <a class="ma-visual-sidebar-banner" href="{{ sidebar_image_link }}">
-                                  {{ matching_block.settings.side_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,500,700,800', alt: matching_block.settings.side_image_alt }}
+                                  {{
+                                    matching_block.settings.side_image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                      loading: 'lazy',
+                                      widths: '300,500,700,800',
+                                      alt: matching_block.settings.side_image_alt
+                                  }}
                                 </a>
                               {%- endif -%}
                             </div>
@@ -1784,14 +1879,21 @@
                               <div class="ma-visual-products-head">
                                 <div>
                                   {%- if matching_block.settings.products_eyebrow != blank -%}
-                                    <p class="ma-visual-products-eyebrow">{{ matching_block.settings.products_eyebrow }}</p>
+                                    <p class="ma-visual-products-eyebrow">
+                                      {{ matching_block.settings.products_eyebrow }}
+                                    </p>
                                   {%- endif -%}
                                   {%- if matching_block.settings.products_title != blank -%}
-                                    <h3 class="ma-visual-products-title">{{ matching_block.settings.products_title }}</h3>
+                                    <h3 class="ma-visual-products-title">
+                                      {{ matching_block.settings.products_title }}
+                                    </h3>
                                   {%- endif -%}
                                 </div>
                                 {%- if matching_block.settings.products_view_all_url != blank -%}
-                                  <a class="ma-visual-view-all" href="{{ matching_block.settings.products_view_all_url }}">
+                                  <a
+                                    class="ma-visual-view-all"
+                                    href="{{ matching_block.settings.products_view_all_url }}"
+                                  >
                                     {{ matching_block.settings.products_view_all_label | default: 'View all →' }}
                                   </a>
                                 {%- endif -%}
@@ -1811,18 +1913,31 @@
                                           <span class="ma-visual-product-badge">{{ visual_badge }}</span>
                                         {%- endif -%}
                                         {%- if visual_product.featured_image != blank -%}
-                                          {{ visual_product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300,450,600,750,900', alt: visual_product.title }}
+                                          {{
+                                            visual_product.featured_image
+                                            | image_url: width: 900
+                                            | image_tag:
+                                              loading: 'lazy',
+                                              widths: '300,450,600,750,900',
+                                              alt: visual_product.title
+                                          }}
                                         {%- endif -%}
                                       </div>
                                       <div class="ma-visual-product-info">
                                         <p class="ma-visual-product-title">{{ visual_product.title }}</p>
                                         {%- if matching_block.settings.show_product_rating -%}
-                                          <div class="ma-visual-product-rating" aria-label="5 out of 5 stars">★★★★★</div>
+                                          <div class="ma-visual-product-rating" aria-label="5 out of 5 stars">
+                                            ★★★★★
+                                          </div>
                                         {%- endif -%}
                                         <div class="ma-visual-product-price">
-                                          <span class="ma-visual-current-price">{{ visual_product.price | money }}</span>
+                                          <span class="ma-visual-current-price">
+                                            {{- visual_product.price | money -}}
+                                          </span>
                                           {%- if visual_product.compare_at_price > visual_product.price -%}
-                                            <span class="ma-visual-compare-price">{{ visual_product.compare_at_price | money }}</span>
+                                            <span class="ma-visual-compare-price">
+                                              {{- visual_product.compare_at_price | money -}}
+                                            </span>
                                           {%- endif -%}
                                         </div>
                                       </div>
@@ -1834,7 +1949,10 @@
                               {%- if matching_block.settings.products_cta_url != blank -%}
                                 <div class="ma-visual-products-cta">
                                   <a class="ma-cta" href="{{ matching_block.settings.products_cta_url }}">
-                                    {{ matching_block.settings.products_cta_label | default: 'Shop all home & living →' }}
+                                    {{
+                                      matching_block.settings.products_cta_label
+                                      | default: 'Shop all home & living →'
+                                    }}
                                   </a>
                                 </div>
                               {%- endif -%}
@@ -1842,41 +1960,52 @@
 
                             <div class="ma-visual-feature">
                               {%- if matching_block.settings.featured_image != blank -%}
-                                {{ matching_block.settings.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500,700,900,1200', alt: matching_block.settings.featured_title }}
+                                {{
+                                  matching_block.settings.featured_image
+                                  | image_url: width: 1200
+                                  | image_tag:
+                                    loading: 'lazy',
+                                    widths: '500,700,900,1200',
+                                    alt: matching_block.settings.featured_title
+                                }}
                               {%- endif -%}
 
                               <div class="ma-visual-feature-copy">
                                 {%- if matching_block.settings.featured_badge != blank -%}
-                                  <span class="ma-visual-feature-badge">{{ matching_block.settings.featured_badge }}</span>
+                                  <span class="ma-visual-feature-badge">
+                                    {{- matching_block.settings.featured_badge -}}
+                                  </span>
                                 {%- endif -%}
                                 {%- if matching_block.settings.featured_label != blank -%}
-                                  <span class="ma-visual-feature-label">{{ matching_block.settings.featured_label }}</span>
+                                  <span class="ma-visual-feature-label">
+                                    {{- matching_block.settings.featured_label -}}
+                                  </span>
                                 {%- endif -%}
                                 {%- if matching_block.settings.featured_title != blank -%}
                                   <h3 class="ma-visual-feature-title">{{ matching_block.settings.featured_title }}</h3>
                                 {%- endif -%}
                                 {%- if matching_block.settings.featured_description != blank -%}
-                                  <p class="ma-visual-feature-description">{{ matching_block.settings.featured_description }}</p>
+                                  <p class="ma-visual-feature-description">
+                                    {{ matching_block.settings.featured_description }}
+                                  </p>
                                 {%- endif -%}
                                 {%- if matching_block.settings.featured_cta_url != blank -%}
-                                  <a class="ma-visual-feature-link" href="{{ matching_block.settings.featured_cta_url }}">
+                                  <a
+                                    class="ma-visual-feature-link"
+                                    href="{{ matching_block.settings.featured_cta_url }}"
+                                  >
                                     {{ matching_block.settings.featured_cta_label | default: 'Shop the edit →' }}
                                   </a>
                                 {%- endif -%}
                               </div>
                             </div>
-
                           </div>
                         </div>
                       </div>
                     </div>
 
                   {%- else -%}
-                    {% render 'modern-aussies-mega-menu',
-                      block: matching_block,
-                      link: link,
-                      section: section
-                    %}
+                    {% render 'modern-aussies-mega-menu', block: matching_block, link: link, section: section %}
                   {%- endif -%}
 
                 {%- elsif link.links != blank -%}
@@ -1908,14 +2037,12 @@
                 {%- endif -%}
               </li>
             {%- endfor -%}
-
           </ul>
         {%- endif -%}
       </nav>
 
       <!-- Actions -->
       <div class="ma-actions">
-
         {%- if section.settings.enable_search -%}
           <button
             type="button"
@@ -1954,7 +2081,9 @@
                 {%- for country in localization.available_countries -%}
                   <option
                     value="{{ country.iso_code }}"
-                    {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
+                    {% if country.iso_code == localization.country.iso_code %}
+                      selected
+                    {% endif %}
                   >
                     {{ country.currency.iso_code }}
                   </option>
@@ -1981,7 +2110,6 @@
             </span>
           {%- endif -%}
         </a>
-
       </div>
     </div>
   </div>
@@ -2014,14 +2142,14 @@
     </div>
   {%- endif -%}
 
-  <!-- ======================================================
-       MOBILE HEADER
-  ======================================================= -->
+  <!--
+    ======================================================
+         MOBILE HEADER
+    =======================================================
+  -->
 
   <div class="ma-mobile-header">
-
     <div class="ma-mobile-left">
-
       <button
         type="button"
         class="ma-mobile-action ma-menu-toggle"
@@ -2032,7 +2160,6 @@
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
       </button>
-
     </div>
 
     <a
@@ -2044,10 +2171,7 @@
         {{
           header_logo
           | image_url: width: 500
-          | image_tag:
-            loading: 'eager',
-            widths: '120,180,240,320,400,500',
-            alt: shop.name
+          | image_tag: loading: 'eager', widths: '120,180,240,320,400,500', alt: shop.name
         }}
       {%- else -%}
         <span class="ma-mobile-logo-text">{{ shop.name }}</span>
@@ -2055,7 +2179,6 @@
     </a>
 
     <div class="ma-mobile-right">
-
       {%- if section.settings.enable_search -%}
         <button
           type="button"
@@ -2087,14 +2210,14 @@
           </span>
         {%- endif -%}
       </a>
-
     </div>
-
   </div>
 
-  <!-- ======================================================
-       MOBILE DRAWER
-  ======================================================= -->
+  <!--
+    ======================================================
+         MOBILE DRAWER
+    =======================================================
+  -->
 
   <div class="ma-mobile-overlay" aria-hidden="true"></div>
 
@@ -2103,9 +2226,7 @@
     aria-label="Mobile navigation"
     aria-hidden="true"
   >
-
     <div class="ma-drawer-header">
-
       <a
         href="{{ routes.root_url }}"
         class="ma-drawer-logo"
@@ -2114,10 +2235,7 @@
           {{
             header_logo
             | image_url: width: 400
-            | image_tag:
-              loading: 'eager',
-              widths: '120,180,240,320,400',
-              alt: shop.name
+            | image_tag: loading: 'eager', widths: '120,180,240,320,400', alt: shop.name
           }}
         {%- else -%}
           <span class="ma-drawer-logo-text">
@@ -2135,17 +2253,12 @@
           <path d="M5 5l14 14M19 5 5 19"></path>
         </svg>
       </button>
-
     </div>
 
     <div class="ma-drawer-scroll">
-
       <ul class="ma-mobile-menu" role="list">
-
         {%- if menu != blank -%}
-
           {%- for link in menu.links -%}
-
             {%- liquid
               assign menu_handle = link.title | handleize
               assign matching_block = blank
@@ -2177,9 +2290,7 @@
               class="ma-mobile-menu-item"
               data-mobile-item="{{ menu_handle }}"
             >
-
               {%- if has_children -%}
-
                 <button
                   type="button"
                   class="ma-mobile-menu-button"
@@ -2207,7 +2318,6 @@
                 </button>
 
                 <div class="ma-mobile-submenu">
-
                   <!-- Main link -->
                   <div class="ma-mobile-submenu-section">
                     <a
@@ -2219,7 +2329,6 @@
                   </div>
 
                   {%- if has_mega -%}
-
                     {%- if matching_block.type == 'mega_menu_2' -%}
                       <div class="ma-mobile-submenu-section">
                         {%- if matching_block.settings.eyebrow != blank -%}
@@ -2229,12 +2338,16 @@
                           <strong class="ma-mobile-submenu-title">{{ matching_block.settings.title }}</strong>
                         {%- endif -%}
                         {%- if matching_block.settings.description != blank -%}
-                          <div style="font-size:13px;line-height:1.45;margin-bottom:10px;">{{ matching_block.settings.description }}</div>
+                          <div style="font-size:13px;line-height:1.45;margin-bottom:10px;">
+                            {{ matching_block.settings.description }}
+                          </div>
                         {%- endif -%}
 
                         {%- if matching_block.settings.show_trust_bar -%}
                           <div class="ma-visual-trust">
-                            {%- assign mobile_visual_trust_items = 'trust_1_text|trust_2_text|trust_3_text' | split: '|' -%}
+                            {%- assign mobile_visual_trust_items = 'trust_1_text|trust_2_text|trust_3_text'
+                              | split: '|'
+                            -%}
                             {%- for trust_key in mobile_visual_trust_items -%}
                               {%- assign trust_text = matching_block.settings[trust_key] -%}
                               {%- if trust_text != blank -%}
@@ -2262,30 +2375,103 @@
                       </div>
 
                     {%- else -%}
+                      {%- case matching_block.settings.layout -%}
+                        {%- when 'columns_featured' -%}
+                          {%- for menu_setting in (1..4) -%}
+                            {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
+                            {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
 
-                    {%- case matching_block.settings.layout -%}
+                            {%- assign selected_menu = matching_block.settings[menu_key] -%}
+                            {%- assign column_title = matching_block.settings[title_key] -%}
 
-                      {%- when 'columns_featured' -%}
+                            {%- if selected_menu != blank -%}
+                              <div class="ma-mobile-submenu-section">
+                                {%- if column_title != blank -%}
+                                  <strong class="ma-mobile-submenu-title">
+                                    {{ column_title }}
+                                  </strong>
+                                {%- endif -%}
 
-                        {%- for menu_setting in (1..4) -%}
+                                <ul class="ma-mobile-submenu-list">
+                                  {%- for child_link in selected_menu.links -%}
+                                    <li>
+                                      <a href="{{ child_link.url }}">
+                                        {{ child_link.title }}
+                                      </a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            {%- endif -%}
+                          {%- endfor -%}
 
-                          {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
-                          {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
+                        {%- when 'side_image' -%}
+                          {%- for menu_setting in (1..2) -%}
+                            {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
+                            {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
 
-                          {%- assign selected_menu = matching_block.settings[menu_key] -%}
-                          {%- assign column_title = matching_block.settings[title_key] -%}
+                            {%- assign selected_menu = matching_block.settings[menu_key] -%}
+                            {%- assign column_title = matching_block.settings[title_key] -%}
 
-                          {%- if selected_menu != blank -%}
+                            {%- if selected_menu != blank -%}
+                              <div class="ma-mobile-submenu-section">
+                                {%- if column_title != blank -%}
+                                  <strong class="ma-mobile-submenu-title">
+                                    {{ column_title }}
+                                  </strong>
+                                {%- endif -%}
+
+                                <ul class="ma-mobile-submenu-list">
+                                  {%- for child_link in selected_menu.links -%}
+                                    <li>
+                                      <a href="{{ child_link.url }}">
+                                        {{ child_link.title }}
+                                      </a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            {%- endif -%}
+                          {%- endfor -%}
+
+                        {%- when 'links_only' -%}
+                          {%- for menu_setting in (1..4) -%}
+                            {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
+                            {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
+
+                            {%- assign selected_menu = matching_block.settings[menu_key] -%}
+                            {%- assign column_title = matching_block.settings[title_key] -%}
+
+                            {%- if selected_menu != blank -%}
+                              <div class="ma-mobile-submenu-section">
+                                {%- if column_title != blank -%}
+                                  <strong class="ma-mobile-submenu-title">
+                                    {{ column_title }}
+                                  </strong>
+                                {%- endif -%}
+
+                                <ul class="ma-mobile-submenu-list">
+                                  {%- for child_link in selected_menu.links -%}
+                                    <li>
+                                      <a href="{{ child_link.url }}">
+                                        {{ child_link.title }}
+                                      </a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            {%- endif -%}
+                          {%- endfor -%}
+
+                        {%- when 'products_focus' -%}
+                          {%- if matching_block.settings.column_1_menu != blank -%}
                             <div class="ma-mobile-submenu-section">
-
-                              {%- if column_title != blank -%}
-                                <strong class="ma-mobile-submenu-title">
-                                  {{ column_title }}
-                                </strong>
-                              {%- endif -%}
+                              <strong class="ma-mobile-submenu-title">
+                                {{ matching_block.settings.column_1_title | default: 'Shop' }}
+                              </strong>
 
                               <ul class="ma-mobile-submenu-list">
-                                {%- for child_link in selected_menu.links -%}
+                                {%- for child_link in matching_block.settings.column_1_menu.links -%}
                                   <li>
                                     <a href="{{ child_link.url }}">
                                       {{ child_link.title }}
@@ -2293,143 +2479,46 @@
                                   </li>
                                 {%- endfor -%}
                               </ul>
-
                             </div>
                           {%- endif -%}
 
-                        {%- endfor -%}
-
-                      {%- when 'side_image' -%}
-
-                        {%- for menu_setting in (1..2) -%}
-
-                          {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
-                          {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
-
-                          {%- assign selected_menu = matching_block.settings[menu_key] -%}
-                          {%- assign column_title = matching_block.settings[title_key] -%}
-
-                          {%- if selected_menu != blank -%}
-                            <div class="ma-mobile-submenu-section">
-
-                              {%- if column_title != blank -%}
-                                <strong class="ma-mobile-submenu-title">
-                                  {{ column_title }}
-                                </strong>
-                              {%- endif -%}
-
-                              <ul class="ma-mobile-submenu-list">
-                                {%- for child_link in selected_menu.links -%}
-                                  <li>
-                                    <a href="{{ child_link.url }}">
-                                      {{ child_link.title }}
-                                    </a>
-                                  </li>
-                                {%- endfor -%}
-                              </ul>
-
-                            </div>
-                          {%- endif -%}
-
-                        {%- endfor -%}
-
-                      {%- when 'links_only' -%}
-
-                        {%- for menu_setting in (1..4) -%}
-
-                          {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
-                          {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
-
-                          {%- assign selected_menu = matching_block.settings[menu_key] -%}
-                          {%- assign column_title = matching_block.settings[title_key] -%}
-
-                          {%- if selected_menu != blank -%}
-                            <div class="ma-mobile-submenu-section">
-
-                              {%- if column_title != blank -%}
-                                <strong class="ma-mobile-submenu-title">
-                                  {{ column_title }}
-                                </strong>
-                              {%- endif -%}
-
-                              <ul class="ma-mobile-submenu-list">
-                                {%- for child_link in selected_menu.links -%}
-                                  <li>
-                                    <a href="{{ child_link.url }}">
-                                      {{ child_link.title }}
-                                    </a>
-                                  </li>
-                                {%- endfor -%}
-                              </ul>
-
-                            </div>
-                          {%- endif -%}
-
-                        {%- endfor -%}
-
-                      {%- when 'products_focus' -%}
-
-                        {%- if matching_block.settings.column_1_menu != blank -%}
+                        {%- when 'hero_feature' -%}
                           <div class="ma-mobile-submenu-section">
-                            <strong class="ma-mobile-submenu-title">
-                              {{ matching_block.settings.column_1_title | default: 'Shop' }}
-                            </strong>
+                            {%- if matching_block.settings.featured_badge != blank -%}
+                              <span class="ma-badge">
+                                {{ matching_block.settings.featured_badge }}
+                              </span>
+                            {%- endif -%}
 
-                            <ul class="ma-mobile-submenu-list">
-                              {%- for child_link in matching_block.settings.column_1_menu.links -%}
-                                <li>
-                                  <a href="{{ child_link.url }}">
-                                    {{ child_link.title }}
-                                  </a>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
+                            {%- if matching_block.settings.featured_title != blank -%}
+                              <strong class="ma-mobile-submenu-title">
+                                {{ matching_block.settings.featured_title }}
+                              </strong>
+                            {%- endif -%}
+
+                            {%- if matching_block.settings.featured_description != blank -%}
+                              <div style="font-size:13px;line-height:1.45;margin-bottom:10px;">
+                                {{ matching_block.settings.featured_description }}
+                              </div>
+                            {%- endif -%}
+
+                            {%- if matching_block.settings.cta_text != blank
+                              and matching_block.settings.cta_link != blank
+                            -%}
+                              <a
+                                href="{{ matching_block.settings.cta_link }}"
+                                class="ma-cta"
+                              >
+                                {{ matching_block.settings.cta_text }}
+                              </a>
+                            {%- endif -%}
                           </div>
-                        {%- endif -%}
-
-                      {%- when 'hero_feature' -%}
-
-                        <div class="ma-mobile-submenu-section">
-
-                          {%- if matching_block.settings.featured_badge != blank -%}
-                            <span class="ma-badge">
-                              {{ matching_block.settings.featured_badge }}
-                            </span>
-                          {%- endif -%}
-
-                          {%- if matching_block.settings.featured_title != blank -%}
-                            <strong class="ma-mobile-submenu-title">
-                              {{ matching_block.settings.featured_title }}
-                            </strong>
-                          {%- endif -%}
-
-                          {%- if matching_block.settings.featured_description != blank -%}
-                            <div style="font-size:13px;line-height:1.45;margin-bottom:10px;">
-                              {{ matching_block.settings.featured_description }}
-                            </div>
-                          {%- endif -%}
-
-                          {%- if matching_block.settings.cta_text != blank and matching_block.settings.cta_link != blank -%}
-                            <a
-                              href="{{ matching_block.settings.cta_link }}"
-                              class="ma-cta"
-                            >
-                              {{ matching_block.settings.cta_text }}
-                            </a>
-                          {%- endif -%}
-
-                        </div>
-
-                    {%- endcase -%}
-
+                      {%- endcase -%}
                     {%- endif -%}
 
                   {%- else -%}
-
                     {%- for child_link in link.links -%}
-
                       <div class="ma-mobile-submenu-section">
-
                         <a
                           class="ma-mobile-submenu-title"
                           href="{{ child_link.url }}"
@@ -2448,19 +2537,14 @@
                             {%- endfor -%}
                           </ul>
                         {%- endif -%}
-
                       </div>
-
                     {%- endfor -%}
-
                   {%- endif -%}
 
                   {%- if has_mega -%}
-
                     {%- assign mobile_products = 0 -%}
 
                     <div class="ma-mobile-products">
-
                       {%- if matching_block.settings.product_1 != blank -%}
                         {% assign mobile_products = mobile_products | plus: 1 %}
                         {% render 'modern-aussies-product-card',
@@ -2476,7 +2560,6 @@
                           section: section
                         %}
                       {%- endif -%}
-
                     </div>
 
                     {%- if matching_block.settings.cta_text != blank and matching_block.settings.cta_link != blank -%}
@@ -2489,13 +2572,10 @@
                         </a>
                       </div>
                     {%- endif -%}
-
                   {%- endif -%}
-
                 </div>
 
               {%- else -%}
-
                 <a
                   class="ma-mobile-menu-link"
                   href="{{ link.url }}"
@@ -2508,23 +2588,16 @@
                     </svg>
                   </span>
                 </a>
-
               {%- endif -%}
-
             </li>
-
           {%- endfor -%}
-
         {%- endif -%}
-
       </ul>
 
       <!-- Account -->
       {%- if section.settings.show_account -%}
         <div class="ma-mobile-account">
-          <a href="{{ routes.account_url }}">
-            Account
-          </a>
+          <a href="{{ routes.account_url }}"> Account </a>
 
           <a href="{{ routes.cart_url }}">
             Cart{% if cart_count > 0 %} ({{ cart_count }}){% endif %}
@@ -2535,11 +2608,10 @@
       <!-- Currency -->
       {%- if section.settings.show_currency and localization.available_countries.size > 1 -%}
         <div class="ma-mobile-currency">
-
-          {%- form 'localization',
+          {%-
+            form 'localization',
             id: 'MobileCurrencyForm-' | append: section.id
           -%}
-
             <select
               name="country_code"
               aria-label="Currency"
@@ -2548,34 +2620,29 @@
               {%- for country in localization.available_countries -%}
                 <option
                   value="{{ country.iso_code }}"
-                  {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
+                  {% if country.iso_code == localization.country.iso_code %}
+                    selected
+                  {% endif %}
                 >
                   {{ country.name }} — {{ country.currency.iso_code }}
                 </option>
               {%- endfor -%}
             </select>
-
           {%- endform -%}
-
         </div>
       {%- endif -%}
 
       <!-- Mobile Trust -->
       {%- if section.settings.enable_trust_bar -%}
         <div class="ma-mobile-trust">
-
           {%- for block in section.blocks -%}
             {%- if block.type == 'trust_item' -%}
-
               <div
                 class="ma-trust-item"
                 {{ block.shopify_attributes }}
               >
-
                 <span class="ma-trust-icon">
-
                   {%- case block.settings.icon -%}
-
                     {%- when 'truck' -%}
                       <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M3 5h11v11H3z"></path>
@@ -2601,49 +2668,37 @@
                         <circle cx="12" cy="12" r="8.5"></circle>
                         <path d="m8 12 2.6 2.6L16 9"></path>
                       </svg>
-
                   {%- endcase -%}
-
                 </span>
 
                 <span>
                   {{ block.settings.text }}
                 </span>
-
               </div>
-
             {%- endif -%}
           {%- endfor -%}
-
         </div>
       {%- endif -%}
-
     </div>
   </aside>
 
-  <!-- ======================================================
-       DESKTOP TRUST BAR
-  ======================================================= -->
+  <!--
+    ======================================================
+         DESKTOP TRUST BAR
+    =======================================================
+  -->
 
   {%- if section.settings.enable_trust_bar -%}
-
     <div class="ma-trust-bar">
-
       <div class="ma-trust-inner">
-
         {%- for block in section.blocks -%}
-
           {%- if block.type == 'trust_item' -%}
-
             <div
               class="ma-trust-item"
               {{ block.shopify_attributes }}
             >
-
               <span class="ma-trust-icon">
-
                 {%- case block.settings.icon -%}
-
                   {%- when 'truck' -%}
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M3 5h11v11H3z"></path>
@@ -2669,30 +2724,24 @@
                       <circle cx="12" cy="12" r="8.5"></circle>
                       <path d="m8 12 2.6 2.6L16 9"></path>
                     </svg>
-
                 {%- endcase -%}
-
               </span>
 
               <span>
                 {{ block.settings.text }}
               </span>
-
             </div>
-
           {%- endif -%}
-
         {%- endfor -%}
-
       </div>
-
     </div>
-
   {%- endif -%}
 
-  <!-- ======================================================
-       JAVASCRIPT
-  ======================================================= -->
+  <!--
+    ======================================================
+         JAVASCRIPT
+    =======================================================
+  -->
 
   <script>
     (() => {
@@ -2706,9 +2755,7 @@
 
       let closeTimer = null;
 
-      const desktopItems = Array.from(
-        root.querySelectorAll('.ma-desktop-nav .ma-nav-item.has-mega')
-      );
+      const desktopItems = Array.from(root.querySelectorAll('.ma-desktop-nav .ma-nav-item.has-mega'));
 
       function clearCloseTimer() {
         if (closeTimer) {
@@ -2864,9 +2911,7 @@
          MOBILE EXPANDABLE MENUS
       ------------------------------------------------------- */
 
-      const mobileItems = Array.from(
-        root.querySelectorAll('.ma-mobile-menu-item')
-      );
+      const mobileItems = Array.from(root.querySelectorAll('.ma-mobile-menu-item'));
 
       mobileItems.forEach((item) => {
         const button = item.querySelector(':scope > .ma-mobile-menu-button');
@@ -2883,9 +2928,7 @@
           mobileItems.forEach((otherItem) => {
             otherItem.classList.remove('is-expanded');
 
-            const otherButton = otherItem.querySelector(
-              ':scope > .ma-mobile-menu-button'
-            );
+            const otherButton = otherItem.querySelector(':scope > .ma-mobile-menu-button');
 
             if (otherButton) {
               otherButton.setAttribute('aria-expanded', 'false');
@@ -2922,10 +2965,7 @@
           const isOpen = root.classList.toggle('search-open');
 
           searchToggles.forEach((button) => {
-            button.setAttribute(
-              'aria-expanded',
-              isOpen ? 'true' : 'false'
-            );
+            button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
           });
 
           if (isOpen) {
@@ -2961,9 +3001,7 @@
          VIEWPORT SAFETY
       ------------------------------------------------------- */
 
-      const mediaQuery = window.matchMedia(
-        `(max-width: ${root.dataset.mobileBreakpoint}px)`
-      );
+      const mediaQuery = window.matchMedia(`(max-width: ${root.dataset.mobileBreakpoint}px)`);
 
       function handleBreakpointChange(event) {
         if (!event.matches) {
@@ -2978,7 +3016,6 @@
       } else {
         mediaQuery.addListener(handleBreakpointChange);
       }
-
     })();
   </script>
 </header>
