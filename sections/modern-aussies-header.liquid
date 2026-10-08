@@ -1,1515 +1,2378 @@
 {% comment %}
   Modern Aussies Header
-  - Shopify-native Liquid / CSS / JS
-  - No React, bundler, hardcoded product URLs or hardcoded product data
-  - Mega menu blocks are matched to top-level navigation items by title.
+  Native Shopify / Dawn-compatible section
+
+  FEATURES
+  - Shopify navigation menu
+  - Multiple mega-menu layout types
+  - Mega menu matched to top-level navigation item
+  - Link-list columns
+  - Featured image
+  - Side image
+  - Featured badge/title/description
+  - CTA + Shopify URL
+  - Product pickers
+  - Automatic product URL / image / price / compare-at
+  - Trust bar
+  - Logo settings
+  - Desktop hover mega menu
+  - Configurable mouse-leave delay
+  - Mobile drawer
+  - Mobile expandable submenus
+  - Account
+  - Cart
+  - Currency selector
+  - Responsive breakpoint
+  - Theme Editor compatible
+  - No React
+  - No external dependencies
+  - No hardcoded product URLs
 {% endcomment %}
 
-{% liquid
-  assign main_menu = section.settings.menu
-  if main_menu == blank
-    assign main_menu = linklists[section.settings.menu]
+{%- liquid
+  assign menu = section.settings.menu
+  assign header_logo = section.settings.logo
+  assign cart_count = cart.item_count
+
+  if section.settings.logo_width > 0
+    assign logo_width = section.settings.logo_width
+  else
+    assign logo_width = 150
   endif
-%}
+-%}
 
 <style>
-  #shopify-section-{{ section.id }} {
-    --ma-navy: {{ section.settings.text_color }};
-    --ma-gold: {{ section.settings.accent_color }};
-    --ma-bg: {{ section.settings.background_color }};
-    --ma-panel: {{ section.settings.mega_background }};
+  #ModernAussiesHeader-{{ section.id }} {
+    --ma-header-bg: {{ section.settings.header_background }};
+    --ma-header-text: {{ section.settings.header_text }};
+    --ma-header-hover: {{ section.settings.header_hover }};
+    --ma-accent: {{ section.settings.accent_color }};
+    --ma-mega-bg: {{ section.settings.mega_background }};
+    --ma-mega-text: {{ section.settings.mega_text }};
     --ma-border: {{ section.settings.border_color }};
-    --ma-muted: {{ section.settings.muted_color }};
-    --ma-radius: {{ section.settings.radius }}px;
+    --ma-trust-bg: {{ section.settings.trust_background }};
+    --ma-trust-text: {{ section.settings.trust_text }};
     --ma-header-height: {{ section.settings.header_height }}px;
-    --ma-max-width: {{ section.settings.max_width }}px;
+    --ma-logo-width: {{ logo_width }}px;
+    --ma-nav-size: {{ section.settings.nav_font_size }}px;
+    --ma-nav-weight: {{ section.settings.nav_font_weight }};
+    --ma-mega-title-size: {{ section.settings.mega_title_size }}px;
+    --ma-mega-link-size: {{ section.settings.mega_link_size }}px;
+    --ma-product-title-size: {{ section.settings.product_title_size }}px;
+    --ma-product-price-size: {{ section.settings.product_price_size }}px;
+    --ma-container-width: {{ section.settings.container_width }}px;
+    --ma-menu-gap: {{ section.settings.menu_gap }}px;
+    --ma-mega-radius: {{ section.settings.mega_radius }}px;
+    --ma-card-radius: {{ section.settings.card_radius }}px;
+    --ma-breakpoint: {{ section.settings.mobile_breakpoint }}px;
+    --ma-leave-delay: {{ section.settings.mouse_leave_delay }}ms;
+    --ma-mobile-logo-width: {{ section.settings.mobile_logo_width }}px;
+    --ma-mobile-nav-size: {{ section.settings.mobile_nav_font_size }}px;
+    --ma-mobile-padding: {{ section.settings.mobile_padding }}px;
+
     position: relative;
     z-index: 50;
+    width: 100%;
+    background: var(--ma-header-bg);
+    color: var(--ma-header-text);
   }
 
-  #shopify-section-{{ section.id }} .ma-header--sticky { position: sticky; top: 0; }
-
-  #shopify-section-{{ section.id }} .ma-header {
-    position: relative;
-    background: var(--ma-bg);
-    color: var(--ma-navy);
-    border-bottom: 1px solid var(--ma-border);
-    z-index: 100;
+  #ModernAussiesHeader-{{ section.id }} *,
+  #ModernAussiesHeader-{{ section.id }} *::before,
+  #ModernAussiesHeader-{{ section.id }} *::after {
+    box-sizing: border-box;
   }
 
-  #shopify-section-{{ section.id }} .ma-header__inner {
-    max-width: var(--ma-max-width);
-    margin: 0 auto;
+  #ModernAussiesHeader-{{ section.id }} a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} button,
+  #ModernAussiesHeader-{{ section.id }} input,
+  #ModernAussiesHeader-{{ section.id }} select {
+    font: inherit;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-header-main {
+    width: 100%;
     min-height: var(--ma-header-height);
-    padding: 0 28px;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 28px;
+    border-bottom: 1px solid var(--ma-border);
   }
 
-  #shopify-section-{{ section.id }} .ma-logo {
+  #ModernAussiesHeader-{{ section.id }} .ma-header-container {
+    width: min(100% - 40px, var(--ma-container-width));
+    min-height: var(--ma-header-height);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 30px;
+  }
+
+  /* ---------------------------------------------------------
+     LOGO
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-logo {
     display: inline-flex;
     align-items: center;
-    text-decoration: none;
-    color: inherit;
-    line-height: 1;
-    min-width: 0;
+    justify-content: flex-start;
+    flex-shrink: 0;
   }
 
-  #shopify-section-{{ section.id }} .ma-logo img {
+  #ModernAussiesHeader-{{ section.id }} .ma-logo img {
     display: block;
-    width: {{ section.settings.logo_width }}px;
-    max-width: 100%;
+    width: var(--ma-logo-width);
     height: auto;
+    max-height: calc(var(--ma-header-height) - 18px);
+    object-fit: contain;
   }
 
-  #shopify-section-{{ section.id }} .ma-logo__text {
-    font-size: 20px;
-    line-height: 1.1;
+  #ModernAussiesHeader-{{ section.id }} .ma-logo-text {
+    color: var(--ma-header-text);
+    font-size: 22px;
+    line-height: 1;
     font-weight: 800;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.03em;
   }
 
-  #shopify-section-{{ section.id }} .ma-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* ---------------------------------------------------------
+     DESKTOP NAV
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-desktop-nav {
     min-width: 0;
     height: 100%;
   }
 
-  #shopify-section-{{ section.id }} .ma-nav__list {
-    list-style: none;
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-list {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: {{ section.settings.nav_gap }}px;
-    margin: 0;
+    gap: var(--ma-menu-gap);
+    list-style: none;
     padding: 0;
-    min-width: 0;
+    margin: 0;
+    height: 100%;
   }
 
-  #shopify-section-{{ section.id }} .ma-nav__item {
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-item {
     position: static;
-    height: var(--ma-header-height);
+    height: 100%;
     display: flex;
     align-items: center;
   }
 
-  #shopify-section-{{ section.id }} .ma-nav__link {
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-link {
     position: relative;
+    height: 100%;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    height: 100%;
-    padding: 0 8px;
-    border: 0;
-    background: transparent;
-    color: var(--ma-navy);
-    text-decoration: none;
-    font-size: {{ section.settings.nav_font_size }}px;
-    font-weight: {{ section.settings.nav_font_weight }};
+    padding: 8px 0;
+    color: var(--ma-header-text);
+    font-size: var(--ma-nav-size);
+    line-height: 1.2;
+    font-weight: var(--ma-nav-weight);
     white-space: nowrap;
-    cursor: pointer;
+    transition: color .18s ease;
   }
 
-  #shopify-section-{{ section.id }} .ma-nav__link:hover,
-  #shopify-section-{{ section.id }} .ma-nav__link[aria-expanded="true"] {
-    color: var(--ma-gold);
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-link:hover,
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-link:focus-visible,
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open > .ma-nav-link {
+    color: var(--ma-header-hover);
   }
 
-  #shopify-section-{{ section.id }} .ma-nav__link--hot::after {
-    content: "HOT";
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 16px;
-    padding: 2px 5px;
-    border-radius: 3px;
-    background: var(--ma-gold);
-    color: #fff;
-    font-size: 8px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: .4px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-nav__chevron {
-    width: 12px;
-    height: 12px;
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 9px;
+    height: 2px;
+    background: var(--ma-accent);
+    transform: scaleX(0);
+    transform-origin: center;
     transition: transform .18s ease;
   }
 
-  #shopify-section-{{ section.id }} .ma-nav__link[aria-expanded="true"] .ma-nav__chevron {
-    transform: rotate(180deg);
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open > .ma-nav-link::after,
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-link:hover::after {
+    transform: scaleX(1);
   }
 
-  #shopify-section-{{ section.id }} .ma-actions {
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-arrow {
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform .18s ease;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open .ma-nav-arrow {
+    transform: rotate(225deg) translate(-1px, -1px);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-hot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 6px;
+    border-radius: 999px;
+    background: var(--ma-accent);
+    color: #fff;
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  /* ---------------------------------------------------------
+     HEADER ACTIONS
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 10px;
+    flex-shrink: 0;
   }
 
-  #shopify-section-{{ section.id }} .ma-action {
+  #ModernAussiesHeader-{{ section.id }} .ma-action {
+    position: relative;
     width: 38px;
     height: 38px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--ma-navy);
-    text-decoration: none;
     border: 0;
     background: transparent;
+    color: var(--ma-header-text);
     cursor: pointer;
     padding: 0;
+    border-radius: 50%;
+    transition: background .18s ease, color .18s ease;
   }
 
-  #shopify-section-{{ section.id }} .ma-action:hover {
-    color: var(--ma-gold);
+  #ModernAussiesHeader-{{ section.id }} .ma-action:hover,
+  #ModernAussiesHeader-{{ section.id }} .ma-action:focus-visible {
+    color: var(--ma-header-hover);
+    background: rgba(164, 113, 24, .08);
   }
 
-  #shopify-section-{{ section.id }} .ma-action svg {
-    width: 19px;
-    height: 19px;
+  #ModernAussiesHeader-{{ section.id }} .ma-action svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
   }
 
-  #shopify-section-{{ section.id }} .ma-cart-count {
+  #ModernAussiesHeader-{{ section.id }} .ma-cart-count {
+    position: absolute;
+    top: 1px;
+    right: 0;
     min-width: 17px;
     height: 17px;
     padding: 0 4px;
-    border-radius: 20px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    margin: -19px 0 0 13px;
-    background: var(--ma-gold);
+    border-radius: 999px;
+    background: var(--ma-accent);
     color: #fff;
     font-size: 9px;
     line-height: 1;
     font-weight: 800;
   }
 
-  #shopify-section-{{ section.id }} .ma-mobile-toggle {
-    display: none;
+  #ModernAussiesHeader-{{ section.id }} .ma-currency {
+    display: inline-flex;
+    align-items: center;
   }
 
-  /* Mega menu */
-  #shopify-section-{{ section.id }} .ma-mega {
+  #ModernAussiesHeader-{{ section.id }} .ma-currency select {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--ma-header-text);
+    cursor: pointer;
+    padding: 5px 18px 5px 3px;
+    font-size: 12px;
+    font-weight: 700;
+    background-image:
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+      calc(100% - 8px) 50%,
+      calc(100% - 4px) 50%;
+    background-size: 4px 4px, 4px 4px;
+    background-repeat: no-repeat;
+  }
+
+  /* ---------------------------------------------------------
+     SEARCH
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-search-wrap {
     position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    top: 100%;
-    background: var(--ma-panel);
-    border-top: 1px solid var(--ma-border);
+    display: none;
+    padding: 14px 20px;
+    background: var(--ma-header-bg);
     border-bottom: 1px solid var(--ma-border);
-    box-shadow: 0 18px 35px rgba(27,42,74,.12);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    box-shadow: 0 10px 30px rgba(27,42,74,.10);
   }
 
-  #shopify-section-{{ section.id }} .ma-mega.is-open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
+  #ModernAussiesHeader-{{ section.id }}.search-open .ma-search-wrap {
+    display: block;
   }
 
-  #shopify-section-{{ section.id }} .ma-mega__inner {
-    max-width: var(--ma-max-width);
-    min-height: {{ section.settings.mega_min_height }}px;
+  #ModernAussiesHeader-{{ section.id }} .ma-search-form {
+    width: min(100%, 760px);
     margin: 0 auto;
-    padding: 0;
-    display: grid;
-    grid-template-columns: {{ section.settings.category_width }}% minmax(0, {{ section.settings.product_width }}fr) {{ section.settings.featured_width }}%;
-  }
-
-  #shopify-section-{{ section.id }} .ma-mega__categories {
-    padding: 28px 16px 22px 28px;
-    background: {{ section.settings.category_background }};
-    border-right: 1px solid var(--ma-border);
     display: flex;
-    flex-direction: column;
-    min-width: 0;
+    align-items: center;
+    border: 1px solid var(--ma-border);
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
   }
 
-  #shopify-section-{{ section.id }} .ma-mega__eyebrow {
-    margin: 0 0 5px;
-    color: var(--ma-gold);
-    font-size: 9px;
+  #ModernAussiesHeader-{{ section.id }} .ma-search-form input {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    border: 0;
+    outline: 0;
+    padding: 0 15px;
+    color: #1B2A4A;
+    background: transparent;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-search-form button {
+    width: 50px;
+    height: 48px;
+    border: 0;
+    background: var(--ma-accent);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  /* ---------------------------------------------------------
+     MEGA MENU
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mega {
+    position: absolute;
+    z-index: 60;
+    top: 100%;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-5px);
+    transition:
+      opacity .16s ease,
+      transform .16s ease,
+      visibility .16s ease;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-nav-item.is-open .ma-mega {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mega-inner {
+    width: min(100% - 40px, var(--ma-container-width));
+    margin: 0 auto;
+    padding: 28px 0 30px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mega-panel {
+    background: var(--ma-mega-bg);
+    color: var(--ma-mega-text);
+    border: 1px solid var(--ma-border);
+    border-radius: var(--ma-mega-radius);
+    box-shadow: 0 18px 50px rgba(27,42,74,.14);
+    overflow: hidden;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mega-content {
+    padding: 25px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mega-heading {
+    margin: 0 0 15px;
+    color: var(--ma-mega-text);
+    font-size: var(--ma-mega-title-size);
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-column-heading {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--ma-mega-text);
+    font-size: 14px;
     line-height: 1.3;
     font-weight: 800;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
   }
 
-  #shopify-section-{{ section.id }} .ma-mega__title {
+  #ModernAussiesHeader-{{ section.id }} .ma-link-list {
+    list-style: none;
     margin: 0;
-    color: var(--ma-navy);
+    padding: 0;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-link-list li + li {
+    margin-top: 7px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-link-list a {
+    display: inline-block;
+    color: var(--ma-mega-text);
+    font-size: var(--ma-mega-link-size);
+    line-height: 1.4;
+    transition: color .16s ease, transform .16s ease;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-link-list a:hover {
+    color: var(--ma-accent);
+    transform: translateX(2px);
+  }
+
+  /* ---------------------------------------------------------
+     LAYOUT 1 - COLUMNS + FEATURED
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-layout-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(260px, 1.15fr);
+    gap: 25px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-feature-card {
+    position: relative;
+    min-height: 250px;
+    overflow: hidden;
+    border-radius: var(--ma-card-radius);
+    background: #e8e3d8;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-feature-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-feature-overlay {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 20px;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,.72));
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-badge {
+    display: inline-flex;
+    padding: 5px 8px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    background: var(--ma-accent);
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-feature-title {
+    margin: 0 0 5px;
+    color: inherit;
     font-size: 21px;
     line-height: 1.15;
     font-weight: 800;
-    letter-spacing: -.35px;
   }
 
-  #shopify-section-{{ section.id }} .ma-mega__description {
-    margin: 9px 0 17px;
-    max-width: 35ch;
-    color: var(--ma-muted);
-    font-size: 10.5px;
-    line-height: 1.5;
+  #ModernAussiesHeader-{{ section.id }} .ma-feature-description {
+    margin: 0 0 12px;
+    font-size: 13px;
+    line-height: 1.45;
   }
 
-  #shopify-section-{{ section.id }} .ma-trust {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--ma-border);
-    margin-bottom: 8px;
+  /* ---------------------------------------------------------
+     LAYOUT 2 - SIDE IMAGE + COLUMNS + PRODUCTS
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-layout-side {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr) minmax(320px, 1.2fr);
+    gap: 25px;
   }
 
-  #shopify-section-{{ section.id }} .ma-trust__item {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--ma-navy);
-    font-size: 9px;
-    line-height: 1.3;
-    font-weight: 600;
+  #ModernAussiesHeader-{{ section.id }} .ma-side-image {
+    min-height: 280px;
+    overflow: hidden;
+    border-radius: var(--ma-card-radius);
+    background: #e8e3d8;
   }
 
-  #shopify-section-{{ section.id }} .ma-trust__icon {
-    width: 13px;
-    height: 13px;
-    flex: 0 0 13px;
-    color: var(--ma-gold);
-  }
-
-  #shopify-section-{{ section.id }} .ma-category-list {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category {
-    border-bottom: 1px solid var(--ma-border);
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__row {
-    min-height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__heading {
-    flex: 1 1 auto;
-    min-width: 0;
-    padding: 8px 0;
-    color: var(--ma-navy);
-    text-decoration: none;
-    font-size: 9.5px;
-    line-height: 1.3;
-    font-weight: 600;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__toggle {
-    width: 24px;
-    height: 28px;
-    border: 0;
-    background: transparent;
-    color: var(--ma-navy);
-    cursor: pointer;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__toggle svg {
-    width: 11px;
-    height: 11px;
-    transition: transform .18s ease;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category.is-expanded .ma-category__toggle svg {
-    transform: rotate(45deg);
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__children {
-    display: none;
-    padding: 0 0 9px 12px;
-    border-left: 2px solid var(--ma-gold);
-    margin: 0 0 10px 0;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category.is-expanded .ma-category__children {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 12px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__child {
-    width: calc(50% - 6px);
-    padding: 5px 0;
-    color: #4b4f58;
-    text-decoration: none;
-    font-size: 8.8px;
-    line-height: 1.35;
-  }
-
-  #shopify-section-{{ section.id }} .ma-category__child:hover {
-    color: var(--ma-gold);
-  }
-
-  #shopify-section-{{ section.id }} .ma-side-image {
-    display: block;
-    margin-top: auto;
-    padding-top: 16px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-side-image img {
-    display: block;
+  #ModernAussiesHeader-{{ section.id }} .ma-side-image img {
     width: 100%;
-    aspect-ratio: 3.7 / 1;
+    height: 100%;
+    min-height: 280px;
+    display: block;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid var(--ma-border);
   }
 
-  #shopify-section-{{ section.id }} .ma-mega__inner--products_only .ma-mega__featured,
-  #shopify-section-{{ section.id }} .ma-mega__inner--featured_only .ma-mega__products {
-    display: none;
+  #ModernAussiesHeader-{{ section.id }} .ma-side-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
   }
 
-  #shopify-section-{{ section.id }} .ma-mega__inner--featured_only {
-    grid-template-columns: {{ section.settings.category_width }}% minmax(0, 1fr);
+  /* ---------------------------------------------------------
+     LAYOUT 3 - LARGE HERO
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-layout-hero {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    min-height: 330px;
   }
 
-  /* Product grid */
-  #shopify-section-{{ section.id }} .ma-mega__products {
-    padding: 22px 16px 18px;
-    min-width: 0;
+  #ModernAussiesHeader-{{ section.id }} .ma-hero-image {
+    min-height: 330px;
+    overflow: hidden;
   }
 
-  #shopify-section-{{ section.id }} .ma-products__top {
+  #ModernAussiesHeader-{{ section.id }} .ma-hero-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-hero-copy {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 15px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 38px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-hero-copy .ma-feature-title {
+    color: var(--ma-mega-text);
+    font-size: 30px;
     margin-bottom: 12px;
   }
 
-  #shopify-section-{{ section.id }} .ma-products__eyebrow {
-    margin: 0 0 4px;
-    color: var(--ma-gold);
-    font-size: 8px;
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-products__title {
-    margin: 0;
-    color: var(--ma-navy);
-    font-size: 17px;
-    line-height: 1.15;
-    font-weight: 800;
-  }
-
-  #shopify-section-{{ section.id }} .ma-products__viewall {
-    flex: 0 0 auto;
-    color: var(--ma-navy);
-    text-decoration: none;
-    font-size: 8px;
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: .7px;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  #shopify-section-{{ section.id }} .ma-products__viewall:hover {
-    color: var(--ma-gold);
-  }
-
-  #shopify-section-{{ section.id }} .ma-product-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product {
-    min-width: 0;
-    text-decoration: none;
-    color: var(--ma-navy);
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__image {
-    position: relative;
-    aspect-ratio: 1.62 / 1;
-    overflow: hidden;
-    border: 1px solid var(--ma-border);
-    border-radius: 5px;
-    background: #fff;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .3s ease;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product:hover .ma-product__image img {
-    transform: scale(1.025);
-  }
-
-  #shopify-section-{{ section.id }} .ma-badge {
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    z-index: 2;
-    padding: 3px 7px;
-    border-radius: 20px;
-    background: var(--ma-navy);
-    color: #fff;
-    font-size: 7px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: .2px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__name {
-    margin: 6px 0 3px;
-    font-size: 8.5px;
-    line-height: 1.35;
-    font-weight: 600;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__rating {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    margin-bottom: 3px;
-    color: var(--ma-gold);
-    font-size: 7px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__price {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__price-current {
-    color: var(--ma-navy);
-    font-size: 9px;
-    line-height: 1.2;
-    font-weight: 800;
-  }
-
-  #shopify-section-{{ section.id }} .ma-product__price-compare {
-    color: #a0a4ad;
-    font-size: 7px;
-    line-height: 1.2;
-    text-decoration: line-through;
-  }
-
-  #shopify-section-{{ section.id }} .ma-products__cta {
-    margin-top: 12px;
-    min-height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    border-radius: 30px;
-    background: var(--ma-navy);
-    color: #fff;
-    text-decoration: none;
-    font-size: 8px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-products__cta:hover {
-    background: {{ section.settings.button_hover_background }};
-    color: {{ section.settings.button_hover_text }};
-  }
-
-  /* Featured image */
-  #shopify-section-{{ section.id }} .ma-mega__featured {
-    position: relative;
-    min-height: {{ section.settings.mega_min_height }}px;
-    overflow: hidden;
-    background: var(--ma-navy);
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__image,
-  #shopify-section-{{ section.id }} .ma-featured__image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__image img {
-    object-fit: cover;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__overlay {
-    position: absolute;
-    inset: 35% 0 0;
-    background: linear-gradient(180deg, rgba(17,28,51,0) 0%, rgba(17,28,51,.92) 55%, #111c33 100%);
-    pointer-events: none;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__content {
-    position: absolute;
-    left: 28px;
-    right: 28px;
-    bottom: 30px;
-    z-index: 2;
-    color: #fff;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__badge {
-    display: inline-flex;
-    padding: 4px 9px;
-    border-radius: 20px;
-    background: var(--ma-gold);
-    color: #fff;
-    font-size: 7px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: .3px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__label {
-    margin-top: 13px;
-    color: {{ section.settings.featured_label_color }};
-    font-size: 8px;
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__title {
-    margin: 5px 0 0;
-    color: #fff;
-    font-size: 22px;
-    line-height: 1.08;
-    font-weight: 800;
-    letter-spacing: -.3px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__description {
-    margin: 8px 0 0;
-    color: rgba(255,255,255,.86);
-    font-size: 9px;
-    line-height: 1.55;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: 13px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #fff;
-    color: #fff;
-    text-decoration: none;
-    font-size: 8px;
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-featured__cta:hover {
-    color: {{ section.settings.featured_link_hover }};
-    border-color: {{ section.settings.featured_link_hover }};
-  }
-
-  /* Mobile drawer */
-  #shopify-section-{{ section.id }} .ma-mobile-bar {
-    display: none;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: var(--ma-bg);
-    transform: translateX(-100%);
-    visibility: hidden;
-    transition: transform .24s ease, visibility .24s ease;
-    overflow-y: auto;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer.is-open {
-    transform: translateX(0);
-    visibility: visible;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__header {
-    min-height: 64px;
-    padding: 0 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--ma-border);
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__logo img {
-    display: block;
-    width: {{ section.settings.mobile_logo_width }}px;
-    height: auto;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__close {
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background: transparent;
-    color: var(--ma-navy);
-    cursor: pointer;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__nav {
-    padding: 0;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__item {
-    border-bottom: 1px solid var(--ma-border);
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__row {
-    min-height: 55px;
-    padding: 0 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__link,
-  #shopify-section-{{ section.id }} .ma-drawer__toggle {
-    border: 0;
-    background: transparent;
-    color: var(--ma-navy);
-    text-decoration: none;
-    font: inherit;
+  #ModernAussiesHeader-{{ section.id }} .ma-hero-copy .ma-feature-description {
+    color: var(--ma-mega-text);
     font-size: 14px;
-    font-weight: 600;
-    text-align: left;
+    max-width: 460px;
+    margin-bottom: 20px;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__link {
-    flex: 1;
+  /* ---------------------------------------------------------
+     LAYOUT 4 - LINKS ONLY
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-layout-links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__toggle {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  /* ---------------------------------------------------------
+     LAYOUT 5 - PRODUCTS FOCUS
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-layout-products {
+    display: grid;
+    grid-template-columns: minmax(190px, .75fr) minmax(0, 1.75fr);
+    gap: 30px;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__sub {
-    display: none;
-    padding: 0 18px 18px;
-    background: {{ section.settings.category_background }};
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__item.is-expanded .ma-drawer__sub {
-    display: block;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__intro {
-    padding: 17px 0 10px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__intro-eyebrow {
-    margin: 0 0 5px;
-    color: var(--ma-gold);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__intro-title {
-    margin: 0;
-    color: var(--ma-navy);
-    font-size: 20px;
-    line-height: 1.15;
-    font-weight: 800;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__children {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__child-row {
-    border-bottom: 1px solid var(--ma-border);
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__child-link {
-    min-height: 43px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    color: var(--ma-navy);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__grandchildren {
-    display: none;
-    padding: 0 0 9px 13px;
-    border-left: 2px solid var(--ma-gold);
-    margin: 0 0 8px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__child-row.is-expanded .ma-drawer__grandchildren {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__grandchild {
-    min-height: 38px;
-    display: flex;
-    align-items: center;
-    color: #4b4f58;
-    text-decoration: none;
-    font-size: 12.5px;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__products-title {
-    margin: 18px 0 10px;
-    color: var(--ma-navy);
+  #ModernAussiesHeader-{{ section.id }} .ma-products-heading {
+    margin: 0 0 15px;
     font-size: 15px;
     font-weight: 800;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__products {
+  #ModernAussiesHeader-{{ section.id }} .ma-product-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__product {
+  #ModernAussiesHeader-{{ section.id }} .ma-product-card {
     min-width: 0;
-    color: var(--ma-navy);
-    text-decoration: none;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__product-image {
-    position: relative;
-    aspect-ratio: 1;
     border: 1px solid var(--ma-border);
-    border-radius: 10px;
+    border-radius: var(--ma-card-radius);
+    background: var(--ma-mega-bg);
     overflow: hidden;
-    background: #fff;
+    transition: transform .18s ease, box-shadow .18s ease;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__product-image img {
+  #ModernAussiesHeader-{{ section.id }} .ma-product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(27,42,74,.10);
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-product-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f0ece3;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
+    object-fit: cover;
+    transition: transform .25s ease;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__product-name {
-    margin-top: 6px;
-    font-size: 11.5px;
-    line-height: 1.35;
-    font-weight: 600;
+  #ModernAussiesHeader-{{ section.id }} .ma-product-card:hover .ma-product-image img {
+    transform: scale(1.03);
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__product-price {
-    margin-top: 3px;
-    font-size: 12px;
-    font-weight: 800;
-  }
-
-  #shopify-section-{{ section.id }} .ma-drawer__cta {
-    min-height: 46px;
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    background: var(--ma-navy);
+  #ModernAussiesHeader-{{ section.id }} .ma-product-badge {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    z-index: 1;
+    padding: 4px 6px;
+    border-radius: 3px;
+    background: var(--ma-accent);
     color: #fff;
-    text-decoration: none;
-    font-size: 11px;
+    font-size: 9px;
+    line-height: 1;
     font-weight: 800;
-    letter-spacing: .7px;
     text-transform: uppercase;
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__footer {
-    padding: 18px;
+  #ModernAussiesHeader-{{ section.id }} .ma-product-info {
+    padding: 10px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-product-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin: 0 0 7px;
+    color: var(--ma-mega-text);
+    font-size: var(--ma-product-title-size);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-product-rating {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 3px;
+    margin-bottom: 5px;
+    color: var(--ma-accent);
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-product-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-current-price {
+    color: var(--ma-mega-text);
+    font-size: var(--ma-product-price-size);
+    font-weight: 800;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-compare-price {
+    color: #777;
+    font-size: 12px;
+    text-decoration: line-through;
+  }
+
+  /* ---------------------------------------------------------
+     CTA
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 1px solid var(--ma-accent);
+    border-radius: {{ section.settings.button_radius }}px;
+    background: var(--ma-accent);
+    color: {{ section.settings.button_text_color }};
+    font-size: {{ section.settings.button_font_size }}px;
+    line-height: 1.2;
+    font-weight: 800;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-cta:hover {
+    background: {{ section.settings.button_hover_background }};
+    color: {{ section.settings.button_hover_text }};
+    border-color: {{ section.settings.button_hover_background }};
+  }
+
+  /* ---------------------------------------------------------
+     TRUST BAR
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-trust-bar {
+    width: 100%;
+    background: var(--ma-trust-bg);
+    color: var(--ma-trust-text);
     border-top: 1px solid var(--ma-border);
   }
 
-  #shopify-section-{{ section.id }} .ma-drawer__footer a {
-    color: var(--ma-navy);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
+  #ModernAussiesHeader-{{ section.id }} .ma-trust-inner {
+    width: min(100% - 40px, var(--ma-container-width));
+    min-height: 40px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
   }
 
-  @media (max-width: 1179px) {
-    #shopify-section-{{ section.id }} .ma-header__inner {
+  #ModernAussiesHeader-{{ section.id }} .ma-trust-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 12px;
+    font-size: 11px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-trust-icon {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-trust-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  /* ---------------------------------------------------------
+     MOBILE
+  --------------------------------------------------------- */
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mobile-header {
+    display: none;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mobile-drawer {
+    display: none;
+  }
+
+  #ModernAussiesHeader-{{ section.id }} .ma-mobile-overlay {
+    display: none;
+  }
+
+  @media (max-width: 1200px) {
+    #ModernAussiesHeader-{{ section.id }} .ma-header-container {
+      gap: 18px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-nav-list {
+      gap: 16px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-nav-link {
+      font-size: 13px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-layout-columns {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-layout-columns > .ma-feature-card {
+      grid-column: span 3;
+      min-height: 220px;
+    }
+  }
+
+  @media (max-width: {{ section.settings.mobile_breakpoint }}px) {
+    #ModernAussiesHeader-{{ section.id }} .ma-header-main {
       display: none;
     }
 
-    #shopify-section-{{ section.id }} .ma-mobile-bar {
-      min-height: 64px;
-      padding: 0 18px;
-      display: grid;
-      grid-template-columns: 40px minmax(0,1fr) 40px;
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-header {
+      min-height: 66px;
+      display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px var(--ma-mobile-padding);
+      border-bottom: 1px solid var(--ma-border);
     }
 
-    #shopify-section-{{ section.id }} .ma-mobile-bar__logo {
-      justify-self: center;
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-left,
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-right {
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }
 
-    #shopify-section-{{ section.id }} .ma-mobile-bar__logo img {
-      display: block;
-      width: {{ section.settings.mobile_logo_width }}px;
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: var(--ma-mobile-logo-width);
+      margin: 0 auto;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo img {
+      width: var(--ma-mobile-logo-width);
+      max-width: 100%;
       height: auto;
+      max-height: 48px;
+      object-fit: contain;
     }
 
-    #shopify-section-{{ section.id }} .ma-mobile-bar__button {
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-logo-text {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--ma-header-text);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-action {
       width: 40px;
       height: 40px;
-      border: 0;
       padding: 0;
+      border: 0;
+      border-radius: 50%;
       background: transparent;
-      color: var(--ma-navy);
+      color: var(--ma-header-text);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
     }
 
-    #shopify-section-{{ section.id }} .ma-mobile-bar__button svg {
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-action svg {
       width: 21px;
       height: 21px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-action:hover {
+      color: var(--ma-header-hover);
+      background: rgba(164,113,24,.08);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-cart {
+      position: relative;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-cart-count {
+      position: absolute;
+      top: 2px;
+      right: 1px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 3px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ma-accent);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-overlay {
+      position: fixed;
+      z-index: 998;
+      inset: 0;
+      display: block;
+      background: rgba(0,0,0,.42);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .2s ease, visibility .2s ease;
+    }
+
+    #ModernAussiesHeader-{{ section.id }}.drawer-open .ma-mobile-overlay {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-drawer {
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: min(88vw, 390px);
+      display: flex;
+      flex-direction: column;
+      background: var(--ma-mega-bg);
+      color: var(--ma-mega-text);
+      box-shadow: 10px 0 35px rgba(0,0,0,.16);
+      transform: translateX(-100%);
+      transition: transform .25s ease;
+      overflow: hidden;
+    }
+
+    #ModernAussiesHeader-{{ section.id }}.drawer-open .ma-mobile-drawer {
+      transform: translateX(0);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-drawer-header {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--ma-border);
+      flex-shrink: 0;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-drawer-logo img {
+      width: var(--ma-mobile-logo-width);
+      max-height: 44px;
+      object-fit: contain;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-drawer-logo-text {
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-drawer-close {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background: transparent;
+      color: var(--ma-mega-text);
+      cursor: pointer;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-drawer-close svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-drawer-scroll {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu > li {
+      border-bottom: 1px solid var(--ma-border);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button,
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-link {
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: 0;
+      background: transparent;
+      color: var(--ma-mega-text);
+      font-size: var(--ma-mobile-nav-size);
+      line-height: 1.3;
+      font-weight: 750;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button:hover,
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-button.is-expanded,
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-link:hover {
+      color: var(--ma-accent);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu {
+      display: none;
+      padding: 0 16px 16px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-menu-item.is-expanded > .ma-mobile-submenu {
+      display: block;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-section {
+      padding: 12px 0;
+      border-top: 1px solid var(--ma-border);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-title {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ma-mega-text);
+      font-size: 13px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list li + li {
+      margin-top: 4px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list a {
+      display: block;
+      padding: 5px 0;
+      color: var(--ma-mega-text);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-submenu-list a:hover {
+      color: var(--ma-accent);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-product-title {
+      font-size: 11px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-product-price {
+      font-size: 11px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-products .ma-compare-price {
+      font-size: 10px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-account {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 15px 16px;
+      border-top: 1px solid var(--ma-border);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-account a {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--ma-border);
+      border-radius: 3px;
+      color: var(--ma-mega-text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-account a:hover {
+      border-color: var(--ma-accent);
+      color: var(--ma-accent);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency {
+      padding: 0 16px 16px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency form {
+      border: 1px solid var(--ma-border);
+      border-radius: 3px;
+      padding: 0 10px;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-currency select {
+      width: 100%;
+      min-height: 42px;
+      border: 0;
+      background: transparent;
+      color: var(--ma-mega-text);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-trust {
+      display: block;
+      padding: 14px 16px;
+      border-top: 1px solid var(--ma-border);
+      background: var(--ma-trust-bg);
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-trust .ma-trust-item {
+      justify-content: flex-start;
+      padding: 5px 0;
+      text-align: left;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-trust-bar {
+      display: none;
+    }
+
+    #ModernAussiesHeader-{{ section.id }} .ma-search-wrap {
+      top: 66px;
+    }
+  }
+
+  @media (min-width: {{ section.settings.mobile_breakpoint | plus: 1 }}px) {
+    #ModernAussiesHeader-{{ section.id }} .ma-mobile-only {
+      display: none !important;
     }
   }
 
   @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .ma-mega {
-      display: none !important;
-    }
-
-    #shopify-section-{{ section.id }} .ma-drawer {
-      display: block;
+    #ModernAussiesHeader-{{ section.id }} .ma-search-form {
+      width: 100%;
     }
   }
 
-  @media (min-width: 1180px) {
-    #shopify-section-{{ section.id }} .ma-drawer {
-      display: none !important;
-    }
+  /* Accessibility */
+  #ModernAussiesHeader-{{ section.id }} :focus-visible {
+    outline: 2px solid var(--ma-accent);
+    outline-offset: 3px;
   }
 
-  @media (min-width: 1180px) and (max-width: 1399px) {
-    #shopify-section-{{ section.id }} .ma-header__inner {
-      padding-left: 18px;
-      padding-right: 18px;
-      gap: 15px;
-    }
-
-    #shopify-section-{{ section.id }} .ma-nav__list {
-      gap: 4px;
-    }
-
-    #shopify-section-{{ section.id }} .ma-nav__link {
-      padding: 0 5px;
-      font-size: {{ section.settings.nav_font_size | minus: 1 }}px;
-    }
-
-    #shopify-section-{{ section.id }} .ma-actions {
-      gap: 4px;
+  @media (prefers-reduced-motion: reduce) {
+    #ModernAussiesHeader-{{ section.id }} *,
+    #ModernAussiesHeader-{{ section.id }} *::before,
+    #ModernAussiesHeader-{{ section.id }} *::after {
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 </style>
 
-<header class="ma-header{% if section.settings.sticky_header %} ma-header--sticky{% endif %}" data-ma-header data-close-delay="{{ section.settings.mouse_leave_delay }}">
-  <div class="ma-header__inner">
-    <a class="ma-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-      {% if section.settings.logo != blank %}
-        {{ section.settings.logo | image_url: width: 600 | image_tag: widths: '160,240,320,480,600', alt: shop.name, loading: 'eager' }}
-      {% else %}
-        <span class="ma-logo__text">{{ shop.name }}</span>
-      {% endif %}
+<header
+  id="ModernAussiesHeader-{{ section.id }}"
+  class="ma-header"
+  data-section-id="{{ section.id }}"
+  data-mobile-breakpoint="{{ section.settings.mobile_breakpoint }}"
+  data-leave-delay="{{ section.settings.mouse_leave_delay }}"
+>
+  <!-- ======================================================
+       DESKTOP HEADER
+  ======================================================= -->
+
+  <div class="ma-header-main">
+    <div class="ma-header-container">
+
+      <!-- Logo -->
+      <a
+        class="ma-logo"
+        href="{{ routes.root_url }}"
+        aria-label="{{ shop.name | escape }}"
+      >
+        {%- if header_logo != blank -%}
+          {{
+            header_logo
+            | image_url: width: 600
+            | image_tag:
+              loading: 'eager',
+              widths: '120,180,240,320,400,500,600',
+              class: 'ma-logo-image',
+              alt: shop.name
+          }}
+        {%- else -%}
+          <span class="ma-logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      <!-- Navigation -->
+      <nav
+        class="ma-desktop-nav"
+        aria-label="{{ section.settings.navigation_label | escape }}"
+      >
+        {%- if menu != blank -%}
+          <ul class="ma-nav-list" role="list">
+
+            {%- for link in menu.links -%}
+
+              {%- liquid
+                assign menu_handle = link.title | handleize
+                assign matching_block = blank
+                assign has_mega = false
+
+                for block in section.blocks
+                  if block.type == 'mega_menu'
+                    assign block_menu_handle = block.settings.menu_item | handleize
+
+                    if block_menu_handle == menu_handle
+                      assign matching_block = block
+                      assign has_mega = true
+                      break
+                    endif
+                  endif
+                endfor
+              -%}
+
+              <li
+                class="ma-nav-item{% if has_mega %} has-mega{% endif %}"
+                data-menu-item="{{ menu_handle }}"
+              >
+                <a
+                  href="{{ link.url }}"
+                  class="ma-nav-link"
+                  {% if has_mega %}aria-haspopup="true" aria-expanded="false"{% endif %}
+                >
+                  <span>{{ link.title }}</span>
+
+                  {%- if link.links != blank or has_mega -%}
+                    <span class="ma-nav-arrow" aria-hidden="true"></span>
+                  {%- endif -%}
+
+                  {%- if has_mega and matching_block.settings.show_hot_badge -%}
+                    <span class="ma-hot">
+                      {{ matching_block.settings.hot_badge_text | default: 'Hot' }}
+                    </span>
+                  {%- endif -%}
+                </a>
+
+                {%- if has_mega -%}
+                  {% render 'modern-aussies-mega-menu',
+                    block: matching_block,
+                    link: link,
+                    section: section
+                  %}
+                {%- elsif link.links != blank -%}
+                  <div class="ma-mega">
+                    <div class="ma-mega-inner">
+                      <div class="ma-mega-panel">
+                        <div class="ma-mega-content">
+                          <div class="ma-layout-links">
+                            <div>
+                              <a class="ma-column-heading" href="{{ link.url }}">
+                                {{ link.title }}
+                              </a>
+
+                              <ul class="ma-link-list" role="list">
+                                {%- for child_link in link.links -%}
+                                  <li>
+                                    <a href="{{ child_link.url }}">
+                                      {{ child_link.title }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+
+          </ul>
+        {%- endif -%}
+      </nav>
+
+      <!-- Actions -->
+      <div class="ma-actions">
+
+        {%- if section.settings.enable_search -%}
+          <button
+            type="button"
+            class="ma-action ma-search-toggle"
+            aria-label="Search"
+            aria-expanded="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"></circle>
+              <path d="m16 16 5 5"></path>
+            </svg>
+          </button>
+        {%- endif -%}
+
+        {%- if section.settings.show_account -%}
+          <a
+            href="{{ routes.account_url }}"
+            class="ma-action"
+            aria-label="Account"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5.5 20c.8-3.4 3-5 6.5-5s5.7 1.6 6.5 5"></path>
+            </svg>
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.show_currency and localization.available_countries.size > 1 -%}
+          <div class="ma-currency">
+            {%- form 'localization', id: 'HeaderCurrencyForm-' | append: section.id, class: 'ma-localization-form' -%}
+              <select
+                name="country_code"
+                aria-label="Currency"
+                onchange="this.form.submit()"
+              >
+                {%- for country in localization.available_countries -%}
+                  <option
+                    value="{{ country.iso_code }}"
+                    {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
+                  >
+                    {{ country.currency.iso_code }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            {%- endform -%}
+          </div>
+        {%- endif -%}
+
+        <a
+          href="{{ routes.cart_url }}"
+          class="ma-action"
+          aria-label="Cart{% if cart_count > 0 %}, {{ cart_count }} items{% endif %}"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.5 4h2l1.5 11h10l2-8H6"></path>
+            <circle cx="9" cy="19" r="1.2"></circle>
+            <circle cx="17" cy="19" r="1.2"></circle>
+          </svg>
+
+          {%- if cart_count > 0 -%}
+            <span class="ma-cart-count">
+              {{ cart_count }}
+            </span>
+          {%- endif -%}
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Search -->
+  {%- if section.settings.enable_search -%}
+    <div class="ma-search-wrap">
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+        class="ma-search-form"
+      >
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ section.settings.search_placeholder | escape }}"
+          aria-label="Search"
+        >
+        <input type="hidden" name="options[prefix]" value="last">
+
+        <button type="submit" aria-label="Submit search">
+          <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+            <path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="1.8"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+  {%- endif -%}
+
+  <!-- ======================================================
+       MOBILE HEADER
+  ======================================================= -->
+
+  <div class="ma-mobile-header">
+
+    <div class="ma-mobile-left">
+
+      <button
+        type="button"
+        class="ma-mobile-action ma-menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+
+    </div>
+
+    <a
+      href="{{ routes.root_url }}"
+      class="ma-mobile-logo"
+      aria-label="{{ shop.name | escape }}"
+    >
+      {%- if header_logo != blank -%}
+        {{
+          header_logo
+          | image_url: width: 500
+          | image_tag:
+            loading: 'eager',
+            widths: '120,180,240,320,400,500',
+            alt: shop.name
+        }}
+      {%- else -%}
+        <span class="ma-mobile-logo-text">{{ shop.name }}</span>
+      {%- endif -%}
     </a>
 
-    <nav class="ma-nav" aria-label="Main navigation">
-      <ul class="ma-nav__list">
-        {% if main_menu != blank %}
-          {% for link in main_menu.links %}
-            {% liquid
-              assign menu_key = link.title | handleize
-              assign mega_block = blank
+    <div class="ma-mobile-right">
+
+      {%- if section.settings.enable_search -%}
+        <button
+          type="button"
+          class="ma-mobile-action ma-search-toggle"
+          aria-label="Search"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="m16 16 5 5"></path>
+          </svg>
+        </button>
+      {%- endif -%}
+
+      <a
+        href="{{ routes.cart_url }}"
+        class="ma-mobile-action ma-mobile-cart"
+        aria-label="Cart{% if cart_count > 0 %}, {{ cart_count }} items{% endif %}"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.5 4h2l1.5 11h10l2-8H6"></path>
+          <circle cx="9" cy="19" r="1.2"></circle>
+          <circle cx="17" cy="19" r="1.2"></circle>
+        </svg>
+
+        {%- if cart_count > 0 -%}
+          <span class="ma-mobile-cart-count">
+            {{ cart_count }}
+          </span>
+        {%- endif -%}
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ======================================================
+       MOBILE DRAWER
+  ======================================================= -->
+
+  <div class="ma-mobile-overlay" aria-hidden="true"></div>
+
+  <aside
+    class="ma-mobile-drawer"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
+  >
+
+    <div class="ma-drawer-header">
+
+      <a
+        href="{{ routes.root_url }}"
+        class="ma-drawer-logo"
+      >
+        {%- if header_logo != blank -%}
+          {{
+            header_logo
+            | image_url: width: 400
+            | image_tag:
+              loading: 'eager',
+              widths: '120,180,240,320,400',
+              alt: shop.name
+          }}
+        {%- else -%}
+          <span class="ma-drawer-logo-text">
+            {{ shop.name }}
+          </span>
+        {%- endif -%}
+      </a>
+
+      <button
+        type="button"
+        class="ma-drawer-close"
+        aria-label="Close menu"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 5l14 14M19 5 5 19"></path>
+        </svg>
+      </button>
+
+    </div>
+
+    <div class="ma-drawer-scroll">
+
+      <ul class="ma-mobile-menu" role="list">
+
+        {%- if menu != blank -%}
+
+          {%- for link in menu.links -%}
+
+            {%- liquid
+              assign menu_handle = link.title | handleize
+              assign matching_block = blank
+              assign has_mega = false
+
               for block in section.blocks
                 if block.type == 'mega_menu'
-                  assign block_key = block.settings.menu_item | handleize
-                  if block_key == menu_key
-                    assign mega_block = block
+                  assign block_menu_handle = block.settings.menu_item | handleize
+
+                  if block_menu_handle == menu_handle
+                    assign matching_block = block
+                    assign has_mega = true
                     break
                   endif
                 endif
               endfor
-            %}
-            <li class="ma-nav__item" data-ma-nav-item {% if mega_block != blank %}data-ma-mega-trigger="{{ mega_block.id }}"{% endif %}>
-              {% if mega_block != blank %}
+
+              assign has_children = false
+              if link.links != blank
+                assign has_children = true
+              endif
+
+              if has_mega
+                assign has_children = true
+              endif
+            -%}
+
+            <li
+              class="ma-mobile-menu-item"
+              data-mobile-item="{{ menu_handle }}"
+            >
+
+              {%- if has_children -%}
+
                 <button
                   type="button"
-                  class="ma-nav__link{% if mega_block.settings.featured_badge != blank and mega_block.settings.show_hot_badge %} ma-nav__link--hot{% endif %}"
+                  class="ma-mobile-menu-button"
                   aria-expanded="false"
-                  aria-controls="ma-mega-{{ section.id }}-{{ mega_block.id }}"
-                  data-ma-trigger
+                >
+                  <span>
+                    {{ link.title }}
+
+                    {%- if has_mega and matching_block.settings.show_hot_badge -%}
+                      <span class="ma-hot">
+                        {{ matching_block.settings.hot_badge_text | default: 'Hot' }}
+                      </span>
+                    {%- endif -%}
+                  </span>
+
+                  <span class="ma-mobile-menu-icon">
+                    <svg class="ma-icon-plus" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14"></path>
+                    </svg>
+
+                    <svg class="ma-icon-minus" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
+                      <path d="M5 12h14"></path>
+                    </svg>
+                  </span>
+                </button>
+
+                <div class="ma-mobile-submenu">
+
+                  <!-- Main link -->
+                  <div class="ma-mobile-submenu-section">
+                    <a
+                      class="ma-mobile-submenu-title"
+                      href="{{ link.url }}"
+                    >
+                      View {{ link.title }}
+                    </a>
+                  </div>
+
+                  {%- if has_mega -%}
+
+                    {%- case matching_block.settings.layout -%}
+
+                      {%- when 'columns_featured' -%}
+
+                        {%- for menu_setting in (1..4) -%}
+
+                          {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
+                          {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
+
+                          {%- assign selected_menu = matching_block.settings[menu_key] -%}
+                          {%- assign column_title = matching_block.settings[title_key] -%}
+
+                          {%- if selected_menu != blank -%}
+                            <div class="ma-mobile-submenu-section">
+
+                              {%- if column_title != blank -%}
+                                <strong class="ma-mobile-submenu-title">
+                                  {{ column_title }}
+                                </strong>
+                              {%- endif -%}
+
+                              <ul class="ma-mobile-submenu-list">
+                                {%- for child_link in selected_menu.links -%}
+                                  <li>
+                                    <a href="{{ child_link.url }}">
+                                      {{ child_link.title }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+
+                            </div>
+                          {%- endif -%}
+
+                        {%- endfor -%}
+
+                      {%- when 'side_image' -%}
+
+                        {%- for menu_setting in (1..2) -%}
+
+                          {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
+                          {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
+
+                          {%- assign selected_menu = matching_block.settings[menu_key] -%}
+                          {%- assign column_title = matching_block.settings[title_key] -%}
+
+                          {%- if selected_menu != blank -%}
+                            <div class="ma-mobile-submenu-section">
+
+                              {%- if column_title != blank -%}
+                                <strong class="ma-mobile-submenu-title">
+                                  {{ column_title }}
+                                </strong>
+                              {%- endif -%}
+
+                              <ul class="ma-mobile-submenu-list">
+                                {%- for child_link in selected_menu.links -%}
+                                  <li>
+                                    <a href="{{ child_link.url }}">
+                                      {{ child_link.title }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+
+                            </div>
+                          {%- endif -%}
+
+                        {%- endfor -%}
+
+                      {%- when 'links_only' -%}
+
+                        {%- for menu_setting in (1..4) -%}
+
+                          {%- capture menu_key -%}column_{{ menu_setting }}_menu{%- endcapture -%}
+                          {%- capture title_key -%}column_{{ menu_setting }}_title{%- endcapture -%}
+
+                          {%- assign selected_menu = matching_block.settings[menu_key] -%}
+                          {%- assign column_title = matching_block.settings[title_key] -%}
+
+                          {%- if selected_menu != blank -%}
+                            <div class="ma-mobile-submenu-section">
+
+                              {%- if column_title != blank -%}
+                                <strong class="ma-mobile-submenu-title">
+                                  {{ column_title }}
+                                </strong>
+                              {%- endif -%}
+
+                              <ul class="ma-mobile-submenu-list">
+                                {%- for child_link in selected_menu.links -%}
+                                  <li>
+                                    <a href="{{ child_link.url }}">
+                                      {{ child_link.title }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+
+                            </div>
+                          {%- endif -%}
+
+                        {%- endfor -%}
+
+                      {%- when 'products_focus' -%}
+
+                        {%- if matching_block.settings.column_1_menu != blank -%}
+                          <div class="ma-mobile-submenu-section">
+                            <strong class="ma-mobile-submenu-title">
+                              {{ matching_block.settings.column_1_title | default: 'Shop' }}
+                            </strong>
+
+                            <ul class="ma-mobile-submenu-list">
+                              {%- for child_link in matching_block.settings.column_1_menu.links -%}
+                                <li>
+                                  <a href="{{ child_link.url }}">
+                                    {{ child_link.title }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </div>
+                        {%- endif -%}
+
+                      {%- when 'hero_feature' -%}
+
+                        <div class="ma-mobile-submenu-section">
+
+                          {%- if matching_block.settings.featured_badge != blank -%}
+                            <span class="ma-badge">
+                              {{ matching_block.settings.featured_badge }}
+                            </span>
+                          {%- endif -%}
+
+                          {%- if matching_block.settings.featured_title != blank -%}
+                            <strong class="ma-mobile-submenu-title">
+                              {{ matching_block.settings.featured_title }}
+                            </strong>
+                          {%- endif -%}
+
+                          {%- if matching_block.settings.featured_description != blank -%}
+                            <div style="font-size:13px;line-height:1.45;margin-bottom:10px;">
+                              {{ matching_block.settings.featured_description }}
+                            </div>
+                          {%- endif -%}
+
+                          {%- if matching_block.settings.cta_text != blank and matching_block.settings.cta_link != blank -%}
+                            <a
+                              href="{{ matching_block.settings.cta_link }}"
+                              class="ma-cta"
+                            >
+                              {{ matching_block.settings.cta_text }}
+                            </a>
+                          {%- endif -%}
+
+                        </div>
+
+                    {%- endcase -%}
+
+                  {%- else -%}
+
+                    {%- for child_link in link.links -%}
+
+                      <div class="ma-mobile-submenu-section">
+
+                        <a
+                          class="ma-mobile-submenu-title"
+                          href="{{ child_link.url }}"
+                        >
+                          {{ child_link.title }}
+                        </a>
+
+                        {%- if child_link.links != blank -%}
+                          <ul class="ma-mobile-submenu-list">
+                            {%- for grandchild_link in child_link.links -%}
+                              <li>
+                                <a href="{{ grandchild_link.url }}">
+                                  {{ grandchild_link.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+
+                      </div>
+
+                    {%- endfor -%}
+
+                  {%- endif -%}
+
+                  {%- if has_mega -%}
+
+                    {%- assign mobile_products = 0 -%}
+
+                    <div class="ma-mobile-products">
+
+                      {%- if matching_block.settings.product_1 != blank -%}
+                        {% assign mobile_products = mobile_products | plus: 1 %}
+                        {% render 'modern-aussies-product-card',
+                          product: matching_block.settings.product_1,
+                          section: section
+                        %}
+                      {%- endif -%}
+
+                      {%- if matching_block.settings.product_2 != blank and mobile_products < 2 -%}
+                        {% assign mobile_products = mobile_products | plus: 1 %}
+                        {% render 'modern-aussies-product-card',
+                          product: matching_block.settings.product_2,
+                          section: section
+                        %}
+                      {%- endif -%}
+
+                    </div>
+
+                    {%- if matching_block.settings.cta_text != blank and matching_block.settings.cta_link != blank -%}
+                      <div style="padding-top:14px;">
+                        <a
+                          href="{{ matching_block.settings.cta_link }}"
+                          class="ma-cta"
+                        >
+                          {{ matching_block.settings.cta_text }}
+                        </a>
+                      </div>
+                    {%- endif -%}
+
+                  {%- endif -%}
+
+                </div>
+
+              {%- else -%}
+
+                <a
+                  class="ma-mobile-menu-link"
+                  href="{{ link.url }}"
                 >
                   <span>{{ link.title }}</span>
-                  <svg class="ma-nav__chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <path d="M5 7.5 10 12.5 15 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              {% else %}
-                <a class="ma-nav__link{% if link.title contains 'Best' %} ma-nav__link--hot{% endif %}" href="{{ link.url }}">
-                  <span>{{ link.title }}</span>
+
+                  <span class="ma-mobile-menu-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="m9 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
                 </a>
-              {% endif %}
+
+              {%- endif -%}
+
             </li>
-          {% endfor %}
-        {% else %}
-          <li><span class="ma-nav__link">Add a navigation menu</span></li>
-        {% endif %}
+
+          {%- endfor -%}
+
+        {%- endif -%}
+
       </ul>
-    </nav>
 
-    <div class="ma-actions">
-      {% if shop.customer_accounts_enabled %}
-        <a class="ma-action" href="{{ routes.account_url }}" aria-label="Account">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 20c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </a>
-      {% endif %}
+      <!-- Account -->
+      {%- if section.settings.show_account -%}
+        <div class="ma-mobile-account">
+          <a href="{{ routes.account_url }}">
+            Account
+          </a>
 
-      {% if section.settings.show_currency %}
-        <div class="ma-currency">
-          {% form 'currency' %}
-            <label class="visually-hidden" for="ma-currency-{{ section.id }}">Currency</label>
-            <select id="ma-currency-{{ section.id }}" name="currency" onchange="this.form.submit()">
-              {% for currency in localization.available_currencies %}
-                <option value="{{ currency.iso_code }}" {% if currency.iso_code == localization.country.currency.iso_code %}selected{% endif %}>
-                  {{ currency.iso_code }}
+          <a href="{{ routes.cart_url }}">
+            Cart{% if cart_count > 0 %} ({{ cart_count }}){% endif %}
+          </a>
+        </div>
+      {%- endif -%}
+
+      <!-- Currency -->
+      {%- if section.settings.show_currency and localization.available_countries.size > 1 -%}
+        <div class="ma-mobile-currency">
+
+          {%- form 'localization',
+            id: 'MobileCurrencyForm-' | append: section.id
+          -%}
+
+            <select
+              name="country_code"
+              aria-label="Currency"
+              onchange="this.form.submit()"
+            >
+              {%- for country in localization.available_countries -%}
+                <option
+                  value="{{ country.iso_code }}"
+                  {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
+                >
+                  {{ country.name }} — {{ country.currency.iso_code }}
                 </option>
-              {% endfor %}
+              {%- endfor -%}
             </select>
-          {% endform %}
+
+          {%- endform -%}
+
         </div>
-      {% endif %}
+      {%- endif -%}
 
-      <a class="ma-action" href="{{ routes.cart_url }}" aria-label="Cart">
-        <span style="position:relative;display:inline-flex">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h2l1.4 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.4L21 8H7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.2" fill="currentColor"/><circle cx="18" cy="20" r="1.2" fill="currentColor"/></svg>
-          {% if cart.item_count > 0 %}<span class="ma-cart-count">{{ cart.item_count }}</span>{% endif %}
-        </span>
-      </a>
-    </div>
-  </div>
+      <!-- Mobile Trust -->
+      {%- if section.settings.enable_trust_bar -%}
+        <div class="ma-mobile-trust">
 
-  <div class="ma-mobile-bar">
-    <button type="button" class="ma-mobile-bar__button" data-ma-mobile-open aria-label="Open menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </button>
-    <a class="ma-mobile-bar__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-      {% if section.settings.logo != blank %}
-        {{ section.settings.logo | image_url: width: 500 | image_tag: widths: '160,240,320,400,500', alt: shop.name, loading: 'eager' }}
-      {% else %}
-        <span class="ma-logo__text">{{ shop.name }}</span>
-      {% endif %}
-    </a>
-    <a class="ma-mobile-bar__button" href="{{ routes.cart_url }}" aria-label="Cart">
-      <span style="position:relative;display:inline-flex">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h2l1.4 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.4L21 8H7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.2" fill="currentColor"/><circle cx="18" cy="20" r="1.2" fill="currentColor"/></svg>
-        {% if cart.item_count > 0 %}<span class="ma-cart-count">{{ cart.item_count }}</span>{% endif %}
-      </span>
-    </a>
-  </div>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'trust_item' -%}
 
-  {% if main_menu != blank %}
-    {% for link in main_menu.links %}
-      {% liquid
-        assign menu_key = link.title | handleize
-        assign mega_block = blank
-        for block in section.blocks
-          if block.type == 'mega_menu'
-            assign block_key = block.settings.menu_item | handleize
-            if block_key == menu_key
-              assign mega_block = block
-              break
-            endif
-          endif
-        endfor
-      %}
-      {% if mega_block != blank %}
-        <div
-          id="ma-mega-{{ section.id }}-{{ mega_block.id }}"
-          class="ma-mega"
-          data-ma-mega="{{ mega_block.id }}"
-          data-menu-url="{{ link.url }}"
-        >
-          <div class="ma-mega__inner ma-mega__inner--{{ mega_block.settings.layout }}" data-ma-mega-panel>
-            <div class="ma-mega__categories">
-              {% if mega_block.settings.eyebrow != blank %}<p class="ma-mega__eyebrow">{{ mega_block.settings.eyebrow }}</p>{% endif %}
-              {% if mega_block.settings.title != blank %}<h2 class="ma-mega__title">{{ mega_block.settings.title }}</h2>{% endif %}
-              {% if mega_block.settings.description != blank %}<p class="ma-mega__description">{{ mega_block.settings.description }}</p>{% endif %}
+              <div
+                class="ma-trust-item"
+                {{ block.shopify_attributes }}
+              >
 
-              {% if mega_block.settings.show_trust_bar %}
-                <div class="ma-trust">
-                  {% for i in (1..3) %}
-                    {% liquid
-                      assign trust_label_key = 'trust_' | append: i | append: '_text'
-                      assign trust_label = mega_block.settings[trust_label_key]
-                    %}
-                    {% if trust_label != blank %}
-                      <div class="ma-trust__item">
-                        <svg class="ma-trust__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          {% if i == 1 %}
-                            <path d="M3 6h11v10H3zM14 9h4l3 3v4h-7zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.5"/>
-                          {% elsif i == 2 %}
-                            <path d="M4 7h11a5 5 0 0 1 0 10H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="m7 4-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                          {% else %}
-                            <path d="m12 3 7 3v5c0 4.5-3 7.2-7 10-4-2.8-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.5"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                          {% endif %}
-                        </svg>
-                        <span>{{ trust_label }}</span>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              {% endif %}
+                <span class="ma-trust-icon">
 
-              <div class="ma-category-list">
-                {% for column_index in (1..4) %}
-                  {% liquid
-                    assign menu_setting_key = 'column_menu_' | append: column_index
-                    assign selected_menu = mega_block.settings[menu_setting_key]
-                  %}
-                  {% if selected_menu != blank %}
-                    {% for category in selected_menu.links %}
-                      <div class="ma-category" data-ma-category>
-                        <div class="ma-category__row">
-                          <a class="ma-category__heading" href="{{ category.url }}">{{ category.title }}</a>
-                          {% if category.links.size > 0 %}
-                            <button type="button" class="ma-category__toggle" aria-label="Expand {{ category.title | escape }}" aria-expanded="false" data-ma-category-toggle>
-                              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                            </button>
-                          {% endif %}
-                        </div>
-                        {% if category.links.size > 0 %}
-                          <div class="ma-category__children">
-                            {% for child in category.links %}
-                              <a class="ma-category__child" href="{{ child.url }}">{{ child.title }}</a>
-                            {% endfor %}
-                          </div>
-                        {% endif %}
-                      </div>
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
-              {% if mega_block.settings.side_image != blank %}
-                <a class="ma-side-image" href="{{ mega_block.settings.side_image_url | default: link.url }}" aria-label="{{ mega_block.settings.side_image_alt | default: mega_block.settings.title | escape }}">
-                  {{ mega_block.settings.side_image | image_url: width: 700 | image_tag: widths: '300,450,600,700', loading: 'lazy', alt: mega_block.settings.side_image_alt | default: mega_block.settings.title }}
-                </a>
-              {% endif %}
-            </div>
+                  {%- case block.settings.icon -%}
 
-            <div class="ma-mega__products">
-              <div class="ma-products__top">
-                <div>
-                  {% if mega_block.settings.products_eyebrow != blank %}<p class="ma-products__eyebrow">{{ mega_block.settings.products_eyebrow }}</p>{% endif %}
-                  {% if mega_block.settings.products_title != blank %}<h3 class="ma-products__title">{{ mega_block.settings.products_title }}</h3>{% endif %}
-                </div>
-                {% if mega_block.settings.products_view_all_label != blank %}
-                  <a class="ma-products__viewall" href="{{ mega_block.settings.products_view_all_url | default: link.url }}">{{ mega_block.settings.products_view_all_label }}</a>
-                {% endif %}
+                    {%- when 'truck' -%}
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 5h11v11H3z"></path>
+                        <path d="M14 9h4l3 3v4h-7z"></path>
+                        <circle cx="7" cy="18" r="1.5"></circle>
+                        <circle cx="18" cy="18" r="1.5"></circle>
+                      </svg>
+
+                    {%- when 'returns' -%}
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 7v5h5"></path>
+                        <path d="M4.5 12A8 8 0 1 0 7 6.3"></path>
+                      </svg>
+
+                    {%- when 'shield' -%}
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3 20 6v5c0 5-3.2 8.2-8 10-4.8-1.8-8-5-8-10V6z"></path>
+                        <path d="m8.5 12 2.2 2.2 4.8-5"></path>
+                      </svg>
+
+                    {%- when 'check' -%}
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="8.5"></circle>
+                        <path d="m8 12 2.6 2.6L16 9"></path>
+                      </svg>
+
+                  {%- endcase -%}
+
+                </span>
+
+                <span>
+                  {{ block.settings.text }}
+                </span>
+
               </div>
 
-              <div class="ma-product-grid">
-                {% for product_index in (1..4) %}
-                  {% liquid
-                    assign product_key = 'product_' | append: product_index
-                    assign badge_key = 'product_' | append: product_index | append: '_badge'
-                    assign selected_product = mega_block.settings[product_key]
-                    assign product_badge = mega_block.settings[badge_key]
-                  %}
-                  {% if selected_product != blank %}
-                    <a class="ma-product" href="{{ selected_product.url }}">
-                      <div class="ma-product__image">
-                        {% if selected_product.featured_image != blank %}
-                          {{ selected_product.featured_image | image_url: width: 900 | image_tag: widths: '300,450,600,750,900', loading: 'lazy', alt: selected_product.featured_image.alt | default: selected_product.title }}
-                        {% endif %}
-                        {% if product_badge != blank %}<span class="ma-badge">{{ product_badge }}</span>{% endif %}
-                      </div>
-                      <div class="ma-product__name">{{ selected_product.title }}</div>
-                      {% if mega_block.settings.show_product_rating %}
-                        <div class="ma-product__rating" aria-label="Rated product">
-                          ★★★★★
-                        </div>
-                      {% endif %}
-                      <div class="ma-product__price">
-                        <span class="ma-product__price-current">{{ selected_product.price | money }}</span>
-                        {% if selected_product.compare_at_price > selected_product.price %}
-                          <span class="ma-product__price-compare">{{ selected_product.compare_at_price | money }}</span>
-                        {% endif %}
-                      </div>
-                    </a>
-                  {% endif %}
-                {% endfor %}
-              </div>
+            {%- endif -%}
+          {%- endfor -%}
 
-              {% if mega_block.settings.products_cta_label != blank %}
-                <a class="ma-products__cta" href="{{ mega_block.settings.products_cta_url | default: link.url }}">
-                  {{ mega_block.settings.products_cta_label }}
-                  <span aria-hidden="true">→</span>
-                </a>
-              {% endif %}
-            </div>
-
-            <div class="ma-mega__featured">
-              {% if mega_block.settings.featured_image != blank %}
-                <div class="ma-featured__image">
-                  {{ mega_block.settings.featured_image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', loading: 'lazy', alt: mega_block.settings.featured_title }}
-                </div>
-              {% endif %}
-              <div class="ma-featured__overlay"></div>
-              <div class="ma-featured__content">
-                {% if mega_block.settings.featured_badge != blank %}<span class="ma-featured__badge">{{ mega_block.settings.featured_badge }}</span>{% endif %}
-                {% if mega_block.settings.featured_label != blank %}<div class="ma-featured__label">{{ mega_block.settings.featured_label }}</div>{% endif %}
-                {% if mega_block.settings.featured_title != blank %}<h3 class="ma-featured__title">{{ mega_block.settings.featured_title }}</h3>{% endif %}
-                {% if mega_block.settings.featured_description != blank %}<p class="ma-featured__description">{{ mega_block.settings.featured_description }}</p>{% endif %}
-                {% if mega_block.settings.featured_cta_label != blank %}
-                  <a class="ma-featured__cta" href="{{ mega_block.settings.featured_cta_url | default: link.url }}">{{ mega_block.settings.featured_cta_label }} <span aria-hidden="true">→</span></a>
-                {% endif %}
-              </div>
-            </div>
-          </div>
         </div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+      {%- endif -%}
 
-  <div class="ma-drawer" data-ma-drawer aria-hidden="true">
-    <div class="ma-drawer__header">
-      <a class="ma-drawer__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-        {% if section.settings.logo != blank %}
-          {{ section.settings.logo | image_url: width: 500 | image_tag: widths: '160,240,320,400,500', alt: shop.name, loading: 'eager' }}
-        {% else %}
-          <span class="ma-logo__text">{{ shop.name }}</span>
-        {% endif %}
-      </a>
-      <button type="button" class="ma-drawer__close" data-ma-mobile-close aria-label="Close menu">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
     </div>
+  </aside>
 
-    <nav class="ma-drawer__nav" aria-label="Mobile navigation">
-      {% if main_menu != blank %}
-        {% for link in main_menu.links %}
-          {% liquid
-            assign menu_key = link.title | handleize
-            assign mega_block = blank
-            for block in section.blocks
-              if block.type == 'mega_menu'
-                assign block_key = block.settings.menu_item | handleize
-                if block_key == menu_key
-                  assign mega_block = block
-                  break
-                endif
-              endif
-            endfor
-          %}
-          <div class="ma-drawer__item" data-ma-drawer-item>
-            <div class="ma-drawer__row">
-              <a class="ma-drawer__link" href="{{ link.url }}">{{ link.title }}</a>
-              {% if mega_block != blank or link.links.size > 0 %}
-                <button type="button" class="ma-drawer__toggle" aria-expanded="false" aria-label="Expand {{ link.title | escape }}" data-ma-drawer-toggle>
-                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </button>
-              {% endif %}
+  <!-- ======================================================
+       DESKTOP TRUST BAR
+  ======================================================= -->
+
+  {%- if section.settings.enable_trust_bar -%}
+
+    <div class="ma-trust-bar">
+
+      <div class="ma-trust-inner">
+
+        {%- for block in section.blocks -%}
+
+          {%- if block.type == 'trust_item' -%}
+
+            <div
+              class="ma-trust-item"
+              {{ block.shopify_attributes }}
+            >
+
+              <span class="ma-trust-icon">
+
+                {%- case block.settings.icon -%}
+
+                  {%- when 'truck' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3 5h11v11H3z"></path>
+                      <path d="M14 9h4l3 3v4h-7z"></path>
+                      <circle cx="7" cy="18" r="1.5"></circle>
+                      <circle cx="18" cy="18" r="1.5"></circle>
+                    </svg>
+
+                  {%- when 'returns' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 7v5h5"></path>
+                      <path d="M4.5 12A8 8 0 1 0 7 6.3"></path>
+                    </svg>
+
+                  {%- when 'shield' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 3 20 6v5c0 5-3.2 8.2-8 10-4.8-1.8-8-5-8-10V6z"></path>
+                      <path d="m8.5 12 2.2 2.2 4.8-5"></path>
+                    </svg>
+
+                  {%- when 'check' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="8.5"></circle>
+                      <path d="m8 12 2.6 2.6L16 9"></path>
+                    </svg>
+
+                {%- endcase -%}
+
+              </span>
+
+              <span>
+                {{ block.settings.text }}
+              </span>
+
             </div>
 
-            {% if mega_block != blank %}
-              <div class="ma-drawer__sub">
-                {% if mega_block.settings.eyebrow != blank or mega_block.settings.title != blank %}
-                  <div class="ma-drawer__intro">
-                    {% if mega_block.settings.eyebrow != blank %}<p class="ma-drawer__intro-eyebrow">{{ mega_block.settings.eyebrow }}</p>{% endif %}
-                    {% if mega_block.settings.title != blank %}<h2 class="ma-drawer__intro-title">{{ mega_block.settings.title }}</h2>{% endif %}
-                  </div>
-                {% endif %}
+          {%- endif -%}
 
-                <div class="ma-drawer__children">
-                  {% for column_index in (1..4) %}
-                    {% liquid
-                      assign menu_setting_key = 'column_menu_' | append: column_index
-                      assign selected_menu = mega_block.settings[menu_setting_key]
-                    %}
-                    {% if selected_menu != blank %}
-                      {% for category in selected_menu.links %}
-                        <div class="ma-drawer__child-row" data-ma-drawer-child>
-                          <div style="display:flex;align-items:center;gap:8px">
-                            <a class="ma-drawer__child-link" href="{{ category.url }}">{{ category.title }}</a>
-                            {% if category.links.size > 0 %}
-                              <button type="button" class="ma-drawer__toggle" data-ma-drawer-child-toggle aria-expanded="false" aria-label="Expand {{ category.title | escape }}">
-                                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                              </button>
-                            {% endif %}
-                          </div>
-                          {% if category.links.size > 0 %}
-                            <div class="ma-drawer__grandchildren">
-                              {% for child in category.links %}
-                                <a class="ma-drawer__grandchild" href="{{ child.url }}">{{ child.title }}</a>
-                              {% endfor %}
-                            </div>
-                          {% endif %}
-                        </div>
-                      {% endfor %}
-                    {% endif %}
-                  {% endfor %}
-                </div>
+        {%- endfor -%}
 
-                <div class="ma-drawer__products-title">{{ mega_block.settings.products_title | default: 'Trending now' }}</div>
-                <div class="ma-drawer__products">
-                  {% for product_index in (1..2) %}
-                    {% liquid
-                      assign product_key = 'product_' | append: product_index
-                      assign selected_product = mega_block.settings[product_key]
-                    %}
-                    {% if selected_product != blank %}
-                      <a class="ma-drawer__product" href="{{ selected_product.url }}">
-                        <div class="ma-drawer__product-image">
-                          {{ selected_product.featured_image | image_url: width: 600 | image_tag: widths: '250,400,600', loading: 'lazy', alt: selected_product.title }}
-                          {% liquid
-                            assign badge_key = 'product_' | append: product_index | append: '_badge'
-                            assign product_badge = mega_block.settings[badge_key]
-                          %}
-                          {% if product_badge != blank %}<span class="ma-badge">{{ product_badge }}</span>{% endif %}
-                        </div>
-                        <div class="ma-drawer__product-name">{{ selected_product.title }}</div>
-                        <div class="ma-drawer__product-price">{{ selected_product.price | money }}</div>
-                      </a>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+      </div>
 
-                {% if mega_block.settings.products_cta_label != blank %}
-                  <a class="ma-drawer__cta" href="{{ mega_block.settings.products_cta_url | default: link.url }}">{{ mega_block.settings.products_cta_label }}</a>
-                {% endif %}
-              </div>
-            {% elsif link.links.size > 0 %}
-              <div class="ma-drawer__sub">
-                <div class="ma-drawer__children">
-                  {% for child in link.links %}
-                    <a class="ma-drawer__child-link" href="{{ child.url }}">{{ child.title }}</a>
-                  {% endfor %}
-                </div>
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
-      {% endif %}
-    </nav>
-
-    <div class="ma-drawer__footer">
-      {% if shop.customer_accounts_enabled %}
-        <a href="{{ routes.account_url }}">Log in</a>
-      {% endif %}
-      {% if section.settings.show_currency %}
-        {% form 'currency' %}
-          <label class="visually-hidden" for="ma-mobile-currency-{{ section.id }}">Currency</label>
-          <select id="ma-mobile-currency-{{ section.id }}" name="currency" onchange="this.form.submit()">
-            {% for currency in localization.available_currencies %}
-              <option value="{{ currency.iso_code }}" {% if currency.iso_code == localization.country.currency.iso_code %}selected{% endif %}>{{ currency.iso_code }}</option>
-            {% endfor %}
-          </select>
-        {% endform %}
-      {% endif %}
     </div>
-  </div>
-</header>
 
-<script>
-  (() => {
-    const root = document.querySelector('#shopify-section-{{ section.id }} [data-ma-header]');
-    if (!root || root.dataset.initialized === 'true') return;
-    root.dataset.initialized = 'true';
+  {%- endif -%}
 
-    const delay = Number(root.dataset.closeDelay || 150);
-    let closeTimer = null;
-    let activeMega = null;
+  <!-- ======================================================
+       JAVASCRIPT
+  ======================================================= -->
 
-    const closeAll = () => {
-      root.querySelectorAll('[data-ma-mega].is-open').forEach(menu => menu.classList.remove('is-open'));
-      root.querySelectorAll('[data-ma-trigger][aria-expanded="true"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-      activeMega = null;
-    };
+  <script>
+    (() => {
+      const root = document.getElementById('ModernAussiesHeader-{{ section.id }}');
 
-    const openMega = (trigger, id) => {
-      clearTimeout(closeTimer);
-      root.querySelectorAll('[data-ma-mega].is-open').forEach(menu => menu.classList.remove('is-open'));
-      root.querySelectorAll('[data-ma-trigger][aria-expanded="true"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+      if (!root || root.dataset.initialized === 'true') return;
 
-      const menu = root.querySelector('[data-ma-mega="' + id + '"]');
-      if (!menu) return;
-      menu.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      activeMega = menu;
-    };
+      root.dataset.initialized = 'true';
 
-    root.querySelectorAll('[data-ma-trigger]').forEach(trigger => {
-      const item = trigger.closest('[data-ma-nav-item]');
-      const id = item && item.dataset.maMegaTrigger;
+      const leaveDelay = Number(root.dataset.leaveDelay || 150);
 
-      trigger.addEventListener('mouseenter', () => {
-        if (window.matchMedia('(min-width: 1180px)').matches) openMega(trigger, id);
-      });
+      let closeTimer = null;
 
-      trigger.addEventListener('focus', () => {
-        if (window.matchMedia('(min-width: 1180px)').matches) openMega(trigger, id);
-      });
+      const desktopItems = Array.from(
+        root.querySelectorAll('.ma-desktop-nav .ma-nav-item.has-mega')
+      );
 
-      trigger.addEventListener('click', () => {
-        if (!window.matchMedia('(min-width: 1180px)').matches) return;
-        const menu = root.querySelector('[data-ma-mega="' + id + '"]');
-        if (!menu) return;
-        if (menu.classList.contains('is-open')) closeAll();
-        else openMega(trigger, id);
-      });
-
-      item && item.addEventListener('mouseleave', () => {
-        if (!window.matchMedia('(min-width: 1180px)').matches) return;
-        clearTimeout(closeTimer);
-        closeTimer = setTimeout(closeAll, delay);
-      });
-    });
-
-    root.querySelectorAll('[data-ma-mega]').forEach(menu => {
-      menu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
-      menu.addEventListener('mouseleave', () => {
-        clearTimeout(closeTimer);
-        closeTimer = setTimeout(closeAll, delay);
-      });
-    });
-
-    root.querySelectorAll('[data-ma-category-toggle]').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const category = toggle.closest('[data-ma-category]');
-        const shouldOpen = !category.classList.contains('is-expanded');
-        const parent = category.parentElement;
-        parent.querySelectorAll('[data-ma-category].is-expanded').forEach(item => item.classList.remove('is-expanded'));
-        parent.querySelectorAll('[data-ma-category__toggle]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-        category.classList.toggle('is-expanded', shouldOpen);
-        toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-      });
-    });
-
-    const drawer = root.querySelector('[data-ma-drawer]');
-    const mobileOpen = root.querySelector('[data-ma-mobile-open]');
-    const mobileClose = root.querySelector('[data-ma-mobile-close]');
-
-    const setDrawer = open => {
-      if (!drawer) return;
-      drawer.classList.toggle('is-open', open);
-      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-      if (mobileOpen) mobileOpen.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.documentElement.classList.toggle('ma-menu-open', open);
-      document.body.classList.toggle('ma-menu-open', open);
-    };
-
-    mobileOpen && mobileOpen.addEventListener('click', () => setDrawer(true));
-    mobileClose && mobileClose.addEventListener('click', () => setDrawer(false));
-
-    root.querySelectorAll('[data-ma-drawer-toggle]').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const item = toggle.closest('[data-ma-drawer-item]');
-        const shouldOpen = !item.classList.contains('is-expanded');
-        item.parentElement.querySelectorAll('[data-ma-drawer-item].is-expanded').forEach(other => {
-          other.classList.remove('is-expanded');
-          const otherButton = other.querySelector('[data-ma-drawer-toggle]');
-          if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
-        });
-        item.classList.toggle('is-expanded', shouldOpen);
-        toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-      });
-    });
-
-    root.querySelectorAll('[data-ma-drawer-child-toggle]').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const row = toggle.closest('[data-ma-drawer-child]');
-        const shouldOpen = !row.classList.contains('is-expanded');
-        row.classList.toggle('is-expanded', shouldOpen);
-        toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-      });
-    });
-
-    document.addEventListener('click', event => {
-      if (!root.contains(event.target) && window.matchMedia('(min-width: 1180px)').matches) closeAll();
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        closeAll();
-        setDrawer(false);
+      function clearCloseTimer() {
+        if (closeTimer) {
+          window.clearTimeout(closeTimer);
+          closeTimer = null;
+        }
       }
-    });
-  })();
-</script>
+
+      function closeDesktopMenus() {
+        clearCloseTimer();
+
+        desktopItems.forEach((item) => {
+          item.classList.remove('is-open');
+
+          const link = item.querySelector(':scope > .ma-nav-link');
+
+          if (link) {
+            link.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      function openDesktopMenu(item) {
+        clearCloseTimer();
+
+        desktopItems.forEach((other) => {
+          if (other !== item) {
+            other.classList.remove('is-open');
+
+            const otherLink = other.querySelector(':scope > .ma-nav-link');
+
+            if (otherLink) {
+              otherLink.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+
+        item.classList.add('is-open');
+
+        const link = item.querySelector(':scope > .ma-nav-link');
+
+        if (link) {
+          link.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      function closeDesktopSoon() {
+        clearCloseTimer();
+
+        closeTimer = window.setTimeout(() => {
+          closeDesktopMenus();
+        }, leaveDelay);
+      }
+
+      desktopItems.forEach((item) => {
+        const mega = item.querySelector(':scope > .ma-mega');
+
+        if (!mega) return;
+
+        item.addEventListener('mouseenter', () => {
+          openDesktopMenu(item);
+        });
+
+        item.addEventListener('mouseleave', () => {
+          closeDesktopSoon();
+        });
+
+        item.addEventListener('focusin', () => {
+          openDesktopMenu(item);
+        });
+
+        item.addEventListener('focusout', (event) => {
+          if (!item.contains(event.relatedTarget)) {
+            closeDesktopSoon();
+          }
+        });
+
+        mega.addEventListener('mouseenter', () => {
+          clearCloseTimer();
+        });
+
+        mega.addEventListener('mouseleave', () => {
+          closeDesktopSoon();
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!root.contains(event.target)) {
+          closeDesktopMenus();
+        }
+      });
+
+      /* -------------------------------------------------------
+         MOBILE DRAWER
+      ------------------------------------------------------- */
+
+      const menuToggle = root.querySelector('.ma-menu-toggle');
+      const drawer = root.querySelector('.ma-mobile-drawer');
+      const drawerClose = root.querySelector('.ma-drawer-close');
+      const overlay = root.querySelector('.ma-mobile-overlay');
+
+      function openDrawer() {
+        root.classList.add('drawer-open');
+
+        if (menuToggle) {
+          menuToggle.setAttribute('aria-expanded', 'true');
+          menuToggle.setAttribute('aria-label', 'Close menu');
+        }
+
+        if (drawer) {
+          drawer.setAttribute('aria-hidden', 'false');
+        }
+
+        document.documentElement.classList.add('ma-mobile-menu-open');
+        document.body.classList.add('ma-mobile-menu-open');
+      }
+
+      function closeDrawer() {
+        root.classList.remove('drawer-open');
+
+        if (menuToggle) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Open menu');
+        }
+
+        if (drawer) {
+          drawer.setAttribute('aria-hidden', 'true');
+        }
+
+        document.documentElement.classList.remove('ma-mobile-menu-open');
+        document.body.classList.remove('ma-mobile-menu-open');
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          if (root.classList.contains('drawer-open')) {
+            closeDrawer();
+          } else {
+            openDrawer();
+          }
+        });
+      }
+
+      if (drawerClose) {
+        drawerClose.addEventListener('click', closeDrawer);
+      }
+
+      if (overlay) {
+        overlay.addEventListener('click', closeDrawer);
+      }
+
+      /* -------------------------------------------------------
+         MOBILE EXPANDABLE MENUS
+      ------------------------------------------------------- */
+
+      const mobileItems = Array.from(
+        root.querySelectorAll('.ma-mobile-menu-item')
+      );
+
+      mobileItems.forEach((item) => {
+        const button = item.querySelector(':scope > .ma-mobile-menu-button');
+
+        if (!button) return;
+
+        const submenu = item.querySelector(':scope > .ma-mobile-submenu');
+
+        if (!submenu) return;
+
+        button.addEventListener('click', () => {
+          const wasExpanded = item.classList.contains('is-expanded');
+
+          mobileItems.forEach((otherItem) => {
+            otherItem.classList.remove('is-expanded');
+
+            const otherButton = otherItem.querySelector(
+              ':scope > .ma-mobile-menu-button'
+            );
+
+            if (otherButton) {
+              otherButton.setAttribute('aria-expanded', 'false');
+            }
+
+            const plus = otherItem.querySelector('.ma-icon-plus');
+            const minus = otherItem.querySelector('.ma-icon-minus');
+
+            if (plus) plus.style.display = '';
+            if (minus) minus.style.display = 'none';
+          });
+
+          if (!wasExpanded) {
+            item.classList.add('is-expanded');
+            button.setAttribute('aria-expanded', 'true');
+
+            const plus = item.querySelector('.ma-icon-plus');
+            const minus = item.querySelector('.ma-icon-minus');
+
+            if (plus) plus.style.display = 'none';
+            if (minus) minus.style.display = '';
+          }
+        });
+      });
+
+      /* -------------------------------------------------------
+         SEARCH
+      ------------------------------------------------------- */
+
+      const searchToggles = root.querySelectorAll('.ma-search-toggle');
+
+      searchToggles.forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          const isOpen = root.classList.toggle('search-open');
+
+          searchToggles.forEach((button) => {
+            button.setAttribute(
+              'aria-expanded',
+              isOpen ? 'true' : 'false'
+            );
+          });
+
+          if (isOpen) {
+            const input = root.querySelector('.ma-search-form input[type="search"]');
+
+            if (input) {
+              window.setTimeout(() => input.focus(), 50);
+            }
+          }
+        });
+      });
+
+      /* -------------------------------------------------------
+         ESCAPE KEY
+      ------------------------------------------------------- */
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+
+        closeDesktopMenus();
+        closeDrawer();
+
+        if (root.classList.contains('search-open')) {
+          root.classList.remove('search-open');
+
+          searchToggles.forEach((button) => {
+            button.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      /* -------------------------------------------------------
+         VIEWPORT SAFETY
+      ------------------------------------------------------- */
+
+      const mediaQuery = window.matchMedia(
+        `(max-width: ${root.dataset.mobileBreakpoint}px)`
+      );
+
+      function handleBreakpointChange(event) {
+        if (!event.matches) {
+          closeDrawer();
+        }
+
+        closeDesktopMenus();
+      }
+
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleBreakpointChange);
+      } else {
+        mediaQuery.addListener(handleBreakpointChange);
+      }
+
+    })();
+  </script>
+</header>
 
 {% schema %}
 {
   "name": "Modern Aussies Header",
-  "tag": "section",
+  "tag": "header",
   "class": "section-modern-aussies-header",
   "settings": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Main menu"
+      "type": "header",
+      "content": "Logo"
     },
     {
       "type": "image_picker",
@@ -1524,65 +2387,334 @@
       "max": 320,
       "step": 5,
       "unit": "px",
-      "default": 170
+      "default": 150
     },
     {
       "type": "range",
       "id": "mobile_logo_width",
       "label": "Mobile logo width",
-      "min": 80,
+      "min": 70,
       "max": 240,
       "step": 5,
       "unit": "px",
-      "default": 145
-    },
-    
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Maximum content width",
-      "min": 1000,
-      "max": 1800,
-      "step": 20,
-      "unit": "px",
-      "default": 1600
+      "default": 125
     },
     {
-      "type": "range",
-      "id": "nav_gap",
-      "label": "Navigation gap",
-      "min": 0,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "default": 8
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "navigation_label",
+      "label": "Navigation accessibility label",
+      "default": "Main navigation"
     },
     {
       "type": "range",
       "id": "nav_font_size",
-      "label": "Navigation font size",
+      "label": "Desktop navigation font size",
       "min": 10,
       "max": 20,
       "step": 1,
       "unit": "px",
-      "default": 13
+      "default": 14
     },
     {
       "type": "select",
       "id": "nav_font_weight",
       "label": "Navigation font weight",
       "options": [
-        { "value": "400", "label": "Regular" },
-        { "value": "500", "label": "Medium" },
-        { "value": "600", "label": "Semi-bold" },
-        { "value": "700", "label": "Bold" }
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
       ],
       "default": "600"
     },
     {
+      "type": "range",
+      "id": "menu_gap",
+      "label": "Navigation item spacing",
+      "min": 5,
+      "max": 45,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Header layout"
+    },
+    {
+      "type": "range",
+      "id": "header_height",
+      "label": "Desktop header height",
+      "min": 55,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Maximum content width",
+      "min": 1000,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1440
+    },
+    {
+      "type": "range",
+      "id": "mobile_breakpoint",
+      "label": "Mobile breakpoint",
+      "min": 640,
+      "max": 1100,
+      "step": 10,
+      "unit": "px",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding",
+      "label": "Mobile header horizontal padding",
+      "min": 8,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Header colours"
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Header background",
+      "default": "#F4EFE4"
+    },
+    {
+      "type": "color",
+      "id": "header_text",
+      "label": "Header text",
+      "default": "#1B2A4A"
+    },
+    {
+      "type": "color",
+      "id": "header_hover",
+      "label": "Header hover colour",
+      "default": "#A47118"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent colour",
+      "default": "#A47118"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border colour",
+      "default": "#DED8CA"
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
+    {
+      "type": "color",
+      "id": "mega_background",
+      "label": "Mega menu background",
+      "default": "#F4EFE4"
+    },
+    {
+      "type": "color",
+      "id": "mega_text",
+      "label": "Mega menu text",
+      "default": "#1B2A4A"
+    },
+    {
+      "type": "range",
+      "id": "mega_title_size",
+      "label": "Mega menu title size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "mega_link_size",
+      "label": "Mega menu link size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "mega_radius",
+      "label": "Mega menu radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "mouse_leave_delay",
+      "label": "Desktop mouse-leave delay",
+      "min": 0,
+      "max": 1000,
+      "step": 25,
+      "unit": "ms",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "Product cards"
+    },
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "label": "Product title size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "product_price_size",
+      "label": "Product price size",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 3
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#1B2A4A"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text",
+      "label": "Button hover text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Trust bar"
+    },
+    {
       "type": "checkbox",
-      "id": "sticky_header",
-      "label": "Make header sticky",
+      "id": "enable_trust_bar",
+      "label": "Enable trust bar",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "trust_background",
+      "label": "Trust bar background",
+      "default": "#1B2A4A"
+    },
+    {
+      "type": "color",
+      "id": "trust_text",
+      "label": "Trust bar text",
+      "default": "#F4EFE4"
+    },
+    {
+      "type": "header",
+      "content": "Header actions"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search products..."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
       "default": true
     },
     {
@@ -1592,129 +2724,18 @@
       "default": true
     },
     {
-      "type": "range",
-      "id": "mouse_leave_delay",
-      "label": "Mouse-leave close delay",
-      "min": 0,
-      "max": 1000,
-      "step": 25,
-      "unit": "ms",
-      "default": 150
+      "type": "header",
+      "content": "Mobile typography"
     },
     {
       "type": "range",
-      "id": "mega_min_height",
-      "label": "Mega menu minimum height",
-      "min": 420,
-      "max": 760,
-      "step": 10,
-      "unit": "px",
-      "default": 600
-    },
-    {
-      "type": "range",
-      "id": "category_width",
-      "label": "Category column width",
-      "min": 18,
-      "max": 32,
-      "step": 1,
-      "unit": "%",
-      "default": 24
-    },
-    {
-      "type": "range",
-      "id": "product_width",
-      "label": "Product area weight",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "featured_width",
-      "label": "Featured image width",
-      "min": 18,
-      "max": 32,
-      "step": 1,
-      "unit": "%",
-      "default": 24
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Header background",
-      "default": "#FBF9F4"
-    },
-    {
-      "type": "color",
-      "id": "mega_background",
-      "label": "Mega menu background",
-      "default": "#FBF9F4"
-    },
-    {
-      "type": "color",
-      "id": "category_background",
-      "label": "Category background",
-      "default": "#F4EFE4"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text colour",
-      "default": "#1B2A4A"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Accent / gold",
-      "default": "#A47118"
-    },
-    {
-      "type": "color",
-      "id": "muted_color",
-      "label": "Muted text",
-      "default": "#4B4F58"
-    },
-    {
-      "type": "color",
-      "id": "border_color",
-      "label": "Border colour",
-      "default": "#E4DFD2"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_background",
-      "label": "CTA hover background",
-      "default": "#111C33"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_text",
-      "label": "CTA hover text",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "featured_label_color",
-      "label": "Featured label colour",
-      "default": "#D4B679"
-    },
-    {
-      "type": "color",
-      "id": "featured_link_hover",
-      "label": "Featured link hover",
-      "default": "#D4B679"
-    },
-    {
-      "type": "range",
-      "id": "radius",
-      "label": "Corner radius",
-      "min": 0,
-      "max": 24,
+      "id": "mobile_nav_font_size",
+      "label": "Mobile navigation font size",
+      "min": 12,
+      "max": 20,
       "step": 1,
       "unit": "px",
-      "default": 6
+      "default": 14
     }
   ],
   "blocks": [
@@ -1725,165 +2746,108 @@
         {
           "type": "text",
           "id": "menu_item",
-          "label": "Match menu item",
-          "info": "Enter the exact top-level menu item title, e.g. Home & Living."
+          "label": "Menu item",
+          "info": "Enter the exact top-level navigation item this mega menu belongs to. Example: Home & Living"
         },
         {
           "type": "select",
           "id": "layout",
           "label": "Mega menu layout",
           "options": [
-            { "value": "products_featured", "label": "Categories + products + featured image" },
-            { "value": "products_only", "label": "Categories + products" },
-            { "value": "featured_only", "label": "Categories + featured image" }
+            {
+              "value": "columns_featured",
+              "label": "Columns + featured image"
+            },
+            {
+              "value": "side_image",
+              "label": "Side image + columns + products"
+            },
+            {
+              "value": "hero_feature",
+              "label": "Large featured hero"
+            },
+            {
+              "value": "links_only",
+              "label": "Multi-column links"
+            },
+            {
+              "value": "products_focus",
+              "label": "Products + links"
+            }
           ],
-          "default": "products_featured"
-        },
-        {
-          "type": "text",
-          "id": "eyebrow",
-          "label": "Eyebrow",
-          "default": "A More Comfortable Home"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Better Nights, Easier Days"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Thoughtfully chosen essentials that make every room feel calmer, cosier and easier to live in."
-        },
-        {
-          "type": "link_list",
-          "id": "column_menu_1",
-          "label": "Category link-list 1"
-        },
-        {
-          "type": "link_list",
-          "id": "column_menu_2",
-          "label": "Category link-list 2"
-        },
-        {
-          "type": "link_list",
-          "id": "column_menu_3",
-          "label": "Category link-list 3"
-        },
-        {
-          "type": "link_list",
-          "id": "column_menu_4",
-          "label": "Category link-list 4"
+          "default": "columns_featured"
         },
         {
           "type": "checkbox",
-          "id": "show_trust_bar",
-          "label": "Show trust bar",
-          "default": true
+          "id": "show_hot_badge",
+          "label": "Show Hot badge",
+          "default": false
         },
         {
           "type": "text",
-          "id": "trust_1_text",
-          "label": "Trust item 1",
-          "default": "Fast Aussie Shipping"
+          "id": "hot_badge_text",
+          "label": "Hot badge text",
+          "default": "Hot"
+        },
+        {
+          "type": "header",
+          "content": "Column 1"
         },
         {
           "type": "text",
-          "id": "trust_2_text",
-          "label": "Trust item 2",
-          "default": "30-Day Returns"
+          "id": "column_1_title",
+          "label": "Column 1 title"
+        },
+        {
+          "type": "link_list",
+          "id": "column_1_menu",
+          "label": "Column 1 link list"
+        },
+        {
+          "type": "header",
+          "content": "Column 2"
         },
         {
           "type": "text",
-          "id": "trust_3_text",
-          "label": "Trust item 3",
-          "default": "100% Quality Guarantee"
+          "id": "column_2_title",
+          "label": "Column 2 title"
+        },
+        {
+          "type": "link_list",
+          "id": "column_2_menu",
+          "label": "Column 2 link list"
+        },
+        {
+          "type": "header",
+          "content": "Column 3"
         },
         {
           "type": "text",
-          "id": "products_eyebrow",
-          "label": "Products eyebrow",
-          "default": "Shop the favourites"
+          "id": "column_3_title",
+          "label": "Column 3 title"
+        },
+        {
+          "type": "link_list",
+          "id": "column_3_menu",
+          "label": "Column 3 link list"
+        },
+        {
+          "type": "header",
+          "content": "Column 4"
         },
         {
           "type": "text",
-          "id": "products_title",
-          "label": "Products title",
-          "default": "Trending now"
+          "id": "column_4_title",
+          "label": "Column 4 title"
         },
         {
-          "type": "text",
-          "id": "products_view_all_label",
-          "label": "View-all label",
-          "default": "View all →"
+          "type": "link_list",
+          "id": "column_4_menu",
+          "label": "Column 4 link list"
         },
         {
-          "type": "url",
-          "id": "products_view_all_url",
-          "label": "View-all link"
-        },
-        {
-          "type": "product",
-          "id": "product_1",
-          "label": "Product 1"
-        },
-        {
-          "type": "text",
-          "id": "product_1_badge",
-          "label": "Product 1 badge",
-          "default": "Best Seller"
-        },
-        {
-          "type": "product",
-          "id": "product_2",
-          "label": "Product 2"
-        },
-        {
-          "type": "text",
-          "id": "product_2_badge",
-          "label": "Product 2 badge",
-          "default": "Popular"
-        },
-        {
-          "type": "product",
-          "id": "product_3",
-          "label": "Product 3"
-        },
-        {
-          "type": "text",
-          "id": "product_3_badge",
-          "label": "Product 3 badge",
-          "default": "Popular"
-        },
-        {
-          "type": "product",
-          "id": "product_4",
-          "label": "Product 4"
-        },
-        {
-          "type": "text",
-          "id": "product_4_badge",
-          "label": "Product 4 badge",
-          "default": "Trending"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_product_rating",
-          "label": "Show rating row",
-          "default": true
-        },
-        {
-          "type": "text",
-          "id": "products_cta_label",
-          "label": "Products CTA label",
-          "default": "Shop all home & living →"
-        },
-        {
-          "type": "url",
-          "id": "products_cta_url",
-          "label": "Products CTA link"
+          "type": "header",
+          "content": "Featured content"
         },
         {
           "type": "image_picker",
@@ -1896,62 +2860,133 @@
           "label": "Side image"
         },
         {
-          "type": "url",
-          "id": "side_image_url",
-          "label": "Side image link"
-        },
-        {
-          "type": "text",
-          "id": "side_image_alt",
-          "label": "Side image alt text"
-        },
-        {
           "type": "text",
           "id": "featured_badge",
           "label": "Featured badge",
-          "default": "Save up to 35%"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_hot_badge",
-          "label": "Show HOT badge on navigation item",
-          "default": false
-        },
-        {
-          "type": "text",
-          "id": "featured_label",
-          "label": "Featured label",
-          "default": "Featured Collection"
+          "default": "Featured"
         },
         {
           "type": "text",
           "id": "featured_title",
-          "label": "Featured title",
-          "default": "The Comfort Edit"
+          "label": "Featured title"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "featured_description",
-          "label": "Featured description",
-          "default": "Soft textures and smart essentials for your most relaxing home yet."
+          "label": "Featured description"
         },
         {
           "type": "text",
-          "id": "featured_cta_label",
-          "label": "Featured CTA label",
-          "default": "Shop the edit →"
+          "id": "cta_text",
+          "label": "CTA text",
+          "default": "Shop Now"
         },
         {
           "type": "url",
-          "id": "featured_cta_url",
-          "label": "Featured CTA link"
+          "id": "cta_link",
+          "label": "CTA link"
+        },
+        {
+          "type": "header",
+          "content": "Products"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Product 3"
+        },
+        {
+          "type": "product",
+          "id": "product_4",
+          "label": "Product 4"
+        },
+        {
+          "type": "product",
+          "id": "product_5",
+          "label": "Product 5"
+        },
+        {
+          "type": "product",
+          "id": "product_6",
+          "label": "Product 6"
+        }
+      ]
+    },
+    {
+      "type": "trust_item",
+      "name": "Trust item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Shipping"
+            },
+            {
+              "value": "returns",
+              "label": "Returns"
+            },
+            {
+              "value": "shield",
+              "label": "Shield"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Fast Aussie Shipping"
         }
       ]
     }
   ],
+  "max_blocks": 20,
   "presets": [
     {
-      "name": "Modern Aussies Header"
+      "name": "Modern Aussies Header",
+      "blocks": [
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "truck",
+            "text": "Fast Aussie Shipping"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "returns",
+            "text": "30-Day Returns"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shield",
+            "text": "Quality Guarantee"
+          }
+        }
+      ]
     }
   ]
 }
