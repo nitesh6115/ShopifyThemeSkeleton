@@ -3417,7 +3417,7 @@
   <script>
     (() => {
       const root = document.getElementById('ModernAussiesHeader-{{ section.id }}');
-
+        
       if (!root || root.dataset.initialized === 'true') return;
 
       root.dataset.initialized = 'true';
@@ -3425,7 +3425,75 @@
       const leaveDelay = Number(root.dataset.leaveDelay || 150);
 
       let closeTimer = null;
+      /* -------------------------------------------------------
+        STICKY HEADER
+        ------------------------------------------------------- */
 
+        const stickyMode = root.dataset.stickyMode;
+
+        if (stickyMode === 'on_scroll') {
+
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateStickyHeader() {
+
+            const currentScrollY = window.scrollY;
+
+            /* At the very top */
+            if (currentScrollY <= 10) {
+
+            root.classList.remove('ma-header-hidden');
+            root.classList.remove('ma-header-visible');
+            root.classList.remove('ma-sticky-scrolled');
+
+            }
+
+            /* Scrolling down */
+            else if (currentScrollY > lastScrollY) {
+
+            root.classList.add('ma-header-hidden');
+            root.classList.remove('ma-header-visible');
+            root.classList.add('ma-sticky-scrolled');
+
+            }
+
+            /* Scrolling up */
+            else if (currentScrollY < lastScrollY) {
+
+            root.classList.remove('ma-header-hidden');
+            root.classList.add('ma-header-visible');
+            root.classList.add('ma-sticky-scrolled');
+
+            }
+
+            lastScrollY = currentScrollY;
+
+            ticking = false;
+        }
+
+
+        window.addEventListener(
+            'scroll',
+            () => {
+
+            if (!ticking) {
+
+                window.requestAnimationFrame(
+                updateStickyHeader
+                );
+
+                ticking = true;
+
+            }
+
+            },
+            {
+            passive: true
+            }
+        );
+
+        }
       const desktopItems = Array.from(root.querySelectorAll('.ma-desktop-nav .ma-nav-item.has-mega'));
 
       function clearCloseTimer() {
