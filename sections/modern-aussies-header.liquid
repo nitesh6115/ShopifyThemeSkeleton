@@ -1,0 +1,1958 @@
+{% comment %}
+  Modern Aussies Header
+  - Shopify-native Liquid / CSS / JS
+  - No React, bundler, hardcoded product URLs or hardcoded product data
+  - Mega menu blocks are matched to top-level navigation items by title.
+{% endcomment %}
+
+{% liquid
+  assign main_menu = section.settings.menu
+  if main_menu == blank
+    assign main_menu = linklists[section.settings.menu]
+  endif
+%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --ma-navy: {{ section.settings.text_color }};
+    --ma-gold: {{ section.settings.accent_color }};
+    --ma-bg: {{ section.settings.background_color }};
+    --ma-panel: {{ section.settings.mega_background }};
+    --ma-border: {{ section.settings.border_color }};
+    --ma-muted: {{ section.settings.muted_color }};
+    --ma-radius: {{ section.settings.radius }}px;
+    --ma-header-height: {{ section.settings.header_height }}px;
+    --ma-max-width: {{ section.settings.max_width }}px;
+    position: relative;
+    z-index: 50;
+  }
+
+  #shopify-section-{{ section.id }} .ma-header--sticky { position: sticky; top: 0; }
+
+  #shopify-section-{{ section.id }} .ma-header {
+    position: relative;
+    background: var(--ma-bg);
+    color: var(--ma-navy);
+    border-bottom: 1px solid var(--ma-border);
+    z-index: 100;
+  }
+
+  #shopify-section-{{ section.id }} .ma-header__inner {
+    max-width: var(--ma-max-width);
+    margin: 0 auto;
+    min-height: var(--ma-header-height);
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-logo img {
+    display: block;
+    width: {{ section.settings.logo_width }}px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ma-logo__text {
+    font-size: 20px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: {{ section.settings.nav_gap }}px;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__item {
+    position: static;
+    height: var(--ma-header-height);
+    display: flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    padding: 0 8px;
+    border: 0;
+    background: transparent;
+    color: var(--ma-navy);
+    text-decoration: none;
+    font-size: {{ section.settings.nav_font_size }}px;
+    font-weight: {{ section.settings.nav_font_weight }};
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__link:hover,
+  #shopify-section-{{ section.id }} .ma-nav__link[aria-expanded="true"] {
+    color: var(--ma-gold);
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__link--hot::after {
+    content: "HOT";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 16px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: var(--ma-gold);
+    color: #fff;
+    font-size: 8px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .4px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__chevron {
+    width: 12px;
+    height: 12px;
+    transition: transform .18s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ma-nav__link[aria-expanded="true"] .ma-nav__chevron {
+    transform: rotate(180deg);
+  }
+
+  #shopify-section-{{ section.id }} .ma-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-action {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ma-navy);
+    text-decoration: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-action:hover {
+    color: var(--ma-gold);
+  }
+
+  #shopify-section-{{ section.id }} .ma-action svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-cart-count {
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin: -19px 0 0 13px;
+    background: var(--ma-gold);
+    color: #fff;
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mobile-toggle {
+    display: none;
+  }
+
+  /* Mega menu */
+  #shopify-section-{{ section.id }} .ma-mega {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--ma-panel);
+    border-top: 1px solid var(--ma-border);
+    border-bottom: 1px solid var(--ma-border);
+    box-shadow: 0 18px 35px rgba(27,42,74,.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__inner {
+    max-width: var(--ma-max-width);
+    min-height: {{ section.settings.mega_min_height }}px;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: {{ section.settings.category_width }}% minmax(0, {{ section.settings.product_width }}fr) {{ section.settings.featured_width }}%;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__categories {
+    padding: 28px 16px 22px 28px;
+    background: {{ section.settings.category_background }};
+    border-right: 1px solid var(--ma-border);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__eyebrow {
+    margin: 0 0 5px;
+    color: var(--ma-gold);
+    font-size: 9px;
+    line-height: 1.3;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__title {
+    margin: 0;
+    color: var(--ma-navy);
+    font-size: 21px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -.35px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__description {
+    margin: 9px 0 17px;
+    max-width: 35ch;
+    color: var(--ma-muted);
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .ma-trust {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--ma-border);
+    margin-bottom: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--ma-navy);
+    font-size: 9px;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .ma-trust__icon {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    color: var(--ma-gold);
+  }
+
+  #shopify-section-{{ section.id }} .ma-category-list {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category {
+    border-bottom: 1px solid var(--ma-border);
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__row {
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__heading {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 0;
+    color: var(--ma-navy);
+    text-decoration: none;
+    font-size: 9.5px;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__toggle {
+    width: 24px;
+    height: 28px;
+    border: 0;
+    background: transparent;
+    color: var(--ma-navy);
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__toggle svg {
+    width: 11px;
+    height: 11px;
+    transition: transform .18s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category.is-expanded .ma-category__toggle svg {
+    transform: rotate(45deg);
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__children {
+    display: none;
+    padding: 0 0 9px 12px;
+    border-left: 2px solid var(--ma-gold);
+    margin: 0 0 10px 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category.is-expanded .ma-category__children {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__child {
+    width: calc(50% - 6px);
+    padding: 5px 0;
+    color: #4b4f58;
+    text-decoration: none;
+    font-size: 8.8px;
+    line-height: 1.35;
+  }
+
+  #shopify-section-{{ section.id }} .ma-category__child:hover {
+    color: var(--ma-gold);
+  }
+
+  #shopify-section-{{ section.id }} .ma-side-image {
+    display: block;
+    margin-top: auto;
+    padding-top: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-side-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3.7 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--ma-border);
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__inner--products_only .ma-mega__featured,
+  #shopify-section-{{ section.id }} .ma-mega__inner--featured_only .ma-mega__products {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .ma-mega__inner--featured_only {
+    grid-template-columns: {{ section.settings.category_width }}% minmax(0, 1fr);
+  }
+
+  /* Product grid */
+  #shopify-section-{{ section.id }} .ma-mega__products {
+    padding: 22px 16px 18px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__eyebrow {
+    margin: 0 0 4px;
+    color: var(--ma-gold);
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__title {
+    margin: 0;
+    color: var(--ma-navy);
+    font-size: 17px;
+    line-height: 1.15;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__viewall {
+    flex: 0 0 auto;
+    color: var(--ma-navy);
+    text-decoration: none;
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__viewall:hover {
+    color: var(--ma-gold);
+  }
+
+  #shopify-section-{{ section.id }} .ma-product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product {
+    min-width: 0;
+    text-decoration: none;
+    color: var(--ma-navy);
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__image {
+    position: relative;
+    aspect-ratio: 1.62 / 1;
+    overflow: hidden;
+    border: 1px solid var(--ma-border);
+    border-radius: 5px;
+    background: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product:hover .ma-product__image img {
+    transform: scale(1.025);
+  }
+
+  #shopify-section-{{ section.id }} .ma-badge {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    z-index: 2;
+    padding: 3px 7px;
+    border-radius: 20px;
+    background: var(--ma-navy);
+    color: #fff;
+    font-size: 7px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .2px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__name {
+    margin: 6px 0 3px;
+    font-size: 8.5px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 3px;
+    color: var(--ma-gold);
+    font-size: 7px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__price-current {
+    color: var(--ma-navy);
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .ma-product__price-compare {
+    color: #a0a4ad;
+    font-size: 7px;
+    line-height: 1.2;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__cta {
+    margin-top: 12px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 30px;
+    background: var(--ma-navy);
+    color: #fff;
+    text-decoration: none;
+    font-size: 8px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-products__cta:hover {
+    background: {{ section.settings.button_hover_background }};
+    color: {{ section.settings.button_hover_text }};
+  }
+
+  /* Featured image */
+  #shopify-section-{{ section.id }} .ma-mega__featured {
+    position: relative;
+    min-height: {{ section.settings.mega_min_height }}px;
+    overflow: hidden;
+    background: var(--ma-navy);
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__image,
+  #shopify-section-{{ section.id }} .ma-featured__image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__image img {
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__overlay {
+    position: absolute;
+    inset: 35% 0 0;
+    background: linear-gradient(180deg, rgba(17,28,51,0) 0%, rgba(17,28,51,.92) 55%, #111c33 100%);
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__content {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 30px;
+    z-index: 2;
+    color: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__badge {
+    display: inline-flex;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: var(--ma-gold);
+    color: #fff;
+    font-size: 7px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__label {
+    margin-top: 13px;
+    color: {{ section.settings.featured_label_color }};
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__title {
+    margin: 5px 0 0;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -.3px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__description {
+    margin: 8px 0 0;
+    color: rgba(255,255,255,.86);
+    font-size: 9px;
+    line-height: 1.55;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 13px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-featured__cta:hover {
+    color: {{ section.settings.featured_link_hover }};
+    border-color: {{ section.settings.featured_link_hover }};
+  }
+
+  /* Mobile drawer */
+  #shopify-section-{{ section.id }} .ma-mobile-bar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--ma-bg);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform .24s ease, visibility .24s ease;
+    overflow-y: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__header {
+    min-height: 64px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--ma-border);
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__logo img {
+    display: block;
+    width: {{ section.settings.mobile_logo_width }}px;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__close {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    color: var(--ma-navy);
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__nav {
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__item {
+    border-bottom: 1px solid var(--ma-border);
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__row {
+    min-height: 55px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__link,
+  #shopify-section-{{ section.id }} .ma-drawer__toggle {
+    border: 0;
+    background: transparent;
+    color: var(--ma-navy);
+    text-decoration: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__link {
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__toggle {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__sub {
+    display: none;
+    padding: 0 18px 18px;
+    background: {{ section.settings.category_background }};
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__item.is-expanded .ma-drawer__sub {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__intro {
+    padding: 17px 0 10px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__intro-eyebrow {
+    margin: 0 0 5px;
+    color: var(--ma-gold);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__intro-title {
+    margin: 0;
+    color: var(--ma-navy);
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__children {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__child-row {
+    border-bottom: 1px solid var(--ma-border);
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__child-link {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--ma-navy);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__grandchildren {
+    display: none;
+    padding: 0 0 9px 13px;
+    border-left: 2px solid var(--ma-gold);
+    margin: 0 0 8px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__child-row.is-expanded .ma-drawer__grandchildren {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__grandchild {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    color: #4b4f58;
+    text-decoration: none;
+    font-size: 12.5px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__products-title {
+    margin: 18px 0 10px;
+    color: var(--ma-navy);
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__product {
+    min-width: 0;
+    color: var(--ma-navy);
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__product-image {
+    position: relative;
+    aspect-ratio: 1;
+    border: 1px solid var(--ma-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__product-name {
+    margin-top: 6px;
+    font-size: 11.5px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__product-price {
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__cta {
+    min-height: 46px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background: var(--ma-navy);
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__footer {
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--ma-border);
+  }
+
+  #shopify-section-{{ section.id }} .ma-drawer__footer a {
+    color: var(--ma-navy);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1179px) {
+    #shopify-section-{{ section.id }} .ma-header__inner {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .ma-mobile-bar {
+      min-height: 64px;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: 40px minmax(0,1fr) 40px;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ma-mobile-bar__logo {
+      justify-self: center;
+    }
+
+    #shopify-section-{{ section.id }} .ma-mobile-bar__logo img {
+      display: block;
+      width: {{ section.settings.mobile_logo_width }}px;
+      height: auto;
+    }
+
+    #shopify-section-{{ section.id }} .ma-mobile-bar__button {
+      width: 40px;
+      height: 40px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--ma-navy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #shopify-section-{{ section.id }} .ma-mobile-bar__button svg {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .ma-mega {
+      display: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .ma-drawer {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1180px) {
+    #shopify-section-{{ section.id }} .ma-drawer {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1180px) and (max-width: 1399px) {
+    #shopify-section-{{ section.id }} .ma-header__inner {
+      padding-left: 18px;
+      padding-right: 18px;
+      gap: 15px;
+    }
+
+    #shopify-section-{{ section.id }} .ma-nav__list {
+      gap: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .ma-nav__link {
+      padding: 0 5px;
+      font-size: {{ section.settings.nav_font_size | minus: 1 }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ma-actions {
+      gap: 4px;
+    }
+  }
+</style>
+
+<header class="ma-header{% if section.settings.sticky_header %} ma-header--sticky{% endif %}" data-ma-header data-close-delay="{{ section.settings.mouse_leave_delay }}">
+  <div class="ma-header__inner">
+    <a class="ma-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 600 | image_tag: widths: '160,240,320,480,600', alt: shop.name, loading: 'eager' }}
+      {% else %}
+        <span class="ma-logo__text">{{ shop.name }}</span>
+      {% endif %}
+    </a>
+
+    <nav class="ma-nav" aria-label="Main navigation">
+      <ul class="ma-nav__list">
+        {% if main_menu != blank %}
+          {% for link in main_menu.links %}
+            {% liquid
+              assign menu_key = link.title | handleize
+              assign mega_block = blank
+              for block in section.blocks
+                if block.type == 'mega_menu'
+                  assign block_key = block.settings.menu_item | handleize
+                  if block_key == menu_key
+                    assign mega_block = block
+                    break
+                  endif
+                endif
+              endfor
+            %}
+            <li class="ma-nav__item" data-ma-nav-item {% if mega_block != blank %}data-ma-mega-trigger="{{ mega_block.id }}"{% endif %}>
+              {% if mega_block != blank %}
+                <button
+                  type="button"
+                  class="ma-nav__link{% if mega_block.settings.featured_badge != blank and mega_block.settings.show_hot_badge %} ma-nav__link--hot{% endif %}"
+                  aria-expanded="false"
+                  aria-controls="ma-mega-{{ section.id }}-{{ mega_block.id }}"
+                  data-ma-trigger
+                >
+                  <span>{{ link.title }}</span>
+                  <svg class="ma-nav__chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M5 7.5 10 12.5 15 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              {% else %}
+                <a class="ma-nav__link{% if link.title contains 'Best' %} ma-nav__link--hot{% endif %}" href="{{ link.url }}">
+                  <span>{{ link.title }}</span>
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% else %}
+          <li><span class="ma-nav__link">Add a navigation menu</span></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <div class="ma-actions">
+      {% if shop.customer_accounts_enabled %}
+        <a class="ma-action" href="{{ routes.account_url }}" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 20c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </a>
+      {% endif %}
+
+      {% if section.settings.show_currency %}
+        <div class="ma-currency">
+          {% form 'currency' %}
+            <label class="visually-hidden" for="ma-currency-{{ section.id }}">Currency</label>
+            <select id="ma-currency-{{ section.id }}" name="currency" onchange="this.form.submit()">
+              {% for currency in localization.available_currencies %}
+                <option value="{{ currency.iso_code }}" {% if currency.iso_code == localization.country.currency.iso_code %}selected{% endif %}>
+                  {{ currency.iso_code }}
+                </option>
+              {% endfor %}
+            </select>
+          {% endform %}
+        </div>
+      {% endif %}
+
+      <a class="ma-action" href="{{ routes.cart_url }}" aria-label="Cart">
+        <span style="position:relative;display:inline-flex">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h2l1.4 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.4L21 8H7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.2" fill="currentColor"/><circle cx="18" cy="20" r="1.2" fill="currentColor"/></svg>
+          {% if cart.item_count > 0 %}<span class="ma-cart-count">{{ cart.item_count }}</span>{% endif %}
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="ma-mobile-bar">
+    <button type="button" class="ma-mobile-bar__button" data-ma-mobile-open aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <a class="ma-mobile-bar__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 500 | image_tag: widths: '160,240,320,400,500', alt: shop.name, loading: 'eager' }}
+      {% else %}
+        <span class="ma-logo__text">{{ shop.name }}</span>
+      {% endif %}
+    </a>
+    <a class="ma-mobile-bar__button" href="{{ routes.cart_url }}" aria-label="Cart">
+      <span style="position:relative;display:inline-flex">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h2l1.4 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.4L21 8H7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.2" fill="currentColor"/><circle cx="18" cy="20" r="1.2" fill="currentColor"/></svg>
+        {% if cart.item_count > 0 %}<span class="ma-cart-count">{{ cart.item_count }}</span>{% endif %}
+      </span>
+    </a>
+  </div>
+
+  {% if main_menu != blank %}
+    {% for link in main_menu.links %}
+      {% liquid
+        assign menu_key = link.title | handleize
+        assign mega_block = blank
+        for block in section.blocks
+          if block.type == 'mega_menu'
+            assign block_key = block.settings.menu_item | handleize
+            if block_key == menu_key
+              assign mega_block = block
+              break
+            endif
+          endif
+        endfor
+      %}
+      {% if mega_block != blank %}
+        <div
+          id="ma-mega-{{ section.id }}-{{ mega_block.id }}"
+          class="ma-mega"
+          data-ma-mega="{{ mega_block.id }}"
+          data-menu-url="{{ link.url }}"
+        >
+          <div class="ma-mega__inner ma-mega__inner--{{ mega_block.settings.layout }}" data-ma-mega-panel>
+            <div class="ma-mega__categories">
+              {% if mega_block.settings.eyebrow != blank %}<p class="ma-mega__eyebrow">{{ mega_block.settings.eyebrow }}</p>{% endif %}
+              {% if mega_block.settings.title != blank %}<h2 class="ma-mega__title">{{ mega_block.settings.title }}</h2>{% endif %}
+              {% if mega_block.settings.description != blank %}<p class="ma-mega__description">{{ mega_block.settings.description }}</p>{% endif %}
+
+              {% if mega_block.settings.show_trust_bar %}
+                <div class="ma-trust">
+                  {% for i in (1..3) %}
+                    {% liquid
+                      assign trust_label_key = 'trust_' | append: i | append: '_text'
+                      assign trust_label = mega_block.settings[trust_label_key]
+                    %}
+                    {% if trust_label != blank %}
+                      <div class="ma-trust__item">
+                        <svg class="ma-trust__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          {% if i == 1 %}
+                            <path d="M3 6h11v10H3zM14 9h4l3 3v4h-7zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.5"/>
+                          {% elsif i == 2 %}
+                            <path d="M4 7h11a5 5 0 0 1 0 10H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="m7 4-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          {% else %}
+                            <path d="m12 3 7 3v5c0 4.5-3 7.2-7 10-4-2.8-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.5"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          {% endif %}
+                        </svg>
+                        <span>{{ trust_label }}</span>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <div class="ma-category-list">
+                {% for column_index in (1..4) %}
+                  {% liquid
+                    assign menu_setting_key = 'column_menu_' | append: column_index
+                    assign selected_menu = mega_block.settings[menu_setting_key]
+                  %}
+                  {% if selected_menu != blank %}
+                    {% for category in selected_menu.links %}
+                      <div class="ma-category" data-ma-category>
+                        <div class="ma-category__row">
+                          <a class="ma-category__heading" href="{{ category.url }}">{{ category.title }}</a>
+                          {% if category.links.size > 0 %}
+                            <button type="button" class="ma-category__toggle" aria-label="Expand {{ category.title | escape }}" aria-expanded="false" data-ma-category-toggle>
+                              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            </button>
+                          {% endif %}
+                        </div>
+                        {% if category.links.size > 0 %}
+                          <div class="ma-category__children">
+                            {% for child in category.links %}
+                              <a class="ma-category__child" href="{{ child.url }}">{{ child.title }}</a>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              {% if mega_block.settings.side_image != blank %}
+                <a class="ma-side-image" href="{{ mega_block.settings.side_image_url | default: link.url }}" aria-label="{{ mega_block.settings.side_image_alt | default: mega_block.settings.title | escape }}">
+                  {{ mega_block.settings.side_image | image_url: width: 700 | image_tag: widths: '300,450,600,700', loading: 'lazy', alt: mega_block.settings.side_image_alt | default: mega_block.settings.title }}
+                </a>
+              {% endif %}
+            </div>
+
+            <div class="ma-mega__products">
+              <div class="ma-products__top">
+                <div>
+                  {% if mega_block.settings.products_eyebrow != blank %}<p class="ma-products__eyebrow">{{ mega_block.settings.products_eyebrow }}</p>{% endif %}
+                  {% if mega_block.settings.products_title != blank %}<h3 class="ma-products__title">{{ mega_block.settings.products_title }}</h3>{% endif %}
+                </div>
+                {% if mega_block.settings.products_view_all_label != blank %}
+                  <a class="ma-products__viewall" href="{{ mega_block.settings.products_view_all_url | default: link.url }}">{{ mega_block.settings.products_view_all_label }}</a>
+                {% endif %}
+              </div>
+
+              <div class="ma-product-grid">
+                {% for product_index in (1..4) %}
+                  {% liquid
+                    assign product_key = 'product_' | append: product_index
+                    assign badge_key = 'product_' | append: product_index | append: '_badge'
+                    assign selected_product = mega_block.settings[product_key]
+                    assign product_badge = mega_block.settings[badge_key]
+                  %}
+                  {% if selected_product != blank %}
+                    <a class="ma-product" href="{{ selected_product.url }}">
+                      <div class="ma-product__image">
+                        {% if selected_product.featured_image != blank %}
+                          {{ selected_product.featured_image | image_url: width: 900 | image_tag: widths: '300,450,600,750,900', loading: 'lazy', alt: selected_product.featured_image.alt | default: selected_product.title }}
+                        {% endif %}
+                        {% if product_badge != blank %}<span class="ma-badge">{{ product_badge }}</span>{% endif %}
+                      </div>
+                      <div class="ma-product__name">{{ selected_product.title }}</div>
+                      {% if mega_block.settings.show_product_rating %}
+                        <div class="ma-product__rating" aria-label="Rated product">
+                          ★★★★★
+                        </div>
+                      {% endif %}
+                      <div class="ma-product__price">
+                        <span class="ma-product__price-current">{{ selected_product.price | money }}</span>
+                        {% if selected_product.compare_at_price > selected_product.price %}
+                          <span class="ma-product__price-compare">{{ selected_product.compare_at_price | money }}</span>
+                        {% endif %}
+                      </div>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              {% if mega_block.settings.products_cta_label != blank %}
+                <a class="ma-products__cta" href="{{ mega_block.settings.products_cta_url | default: link.url }}">
+                  {{ mega_block.settings.products_cta_label }}
+                  <span aria-hidden="true">→</span>
+                </a>
+              {% endif %}
+            </div>
+
+            <div class="ma-mega__featured">
+              {% if mega_block.settings.featured_image != blank %}
+                <div class="ma-featured__image">
+                  {{ mega_block.settings.featured_image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', loading: 'lazy', alt: mega_block.settings.featured_title }}
+                </div>
+              {% endif %}
+              <div class="ma-featured__overlay"></div>
+              <div class="ma-featured__content">
+                {% if mega_block.settings.featured_badge != blank %}<span class="ma-featured__badge">{{ mega_block.settings.featured_badge }}</span>{% endif %}
+                {% if mega_block.settings.featured_label != blank %}<div class="ma-featured__label">{{ mega_block.settings.featured_label }}</div>{% endif %}
+                {% if mega_block.settings.featured_title != blank %}<h3 class="ma-featured__title">{{ mega_block.settings.featured_title }}</h3>{% endif %}
+                {% if mega_block.settings.featured_description != blank %}<p class="ma-featured__description">{{ mega_block.settings.featured_description }}</p>{% endif %}
+                {% if mega_block.settings.featured_cta_label != blank %}
+                  <a class="ma-featured__cta" href="{{ mega_block.settings.featured_cta_url | default: link.url }}">{{ mega_block.settings.featured_cta_label }} <span aria-hidden="true">→</span></a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <div class="ma-drawer" data-ma-drawer aria-hidden="true">
+    <div class="ma-drawer__header">
+      <a class="ma-drawer__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 500 | image_tag: widths: '160,240,320,400,500', alt: shop.name, loading: 'eager' }}
+        {% else %}
+          <span class="ma-logo__text">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+      <button type="button" class="ma-drawer__close" data-ma-mobile-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <nav class="ma-drawer__nav" aria-label="Mobile navigation">
+      {% if main_menu != blank %}
+        {% for link in main_menu.links %}
+          {% liquid
+            assign menu_key = link.title | handleize
+            assign mega_block = blank
+            for block in section.blocks
+              if block.type == 'mega_menu'
+                assign block_key = block.settings.menu_item | handleize
+                if block_key == menu_key
+                  assign mega_block = block
+                  break
+                endif
+              endif
+            endfor
+          %}
+          <div class="ma-drawer__item" data-ma-drawer-item>
+            <div class="ma-drawer__row">
+              <a class="ma-drawer__link" href="{{ link.url }}">{{ link.title }}</a>
+              {% if mega_block != blank or link.links.size > 0 %}
+                <button type="button" class="ma-drawer__toggle" aria-expanded="false" aria-label="Expand {{ link.title | escape }}" data-ma-drawer-toggle>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+              {% endif %}
+            </div>
+
+            {% if mega_block != blank %}
+              <div class="ma-drawer__sub">
+                {% if mega_block.settings.eyebrow != blank or mega_block.settings.title != blank %}
+                  <div class="ma-drawer__intro">
+                    {% if mega_block.settings.eyebrow != blank %}<p class="ma-drawer__intro-eyebrow">{{ mega_block.settings.eyebrow }}</p>{% endif %}
+                    {% if mega_block.settings.title != blank %}<h2 class="ma-drawer__intro-title">{{ mega_block.settings.title }}</h2>{% endif %}
+                  </div>
+                {% endif %}
+
+                <div class="ma-drawer__children">
+                  {% for column_index in (1..4) %}
+                    {% liquid
+                      assign menu_setting_key = 'column_menu_' | append: column_index
+                      assign selected_menu = mega_block.settings[menu_setting_key]
+                    %}
+                    {% if selected_menu != blank %}
+                      {% for category in selected_menu.links %}
+                        <div class="ma-drawer__child-row" data-ma-drawer-child>
+                          <div style="display:flex;align-items:center;gap:8px">
+                            <a class="ma-drawer__child-link" href="{{ category.url }}">{{ category.title }}</a>
+                            {% if category.links.size > 0 %}
+                              <button type="button" class="ma-drawer__toggle" data-ma-drawer-child-toggle aria-expanded="false" aria-label="Expand {{ category.title | escape }}">
+                                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                              </button>
+                            {% endif %}
+                          </div>
+                          {% if category.links.size > 0 %}
+                            <div class="ma-drawer__grandchildren">
+                              {% for child in category.links %}
+                                <a class="ma-drawer__grandchild" href="{{ child.url }}">{{ child.title }}</a>
+                              {% endfor %}
+                            </div>
+                          {% endif %}
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <div class="ma-drawer__products-title">{{ mega_block.settings.products_title | default: 'Trending now' }}</div>
+                <div class="ma-drawer__products">
+                  {% for product_index in (1..2) %}
+                    {% liquid
+                      assign product_key = 'product_' | append: product_index
+                      assign selected_product = mega_block.settings[product_key]
+                    %}
+                    {% if selected_product != blank %}
+                      <a class="ma-drawer__product" href="{{ selected_product.url }}">
+                        <div class="ma-drawer__product-image">
+                          {{ selected_product.featured_image | image_url: width: 600 | image_tag: widths: '250,400,600', loading: 'lazy', alt: selected_product.title }}
+                          {% liquid
+                            assign badge_key = 'product_' | append: product_index | append: '_badge'
+                            assign product_badge = mega_block.settings[badge_key]
+                          %}
+                          {% if product_badge != blank %}<span class="ma-badge">{{ product_badge }}</span>{% endif %}
+                        </div>
+                        <div class="ma-drawer__product-name">{{ selected_product.title }}</div>
+                        <div class="ma-drawer__product-price">{{ selected_product.price | money }}</div>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                {% if mega_block.settings.products_cta_label != blank %}
+                  <a class="ma-drawer__cta" href="{{ mega_block.settings.products_cta_url | default: link.url }}">{{ mega_block.settings.products_cta_label }}</a>
+                {% endif %}
+              </div>
+            {% elsif link.links.size > 0 %}
+              <div class="ma-drawer__sub">
+                <div class="ma-drawer__children">
+                  {% for child in link.links %}
+                    <a class="ma-drawer__child-link" href="{{ child.url }}">{{ child.title }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </nav>
+
+    <div class="ma-drawer__footer">
+      {% if shop.customer_accounts_enabled %}
+        <a href="{{ routes.account_url }}">Log in</a>
+      {% endif %}
+      {% if section.settings.show_currency %}
+        {% form 'currency' %}
+          <label class="visually-hidden" for="ma-mobile-currency-{{ section.id }}">Currency</label>
+          <select id="ma-mobile-currency-{{ section.id }}" name="currency" onchange="this.form.submit()">
+            {% for currency in localization.available_currencies %}
+              <option value="{{ currency.iso_code }}" {% if currency.iso_code == localization.country.currency.iso_code %}selected{% endif %}>{{ currency.iso_code }}</option>
+            {% endfor %}
+          </select>
+        {% endform %}
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<script>
+  (() => {
+    const root = document.querySelector('#shopify-section-{{ section.id }} [data-ma-header]');
+    if (!root || root.dataset.initialized === 'true') return;
+    root.dataset.initialized = 'true';
+
+    const delay = Number(root.dataset.closeDelay || 150);
+    let closeTimer = null;
+    let activeMega = null;
+
+    const closeAll = () => {
+      root.querySelectorAll('[data-ma-mega].is-open').forEach(menu => menu.classList.remove('is-open'));
+      root.querySelectorAll('[data-ma-trigger][aria-expanded="true"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+      activeMega = null;
+    };
+
+    const openMega = (trigger, id) => {
+      clearTimeout(closeTimer);
+      root.querySelectorAll('[data-ma-mega].is-open').forEach(menu => menu.classList.remove('is-open'));
+      root.querySelectorAll('[data-ma-trigger][aria-expanded="true"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+
+      const menu = root.querySelector('[data-ma-mega="' + id + '"]');
+      if (!menu) return;
+      menu.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      activeMega = menu;
+    };
+
+    root.querySelectorAll('[data-ma-trigger]').forEach(trigger => {
+      const item = trigger.closest('[data-ma-nav-item]');
+      const id = item && item.dataset.maMegaTrigger;
+
+      trigger.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(min-width: 1180px)').matches) openMega(trigger, id);
+      });
+
+      trigger.addEventListener('focus', () => {
+        if (window.matchMedia('(min-width: 1180px)').matches) openMega(trigger, id);
+      });
+
+      trigger.addEventListener('click', () => {
+        if (!window.matchMedia('(min-width: 1180px)').matches) return;
+        const menu = root.querySelector('[data-ma-mega="' + id + '"]');
+        if (!menu) return;
+        if (menu.classList.contains('is-open')) closeAll();
+        else openMega(trigger, id);
+      });
+
+      item && item.addEventListener('mouseleave', () => {
+        if (!window.matchMedia('(min-width: 1180px)').matches) return;
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(closeAll, delay);
+      });
+    });
+
+    root.querySelectorAll('[data-ma-mega]').forEach(menu => {
+      menu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+      menu.addEventListener('mouseleave', () => {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(closeAll, delay);
+      });
+    });
+
+    root.querySelectorAll('[data-ma-category-toggle]').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const category = toggle.closest('[data-ma-category]');
+        const shouldOpen = !category.classList.contains('is-expanded');
+        const parent = category.parentElement;
+        parent.querySelectorAll('[data-ma-category].is-expanded').forEach(item => item.classList.remove('is-expanded'));
+        parent.querySelectorAll('[data-ma-category__toggle]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+        category.classList.toggle('is-expanded', shouldOpen);
+        toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      });
+    });
+
+    const drawer = root.querySelector('[data-ma-drawer]');
+    const mobileOpen = root.querySelector('[data-ma-mobile-open]');
+    const mobileClose = root.querySelector('[data-ma-mobile-close]');
+
+    const setDrawer = open => {
+      if (!drawer) return;
+      drawer.classList.toggle('is-open', open);
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (mobileOpen) mobileOpen.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.documentElement.classList.toggle('ma-menu-open', open);
+      document.body.classList.toggle('ma-menu-open', open);
+    };
+
+    mobileOpen && mobileOpen.addEventListener('click', () => setDrawer(true));
+    mobileClose && mobileClose.addEventListener('click', () => setDrawer(false));
+
+    root.querySelectorAll('[data-ma-drawer-toggle]').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.closest('[data-ma-drawer-item]');
+        const shouldOpen = !item.classList.contains('is-expanded');
+        item.parentElement.querySelectorAll('[data-ma-drawer-item].is-expanded').forEach(other => {
+          other.classList.remove('is-expanded');
+          const otherButton = other.querySelector('[data-ma-drawer-toggle]');
+          if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
+        });
+        item.classList.toggle('is-expanded', shouldOpen);
+        toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      });
+    });
+
+    root.querySelectorAll('[data-ma-drawer-child-toggle]').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const row = toggle.closest('[data-ma-drawer-child]');
+        const shouldOpen = !row.classList.contains('is-expanded');
+        row.classList.toggle('is-expanded', shouldOpen);
+        toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      });
+    });
+
+    document.addEventListener('click', event => {
+      if (!root.contains(event.target) && window.matchMedia('(min-width: 1180px)').matches) closeAll();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeAll();
+        setDrawer(false);
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Modern Aussies Header",
+  "tag": "section",
+  "class": "section-modern-aussies-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Desktop logo width",
+      "min": 80,
+      "max": 320,
+      "step": 5,
+      "unit": "px",
+      "default": 170
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "label": "Mobile logo width",
+      "min": 80,
+      "max": 240,
+      "step": 5,
+      "unit": "px",
+      "default": 145
+    },
+    
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum content width",
+      "min": 1000,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1600
+    },
+    {
+      "type": "range",
+      "id": "nav_gap",
+      "label": "Navigation gap",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size",
+      "label": "Navigation font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "nav_font_weight",
+      "label": "Navigation font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Make header sticky",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency",
+      "label": "Show currency selector",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "mouse_leave_delay",
+      "label": "Mouse-leave close delay",
+      "min": 0,
+      "max": 1000,
+      "step": 25,
+      "unit": "ms",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "mega_min_height",
+      "label": "Mega menu minimum height",
+      "min": 420,
+      "max": 760,
+      "step": 10,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "category_width",
+      "label": "Category column width",
+      "min": 18,
+      "max": 32,
+      "step": 1,
+      "unit": "%",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "product_width",
+      "label": "Product area weight",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "featured_width",
+      "label": "Featured image width",
+      "min": 18,
+      "max": 32,
+      "step": 1,
+      "unit": "%",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Header background",
+      "default": "#FBF9F4"
+    },
+    {
+      "type": "color",
+      "id": "mega_background",
+      "label": "Mega menu background",
+      "default": "#FBF9F4"
+    },
+    {
+      "type": "color",
+      "id": "category_background",
+      "label": "Category background",
+      "default": "#F4EFE4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#1B2A4A"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / gold",
+      "default": "#A47118"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text",
+      "default": "#4B4F58"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border colour",
+      "default": "#E4DFD2"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "CTA hover background",
+      "default": "#111C33"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text",
+      "label": "CTA hover text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "featured_label_color",
+      "label": "Featured label colour",
+      "default": "#D4B679"
+    },
+    {
+      "type": "color",
+      "id": "featured_link_hover",
+      "label": "Featured link hover",
+      "default": "#D4B679"
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu",
+      "name": "Mega menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Match menu item",
+          "info": "Enter the exact top-level menu item title, e.g. Home & Living."
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Mega menu layout",
+          "options": [
+            { "value": "products_featured", "label": "Categories + products + featured image" },
+            { "value": "products_only", "label": "Categories + products" },
+            { "value": "featured_only", "label": "Categories + featured image" }
+          ],
+          "default": "products_featured"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "A More Comfortable Home"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Better Nights, Easier Days"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Thoughtfully chosen essentials that make every room feel calmer, cosier and easier to live in."
+        },
+        {
+          "type": "link_list",
+          "id": "column_menu_1",
+          "label": "Category link-list 1"
+        },
+        {
+          "type": "link_list",
+          "id": "column_menu_2",
+          "label": "Category link-list 2"
+        },
+        {
+          "type": "link_list",
+          "id": "column_menu_3",
+          "label": "Category link-list 3"
+        },
+        {
+          "type": "link_list",
+          "id": "column_menu_4",
+          "label": "Category link-list 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_trust_bar",
+          "label": "Show trust bar",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "trust_1_text",
+          "label": "Trust item 1",
+          "default": "Fast Aussie Shipping"
+        },
+        {
+          "type": "text",
+          "id": "trust_2_text",
+          "label": "Trust item 2",
+          "default": "30-Day Returns"
+        },
+        {
+          "type": "text",
+          "id": "trust_3_text",
+          "label": "Trust item 3",
+          "default": "100% Quality Guarantee"
+        },
+        {
+          "type": "text",
+          "id": "products_eyebrow",
+          "label": "Products eyebrow",
+          "default": "Shop the favourites"
+        },
+        {
+          "type": "text",
+          "id": "products_title",
+          "label": "Products title",
+          "default": "Trending now"
+        },
+        {
+          "type": "text",
+          "id": "products_view_all_label",
+          "label": "View-all label",
+          "default": "View all →"
+        },
+        {
+          "type": "url",
+          "id": "products_view_all_url",
+          "label": "View-all link"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "text",
+          "id": "product_1_badge",
+          "label": "Product 1 badge",
+          "default": "Best Seller"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "text",
+          "id": "product_2_badge",
+          "label": "Product 2 badge",
+          "default": "Popular"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Product 3"
+        },
+        {
+          "type": "text",
+          "id": "product_3_badge",
+          "label": "Product 3 badge",
+          "default": "Popular"
+        },
+        {
+          "type": "product",
+          "id": "product_4",
+          "label": "Product 4"
+        },
+        {
+          "type": "text",
+          "id": "product_4_badge",
+          "label": "Product 4 badge",
+          "default": "Trending"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_rating",
+          "label": "Show rating row",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "products_cta_label",
+          "label": "Products CTA label",
+          "default": "Shop all home & living →"
+        },
+        {
+          "type": "url",
+          "id": "products_cta_url",
+          "label": "Products CTA link"
+        },
+        {
+          "type": "image_picker",
+          "id": "featured_image",
+          "label": "Featured image"
+        },
+        {
+          "type": "image_picker",
+          "id": "side_image",
+          "label": "Side image"
+        },
+        {
+          "type": "url",
+          "id": "side_image_url",
+          "label": "Side image link"
+        },
+        {
+          "type": "text",
+          "id": "side_image_alt",
+          "label": "Side image alt text"
+        },
+        {
+          "type": "text",
+          "id": "featured_badge",
+          "label": "Featured badge",
+          "default": "Save up to 35%"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_hot_badge",
+          "label": "Show HOT badge on navigation item",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "featured_label",
+          "label": "Featured label",
+          "default": "Featured Collection"
+        },
+        {
+          "type": "text",
+          "id": "featured_title",
+          "label": "Featured title",
+          "default": "The Comfort Edit"
+        },
+        {
+          "type": "textarea",
+          "id": "featured_description",
+          "label": "Featured description",
+          "default": "Soft textures and smart essentials for your most relaxing home yet."
+        },
+        {
+          "type": "text",
+          "id": "featured_cta_label",
+          "label": "Featured CTA label",
+          "default": "Shop the edit →"
+        },
+        {
+          "type": "url",
+          "id": "featured_cta_url",
+          "label": "Featured CTA link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Modern Aussies Header"
+    }
+  ]
+}
+{% endschema %}
