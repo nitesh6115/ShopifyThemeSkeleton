@@ -19,7 +19,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Shop All",
-              "layout": "columns_featured",
+              "layout": "products_focus",
               "show_hot_badge": true,
               "hot_badge_text": "Hot",
               "column_1_title": "adsfasd",
@@ -36,13 +36,13 @@
               "featured_title": "adfasdf",
               "featured_description": "<p>dfadsf</p>",
               "cta_text": "Shop Now",
-              "cta_link": "",
-              "product_1": "witch-necklace-silver-plated",
-              "product_2": "8-oz-herb-jar",
-              "product_3": "9-horn-athame",
+              "cta_link": "shopify://collections/style-1",
+              "product_1": "amazonite-tumbled",
+              "product_2": "aortic-arch",
+              "product_3": "allstars",
               "product_4": "a-beautiful-day",
-              "product_5": "9-horn-athame",
-              "product_6": "9-horn-athame"
+              "product_5": "cat-glasses",
+              "product_6": "ostara-tea"
             }
           }
         },
