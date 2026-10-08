@@ -88,11 +88,40 @@
               "product_5": "cat-glasses",
               "product_6": "ostara-tea"
             }
+          },
+          "mega_menu_tif8pB": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "",
+              "layout": "products_focus",
+              "show_hot_badge": false,
+              "hot_badge_text": "Hot",
+              "column_1_title": "",
+              "column_1_menu": "",
+              "column_2_title": "",
+              "column_2_menu": "",
+              "column_3_title": "",
+              "column_3_menu": "",
+              "column_4_title": "",
+              "column_4_menu": "",
+              "featured_badge": "Featured",
+              "featured_title": "",
+              "featured_description": "",
+              "cta_text": "Shop Now",
+              "cta_link": "",
+              "product_1": "",
+              "product_2": "",
+              "product_3": "",
+              "product_4": "",
+              "product_5": "",
+              "product_6": ""
+            }
           }
         },
         "block_order": [
           "mega_menu_2_XNKrEq",
-          "mega_menu_ctRQc6"
+          "mega_menu_ctRQc6",
+          "mega_menu_tif8pB"
         ],
         "settings": {
           "logo": "shopify://shop_images/LOGO-APOLLO.webp",
