@@ -2569,17 +2569,116 @@
                         {%- endif -%}
 
                         {%- for menu_number in (1..4) -%}
-                          {%- capture category_key -%}column_menu_{{ menu_number }}{%- endcapture -%}
-                          {%- assign category_menu = matching_block.settings[category_key] -%}
-                          {%- if category_menu != blank -%}
-                            {%- for category_link in category_menu.links -%}
-                              <a class="ma-visual-category" href="{{ category_link.url }}">
-                                <span>{{ category_link.title }}</span>
-                                <span class="ma-visual-category-plus" aria-hidden="true">+</span>
-                              </a>
+
+                            {%- capture category_key -%}
+                                column_menu_{{ menu_number }}
+                            {%- endcapture -%}
+
+                            {%- assign category_menu = matching_block.settings[category_key] -%}
+
+                            {%- if category_menu != blank -%}
+
+                                {%- for category_link in category_menu.links -%}
+
+                                {%- if category_link.links != blank -%}
+
+                                    <!-- =========================================
+                                        MOBILE CATEGORY WITH CHILDREN
+                                    ========================================== -->
+
+                                    <div class="ma-mobile-visual-category-group">
+
+                                    <button
+                                        type="button"
+                                        class="ma-mobile-visual-category-toggle"
+                                        aria-expanded="false"
+                                    >
+
+                                        <span class="ma-mobile-visual-category-title">
+                                        {{ category_link.title }}
+                                        </span>
+
+                                        <span
+                                        class="ma-mobile-visual-category-icon"
+                                        aria-hidden="true"
+                                        >
+                                        <span class="ma-mobile-visual-plus">+</span>
+                                        <span class="ma-mobile-visual-minus">−</span>
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- Children -->
+                                    <div
+                                        class="ma-mobile-visual-category-content"
+                                        hidden
+                                    >
+
+                                        <div class="ma-mobile-visual-category-children">
+
+                                        {%- for child_link in category_link.links -%}
+
+                                            <a
+                                            href="{{ child_link.url }}"
+                                            class="ma-mobile-visual-category-child"
+                                            >
+                                            {{ child_link.title }}
+                                            </a>
+
+                                        {%- endfor -%}
+
+                                        </div>
+
+
+                                        <!-- View All -->
+                                        <a
+                                        href="{{ category_link.url }}"
+                                        class="ma-mobile-visual-category-view-all"
+                                        >
+                                        <span>
+                                            View All {{ category_link.title }}
+                                        </span>
+
+                                        <span aria-hidden="true">→</span>
+                                        </a>
+
+                                    </div>
+
+                                    </div>
+
+
+                                {%- else -%}
+
+                                    <!-- =========================================
+                                        MOBILE CATEGORY WITHOUT CHILDREN
+                                    ========================================== -->
+
+                                    <a
+                                    class="ma-mobile-visual-category-link"
+                                    href="{{ category_link.url }}"
+                                    >
+
+                                    <span>
+                                        {{ category_link.title }}
+                                    </span>
+
+                                    <span
+                                        class="ma-mobile-visual-category-plus"
+                                        aria-hidden="true"
+                                    >
+                                        +
+                                    </span>
+
+                                    </a>
+
+                                {%- endif -%}
+
+                                {%- endfor -%}
+
+                            {%- endif -%}
+
                             {%- endfor -%}
-                          {%- endif -%}
-                        {%- endfor -%}
                       </div>
 
                     {%- else -%}
