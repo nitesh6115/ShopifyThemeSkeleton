@@ -3280,10 +3280,7 @@
       <!-- Currency -->
       {%- if section.settings.show_currency and localization.available_countries.size > 1 -%}
         <div class="ma-mobile-currency">
-          {%-
-            form 'localization',
-            id: 'MobileCurrencyForm-' | append: section.id
-          -%}
+          {%- form section.id -%}
             <select
               name="country_code"
               aria-label="Currency"
@@ -4773,3 +4770,14 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%-\r\n            form 'localization',\r\n            id: 'MobileCurrencyForm-'
+    | append: section.id\r\n          -%}"
+  to: "{%- form section.id -%}"
+  position: 111510..111533
+{% endcomment %}
